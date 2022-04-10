@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Haptica
 
 struct ColorPickerView: View {
     let defaults = UserDefaults.standard
@@ -36,15 +37,27 @@ struct ColorPickerView: View {
                     Spacer()
                     Text(drawHexNumber)
                 }
+                .onTapGesture {
+                    UIPasteboard.general.string = drawHexNumber
+                    Haptic.impact(.light).generate()
+                }
                 HStack{
                     Text("RGB")
                     Spacer()
                     Text(rgbToString(input: drawUIColor))
                 }
+                .onTapGesture {
+                    UIPasteboard.general.string = rgbToString(input: drawUIColor)
+                    Haptic.impact(.light).generate()
+                }
                 HStack{
                     Text("RGBA")
                     Spacer()
                     Text(rgbaToString(input: drawUIColor))
+                }
+                .onTapGesture {
+                    UIPasteboard.general.string = rgbaToString(input: drawUIColor)
+                    Haptic.impact(.light).generate()
                 }
 
             }
