@@ -60,7 +60,11 @@ struct ContentView: View {
                 } label: {
                     Label("Color Picker", systemImage: "eyedropper.halffull").foregroundColor(.primary)
                 }
-                
+                NavigationLink {
+                    BodyMassIndex()
+                } label: {
+                    Label("BMI", systemImage: "person.fill.checkmark").foregroundColor(.primary)
+                }
                 
 //                Coming in Future version:
 //                NavigationLink {
