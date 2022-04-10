@@ -60,6 +60,11 @@ struct ContentView: View {
                 } label: {
                     Label("Color Picker", systemImage: "eyedropper.halffull").foregroundColor(.primary)
                 }
+                NavigationLink {
+                    NFCTools()
+                } label: {
+                    Label("NFC Tools", systemImage: "wave.3.forward").foregroundColor(.primary)
+                }
             }
             .sheet(isPresented: $infoPresented){
                 InfoView()
