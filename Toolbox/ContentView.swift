@@ -55,6 +55,11 @@ struct ContentView: View {
                 } label: {
                     Label("QR-Code Generator", systemImage: "qrcode").foregroundColor(.primary)
                 }
+                NavigationLink {
+                    ColorPickerView()
+                } label: {
+                    Label("Color Picker", systemImage: "eyedropper.halffull").foregroundColor(.primary)
+                }
             }
             .sheet(isPresented: $infoPresented){
                 InfoView()
