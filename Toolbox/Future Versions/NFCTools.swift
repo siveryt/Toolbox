@@ -13,7 +13,7 @@ enum nfcState {
 
 struct NFCTools: View {
     let defaults = UserDefaults.standard
-    @State var nfcViewState: nfcState = .write
+    @State var nfcViewState: nfcState = .read
     @State var write = ""
     
     var body: some View {
