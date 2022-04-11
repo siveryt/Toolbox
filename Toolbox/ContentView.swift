@@ -12,66 +12,109 @@ struct ContentView: View {
     
     @State var infoPresented = false
     
+    let tools = [
+        [
+            "view": "dice",
+            "icon": "dice",
+            "title": "Dice"
+        ],
+        [
+            "view": "domain",
+            "icon": "network",
+            "title": "Domain Resolver"
+        ],
+        [
+            "view": "randomNumber",
+            "icon": "textformat.123",
+            "title": "Random Number"
+        ],
+        [
+            "view": "liveClock",
+            "icon": "clock",
+            "title": "Live Clock"
+        ],
+        [
+            "view": "dateDifferene",
+            "icon": "calendar",
+            "title": "Date Difference"
+        ],
+        [
+            "view": "romanNumbers",
+            "icon": "hexagon",
+            "title": "Roman Numbers"
+        ],
+        [
+            "view": "counter",
+            "icon": "plusminus",
+            "title": "Counter"
+        ],
+        [
+            "view": "qrCode",
+            "icon": "qrcode",
+            "title": "QR-Code Generator"
+        ],
+        [
+            "view": "colorPicker",
+            "icon": "eyedropper.halffull",
+            "title": "Color Picker"
+        ],
+        [
+            "view": "bmi",
+            "icon": "person.fill.checkmark",
+            "title": "BMI"
+        ],
+//        Future Version
+//        [
+//            "view": "nfcTools",
+//            "icon": "wave.3.forward",
+//            "title": "NFC Tools"
+//        ],
+        [
+            "view": "unit",
+            "icon": "ruler",
+            "title": "Unit Conversion"
+        ]
+    ]
+    
     var body: some View {
         NavigationView {
             List {
-                NavigationLink {
-                    DiceView()
-                } label: {
-                    Label("Dice", systemImage: "dice").foregroundColor(.primary)
-                }
-                NavigationLink {
-                    DomainResolver()
-                } label: {
-                    Label("Domain Resolver", systemImage: "network").foregroundColor(.primary)
-                }
-                NavigationLink {
-                    RandomNumber()
-                } label: {
-                    Label("Random Number", systemImage: "textformat.123").foregroundColor(.primary)
-                }
-                NavigationLink {
-                    LiveClock()
-                } label: {
-                    Label("Live Clock", systemImage: "clock").foregroundColor(.primary)
-                }
-                NavigationLink {
-                    DateDifference()
-                } label: {
-                    Label("Date Difference", systemImage: "calendar").foregroundColor(.primary)
-                }
-                NavigationLink {
-                    RomanConverter()
-                } label: {
-                    Label("Roman Numbers", systemImage: "hexagon").foregroundColor(.primary)
-                }
-                NavigationLink {
-                    Counter()
-                } label: {
-                    Label("Counter", systemImage: "plusminus").foregroundColor(.primary)
-                }
-                NavigationLink {
-                    QRGenerator()
-                } label: {
-                    Label("QR-Code Generator", systemImage: "qrcode").foregroundColor(.primary)
-                }
-                NavigationLink {
-                    ColorPickerView()
-                } label: {
-                    Label("Color Picker", systemImage: "eyedropper.halffull").foregroundColor(.primary)
-                }
-                NavigationLink {
-                    BodyMassIndex()
-                } label: {
-                    Label("BMI", systemImage: "person.fill.checkmark").foregroundColor(.primary)
-                }
                 
-//                Coming in Future version:
-//                NavigationLink {
-//                    NFCTools()
-//                } label: {
-//                    Label("NFC Tools", systemImage: "wave.3.forward").foregroundColor(.primary)
-//                }
+                ForEach(tools, id: \.self) { tool in
+                    NavigationLink {
+                        switch tool["view"]{
+                        case "dice":
+                            DiceView()
+                        case "domain":
+                            DomainResolver()
+                        case "randomNumber":
+                            RandomNumber()
+                        case "liveClock":
+                            LiveClock()
+                        case "dateDifferene":
+                            DateDifference()
+                        case "romanNumbers":
+                            RomanConverter()
+                        case "counter":
+                            Counter()
+                        case "qrCode":
+                            QRGenerator()
+                        case "colorPicker":
+                            ColorPickerView()
+                        case "bmi":
+                            BodyMassIndex()
+                        case "unit":
+                            MetricConversion()
+                        default:
+                            Text("ERROR - Tool not found!\nPlease report this bug.")
+                        }
+                    } label: {
+                        Label("\(tool["title"]!)", systemImage: "\(tool["icon"]!)").foregroundColor(.primary)
+                    }
+                    
+                    
+                    
+                }
             }
             .sheet(isPresented: $infoPresented){
                 InfoView()
