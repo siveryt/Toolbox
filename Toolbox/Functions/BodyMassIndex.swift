@@ -13,8 +13,8 @@ struct BodyMassIndex: View {
     let metric = Locale.current.usesMetricSystem
     let defaults = UserDefaults.standard
     
-    @State var height = "0"
-    @State var weight = "0"
+    @State var height = ""
+    @State var weight = ""
     
     @State var h:Double = 0
     @State var w:Double = 0
