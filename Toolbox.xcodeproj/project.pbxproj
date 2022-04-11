@@ -25,7 +25,6 @@
 		5EC7B24127D7978200699FD3 /* ToolboxUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC7B24027D7978200699FD3 /* ToolboxUITestsLaunchTests.swift */; };
 		5ECEBEC72802E0F80096E5A5 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECEBEC62802E0F80096E5A5 /* ColorPicker.swift */; };
 		5ECEBEC92802EF7B0096E5A5 /* NFCTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECEBEC82802EF7B0096E5A5 /* NFCTools.swift */; };
-		5ECEBECC2802F4B40096E5A5 /* NFCReaderWriter in Frameworks */ = {isa = PBXBuildFile; productRef = 5ECEBECB2802F4B40096E5A5 /* NFCReaderWriter */; };
 		5ECEBECF280303A30096E5A5 /* BodyMassIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECEBECE280303A30096E5A5 /* BodyMassIndex.swift */; };
 		5ED81C4A27E36ED500FC42E8 /* Dice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED81C4927E36ED500FC42E8 /* Dice.swift */; };
 		5ED81C4C27E372E700FC42E8 /* DomainResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED81C4B27E372E700FC42E8 /* DomainResolver.swift */; };
@@ -89,7 +88,6 @@
 			files = (
 				5E020C5327EA2A59009871F9 /* RomanNumeralKit in Frameworks */,
 				5E528A9027E2379F00B2AE01 /* Haptica in Frameworks */,
-				5ECEBECC2802F4B40096E5A5 /* NFCReaderWriter in Frameworks */,
 				5EB7897A27F9CD2000F07140 /* QRCode in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,7 +219,6 @@
 				5E528A8F27E2379F00B2AE01 /* Haptica */,
 				5E020C5227EA2A59009871F9 /* RomanNumeralKit */,
 				5EB7897927F9CD2000F07140 /* QRCode */,
-				5ECEBECB2802F4B40096E5A5 /* NFCReaderWriter */,
 			);
 			productName = Toolbox;
 			productReference = 5EC7B21B27D7978100699FD3 /* Toolbox.app */;
@@ -299,7 +296,6 @@
 				5E528A8E27E2379F00B2AE01 /* XCRemoteSwiftPackageReference "Haptica" */,
 				5E020C5127EA2A59009871F9 /* XCRemoteSwiftPackageReference "RomanNumeralKit" */,
 				5EB7897827F9CD2000F07140 /* XCRemoteSwiftPackageReference "QRCode" */,
-				5ECEBECA2802F4B40096E5A5 /* XCRemoteSwiftPackageReference "NFCReaderWriter" */,
 			);
 			productRefGroup = 5EC7B21C27D7978100699FD3 /* Products */;
 			projectDirPath = "";
@@ -711,14 +707,6 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		5ECEBECA2802F4B40096E5A5 /* XCRemoteSwiftPackageReference "NFCReaderWriter" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/janlionly/NFCReaderWriter.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -736,11 +724,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5EB7897827F9CD2000F07140 /* XCRemoteSwiftPackageReference "QRCode" */;
 			productName = QRCode;
-		};
-		5ECEBECB2802F4B40096E5A5 /* NFCReaderWriter */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5ECEBECA2802F4B40096E5A5 /* XCRemoteSwiftPackageReference "NFCReaderWriter" */;
-			productName = NFCReaderWriter;
 		};
 /* End XCSwiftPackageProductDependency section */
 
