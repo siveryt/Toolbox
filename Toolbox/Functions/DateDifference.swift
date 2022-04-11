@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct DateDifference: View{
+    let defaults = UserDefaults.standard
+    
     @State private var dateFrom = Date()
     @State private var dateTo = Date()
     @State var result = "0"
@@ -36,12 +38,14 @@ struct DateDifference: View{
             self.dateFrom
         }, set: {
             self.dateFrom = $0
+            defaults.set(dateFrom, forKey: "dateFrom")
             calcDiff()
         })
         let dateToBinding = Binding<Date>(get: {
             self.dateTo
         }, set: {
             self.dateTo = $0
+            defaults.set(dateTo, forKey: "dateFrom")
             calcDiff()
         })
         Form{
@@ -50,14 +54,14 @@ struct DateDifference: View{
                 selection: dateFromBinding,
                 displayedComponents: [.date]
             )
-                .datePickerStyle(.automatic)
+            .datePickerStyle(.automatic)
             
             DatePicker(
                 "End Date:",
                 selection: dateToBinding,
                 displayedComponents: [.date]
             )
-                .datePickerStyle(.automatic)
+            .datePickerStyle(.automatic)
             HStack{
                 Text("Difference:")
                 Spacer()
@@ -68,6 +72,16 @@ struct DateDifference: View{
         
         .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
         .navigationTitle("Date Difference")
-        
+        .onAppear(){
+            if(defaults.valueExists(forKey: "dateFrom")){
+                dateFrom = defaults.object(forKey: "dateFrom") as! Date
+                calcDiff()
+            }
+            if(defaults.valueExists(forKey: "dateTo")){
+                dateTo = defaults.object(forKey: "dateTo") as! Date
+                calcDiff()
+            }
+            
+        }
     }
 }
