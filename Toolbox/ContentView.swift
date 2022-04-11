@@ -111,6 +111,11 @@ struct InfoView: View {
             
             Text("Version " + (appVersion ?? "not found"))
             Spacer()
+            Button("Report Bug") {
+                UIApplication.shared.open(URL(string: "mailto:toolbox@sivery.de?subject=I%20found%20a%20Bug!&body=Please%20give%20a%20brief%20description%20of%20the%20bug%20and%20how%20to%20reproduce%20it!")!, options: [:])
+            }
+
+            Spacer()
             Text("Made with ❤️ by Sivery")
                 .onTapGesture {
                     UIApplication.shared.open(URL(string: "https://sivery.de")!, options: [:])
