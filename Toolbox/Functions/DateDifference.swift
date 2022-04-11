@@ -22,9 +22,11 @@ struct DateDifference: View{
         let RESULTyear = temp.replacingOccurrences(of: "Optional(", with: "").replacingOccurrences(of: ")", with: "").replacingOccurrences(of: "-", with: "")
         
         result = ""
-        result += RESULTyear != "0" ? "Year: \(RESULTyear), ": ""
-        result += RESULTmonth != "0" ? "Months: \(RESULTmonth), " : ""
-        result += RESULTday != "0" ? "Days: \(RESULTday)" : ""
+        result += RESULTyear != "0" ? NSLocalizedString("Years: ", comment: "Years: -- Number of Years; IMPORTANT: Keep the Colon and the Space after it") + String(RESULTyear) : ""
+        result += result == "" ? "" : ", "
+        result += RESULTmonth != "0" ? NSLocalizedString("Months: ", comment: "Months: -- Number of Years; IMPORTANT: Keep the Colon and the Space after it") + String(RESULTmonth) : ""
+        result += result == "" ? "" : ", "
+        result += RESULTday != "0" ? NSLocalizedString("Days: ", comment: "Days: -- Number of Days; IMPORTANT: Keep the Colon and the Space after it") + String(RESULTmonth) : ""
         
         if(result == ""){
             result = "0"

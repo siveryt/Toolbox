@@ -16,52 +16,52 @@ struct ContentView: View {
         [
             "view": "dice",
             "icon": "dice",
-            "title": "Dice"
+            "title": NSLocalizedString("Dice", comment: "Menu item")
         ],
         [
             "view": "domain",
             "icon": "network",
-            "title": "Domain Resolver"
+            "title": NSLocalizedString("Domain Resolver", comment: "Menu item")
         ],
         [
             "view": "randomNumber",
             "icon": "textformat.123",
-            "title": "Random Number"
+            "title": NSLocalizedString("Random Number", comment: "Menu item")
         ],
         [
             "view": "liveClock",
             "icon": "clock",
-            "title": "Live Clock"
+            "title": NSLocalizedString("Live Clock", comment: "Menu item")
         ],
         [
             "view": "dateDifferene",
             "icon": "calendar",
-            "title": "Date Difference"
+            "title": NSLocalizedString("Date Difference", comment: "Menu item")
         ],
         [
             "view": "romanNumbers",
             "icon": "hexagon",
-            "title": "Roman Numbers"
+            "title": NSLocalizedString("Roman Numbers", comment: "Menu item")
         ],
         [
             "view": "counter",
             "icon": "plusminus",
-            "title": "Counter"
+            "title": NSLocalizedString("Counter", comment: "Menu item")
         ],
         [
             "view": "qrCode",
             "icon": "qrcode",
-            "title": "QR-Code Generator"
+            "title": NSLocalizedString("QR-Code Generator", comment: "Menu item")
         ],
         [
             "view": "colorPicker",
             "icon": "eyedropper.halffull",
-            "title": "Color Picker"
+            "title": NSLocalizedString("Color Picker", comment: "Menu item")
         ],
         [
             "view": "bmi",
             "icon": "person.fill.checkmark",
-            "title": "BMI"
+            "title": NSLocalizedString("BMI", comment: "Menu item")
         ]
 //        Future Version
 //        [

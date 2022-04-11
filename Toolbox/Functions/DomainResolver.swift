@@ -50,7 +50,7 @@ struct DomainResolver: View {
             HStack {
                 Text("Result")
                 Spacer()
-                Text(resolved == "" ? "Not Found" : resolved)
+                Text(resolved == "" ? NSLocalizedString("Not Found", comment: "Domain Not found") : resolved)
                     .multilineTextAlignment(.trailing)
                     .onTapGesture {
                         if(resolved != ""){
