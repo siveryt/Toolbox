@@ -531,7 +531,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = "dev-040322";
+				MARKETING_VERSION = "dev-110422";
 				PRODUCT_BUNDLE_IDENTIFIER = de.sivery.Toolbox;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -560,7 +560,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = "dev-040322";
+				MARKETING_VERSION = "dev-110422";
 				PRODUCT_BUNDLE_IDENTIFIER = de.sivery.Toolbox;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -62,18 +62,18 @@ struct ContentView: View {
             "view": "bmi",
             "icon": "person.fill.checkmark",
             "title": "BMI"
-        ],
+        ]
 //        Future Version
 //        [
 //            "view": "nfcTools",
 //            "icon": "wave.3.forward",
 //            "title": "NFC Tools"
 //        ],
-        [
-            "view": "unit",
-            "icon": "ruler",
-            "title": "Unit Conversion"
-        ]
+//        [
+//            "view": "unit",
+//            "icon": "ruler",
+//            "title": "Unit Conversion"
+//        ]
     ]
     
     var body: some View {
@@ -103,8 +103,6 @@ struct ContentView: View {
                             ColorPickerView()
                         case "bmi":
                             BodyMassIndex()
-                        case "unit":
-                            MetricConversion()
                         default:
                             Text("ERROR - Tool not found!\nPlease report this bug.")
                         }
