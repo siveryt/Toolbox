@@ -164,7 +164,9 @@ struct InfoView: View {
 
             Text("OpenSource Licenses")
                 .onTapGesture {
-                    UIApplication.shared.open(URL(string: "https://toolbox.sivery.de/licenses.txt")!, options: [:])
+                    if let appSettings = URL(string: UIApplication.openSettingsURLString) {
+                        UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
+                    }
                 }
             
             Text("Icon by icons8.com")
