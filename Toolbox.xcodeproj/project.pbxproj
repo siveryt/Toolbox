@@ -10,6 +10,7 @@
 		5E020C4F27EA29D7009871F9 /* RomanConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E020C4C27EA29D7009871F9 /* RomanConverter.swift */; };
 		5E020C5027EA29D7009871F9 /* DateDifference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E020C4D27EA29D7009871F9 /* DateDifference.swift */; };
 		5E020C5327EA2A59009871F9 /* RomanNumeralKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5E020C5227EA2A59009871F9 /* RomanNumeralKit */; };
+		5E3451B428048E0600A319F3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E3451B228048E0600A319F3 /* Localizable.strings */; };
 		5E47B19B27F1F3F4008FD3C0 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E47B19A27F1F3F4008FD3C0 /* Counter.swift */; };
 		5E528A9027E2379F00B2AE01 /* Haptica in Frameworks */ = {isa = PBXBuildFile; productRef = 5E528A8F27E2379F00B2AE01 /* Haptica */; };
 		5EB7897727F9CCA900F07140 /* QRGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB7897627F9CCA900F07140 /* QRGenerator.swift */; };
@@ -53,6 +54,7 @@
 /* Begin PBXFileReference section */
 		5E020C4C27EA29D7009871F9 /* RomanConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RomanConverter.swift; sourceTree = "<group>"; };
 		5E020C4D27EA29D7009871F9 /* DateDifference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateDifference.swift; sourceTree = "<group>"; };
+		5E3451B328048E0600A319F3 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5E47B19A27F1F3F4008FD3C0 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		5EB7897627F9CCA900F07140 /* QRGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRGenerator.swift; sourceTree = "<group>"; };
 		5EC7B21B27D7978100699FD3 /* Toolbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Toolbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,6 +140,7 @@
 				5ECEBECD280303730096E5A5 /* Future Versions */,
 				5EDFF1E727E7715E005BBA3C /* Functions */,
 				5ED81C4827E36E8300FC42E8 /* Info.plist */,
+				5E3451B228048E0600A319F3 /* Localizable.strings */,
 				5EC7B21E27D7978100699FD3 /* ToolboxApp.swift */,
 				5EC7B22027D7978100699FD3 /* ContentView.swift */,
 				5EC7B22727D7978200699FD3 /* Persistence.swift */,
@@ -289,6 +292,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				de,
 				Base,
 			);
 			mainGroup = 5EC7B21227D7978100699FD3;
@@ -314,6 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EDFF1E927E7AE4D005BBA3C /* LaunchScreen.storyboard in Resources */,
+				5E3451B428048E0600A319F3 /* Localizable.strings in Resources */,
 				5EC7B22627D7978200699FD3 /* Preview Assets.xcassets in Resources */,
 				5EC7B22327D7978200699FD3 /* Assets.xcassets in Resources */,
 			);
@@ -389,6 +394,17 @@
 			targetProxy = 5EC7B23B27D7978200699FD3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5E3451B228048E0600A319F3 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5E3451B328048E0600A319F3 /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		5EC7B24227D7978200699FD3 /* Debug */ = {

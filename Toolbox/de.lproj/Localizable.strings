@@ -1,0 +1,159 @@
+/* No comment provided by engineer. */
+"Access Point" = "WLAN";
+
+/* No comment provided by engineer. */
+"Arabic" = "Arabisch";
+
+/* No comment provided by engineer. */
+"Are you sure, you want to reset the counter?" = "Bist du dir sicher, dass du den Zähler zurücksetzen möchtest?";
+
+/* No comment provided by engineer. */
+"Choose color" = "Wähle Farbe";
+
+/* Menu item */
+"Color Picker" = "Farbwähler";
+
+/* No comment provided by engineer. */
+"Colorcodes" = "Farbcodes";
+
+/* No comment provided by engineer. */
+"Content" = "Inhalt";
+
+/* Menu item */
+"Counter" = "Zähler";
+
+/* Menu item */
+"Date Difference" = "Datumsunterschied";
+
+/* Days: -- Number of Days; IMPORTANT: Keep the Colon and the Space after it */
+"Days: " = "Tage: ";
+
+/* Menu item */
+"Dice" = "Würfel";
+
+/* No comment provided by engineer. */
+"Difference:" = "Unterschied:";
+
+/* Menu item */
+"Domain Resolver" = "Domain auflösen";
+
+/* No comment provided by engineer. */
+"Don't reset" = "Nicht zurücksetzen";
+
+/* No comment provided by engineer. */
+"Encryption" = "Verschlüsselung";
+
+/* No comment provided by engineer. */
+"End Date:" = "Enddatum";
+
+/* No comment provided by engineer. */
+"ERROR - Tool not found!\nPlease report this bug." = "FEHLER - Tool nicht gefunden! Bitte melde diesen Fehler.";
+
+/* No comment provided by engineer. */
+"Great Feature Idea!" = "Tolle Feature-Idee";
+
+/* No comment provided by engineer. */
+"Height" = "Höhe";
+
+/* No comment provided by engineer. */
+"HEX" = "HEX";
+
+/* No comment provided by engineer. */
+"Hidden" = "Versteckt";
+
+/* Menu item */
+"Live Clock" = "Live Uhr";
+
+/* Months: -- Number of Years; IMPORTANT: Keep the Colon and the Space after it */
+"Months: " = "Monate: ";
+
+/* No comment provided by engineer. */
+"More Information" = "Weitere Informationen";
+
+/* No comment provided by engineer. */
+"No Encryption" = "Keine Verschlüsselung";
+
+/* No comment provided by engineer. */
+"Normal weight" = "Normalgewichtig";
+
+/* Domain Not found */
+"Not Found" = "Nicht gefunden";
+
+/* No comment provided by engineer. */
+"Number to big!" = "Zahl zu groß!";
+
+/* No comment provided by engineer. */
+"Obese" = "Fettleibig";
+
+/* No comment provided by engineer. */
+"OpenSource Licenses" = "OpenSource Lizenzen";
+
+/* No comment provided by engineer. */
+"Overweight" = "Übergewichtig";
+
+/* No comment provided by engineer. */
+"Password" = "Passwort";
+
+/* No comment provided by engineer. */
+"QR-Code content" = "QR-Code Inhalt";
+
+/* Menu item */
+"Random Number" = "Zufällige Zahl";
+
+/* No comment provided by engineer. */
+"Read" = "Lesen";
+
+/* No comment provided by engineer. */
+"Receiver" = "Empfänger";
+
+/* No comment provided by engineer. */
+"Report Bug" = "Fehler melden";
+
+/* No comment provided by engineer. */
+"Reset" = "Zurücksetzen";
+
+/* No comment provided by engineer. */
+"Reset Counter" = "Zähler zurücksetzen";
+
+/* No comment provided by engineer. */
+"Result" = "Ergebnis";
+
+/* No comment provided by engineer. */
+"Roman" = "Römisch";
+
+/* Menu item */
+"Roman Numbers" = "Römische Zahlen";
+
+/* No comment provided by engineer. */
+"Select a tool" = "Wähle ein Tool aus";
+
+/* No comment provided by engineer. */
+"Start Date:" = "Startdatum:";
+
+/* No comment provided by engineer. */
+"Subject" = "Betreff";
+
+/* No comment provided by engineer. */
+"Type" = "Typ";
+
+/* No comment provided by engineer. */
+"Underweight" = "Untergewichtig";
+
+/* No comment provided by engineer. */
+"Weight" = "Gewicht";
+
+/* No comment provided by engineer. */
+"Wi-Fi" = "WLAN";
+
+/* No comment provided by engineer. */
+"WPA (most common)" = "WPA (am häufigsten)";
+
+/* No comment provided by engineer. */
+"Write" = "Schreiben";
+
+/* Years: -- Number of Years; IMPORTANT: Keep the Colon and the Space after it */
+"Years: " = "Jahre: ";
+
+/* No comment provided by engineer. */
+"You can't convert numbers bigger than 3999." = "Du kannst keine Zahlen größer als 3999 konvertieren.";
+
