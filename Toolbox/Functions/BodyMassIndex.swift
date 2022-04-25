@@ -140,7 +140,6 @@ struct BodyMassIndex: View {
 struct BodyMassIndex_Previews: PreviewProvider {
     static var previews: some View {
         BodyMassIndex()
-            .environment(\.locale, .init(identifier: "de"))
     }
 }
 
