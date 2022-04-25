@@ -16,9 +16,6 @@
 /* No comment provided by engineer. */
 "Colorcodes" = "Farbcodes";
 
-/* No comment provided by engineer. */
-"Content" = "Inhalt";
-
 /* Menu item */
 "Counter" = "Zähler";
 
@@ -101,9 +98,6 @@
 "Random Number" = "Zufällige Zahl";
 
 /* No comment provided by engineer. */
-"Read" = "Lesen";
-
-/* No comment provided by engineer. */
 "Receiver" = "Empfänger";
 
 /* No comment provided by engineer. */
@@ -147,9 +141,6 @@
 
 /* No comment provided by engineer. */
 "WPA (most common)" = "WPA (am häufigsten)";
-
-/* No comment provided by engineer. */
-"Write" = "Schreiben";
 
 /* Years: -- Number of Years; IMPORTANT: Keep the Colon and the Space after it */
 "Years: " = "Jahre: ";
