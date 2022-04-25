@@ -146,6 +146,9 @@ struct InfoView: View {
         VStack {
             Spacer()
             Image("Toolbox")
+                .onTapGesture {
+                    UIApplication.shared.open(URL(string: "https://toolbox.sivery.de")!, options: [:])
+                }
             Text("Toolbox")
                 .bold()
                 .dynamicTypeSize(.accessibility2)
