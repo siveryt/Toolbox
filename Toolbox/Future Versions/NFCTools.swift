@@ -5,6 +5,8 @@
 //  Created by Christian Nagel on 10.04.22.
 //
 
+// TODO: Add this file back to compile sources in Build phases
+
 import SwiftUI
 
 enum nfcState {
