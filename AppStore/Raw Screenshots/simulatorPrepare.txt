@@ -1,0 +1,6 @@
+xcrun simctl status_bar "iPhone 13" override --time "9:41" --batteryState 
+charged --batteryLevel 100 --cellularBars 4 --wifiBars 3
+
+xcrun simctl status_bar "iPhone SE (3rd generation)" override --time "9:41" --batteryState charged --batteryLevel 100 --cellularBars 4 --wifiBars 3
+
+xcrun simctl status_bar "iPad Pro (12.9-inch) (5th generation)" override --time "9:41" --batteryState charged --batteryLevel 100 --cellularBars 4 --wifiBars 3
