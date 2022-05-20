@@ -57,7 +57,7 @@ struct QRGenerator: View {
                 case .wifi:
                     HStack {
                         Text("SSID")
-                        TextField("Access Point", text: $wifiSSID)
+                        TextField("Network Name", text: $wifiSSID)
                             .multilineTextAlignment(.trailing)
                             .disableAutocorrection(true)
                     }
