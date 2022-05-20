@@ -115,7 +115,10 @@ struct ContentView: View {
                 }
             }
             .sheet(isPresented: $infoPresented){
-                InfoView()
+                NavigationView{
+                    infoView()
+                }
+                
             }
             .navigationTitle("Toolbox")
             .toolbar(){
@@ -135,51 +138,116 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().previewDevice("iPhone 13").environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        infoAppIcon().previewDevice("iPhone 13").environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
 
-
-struct InfoView: View {
-    let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+struct infoView: View {
     var body: some View {
-        VStack {
-            Spacer()
-            Image("Toolbox")
-                .onTapGesture {
-                    UIApplication.shared.open(URL(string: "https://toolbox.sivery.de")!, options: [:])
-                }
-            Text("Toolbox")
-                .bold()
-                .dynamicTypeSize(.accessibility2)
-            
-            Text("Version " + (appVersion ?? "not found"))
-            Spacer()
-            Button("Report Bug") {
-                UIApplication.shared.open(URL(string: "mailto:toolbox@sivery.de?subject=I%20found%20a%20Bug!&body=Please%20give%20a%20brief%20description%20of%20the%20bug%20and%20how%20to%20reproduce%20it!")!, options: [:])
+        List {
+            NavigationLink(destination: infoVersion()){
+                Label("Version", systemImage: "info")
             }
-
-            Spacer()
-            Text("Made with ❤️ by Sivery")
-                .onTapGesture {
-                    UIApplication.shared.open(URL(string: "https://sivery.de")!, options: [:])
-                }
-
-            Text("OpenSource Licenses")
-                .onTapGesture {
-                    if let appSettings = URL(string: UIApplication.openSettingsURLString) {
-                        UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
-                    }
-                }
-            
-            Text("Icon by icons8.com")
-                .padding(.bottom)
-                .onTapGesture {
-                    UIApplication.shared.open(URL(string: "https://icons8.com")!, options: [:])
-                }
-
-
+//            NavigationLink(destination: info()){
+//                Label("App Icon", systemImage: "app")
+//            }
+//            NavigationLink(destination: info()){
+//                Label("Spenden", systemImage: "suit.heart") //Localization europe: eurosign.circle
+//            }
+//            NavigationLink(destination: info()){
+//                Label("Website", systemImage: "globe")
+//            }
+//            NavigationLink(destination: info()){
+//                Label("Feedback", systemImage: "mail")
+//            }
+//            NavigationLink(destination: info()){
+//                Label("Share", systemImage: "square.and.arrow.up")
+//            }
+//            NavigationLink(destination: info()){
+//                Label("OpenSource-Licenses", systemImage: "checkmark.seal")
+//            }
+//            NavigationLink(destination: info()){
+//                Label("Imprint", systemImage: "doc.append")
+//            }
         }
         
+        .navigationBarTitle("Settings")
     }
 }
+
+struct infoVersion: View {
+    var body: some View  {
+        List{
+            Section{
+                HStack{
+                    Text("Version")
+                    Spacer()
+                    Text(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Can't find version")
+                }
+                HStack{
+                    Text("Last update")
+                    Spacer()
+                    Text("20-04-2022")
+                }
+            }
+//            Text("No update available") TODO: use this with https://github.com/acarolsf/checkVersion-iOS when published
+        }
+        .navigationTitle("Version")
+    }
+}
+
+struct infoAppIcon: View {
+    var body: some View  {
+        List{
+            HStack {
+                
+            }
+            
+        }
+        .navigationTitle("App Icon")
+    }
+}
+
+//struct InfoView: View {
+//    let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+//    var body: some View {
+//        VStack {
+//            Spacer()
+//            Image("Toolbox")
+//                .onTapGesture {
+//                    UIApplication.shared.open(URL(string: "https://toolbox.sivery.de")!, options: [:])
+//                }
+//            Text("Toolbox")
+//                .bold()
+//                .dynamicTypeSize(.accessibility2)
+//
+//            Text("Version " + (appVersion ?? "not found"))
+//            Spacer()
+//            Button("Report Bug") {
+//                UIApplication.shared.open(URL(string: "mailto:toolbox@sivery.de?subject=I%20found%20a%20Bug!&body=Please%20give%20a%20brief%20description%20of%20the%20bug%20and%20how%20to%20reproduce%20it!")!, options: [:])
+//            }
+//
+//            Spacer()
+//            Text("Made with ❤️ by Sivery")
+//                .onTapGesture {
+//                    UIApplication.shared.open(URL(string: "https://sivery.de")!, options: [:])
+//                }
+//
+//            Text("OpenSource Licenses")
+//                .onTapGesture {
+//                    if let appSettings = URL(string: UIApplication.openSettingsURLString) {
+//                        UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
+//                    }
+//                }
+//
+//            Text("Icon by icons8.com")
+//                .padding(.bottom)
+//                .onTapGesture {
+//                    UIApplication.shared.open(URL(string: "https://icons8.com")!, options: [:])
+//                }
+//
+//
+//        }
+//
+//    }
+//}
