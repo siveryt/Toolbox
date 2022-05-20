@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Haptica
 
 struct RandomNumber: View {
     
@@ -42,16 +43,18 @@ struct RandomNumber: View {
                 
             }
             if(min < max){
-                Text(String(Int.random(in: min ..< max)))
+                Text(String(Int.random(in: min ..< max+1)))
                     .dynamicTypeSize(.accessibility2)
                     .onTapGesture {
+                        Haptic.impact(.light).generate()
                         min += 1
                         min -= 1
                     }
             }else if (min > max){
-                Text(String(Int.random(in: max ..< min)))
+                Text(String(Int.random(in: max ..< min+1)))
                     .dynamicTypeSize(.accessibility2)
                     .onTapGesture {
+                        Haptic.impact(.light).generate()
                         min += 1
                         min -= 1
                     }
