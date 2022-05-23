@@ -15,6 +15,7 @@ struct ToolboxApp: App {
         WindowGroup {
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+//                .environme ntObject(IconNames())
         }
     }
 }

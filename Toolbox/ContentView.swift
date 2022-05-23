@@ -8,6 +8,26 @@
 import SwiftUI
 import RomanNumeralKit
 
+extension UIApplication {
+    
+    static let keyWindow = keyWindowScene?.windows.filter(\.isKeyWindow).first
+    static let keyWindowScene = shared.connectedScenes.first { $0.activationState == .foregroundActive } as? UIWindowScene
+    
+}
+
+extension View {
+    
+    func shareSheet(isPresented: Binding<Bool>, items: [Any]) -> some View {
+        guard isPresented.wrappedValue else { return self }
+        let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        let presentedViewController = UIApplication.keyWindow?.rootViewController?.presentedViewController ?? UIApplication.keyWindow?.rootViewController
+        activityViewController.completionWithItemsHandler = { _, _, _, _ in isPresented.wrappedValue = false }
+        presentedViewController?.present(activityViewController, animated: true)
+        return self
+    }
+    
+}
+
 struct ContentView: View {
     
     @State var infoPresented = false
@@ -63,17 +83,17 @@ struct ContentView: View {
             "icon": "person.fill.checkmark",
             "title": NSLocalizedString("BMI", comment: "Menu item")
         ]
-//        Future Version
-//        [
-//            "view": "nfcTools",
-//            "icon": "wave.3.forward",
-//            "title": "NFC Tools"
-//        ],
-//        [
-//            "view": "unit",
-//            "icon": "ruler",
-//            "title": "Unit Conversion"
-//        ]
+        //        Future Version
+        //        [
+        //            "view": "nfcTools",
+        //            "icon": "wave.3.forward",
+        //            "title": "NFC Tools"
+        //        ],
+        //        [
+        //            "view": "unit",
+        //            "icon": "ruler",
+        //            "title": "Unit Conversion"
+        //        ]
     ]
     
     var body: some View {
@@ -116,7 +136,7 @@ struct ContentView: View {
             }
             .sheet(isPresented: $infoPresented){
                 NavigationView{
-                    infoView()
+                    infoView().environmentObject(IconNames())
                 }
                 
             }
@@ -138,40 +158,95 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        infoAppIcon().previewDevice("iPhone 13").environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        infoView().previewDevice("iPhone 13").environment(\.managedObjectContext, PersistenceController.preview.container.viewContext).environmentObject(IconNames())
     }
 }
 
 struct infoView: View {
+    @EnvironmentObject var iconSettings:IconNames
+    @State private var isPresentingShareSheet = false
     var body: some View {
-        List {
-            NavigationLink(destination: infoVersion()){
-                Label("Version", systemImage: "info")
+        ZStack {
+            List {
+                NavigationLink(destination: infoVersion()){
+                    Label("Version", systemImage: "info")
+                }
+                
+                Picker(selection: $iconSettings.currentIndex,label:Label("App-Icon", systemImage: "app")){
+                    ForEach(0 ..< iconSettings.iconNames.count){i in
+                        HStack(spacing:20){
+    //                        Text(self.iconSettings.iconNames[i] ?? "AppIcon")
+    //                        Spacer()
+                            Image(uiImage: UIImage(named: self.iconSettings.iconNames[i] ?? "AppIcon") ?? UIImage())
+                                .resizable()
+                                .renderingMode(.original)
+                                .frame(width: 50, height: 50, alignment: .leading)
+                                .cornerRadius(13)
+                        }
+                    }.onReceive([self.iconSettings.currentIndex].publisher.first()){ value in
+                        let i = self.iconSettings.iconNames.firstIndex(of: UIApplication.shared.alternateIconName) ?? 0
+                        if value != i{
+                            UIApplication.shared.setAlternateIconName(self.iconSettings.iconNames[value], completionHandler: {
+                                error in
+                                if let error = error {
+                                    print(error.localizedDescription)
+                                } else {
+                                    print("Success!")
+                                }
+                            })
+                        }
+                    }
+                }
+                
+                // TODO: After AppStore Enrollment:
+                //            NavigationLink(destination: info()){
+                //                Label("Spenden", systemImage: "suit.heart") //Localization europe: eurosign.circle
+                //            }
+                
+                Label("Website", systemImage: "globe")
+                    .onTapGesture {
+                        if let url = URL(string: "http://toolbox.sivery.de") {
+                            UIApplication.shared.open(url)
+                        }
+                    }
+                
+                Label("Feedback", systemImage: "mail")
+                    .onTapGesture {
+                        if let url = URL(string: "mailto:toolbox@sivery.de") {
+                            UIApplication.shared.open(url)
+                        }
+                    }
+                
+                Label("Share", systemImage: "square.and.arrow.up")
+                    .onTapGesture {
+                        isPresentingShareSheet = true
+                    }
+                    .shareSheet(isPresented: $isPresentingShareSheet, items: [URL(string: "http://toolbox.sivery.de")!])
+                
+                //            NavigationLink(destination: info()){
+                Label("OpenSource-Licenses", systemImage: "checkmark.seal")
+                    .onTapGesture {
+                        if let appSettings = URL(string: UIApplication.openSettingsURLString) {
+                            UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
+                        }
+                    }
+                Label("Imprint", systemImage: "doc.append")
+                    .onTapGesture {
+                        if let appSettings = URL(string: "http://toolbox.sivery.de/imprint.html") {
+                            UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
+                        }
+                    }
             }
-//            NavigationLink(destination: info()){
-//                Label("App Icon", systemImage: "app")
-//            }
-//            NavigationLink(destination: info()){
-//                Label("Spenden", systemImage: "suit.heart") //Localization europe: eurosign.circle
-//            }
-//            NavigationLink(destination: info()){
-//                Label("Website", systemImage: "globe")
-//            }
-//            NavigationLink(destination: info()){
-//                Label("Feedback", systemImage: "mail")
-//            }
-//            NavigationLink(destination: info()){
-//                Label("Share", systemImage: "square.and.arrow.up")
-//            }
-//            NavigationLink(destination: info()){
-//                Label("OpenSource-Licenses", systemImage: "checkmark.seal")
-//            }
-//            NavigationLink(destination: info()){
-//                Label("Imprint", systemImage: "doc.append")
-//            }
+            Spacer()
+            VStack {
+                Spacer()
+                Text("Made with ❤️ by Sivery")
+            }
+            
         }
         
         .navigationBarTitle("Settings")
+        .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
     }
 }
 
@@ -190,64 +265,14 @@ struct infoVersion: View {
                     Text("20-04-2022")
                 }
             }
-//            Text("No update available") TODO: use this with https://github.com/acarolsf/checkVersion-iOS when published
+            //            Text("No update available") TODO: use this with https://github.com/acarolsf/checkVersion-iOS when published
         }
+        
+        
+        
+        
+        
         .navigationTitle("Version")
     }
 }
 
-struct infoAppIcon: View {
-    var body: some View  {
-        List{
-            HStack {
-                
-            }
-            
-        }
-        .navigationTitle("App Icon")
-    }
-}
-
-//struct InfoView: View {
-//    let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
-//    var body: some View {
-//        VStack {
-//            Spacer()
-//            Image("Toolbox")
-//                .onTapGesture {
-//                    UIApplication.shared.open(URL(string: "https://toolbox.sivery.de")!, options: [:])
-//                }
-//            Text("Toolbox")
-//                .bold()
-//                .dynamicTypeSize(.accessibility2)
-//
-//            Text("Version " + (appVersion ?? "not found"))
-//            Spacer()
-//            Button("Report Bug") {
-//                UIApplication.shared.open(URL(string: "mailto:toolbox@sivery.de?subject=I%20found%20a%20Bug!&body=Please%20give%20a%20brief%20description%20of%20the%20bug%20and%20how%20to%20reproduce%20it!")!, options: [:])
-//            }
-//
-//            Spacer()
-//            Text("Made with ❤️ by Sivery")
-//                .onTapGesture {
-//                    UIApplication.shared.open(URL(string: "https://sivery.de")!, options: [:])
-//                }
-//
-//            Text("OpenSource Licenses")
-//                .onTapGesture {
-//                    if let appSettings = URL(string: UIApplication.openSettingsURLString) {
-//                        UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
-//                    }
-//                }
-//
-//            Text("Icon by icons8.com")
-//                .padding(.bottom)
-//                .onTapGesture {
-//                    UIApplication.shared.open(URL(string: "https://icons8.com")!, options: [:])
-//                }
-//
-//
-//        }
-//
-//    }
-//}
