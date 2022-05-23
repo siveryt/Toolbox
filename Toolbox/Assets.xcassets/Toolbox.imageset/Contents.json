@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "icons8-toolbox.svg",
+      "filename" : "Toolbox@1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "icons8-toolbox-1.svg",
+      "filename" : "Toolbox@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "icons8-toolbox-2.svg",
+      "filename" : "Toolbox@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

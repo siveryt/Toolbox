@@ -17,13 +17,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Toolbox" translatesAutoresizingMaskIntoConstraints="NO" id="P5e-vv-Tq5">
-                                <rect key="frame" x="67.5" y="233.5" width="240" height="200"/>
+                                <rect key="frame" x="33" y="233.5" width="309.5" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="ekz-j0-Y1C"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Toolbox" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VaU-5A-hp5">
-                                <rect key="frame" x="131" y="415" width="113" height="37"/>
+                                <rect key="frame" x="131" y="445" width="113" height="37"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="31"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -43,7 +43,7 @@
                             <constraint firstItem="P5e-vv-Tq5" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="REe-6a-0wL"/>
                             <constraint firstItem="Lf2-k3-1Ui" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="VQD-Wr-AeL"/>
                             <constraint firstItem="P5e-vv-Tq5" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="dSX-GN-o1f"/>
-                            <constraint firstItem="VaU-5A-hp5" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="100" id="yQo-7k-lgz"/>
+                            <constraint firstItem="VaU-5A-hp5" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="130" id="yQo-7k-lgz"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -53,7 +53,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Toolbox" width="240" height="240"/>
+        <image name="Toolbox" width="309.5" height="309.5"/>
         <systemColor name="scrollViewTexturedBackgroundColor">
             <color red="0.43529411764705878" green="0.44313725490196082" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

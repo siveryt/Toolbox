@@ -175,13 +175,21 @@ struct infoView: View {
                 Picker(selection: $iconSettings.currentIndex,label:Label("App-Icon", systemImage: "app")){
                     ForEach(0 ..< iconSettings.iconNames.count){i in
                         HStack(spacing:20){
-    //                        Text(self.iconSettings.iconNames[i] ?? "AppIcon")
-    //                        Spacer()
-                            Image(uiImage: UIImage(named: self.iconSettings.iconNames[i] ?? "AppIcon") ?? UIImage())
-                                .resizable()
-                                .renderingMode(.original)
-                                .frame(width: 50, height: 50, alignment: .leading)
-                                .cornerRadius(13)
+                            //                        Text(self.iconSettings.iconNames[i] ?? "AppIcon")
+                            //                        Spacer()
+                            if i == 0 {
+                                Image("Toolbox").resizable()
+                                    .renderingMode(.original)
+                                    .frame(width: 50, height: 50, alignment: .leading)
+                                    .cornerRadius(13)
+                            }else {
+                                
+                                Image(uiImage: UIImage(named: self.iconSettings.iconNames[i] ?? "AppIcon") ?? UIImage())
+                                    .resizable()
+                                    .renderingMode(.original)
+                                    .frame(width: 50, height: 50, alignment: .leading)
+                                    .cornerRadius(13)
+                            }
                         }
                     }.onReceive([self.iconSettings.currentIndex].publisher.first()){ value in
                         let i = self.iconSettings.iconNames.firstIndex(of: UIApplication.shared.alternateIconName) ?? 0
@@ -241,6 +249,7 @@ struct infoView: View {
             VStack {
                 Spacer()
                 Text("Made with ❤️ by Sivery")
+                Spacer().frame(height: 10)
             }
             
         }
