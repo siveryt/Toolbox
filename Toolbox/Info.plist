@@ -27,11 +27,11 @@
 					<string>black</string>
 				</array>
 			</dict>
-			<key>white</key>
+			<key>whiteOnly</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>white</string>
+					<string>whiteOnly</string>
 				</array>
 			</dict>
 			<key>whitegradient_red</key>
