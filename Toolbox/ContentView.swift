@@ -28,6 +28,17 @@ extension View {
     
 }
 
+struct ShowingSheetKey: EnvironmentKey {
+    static let defaultValue: Binding<Bool>? = nil
+}
+
+extension EnvironmentValues {
+    var showingSheet: Binding<Bool>? {
+        get { self[ShowingSheetKey.self] }
+        set { self[ShowingSheetKey.self] = newValue }
+    }
+}
+
 struct ContentView: View {
     
     @State var infoPresented = false
@@ -137,7 +148,7 @@ struct ContentView: View {
             .sheet(isPresented: $infoPresented){
                 NavigationView{
                     infoView()
-//                        .environmentObject(IconNames())
+                        .environment(\.showingSheet, self.$infoPresented)
                 }
                 
             }
@@ -159,15 +170,14 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        appIcon().previewDevice("iPhone 13").environment(\.managedObjectContext, PersistenceController.preview.container.viewContext).environmentObject(IconNames())
+        infoView().previewDevice("iPhone 13").environment(\.managedObjectContext, PersistenceController.preview.container.viewContext).environmentObject(IconNames())
     }
 }
 
 struct infoView: View {
-//    @EnvironmentObject var iconSettings:IconNames
+    @Environment(\.showingSheet) var showingSheet
     @State private var isPresentingShareSheet = false
     var body: some View {
-        ZStack {
             List {
                 NavigationLink(destination: infoVersion()){
                     Label("Version", systemImage: "info")
@@ -215,18 +225,20 @@ struct infoView: View {
                             UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
                         }
                     }
+                HStack {
+                    Spacer()
+                    Text("Made with ❤️ by Sivery")
+                    Spacer()
+                }
+                
             }
-            Spacer()
-            VStack {
-                Spacer()
-                Text("Made with ❤️ by Sivery")
-                Spacer().frame(height: 10)
-            }
-            
-        }
-        
-        .navigationBarTitle("Settings")
-        .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
+                .navigationBarTitle("Settings")
+                .navigationBarTitleDisplayMode(.large)
+                .navigationBarItems(trailing:
+                                        Button("Done") {
+                    self.showingSheet?.wrappedValue = false
+                }
+                )
     }
 }
 
