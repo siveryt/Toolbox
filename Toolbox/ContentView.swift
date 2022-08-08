@@ -136,7 +136,8 @@ struct ContentView: View {
             }
             .sheet(isPresented: $infoPresented){
                 NavigationView{
-                    infoView().environmentObject(IconNames())
+                    infoView()
+//                        .environmentObject(IconNames())
                 }
                 
             }
@@ -158,12 +159,12 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        infoView().previewDevice("iPhone 13").environment(\.managedObjectContext, PersistenceController.preview.container.viewContext).environmentObject(IconNames())
+        appIcon().previewDevice("iPhone 13").environment(\.managedObjectContext, PersistenceController.preview.container.viewContext).environmentObject(IconNames())
     }
 }
 
 struct infoView: View {
-    @EnvironmentObject var iconSettings:IconNames
+//    @EnvironmentObject var iconSettings:IconNames
     @State private var isPresentingShareSheet = false
     var body: some View {
         ZStack {
@@ -172,38 +173,8 @@ struct infoView: View {
                     Label("Version", systemImage: "info")
                 }
                 
-                Picker(selection: $iconSettings.currentIndex,label:Label("App-Icon", systemImage: "app")){
-                    ForEach(0 ..< iconSettings.iconNames.count){i in
-                        HStack(spacing:20){
-                            //                        Text(self.iconSettings.iconNames[i] ?? "AppIcon")
-                            //                        Spacer()
-                            if i == 0 {
-                                Image("Toolbox").resizable()
-                                    .renderingMode(.original)
-                                    .frame(width: 50, height: 50, alignment: .leading)
-                                    .cornerRadius(13)
-                            }else {
-                                
-                                Image(uiImage: UIImage(named: self.iconSettings.iconNames[i] ?? "AppIcon") ?? UIImage())
-                                    .resizable()
-                                    .renderingMode(.original)
-                                    .frame(width: 50, height: 50, alignment: .leading)
-                                    .cornerRadius(13)
-                            }
-                        }
-                    }.onReceive([self.iconSettings.currentIndex].publisher.first()){ value in
-                        let i = self.iconSettings.iconNames.firstIndex(of: UIApplication.shared.alternateIconName) ?? 0
-                        if value != i{
-                            UIApplication.shared.setAlternateIconName(self.iconSettings.iconNames[value], completionHandler: {
-                                error in
-                                if let error = error {
-                                    print(error.localizedDescription)
-                                } else {
-                                    print("Success!")
-                                }
-                            })
-                        }
-                    }
+                NavigationLink(destination: appIcon().environmentObject(IconNames())) {
+                    Label("App Icon", systemImage: "square")
                 }
                 
                 // TODO: After AppStore Enrollment:
@@ -271,7 +242,7 @@ struct infoVersion: View {
                 HStack{
                     Text("Last update")
                     Spacer()
-                    Text("20-04-2022")
+                    Text("08-08-2022")
                 }
             }
             //            Text("No update available") TODO: use this with https://github.com/acarolsf/checkVersion-iOS when published
@@ -282,6 +253,46 @@ struct infoVersion: View {
         
         
         .navigationTitle("Version")
+    }
+}
+
+struct appIcon: View {
+    @EnvironmentObject var iconSettings:IconNames
+    
+    var body: some View {
+        Form {
+            
+            LazyVGrid(columns: [GridItem(), GridItem()]) {
+                
+                ForEach(0 ..< iconSettings.iconNames.count, id: \.self){i in
+
+                            Image(uiImage: i == 0 ? UIImage(named: "ToolboxRAW")! : UIImage(named: self.iconSettings.iconNames[i] ?? "ToolboxRAW") ?? UIImage())
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                                .aspectRatio(CGSize(width: 100, height: 100), contentMode: .fit)
+                                .cornerRadius(20)
+                                .clipped()
+                                .onTapGesture(){
+                                    
+                                    if iconSettings.currentIndex != i {
+                                        print(self.iconSettings.iconNames)
+                                        UIApplication.shared.setAlternateIconName(self.iconSettings.iconNames[i], completionHandler: {
+                                            error in
+                                            if let error = error {
+                                                print(error.localizedDescription)
+                                            } else {
+                                                print("Success!")
+                                                    iconSettings.currentIndex = i
+                                            }
+                                        })
+                                    }
+                                }
+                }
+            }
+                
+        }
+        .navigationTitle("App Icon")
     }
 }
 

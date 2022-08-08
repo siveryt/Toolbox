@@ -15,7 +15,8 @@ class IconNames: ObservableObject {
     
     init() {
         getAlternateIconNames()
-        
+        print(iconNames)
+        iconNames = [nil, Optional("whitegradient_red"), Optional("white"), Optional("Blueish_red"), Optional("Blueish_white"), Optional("black") ]
         if let currentIcon = UIApplication.shared.alternateIconName{
             self.currentIndex = iconNames.firstIndex(of: currentIcon) ?? 0
         }
@@ -25,9 +26,10 @@ class IconNames: ObservableObject {
         //looking into our info.plist file to locate the specific Bundle with our icons
         if let icons = Bundle.main.object(forInfoDictionaryKey: "CFBundleIcons") as? [String: Any],
            let alternateIcons = icons["CFBundleAlternateIcons"] as? [String: Any]
-        {
             
+        {
             for (_, value) in alternateIcons{
+                print(value)
                 //Accessing the name of icon list inside the dictionary
                 guard let iconList = value as? Dictionary<String,Any> else{return}
                 //Accessing the name of icon files
