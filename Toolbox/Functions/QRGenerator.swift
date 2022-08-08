@@ -28,6 +28,7 @@ struct QRGenerator: View {
     @State var wifiHIDDEN = false
     @State var mailReceiver = ""
     @State var mailSubject = ""
+    @State var isShareSheet = false
     
     var body: some View {
         Form{
@@ -41,7 +42,6 @@ struct QRGenerator: View {
                 switch qrType {
                 case .text:
                     TextEditor(text: $text)
-                        
                         .submitLabel(.done)
                 case .url:
                     HStack {
@@ -96,64 +96,64 @@ struct QRGenerator: View {
             switch qrType {
             case .text:
                 Image(uiImage: try! (QRCode(string: text,
-                                            size: CGSize(width: 1000, height: 1000),
+                                            size: CGSize(width: 100, height: 100),
                                             scale: 1.0,
                                             inputCorrection: .quartile)?.image())!)
-                    .antialiased(false)
+                .interpolation(.none)
                     .resizable()
                     .scaledToFit()
+                    .shareSheet(isPresented: $isShareSheet, items: [try! (QRCode(string: text,
+                                                                          size: CGSize(width: 1000, height: 1000),
+                                                                          scale: 1.0,
+                                                                                inputCorrection: .quartile)?.image())!])
                     .onTapGesture {
-                        let activityController = UIActivityViewController(activityItems: [try! (QRCode(string: text,
-                                                                                                       size: CGSize(width: 1000, height: 1000),
-                                                                                                       scale: 1.0,
-                                                                                                       inputCorrection: .quartile)?.image())!], applicationActivities: nil)
-                        UIApplication.shared.windows.first?.rootViewController!.present(activityController, animated: true, completion: nil)
+                        isShareSheet = true
 
                     }
             case .wifi:
-                Image(uiImage: try! (QRCode(string: "WIFI:T:\(wifiTYPE);S:\(wifiSSID);P:\(wifiPASSWORD);H:\(String(wifiHIDDEN));", //"WIFI:T:"+wifiTYPE+";S:"+wifiSSID+";P:"+wifiPASSWORD+";H:"+String(wifiHIDDEN)+";"
-                                            size: CGSize(width: 1000, height: 1000),
+                Image(uiImage: try! (QRCode(string: "WIFI:T:\(wifiTYPE);S:\(wifiSSID);P:\(wifiPASSWORD);H:\(String(wifiHIDDEN));",
+                                            size: CGSize(width: 100, height: 100),
                                             scale: 1.0,inputCorrection: .quartile)?.image())!)
-                    .antialiased(false)
+                .interpolation(.none)
                     .resizable()
                     .scaledToFit()
+                    .shareSheet(isPresented: $isShareSheet, items: [try! (QRCode(string: "WIFI:T:\(wifiTYPE);S:\(wifiSSID);P:\(wifiPASSWORD);H:\(String(wifiHIDDEN));",
+                                                                                size: CGSize(width: 1000, height: 1000),
+                                                                                scale: 1.0,inputCorrection: .quartile)?.image())!])
                     .onTapGesture {
-                        let activityController = UIActivityViewController(activityItems: [try! (QRCode(string: "WIFI:T:\(wifiTYPE);S:\(wifiSSID);P:\(wifiPASSWORD);H:\(String(wifiHIDDEN));", //"WIFI:T:"+wifiTYPE+";S:"+wifiSSID+";P:"+wifiPASSWORD+";H:"+String(wifiHIDDEN)+";"
-                                                                                                       size: CGSize(width: 1000, height: 1000),
-                                                                                                       scale: 1.0,inputCorrection: .quartile)?.image())!], applicationActivities: nil)
-                        UIApplication.shared.windows.first?.rootViewController!.present(activityController, animated: true, completion: nil)
+                        isShareSheet = true
                         
                     }
             case .url:
                 Image(uiImage: try! (QRCode(url: URL(string: url) ?? URL(string: "http://toolbox.sivery.de")!,
-                                            size: CGSize(width: 1000, height: 1000),
+                                            size: CGSize(width: 100, height: 100),
                                             scale: 1.0,
                                             inputCorrection: .quartile)?.image())!)
-                    .antialiased(false)
+                .interpolation(.none)
                     .resizable()
                     .scaledToFit()
+                    .shareSheet(isPresented: $isShareSheet, items: [try! (QRCode(url: URL(string: url) ?? URL(string: "http://toolbox.sivery.de")!,
+                                                                                 size: CGSize(width: 1000, height: 1000),
+                                                                                 scale: 1.0,
+                                                                                 inputCorrection: .quartile)?.image())!])
                     .onTapGesture {
-                        let activityController = UIActivityViewController(activityItems: [try! (QRCode(url: URL(string: url) ?? URL(string: "http://toolbox.sivery.de")!,
-                                                                                                       size: CGSize(width: 1000, height: 1000),
-                                                                                                       scale: 1.0,
-                                                                                                       inputCorrection: .quartile)?.image())!], applicationActivities: nil)
-                        UIApplication.shared.windows.first?.rootViewController!.present(activityController, animated: true, completion: nil)
+                        isShareSheet = true
                         
                     }
             case .mail:
                 Image(uiImage: try! (QRCode(url: URL(string: "MATMSG:TO:\(mailReceiver);SUB:\(mailSubject);BODY:;;") ?? URL(string: "http://toolbox.sivery.de")!,
-                                            size: CGSize(width: 1000, height: 1000),
+                                            size: CGSize(width: 100, height: 100),
                                             scale: 1.0,
                                             inputCorrection: .quartile)?.image())!)
-                    .antialiased(false)
+                .interpolation(.none)
                     .resizable()
                     .scaledToFit()
+                    .shareSheet(isPresented: $isShareSheet, items: [try! (QRCode(url: URL(string: "MATMSG:TO:\(mailReceiver);SUB:\(mailSubject);BODY:;;") ?? URL(string: "http://toolbox.sivery.de")!,
+                                                                                 size: CGSize(width: 1000, height: 1000),
+                                                                                 scale: 1.0,
+                                                                                 inputCorrection: .quartile)?.image())!])
                     .onTapGesture {
-                        let activityController = UIActivityViewController(activityItems: [try! (QRCode(url: URL(string: "MATMSG:TO:\(mailReceiver);SUB:\(mailSubject);BODY:;;") ?? URL(string: "http://toolbox.sivery.de")!,
-                                                                                                       size: CGSize(width: 1000, height: 1000),
-                                                                                                       scale: 1.0,
-                                                                                                       inputCorrection: .quartile)?.image())!], applicationActivities: nil)
-                        UIApplication.shared.windows.first?.rootViewController!.present(activityController, animated: true, completion: nil)
+                        isShareSheet = true
                         
                     }
             }
