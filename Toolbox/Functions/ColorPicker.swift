@@ -21,7 +21,7 @@ struct ColorPickerView: View {
             ColorPicker("Choose color", selection: $drawSwiftUIColor, supportsOpacity: true)
                 .onChange(of: drawSwiftUIColor) { newValue in
                     getColorsFromPicker(pickerColor: newValue)
-                    let data : Data = NSKeyedArchiver.archivedData(withRootObject: drawUIColor) as Data
+                    guard let data : Data = try? NSKeyedArchiver.archivedData(withRootObject: drawUIColor, requiringSecureCoding: false) as Data else { return }
                     UserDefaults.standard.set(data, forKey: "UserSelectedColor")
                     UserDefaults.standard.synchronize()
                 }
@@ -67,9 +67,17 @@ struct ColorPickerView: View {
         }
         .onAppear(){
             if let userSelectedColorData = UserDefaults.standard.object(forKey: "UserSelectedColor") as? Data {
-                if let userSelectedColor = NSKeyedUnarchiver.unarchiveObject(with:userSelectedColorData as Data) as? UIColor {
+                
+                do {
+                    guard let userSelectedColor = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(userSelectedColorData) as? UIColor else {
+                        fatalError("loadWidgetDataArray - Can't get Array")
+                    }
                     drawUIColor = userSelectedColor
+                } catch {
+                    fatalError("loadWidgetDataArray - Can't encode data: \(error)")
                 }
+                
+    
             }
         }
         .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
