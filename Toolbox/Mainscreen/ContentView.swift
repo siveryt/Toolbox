@@ -213,7 +213,8 @@ struct infoView: View {
                     .shareSheet(isPresented: $isPresentingShareSheet, items: [URL(string: "http://toolbox.sivery.de")!])
                 
                 //            NavigationLink(destination: info()){
-                Label("OpenSource-Licenses", systemImage: "checkmark.seal")
+                Section{
+                    Label("OpenSource-Licenses", systemImage: "checkmark.seal")
                     .onTapGesture {
                         if let appSettings = URL(string: UIApplication.openSettingsURLString) {
                             UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
@@ -221,14 +222,25 @@ struct infoView: View {
                     }
                 Label("Imprint", systemImage: "doc.append")
                     .onTapGesture {
-                        if let appSettings = URL(string: "http://toolbox.sivery.de/imprint.html") {
-                            UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
+                        if let imprint = URL(string: "http://toolbox.sivery.de/imprint.html") {
+                            UIApplication.shared.open(imprint, options: [:], completionHandler: nil)
                         }
                     }
-                HStack {
-                    Spacer()
-                    Text("Made with ❤️ by Sivery")
-                    Spacer()
+                Label("Privacy Policy", systemImage: "person.fill")
+                    .onTapGesture {
+                        if let privacy = URL(string: "http://toolbox.sivery.de/privacy.html") {
+                            UIApplication.shared.open(privacy, options: [:], completionHandler: nil)
+                        }
+                    }
+                    
+                }
+                
+                Section {
+                    HStack {
+                        Spacer()
+                        Text("Made with ❤️ by Sivery")
+                        Spacer()
+                    }
                 }
                 
             }

@@ -179,6 +179,7 @@
 		5EC7B21227D7978100699FD3 = {
 			isa = PBXGroup;
 			children = (
+				5E64E8BD281718D600294633 /* en.lproj */,
 				5EC7B24F27D79DDC00699FD3 /* .gitignore */,
 				5EC7B24E27D79D5400699FD3 /* LICENSE */,
 				5EC7B24D27D797E100699FD3 /* README.md */,
@@ -207,7 +208,6 @@
 				5EDFF1E727E7715E005BBA3C /* Functions */,
 				5E64E8B82817179100294633 /* Localizable.strings */,
 				5EC7B21E27D7978100699FD3 /* ToolboxApp.swift */,
-				5E64E8BD281718D600294633 /* en.lproj */,
 				5EC7B22727D7978200699FD3 /* Persistence.swift */,
 				5E0AA7F02837BA6D006CD0EA /* Icons */,
 				5EDFF1E827E7AE4D005BBA3C /* LaunchScreen.storyboard */,
