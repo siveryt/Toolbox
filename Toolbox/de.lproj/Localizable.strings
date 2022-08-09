@@ -1,7 +1,4 @@
 /* No comment provided by engineer. */
-"Network Name" = "Netzwerkname";
-
-/* No comment provided by engineer. */
 "Arabic" = "Arabisch";
 
 /* No comment provided by engineer. */
@@ -22,14 +19,14 @@
 /* Menu item */
 "Date Difference" = "Datumsunterschied";
 
-/* Days: -- Number of Days; IMPORTANT: Keep the Colon and the Space after it */
-"Days: " = "Tage: ";
+/* No comment provided by engineer. */
+"Days:" = "Tage:";
 
 /* Menu item */
 "Dice" = "Würfel";
 
 /* No comment provided by engineer. */
-"Difference:" = "Unterschied:";
+"Difference" = "Unterschied";
 
 /* Menu item */
 "Domain Resolver" = "Domain auflösen";
@@ -38,10 +35,13 @@
 "Don't reset" = "Nicht zurücksetzen";
 
 /* No comment provided by engineer. */
+"Done" = "Fertig";
+
+/* No comment provided by engineer. */
 "Encryption" = "Verschlüsselung";
 
 /* No comment provided by engineer. */
-"End Date:" = "Enddatum";
+"End Date:" = "Enddatum:";
 
 /* No comment provided by engineer. */
 "ERROR - Tool not found!\nPlease report this bug." = "FEHLER - Tool nicht gefunden! Bitte melde diesen Fehler.";
@@ -58,14 +58,26 @@
 /* No comment provided by engineer. */
 "Hidden" = "Versteckt";
 
+/* No comment provided by engineer. */
+"Imprint" = "Impressum";
+
+/* No comment provided by engineer. */
+"inch" = "Zoll";
+
+/* No comment provided by engineer. */
+"Last update" = "Letztes Update";
+
 /* Menu item */
 "Live Clock" = "Live Uhr";
 
-/* Months: -- Number of Years; IMPORTANT: Keep the Colon and the Space after it */
-"Months: " = "Monate: ";
+/* No comment provided by engineer. */
+"Months:" = "Monate:";
 
 /* No comment provided by engineer. */
 "More Information" = "Weitere Informationen";
+
+/* No comment provided by engineer. */
+"Network Name" = "Netzwerkname";
 
 /* No comment provided by engineer. */
 "No Encryption" = "Keine Verschlüsselung";
@@ -83,13 +95,16 @@
 "Obese" = "Fettleibig";
 
 /* No comment provided by engineer. */
-"OpenSource Licenses" = "OpenSource Lizenzen";
+"OpenSource-Licenses" = "OpenSource-Lizenzen";
 
 /* No comment provided by engineer. */
 "Overweight" = "Übergewichtig";
 
 /* No comment provided by engineer. */
 "Password" = "Passwort";
+
+/* No comment provided by engineer. */
+"Privacy Policy" = "Datenschutzrichtlinie";
 
 /* No comment provided by engineer. */
 "QR-Code content" = "QR-Code Inhalt";
@@ -99,9 +114,6 @@
 
 /* No comment provided by engineer. */
 "Receiver" = "Empfänger";
-
-/* No comment provided by engineer. */
-"Report Bug" = "Fehler melden";
 
 /* No comment provided by engineer. */
 "Reset" = "Zurücksetzen";
@@ -120,6 +132,12 @@
 
 /* No comment provided by engineer. */
 "Select a tool" = "Wähle ein Tool aus";
+
+/* No comment provided by engineer. */
+"Settings" = "Einstellungen";
+
+/* No comment provided by engineer. */
+"Share" = "Teilen";
 
 /* No comment provided by engineer. */
 "Start Date:" = "Startdatum:";
@@ -142,8 +160,8 @@
 /* No comment provided by engineer. */
 "WPA (most common)" = "WPA (am häufigsten)";
 
-/* Years: -- Number of Years; IMPORTANT: Keep the Colon and the Space after it */
-"Years: " = "Jahre: ";
+/* No comment provided by engineer. */
+"Years:" = "Jahre:";
 
 /* No comment provided by engineer. */
 "You can't convert numbers bigger than 3999." = "Du kannst keine Zahlen größer als 3999 konvertieren.";

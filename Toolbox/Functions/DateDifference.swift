@@ -5,32 +5,19 @@ struct DateDifference: View{
     
     @State private var dateFrom = Date()
     @State private var dateTo = Date()
-    @State var result = "0"
+    @State var days = "0"
+    @State var months = "0"
+    @State var years = "0"
+    
     func calcDiff (){
         
-        let date1 = dateFrom
-        let date2 = dateTo
         let calendar = Calendar.current
+        let diff = calendar.dateComponents([.year, .month, .day], from: dateFrom, to: dateTo)
         
-        let diff = calendar.dateComponents([.year, .month, .day], from: date1, to: date2)
+        days = "\(abs(diff.day ?? 0))"
+        months = "\(abs(diff.month ?? 0))"
+        years = "\(abs(diff.year ?? 0))"
         
-        var temp = "\(String(describing: diff.day))"
-        let RESULTday = temp.replacingOccurrences(of: "Optional(", with: "").replacingOccurrences(of: ")", with: "").replacingOccurrences(of: "-", with: "")
-        temp = "\(String(describing: diff.month))"
-        let RESULTmonth = temp.replacingOccurrences(of: "Optional(", with: "").replacingOccurrences(of: ")", with: "").replacingOccurrences(of: "-", with: "")
-        temp = "\(String(describing: diff.year))"
-        let RESULTyear = temp.replacingOccurrences(of: "Optional(", with: "").replacingOccurrences(of: ")", with: "").replacingOccurrences(of: "-", with: "")
-        
-        result = ""
-        result += RESULTyear != "0" ? NSLocalizedString("Years: ", comment: "Years: -- Number of Years; IMPORTANT: Keep the Colon and the Space after it") + String(RESULTyear) : ""
-        result += result == "" ? "" : ", "
-        result += RESULTmonth != "0" ? NSLocalizedString("Months: ", comment: "Months: -- Number of Years; IMPORTANT: Keep the Colon and the Space after it") + String(RESULTmonth) : ""
-        result += result == "" ? "" : ", "
-        result += RESULTday != "0" ? NSLocalizedString("Days: ", comment: "Days: -- Number of Days; IMPORTANT: Keep the Colon and the Space after it") + String(RESULTmonth) : ""
-        
-        if(result == ""){
-            result = "0"
-        }
         
     }
     
@@ -64,10 +51,22 @@ struct DateDifference: View{
                 displayedComponents: [.date]
             )
             .datePickerStyle(.automatic)
-            HStack{
-                Text("Difference:")
-                Spacer()
-                Text(result)
+            Section("Difference") {
+                HStack{
+                    Text("Days:")
+                    Spacer()
+                    Text(days)
+                }
+                HStack{
+                    Text("Months:")
+                    Spacer()
+                    Text(months)
+                }
+                HStack{
+                    Text("Years:")
+                    Spacer()
+                    Text(years)
+                }
             }
             
         }
