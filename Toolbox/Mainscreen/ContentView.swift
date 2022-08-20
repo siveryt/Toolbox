@@ -14,19 +14,21 @@ extension UIApplication {
     static let keyWindowScene = shared.connectedScenes.first { $0.activationState == .foregroundActive } as? UIWindowScene
     
 }
-
-extension View {
-    
-    func shareSheet(isPresented: Binding<Bool>, items: [Any]) -> some View {
-        guard isPresented.wrappedValue else { return self }
-        let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
-        let presentedViewController = UIApplication.keyWindow?.rootViewController?.presentedViewController ?? UIApplication.keyWindow?.rootViewController
-        activityViewController.completionWithItemsHandler = { _, _, _, _ in isPresented.wrappedValue = false }
-        presentedViewController?.present(activityViewController, animated: true)
-        return self
+enum Coordinator {
+    static func topViewController(_ viewController: UIViewController? = nil) -> UIViewController? {
+        let vc = viewController ?? UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController
+        if let navigationController = vc as? UINavigationController {
+            return topViewController(navigationController.topViewController)
+        } else if let tabBarController = vc as? UITabBarController {
+            return tabBarController.presentedViewController != nil ? topViewController(tabBarController.presentedViewController) : topViewController(tabBarController.selectedViewController)
+            
+        } else if let presentedViewController = vc?.presentedViewController {
+            return topViewController(presentedViewController)
+        }
+        return vc
     }
-    
 }
+
 
 struct ShowingSheetKey: EnvironmentKey {
     static let defaultValue: Binding<Bool>? = nil
@@ -175,6 +177,16 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 struct infoView: View {
+    
+    func shareApp(shareItem: [Any]) {
+        
+        let activityViewController = UIActivityViewController(activityItems: [shareItem], applicationActivities: nil)
+        
+        let viewController = Coordinator.topViewController()
+        activityViewController.popoverPresentationController?.sourceView = viewController?.view
+        viewController?.present(activityViewController, animated: true, completion: nil)
+    }
+    
     @Environment(\.showingSheet) var showingSheet
     @State private var isPresentingShareSheet = false
     var body: some View {
@@ -206,13 +218,18 @@ struct infoView: View {
                         }
                     }
                 
+                Label("Mailing-List", systemImage: "mail.stack")
+                    .onTapGesture {
+                        if let url = URL(string: "http://mailing.sivery.de/subscription/form") {
+                            UIApplication.shared.open(url)
+                        }
+                    }
+                
                 Label("Share", systemImage: "square.and.arrow.up")
                     .onTapGesture {
-                        isPresentingShareSheet = true
+                        shareApp(shareItem: [URL(string: "http://toolbox.sivery.de")!])
                     }
-                    .shareSheet(isPresented: $isPresentingShareSheet, items: [URL(string: "http://toolbox.sivery.de")!])
                 
-                //            NavigationLink(destination: info()){
                 Section{
                     Label("OpenSource-Licenses", systemImage: "checkmark.seal")
                     .onTapGesture {
@@ -301,6 +318,7 @@ struct appIcon: View {
                                     
                                     if iconSettings.currentIndex != i {
                                         print(self.iconSettings.iconNames)
+                                        
                                         UIApplication.shared.setAlternateIconName(self.iconSettings.iconNames[i], completionHandler: {
                                             error in
                                             if let error = error {
