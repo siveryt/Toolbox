@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import RomanNumeralKit
 
 extension UIApplication {
     
@@ -16,7 +15,7 @@ extension UIApplication {
 }
 enum Coordinator {
     static func topViewController(_ viewController: UIViewController? = nil) -> UIViewController? {
-        let vc = viewController ?? UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController
+        let vc = viewController ?? UIApplication.shared.currentUIWindow()?.rootViewController
         if let navigationController = vc as? UINavigationController {
             return topViewController(navigationController.topViewController)
         } else if let tabBarController = vc as? UITabBarController {
@@ -29,6 +28,45 @@ enum Coordinator {
     }
 }
 
+public extension UIApplication {
+    func currentUIWindow() -> UIWindow? {
+        let connectedScenes = UIApplication.shared.connectedScenes
+            .filter { $0.activationState == .foregroundActive }
+            .compactMap { $0 as? UIWindowScene }
+        
+        let window = connectedScenes.first?
+            .windows
+            .first { $0.isKeyWindow }
+        
+        return window
+        
+    }
+}
+
+extension View {
+    
+    func shareFromSheet(shareItem: [Any]) {
+        
+        let activityViewController = UIActivityViewController(activityItems: shareItem, applicationActivities: nil)
+        
+        let viewController = Coordinator.topViewController()
+        activityViewController.popoverPresentationController?.sourceView = viewController?.view
+        viewController?.present(activityViewController, animated: true, completion: nil)
+    }
+    
+    func shareFromView(shareItem: [Any]) {
+        let shareActivity = UIActivityViewController(activityItems: shareItem, applicationActivities: nil)
+        if let vc = UIApplication.shared.currentUIWindow()?.rootViewController{
+            shareActivity.popoverPresentationController?.sourceView = vc.view
+            //Setup share activity position on screen on bottom center
+            shareActivity.popoverPresentationController?.sourceRect = CGRect(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height, width: 0, height: 0)
+            shareActivity.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.down
+            vc.present(shareActivity, animated: true, completion: nil)
+        }
+    }
+    
+    
+}
 
 struct ShowingSheetKey: EnvironmentKey {
     static let defaultValue: Binding<Bool>? = nil
@@ -176,19 +214,15 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
+
+
+
 struct infoView: View {
     
-    func shareApp(shareItem: [Any]) {
-        
-        let activityViewController = UIActivityViewController(activityItems: [shareItem], applicationActivities: nil)
-        
-        let viewController = Coordinator.topViewController()
-        activityViewController.popoverPresentationController?.sourceView = viewController?.view
-        viewController?.present(activityViewController, animated: true, completion: nil)
-    }
+    
     
     @Environment(\.showingSheet) var showingSheet
-    @State private var isPresentingShareSheet = false
+    
     var body: some View {
             List {
                 NavigationLink(destination: infoVersion()){
@@ -203,52 +237,73 @@ struct infoView: View {
                 //            NavigationLink(destination: info()){
                 //                Label("Spenden", systemImage: "suit.heart") //Localization europe: eurosign.circle
                 //            }
-                
-                Label("Website", systemImage: "globe")
-                    .onTapGesture {
-                        if let url = URL(string: "http://toolbox.sivery.de") {
-                            UIApplication.shared.open(url)
-                        }
+                Button(action: {
+                    if let url = URL(string: "http://toolbox.sivery.de") {
+                        UIApplication.shared.open(url)
                     }
+                }) {
+                    Label("Website", systemImage: "globe")
+                }
+                .tint(.primary)
                 
-                Label("Feedback", systemImage: "mail")
-                    .onTapGesture {
-                        if let url = URL(string: "mailto:toolbox@sivery.de") {
-                            UIApplication.shared.open(url)
-                        }
-                    }
                 
-                Label("Mailing-List", systemImage: "mail.stack")
-                    .onTapGesture {
-                        if let url = URL(string: "http://mailing.sivery.de/subscription/form") {
-                            UIApplication.shared.open(url)
-                        }
-                    }
                 
-                Label("Share", systemImage: "square.and.arrow.up")
-                    .onTapGesture {
-                        shareApp(shareItem: [URL(string: "http://toolbox.sivery.de")!])
+                Button(action: {
+                    if let url = URL(string: "mailto:toolbox@sivery.de") {
+                        UIApplication.shared.open(url)
                     }
+                }) {
+                    Label("Feedback", systemImage: "mail")
+                }
+                .tint(.primary)
+                
+                Button(action: {
+                    if let url = URL(string: "http://mailing.sivery.de/subscription/form") {
+                        UIApplication.shared.open(url)
+                    }
+                }) {
+                    Label("Mailing-List", systemImage: "mail.stack")
+                }
+                .tint(.primary)
+                
+                
+                Button(action: {
+                    shareFromSheet(shareItem: [URL(string: "http://toolbox.sivery.de")!])
+                }) {
+                    Label("Share", systemImage: "square.and.arrow.up")
+                }
+                .tint(.primary)
+                
                 
                 Section{
-                    Label("OpenSource-Licenses", systemImage: "checkmark.seal")
-                    .onTapGesture {
+                    
+                    Button(action: {
                         if let appSettings = URL(string: UIApplication.openSettingsURLString) {
                             UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
                         }
+                    }) {
+                        Label("OpenSource-Licenses", systemImage: "checkmark.seal")
                     }
-                Label("Imprint", systemImage: "doc.append")
-                    .onTapGesture {
+                    .tint(.primary)
+                    
+                    Button(action: {
                         if let imprint = URL(string: "http://toolbox.sivery.de/imprint.html") {
                             UIApplication.shared.open(imprint, options: [:], completionHandler: nil)
                         }
+                    }) {
+                        Label("Imprint", systemImage: "doc.append")
                     }
-                Label("Privacy Policy", systemImage: "person.fill")
-                    .onTapGesture {
+                    .tint(.primary)
+                    
+                    Button(action: {
                         if let privacy = URL(string: "http://toolbox.sivery.de/privacy.html") {
                             UIApplication.shared.open(privacy, options: [:], completionHandler: nil)
                         }
+                    }) {
+                        Label("Privacy Policy", systemImage: "person.fill")
                     }
+                    .tint(.primary)
+                    
                     
                 }
                 

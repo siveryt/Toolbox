@@ -54,6 +54,58 @@
 			<false/>
 		</dict>
 	</dict>
+	<key>CFBundleIcons~ipad</key>
+	<dict>
+		<key>CFBundleAlternateIcons</key>
+		<dict>
+			<key>Blueish_red</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Blueish_red</string>
+				</array>
+			</dict>
+			<key>Blueish_white</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Blueish_white</string>
+				</array>
+			</dict>
+			<key>black</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>black</string>
+				</array>
+			</dict>
+			<key>whiteOnly</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>whiteOnly</string>
+				</array>
+			</dict>
+			<key>whitegradient_red</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>whitegradient_red</string>
+				</array>
+			</dict>
+		</dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string></string>
+			</array>
+			<key>CFBundleIconName</key>
+			<string></string>
+			<key>UIPrerenderedIcon</key>
+			<false/>
+		</dict>
+	</dict>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
