@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Haptica
+import ToastSwiftUI
 
 struct ColorPickerView: View {
     let defaults = UserDefaults.standard
@@ -15,6 +16,19 @@ struct ColorPickerView: View {
     @State private var drawOpacity: Double = 1.0
     @State private var drawUIColor: UIColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
     @State private var drawHexNumber: String = "#FF0000"
+    
+    
+    func presentToast() {
+        withAnimation {
+            isPresentingToast = true
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            withAnimation {
+                isPresentingToast = false
+            }
+        }
+    }
+    @State var isPresentingToast = false
     
     var body: some View {
         Form{
@@ -32,39 +46,54 @@ struct ColorPickerView: View {
             RoundedRectangle(cornerSize: CGSize(width: 5, height: 5))
                 .fill(drawSwiftUIColor)
             Section("Colorcodes"){
-                HStack{
+                Button(action: {
+                    UIPasteboard.general.string = drawHexNumber
+                    Haptic.impact(.light).generate()
+                    presentToast() 
+                }){
+                    HStack {
                     Text("HEX")
                     Spacer()
                     Text(drawHexNumber)
-                }
-                .onTapGesture {
-                    UIPasteboard.general.string = drawHexNumber
+                        
+                    }
+                }.tint(.primary)
+                    
+                
+                Button(action:{
+                    UIPasteboard.general.string = rgbToString(input: drawUIColor)
                     Haptic.impact(.light).generate()
-                }
-                HStack{
+                    presentToast()
+                }){
+                    HStack {
                     Text("RGB")
                     Spacer()
                     Text(rgbToString(input: drawUIColor))
-                }
-                .onTapGesture {
-                    UIPasteboard.general.string = rgbToString(input: drawUIColor)
+                    }
+                }.tint(.primary)
+                
+                Button(action:{
+                    UIPasteboard.general.string = rgbaToString(input: drawUIColor)
                     Haptic.impact(.light).generate()
-                }
-                HStack{
+                    
+                    presentToast()
+                    
+                }){
+                    HStack {
                     Text("RGBA")
                     Spacer()
                     Text(rgbaToString(input: drawUIColor))
+                    }
                 }
-                .onTapGesture {
-                    UIPasteboard.general.string = rgbaToString(input: drawUIColor)
-                    Haptic.impact(.light).generate()
-                }
+                .tint(.primary)
 
             }
             
             
+            
             // SquareColorPickerView(colorValue: $color)
         }
+        .toast(isPresenting: $isPresentingToast, message: "Copied", icon: .custom(Image(systemName: "doc.on.clipboard")), autoDismiss: .none)
         .onAppear(){
             if let userSelectedColorData = UserDefaults.standard.object(forKey: "UserSelectedColor") as? Data {
                 
