@@ -338,7 +338,7 @@ struct infoVersion: View {
                 HStack{
                     Text("Last update")
                     Spacer()
-                    Text("08-08-2022")
+                    Text("28-08-2022")
                 }
             }
             //            Text("No update available") TODO: use this with https://github.com/acarolsf/checkVersion-iOS when published

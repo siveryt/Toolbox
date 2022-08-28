@@ -175,45 +175,9 @@ struct DiceView: View {
                 }
                 )
                 
-//                diceSettingsSheet()
-//                    .environment(\.showingSheet, self.$settingsSheet)
             }
         }
     }
     
 }
 
-struct diceSettingsSheet: View {
-    @Environment(\.showingSheet) var showingSheet
-    @AppStorage("diceSides") var sides = 6
-    @AppStorage("diceCount") var count = 1
-    
-    var body: some View {
-        Form {
-                Picker(selection: $sides, label: Text("Sides:")) {
-                    Text("4").tag(4)
-                    Text("6").tag(6)
-                    Text("8").tag(8)
-                    Text("12").tag(12)
-                }
-                .pickerStyle(.menu)
-
-            
-                
-            HStack {
-                Stepper("Dice Count:", value: $count, in: 1...8)
-                Text(String(count))
-            }
-
-
-                
-        }
-                .navigationBarTitle("Dice Settings")
-        .navigationBarTitleDisplayMode(.large)
-        .navigationBarItems(trailing:
-                                Button("Done") {
-            self.showingSheet?.wrappedValue = false
-        }
-        )
-    }
-}
