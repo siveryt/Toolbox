@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import StoreKit
 
 extension UIApplication {
     
@@ -82,6 +83,7 @@ extension EnvironmentValues {
 struct ContentView: View {
     
     @State var infoPresented = false
+    @AppStorage("cvLoaded") var viewLoaded = 0
     
     let tools = [
         [
@@ -203,8 +205,30 @@ struct ContentView: View {
                 }
             }
             Text("Select a tool")
+        }.onAppear() {
+            viewLoaded += 1
+            if (viewLoaded == 50) {
+                guard let currentScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
+                    print("UNABLE TO GET CURRENT SCENE")
+                    return
+                }
+                SKStoreReviewController.requestReview(in: currentScene)
+            }else if (viewLoaded == 150) {
+                guard let currentScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
+                    print("UNABLE TO GET CURRENT SCENE")
+                    return
+                }
+                SKStoreReviewController.requestReview(in: currentScene)
+            }else if (viewLoaded == 400) {
+                guard let currentScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
+                    print("UNABLE TO GET CURRENT SCENE")
+                    return
+                }
+                SKStoreReviewController.requestReview(in: currentScene)
+            }
         }
     }
+        
 }
 
 
@@ -222,6 +246,7 @@ struct infoView: View {
     
     
     @Environment(\.showingSheet) var showingSheet
+    @State var deleteAlert = false
     
     var body: some View {
             List {
@@ -258,6 +283,15 @@ struct infoView: View {
                 .tint(.primary)
                 
                 Button(action: {
+                    if let url = URL(string: "https://itunes.apple.com/app/id1638758005?action=write-review") {
+                        UIApplication.shared.open(url)
+                    }
+                }) {
+                    Label("Rate App", systemImage: "star")
+                }
+                .tint(.primary)
+                
+                Button(action: {
                     if let url = URL(string: "http://mailing.sivery.de/subscription/form") {
                         UIApplication.shared.open(url)
                     }
@@ -274,6 +308,13 @@ struct infoView: View {
                 }
                 .tint(.primary)
                 
+                Button(action: {
+                    deleteAlert = true
+                }) {
+                    Label("Delete Data", systemImage: "trash")
+                }
+                .tint(.primary)
+                
                 
                 Section{
                     
@@ -286,14 +327,14 @@ struct infoView: View {
                     }
                     .tint(.primary)
                     
-                    Button(action: {
-                        if let imprint = URL(string: "http://toolbox.sivery.de/imprint.html") {
-                            UIApplication.shared.open(imprint, options: [:], completionHandler: nil)
-                        }
-                    }) {
-                        Label("Imprint", systemImage: "doc.append")
-                    }
-                    .tint(.primary)
+//                    Button(action: {
+//                        if let imprint = URL(string: "http://toolbox.sivery.de/imprint.html") {
+//                            UIApplication.shared.open(imprint, options: [:], completionHandler: nil)
+//                        }
+//                    }) {
+//                        Label("Imprint", systemImage: "doc.append")
+//                    }
+//                    .tint(.primary)
                     
                     Button(action: {
                         if let privacy = URL(string: "http://toolbox.sivery.de/privacy.html") {
@@ -315,6 +356,18 @@ struct infoView: View {
                     }
                 }
                 
+            }
+            .alert(isPresented: $deleteAlert){
+                Alert(title: Text("Are you sure, you want to clear the app's data?"),
+                      
+                      primaryButton: .cancel(),
+                      secondaryButton: .destructive(Text("Delete")) {
+                    let domain = Bundle.main.bundleIdentifier!
+                    UserDefaults.standard.removePersistentDomain(forName: domain)
+                    UserDefaults.standard.synchronize()
+                    print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
+                }
+                )
             }
                 .navigationBarTitle("Settings")
                 .navigationBarTitleDisplayMode(.large)
