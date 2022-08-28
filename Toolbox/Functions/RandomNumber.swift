@@ -7,64 +7,116 @@
 
 import SwiftUI
 import Haptica
+import Combine
+import ToastSwiftUI
+
+extension String {
+    var isInt: Bool {
+        return Int(self) != nil
+    }
+}
 
 struct RandomNumber: View {
     
-    @State var min: Int = 0
-    @State var max: Int = 100
-    @State var random: String = ""
+    @AppStorage("rannumMin", store: .standard) var min: Int = 1
+    @AppStorage("rannumMax", store: .standard) var max: Int = 100
+    @AppStorage("rannumResult", store: .standard) var result: String = ""
+    @State var isPresentingToast: Bool = false
+    
+    func generateNumber() {
+        if(min < max){
+            result = String(Int.random(in: min ..< max+1))
+        }else if (min > max){
+            result = String(Int.random(in: max ..< min+1))
+        }else {
+            result = String(min)
+        }
+    }
+    
+    func presentToast() {
+        withAnimation {
+            isPresentingToast = true
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            withAnimation {
+                isPresentingToast = false
+            }
+        }
+    }
     
     var body: some View {
+        
+        
         
         let minBinding = Binding<String>(get: {
             String(self.min)
         }, set: {
-            self.min = Int($0 == "" ? "0" : $0)!
+            if ($0.isInt) {
+                self.min = Int($0 == "" ? "0" : $0)!
+            }
+            generateNumber()
+            
         })
         let maxBinding = Binding<String>(get: {
             String(self.max)
         }, set: {
-            self.max = Int($0 == "" ? "0" : $0)!
+            if ($0.isInt) {
+                self.max = Int($0 == "" ? "0" : $0)!
+            }
+            generateNumber()
         })
         
-        VStack {
-            HStack{
+        Form {
+            HStack {
+                Text("From:")
                 Spacer()
-                    .padding(.trailing, 1.0)
-                TextField("Min", text: minBinding)
-                    .textFieldStyle(.roundedBorder)
-                    .keyboardType(/*@START_MENU_TOKEN@*/.numberPad/*@END_MENU_TOKEN@*/)
-                Text("-")
-                TextField("Max", text: maxBinding)
-                    .textFieldStyle(.roundedBorder)
-                    .keyboardType(/*@START_MENU_TOKEN@*/.numberPad/*@END_MENU_TOKEN@*/)
-                Spacer()
-                    .padding(.trailing, 1.0)
-                
-            }
-            if(min < max){
-                Text(String(Int.random(in: min ..< max+1)))
-                    .dynamicTypeSize(.accessibility2)
-                    .onTapGesture {
-                        Haptic.impact(.light).generate()
-                        min += 1
-                        min -= 1
+                TextField("1", text: minBinding)
+                    .multilineTextAlignment(.trailing)
+                    .keyboardType(.numberPad)
+                    .onReceive(NotificationCenter.default.publisher(for: UITextField.textDidBeginEditingNotification)) { obj in
+                        if let textField = obj.object as? UITextField {
+                            textField.selectedTextRange = textField.textRange(from: textField.beginningOfDocument, to: textField.endOfDocument)
+                        }
                     }
-            }else if (min > max){
-                Text(String(Int.random(in: max ..< min+1)))
-                    .dynamicTypeSize(.accessibility2)
-                    .onTapGesture {
-                        Haptic.impact(.light).generate()
-                        min += 1
-                        min -= 1
-                    }
-            }else {
-                Text(String(min))
-                    .dynamicTypeSize(.accessibility2)
             }
             
+            HStack {
+                Text("To:")
+                Spacer()
+                TextField("1", text: maxBinding)
+                    .multilineTextAlignment(.trailing)
+                    .keyboardType(.numberPad)
+                    .onReceive(NotificationCenter.default.publisher(for: UITextField.textDidBeginEditingNotification)) { obj in
+                        if let textField = obj.object as? UITextField {
+                            textField.selectedTextRange = textField.textRange(from: textField.beginningOfDocument, to: textField.endOfDocument)
+                        }
+                    }
+            }
+            Section {
+                Button(action: {
+                    UIPasteboard.general.string = result
+                    Haptic.impact(.light).generate()
+                    presentToast()
+                }){
+                    HStack {
+                        Text("Result:")
+                        Spacer()
+                        Text(result)
+                        
+                    }
+                }
+                .tint(.primary)
+            }
+            Section {
                 
+                Button("New Number"){
+                    Haptic.impact(.light).generate()
+                    generateNumber()
+                    
+                }
+            }
         }
+        .toast(isPresenting: $isPresentingToast, message: "Copied", icon: .custom(Image(systemName: "doc.on.clipboard")), autoDismiss: .none)
         .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
         .navigationTitle("Random Number")
     }

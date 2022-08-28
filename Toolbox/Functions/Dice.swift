@@ -8,6 +8,26 @@
 import SwiftUI
 import Haptica
 
+extension Array: RawRepresentable where Element: Codable {
+    public init?(rawValue: String) {
+        guard let data = rawValue.data(using: .utf8),
+              let result = try? JSONDecoder().decode([Element].self, from: data)
+        else {
+            return nil
+        }
+        self = result
+    }
+    
+    public var rawValue: String {
+        guard let data = try? JSONEncoder().encode(self),
+              let result = String(data: data, encoding: .utf8)
+        else {
+            return "[]"
+        }
+        return result
+    }
+}
+
 struct Dice_Previews: PreviewProvider {
     static var previews: some View {
         DiceView().previewDevice("iPhone 13").environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
@@ -46,69 +66,154 @@ extension View {
 
 struct DiceView: View {
     
-    @State var rolled = "1"
+    @AppStorage("diceRolled") var rolled = ["1", "1", "2", "3", "4", "4", "4", "2"]
+    @AppStorage("diceGuidance") var guidance = true
+    @State var settingsSheet = false
+    @AppStorage("diceSides") var sides = 6
+    @AppStorage("diceCount") var diceCount = 1
+    
+    
     
     func roll(){
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            rolled = String(Int.random(in: 1...6))
-            Haptic.impact(.light).generate()
+        
+        for dqI in 1...9 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double("0.\(dqI)")!) {
+                rolled = []
+                for _ in 0...8 {
+                    rolled.append(String(Int.random(in: 1...sides)))
+                }
+                Haptic.impact(.light).generate()
+            }
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            rolled = String(Int.random(in: 1...6))
-            Haptic.impact(.light).generate()
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            rolled = String(Int.random(in: 1...6))
-            Haptic.impact(.light).generate()
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-            rolled = String(Int.random(in: 1...6))
-            Haptic.impact(.light).generate()
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            rolled = String(Int.random(in: 1...6))
-            Haptic.impact(.light).generate()
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-            rolled = String(Int.random(in: 1...6))
-            Haptic.impact(.light).generate()
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
-            rolled = String(Int.random(in: 1...6))
-            Haptic.impact(.light).generate()
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-            rolled = String(Int.random(in: 1...6))
-            Haptic.impact(.light).generate()
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
-            rolled = String(Int.random(in: 1...6))
-            Haptic.impact(.light).generate()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            withAnimation(){
+                guidance = false
+            }
         }
     }
     
+    
+    
     var body: some View {
+        
+        let sidesBinding = Binding<Int>(get: {
+            self.sides
+        }, set: {
+            
+                self.sides = $0
+            
+            roll()
+            
+        })
+        
         VStack{
-            Image("dice-"+rolled).resizable()
-                .scaledToFit()
-                .frame(width: 250.0, height: 250.0, alignment: .top)
-                .onTapGesture {
-                    roll()
+            LazyVGrid(columns: diceCount > 1 ? [GridItem(), GridItem()] : [GridItem()]) {
+                ForEach(0..<diceCount, id: \.self) {i in
+                    Image(String(sides)+"-"+rolled[i])
+                        .resizable()
+                        .scaledToFit()
+                        
                 }
-//            Button("Roll!"){
-//                roll()
-//            }.foregroundColor(.primary)
-//                .dynamicTypeSize(/*@START_MENU_TOKEN@*/.xxxLarge/*@END_MENU_TOKEN@*/)
+                
+            }
+            
+            
+            if guidance {
+                Text("Shake or tap to get started").foregroundColor(.secondary)
+            }
         }
+        .onTapGesture {
+            roll()
+        }
+        .padding(/*@START_MENU_TOKEN@*/.all, 30.0/*@END_MENU_TOKEN@*/)
+        .frame(maxWidth: 500)
+
         .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
         .navigationTitle("Dice")
-//        .toolbar {
-//            Text("Dice")
-//        }
-//        .navigationTitle("Dice")
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button(action: {
+                    settingsSheet = true
+                }, label: {
+                    Image(systemName: "gear")
+                })
+            }
+        }
+       
         .onShake{
             roll()
         }
+
+        .sheet(isPresented: $settingsSheet){
+            NavigationView {
+                
+                Form {
+                    Picker(selection: sidesBinding, label: Text("Sides:")) {
+                        Text("4").tag(4)
+                        Text("6").tag(6)
+                        Text("8").tag(8)
+                        Text("12").tag(12)
+                    }
+                    .pickerStyle(.menu)
+                    
+                    
+                    
+                    HStack {
+                        Stepper("Dice Count:", value: $diceCount, in: 1...8)
+                        Text(String(diceCount))
+                    }
+                    
+                    
+                    
+                }
+                .navigationBarTitle("Dice Settings")
+                .navigationBarTitleDisplayMode(.large)
+                .navigationBarItems(trailing:
+                                        Button("Done") {
+                    settingsSheet = false
+                }
+                )
+                
+//                diceSettingsSheet()
+//                    .environment(\.showingSheet, self.$settingsSheet)
+            }
+        }
     }
     
+}
+
+struct diceSettingsSheet: View {
+    @Environment(\.showingSheet) var showingSheet
+    @AppStorage("diceSides") var sides = 6
+    @AppStorage("diceCount") var count = 1
+    
+    var body: some View {
+        Form {
+                Picker(selection: $sides, label: Text("Sides:")) {
+                    Text("4").tag(4)
+                    Text("6").tag(6)
+                    Text("8").tag(8)
+                    Text("12").tag(12)
+                }
+                .pickerStyle(.menu)
+
+            
+                
+            HStack {
+                Stepper("Dice Count:", value: $count, in: 1...8)
+                Text(String(count))
+            }
+
+
+                
+        }
+                .navigationBarTitle("Dice Settings")
+        .navigationBarTitleDisplayMode(.large)
+        .navigationBarItems(trailing:
+                                Button("Done") {
+            self.showingSheet?.wrappedValue = false
+        }
+        )
+    }
 }
