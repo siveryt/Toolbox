@@ -7,11 +7,25 @@
 
 import SwiftUI
 import Haptica
+import ToastSwiftUI
 
 struct DomainResolver: View {
     @State var toResolve = ""
     @State var resolved = ""
     @State var autoResolve = true
+    
+    @State var isPresentingToast: Bool = false
+    
+    func presentToast() {
+        withAnimation {
+            isPresentingToast = true
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            withAnimation {
+                isPresentingToast = false
+            }
+        }
+    }
     
     func resolve() {
         if(toResolve != ""){
@@ -50,22 +64,26 @@ struct DomainResolver: View {
             HStack {
                 Text("Result")
                 Spacer()
-                Text(resolved == "" ? NSLocalizedString("Not Found", comment: "Domain Not found") : resolved)
-                    .multilineTextAlignment(.trailing)
-                    .onTapGesture {
-                        if(resolved != ""){
-                            UIPasteboard.general.string = resolved
-                            Haptic.impact(.light).generate()
-                        }
+                Button(action: {
+                    if(resolved != ""){
+                        UIPasteboard.general.string = resolved
+                        Haptic.impact(.light).generate()
+                        presentToast()
+                    }
+                }) {
+                    Text(resolved == "" ? NSLocalizedString("Not Found", comment: "Domain Not found") : resolved)
+                        .multilineTextAlignment(.trailing)
+                        
                         
                 }
+                .tint(.primary)
             }
             
             
 //            }
             
         }
-        
+        .toast(isPresenting: $isPresentingToast, message: "Copied", icon: .custom(Image(systemName: "doc.on.clipboard")), autoDismiss: .none)
         .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
         .navigationTitle("Domain Resolver")
     }

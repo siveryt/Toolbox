@@ -1,4 +1,6 @@
 import SwiftUI
+import Haptica
+import ToastSwiftUI
 
 struct DateDifference: View{
     let defaults = UserDefaults.standard
@@ -11,6 +13,18 @@ struct DateDifference: View{
     @AppStorage("dateDiffYears") var displayYears = true
     @AppStorage("dateDiffMonths") var displayMonths = true
     @AppStorage("dateDiffDays") var displayDays = true
+    @State var isPresentingToast: Bool = false
+    
+    func presentToast() {
+        withAnimation {
+            isPresentingToast = true
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            withAnimation {
+                isPresentingToast = false
+            }
+        }
+    }
     
     func calcDiff (){
         
@@ -116,31 +130,53 @@ struct DateDifference: View{
             Section("Difference") {
                 
                 if displayDays {
-                    HStack{
-                        Text("Days:")
-                        Spacer()
-                        Text(days)
+                    Button(action:{
+                        UIPasteboard.general.string = days
+                        Haptic.impact(.light).generate()
+                        presentToast()
+                    }){
+                        HStack{
+                            Text("Days:")
+                            Spacer()
+                            Text(days)
+                        }
                     }
+                    .tint(.primary)
                 }
                 
                 if displayMonths {
+                    Button(action:{
+                        UIPasteboard.general.string = months
+                        Haptic.impact(.light).generate()
+                        presentToast()
+                    }){
                     HStack{
                         Text("Months:")
                         Spacer()
                         Text(months)
                     }
+                    .tint(.primary)
+                }
                 }
                 if displayYears {
-                    HStack{
-                        Text("Years:")
-                        Spacer()
-                        Text(years)
+                    Button(action:{
+                        UIPasteboard.general.string = years
+                        Haptic.impact(.light).generate()
+                        presentToast()
+                    }){
+                        HStack{
+                            Text("Years:")
+                            Spacer()
+                            Text(years)
+                        }
                     }
+                    .tint(.primary)
                 }
             }.transition(.slide)
             
         }
         
+        .toast(isPresenting: $isPresentingToast, message: "Copied", icon: .custom(Image(systemName: "doc.on.clipboard")), autoDismiss: .none)
         .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
         .navigationTitle("Date Difference")
         .onAppear(){
