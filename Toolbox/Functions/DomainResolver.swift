@@ -10,7 +10,7 @@ import Haptica
 import ToastSwiftUI
 
 struct DomainResolver: View {
-    @State var toResolve = ""
+    @AppStorage("resolverResolve") var toResolve = ""
     @State var resolved = ""
     @State var autoResolve = true
     
@@ -73,6 +73,11 @@ struct DomainResolver: View {
                 }) {
                     Text(resolved == "" ? NSLocalizedString("Not Found", comment: "Domain Not found") : resolved)
                         .multilineTextAlignment(.trailing)
+                        .onReceive(NotificationCenter.default.publisher(for: UITextField.textDidBeginEditingNotification)) { obj in
+                            if let textField = obj.object as? UITextField {
+                                textField.selectedTextRange = textField.textRange(from: textField.beginningOfDocument, to: textField.endOfDocument)
+                            }
+                        }
                         
                         
                 }
@@ -83,7 +88,7 @@ struct DomainResolver: View {
 //            }
             
         }
-        .toast(isPresenting: $isPresentingToast, message: "Copied", icon: .custom(Image(systemName: "doc.on.clipboard")), autoDismiss: .none)
+        .toast(isPresenting: $isPresentingToast, message: NSLocalizedString("Copied", comment: "Copy toast"), icon: .custom(Image(systemName: "doc.on.clipboard")), autoDismiss: .none)
         .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
         .navigationTitle("Domain Resolver")
     }

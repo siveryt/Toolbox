@@ -93,7 +93,7 @@ struct ColorPickerView: View {
             
             // SquareColorPickerView(colorValue: $color)
         }
-        .toast(isPresenting: $isPresentingToast, message: "Copied", icon: .custom(Image(systemName: "doc.on.clipboard")), autoDismiss: .none)
+        .toast(isPresenting: $isPresentingToast, message: NSLocalizedString("Copied", comment: "Copy toast"), icon: .custom(Image(systemName: "doc.on.clipboard")), autoDismiss: .none)
         .onAppear(){
             if let userSelectedColorData = UserDefaults.standard.object(forKey: "UserSelectedColor") as? Data {
                 

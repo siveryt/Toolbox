@@ -64,6 +64,7 @@ struct BodyMassIndex: View {
                         defaults.set(w, forKey: "bmiWeightD")
                     }
                 
+                
                 Text(metric ? "kg" : "lb")
             }
             Section{

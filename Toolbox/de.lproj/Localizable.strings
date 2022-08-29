@@ -2,7 +2,13 @@
 "Arabic" = "Arabisch";
 
 /* No comment provided by engineer. */
+"Are you sure, you want to clear the app's data?" = "Bist du dir sicher, dass du alle Daten zurücksetzen möchtest?";
+
+/* No comment provided by engineer. */
 "Are you sure, you want to reset the counter?" = "Bist du dir sicher, dass du den Zähler zurücksetzen möchtest?";
+
+/* No comment provided by engineer. */
+"Check again" = "Erneut abfragen";
 
 /* No comment provided by engineer. */
 "Choose color" = "Wähle Farbe";
@@ -13,6 +19,12 @@
 /* No comment provided by engineer. */
 "Colorcodes" = "Farbcodes";
 
+/* No comment provided by engineer. */
+"Content" = "Inhalt";
+
+/* Copy toast */
+"Copied" = "Kopiert";
+
 /* Menu item */
 "Counter" = "Zähler";
 
@@ -20,13 +32,31 @@
 "Date Difference" = "Datumsunterschied";
 
 /* No comment provided by engineer. */
+"Days" = "Tage";
+
+/* No comment provided by engineer. */
 "Days:" = "Tage:";
+
+/* No comment provided by engineer. */
+"Delete" = "Löschen";
+
+/* No comment provided by engineer. */
+"Delete Data" = "Daten löschen";
 
 /* Menu item */
 "Dice" = "Würfel";
 
 /* No comment provided by engineer. */
+"Dice Count:" = "Würfel-Anzahl:";
+
+/* No comment provided by engineer. */
+"Dice Settings" = "Würfel Einstlellungen";
+
+/* No comment provided by engineer. */
 "Difference" = "Unterschied";
+
+/* No comment provided by engineer. */
+"Display" = "Anzeige";
 
 /* Menu item */
 "Domain Resolver" = "Domain auflösen";
@@ -47,6 +77,9 @@
 "ERROR - Tool not found!\nPlease report this bug." = "FEHLER - Tool nicht gefunden! Bitte melde diesen Fehler.";
 
 /* No comment provided by engineer. */
+"From:" = "Von:";
+
+/* No comment provided by engineer. */
 "Great Feature Idea!" = "Tolle Feature-Idee";
 
 /* No comment provided by engineer. */
@@ -59,16 +92,19 @@
 "Hidden" = "Versteckt";
 
 /* No comment provided by engineer. */
-"Imprint" = "Impressum";
-
-/* No comment provided by engineer. */
 "inch" = "Zoll";
+
+/* Menu item */
+"IP-Checker" = "IP-Adresse";
 
 /* No comment provided by engineer. */
 "Last update" = "Letztes Update";
 
 /* Menu item */
 "Live Clock" = "Live Uhr";
+
+/* No comment provided by engineer. */
+"Months" = "Monate";
 
 /* No comment provided by engineer. */
 "Months:" = "Monate:";
@@ -80,10 +116,16 @@
 "Network Name" = "Netzwerkname";
 
 /* No comment provided by engineer. */
+"New Number" = "Neue Zahl";
+
+/* No comment provided by engineer. */
 "No Encryption" = "Keine Verschlüsselung";
 
 /* No comment provided by engineer. */
 "Normal weight" = "Normalgewichtig";
+
+/* IP-Checker not found */
+"Not found" = "Nicht gefunden";
 
 /* Domain Not found */
 "Not Found" = "Nicht gefunden";
@@ -113,6 +155,9 @@
 "Random Number" = "Zufällige Zahl";
 
 /* No comment provided by engineer. */
+"Rate App" = "App Bewerten";
+
+/* No comment provided by engineer. */
 "Receiver" = "Empfänger";
 
 /* No comment provided by engineer. */
@@ -123,6 +168,9 @@
 
 /* No comment provided by engineer. */
 "Result" = "Ergebnis";
+
+/* No comment provided by engineer. */
+"Result:" = "Ergebnis:";
 
 /* No comment provided by engineer. */
 "Roman" = "Römisch";
@@ -137,13 +185,22 @@
 "Settings" = "Einstellungen";
 
 /* No comment provided by engineer. */
+"Shake or tap to get started" = "Schütteln oder tippen zum starten";
+
+/* No comment provided by engineer. */
 "Share" = "Teilen";
+
+/* No comment provided by engineer. */
+"Sides:" = "Seiten:";
 
 /* No comment provided by engineer. */
 "Start Date:" = "Startdatum:";
 
 /* No comment provided by engineer. */
 "Subject" = "Betreff";
+
+/* No comment provided by engineer. */
+"To:" = "Bis:";
 
 /* No comment provided by engineer. */
 "Type" = "Typ";
@@ -161,8 +218,14 @@
 "WPA (most common)" = "WPA (am häufigsten)";
 
 /* No comment provided by engineer. */
+"Years" = "Jahre";
+
+/* No comment provided by engineer. */
 "Years:" = "Jahre:";
 
 /* No comment provided by engineer. */
 "You can't convert numbers bigger than 3999." = "Du kannst keine Zahlen größer als 3999 konvertieren.";
+
+/* No comment provided by engineer. */
+"Your current IP:" = "Aktuelle IP:";
 

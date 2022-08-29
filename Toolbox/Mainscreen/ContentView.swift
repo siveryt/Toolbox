@@ -311,7 +311,7 @@ struct infoView: View {
                 
                 
                 Button(action: {
-                    shareFromSheet(shareItem: [URL(string: "http://toolbox.sivery.de")!])
+                    shareFromSheet(shareItem: [URL(string: "http://toolbox.sivery.de/download")!])
                 }) {
                     Label("Share", systemImage: "square.and.arrow.up")
                 }
@@ -400,8 +400,16 @@ struct infoVersion: View {
                 HStack{
                     Text("Last update")
                     Spacer()
-                    Text("28-08-2022")
+                    Text("29-08-2022")
                 }
+                
+            }
+            Section {
+                Button("Open AppStore", action: {
+                    if let url = URL(string: "https://itunes.apple.com/app/id1638758005") {
+                        UIApplication.shared.open(url)
+                    }
+                })
             }
             //            Text("No update available") TODO: use this with https://github.com/acarolsf/checkVersion-iOS when published
         }

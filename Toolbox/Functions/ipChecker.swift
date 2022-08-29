@@ -15,16 +15,16 @@ func checkIP() async -> String {
             let contents = try String(contentsOf: url)
             return contents.replacingOccurrences(of: "\n", with: "")
         } catch {
-            return "Not found"
+            return NSLocalizedString("Not found", comment: "IP-Checker not found")
         }
     } else {
-        return "Not found"
+        return NSLocalizedString("Not found", comment: "IP-Checker not found")
     }
 }
 
 
 struct ipChecker: View {
-    @AppStorage("ipIP") var ip = "Not Found"
+    @AppStorage("ipIP") var ip:String = NSLocalizedString("Not found", comment: "IP-Checker not found")
     @State var isPresentingToast: Bool = false
     
     func presentToast() {
@@ -67,7 +67,7 @@ struct ipChecker: View {
                 
             }
         }
-        .toast(isPresenting: $isPresentingToast, message: "Copied", icon: .custom(Image(systemName: "doc.on.clipboard")), autoDismiss: .none)
+        .toast(isPresenting: $isPresentingToast, message: NSLocalizedString("Copied", comment: "Copy toast"), icon: .custom(Image(systemName: "doc.on.clipboard")), autoDismiss: .none)
         .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
         .navigationTitle("IP-Checker")
     }
