@@ -46,7 +46,6 @@
 		5ECEBEC72802E0F80096E5A5 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECEBEC62802E0F80096E5A5 /* ColorPicker.swift */; };
 		5ECEBECF280303A30096E5A5 /* BodyMassIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECEBECE280303A30096E5A5 /* BodyMassIndex.swift */; };
 		5ED3943B28BD139D00798FFE /* ipChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED3943A28BD139D00798FFE /* ipChecker.swift */; };
-		5ED3943D28BD13A900798FFE /* nfc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED3943C28BD13A900798FFE /* nfc.swift */; };
 		5ED81C4A27E36ED500FC42E8 /* Dice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED81C4927E36ED500FC42E8 /* Dice.swift */; };
 		5ED81C4C27E372E700FC42E8 /* DomainResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED81C4B27E372E700FC42E8 /* DomainResolver.swift */; };
 		5EDFF1E027E74572005BBA3C /* RandomNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDFF1DF27E74572005BBA3C /* RandomNumber.swift */; };
@@ -114,7 +113,6 @@
 		5ECEBEC82802EF7B0096E5A5 /* NFCTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCTools.swift; sourceTree = "<group>"; };
 		5ECEBECE280303A30096E5A5 /* BodyMassIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyMassIndex.swift; sourceTree = "<group>"; };
 		5ED3943A28BD139D00798FFE /* ipChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ipChecker.swift; sourceTree = "<group>"; };
-		5ED3943C28BD13A900798FFE /* nfc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nfc.swift; sourceTree = "<group>"; };
 		5ED81C4927E36ED500FC42E8 /* Dice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dice.swift; sourceTree = "<group>"; };
 		5ED81C4B27E372E700FC42E8 /* DomainResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainResolver.swift; sourceTree = "<group>"; };
 		5EDFF1DF27E74572005BBA3C /* RandomNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNumber.swift; sourceTree = "<group>"; };
@@ -269,7 +267,6 @@
 				5EB7897627F9CCA900F07140 /* QRGenerator.swift */,
 				5ED3943A28BD139D00798FFE /* ipChecker.swift */,
 				5E020C4C27EA29D7009871F9 /* RomanConverter.swift */,
-				5ED3943C28BD13A900798FFE /* nfc.swift */,
 				5E47B19A27F1F3F4008FD3C0 /* Counter.swift */,
 				5EDFF1DF27E74572005BBA3C /* RandomNumber.swift */,
 				5EDFF1E527E76D34005BBA3C /* LiveClock.swift */,
@@ -442,7 +439,6 @@
 				5EDFF1E027E74572005BBA3C /* RandomNumber.swift in Sources */,
 				5ECEBEC72802E0F80096E5A5 /* ColorPicker.swift in Sources */,
 				5EC7B22827D7978200699FD3 /* Persistence.swift in Sources */,
-				5ED3943D28BD13A900798FFE /* nfc.swift in Sources */,
 				5E47B19B27F1F3F4008FD3C0 /* Counter.swift in Sources */,
 				5E0AA80A2837BFB7006CD0EA /* IconNames.swift in Sources */,
 				5EC7B22127D7978100699FD3 /* ContentView.swift in Sources */,

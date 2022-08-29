@@ -142,11 +142,11 @@ struct ContentView: View {
             "title": NSLocalizedString("IP-Checker", comment: "Menu item")
         ],
         //        Future Version
-                [
-                    "view": "nfc",
-                    "icon": "wave.3.forward",
-                    "title": "NFC Editor"
-                ]
+//                [
+//                    "view": "nfc",
+//                    "icon": "wave.3.forward",
+//                    "title": "NFC Editor"
+//                ]
         //        [
         //            "view": "unit",
         //            "icon": "ruler",
@@ -183,8 +183,8 @@ struct ContentView: View {
                             BodyMassIndex()
                         case "ipChecker":
                             ipChecker()
-                        case "nfc":
-                            nfc()
+//                        case "nfc":
+//                            nfc()
                         default:
                             Text("ERROR - Tool not found!\nPlease report this bug.")
                         }
