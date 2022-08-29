@@ -118,20 +118,6 @@ struct BodyMassIndex: View {
         
         .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
         .navigationTitle("BMI")
-//        .onAppear(){
-//            if(defaults.valueExists(forKey: "bmiHeight")){
-//                height = defaults.string(forKey: "bmiHeight")!
-//            }
-//            if(defaults.valueExists(forKey: "bmiWeight")){
-//                weight = defaults.string(forKey: "bmiWeight")!
-//            }
-//            if(defaults.valueExists(forKey: "bmiHeightD")){
-//                h = defaults.double(forKey: "bmiHeightD")
-//            }
-//            if(defaults.valueExists(forKey: "bmiWeightD")){
-//                w = defaults.double(forKey: "bmiWeightD")
-//            }
-//        }
     
     }
     

@@ -135,13 +135,18 @@ struct ContentView: View {
             "view": "bmi",
             "icon": "person.fill.checkmark",
             "title": NSLocalizedString("BMI", comment: "Menu item")
-        ]
+        ],
+        [
+            "view": "ipChecker",
+            "icon": "ellipsis.rectangle",
+            "title": NSLocalizedString("IP-Checker", comment: "Menu item")
+        ],
         //        Future Version
-        //        [
-        //            "view": "nfcTools",
-        //            "icon": "wave.3.forward",
-        //            "title": "NFC Tools"
-        //        ],
+                [
+                    "view": "nfc",
+                    "icon": "wave.3.forward",
+                    "title": "NFC Editor"
+                ]
         //        [
         //            "view": "unit",
         //            "icon": "ruler",
@@ -176,6 +181,10 @@ struct ContentView: View {
                             ColorPickerView()
                         case "bmi":
                             BodyMassIndex()
+                        case "ipChecker":
+                            ipChecker()
+                        case "nfc":
+                            nfc()
                         default:
                             Text("ERROR - Tool not found!\nPlease report this bug.")
                         }
