@@ -2,8 +2,8 @@ import SwiftUI
 import RomanNumeralKit
 
 struct RomanConverter: View {
-    @State var arabic = ""
-    @State var roman = ""
+    @AppStorage("romanArabic") var arabic = ""
+    @AppStorage("romanRoman") var roman = ""
     @State var alert:Bool = false
     var body: some View {
         let arabicBinding = Binding<String>(get: {

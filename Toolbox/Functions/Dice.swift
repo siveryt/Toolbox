@@ -126,7 +126,7 @@ struct DiceView: View {
         .onTapGesture {
             roll()
         }
-        .padding(/*@START_MENU_TOKEN@*/.all, 30.0/*@END_MENU_TOKEN@*/)
+        .padding(.all, 50.0)
         .frame(maxWidth: 500)
 
         .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
