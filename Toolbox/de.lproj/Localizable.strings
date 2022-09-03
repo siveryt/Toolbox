@@ -19,9 +19,6 @@
 /* No comment provided by engineer. */
 "Colorcodes" = "Farbcodes";
 
-/* No comment provided by engineer. */
-"Content" = "Inhalt";
-
 /* Copy toast */
 "Copied" = "Kopiert";
 
@@ -104,6 +101,9 @@
 "Live Clock" = "Live Uhr";
 
 /* No comment provided by engineer. */
+"Mailing-List" = "Mailing-Liste";
+
+/* No comment provided by engineer. */
 "Months" = "Monate";
 
 /* No comment provided by engineer. */
@@ -135,6 +135,9 @@
 
 /* No comment provided by engineer. */
 "Obese" = "Fettleibig";
+
+/* No comment provided by engineer. */
+"Open AppStore" = "AppStore öffnen";
 
 /* No comment provided by engineer. */
 "OpenSource-Licenses" = "OpenSource-Lizenzen";
@@ -198,6 +201,9 @@
 
 /* No comment provided by engineer. */
 "Subject" = "Betreff";
+
+/* No comment provided by engineer. */
+"Support the development" = "Unterstütze die Entwicklung";
 
 /* No comment provided by engineer. */
 "To:" = "Bis:";
