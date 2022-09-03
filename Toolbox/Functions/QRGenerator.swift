@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import QRCode
 import CoreImage.CIFilterBuiltins
 
 enum qrTypes {
