@@ -7,6 +7,7 @@
 
 import SwiftUI
 import QRCode
+import CoreImage.CIFilterBuiltins
 
 enum qrTypes {
     case text, url, wifi, mail
@@ -18,7 +19,25 @@ enum wifiEnc: String {
     case nopassword = "nopass"
 }
 
+
+
 struct QRGenerator: View {
+    
+    let context = CIContext()
+    let filter = CIFilter.qrCodeGenerator()
+    
+    
+    func generateQRCode(from string: String) -> UIImage {
+        filter.message = Data(string.utf8)
+        
+        if let outputImage = filter.outputImage?.transformed(by: CGAffineTransform(scaleX: 10.0, y: 10.0)) {
+            if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
+                return UIImage(cgImage: cgimg)
+            }
+        }
+        
+        return UIImage(systemName: "xmark.circle") ?? UIImage()
+    }
     
     @State private var qrType: qrTypes = .url
     @State var text = ""
@@ -96,64 +115,42 @@ struct QRGenerator: View {
 
             switch qrType {
             case .text:
-                Image(uiImage: try! (QRCode(string: text,
-                                            size: CGSize(width: 100, height: 100),
-                                            scale: 1.0,
-                                            inputCorrection: .quartile)?.image())!)
+                Image(uiImage: generateQRCode(from: text))
                 .interpolation(.none)
                     .resizable()
                     .scaledToFit()
                     .onTapGesture {
-                        shareFromView(shareItem: [try! (QRCode(string: text,
-                                                        size: CGSize(width: 1000, height: 1000),
-                                                        scale: 1.0,
-                                                        inputCorrection: .quartile)?.image())!])
+                        shareFromView(shareItem: [generateQRCode(from: text)])
 
                     }
                     
             case .wifi:
-                Image(uiImage: try! (QRCode(string: "WIFI:T:\(wifiTYPE);S:\(wifiSSID);P:\(wifiPASSWORD);H:\(String(wifiHIDDEN));",
-                                            size: CGSize(width: 100, height: 100),
-                                            scale: 1.0,inputCorrection: .quartile)?.image())!)
+                Image(uiImage: generateQRCode(from: "WIFI:T:\(wifiTYPE);S:\(wifiSSID);P:\(wifiPASSWORD);H:\(String(wifiHIDDEN));"))
                 .interpolation(.none)
                     .resizable()
                     .scaledToFit()
                     .onTapGesture {
 
-                        shareFromView(shareItem: [try! (QRCode(string: "WIFI:T:\(wifiTYPE);S:\(wifiSSID);P:\(wifiPASSWORD);H:\(String(wifiHIDDEN));",
-                                                               size: CGSize(width: 100, height: 100),
-                                                               scale: 1.0,inputCorrection: .quartile)?.image())!])
+                        shareFromView(shareItem: [generateQRCode(from: "WIFI:T:\(wifiTYPE);S:\(wifiSSID);P:\(wifiPASSWORD);H:\(String(wifiHIDDEN));")])
 
                     }
             case .url:
-                Image(uiImage: try! (QRCode(url: URL(string: url) ?? URL(string: "http://toolbox.sivery.de")!,
-                                            size: CGSize(width: 100, height: 100),
-                                            scale: 1.0,
-                                            inputCorrection: .quartile)?.image())!)
+                Image(uiImage: generateQRCode(from: url))
                 .interpolation(.none)
                     .resizable()
                     .scaledToFit()
                     .onTapGesture {
                         
-                        shareFromView(shareItem: [try! (QRCode(url: URL(string: url) ?? URL(string: "http://toolbox.sivery.de")!,
-                                                            size: CGSize(width: 1000, height: 1000),
-                                                            scale: 1.0,
-                                                            inputCorrection: .quartile)?.image())!])
+                        shareFromView(shareItem: [generateQRCode(from: url)])
 
                     }
             case .mail:
-                Image(uiImage: try! (QRCode(url: URL(string: "MATMSG:TO:\(mailReceiver);SUB:\(mailSubject);BODY:;;") ?? URL(string: "http://toolbox.sivery.de")!,
-                                            size: CGSize(width: 100, height: 100),
-                                            scale: 1.0,
-                                            inputCorrection: .quartile)?.image())!)
+                Image(uiImage: generateQRCode(from: "MATMSG:TO:\(mailReceiver);SUB:\(mailSubject);BODY:;;"))
                 .interpolation(.none)
                     .resizable()
                     .scaledToFit()
                     .onTapGesture {
-                        shareFromView(shareItem: [try! (QRCode(url: URL(string: "MATMSG:TO:\(mailReceiver);SUB:\(mailSubject);BODY:;;") ?? URL(string: "http://toolbox.sivery.de")!,
-                                                            size: CGSize(width: 1000, height: 1000),
-                                                            scale: 1.0,
-                                                            inputCorrection: .quartile)?.image())!])
+                        shareFromView(shareItem: [generateQRCode(from: "MATMSG:TO:\(mailReceiver);SUB:\(mailSubject);BODY:;;")])
 
                     }
             }
@@ -161,7 +158,20 @@ struct QRGenerator: View {
 
 
         }
-        
+        .navigationBarItems(trailing:
+                                Button(action: {
+            switch qrType {
+            case .text:
+                shareFromView(shareItem: [generateQRCode(from: text)])
+            case .wifi:
+                shareFromView(shareItem: [generateQRCode(from: "WIFI:T:\(wifiTYPE);S:\(wifiSSID);P:\(wifiPASSWORD);H:\(String(wifiHIDDEN));")])
+            case .url:
+                shareFromView(shareItem: [generateQRCode(from: url)])
+            case .mail:
+                shareFromView(shareItem: [generateQRCode(from: "MATMSG:TO:\(mailReceiver);SUB:\(mailSubject);BODY:;;")])
+            }
+        }, label: {Image(systemName: "square.and.arrow.up")})
+        )
         .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
         .navigationTitle("QR-Generator")
         

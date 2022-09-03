@@ -132,7 +132,7 @@ struct ContentView: View {
             "title": NSLocalizedString("Color Picker", comment: "Menu item")
         ],
         [
-            "view": "bmi",
+            "view": "BodyMassIndex",
             "icon": "person.fill.checkmark",
             "title": NSLocalizedString("BMI", comment: "Menu item")
         ],
@@ -179,7 +179,7 @@ struct ContentView: View {
                             QRGenerator()
                         case "colorPicker":
                             ColorPickerView()
-                        case "bmi":
+                        case "BodyMassIndex":
                             BodyMassIndex()
                         case "ipChecker":
                             ipChecker()
@@ -258,71 +258,84 @@ struct infoView: View {
     @State var deleteAlert = false
     
     var body: some View {
-            List {
-                NavigationLink(destination: infoVersion()){
-                    Label("Version", systemImage: "info")
+        List {
+            Section {
+            NavigationLink(destination: infoVersion()){
+                Label("Version", systemImage: "info")
+            }
+            
+            NavigationLink(destination: appIcon().environmentObject(IconNames())) {
+                Label("App Icon", systemImage: "square")
+            }
+            
+            // TODO: After AppStore Enrollment:
+            //            NavigationLink(destination: info()){
+            //                Label("Spenden", systemImage: "suit.heart") //Localization europe: eurosign.circle
+            //            }
+            Button(action: {
+                if let url = URL(string: "http://toolbox.sivery.de") {
+                    UIApplication.shared.open(url)
                 }
-                
-                NavigationLink(destination: appIcon().environmentObject(IconNames())) {
-                    Label("App Icon", systemImage: "square")
+            }) {
+                Label("Website", systemImage: "globe")
+            }
+            .tint(.primary)
+            
+            
+            
+            Button(action: {
+                if let url = URL(string: "mailto:toolbox@sivery.de") {
+                    UIApplication.shared.open(url)
                 }
-                
-                // TODO: After AppStore Enrollment:
-                //            NavigationLink(destination: info()){
-                //                Label("Spenden", systemImage: "suit.heart") //Localization europe: eurosign.circle
-                //            }
-                Button(action: {
-                    if let url = URL(string: "http://toolbox.sivery.de") {
-                        UIApplication.shared.open(url)
-                    }
-                }) {
-                    Label("Website", systemImage: "globe")
+            }) {
+                Label("Feedback", systemImage: "mail")
+            }
+            .tint(.primary)
+            
+            Button(action: {
+                if let url = URL(string: "https://itunes.apple.com/app/id1638758005?action=write-review") {
+                    UIApplication.shared.open(url)
                 }
-                .tint(.primary)
-                
-                
-                
-                Button(action: {
-                    if let url = URL(string: "mailto:toolbox@sivery.de") {
-                        UIApplication.shared.open(url)
-                    }
-                }) {
-                    Label("Feedback", systemImage: "mail")
+            }) {
+                Label("Rate App", systemImage: "star")
+            }
+            .tint(.primary)
+            
+            Button(action: {
+                if let url = URL(string: "http://mailing.sivery.de/subscription/form") {
+                    UIApplication.shared.open(url)
                 }
-                .tint(.primary)
-                
-                Button(action: {
-                    if let url = URL(string: "https://itunes.apple.com/app/id1638758005?action=write-review") {
-                        UIApplication.shared.open(url)
-                    }
-                }) {
-                    Label("Rate App", systemImage: "star")
-                }
-                .tint(.primary)
-                
-                Button(action: {
-                    if let url = URL(string: "http://mailing.sivery.de/subscription/form") {
-                        UIApplication.shared.open(url)
-                    }
-                }) {
-                    Label("Mailing-List", systemImage: "mail.stack")
-                }
-                .tint(.primary)
-                
-                
-                Button(action: {
-                    shareFromSheet(shareItem: [URL(string: "http://toolbox.sivery.de/download")!])
-                }) {
-                    Label("Share", systemImage: "square.and.arrow.up")
-                }
-                .tint(.primary)
-                
-                Button(action: {
-                    deleteAlert = true
-                }) {
-                    Label("Delete Data", systemImage: "trash")
-                }
-                .tint(.primary)
+            }) {
+                Label("Mailing-List", systemImage: "mail.stack")
+            }
+            .tint(.primary)
+            
+            
+            Button(action: {
+                shareFromSheet(shareItem: [URL(string: "http://toolbox.sivery.de/download")!])
+            }) {
+                Label("Share", systemImage: "square.and.arrow.up")
+            }
+            .tint(.primary)
+            
+                            Button(action: {
+                                if let url = URL(string: "http://toolbox.sivery.de/support") {
+                                    UIApplication.shared.open(url)
+                                }
+                            }) {
+                                Label("Support the development", systemImage: "heart")
+                            }
+                            .tint(.primary)
+            
+            
+            
+            Button(action: {
+                deleteAlert = true
+            }) {
+                Label("Delete Data", systemImage: "trash")
+            }
+            .tint(.primary)
+        }
                 
                 
                 Section{
@@ -400,7 +413,7 @@ struct infoVersion: View {
                 HStack{
                     Text("Last update")
                     Spacer()
-                    Text("29-08-2022")
+                    Text("1-09-2022")
                 }
                 
             }

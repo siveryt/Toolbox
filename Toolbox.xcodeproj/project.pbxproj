@@ -33,7 +33,6 @@
 		5EB6030628B22C1B00133561 /* ToastSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5EB6030528B22C1B00133561 /* ToastSwiftUI */; };
 		5EB6469A280580FA000D4243 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5EB64699280580FA000D4243 /* Settings.bundle */; };
 		5EB7897727F9CCA900F07140 /* QRGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB7897627F9CCA900F07140 /* QRGenerator.swift */; };
-		5EB7897A27F9CD2000F07140 /* QRCode in Frameworks */ = {isa = PBXBuildFile; productRef = 5EB7897927F9CD2000F07140 /* QRCode */; };
 		5EC7B21F27D7978100699FD3 /* ToolboxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC7B21E27D7978100699FD3 /* ToolboxApp.swift */; };
 		5EC7B22127D7978100699FD3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC7B22027D7978100699FD3 /* ContentView.swift */; };
 		5EC7B22327D7978200699FD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EC7B22227D7978200699FD3 /* Assets.xcassets */; };
@@ -128,7 +127,6 @@
 				5E020C5327EA2A59009871F9 /* RomanNumeralKit in Frameworks */,
 				5E528A9027E2379F00B2AE01 /* Haptica in Frameworks */,
 				5EB6030628B22C1B00133561 /* ToastSwiftUI in Frameworks */,
-				5EB7897A27F9CD2000F07140 /* QRCode in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,7 +291,6 @@
 			packageProductDependencies = (
 				5E528A8F27E2379F00B2AE01 /* Haptica */,
 				5E020C5227EA2A59009871F9 /* RomanNumeralKit */,
-				5EB7897927F9CD2000F07140 /* QRCode */,
 				5EB6030528B22C1B00133561 /* ToastSwiftUI */,
 			);
 			productName = Toolbox;
@@ -372,7 +369,6 @@
 			packageReferences = (
 				5E528A8E27E2379F00B2AE01 /* XCRemoteSwiftPackageReference "Haptica" */,
 				5E020C5127EA2A59009871F9 /* XCRemoteSwiftPackageReference "RomanNumeralKit" */,
-				5EB7897827F9CD2000F07140 /* XCRemoteSwiftPackageReference "QRCode" */,
 				5EB6030428B22C1B00133561 /* XCRemoteSwiftPackageReference "ToastSwiftUI" */,
 			);
 			productRefGroup = 5EC7B21C27D7978100699FD3 /* Products */;
@@ -640,7 +636,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = de.sivery.toolbox;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -675,7 +671,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = de.sivery.toolbox;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -829,14 +825,6 @@
 				kind = branch;
 			};
 		};
-		5EB7897827F9CD2000F07140 /* XCRemoteSwiftPackageReference "QRCode" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/dmrschmidt/QRCode";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -854,11 +842,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5EB6030428B22C1B00133561 /* XCRemoteSwiftPackageReference "ToastSwiftUI" */;
 			productName = ToastSwiftUI;
-		};
-		5EB7897927F9CD2000F07140 /* QRCode */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5EB7897827F9CD2000F07140 /* XCRemoteSwiftPackageReference "QRCode" */;
-			productName = QRCode;
 		};
 /* End XCSwiftPackageProductDependency section */
 

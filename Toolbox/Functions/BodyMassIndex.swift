@@ -138,4 +138,4 @@ extension Double {
     }
 }
 
-// BMI Infos: https://www.freebmicalculator.net/calculate-bmi.php
+/// BMI Infos: https://www.freebmicalculator.net/calculate-bmi.php
