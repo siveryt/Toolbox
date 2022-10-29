@@ -363,7 +363,16 @@ struct infoView: View {
                             UIApplication.shared.open(privacy, options: [:], completionHandler: nil)
                         }
                     }) {
-                        Label("Privacy Policy", systemImage: "person.fill")
+                        Label("Privacy Policy", systemImage: "lock")
+                    }
+                    .tint(.primary)
+                    
+                    Button(action: {
+                        if let privacy = URL(string: "http://toolbox.sivery.de/contribute.html") {
+                            UIApplication.shared.open(privacy, options: [:], completionHandler: nil)
+                        }
+                    }) {
+                        Label("Contribute", systemImage: "person.3")
                     }
                     .tint(.primary)
                     
