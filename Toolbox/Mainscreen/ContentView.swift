@@ -143,7 +143,7 @@ struct ContentView: View {
         ],
         [
             "view": "ping",
-            "icon": "bolt.horizontal  ",
+            "icon": "bolt.horizontal",
             "title": NSLocalizedString("Ping", comment: "Menu item")
         ],
         //        eventually in Future Version
@@ -250,7 +250,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        infoView().previewDevice("iPhone 13").environment(\.managedObjectContext, PersistenceController.preview.container.viewContext).environmentObject(IconNames())
+        infoView().previewDevice("iPhone 13").environmentObject(IconNames())
     }
 }
 

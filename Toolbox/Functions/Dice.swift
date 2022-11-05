@@ -30,7 +30,7 @@ extension Array: RawRepresentable where Element: Codable {
 
 struct Dice_Previews: PreviewProvider {
     static var previews: some View {
-        DiceView().previewDevice("iPhone 13").environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        DiceView().previewDevice("iPhone 13")
     }
 }
 

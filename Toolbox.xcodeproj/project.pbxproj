@@ -55,8 +55,6 @@
 		5EDFF1E027E74572005BBA3C /* RandomNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDFF1DF27E74572005BBA3C /* RandomNumber.swift */; };
 		5EDFF1E627E76D34005BBA3C /* LiveClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDFF1E527E76D34005BBA3C /* LiveClock.swift */; };
 		5EDFF1E927E7AE4D005BBA3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EDFF1E827E7AE4D005BBA3C /* LaunchScreen.storyboard */; };
-		5EEE76AD2916865B0073CED4 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC7B22727D7978200699FD3 /* Persistence.swift */; };
-		5EEE76B0291686A80073CED4 /* Toolbox.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5EEE76AE291686A80073CED4 /* Toolbox.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,7 +96,6 @@
 		5EC7B22027D7978100699FD3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5EC7B22227D7978200699FD3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5EC7B22527D7978200699FD3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		5EC7B22727D7978200699FD3 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		5EC7B24D27D797E100699FD3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5EC7B24E27D79D5400699FD3 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		5EC7B24F27D79DDC00699FD3 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -111,7 +108,6 @@
 		5EDFF1DF27E74572005BBA3C /* RandomNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNumber.swift; sourceTree = "<group>"; };
 		5EDFF1E527E76D34005BBA3C /* LiveClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveClock.swift; sourceTree = "<group>"; };
 		5EDFF1E827E7AE4D005BBA3C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		5EEE76AF291686A80073CED4 /* Toolbox.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Toolbox.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,10 +233,8 @@
 				5EDFF1E727E7715E005BBA3C /* Functions */,
 				5E64E8B82817179100294633 /* Localizable.strings */,
 				5EC7B21E27D7978100699FD3 /* ToolboxApp.swift */,
-				5EC7B22727D7978200699FD3 /* Persistence.swift */,
 				5E0AA7F02837BA6D006CD0EA /* Icons */,
 				5EDFF1E827E7AE4D005BBA3C /* LaunchScreen.storyboard */,
-				5EEE76AE291686A80073CED4 /* Toolbox.xcdatamodeld */,
 				5EB64699280580FA000D4243 /* Settings.bundle */,
 				5EC7B22227D7978200699FD3 /* Assets.xcassets */,
 				5EC7B22427D7978200699FD3 /* Preview Content */,
@@ -431,12 +425,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5EEE76AD2916865B0073CED4 /* Persistence.swift in Sources */,
 				5EDFF1E027E74572005BBA3C /* RandomNumber.swift in Sources */,
 				5ECEBEC72802E0F80096E5A5 /* ColorPicker.swift in Sources */,
 				5E47B19B27F1F3F4008FD3C0 /* Counter.swift in Sources */,
 				5E0AA80A2837BFB7006CD0EA /* IconNames.swift in Sources */,
-				5EEE76B0291686A80073CED4 /* Toolbox.xcdatamodeld in Sources */,
 				5EC7B22127D7978100699FD3 /* ContentView.swift in Sources */,
 				5E020C5027EA29D7009871F9 /* DateDifference.swift in Sources */,
 				5EC7B21F27D7978100699FD3 /* ToolboxApp.swift in Sources */,
@@ -817,20 +809,6 @@
 			productName = ToastSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		5EEE76AE291686A80073CED4 /* Toolbox.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				5EEE76AF291686A80073CED4 /* Toolbox.xcdatamodel */,
-			);
-			currentVersion = 5EEE76AF291686A80073CED4 /* Toolbox.xcdatamodel */;
-			name = Toolbox.xcdatamodeld;
-			path = "../../../../../../../Downloads/Toolbox-main/Toolbox/Toolbox.xcdatamodeld";
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 5EC7B21327D7978100699FD3 /* Project object */;
 }
