@@ -375,7 +375,7 @@ struct infoView: View {
                     .tint(.primary)
                     
                     Button(action: {
-                        if let privacy = URL(string: "http://toolbox.sivery.de/contribute.html") {
+                        if let privacy = URL(string: "http://toolbox.sivery.de/contribution.html") {
                             UIApplication.shared.open(privacy, options: [:], completionHandler: nil)
                         }
                     }) {
