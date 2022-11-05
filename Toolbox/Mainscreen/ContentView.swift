@@ -143,7 +143,7 @@ struct ContentView: View {
         ],
         [
             "view": "ping",
-            "icon": "bolt.horizontal",
+            "icon": "bolt.horizontal  ",
             "title": NSLocalizedString("Ping", comment: "Menu item")
         ],
         //        Future Version
