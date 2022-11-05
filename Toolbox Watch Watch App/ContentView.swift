@@ -20,7 +20,7 @@ struct ContentView: View {
                     Label("Counter", systemImage: "plusminus").foregroundColor(.primary)
                 }
                 NavigationLink(destination: Random_Number()) {
-                    Label("Number", systemImage: "textformat.123")
+                    Label("Random Number", systemImage: "number").foregroundColor(.primary)
                 }
             }
             

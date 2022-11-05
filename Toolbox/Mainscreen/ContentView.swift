@@ -98,7 +98,7 @@ struct ContentView: View {
         ],
         [
             "view": "randomNumber",
-            "icon": "textformat.123",
+            "icon": "number",
             "title": NSLocalizedString("Random Number", comment: "Menu item")
         ],
         [
