@@ -24,6 +24,8 @@
 		5E1383F52915A58200CF4FAB /* SwiftUI Apple Watch Decimal Pad in Frameworks */ = {isa = PBXBuildFile; productRef = 5E1383F42915A58200CF4FAB /* SwiftUI Apple Watch Decimal Pad */; };
 		5E47B19B27F1F3F4008FD3C0 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E47B19A27F1F3F4008FD3C0 /* Counter.swift */; };
 		5E528A9027E2379F00B2AE01 /* Haptica in Frameworks */ = {isa = PBXBuildFile; productRef = 5E528A8F27E2379F00B2AE01 /* Haptica */; };
+		5E5C62082916654F004F44CC /* Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5C62072916654F004F44CC /* Ping.swift */; };
+		5E5C620B29166566004F44CC /* SwiftyPing in Frameworks */ = {isa = PBXBuildFile; productRef = 5E5C620A29166566004F44CC /* SwiftyPing */; };
 		5E64E8BA2817179100294633 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E64E8B82817179100294633 /* Localizable.strings */; };
 		5E64E8BE281718D600294633 /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 5E64E8BD281718D600294633 /* en.lproj */; };
 		5E72B597283BB91300DEAD50 /* Blueish_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E72B594283BB91200DEAD50 /* Blueish_white@2x.png */; };
@@ -93,6 +95,7 @@
 		5E1383EF29159DD800CF4FAB /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		5E1383F12915A23100CF4FAB /* Random Number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Random Number.swift"; sourceTree = "<group>"; };
 		5E47B19A27F1F3F4008FD3C0 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
+		5E5C62072916654F004F44CC /* Ping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ping.swift; sourceTree = "<group>"; };
 		5E64E8B92817179100294633 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5E64E8BD281718D600294633 /* en.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = en.lproj; sourceTree = "<group>"; };
 		5E72B594283BB91200DEAD50 /* Blueish_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blueish_white@2x.png"; sourceTree = "<group>"; };
@@ -150,6 +153,7 @@
 			files = (
 				5E020C5327EA2A59009871F9 /* RomanNumeralKit in Frameworks */,
 				5E528A9027E2379F00B2AE01 /* Haptica in Frameworks */,
+				5E5C620B29166566004F44CC /* SwiftyPing in Frameworks */,
 				5EB6030628B22C1B00133561 /* ToastSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,6 +322,7 @@
 				5ECEBECE280303A30096E5A5 /* BodyMassIndex.swift */,
 				5ECEBEC62802E0F80096E5A5 /* ColorPicker.swift */,
 				5E020C4D27EA29D7009871F9 /* DateDifference.swift */,
+				5E5C62072916654F004F44CC /* Ping.swift */,
 				5EB7897627F9CCA900F07140 /* QRGenerator.swift */,
 				5ED3943A28BD139D00798FFE /* ipChecker.swift */,
 				5E020C4C27EA29D7009871F9 /* RomanConverter.swift */,
@@ -368,6 +373,7 @@
 				5E528A8F27E2379F00B2AE01 /* Haptica */,
 				5E020C5227EA2A59009871F9 /* RomanNumeralKit */,
 				5EB6030528B22C1B00133561 /* ToastSwiftUI */,
+				5E5C620A29166566004F44CC /* SwiftyPing */,
 			);
 			productName = Toolbox;
 			productReference = 5EC7B21B27D7978100699FD3 /* Toolbox.app */;
@@ -450,6 +456,7 @@
 				5E020C5127EA2A59009871F9 /* XCRemoteSwiftPackageReference "RomanNumeralKit" */,
 				5EB6030428B22C1B00133561 /* XCRemoteSwiftPackageReference "ToastSwiftUI" */,
 				5E1383F32915A58200CF4FAB /* XCRemoteSwiftPackageReference "SwiftUI-Apple-Watch-Decimal-Pad" */,
+				5E5C620929166566004F44CC /* XCRemoteSwiftPackageReference "SwiftyPing" */,
 			);
 			productRefGroup = 5EC7B21C27D7978100699FD3 /* Products */;
 			projectDirPath = "";
@@ -545,6 +552,7 @@
 				5ED3943B28BD139D00798FFE /* ipChecker.swift in Sources */,
 				5ECEBECF280303A30096E5A5 /* BodyMassIndex.swift in Sources */,
 				5EB7897727F9CCA900F07140 /* QRGenerator.swift in Sources */,
+				5E5C62082916654F004F44CC /* Ping.swift in Sources */,
 				5E020C4F27EA29D7009871F9 /* RomanConverter.swift in Sources */,
 				5ED81C4A27E36ED500FC42E8 /* Dice.swift in Sources */,
 				5EC7B22B27D7978200699FD3 /* Toolbox.xcdatamodeld in Sources */,
@@ -998,6 +1006,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		5E5C620929166566004F44CC /* XCRemoteSwiftPackageReference "SwiftyPing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/samiyr/SwiftyPing.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		5EB6030428B22C1B00133561 /* XCRemoteSwiftPackageReference "ToastSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/huynguyencong/ToastSwiftUI.git";
@@ -1023,6 +1039,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5E528A8E27E2379F00B2AE01 /* XCRemoteSwiftPackageReference "Haptica" */;
 			productName = Haptica;
+		};
+		5E5C620A29166566004F44CC /* SwiftyPing */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5E5C620929166566004F44CC /* XCRemoteSwiftPackageReference "SwiftyPing" */;
+			productName = SwiftyPing;
 		};
 		5EB6030528B22C1B00133561 /* ToastSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;

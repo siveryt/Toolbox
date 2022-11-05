@@ -141,6 +141,11 @@ struct ContentView: View {
             "icon": "ellipsis.rectangle",
             "title": NSLocalizedString("IP-Checker", comment: "Menu item")
         ],
+        [
+            "view": "ping",
+            "icon": "bolt.horizontal",
+            "title": NSLocalizedString("Ping", comment: "Menu item")
+        ],
         //        Future Version
 //                [
 //                    "view": "nfc",
@@ -183,6 +188,8 @@ struct ContentView: View {
                             BodyMassIndex()
                         case "ipChecker":
                             ipChecker()
+                        case "ping":
+                            Ping()
 //                        case "nfc":
 //                            nfc()
                         default:
