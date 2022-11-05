@@ -31,6 +31,11 @@ struct Ping: View {
                         }
                         .disableAutocorrection(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                         .submitLabel(.go)
+                        .onReceive(NotificationCenter.default.publisher(for: UITextField.textDidBeginEditingNotification)) { obj in
+                            if let textField = obj.object as? UITextField {
+                                textField.selectedTextRange = textField.textRange(from: textField.beginningOfDocument, to: textField.endOfDocument)
+                            }
+                        }
                 }
                 Button("Again") {
                     ping()
