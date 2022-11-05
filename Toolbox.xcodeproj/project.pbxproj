@@ -39,9 +39,13 @@
 		5E72B5AF283BB9F300DEAD50 /* black@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E72B5AC283BB9F300DEAD50 /* black@1x.png */; };
 		5E72B5B0283BB9F300DEAD50 /* black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E72B5AD283BB9F300DEAD50 /* black@2x.png */; };
 		5E72B5B1283BB9F300DEAD50 /* black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E72B5AE283BB9F300DEAD50 /* black@3x.png */; };
+		5E878B692916B0190038A5E3 /* Location helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E878B682916B0190038A5E3 /* Location helper.swift */; };
+		5E878B6B2916B6B60038A5E3 /* Speed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E878B6A2916B6B60038A5E3 /* Speed.swift */; };
 		5EB6030628B22C1B00133561 /* ToastSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5EB6030528B22C1B00133561 /* ToastSwiftUI */; };
 		5EB6469A280580FA000D4243 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5EB64699280580FA000D4243 /* Settings.bundle */; };
 		5EB7897727F9CCA900F07140 /* QRGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB7897627F9CCA900F07140 /* QRGenerator.swift */; };
+		5EB9CEA62916A445009D29F4 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB9CEA52916A445009D29F4 /* Coordinates.swift */; };
+		5EB9CEA92916A595009D29F4 /* LocationProvider in Frameworks */ = {isa = PBXBuildFile; productRef = 5EB9CEA82916A595009D29F4 /* LocationProvider */; };
 		5EC602C029168A9000C7452A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5EC602BE29168A9000C7452A /* Localizable.strings */; };
 		5EC7B21F27D7978100699FD3 /* ToolboxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC7B21E27D7978100699FD3 /* ToolboxApp.swift */; };
 		5EC7B22127D7978100699FD3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC7B22027D7978100699FD3 /* ContentView.swift */; };
@@ -88,8 +92,11 @@
 		5E72B5AC283BB9F300DEAD50 /* black@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "black@1x.png"; sourceTree = "<group>"; };
 		5E72B5AD283BB9F300DEAD50 /* black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "black@2x.png"; sourceTree = "<group>"; };
 		5E72B5AE283BB9F300DEAD50 /* black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "black@3x.png"; sourceTree = "<group>"; };
+		5E878B682916B0190038A5E3 /* Location helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location helper.swift"; sourceTree = "<group>"; };
+		5E878B6A2916B6B60038A5E3 /* Speed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speed.swift; sourceTree = "<group>"; };
 		5EB64699280580FA000D4243 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		5EB7897627F9CCA900F07140 /* QRGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRGenerator.swift; sourceTree = "<group>"; };
+		5EB9CEA52916A445009D29F4 /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
 		5EC602BF29168A9000C7452A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5EC7B21B27D7978100699FD3 /* Toolbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Toolbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EC7B21E27D7978100699FD3 /* ToolboxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolboxApp.swift; sourceTree = "<group>"; };
@@ -125,6 +132,7 @@
 			files = (
 				5E020C5327EA2A59009871F9 /* RomanNumeralKit in Frameworks */,
 				5E528A9027E2379F00B2AE01 /* Haptica in Frameworks */,
+				5EB9CEA92916A595009D29F4 /* LocationProvider in Frameworks */,
 				5E5C620B29166566004F44CC /* SwiftyPing in Frameworks */,
 				5EB6030628B22C1B00133561 /* ToastSwiftUI in Frameworks */,
 			);
@@ -202,6 +210,14 @@
 			path = assets;
 			sourceTree = "<group>";
 		};
+		5E878B6C2916BF560038A5E3 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				5E878B682916B0190038A5E3 /* Location helper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		5EC7B21227D7978100699FD3 = {
 			isa = PBXGroup;
 			children = (
@@ -229,6 +245,7 @@
 		5EC7B21D27D7978100699FD3 /* Toolbox */ = {
 			isa = PBXGroup;
 			children = (
+				5E878B6C2916BF560038A5E3 /* Helper */,
 				5E26F5CE28A18DE60094D057 /* Mainscreen */,
 				5ECEBECD280303730096E5A5 /* Future Versions */,
 				5EDFF1E727E7715E005BBA3C /* Functions */,
@@ -268,6 +285,8 @@
 				5E020C4D27EA29D7009871F9 /* DateDifference.swift */,
 				5E5C62072916654F004F44CC /* Ping.swift */,
 				5EB7897627F9CCA900F07140 /* QRGenerator.swift */,
+				5E878B6A2916B6B60038A5E3 /* Speed.swift */,
+				5EB9CEA52916A445009D29F4 /* Coordinates.swift */,
 				5ED3943A28BD139D00798FFE /* ipChecker.swift */,
 				5E020C4C27EA29D7009871F9 /* RomanConverter.swift */,
 				5E47B19A27F1F3F4008FD3C0 /* Counter.swift */,
@@ -318,6 +337,7 @@
 				5E020C5227EA2A59009871F9 /* RomanNumeralKit */,
 				5EB6030528B22C1B00133561 /* ToastSwiftUI */,
 				5E5C620A29166566004F44CC /* SwiftyPing */,
+				5EB9CEA82916A595009D29F4 /* LocationProvider */,
 			);
 			productName = Toolbox;
 			productReference = 5EC7B21B27D7978100699FD3 /* Toolbox.app */;
@@ -357,6 +377,7 @@
 				5EB6030428B22C1B00133561 /* XCRemoteSwiftPackageReference "ToastSwiftUI" */,
 				5E1383F32915A58200CF4FAB /* XCRemoteSwiftPackageReference "SwiftUI-Apple-Watch-Decimal-Pad" */,
 				5E5C620929166566004F44CC /* XCRemoteSwiftPackageReference "SwiftyPing" */,
+				5EB9CEA72916A595009D29F4 /* XCRemoteSwiftPackageReference "LocationProvider" */,
 			);
 			productRefGroup = 5EC7B21C27D7978100699FD3 /* Products */;
 			projectDirPath = "";
@@ -428,12 +449,15 @@
 				5EDFF1E027E74572005BBA3C /* RandomNumber.swift in Sources */,
 				5ECEBEC72802E0F80096E5A5 /* ColorPicker.swift in Sources */,
 				5E47B19B27F1F3F4008FD3C0 /* Counter.swift in Sources */,
+				5E878B6B2916B6B60038A5E3 /* Speed.swift in Sources */,
 				5E0AA80A2837BFB7006CD0EA /* IconNames.swift in Sources */,
 				5EC7B22127D7978100699FD3 /* ContentView.swift in Sources */,
 				5E020C5027EA29D7009871F9 /* DateDifference.swift in Sources */,
 				5EC7B21F27D7978100699FD3 /* ToolboxApp.swift in Sources */,
+				5EB9CEA62916A445009D29F4 /* Coordinates.swift in Sources */,
 				5ED3943B28BD139D00798FFE /* ipChecker.swift in Sources */,
 				5ECEBECF280303A30096E5A5 /* BodyMassIndex.swift in Sources */,
+				5E878B692916B0190038A5E3 /* Location helper.swift in Sources */,
 				5EB7897727F9CCA900F07140 /* QRGenerator.swift in Sources */,
 				5E5C62082916654F004F44CC /* Ping.swift in Sources */,
 				5E020C4F27EA29D7009871F9 /* RomanConverter.swift in Sources */,
@@ -653,6 +677,9 @@
 				INFOPLIST_FILE = Toolbox/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Toolbox;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Toolbox uses you location in order to calculate you GPS coordinates and speed";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Toolbox uses you location in order to calculate you GPS coordinates and speed";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Toolbox uses you location in order to calculate you GPS coordinates and speed";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -688,6 +715,9 @@
 				INFOPLIST_FILE = Toolbox/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Toolbox;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Toolbox uses you location in order to calculate you GPS coordinates and speed";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Toolbox uses you location in order to calculate you GPS coordinates and speed";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Toolbox uses you location in order to calculate you GPS coordinates and speed";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -781,6 +811,14 @@
 				kind = branch;
 			};
 		};
+		5EB9CEA72916A595009D29F4 /* XCRemoteSwiftPackageReference "LocationProvider" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/himbeles/LocationProvider";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -808,6 +846,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5EB6030428B22C1B00133561 /* XCRemoteSwiftPackageReference "ToastSwiftUI" */;
 			productName = ToastSwiftUI;
+		};
+		5EB9CEA82916A595009D29F4 /* LocationProvider */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5EB9CEA72916A595009D29F4 /* XCRemoteSwiftPackageReference "LocationProvider" */;
+			productName = LocationProvider;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

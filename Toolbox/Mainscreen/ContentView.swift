@@ -146,6 +146,16 @@ struct ContentView: View {
             "icon": "bolt.horizontal",
             "title": NSLocalizedString("Ping", comment: "Menu item")
         ],
+        [
+            "view": "coords",
+            "icon": "location",
+            "title": NSLocalizedString("Coordinates", comment: "Menu item")
+        ],
+        [
+            "view": "speed",
+            "icon": "speedometer",
+            "title": NSLocalizedString("Speed", comment: "Menu item")
+        ],
         //        eventually in Future Version
 //                [
 //                    "view": "nfc",
@@ -190,6 +200,10 @@ struct ContentView: View {
                             ipChecker()
                         case "ping":
                             Ping()
+                        case "coords":
+                            Coordinates()
+                        case "speed":
+                            Speed ()
 //                        case "nfc":
 //                            nfc()
                         default:
