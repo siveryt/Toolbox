@@ -1,4 +1,40 @@
 /* No comment provided by engineer. */
+"-" = "-";
+
+/* No comment provided by engineer. */
+"%@" = "%@";
+
+/* No comment provided by engineer. */
+"+" = "+";
+
+/* No comment provided by engineer. */
+"1" = "1";
+
+/* No comment provided by engineer. */
+"4" = "4";
+
+/* No comment provided by engineer. */
+"6" = "6";
+
+/* No comment provided by engineer. */
+"8" = "8";
+
+/* No comment provided by engineer. */
+"12" = "12";
+
+/* No comment provided by engineer. */
+"2022" = "2022";
+
+/* No comment provided by engineer. */
+"12345678" = "12345678";
+
+/* No comment provided by engineer. */
+"Again" = "Erneut";
+
+/* No comment provided by engineer. */
+"App Icon" = "App Icon";
+
+/* No comment provided by engineer. */
 "Arabic" = "Arabisch";
 
 /* No comment provided by engineer. */
@@ -7,17 +43,26 @@
 /* No comment provided by engineer. */
 "Are you sure, you want to reset the counter?" = "Bist du dir sicher, dass du den Zähler zurücksetzen möchtest?";
 
+/* Menu item */
+"BMI" = "BMI";
+
 /* No comment provided by engineer. */
 "Check again" = "Erneut abfragen";
 
 /* No comment provided by engineer. */
 "Choose color" = "Wähle Farbe";
 
+/* No comment provided by engineer. */
+"cm" = "cm";
+
 /* Menu item */
 "Color Picker" = "Farbwähler";
 
 /* No comment provided by engineer. */
 "Colorcodes" = "Farbcodes";
+
+/* No comment provided by engineer. */
+"Contribute" = "Beitragen";
 
 /* Copy toast */
 "Copied" = "Kopiert";
@@ -55,6 +100,9 @@
 /* No comment provided by engineer. */
 "Display" = "Anzeige";
 
+/* No comment provided by engineer. */
+"Domain" = "Domain";
+
 /* Menu item */
 "Domain Resolver" = "Domain auflösen";
 
@@ -74,6 +122,9 @@
 "ERROR - Tool not found!\nPlease report this bug." = "FEHLER - Tool nicht gefunden! Bitte melde diesen Fehler.";
 
 /* No comment provided by engineer. */
+"Feedback" = "Feedback";
+
+/* No comment provided by engineer. */
 "From:" = "Von:";
 
 /* No comment provided by engineer. */
@@ -89,19 +140,40 @@
 "Hidden" = "Versteckt";
 
 /* No comment provided by engineer. */
+"Host" = "Host";
+
+/* No comment provided by engineer. */
 "inch" = "Zoll";
 
 /* Menu item */
 "IP-Checker" = "IP-Adresse";
 
 /* No comment provided by engineer. */
+"kg" = "kg";
+
+/* No comment provided by engineer. */
 "Last update" = "Letztes Update";
+
+/* No comment provided by engineer. */
+"lb" = "lb";
 
 /* Menu item */
 "Live Clock" = "Live Uhr";
 
 /* No comment provided by engineer. */
+"Made with ❤️ by Sivery" = "Made with ❤️ by Sivery";
+
+/* No comment provided by engineer. */
+"Mail" = "Mail";
+
+/* No comment provided by engineer. */
 "Mailing-List" = "Mailing-Liste";
+
+/* No comment provided by engineer. */
+"Max" = "Max";
+
+/* No comment provided by engineer. */
+"MMXXII" = "MMXXII";
 
 /* No comment provided by engineer. */
 "Months" = "Monate";
@@ -120,6 +192,9 @@
 
 /* No comment provided by engineer. */
 "No Encryption" = "Keine Verschlüsselung";
+
+/* No comment provided by engineer. */
+"None" = "Keine";
 
 /* No comment provided by engineer. */
 "Normal weight" = "Normalgewichtig";
@@ -148,11 +223,20 @@
 /* No comment provided by engineer. */
 "Password" = "Passwort";
 
+/* Menu item */
+"Ping" = "Ping";
+
 /* No comment provided by engineer. */
 "Privacy Policy" = "Datenschutzrichtlinie";
 
 /* No comment provided by engineer. */
 "QR-Code content" = "QR-Code Inhalt";
+
+/* Menu item */
+"QR-Code Generator" = "QR-Code Generator";
+
+/* No comment provided by engineer. */
+"QR-Generator" = "QR Generator";
 
 /* Menu item */
 "Random Number" = "Zufällige Zahl";
@@ -176,6 +260,12 @@
 "Result:" = "Ergebnis:";
 
 /* No comment provided by engineer. */
+"RGB" = "RGB";
+
+/* No comment provided by engineer. */
+"RGBA" = "RGBA";
+
+/* No comment provided by engineer. */
 "Roman" = "Römisch";
 
 /* Menu item */
@@ -197,6 +287,9 @@
 "Sides:" = "Seiten:";
 
 /* No comment provided by engineer. */
+"SSID" = "SSID";
+
+/* No comment provided by engineer. */
 "Start Date:" = "Startdatum:";
 
 /* No comment provided by engineer. */
@@ -206,7 +299,22 @@
 "Support the development" = "Unterstütze die Entwicklung";
 
 /* No comment provided by engineer. */
+"Text" = "Text";
+
+/* No comment provided by engineer. */
+"Time" = "Zeit";
+
+/* No comment provided by engineer. */
 "To:" = "Bis:";
+
+/* No comment provided by engineer. */
+"Toolbox" = "Toolbox";
+
+/* No comment provided by engineer. */
+"toolbox.sivery.de" = "toolbox.sivery.de";
+
+/* No comment provided by engineer. */
+"toolbox@sivery.de" = "toolbox@sivery.de";
 
 /* No comment provided by engineer. */
 "Type" = "Typ";
@@ -215,7 +323,19 @@
 "Underweight" = "Untergewichtig";
 
 /* No comment provided by engineer. */
+"URL" = "URL";
+
+/* No comment provided by engineer. */
+"Version" = "Version";
+
+/* No comment provided by engineer. */
+"Website" = "Website";
+
+/* No comment provided by engineer. */
 "Weight" = "Gewicht";
+
+/* No comment provided by engineer. */
+"WEP" = "WEP";
 
 /* No comment provided by engineer. */
 "Wi-Fi" = "WLAN";

@@ -26,7 +26,6 @@
 		5E528A9027E2379F00B2AE01 /* Haptica in Frameworks */ = {isa = PBXBuildFile; productRef = 5E528A8F27E2379F00B2AE01 /* Haptica */; };
 		5E5C62082916654F004F44CC /* Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5C62072916654F004F44CC /* Ping.swift */; };
 		5E5C620B29166566004F44CC /* SwiftyPing in Frameworks */ = {isa = PBXBuildFile; productRef = 5E5C620A29166566004F44CC /* SwiftyPing */; };
-		5E64E8BA2817179100294633 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E64E8B82817179100294633 /* Localizable.strings */; };
 		5E64E8BE281718D600294633 /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 5E64E8BD281718D600294633 /* en.lproj */; };
 		5E72B597283BB91300DEAD50 /* Blueish_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E72B594283BB91200DEAD50 /* Blueish_white@2x.png */; };
 		5E72B598283BB91300DEAD50 /* Blueish_white@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E72B595283BB91200DEAD50 /* Blueish_white@1x.png */; };
@@ -43,6 +42,7 @@
 		5EB6030628B22C1B00133561 /* ToastSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5EB6030528B22C1B00133561 /* ToastSwiftUI */; };
 		5EB6469A280580FA000D4243 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5EB64699280580FA000D4243 /* Settings.bundle */; };
 		5EB7897727F9CCA900F07140 /* QRGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB7897627F9CCA900F07140 /* QRGenerator.swift */; };
+		5EC602C029168A9000C7452A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5EC602BE29168A9000C7452A /* Localizable.strings */; };
 		5EC7B21F27D7978100699FD3 /* ToolboxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC7B21E27D7978100699FD3 /* ToolboxApp.swift */; };
 		5EC7B22127D7978100699FD3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC7B22027D7978100699FD3 /* ContentView.swift */; };
 		5EC7B22327D7978200699FD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EC7B22227D7978200699FD3 /* Assets.xcassets */; };
@@ -75,7 +75,6 @@
 		5E47B19A27F1F3F4008FD3C0 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		5E5C62072916654F004F44CC /* Ping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ping.swift; sourceTree = "<group>"; };
 		5E5C620E291681C1004F44CC /* appstore.svg */ = {isa = PBXFileReference; lastKnownFileType = text; path = appstore.svg; sourceTree = "<group>"; };
-		5E64E8B92817179100294633 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5E64E8BD281718D600294633 /* en.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = en.lproj; sourceTree = "<group>"; };
 		5E72B594283BB91200DEAD50 /* Blueish_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blueish_white@2x.png"; sourceTree = "<group>"; };
 		5E72B595283BB91200DEAD50 /* Blueish_white@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blueish_white@1x.png"; sourceTree = "<group>"; };
@@ -91,6 +90,7 @@
 		5E72B5AE283BB9F300DEAD50 /* black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "black@3x.png"; sourceTree = "<group>"; };
 		5EB64699280580FA000D4243 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		5EB7897627F9CCA900F07140 /* QRGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRGenerator.swift; sourceTree = "<group>"; };
+		5EC602BF29168A9000C7452A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5EC7B21B27D7978100699FD3 /* Toolbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Toolbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EC7B21E27D7978100699FD3 /* ToolboxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolboxApp.swift; sourceTree = "<group>"; };
 		5EC7B22027D7978100699FD3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -159,6 +159,7 @@
 		5E1383DD2915974E00CF4FAB /* Toolbox Watch Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				5EC602BE29168A9000C7452A /* Localizable.strings */,
 				5E1383DE2915974E00CF4FAB /* Toolbox_WatchApp.swift */,
 				5E1383EA29159ADE00CF4FAB /* Dice.swift */,
 				5E1383F12915A23100CF4FAB /* Random Number.swift */,
@@ -231,7 +232,6 @@
 				5E26F5CE28A18DE60094D057 /* Mainscreen */,
 				5ECEBECD280303730096E5A5 /* Future Versions */,
 				5EDFF1E727E7715E005BBA3C /* Functions */,
-				5E64E8B82817179100294633 /* Localizable.strings */,
 				5EC7B21E27D7978100699FD3 /* ToolboxApp.swift */,
 				5E0AA7F02837BA6D006CD0EA /* Icons */,
 				5EDFF1E827E7AE4D005BBA3C /* LaunchScreen.storyboard */,
@@ -374,6 +374,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E1383E62915975000CF4FAB /* Preview Assets.xcassets in Resources */,
+				5EC602C029168A9000C7452A /* Localizable.strings in Resources */,
 				5E1383E32915975000CF4FAB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -385,7 +386,6 @@
 				5E0AA8082837BF59006CD0EA /* whitegradient_red@2x.png in Resources */,
 				5E64E8BE281718D600294633 /* en.lproj in Resources */,
 				5EDFF1E927E7AE4D005BBA3C /* LaunchScreen.storyboard in Resources */,
-				5E64E8BA2817179100294633 /* Localizable.strings in Resources */,
 				5E72B598283BB91300DEAD50 /* Blueish_white@1x.png in Resources */,
 				5E72B5B1283BB9F300DEAD50 /* black@3x.png in Resources */,
 				5E72B5AB283BB9BC00DEAD50 /* whiteOnly@3x.png in Resources */,
@@ -446,12 +446,13 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		5E64E8B82817179100294633 /* Localizable.strings */ = {
+		5EC602BE29168A9000C7452A /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				5E64E8B92817179100294633 /* de */,
+				5EC602BF29168A9000C7452A /* de */,
 			);
 			name = Localizable.strings;
+			path = "../Toolbox Watch Watch App";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
