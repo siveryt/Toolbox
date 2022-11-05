@@ -146,7 +146,7 @@ struct ContentView: View {
             "icon": "bolt.horizontal  ",
             "title": NSLocalizedString("Ping", comment: "Menu item")
         ],
-        //        Future Version
+        //        eventually in Future Version
 //                [
 //                    "view": "nfc",
 //                    "icon": "wave.3.forward",
@@ -356,14 +356,6 @@ struct infoView: View {
                     }
                     .tint(.primary)
                     
-//                    Button(action: {
-//                        if let imprint = URL(string: "http://toolbox.sivery.de/imprint.html") {
-//                            UIApplication.shared.open(imprint, options: [:], completionHandler: nil)
-//                        }
-//                    }) {
-//                        Label("Imprint", systemImage: "doc.append")
-//                    }
-//                    .tint(.primary)
                     
                     Button(action: {
                         if let privacy = URL(string: "http://toolbox.sivery.de/privacy.html") {
@@ -442,10 +434,6 @@ struct infoVersion: View {
             }
             //            Text("No update available") TODO: use this with https://github.com/acarolsf/checkVersion-iOS when published
         }
-        
-        
-        
-        
         
         .navigationTitle("Version")
     }
