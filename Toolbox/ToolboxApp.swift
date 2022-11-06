@@ -39,7 +39,7 @@ extension App: WhatsNewCollectionProvider {
     var whatsNewCollection: WhatsNewCollection {
         WhatsNew(
             version: "1.2.0",
-            title: "What's New in Toolbox",
+            title: .init(stringLiteral: NSLocalizedString("What's New in Toolbox", comment: "WhatsNewKit item")),
             features: [
                 
                 .init(
