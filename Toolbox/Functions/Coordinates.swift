@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import LocationProvider
 import ToastSwiftUI
 import Haptica
 import CoreLocation
