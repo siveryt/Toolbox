@@ -7,6 +7,7 @@
 
 import SwiftUI
 import StoreKit
+import WhatsNewKit
 
 struct Tool: Identifiable {
     var id = UUID()
@@ -114,6 +115,7 @@ struct ContentView: View {
                 SKStoreReviewController.requestReview(in: currentScene)
             }
         }
+        .whatsNewSheet()
     }
     
 }

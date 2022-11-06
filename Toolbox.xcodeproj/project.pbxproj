@@ -26,6 +26,7 @@
 		5E35DBDE2917C5BD00D2FC8A /* Toolbox Watch Watch App-InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E35DBDC2917C5BD00D2FC8A /* Toolbox Watch Watch App-InfoPlist.strings */; };
 		5E35DBE12917C5BD00D2FC8A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E35DBDF2917C5BD00D2FC8A /* InfoPlist.strings */; };
 		5E35DBE42917C5BD00D2FC8A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E35DBE22917C5BD00D2FC8A /* Localizable.strings */; };
+		5E35DBE72917C62500D2FC8A /* WhatsNewKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5E35DBE62917C62500D2FC8A /* WhatsNewKit */; };
 		5E47B19B27F1F3F4008FD3C0 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E47B19A27F1F3F4008FD3C0 /* Counter.swift */; };
 		5E528A9027E2379F00B2AE01 /* Haptica in Frameworks */ = {isa = PBXBuildFile; productRef = 5E528A8F27E2379F00B2AE01 /* Haptica */; };
 		5E5C62082916654F004F44CC /* Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5C62072916654F004F44CC /* Ping.swift */; };
@@ -142,6 +143,7 @@
 			files = (
 				5E020C5327EA2A59009871F9 /* RomanNumeralKit in Frameworks */,
 				5E528A9027E2379F00B2AE01 /* Haptica in Frameworks */,
+				5E35DBE72917C62500D2FC8A /* WhatsNewKit in Frameworks */,
 				5EB9CEA92916A595009D29F4 /* LocationProvider in Frameworks */,
 				5E5C620B29166566004F44CC /* SwiftyPing in Frameworks */,
 				5EB6030628B22C1B00133561 /* ToastSwiftUI in Frameworks */,
@@ -353,6 +355,7 @@
 				5EB6030528B22C1B00133561 /* ToastSwiftUI */,
 				5E5C620A29166566004F44CC /* SwiftyPing */,
 				5EB9CEA82916A595009D29F4 /* LocationProvider */,
+				5E35DBE62917C62500D2FC8A /* WhatsNewKit */,
 			);
 			productName = Toolbox;
 			productReference = 5EC7B21B27D7978100699FD3 /* Toolbox.app */;
@@ -393,6 +396,7 @@
 				5E1383F32915A58200CF4FAB /* XCRemoteSwiftPackageReference "SwiftUI-Apple-Watch-Decimal-Pad" */,
 				5E5C620929166566004F44CC /* XCRemoteSwiftPackageReference "SwiftyPing" */,
 				5EB9CEA72916A595009D29F4 /* XCRemoteSwiftPackageReference "LocationProvider" */,
+				5E35DBE52917C62500D2FC8A /* XCRemoteSwiftPackageReference "WhatsNewKit" */,
 			);
 			productRefGroup = 5EC7B21C27D7978100699FD3 /* Products */;
 			projectDirPath = "";
@@ -832,6 +836,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		5E35DBE52917C62500D2FC8A /* XCRemoteSwiftPackageReference "WhatsNewKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SvenTiigi/WhatsNewKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		5E528A8E27E2379F00B2AE01 /* XCRemoteSwiftPackageReference "Haptica" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/efremidze/Haptica";
@@ -876,6 +888,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5E1383F32915A58200CF4FAB /* XCRemoteSwiftPackageReference "SwiftUI-Apple-Watch-Decimal-Pad" */;
 			productName = "SwiftUI Apple Watch Decimal Pad";
+		};
+		5E35DBE62917C62500D2FC8A /* WhatsNewKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5E35DBE52917C62500D2FC8A /* XCRemoteSwiftPackageReference "WhatsNewKit" */;
+			productName = WhatsNewKit;
 		};
 		5E528A8F27E2379F00B2AE01 /* Haptica */ = {
 			isa = XCSwiftPackageProductDependency;
