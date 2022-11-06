@@ -23,7 +23,7 @@ extension App: SwiftUI.App {
                 .environment(
                     \.whatsNew,
                      .init(
-                        versionStore: InMemoryWhatsNewVersionStore(),
+                        versionStore: UserDefaultsWhatsNewVersionStore(),
                         whatsNewCollection: self
                      )
                 )
