@@ -2,9 +2,6 @@
 "-" = "-";
 
 /* No comment provided by engineer. */
-"%@" = "%@";
-
-/* No comment provided by engineer. */
 "+" = "+";
 
 /* No comment provided by engineer. */
@@ -12,6 +9,9 @@
 
 /* No comment provided by engineer. */
 "4" = "4";
+
+/* No comment provided by engineer. */
+"5-11-2022" = "5-11-2022";
 
 /* No comment provided by engineer. */
 "6" = "6";
@@ -29,7 +29,13 @@
 "12345678" = "12345678";
 
 /* No comment provided by engineer. */
+"Accuracy" = "Genauigkeit";
+
+/* No comment provided by engineer. */
 "Again" = "Erneut";
+
+/* No comment provided by engineer. */
+"Altitude" = "Höhe";
 
 /* No comment provided by engineer. */
 "App Icon" = "App Icon";
@@ -63,6 +69,9 @@
 
 /* No comment provided by engineer. */
 "Contribute" = "Beitragen";
+
+/* Menu item */
+"Coordinates" = "Koordinaten";
 
 /* Copy toast */
 "Copied" = "Kopiert";
@@ -119,9 +128,6 @@
 "End Date:" = "Enddatum:";
 
 /* No comment provided by engineer. */
-"ERROR - Tool not found!\nPlease report this bug." = "FEHLER - Tool nicht gefunden! Bitte melde diesen Fehler.";
-
-/* No comment provided by engineer. */
 "Feedback" = "Feedback";
 
 /* No comment provided by engineer. */
@@ -155,10 +161,16 @@
 "Last update" = "Letztes Update";
 
 /* No comment provided by engineer. */
+"Latitude" = "Breitengrad";
+
+/* No comment provided by engineer. */
 "lb" = "lb";
 
 /* Menu item */
 "Live Clock" = "Live Uhr";
+
+/* No comment provided by engineer. */
+"Longitude" = "Längengrad";
 
 /* No comment provided by engineer. */
 "Made with ❤️ by Sivery" = "Made with ❤️ by Sivery";
@@ -213,6 +225,9 @@
 
 /* No comment provided by engineer. */
 "Open AppStore" = "AppStore öffnen";
+
+/* No comment provided by engineer. */
+"Open Settings" = "Einstellungen öffnen";
 
 /* No comment provided by engineer. */
 "OpenSource-Licenses" = "OpenSource-Lizenzen";
@@ -286,6 +301,12 @@
 /* No comment provided by engineer. */
 "Sides:" = "Seiten:";
 
+/* Menu item */
+"Speed" = "Geschwindigkeit";
+
+/* No comment provided by engineer. */
+"Speed Accuracy" = "Genauigkeit";
+
 /* No comment provided by engineer. */
 "SSID" = "SSID";
 
@@ -351,6 +372,12 @@
 
 /* No comment provided by engineer. */
 "You can't convert numbers bigger than 3999." = "Du kannst keine Zahlen größer als 3999 konvertieren.";
+
+/* No comment provided by engineer. */
+"You first have to allow Toolbox to access your location in order to see your coordinates." = "Du musst Toolbox den Zugriff auf deinen Standort erlauben, um deine Koordinaten zu sehen.";
+
+/* No comment provided by engineer. */
+"You first have to allow Toolbox to access your location in order to see your speed." = "Du musst Toolbox den Zugriff auf deinen Standort erlauben, um deine Geschwindigkeit zu sehen.";
 
 /* No comment provided by engineer. */
 "Your current IP:" = "Aktuelle IP:";

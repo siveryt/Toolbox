@@ -22,6 +22,10 @@
 		5E1383F029159DD800CF4FAB /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1383EF29159DD800CF4FAB /* Counter.swift */; };
 		5E1383F22915A23100CF4FAB /* Random Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1383F12915A23100CF4FAB /* Random Number.swift */; };
 		5E1383F52915A58200CF4FAB /* SwiftUI Apple Watch Decimal Pad in Frameworks */ = {isa = PBXBuildFile; productRef = 5E1383F42915A58200CF4FAB /* SwiftUI Apple Watch Decimal Pad */; };
+		5E35DBDB2917C5BD00D2FC8A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E35DBD92917C5BD00D2FC8A /* Localizable.strings */; };
+		5E35DBDE2917C5BD00D2FC8A /* Toolbox Watch Watch App-InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E35DBDC2917C5BD00D2FC8A /* Toolbox Watch Watch App-InfoPlist.strings */; };
+		5E35DBE12917C5BD00D2FC8A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E35DBDF2917C5BD00D2FC8A /* InfoPlist.strings */; };
+		5E35DBE42917C5BD00D2FC8A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E35DBE22917C5BD00D2FC8A /* Localizable.strings */; };
 		5E47B19B27F1F3F4008FD3C0 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E47B19A27F1F3F4008FD3C0 /* Counter.swift */; };
 		5E528A9027E2379F00B2AE01 /* Haptica in Frameworks */ = {isa = PBXBuildFile; productRef = 5E528A8F27E2379F00B2AE01 /* Haptica */; };
 		5E5C62082916654F004F44CC /* Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5C62072916654F004F44CC /* Ping.swift */; };
@@ -77,6 +81,10 @@
 		5E1383EA29159ADE00CF4FAB /* Dice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dice.swift; sourceTree = "<group>"; };
 		5E1383EF29159DD800CF4FAB /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		5E1383F12915A23100CF4FAB /* Random Number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Random Number.swift"; sourceTree = "<group>"; };
+		5E35DBDA2917C5BD00D2FC8A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5E35DBDD2917C5BD00D2FC8A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = "de.lproj/Toolbox Watch Watch App-InfoPlist.strings"; sourceTree = "<group>"; };
+		5E35DBE02917C5BD00D2FC8A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5E35DBE32917C5BD00D2FC8A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5E47B19A27F1F3F4008FD3C0 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		5E5C62072916654F004F44CC /* Ping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ping.swift; sourceTree = "<group>"; };
 		5E5C620E291681C1004F44CC /* appstore.svg */ = {isa = PBXFileReference; lastKnownFileType = text; path = appstore.svg; sourceTree = "<group>"; };
@@ -224,6 +232,9 @@
 		5EC7B21227D7978100699FD3 = {
 			isa = PBXGroup;
 			children = (
+				5E35DBE22917C5BD00D2FC8A /* Localizable.strings */,
+				5E35DBDF2917C5BD00D2FC8A /* InfoPlist.strings */,
+				5E35DBDC2917C5BD00D2FC8A /* Toolbox Watch Watch App-InfoPlist.strings */,
 				5E64E8BD281718D600294633 /* en.lproj */,
 				5EC7B24F27D79DDC00699FD3 /* .gitignore */,
 				5EC7B24E27D79D5400699FD3 /* LICENSE */,
@@ -248,6 +259,7 @@
 		5EC7B21D27D7978100699FD3 /* Toolbox */ = {
 			isa = PBXGroup;
 			children = (
+				5E35DBD92917C5BD00D2FC8A /* Localizable.strings */,
 				5E878B6C2916BF560038A5E3 /* Helper */,
 				5E26F5CE28A18DE60094D057 /* Mainscreen */,
 				5ECEBECD280303730096E5A5 /* Future Versions */,
@@ -397,7 +409,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E35DBDE2917C5BD00D2FC8A /* Toolbox Watch Watch App-InfoPlist.strings in Resources */,
 				5E1383E62915975000CF4FAB /* Preview Assets.xcassets in Resources */,
+				5E35DBDB2917C5BD00D2FC8A /* Localizable.strings in Resources */,
 				5E1383E32915975000CF4FAB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,6 +421,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E0AA8082837BF59006CD0EA /* whitegradient_red@2x.png in Resources */,
+				5E35DBE12917C5BD00D2FC8A /* InfoPlist.strings in Resources */,
 				5E64E8BE281718D600294633 /* en.lproj in Resources */,
 				5EDFF1E927E7AE4D005BBA3C /* LaunchScreen.storyboard in Resources */,
 				5E72B598283BB91300DEAD50 /* Blueish_white@1x.png in Resources */,
@@ -418,6 +433,7 @@
 				5E72B5A9283BB9BC00DEAD50 /* whiteOnly@2x.png in Resources */,
 				5E72B599283BB91300DEAD50 /* Blueish_white@3x.png in Resources */,
 				5EB6469A280580FA000D4243 /* Settings.bundle in Resources */,
+				5E35DBE42917C5BD00D2FC8A /* Localizable.strings in Resources */,
 				5E72B59D283BB94000DEAD50 /* Blueish_red@3x.png in Resources */,
 				5E72B5AF283BB9F300DEAD50 /* black@1x.png in Resources */,
 				5E0AA8062837BF59006CD0EA /* whitegradient_red@3x.png in Resources */,
@@ -472,6 +488,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5E35DBD92917C5BD00D2FC8A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5E35DBDA2917C5BD00D2FC8A /* de */,
+			);
+			name = Localizable.strings;
+			path = "../Toolbox Watch Watch App";
+			sourceTree = "<group>";
+		};
+		5E35DBDC2917C5BD00D2FC8A /* Toolbox Watch Watch App-InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5E35DBDD2917C5BD00D2FC8A /* de */,
+			);
+			name = "Toolbox Watch Watch App-InfoPlist.strings";
+			path = "Toolbox Watch Watch App";
+			sourceTree = "<group>";
+		};
+		5E35DBDF2917C5BD00D2FC8A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5E35DBE02917C5BD00D2FC8A /* de */,
+			);
+			name = InfoPlist.strings;
+			path = Toolbox;
+			sourceTree = "<group>";
+		};
+		5E35DBE22917C5BD00D2FC8A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5E35DBE32917C5BD00D2FC8A /* de */,
+			);
+			name = Localizable.strings;
+			path = Toolbox;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		5E1383E72915975000CF4FAB /* Debug */ = {

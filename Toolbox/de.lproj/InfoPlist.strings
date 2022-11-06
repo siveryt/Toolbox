@@ -1,0 +1,15 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "Toolbox";
+
+/* Bundle name */
+"CFBundleName" = "Toolbox";
+
+/* Privacy - Location Always and When In Use Usage Description */
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Toolbox benutzt deinen Standort um deine GPS Koordinaten und deine Geschwindigkeit zu berechnen";
+
+/* Privacy - Location Always Usage Description */
+"NSLocationAlwaysUsageDescription" = "Toolbox benutzt deinen Standort um deine GPS Koordinaten und deine Geschwindigkeit zu berechnen";
+
+/* Privacy - Location When In Use Usage Description */
+"NSLocationWhenInUseUsageDescription" = "Toolbox benutzt deinen Standort um deine GPS Koordinaten und deine Geschwindigkeit zu berechnen";
+
