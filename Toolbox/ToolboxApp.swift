@@ -47,51 +47,52 @@ extension App: WhatsNewCollectionProvider {
                         systemName: "person.fill",
                         foregroundColor: .purple
                     ),
-                    title: "OpenSource",
-                    subtitle: "Toolbox has gone fully OpenSource and it's source code is available through GitHub"
+                    title: .init(stringLiteral: NSLocalizedString("OpenSource", comment: "WhatsNewKit item")),
+                    subtitle: .init(stringLiteral: NSLocalizedString("Toolbox has gone fully OpenSource and it's source code is available through GitHub", comment: "WhatsNewKit item"))
                 ),
                 .init(
                     image: .init(
                         systemName: "gear.circle.fill",
                         foregroundColor: .gray
                     ),
-                    title: "Configuration",
-                    subtitle: "Reorder tools the way you like it"
+                    title: .init(stringLiteral: NSLocalizedString("Configuration", comment: "WhatsNewKit item")),
+                    subtitle: .init(stringLiteral: NSLocalizedString("Reorder tools the way you like it", comment: "WhatsNewKit item"))
                 ),
                 .init(
                     image: .init(
                         systemName: "bolt.horizontal.fill",
                         foregroundColor: .yellow
                     ),
-                    title: "Ping",
-                    subtitle: "Test the latency between you and a server"
+                    title: .init(stringLiteral: NSLocalizedString("Ping", comment: "WhatsNewKit item")),
+                    subtitle: .init(stringLiteral: NSLocalizedString("Test the latency between you and a server", comment: "WhatsNewKit item"))
                 ),
                 .init(
                     image: .init(
                         systemName: "location.fill",
                         foregroundColor: .blue
                     ),
-                    title: "Coordinates",
-                    subtitle: "Get your exact coordinates from your iPhone's GPS sensor"
+                    title: .init(stringLiteral: NSLocalizedString("Coordinates", comment: "WhatsNewKit item")),
+                    subtitle: .init(stringLiteral: NSLocalizedString("Get your exact coordinates from your iPhone's GPS sensor", comment: "WhatsNewKit item"))
                 ),
                 .init(
                     image: .init(
                         systemName: "speedometer",
                         foregroundColor: .red
                     ),
-                    title: "Speed",
-                    subtitle: "Get your current speed calculated from your GPS coordinates"
+                    title: .init(stringLiteral: NSLocalizedString("Speed", comment: "WhatsNewKit item")),
+                    subtitle: .init(stringLiteral: NSLocalizedString("Get your current speed calculated from your GPS coordinates", comment: "WhatsNewKit item"))
                 ),
                 .init(
                     image: .init(
                         systemName: "applewatch",
                         foregroundColor: .green
                     ),
-                    title: "WatchOS",
-                    subtitle: "Get some basic features onto your wrist for easy access"
+                    title: .init(stringLiteral: NSLocalizedString("WatchOS", comment: "WhatsNewKit item")),
+                    subtitle: .init(stringLiteral: NSLocalizedString("Get some basic features onto your wrist for easy access", comment: "WhatsNewKit item"))
                 )
             ],
             primaryAction: .init(
+                title: .init(stringLiteral:NSLocalizedString("Continue", comment: "WhatsNewKit item")),
                 hapticFeedback: {
                     #if os(iOS)
                     .notification(.success)
