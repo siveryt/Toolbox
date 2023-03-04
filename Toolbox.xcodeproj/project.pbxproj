@@ -27,6 +27,7 @@
 		5E35DBE12917C5BD00D2FC8A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E35DBDF2917C5BD00D2FC8A /* InfoPlist.strings */; };
 		5E35DBE42917C5BD00D2FC8A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E35DBE22917C5BD00D2FC8A /* Localizable.strings */; };
 		5E35DBE72917C62500D2FC8A /* WhatsNewKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5E35DBE62917C62500D2FC8A /* WhatsNewKit */; };
+		5E3C5DA629B3CC2B00613685 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 5E3C5DA529B3CC2B00613685 /* CodeScanner */; };
 		5E47B19B27F1F3F4008FD3C0 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E47B19A27F1F3F4008FD3C0 /* Counter.swift */; };
 		5E528A9027E2379F00B2AE01 /* Haptica in Frameworks */ = {isa = PBXBuildFile; productRef = 5E528A8F27E2379F00B2AE01 /* Haptica */; };
 		5E5C62082916654F004F44CC /* Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5C62072916654F004F44CC /* Ping.swift */; };
@@ -45,7 +46,6 @@
 		5E72B5B0283BB9F300DEAD50 /* black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E72B5AD283BB9F300DEAD50 /* black@2x.png */; };
 		5E72B5B1283BB9F300DEAD50 /* black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E72B5AE283BB9F300DEAD50 /* black@3x.png */; };
 		5E74426829B10F8B00F43CB4 /* Barcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74426729B10F8B00F43CB4 /* Barcode.swift */; };
-		5E74426B29B1100700F43CB4 /* CarBode in Frameworks */ = {isa = PBXBuildFile; productRef = 5E74426A29B1100700F43CB4 /* CarBode */; };
 		5E74427229B3787D00F43CB4 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74427129B3787D00F43CB4 /* Controller.swift */; };
 		5E878B692916B0190038A5E3 /* Location helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E878B682916B0190038A5E3 /* Location helper.swift */; };
 		5E878B6B2916B6B60038A5E3 /* Speed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E878B6A2916B6B60038A5E3 /* Speed.swift */; };
@@ -150,8 +150,8 @@
 				5E020C5327EA2A59009871F9 /* RomanNumeralKit in Frameworks */,
 				5E528A9027E2379F00B2AE01 /* Haptica in Frameworks */,
 				5E35DBE72917C62500D2FC8A /* WhatsNewKit in Frameworks */,
-				5E74426B29B1100700F43CB4 /* CarBode in Frameworks */,
 				5E5C620B29166566004F44CC /* SwiftyPing in Frameworks */,
+				5E3C5DA629B3CC2B00613685 /* CodeScanner in Frameworks */,
 				5EB6030628B22C1B00133561 /* ToastSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,7 +380,7 @@
 				5EB6030528B22C1B00133561 /* ToastSwiftUI */,
 				5E5C620A29166566004F44CC /* SwiftyPing */,
 				5E35DBE62917C62500D2FC8A /* WhatsNewKit */,
-				5E74426A29B1100700F43CB4 /* CarBode */,
+				5E3C5DA529B3CC2B00613685 /* CodeScanner */,
 			);
 			productName = Toolbox;
 			productReference = 5EC7B21B27D7978100699FD3 /* Toolbox.app */;
@@ -422,6 +422,7 @@
 				5E5C620929166566004F44CC /* XCRemoteSwiftPackageReference "SwiftyPing" */,
 				5E35DBE52917C62500D2FC8A /* XCRemoteSwiftPackageReference "WhatsNewKit" */,
 				5E74426929B1100700F43CB4 /* XCRemoteSwiftPackageReference "CarBode-Barcode-Scanner-For-SwiftUI" */,
+				5E3C5DA429B3CC2B00613685 /* XCRemoteSwiftPackageReference "CodeScanner" */,
 			);
 			productRefGroup = 5EC7B21C27D7978100699FD3 /* Products */;
 			projectDirPath = "";
@@ -876,6 +877,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		5E3C5DA429B3CC2B00613685 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		5E528A8E27E2379F00B2AE01 /* XCRemoteSwiftPackageReference "Haptica" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/efremidze/Haptica";
@@ -926,6 +935,11 @@
 			package = 5E35DBE52917C62500D2FC8A /* XCRemoteSwiftPackageReference "WhatsNewKit" */;
 			productName = WhatsNewKit;
 		};
+		5E3C5DA529B3CC2B00613685 /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5E3C5DA429B3CC2B00613685 /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
 		5E528A8F27E2379F00B2AE01 /* Haptica */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5E528A8E27E2379F00B2AE01 /* XCRemoteSwiftPackageReference "Haptica" */;
@@ -935,11 +949,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5E5C620929166566004F44CC /* XCRemoteSwiftPackageReference "SwiftyPing" */;
 			productName = SwiftyPing;
-		};
-		5E74426A29B1100700F43CB4 /* CarBode */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5E74426929B1100700F43CB4 /* XCRemoteSwiftPackageReference "CarBode-Barcode-Scanner-For-SwiftUI" */;
-			productName = CarBode;
 		};
 		5EB6030528B22C1B00133561 /* ToastSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
