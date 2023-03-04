@@ -7,12 +7,13 @@
 
 import Foundation
 import SwiftUI
+import CoreData
+
 
 struct infoView: View {
     
-    
-    
     @Environment(\.showingSheet) var showingSheet
+    @Environment(\.managedObjectContext) var managedContext
     @State var deleteAlert = false
     
     var body: some View {
@@ -140,6 +141,7 @@ struct infoView: View {
                 UserDefaults.standard.removePersistentDomain(forName: domain)
                 UserDefaults.standard.synchronize()
                 print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
+                SBDataController().resetBarcodes(context: managedContext)
             }
             )
         }
@@ -223,4 +225,5 @@ struct appIcon: View {
         .navigationTitle("App Icon")
     }
 }
+
 

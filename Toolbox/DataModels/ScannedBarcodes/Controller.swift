@@ -42,4 +42,21 @@ class SBDataController: ObservableObject {
         save(context: context)
     }
     
+    func resetBarcodes(context: NSManagedObjectContext) {
+
+        // Create a fetch request for the entity you want to delete
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ScannedBarcode")
+
+        // Create a batch delete request for the fetch request
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+
+        // Execute the batch delete request
+        do {
+            try context.execute(batchDeleteRequest)
+            try context.save() // save the context to commit the changes
+        } catch let error {
+            print("Error deleting data: \(error)")
+        }
+    }
+    
 }

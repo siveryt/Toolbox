@@ -319,21 +319,21 @@
 		5EDFF1E727E7715E005BBA3C /* Functions */ = {
 			isa = PBXGroup;
 			children = (
-				5ED81C4927E36ED500FC42E8 /* Dice.swift */,
 				5E74426729B10F8B00F43CB4 /* Barcode.swift */,
-				5ED81C4B27E372E700FC42E8 /* DomainResolver.swift */,
 				5ECEBECE280303A30096E5A5 /* BodyMassIndex.swift */,
 				5ECEBEC62802E0F80096E5A5 /* ColorPicker.swift */,
+				5EB9CEA52916A445009D29F4 /* Coordinates.swift */,
+				5E47B19A27F1F3F4008FD3C0 /* Counter.swift */,
 				5E020C4D27EA29D7009871F9 /* DateDifference.swift */,
+				5ED81C4927E36ED500FC42E8 /* Dice.swift */,
+				5ED81C4B27E372E700FC42E8 /* DomainResolver.swift */,
+				5ED3943A28BD139D00798FFE /* ipChecker.swift */,
+				5EDFF1E527E76D34005BBA3C /* LiveClock.swift */,
 				5E5C62072916654F004F44CC /* Ping.swift */,
 				5EB7897627F9CCA900F07140 /* QRGenerator.swift */,
-				5E878B6A2916B6B60038A5E3 /* Speed.swift */,
-				5EB9CEA52916A445009D29F4 /* Coordinates.swift */,
-				5ED3943A28BD139D00798FFE /* ipChecker.swift */,
-				5E020C4C27EA29D7009871F9 /* RomanConverter.swift */,
-				5E47B19A27F1F3F4008FD3C0 /* Counter.swift */,
 				5EDFF1DF27E74572005BBA3C /* RandomNumber.swift */,
-				5EDFF1E527E76D34005BBA3C /* LiveClock.swift */,
+				5E020C4C27EA29D7009871F9 /* RomanConverter.swift */,
+				5E878B6A2916B6B60038A5E3 /* Speed.swift */,
 			);
 			path = Functions;
 			sourceTree = "<group>";
