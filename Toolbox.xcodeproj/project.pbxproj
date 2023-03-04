@@ -46,6 +46,7 @@
 		5E72B5B1283BB9F300DEAD50 /* black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E72B5AE283BB9F300DEAD50 /* black@3x.png */; };
 		5E74426829B10F8B00F43CB4 /* Barcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74426729B10F8B00F43CB4 /* Barcode.swift */; };
 		5E74426B29B1100700F43CB4 /* CarBode in Frameworks */ = {isa = PBXBuildFile; productRef = 5E74426A29B1100700F43CB4 /* CarBode */; };
+		5E74427229B3787D00F43CB4 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74427129B3787D00F43CB4 /* Controller.swift */; };
 		5E878B692916B0190038A5E3 /* Location helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E878B682916B0190038A5E3 /* Location helper.swift */; };
 		5E878B6B2916B6B60038A5E3 /* Speed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E878B6A2916B6B60038A5E3 /* Speed.swift */; };
 		5E878B702916CCFD0038A5E3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E878B6F2916CCFD0038A5E3 /* Extensions.swift */; };
@@ -66,6 +67,7 @@
 		5EDFF1E027E74572005BBA3C /* RandomNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDFF1DF27E74572005BBA3C /* RandomNumber.swift */; };
 		5EDFF1E627E76D34005BBA3C /* LiveClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDFF1E527E76D34005BBA3C /* LiveClock.swift */; };
 		5EDFF1E927E7AE4D005BBA3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EDFF1E827E7AE4D005BBA3C /* LaunchScreen.storyboard */; };
+		5EFACB1429B37C9A00EB8989 /* ScannedBarcodes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5EFACB1229B37C9A00EB8989 /* ScannedBarcodes.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +106,7 @@
 		5E72B5AD283BB9F300DEAD50 /* black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "black@2x.png"; sourceTree = "<group>"; };
 		5E72B5AE283BB9F300DEAD50 /* black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "black@3x.png"; sourceTree = "<group>"; };
 		5E74426729B10F8B00F43CB4 /* Barcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Barcode.swift; sourceTree = "<group>"; };
+		5E74427129B3787D00F43CB4 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		5E878B682916B0190038A5E3 /* Location helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location helper.swift"; sourceTree = "<group>"; };
 		5E878B6A2916B6B60038A5E3 /* Speed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speed.swift; sourceTree = "<group>"; };
 		5E878B6F2916CCFD0038A5E3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -128,6 +131,7 @@
 		5EDFF1DF27E74572005BBA3C /* RandomNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNumber.swift; sourceTree = "<group>"; };
 		5EDFF1E527E76D34005BBA3C /* LiveClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveClock.swift; sourceTree = "<group>"; };
 		5EDFF1E827E7AE4D005BBA3C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5EFACB1329B37C9A00EB8989 /* ScannedBarcodes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ScannedBarcodes.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +228,23 @@
 			path = assets;
 			sourceTree = "<group>";
 		};
+		5E74426C29B375B500F43CB4 /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+				5E74426D29B375C900F43CB4 /* ScannedBarcodes */,
+			);
+			path = DataModels;
+			sourceTree = "<group>";
+		};
+		5E74426D29B375C900F43CB4 /* ScannedBarcodes */ = {
+			isa = PBXGroup;
+			children = (
+				5EFACB1229B37C9A00EB8989 /* ScannedBarcodes.xcdatamodeld */,
+				5E74427129B3787D00F43CB4 /* Controller.swift */,
+			);
+			path = ScannedBarcodes;
+			sourceTree = "<group>";
+		};
 		5E878B6C2916BF560038A5E3 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +284,7 @@
 		5EC7B21D27D7978100699FD3 /* Toolbox */ = {
 			isa = PBXGroup;
 			children = (
+				5E74426C29B375B500F43CB4 /* DataModels */,
 				5E35DBD92917C5BD00D2FC8A /* Localizable.strings */,
 				5E878B6C2916BF560038A5E3 /* Helper */,
 				5E26F5CE28A18DE60094D057 /* Mainscreen */,
@@ -488,6 +510,8 @@
 				5E74426829B10F8B00F43CB4 /* Barcode.swift in Sources */,
 				5EB7897727F9CCA900F07140 /* QRGenerator.swift in Sources */,
 				5E5C62082916654F004F44CC /* Ping.swift in Sources */,
+				5E74427229B3787D00F43CB4 /* Controller.swift in Sources */,
+				5EFACB1429B37C9A00EB8989 /* ScannedBarcodes.xcdatamodeld in Sources */,
 				5E020C4F27EA29D7009871F9 /* RomanConverter.swift in Sources */,
 				5ED81C4A27E36ED500FC42E8 /* Dice.swift in Sources */,
 				5EDFF1E627E76D34005BBA3C /* LiveClock.swift in Sources */,
@@ -923,6 +947,19 @@
 			productName = ToastSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		5EFACB1229B37C9A00EB8989 /* ScannedBarcodes.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5EFACB1329B37C9A00EB8989 /* ScannedBarcodes.xcdatamodel */,
+			);
+			currentVersion = 5EFACB1329B37C9A00EB8989 /* ScannedBarcodes.xcdatamodel */;
+			path = ScannedBarcodes.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5EC7B21327D7978100699FD3 /* Project object */;
 }

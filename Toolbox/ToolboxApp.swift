@@ -11,15 +11,21 @@ import WhatsNewKit
 // MARK: - App
 /// The App
 @main
-struct App {}
+struct App {
+    @StateObject private var sbDataController = SBDataController()
+    
+}
 
 // MARK: - SwiftUI.App
 extension App: SwiftUI.App {
+    
+    
     
     /// The content and behavior of the app.
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(\.managedObjectContext, sbDataController.container.viewContext)
                 .environment(
                     \.whatsNew,
                      .init(
