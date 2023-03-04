@@ -8,10 +8,13 @@
 import SwiftUI
 import CarBode
 import AVFoundation //import to access barcode types you want to scan
+import Haptica
 
 struct Barcode: View {
     
+    var scanner: CBScanner?
     @State private var scanSheet = false
+    @State private var scanning = false
     @Environment(\.managedObjectContext) var managedContext
     @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var codes: FetchedResults<ScannedBarcode>
     
@@ -43,11 +46,18 @@ struct Barcode: View {
         .sheet(isPresented: $scanSheet) {
             ZStack {
                 CBScanner(
-                    supportBarcode: .constant([.qr, .code128]),
-                    scanInterval: .constant(0.5)
+                    supportBarcode: .constant([.aztec, .code39, .code93, .code128, .dataMatrix, .ean8, .ean13, .interleaved2of5, .itf14, .pdf417, .qr, .upce]),
+                    scanInterval: .constant(0.2),
+                    isActive: scanning
                 ) {
+                    scanning = false
+                    scanSheet = false
                     SBDataController().addBarcode(content: $0.value, type: $0.type.rawValue, context: managedContext)
                     print("BarCodeType =", $0.type.rawValue, "Value =", $0.value)
+                    Haptic.impact(.medium).generate()
+                    
+                    
+                    
                 }
                 
                 VStack {
@@ -55,6 +65,7 @@ struct Barcode: View {
                     HStack {
                         Spacer()
                         Button(action: {
+                            scanning = false
                             scanSheet = false
                         }) {
                             Image(systemName: "xmark.circle.fill")
@@ -67,8 +78,24 @@ struct Barcode: View {
                     }
                     Spacer()
                 }
+                
             }
             .presentationDetents([.medium, .large])
+            
+            .onAppear(){
+                scanning = true
+            }
+            .onDisappear() {
+                if scanning {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        scanning = false
+                        scanSheet = false
+                    }
+                } else {
+                    scanSheet = false
+                }
+            }
+
         }
 
     }
