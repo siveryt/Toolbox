@@ -59,7 +59,6 @@ struct Barcode: View {
                     HStack {
                         Spacer()
                         Button(action: {
-                            scanning = false
                             scanSheet = false
                         }) {
                             Image(systemName: "xmark.circle.fill")
