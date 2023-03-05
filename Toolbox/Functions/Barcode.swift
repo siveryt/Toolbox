@@ -89,7 +89,8 @@ struct Barcode: View {
                             Image(systemName: "xmark.circle.fill")
                                 .resizable()
                                 .frame(width: 24, height: 24)
-                                .foregroundColor(.secondary)
+                                .symbolRenderingMode(.palette)
+                                .foregroundStyle(.secondary, .tertiary)
                         }
                         .padding(.trailing, 16)
                         .padding(.top, 16)
