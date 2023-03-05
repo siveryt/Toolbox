@@ -13,11 +13,9 @@ import CodeScanner
 struct Barcode: View {
     
     @State private var scanSheet = false
+    @State private var detailSheet = false
     @Environment(\.managedObjectContext) var managedContext
     @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var codes: FetchedResults<ScannedBarcode>
-    
-    @State private var scanError = false
-    
     
     
     var body: some View {
@@ -33,7 +31,6 @@ struct Barcode: View {
             } else{
                 Text("Click on the \(Image(systemName: "viewfinder")) to scan your first barcode")
             }
-            
         }
         .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
         .navigationTitle("Barcode")
@@ -46,62 +43,14 @@ struct Barcode: View {
                 })
             }
         }
-        
-        
         .sheet(isPresented: $scanSheet) {
-            ZStack {
-                if(scanError) {
-                    VStack{
-                        Text("Enable camera access in settings to use the Barcode Scanner.")
-                        Button("Settings") {
-                            if let appSettings = URL(string: UIApplication.openSettingsURLString) {
-                                UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
-                            }
-                        }
-//                        .tint(.primary)
-                            
-                    }
-                } else{
-                    CodeScannerView(codeTypes: [.aztec, .code39, .code93, .code128, .dataMatrix, .ean8, .ean13, .interleaved2of5, .itf14, .pdf417, .qr, .upce], shouldVibrateOnSuccess: false) { response in
-                        
-                        switch response {
-                            case .success(let result):
-                                print("Found code: \(result.string)")
-                                withAnimation {
-                                    SBDataController().addBarcode(content: result.string, type: result.type.friendlyName, context: managedContext)
-                                }
-                                Haptic.impact(.medium).generate()
-                                scanSheet = false
-                            case .failure(let error):
-                                scanError = true
-                                print(error.localizedDescription)
-                            }
-                    }
-                    
-                }
-                VStack {
-                    
-                    HStack {
-                        Spacer()
-                        Button(action: {
-                            scanSheet = false
-                        }) {
-                            Image(systemName: "xmark.circle.fill")
-                                .resizable()
-                                .frame(width: 24, height: 24)
-                                .symbolRenderingMode(.palette)
-                                .foregroundStyle(.secondary, .tertiary)
-                        }
-                        .padding(.trailing, 16)
-                        .padding(.top, 16)
-                    }
-                    Spacer()
-                }
-            }
+            BarcodeScanner()
             .presentationDetents([.medium, .large])
             
         }
-        
+        .sheet(isPresented: $detailSheet) {
+            BarcodeDetail()
+        }
         
     }
     private func deleteCode(offsets: IndexSet) {
@@ -109,10 +58,75 @@ struct Barcode: View {
                 offsets.map { codes[$0] }
                 .forEach(managedContext.delete)
                 
-                // Saves to our database
                 SBDataController().save(context: managedContext)
             }
         }
+}
+
+struct BarcodeDetail: View {
+    
+    var body: some View {
+        Text("HeHe")
+    }
+    
+}
+
+struct BarcodeScanner: View {
+    
+    @State private var scanError = false
+    @Environment(\.dismiss) var dismiss
+    @Environment(\.managedObjectContext) var managedContext
+    
+    var body: some View {
+        
+        ZStack {
+            if(scanError) {
+                VStack{
+                    Text("Enable camera access in settings to use the Barcode Scanner.")
+                    Button("Settings") {
+                        if let appSettings = URL(string: UIApplication.openSettingsURLString) {
+                            UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
+                        }
+                    }
+                }
+            } else{
+                CodeScannerView(codeTypes: [.aztec, .code39, .code93, .code128, .dataMatrix, .ean8, .ean13, .interleaved2of5, .itf14, .pdf417, .qr, .upce], shouldVibrateOnSuccess: false) { response in
+                    
+                    switch response {
+                        case .success(let result):
+                            print("Found code: \(result.string)")
+                            withAnimation {
+                                SBDataController().addBarcode(content: result.string, type: result.type.friendlyName, context: managedContext)
+                            }
+                            Haptic.impact(.medium).generate()
+                            dismiss()
+                        case .failure(let error):
+                            scanError = true
+                            print(error.localizedDescription)
+                    }
+                }
+            }
+            VStack {
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        dismiss()
+                    }) {
+                        Image(systemName: "xmark.circle.fill")
+                            .resizable()
+                            .frame(width: 24, height: 24)
+                            .symbolRenderingMode(.palette)
+                            .foregroundStyle(.secondary, .tertiary)
+                    }
+                    .padding(.trailing, 16)
+                    .padding(.top, 16)
+                }
+                Spacer()
+            }
+        }
+        
+    }
+    
 }
 
 struct Barcode_Previews: PreviewProvider {
