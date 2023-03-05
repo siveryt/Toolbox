@@ -16,6 +16,8 @@ struct Barcode: View {
     @Environment(\.managedObjectContext) var managedContext
     @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var codes: FetchedResults<ScannedBarcode>
     
+    @State private var scanError = false
+    
     
     
     var body: some View {
@@ -25,6 +27,7 @@ struct Barcode: View {
                     ForEach(codes) { code in
                         Text(code.content!)
                     }
+                    .onDelete(perform: deleteCode)
                 }
                 
             } else{
@@ -47,12 +50,34 @@ struct Barcode: View {
         
         .sheet(isPresented: $scanSheet) {
             ZStack {
-                CodeScannerView(codeTypes: [.aztec, .code39, .code93, .code128, .dataMatrix, .ean8, .ean13, .interleaved2of5, .itf14, .pdf417, .qr, .upce], shouldVibrateOnSuccess: false) { response in
-                    if case let .success(result) = response {
-                        SBDataController().addBarcode(content: result.string, type: result.type.friendlyName, context: managedContext)
-                        Haptic.impact(.medium).generate()
-                        scanSheet = false
+                if(scanError) {
+                    VStack{
+                        Text("Enable camera access in settings to use the Barcode Scanner.")
+                        Button("Settings") {
+                            if let appSettings = URL(string: UIApplication.openSettingsURLString) {
+                                UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
+                            }
+                        }
+//                        .tint(.primary)
+                            
                     }
+                } else{
+                    CodeScannerView(codeTypes: [.aztec, .code39, .code93, .code128, .dataMatrix, .ean8, .ean13, .interleaved2of5, .itf14, .pdf417, .qr, .upce], shouldVibrateOnSuccess: false) { response in
+                        
+                        switch response {
+                            case .success(let result):
+                                print("Found code: \(result.string)")
+                                withAnimation {
+                                    SBDataController().addBarcode(content: result.string, type: result.type.friendlyName, context: managedContext)
+                                }
+                                Haptic.impact(.medium).generate()
+                                scanSheet = false
+                            case .failure(let error):
+                                scanError = true
+                                print(error.localizedDescription)
+                            }
+                    }
+                    
                 }
                 VStack {
                     
@@ -78,6 +103,15 @@ struct Barcode: View {
         
         
     }
+    private func deleteCode(offsets: IndexSet) {
+            withAnimation {
+                offsets.map { codes[$0] }
+                .forEach(managedContext.delete)
+                
+                // Saves to our database
+                SBDataController().save(context: managedContext)
+            }
+        }
 }
 
 struct Barcode_Previews: PreviewProvider {
