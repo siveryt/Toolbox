@@ -10,7 +10,7 @@ import Combine
 
 struct BodyMassIndex: View {
     
-    let metric = Locale.current.usesMetricSystem
+    let metric = Locale.current.measurementSystem == "Metric"
     let defaults = UserDefaults.standard
     
     @State var height = ""
