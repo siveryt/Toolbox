@@ -67,18 +67,7 @@ struct Barcode: View {
         }
 }
 
-struct BarcodeDetail: View {
-    
-    @Environment(\.managedObjectContext) var managedObjContext
-    @Environment(\.dismiss) var dismiss
-    
-    var barcode: FetchedResults<ScannedBarcode>.Element
-    
-    var body: some View {
-        Text(barcode.content!)
-    }
-    
-}
+
 
 struct BarcodeScanner: View {
     

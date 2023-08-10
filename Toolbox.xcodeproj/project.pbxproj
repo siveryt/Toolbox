@@ -14,16 +14,7 @@
 		5E0AA8072837BF59006CD0EA /* whitegradient_red@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E0AA8042837BF59006CD0EA /* whitegradient_red@1x.png */; };
 		5E0AA8082837BF59006CD0EA /* whitegradient_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E0AA8052837BF59006CD0EA /* whitegradient_red@2x.png */; };
 		5E0AA80A2837BFB7006CD0EA /* IconNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0AA8092837BFB7006CD0EA /* IconNames.swift */; };
-		5E1383DF2915974E00CF4FAB /* Toolbox_WatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1383DE2915974E00CF4FAB /* Toolbox_WatchApp.swift */; };
-		5E1383E12915974E00CF4FAB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1383E02915974E00CF4FAB /* ContentView.swift */; };
-		5E1383E32915975000CF4FAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E1383E22915975000CF4FAB /* Assets.xcassets */; };
-		5E1383E62915975000CF4FAB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E1383E52915975000CF4FAB /* Preview Assets.xcassets */; };
-		5E1383EB29159ADE00CF4FAB /* Dice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1383EA29159ADE00CF4FAB /* Dice.swift */; };
-		5E1383F029159DD800CF4FAB /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1383EF29159DD800CF4FAB /* Counter.swift */; };
-		5E1383F22915A23100CF4FAB /* Random Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1383F12915A23100CF4FAB /* Random Number.swift */; };
-		5E1383F52915A58200CF4FAB /* SwiftUI Apple Watch Decimal Pad in Frameworks */ = {isa = PBXBuildFile; productRef = 5E1383F42915A58200CF4FAB /* SwiftUI Apple Watch Decimal Pad */; };
-		5E35DBDB2917C5BD00D2FC8A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E35DBD92917C5BD00D2FC8A /* Localizable.strings */; };
-		5E35DBDE2917C5BD00D2FC8A /* Toolbox Watch Watch App-InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E35DBDC2917C5BD00D2FC8A /* Toolbox Watch Watch App-InfoPlist.strings */; };
+		5E2A28232A857AC000F7F444 /* Assets WatchOS.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E1383E22915975000CF4FAB /* Assets WatchOS.xcassets */; };
 		5E35DBE12917C5BD00D2FC8A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E35DBDF2917C5BD00D2FC8A /* InfoPlist.strings */; };
 		5E35DBE42917C5BD00D2FC8A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E35DBE22917C5BD00D2FC8A /* Localizable.strings */; };
 		5E35DBE72917C62500D2FC8A /* WhatsNewKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5E35DBE62917C62500D2FC8A /* WhatsNewKit */; };
@@ -67,8 +58,41 @@
 		5EDFF1E027E74572005BBA3C /* RandomNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDFF1DF27E74572005BBA3C /* RandomNumber.swift */; };
 		5EDFF1E627E76D34005BBA3C /* LiveClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDFF1E527E76D34005BBA3C /* LiveClock.swift */; };
 		5EDFF1E927E7AE4D005BBA3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EDFF1E827E7AE4D005BBA3C /* LaunchScreen.storyboard */; };
+		5EE65DEA2A8572A80061120B /* BarcodeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE65DE92A8572A80061120B /* BarcodeDetail.swift */; };
+		5EE65DF22A8575FE0061120B /* Toolbox_WatchOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE65DF12A8575FE0061120B /* Toolbox_WatchOSApp.swift */; };
+		5EE65DF92A8576000061120B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EE65DF82A8576000061120B /* Preview Assets.xcassets */; };
+		5EE65DFC2A8576000061120B /* Toolbox WatchOS Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 5EE65DEF2A8575FE0061120B /* Toolbox WatchOS Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5EE65E012A8576280061120B /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1383EF29159DD800CF4FAB /* Counter.swift */; };
+		5EE65E022A8576280061120B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1383E02915974E00CF4FAB /* ContentView.swift */; };
+		5EE65E032A8576280061120B /* Dice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1383EA29159ADE00CF4FAB /* Dice.swift */; };
+		5EE65E042A8576280061120B /* Random Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1383F12915A23100CF4FAB /* Random Number.swift */; };
+		5EE65E062A85773A0061120B /* SwiftUI Apple Watch Decimal Pad in Frameworks */ = {isa = PBXBuildFile; productRef = 5EE65E052A85773A0061120B /* SwiftUI Apple Watch Decimal Pad */; };
 		5EFACB1429B37C9A00EB8989 /* ScannedBarcodes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5EFACB1229B37C9A00EB8989 /* ScannedBarcodes.xcdatamodeld */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5EE65DFA2A8576000061120B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5EC7B21327D7978100699FD3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5EE65DEE2A8575FE0061120B;
+			remoteInfo = "Toolbox WatchOS Watch App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5EE65E002A8576000061120B /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				5EE65DFC2A8576000061120B /* Toolbox WatchOS Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		5E020C4C27EA29D7009871F9 /* RomanConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RomanConverter.swift; sourceTree = "<group>"; };
@@ -77,11 +101,8 @@
 		5E0AA8042837BF59006CD0EA /* whitegradient_red@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whitegradient_red@1x.png"; sourceTree = "<group>"; };
 		5E0AA8052837BF59006CD0EA /* whitegradient_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whitegradient_red@2x.png"; sourceTree = "<group>"; };
 		5E0AA8092837BFB7006CD0EA /* IconNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconNames.swift; sourceTree = "<group>"; };
-		5E1383DC2915974E00CF4FAB /* Toolbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Toolbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5E1383DE2915974E00CF4FAB /* Toolbox_WatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbox_WatchApp.swift; sourceTree = "<group>"; };
-		5E1383E02915974E00CF4FAB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		5E1383E22915975000CF4FAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5E1383E52915975000CF4FAB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5E1383E02915974E00CF4FAB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = "../Toolbox Watch Watch App/ContentView.swift"; sourceTree = "<group>"; };
+		5E1383E22915975000CF4FAB /* Assets WatchOS.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets WatchOS.xcassets"; sourceTree = "<group>"; };
 		5E1383EA29159ADE00CF4FAB /* Dice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dice.swift; sourceTree = "<group>"; };
 		5E1383EF29159DD800CF4FAB /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		5E1383F12915A23100CF4FAB /* Random Number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Random Number.swift"; sourceTree = "<group>"; };
@@ -131,18 +152,15 @@
 		5EDFF1DF27E74572005BBA3C /* RandomNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNumber.swift; sourceTree = "<group>"; };
 		5EDFF1E527E76D34005BBA3C /* LiveClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveClock.swift; sourceTree = "<group>"; };
 		5EDFF1E827E7AE4D005BBA3C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5EE65DE92A8572A80061120B /* BarcodeDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeDetail.swift; sourceTree = "<group>"; };
+		5EE65DEF2A8575FE0061120B /* Toolbox WatchOS Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Toolbox WatchOS Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5EE65DF12A8575FE0061120B /* Toolbox_WatchOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbox_WatchOSApp.swift; sourceTree = "<group>"; };
+		5EE65DF82A8576000061120B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5EE65E072A8578840061120B /* Toolbox-WatchOS-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Toolbox-WatchOS-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		5EFACB1329B37C9A00EB8989 /* ScannedBarcodes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ScannedBarcodes.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		5E1383D92915974E00CF4FAB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5E1383F52915A58200CF4FAB /* SwiftUI Apple Watch Decimal Pad in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		5EC7B21827D7978100699FD3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -153,6 +171,14 @@
 				5E5C620B29166566004F44CC /* SwiftyPing in Frameworks */,
 				5E3C5DA629B3CC2B00613685 /* CodeScanner in Frameworks */,
 				5EB6030628B22C1B00133561 /* ToastSwiftUI in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5EE65DEC2A8575FE0061120B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5EE65E062A85773A0061120B /* SwiftUI Apple Watch Decimal Pad in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,28 +206,6 @@
 				5E0AA8092837BFB7006CD0EA /* IconNames.swift */,
 			);
 			path = Icons;
-			sourceTree = "<group>";
-		};
-		5E1383DD2915974E00CF4FAB /* Toolbox Watch Watch App */ = {
-			isa = PBXGroup;
-			children = (
-				5E1383DE2915974E00CF4FAB /* Toolbox_WatchApp.swift */,
-				5E1383EA29159ADE00CF4FAB /* Dice.swift */,
-				5E1383F12915A23100CF4FAB /* Random Number.swift */,
-				5E1383EF29159DD800CF4FAB /* Counter.swift */,
-				5E1383E02915974E00CF4FAB /* ContentView.swift */,
-				5E1383E22915975000CF4FAB /* Assets.xcassets */,
-				5E1383E42915975000CF4FAB /* Preview Content */,
-			);
-			path = "Toolbox Watch Watch App";
-			sourceTree = "<group>";
-		};
-		5E1383E42915975000CF4FAB /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				5E1383E52915975000CF4FAB /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		5E1383EC29159D2600CF4FAB /* Frameworks */ = {
@@ -266,7 +270,7 @@
 				5E5C620F291681D5004F44CC /* assets */,
 				5EC7B24D27D797E100699FD3 /* README.md */,
 				5EC7B21D27D7978100699FD3 /* Toolbox */,
-				5E1383DD2915974E00CF4FAB /* Toolbox Watch Watch App */,
+				5EE65DF02A8575FE0061120B /* Toolbox WatchOS Watch App */,
 				5EC7B21C27D7978100699FD3 /* Products */,
 				5E1383EC29159D2600CF4FAB /* Frameworks */,
 			);
@@ -276,7 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				5EC7B21B27D7978100699FD3 /* Toolbox.app */,
-				5E1383DC2915974E00CF4FAB /* Toolbox.app */,
+				5EE65DEF2A8575FE0061120B /* Toolbox WatchOS Watch App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -319,7 +323,7 @@
 		5EDFF1E727E7715E005BBA3C /* Functions */ = {
 			isa = PBXGroup;
 			children = (
-				5E74426729B10F8B00F43CB4 /* Barcode.swift */,
+				5EE65DE82A85727F0061120B /* Barcode Scanner */,
 				5ECEBECE280303A30096E5A5 /* BodyMassIndex.swift */,
 				5ECEBEC62802E0F80096E5A5 /* ColorPicker.swift */,
 				5EB9CEA52916A445009D29F4 /* Coordinates.swift */,
@@ -338,29 +342,41 @@
 			path = Functions;
 			sourceTree = "<group>";
 		};
+		5EE65DE82A85727F0061120B /* Barcode Scanner */ = {
+			isa = PBXGroup;
+			children = (
+				5E74426729B10F8B00F43CB4 /* Barcode.swift */,
+				5EE65DE92A8572A80061120B /* BarcodeDetail.swift */,
+			);
+			path = "Barcode Scanner";
+			sourceTree = "<group>";
+		};
+		5EE65DF02A8575FE0061120B /* Toolbox WatchOS Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				5EE65E072A8578840061120B /* Toolbox-WatchOS-Watch-App-Info.plist */,
+				5EE65DF12A8575FE0061120B /* Toolbox_WatchOSApp.swift */,
+				5E1383EA29159ADE00CF4FAB /* Dice.swift */,
+				5E1383F12915A23100CF4FAB /* Random Number.swift */,
+				5E1383EF29159DD800CF4FAB /* Counter.swift */,
+				5E1383E02915974E00CF4FAB /* ContentView.swift */,
+				5E1383E22915975000CF4FAB /* Assets WatchOS.xcassets */,
+				5EE65DF72A8576000061120B /* Preview Content */,
+			);
+			path = "Toolbox WatchOS Watch App";
+			sourceTree = "<group>";
+		};
+		5EE65DF72A8576000061120B /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				5EE65DF82A8576000061120B /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5E1383DB2915974E00CF4FAB /* Toolbox Watch Watch App */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5E1383E92915975000CF4FAB /* Build configuration list for PBXNativeTarget "Toolbox Watch Watch App" */;
-			buildPhases = (
-				5E1383D82915974E00CF4FAB /* Sources */,
-				5E1383D92915974E00CF4FAB /* Frameworks */,
-				5E1383DA2915974E00CF4FAB /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Toolbox Watch Watch App";
-			packageProductDependencies = (
-				5E1383F42915A58200CF4FAB /* SwiftUI Apple Watch Decimal Pad */,
-			);
-			productName = "Toolbox Watch Watch App";
-			productReference = 5E1383DC2915974E00CF4FAB /* Toolbox.app */;
-			productType = "com.apple.product-type.application";
-		};
 		5EC7B21A27D7978100699FD3 /* Toolbox */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5EC7B24427D7978200699FD3 /* Build configuration list for PBXNativeTarget "Toolbox" */;
@@ -368,10 +384,12 @@
 				5EC7B21727D7978100699FD3 /* Sources */,
 				5EC7B21827D7978100699FD3 /* Frameworks */,
 				5EC7B21927D7978100699FD3 /* Resources */,
+				5EE65E002A8576000061120B /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5EE65DFB2A8576000061120B /* PBXTargetDependency */,
 			);
 			name = Toolbox;
 			packageProductDependencies = (
@@ -386,6 +404,26 @@
 			productReference = 5EC7B21B27D7978100699FD3 /* Toolbox.app */;
 			productType = "com.apple.product-type.application";
 		};
+		5EE65DEE2A8575FE0061120B /* Toolbox WatchOS Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5EE65DFD2A8576000061120B /* Build configuration list for PBXNativeTarget "Toolbox WatchOS Watch App" */;
+			buildPhases = (
+				5EE65DEB2A8575FE0061120B /* Sources */,
+				5EE65DEC2A8575FE0061120B /* Frameworks */,
+				5EE65DED2A8575FE0061120B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Toolbox WatchOS Watch App";
+			packageProductDependencies = (
+				5EE65E052A85773A0061120B /* SwiftUI Apple Watch Decimal Pad */,
+			);
+			productName = "Toolbox WatchOS Watch App";
+			productReference = 5EE65DEF2A8575FE0061120B /* Toolbox WatchOS Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -393,14 +431,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1410;
+				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
-					5E1383DB2915974E00CF4FAB = {
-						CreatedOnToolsVersion = 14.1;
-					};
 					5EC7B21A27D7978100699FD3 = {
 						CreatedOnToolsVersion = 13.2.1;
+					};
+					5EE65DEE2A8575FE0061120B = {
+						CreatedOnToolsVersion = 14.3.1;
 					};
 				};
 			};
@@ -428,23 +466,12 @@
 			projectRoot = "";
 			targets = (
 				5EC7B21A27D7978100699FD3 /* Toolbox */,
-				5E1383DB2915974E00CF4FAB /* Toolbox Watch Watch App */,
+				5EE65DEE2A8575FE0061120B /* Toolbox WatchOS Watch App */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		5E1383DA2915974E00CF4FAB /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5E35DBDE2917C5BD00D2FC8A /* Toolbox Watch Watch App-InfoPlist.strings in Resources */,
-				5E1383E62915975000CF4FAB /* Preview Assets.xcassets in Resources */,
-				5E35DBDB2917C5BD00D2FC8A /* Localizable.strings in Resources */,
-				5E1383E32915975000CF4FAB /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		5EC7B21927D7978100699FD3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -474,21 +501,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		5E1383D82915974E00CF4FAB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
+		5EE65DED2A8575FE0061120B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E1383F029159DD800CF4FAB /* Counter.swift in Sources */,
-				5E1383E12915974E00CF4FAB /* ContentView.swift in Sources */,
-				5E1383F22915A23100CF4FAB /* Random Number.swift in Sources */,
-				5E1383EB29159ADE00CF4FAB /* Dice.swift in Sources */,
-				5E1383DF2915974E00CF4FAB /* Toolbox_WatchApp.swift in Sources */,
+				5EE65DF92A8576000061120B /* Preview Assets.xcassets in Resources */,
+				5E2A28232A857AC000F7F444 /* Assets WatchOS.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
 		5EC7B21727D7978100699FD3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -510,6 +534,7 @@
 				5E74426829B10F8B00F43CB4 /* Barcode.swift in Sources */,
 				5EB7897727F9CCA900F07140 /* QRGenerator.swift in Sources */,
 				5E5C62082916654F004F44CC /* Ping.swift in Sources */,
+				5EE65DEA2A8572A80061120B /* BarcodeDetail.swift in Sources */,
 				5E74427229B3787D00F43CB4 /* Controller.swift in Sources */,
 				5EFACB1429B37C9A00EB8989 /* ScannedBarcodes.xcdatamodeld in Sources */,
 				5E020C4F27EA29D7009871F9 /* RomanConverter.swift in Sources */,
@@ -519,7 +544,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5EE65DEB2A8575FE0061120B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5EE65DF22A8575FE0061120B /* Toolbox_WatchOSApp.swift in Sources */,
+				5EE65E042A8576280061120B /* Random Number.swift in Sources */,
+				5EE65E032A8576280061120B /* Dice.swift in Sources */,
+				5EE65E022A8576280061120B /* ContentView.swift in Sources */,
+				5EE65E012A8576280061120B /* Counter.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5EE65DFB2A8576000061120B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5EE65DEE2A8575FE0061120B /* Toolbox WatchOS Watch App */;
+			targetProxy = 5EE65DFA2A8576000061120B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		5E35DBD92917C5BD00D2FC8A /* Localizable.strings */ = {
@@ -561,66 +606,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		5E1383E72915975000CF4FAB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Toolbox Watch Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = VA79D2T9W7;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = de.sivery.toolbox.watchkitapp;
-				PRODUCT_NAME = Toolbox;
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.1;
-			};
-			name = Debug;
-		};
-		5E1383E82915975000CF4FAB /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Toolbox Watch Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = VA79D2T9W7;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = de.sivery.toolbox.watchkitapp;
-				PRODUCT_NAME = Toolbox;
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.1;
-			};
-			name = Release;
-		};
 		5EC7B24227D7978200699FD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -742,6 +727,7 @@
 		5EC7B24527D7978200699FD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
@@ -781,6 +767,7 @@
 		5EC7B24627D7978200699FD3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
@@ -817,18 +804,75 @@
 			};
 			name = Release;
 		};
+		5EE65DFE2A8576000061120B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon For WatchOS";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = VA79D2T9W7;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Toolbox-WatchOS-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Toolbox WatchOS";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = de.sivery.toolbox;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.sivery.toolbox.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.4;
+			};
+			name = Debug;
+		};
+		5EE65DFF2A8576000061120B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon For WatchOS";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = VA79D2T9W7;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Toolbox-WatchOS-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Toolbox WatchOS";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = de.sivery.toolbox;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.sivery.toolbox.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.4;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5E1383E92915975000CF4FAB /* Build configuration list for PBXNativeTarget "Toolbox Watch Watch App" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5E1383E72915975000CF4FAB /* Debug */,
-				5E1383E82915975000CF4FAB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		5EC7B21627D7978100699FD3 /* Build configuration list for PBXProject "Toolbox" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -843,6 +887,15 @@
 			buildConfigurations = (
 				5EC7B24527D7978200699FD3 /* Debug */,
 				5EC7B24627D7978200699FD3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5EE65DFD2A8576000061120B /* Build configuration list for PBXNativeTarget "Toolbox WatchOS Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5EE65DFE2A8576000061120B /* Debug */,
+				5EE65DFF2A8576000061120B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -914,11 +967,6 @@
 			package = 5E020C5127EA2A59009871F9 /* XCRemoteSwiftPackageReference "RomanNumeralKit" */;
 			productName = RomanNumeralKit;
 		};
-		5E1383F42915A58200CF4FAB /* SwiftUI Apple Watch Decimal Pad */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5E1383F32915A58200CF4FAB /* XCRemoteSwiftPackageReference "SwiftUI-Apple-Watch-Decimal-Pad" */;
-			productName = "SwiftUI Apple Watch Decimal Pad";
-		};
 		5E35DBE62917C62500D2FC8A /* WhatsNewKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5E35DBE52917C62500D2FC8A /* XCRemoteSwiftPackageReference "WhatsNewKit" */;
@@ -943,6 +991,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5EB6030428B22C1B00133561 /* XCRemoteSwiftPackageReference "ToastSwiftUI" */;
 			productName = ToastSwiftUI;
+		};
+		5EE65E052A85773A0061120B /* SwiftUI Apple Watch Decimal Pad */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5E1383F32915A58200CF4FAB /* XCRemoteSwiftPackageReference "SwiftUI-Apple-Watch-Decimal-Pad" */;
+			productName = "SwiftUI Apple Watch Decimal Pad";
 		};
 /* End XCSwiftPackageProductDependency section */
 
