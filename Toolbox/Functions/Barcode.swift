@@ -14,6 +14,7 @@ struct Barcode: View {
     
     @State private var scanSheet = false
     @State private var detailSheet = false
+    @State private var itemIndex: Int? = nil
     @Environment(\.managedObjectContext) var managedContext
     @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var codes: FetchedResults<ScannedBarcode>
     
@@ -22,8 +23,11 @@ struct Barcode: View {
         VStack{
             if(codes.count > 0){
                 List(){
-                    ForEach(codes) { code in
-                        Text(code.content!)
+                    ForEach(Array(codes.enumerated()), id: \.offset) { index, code in
+                        Button(code.content!){
+                            itemIndex = index
+                            detailSheet = true
+                        }
                     }
                     .onDelete(perform: deleteCode)
                 }
@@ -48,8 +52,8 @@ struct Barcode: View {
             .presentationDetents([.medium, .large])
             
         }
-        .sheet(isPresented: $detailSheet) {
-            BarcodeDetail()
+        .sheet(item: self.$itemIndex) {
+            BarcodeDetail(barcode: codes[$0])
         }
         
     }
@@ -65,8 +69,13 @@ struct Barcode: View {
 
 struct BarcodeDetail: View {
     
+    @Environment(\.managedObjectContext) var managedObjContext
+    @Environment(\.dismiss) var dismiss
+    
+    var barcode: FetchedResults<ScannedBarcode>.Element
+    
     var body: some View {
-        Text("HeHe")
+        Text(barcode.content!)
     }
     
 }

@@ -77,7 +77,7 @@
 		5E0AA8042837BF59006CD0EA /* whitegradient_red@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whitegradient_red@1x.png"; sourceTree = "<group>"; };
 		5E0AA8052837BF59006CD0EA /* whitegradient_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whitegradient_red@2x.png"; sourceTree = "<group>"; };
 		5E0AA8092837BFB7006CD0EA /* IconNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconNames.swift; sourceTree = "<group>"; };
-		5E1383DC2915974E00CF4FAB /* Toolbox Watch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Toolbox Watch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E1383DC2915974E00CF4FAB /* Toolbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Toolbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E1383DE2915974E00CF4FAB /* Toolbox_WatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbox_WatchApp.swift; sourceTree = "<group>"; };
 		5E1383E02915974E00CF4FAB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5E1383E22915975000CF4FAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -276,7 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				5EC7B21B27D7978100699FD3 /* Toolbox.app */,
-				5E1383DC2915974E00CF4FAB /* Toolbox Watch Watch App.app */,
+				5E1383DC2915974E00CF4FAB /* Toolbox.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -358,7 +358,7 @@
 				5E1383F42915A58200CF4FAB /* SwiftUI Apple Watch Decimal Pad */,
 			);
 			productName = "Toolbox Watch Watch App";
-			productReference = 5E1383DC2915974E00CF4FAB /* Toolbox Watch Watch App.app */;
+			productReference = 5E1383DC2915974E00CF4FAB /* Toolbox.app */;
 			productType = "com.apple.product-type.application";
 		};
 		5EC7B21A27D7978100699FD3 /* Toolbox */ = {
@@ -573,7 +573,6 @@
 				DEVELOPMENT_TEAM = VA79D2T9W7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Toolbox Watch";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -581,8 +580,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = .watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = de.sivery.toolbox.watchkitapp;
+				PRODUCT_NAME = Toolbox;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -604,7 +603,6 @@
 				DEVELOPMENT_TEAM = VA79D2T9W7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Toolbox Watch";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -612,8 +610,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = .watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = de.sivery.toolbox.watchkitapp;
+				PRODUCT_NAME = Toolbox;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -768,7 +766,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = de.sivery.toolbox;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -807,7 +805,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = de.sivery.toolbox;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
