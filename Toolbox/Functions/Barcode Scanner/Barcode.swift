@@ -13,7 +13,7 @@ import CodeScanner
 struct Barcode: View {
     
     @State private var scanSheet = false
-    @State private var detailSheet = false
+    @State var detailSheet = false
     @State private var itemIndex: Int? = nil
     @Environment(\.managedObjectContext) var managedContext
     @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var codes: FetchedResults<ScannedBarcode>
@@ -52,8 +52,11 @@ struct Barcode: View {
             .presentationDetents([.medium, .large])
             
         }
-        .sheet(item: self.$itemIndex) {
-            BarcodeDetail(barcode: codes[$0])
+        .sheet(item: Binding(
+            get: { detailSheet && itemIndex ? true : nil },
+            set: { _ in })) { _ in
+            BarcodeDetail(barcode: codes[itemIndex])
+                .environment(\.showingSheet, self.detailSheet)
         }
         
     }

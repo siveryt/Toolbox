@@ -5,18 +5,37 @@
 //  Created by Christian Nagel on 10.08.23.
 //
 
-import Foundation
 import SwiftUI
+import CoreData
+import AVFoundation
+import Foundation
 
 struct BarcodeDetail: View {
-    
-    @Environment(\.managedObjectContext) var managedObjContext
-    @Environment(\.dismiss) var dismiss
-    
-    var barcode: FetchedResults<ScannedBarcode>.Element
+    @Environment(\.showingSheet) var showingSheet
+    var barcode: ScannedBarcode?
     
     var body: some View {
-        Text(barcode.content!)
+        NavigationView {
+            VStack {
+                Text(barcode?.content ?? "No content")
+            }
+            .navigationBarTitle(barcode?.content ?? "No content")
+            .navigationBarItems(trailing: backButton)
+            .navigationBarTitleDisplayMode(.inline)
+        }
     }
     
+    private var backButton: some View {
+        Button("Done") {
+            // Todo: handle back
+            self.showingSheet?.wrappedValue = false
+        }
+    }
+}
+
+
+struct BarcodeDetail_Previews: PreviewProvider {
+    static var previews: some View {
+        return BarcodeDetail()
+    }
 }

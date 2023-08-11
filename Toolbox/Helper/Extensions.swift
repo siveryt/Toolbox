@@ -74,10 +74,19 @@ struct ShowingSheetKey: EnvironmentKey {
     static let defaultValue: Binding<Bool>? = nil
 }
 
+struct ShowingIntKey: EnvironmentKey {
+    static let defaultValue: Int? = nil
+}
+
 extension EnvironmentValues {
     var showingSheet: Binding<Bool>? {
         get { self[ShowingSheetKey.self] }
         set { self[ShowingSheetKey.self] = newValue }
+    }
+    
+    var showingInt: Int? {
+        get { self[ShowingIntKey.self] }
+        set { self[ShowingIntKey.self] = newValue }
     }
 }
 
