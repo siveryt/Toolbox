@@ -10,65 +10,82 @@ import AVFoundation //import to access barcode types you want to scan
 import Haptica
 import CodeScanner
 
+import SwiftUI
+
 struct Barcode: View {
-    
-    @State private var scanSheet = false
+    @State var scanSheet = false
     @State var detailSheet = false
     @State private var itemIndex: Int? = nil
     @Environment(\.managedObjectContext) var managedContext
     @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var codes: FetchedResults<ScannedBarcode>
     
-    
     var body: some View {
-        VStack{
-            if(codes.count > 0){
-                List(){
-                    ForEach(Array(codes.enumerated()), id: \.offset) { index, code in
-                        Button(code.content!){
-                            itemIndex = index
-                            detailSheet = true
-                        }
-                    }
-                    .onDelete(perform: deleteCode)
-                }
-                
-            } else{
+        VStack {
+            if codes.count > 0 {
+                CodeListView(codes: codes, itemIndex: $itemIndex, detailSheet: $detailSheet)
+                    
+            } else {
                 Text("Click on the \(Image(systemName: "viewfinder")) to scan your first barcode")
             }
         }
-        .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
+        
+        .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Barcode")
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button(action: {
                     scanSheet = true
-                }, label: {
+                }) {
                     Image(systemName: "viewfinder")
-                })
+                }
             }
         }
         .sheet(isPresented: $scanSheet) {
             BarcodeScanner()
             .presentationDetents([.medium, .large])
-            
-        }
-        .sheet(item: Binding(
-            get: { detailSheet && itemIndex ? true : nil },
-            set: { _ in })) { _ in
-            BarcodeDetail(barcode: codes[itemIndex])
-                .environment(\.showingSheet, self.detailSheet)
         }
         
-    }
-    private func deleteCode(offsets: IndexSet) {
-            withAnimation {
-                offsets.map { codes[$0] }
-                .forEach(managedContext.delete)
-                
-                SBDataController().save(context: managedContext)
+        .sheet(isPresented: Binding<Bool>(
+            get: { ($itemIndex.wrappedValue != nil) && detailSheet },
+            set: { _ in }
+        )) {
+            if let index = itemIndex, index < codes.count {
+                BarcodeDetail(barcode: codes[index])
+                    .environment(\.showingSheet, self.$detailSheet)
             }
         }
+    }
+    
+    
 }
+
+struct CodeListView: View {
+    var codes: FetchedResults<ScannedBarcode>
+    @Binding var itemIndex: Int?
+    @Binding var detailSheet: Bool
+    @Environment(\.managedObjectContext) var managedContext
+    
+    var body: some View {
+        List {
+            ForEach(Array(codes.enumerated()), id: \.offset) { index, code in
+                Button(code.content!) {
+                    itemIndex = index
+                    detailSheet = true
+                }
+            }
+            .onDelete(perform: deleteCode)
+        }
+    }
+    func deleteCode(offsets: IndexSet) {
+        withAnimation {
+            offsets.map { codes[$0] }
+                .forEach(managedContext.delete)
+            
+            SBDataController().save(context: managedContext)
+        }
+    }
+}
+
 
 
 
