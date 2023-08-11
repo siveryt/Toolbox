@@ -108,7 +108,7 @@ struct BarcodeScanner: View {
                     }
                 }
             } else{
-                CodeScannerView(codeTypes: [.aztec, .code39, .code93, .code128, .dataMatrix, .ean8, .ean13, .interleaved2of5, .itf14, .pdf417, .qr, .upce], shouldVibrateOnSuccess: false) { response in
+                CodeScannerView(codeTypes: [.aztec, .code39, .code93, .code128, .dataMatrix, .ean8, .ean13, .interleaved2of5, .itf14, .pdf417, .qr, .upce, .upce], shouldVibrateOnSuccess: false) { response in
                     
                     switch response {
                         case .success(let result):
