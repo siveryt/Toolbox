@@ -32,7 +32,7 @@ struct ColorPickerView: View {
     
     var body: some View {
         Form{
-            ColorPicker("Choose color", selection: $drawSwiftUIColor, supportsOpacity: true)
+            ColorPicker("Choose color", selection: $drawSwiftUIColor, supportsOpacity: true, )
                 .onChange(of: drawSwiftUIColor) { newValue in
                     getColorsFromPicker(pickerColor: newValue)
                     guard let data : Data = try? NSKeyedArchiver.archivedData(withRootObject: drawUIColor, requiringSecureCoding: false) as Data else { return }
@@ -98,7 +98,7 @@ struct ColorPickerView: View {
             if let userSelectedColorData = UserDefaults.standard.object(forKey: "UserSelectedColor") as? Data {
                 
                 do {
-                    guard let userSelectedColor = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(userSelectedColorData) as? UIColor else {
+                    guard let userSelectedColor = try NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: userSelectedColorData) else {
                         fatalError("loadWidgetDataArray - Can't get Array")
                     }
                     drawUIColor = userSelectedColor
