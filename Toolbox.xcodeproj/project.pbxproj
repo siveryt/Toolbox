@@ -14,11 +14,11 @@
 		5E0AA8072837BF59006CD0EA /* whitegradient_red@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E0AA8042837BF59006CD0EA /* whitegradient_red@1x.png */; };
 		5E0AA8082837BF59006CD0EA /* whitegradient_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E0AA8052837BF59006CD0EA /* whitegradient_red@2x.png */; };
 		5E0AA80A2837BFB7006CD0EA /* IconNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0AA8092837BFB7006CD0EA /* IconNames.swift */; };
+		5E26D15D2A86C84F0010D51C /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 5E26D15C2A86C84F0010D51C /* CodeScanner */; };
 		5E2A28232A857AC000F7F444 /* Assets WatchOS.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E1383E22915975000CF4FAB /* Assets WatchOS.xcassets */; };
 		5E35DBE12917C5BD00D2FC8A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E35DBDF2917C5BD00D2FC8A /* InfoPlist.strings */; };
 		5E35DBE42917C5BD00D2FC8A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E35DBE22917C5BD00D2FC8A /* Localizable.strings */; };
 		5E35DBE72917C62500D2FC8A /* WhatsNewKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5E35DBE62917C62500D2FC8A /* WhatsNewKit */; };
-		5E3C5DA629B3CC2B00613685 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 5E3C5DA529B3CC2B00613685 /* CodeScanner */; };
 		5E47B19B27F1F3F4008FD3C0 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E47B19A27F1F3F4008FD3C0 /* Counter.swift */; };
 		5E528A9027E2379F00B2AE01 /* Haptica in Frameworks */ = {isa = PBXBuildFile; productRef = 5E528A8F27E2379F00B2AE01 /* Haptica */; };
 		5E5C62082916654F004F44CC /* Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5C62072916654F004F44CC /* Ping.swift */; };
@@ -167,9 +167,9 @@
 			files = (
 				5E020C5327EA2A59009871F9 /* RomanNumeralKit in Frameworks */,
 				5E528A9027E2379F00B2AE01 /* Haptica in Frameworks */,
+				5E26D15D2A86C84F0010D51C /* CodeScanner in Frameworks */,
 				5E35DBE72917C62500D2FC8A /* WhatsNewKit in Frameworks */,
 				5E5C620B29166566004F44CC /* SwiftyPing in Frameworks */,
-				5E3C5DA629B3CC2B00613685 /* CodeScanner in Frameworks */,
 				5EB6030628B22C1B00133561 /* ToastSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -398,7 +398,7 @@
 				5EB6030528B22C1B00133561 /* ToastSwiftUI */,
 				5E5C620A29166566004F44CC /* SwiftyPing */,
 				5E35DBE62917C62500D2FC8A /* WhatsNewKit */,
-				5E3C5DA529B3CC2B00613685 /* CodeScanner */,
+				5E26D15C2A86C84F0010D51C /* CodeScanner */,
 			);
 			productName = Toolbox;
 			productReference = 5EC7B21B27D7978100699FD3 /* Toolbox.app */;
@@ -458,8 +458,8 @@
 				5EB6030428B22C1B00133561 /* XCRemoteSwiftPackageReference "ToastSwiftUI" */,
 				5E5C620929166566004F44CC /* XCRemoteSwiftPackageReference "SwiftyPing" */,
 				5E35DBE52917C62500D2FC8A /* XCRemoteSwiftPackageReference "WhatsNewKit" */,
-				5E3C5DA429B3CC2B00613685 /* XCRemoteSwiftPackageReference "CodeScanner" */,
 				5E6308932A866EB000212E8C /* XCRemoteSwiftPackageReference "SwiftUI-Apple-Watch-Decimal-Pad" */,
+				5E26D15B2A86C84F0010D51C /* XCRemoteSwiftPackageReference "CodeScanner" */,
 			);
 			productRefGroup = 5EC7B21C27D7978100699FD3 /* Products */;
 			projectDirPath = "";
@@ -911,20 +911,20 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		5E26D15B2A86C84F0010D51C /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		5E35DBE52917C62500D2FC8A /* XCRemoteSwiftPackageReference "WhatsNewKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SvenTiigi/WhatsNewKit.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.0.0;
-			};
-		};
-		5E3C5DA429B3CC2B00613685 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/twostraws/CodeScanner";
-			requirement = {
-				branch = main;
-				kind = branch;
 			};
 		};
 		5E528A8E27E2379F00B2AE01 /* XCRemoteSwiftPackageReference "Haptica" */ = {
@@ -967,15 +967,15 @@
 			package = 5E020C5127EA2A59009871F9 /* XCRemoteSwiftPackageReference "RomanNumeralKit" */;
 			productName = RomanNumeralKit;
 		};
+		5E26D15C2A86C84F0010D51C /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5E26D15B2A86C84F0010D51C /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
 		5E35DBE62917C62500D2FC8A /* WhatsNewKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5E35DBE52917C62500D2FC8A /* XCRemoteSwiftPackageReference "WhatsNewKit" */;
 			productName = WhatsNewKit;
-		};
-		5E3C5DA529B3CC2B00613685 /* CodeScanner */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5E3C5DA429B3CC2B00613685 /* XCRemoteSwiftPackageReference "CodeScanner" */;
-			productName = CodeScanner;
 		};
 		5E528A8F27E2379F00B2AE01 /* Haptica */ = {
 			isa = XCSwiftPackageProductDependency;

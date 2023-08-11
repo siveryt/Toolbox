@@ -9,6 +9,8 @@ import SwiftUI
 import CoreData
 import AVFoundation
 import Foundation
+import UIKit
+import CoreImage.CIFilterBuiltins
 
 struct BarcodeDetail: View {
     @Environment(\.showingSheet) var showingSheet
@@ -23,7 +25,11 @@ struct BarcodeDetail: View {
                     BarcodeTextProperty(content: barcode?.type, propertyName: "type")
                     BarcodeTextProperty(content: formatDate(date: barcode?.date), propertyName: "date")
                 }
-                // Todo generate image of code
+                Image(uiImage: generateQRCode( "Hallo", type: barcode?.type))
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 200, height: 300)
+                
             }
             .navigationBarTitle(barcode?.content ?? "No content")
             .navigationBarItems(trailing: backButton)
@@ -41,7 +47,43 @@ struct BarcodeDetail: View {
             formatter.dateStyle = .long
             formatter.timeStyle = .medium
             return formatter.string(from: date!)
+    }
+    
+//    func generateQRCode(_ string: String) -> UIImage {
+//
+//          if !string.isEmpty {
+//
+//              let data = string.data(using: String.Encoding.ascii)
+//
+//              let filter = CIFilter.qrCodeGenerator()
+//              // Check the KVC for the selected code generator
+//              filter.setValue(data, forKey: "inputMessage")
+//
+//              let transform = CGAffineTransform(scaleX: 10, y: 10)
+//              let output = filter.outputImage?.transformed(by: transform)
+//
+//              return UIImage(ciImage: output!)
+//          } else {
+//              return UIImage()
+//          }
+//    }
+    
+    func generateQRCode(_ string: String, type: String?) -> UIImage {
+        let context = CIContext()
+        var filter = CIFilter.pdf417BarcodeGenerator()
+        
+
+        filter.message = Data(string.utf8)
+
+        if let outputImage = filter.outputImage?.transformed(by: CGAffineTransform(scaleX: 10, y: 10)) {
+            if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
+                return UIImage(cgImage: cgimg)
+            }
         }
+
+        return UIImage(systemName: "xmark.circle") ?? UIImage()
+    }
+      
     
     private var backButton: some View {
         Button("Done") {
