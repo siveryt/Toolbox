@@ -32,6 +32,8 @@ struct Coordinates: View {
         return ((locationManager.lastLocation?.verticalAccuracy ?? 0 + (locationManager.lastLocation?.horizontalAccuracy ?? 0))/2).rounded(toPlaces: 2)
     }
     
+    @AppStorage("coordsDisplay") var display: String = "decimal"
+    
     var authStatus: String {
         locationManager.statusString
     }
@@ -47,31 +49,93 @@ struct Coordinates: View {
         }
     }
     
+    func decimalToDMS(coordinate: Double, isLatitude: Bool) -> String {
+        let absoluteCoordinate = abs(coordinate)
+        
+        let degrees = Int(absoluteCoordinate)
+        let decimalMinutes = (absoluteCoordinate - Double(degrees)) * 60
+        let minutes = Int(decimalMinutes)
+        let seconds = (decimalMinutes - Double(minutes)) * 60
+        
+        let direction: String
+        if isLatitude {
+            direction = coordinate >= 0 ? "N" : "S"
+        } else {
+            direction = coordinate >= 0 ? "E" : "W"
+        }
+        
+        
+        return ("\(degrees)° \(minutes)' \(String(format: "%.2f", seconds))\" \(direction)")
+    }
+    
     var body: some View {
         Form {
             if(locationManager.locationStatus != .denied){
+                Section{
+                        Picker(selection: $display, label: Text("Display")) {
+                            Text(NSLocalizedString("Decimal Degrees", comment: "GPS")).tag("decimal")
+                            Text(NSLocalizedString("DMS", comment: "GPS")).tag("dms")
+                        }
+                    
+                }
+                
                 Button(action: {
-                    UIPasteboard.general.string = String(userLatitude)
+                    if(display == "decimal"){
+                        UIPasteboard.general.string = String(userLatitude)
+                    } else {
+                        UIPasteboard.general.string = decimalToDMS(coordinate: userLatitude, isLatitude: true)
+                    }
+                    
                     Haptic.impact(.light).generate()
                     presentToast()
                 }){
                     HStack {
                         Text("Latitude")
                         Spacer()
+                        if(display == "decimal"){
                         Text(String(userLatitude))
+                        } else {
+                            Text(decimalToDMS(coordinate: userLatitude, isLatitude: true))
+                        }
                     }
                 }
                 .tint(.primary)
                 
                 Button(action: {
-                    UIPasteboard.general.string = String(userLongitude)
+                    if(display == "decimal"){
+                        UIPasteboard.general.string = String(userLongitude)
+                    } else {
+                        UIPasteboard.general.string = decimalToDMS(coordinate: userLongitude, isLatitude:false)
+                    }
                     Haptic.impact(.light).generate()
                     presentToast()
                 }){
                     HStack {
                         Text("Longitude")
                         Spacer()
+                        if(display == "decimal"){
                         Text(String(userLongitude))
+                        } else {
+                            Text(decimalToDMS(coordinate: userLongitude, isLatitude:false))
+                        }
+                    }
+                }
+                .tint(.primary)
+                
+                Button(action: {
+                    UIPasteboard.general.string = decimalToDMS(coordinate: userLatitude, isLatitude: true) + ", " + decimalToDMS(coordinate: userLongitude, isLatitude: false)
+                    Haptic.impact(.light).generate()
+                    presentToast()
+                }){
+                    HStack {
+                        Text("Coordinate String")
+                        Spacer()
+                        if (display == "decimal") {
+                            Text(String(userLatitude) + ", " + String(userLongitude))
+                        } else {
+                            Text(decimalToDMS(coordinate: userLatitude, isLatitude: true) + ", " + decimalToDMS(coordinate: userLongitude, isLatitude: false))
+                        }
+                        
                     }
                 }
                 .tint(.primary)
