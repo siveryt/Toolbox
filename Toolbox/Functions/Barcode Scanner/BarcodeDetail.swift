@@ -24,11 +24,12 @@ struct BarcodeDetail: View {
                     BarcodeTextProperty(content: barcode?.content, propertyName: "content")
                     BarcodeTextProperty(content: barcode?.type, propertyName: "type")
                     BarcodeTextProperty(content: formatDate(date: barcode?.date), propertyName: "date")
+                    Image(uiImage: generateQRCode( barcode?.content ?? "error", type: barcode?.type))
+                        .resizable()
+                        .scaledToFit()
+//                        .frame(width: 200, height: 300)
                 }
-                Image(uiImage: generateQRCode( "Hallo", type: barcode?.type))
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 200, height: 300)
+                
                 
             }
             .navigationBarTitle(barcode?.content ?? "No content")
@@ -59,7 +60,7 @@ struct BarcodeDetail: View {
 //              // Check the KVC for the selected code generator
 //              filter.setValue(data, forKey: "inputMessage")
 //
-//              let transform = CGAffineTransform(scaleX: 10, y: 10)
+//              let transform = CGAffineTransform(scaleX: 15, y: 15)
 //              let output = filter.outputImage?.transformed(by: transform)
 //
 //              return UIImage(ciImage: output!)
@@ -70,16 +71,50 @@ struct BarcodeDetail: View {
     
     func generateQRCode(_ string: String, type: String?) -> UIImage {
         let context = CIContext()
-        var filter = CIFilter.pdf417BarcodeGenerator()
         
+        if(type == "Aztec"){
+        
+            let filter = CIFilter.aztecCodeGenerator()
+            filter.message = Data(string.utf8)
 
-        filter.message = Data(string.utf8)
+            if let outputImage = filter.outputImage?.transformed(by: CGAffineTransform(scaleX: 15, y: 15)) {
+                if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
+                    return UIImage(cgImage: cgimg)
+                }
+            }
+        }else if(type == "QR Code"){
+            
+            let filter = CIFilter.qrCodeGenerator()
+            filter.message = Data(string.utf8)
 
-        if let outputImage = filter.outputImage?.transformed(by: CGAffineTransform(scaleX: 10, y: 10)) {
-            if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
-                return UIImage(cgImage: cgimg)
+            if let outputImage = filter.outputImage?.transformed(by: CGAffineTransform(scaleX: 15, y: 15)) {
+                if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
+                    return UIImage(cgImage: cgimg)
+                }
+            }
+        }else if(type == "PDF417"){
+            
+            let filter = CIFilter.pdf417BarcodeGenerator()
+            filter.message = Data(string.utf8)
+
+            if let outputImage = filter.outputImage?.transformed(by: CGAffineTransform(scaleX: 15, y: 15)) {
+                if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
+                    return UIImage(cgImage: cgimg)
+                }
+            }
+        }else{
+            
+            let filter = CIFilter.code128BarcodeGenerator()
+            filter.message = Data(string.utf8)
+
+            if let outputImage = filter.outputImage?.transformed(by: CGAffineTransform(scaleX: 15, y: 15)) {
+                if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
+                    return UIImage(cgImage: cgimg)
+                }
             }
         }
+
+        
 
         return UIImage(systemName: "xmark.circle") ?? UIImage()
     }
@@ -92,6 +127,7 @@ struct BarcodeDetail: View {
         }
     }
 }
+
 
 struct BarcodeTextProperty: View {
     
