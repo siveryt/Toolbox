@@ -110,7 +110,7 @@ struct DiceView: View {
         VStack{
             LazyVGrid(columns: diceCount > 1 ? [GridItem(), GridItem()] : [GridItem()]) {
                 ForEach(0..<diceCount, id: \.self) {i in
-                    Image(String(sides)+"-"+rolled[i])
+                    Image(String(sides == 20 || sides == 10 ? 8 : sides)+"-"+rolled[i])
                         .resizable()
                         .scaledToFit()
                         
@@ -153,7 +153,9 @@ struct DiceView: View {
                         Text("4").tag(4)
                         Text("6").tag(6)
                         Text("8").tag(8)
+                        Text("10").tag(10)
                         Text("12").tag(12)
+                        Text("20").tag(20)
                     }
                     .pickerStyle(.menu)
                     
