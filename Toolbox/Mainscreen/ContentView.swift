@@ -30,6 +30,7 @@ struct ContentView: View {
         Tool(view: AnyView(DiceView()), title: NSLocalizedString("Dice", comment: "Menu item"), icon: "dice"),
         Tool(view: AnyView(DomainResolver()), title: NSLocalizedString("Domain Resolver", comment: "Menu item"), icon: "network"),
         Tool(view: AnyView(RandomNumber()), title: NSLocalizedString("Random Number", comment: "Menu item"), icon: "number"),
+        Tool(view: AnyView(Random_Letter()), title: NSLocalizedString("Random Letter", comment: "Menu item"), icon: "character"),
         Tool(view: AnyView(LiveClock()), title: NSLocalizedString("Live Clock", comment: "Menu item"), icon: "clock"),
         Tool(view: AnyView(DateDifference()), title: NSLocalizedString("Date Difference", comment: "Menu item"), icon: "calendar"),
         Tool(view: AnyView(RomanConverter()), title: NSLocalizedString("Roman Numbers", comment: "Menu item"), icon: "hexagon"),
@@ -38,12 +39,13 @@ struct ContentView: View {
         Tool(view: AnyView(ColorPickerView()), title: NSLocalizedString("Color Picker", comment: "Menu item"), icon: "eyedropper.halffull"),
         Tool(view: AnyView(BodyMassIndex()), title: NSLocalizedString("BMI", comment: "Menu item"), icon: "person.fill.checkmark"),
         Tool(view: AnyView(ipChecker()), title: NSLocalizedString("IP-Checker", comment: "Menu item"), icon: "ellipsis.rectangle"),
+        Tool(view: AnyView(LAN_Scanner()), title: NSLocalizedString("LAN Scanner", comment: "Menu item"), icon: "magnifyingglass"),
         Tool(view: AnyView(Ping()), title: NSLocalizedString("Ping", comment: "Menu item"), icon: "bolt.horizontal"),
         Tool(view: AnyView(Coordinates()), title: NSLocalizedString("Coordinates", comment: "Menu item"), icon: "location"),
         Tool(view: AnyView(Speed()), title: NSLocalizedString("Speed", comment: "Menu item"), icon: "speedometer"),
         Tool(view: AnyView(Barcode()), title: NSLocalizedString("Barcode Scanner", comment: "Menu item"), icon: "barcode"),
-        Tool(view: AnyView(Random_Letter()), title: NSLocalizedString("Random Letter", comment: "Menu item"), icon: "character"),
-        Tool(view: AnyView(LAN_Scanner()), title: NSLocalizedString("LAN Scanner", comment: "Menu item"), icon: "magnifyingglass"),
+        
+        
         
     ]
     @State private var tools:[Tool] = []
@@ -72,7 +74,7 @@ struct ContentView: View {
                         .environment(\.showingSheet, self.$infoPresented)
                 }
             }
-            .navigationTitle("Toolbox \(Image("Toolbox"))")
+            .navigationTitle("Toolbox")
             .toolbar(){
                 ToolbarItem(placement: .primaryAction) {
                     Button(action: {

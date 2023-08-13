@@ -20,7 +20,13 @@
 "8" = "8";
 
 /* No comment provided by engineer. */
+"10" = "10";
+
+/* No comment provided by engineer. */
 "12" = "12";
+
+/* No comment provided by engineer. */
+"20" = "20";
 
 /* No comment provided by engineer. */
 "2022" = "2022";
@@ -49,14 +55,26 @@
 /* No comment provided by engineer. */
 "Are you sure, you want to reset the counter?" = "Bist du dir sicher, dass du den Zähler zurücksetzen möchtest?";
 
+/* No comment provided by engineer. */
+"Barcode" = "Barcode";
+
+/* Menu item */
+"Barcode Scanner" = "Barcode Scanner";
+
 /* Menu item */
 "BMI" = "BMI";
+
+/* LAN Scanner */
+"brand" = "hersteller";
 
 /* No comment provided by engineer. */
 "Check again" = "Erneut abfragen";
 
 /* No comment provided by engineer. */
 "Choose color" = "Wähle Farbe";
+
+/* No comment provided by engineer. */
+"Click on the %@ to scan your first barcode" = "Drücke auf %@ um deinen ersten Barcode zu scannen.";
 
 /* No comment provided by engineer. */
 "cm" = "cm";
@@ -70,11 +88,17 @@
 /* WhatsNewKit item */
 "Configuration" = "Konfiguration";
 
+/* Barcode */
+"content" = "Inhalt";
+
 /* WhatsNewKit item */
 "Continue" = "Fortfahren";
 
 /* No comment provided by engineer. */
 "Contribute" = "Beitragen";
+
+/* No comment provided by engineer. */
+"Coordinate String" = "Komplette koordinaten";
 
 /* Menu item
    WhatsNewKit item */
@@ -86,6 +110,9 @@
 /* Menu item */
 "Counter" = "Zähler";
 
+/* Barcode */
+"date" = "Datum";
+
 /* Menu item */
 "Date Difference" = "Datumsunterschied";
 
@@ -95,11 +122,14 @@
 /* No comment provided by engineer. */
 "Days:" = "Tage:";
 
+/* GPS */
+"Decimal Degrees" = "Dezimalgrade";
+
 /* No comment provided by engineer. */
 "Delete" = "Löschen";
 
 /* No comment provided by engineer. */
-"Delete Data" = "Daten löschen";
+"Delete data" = "Daten löschen";
 
 /* Menu item */
 "Dice" = "Würfel";
@@ -116,6 +146,9 @@
 /* No comment provided by engineer. */
 "Display" = "Anzeige";
 
+/* GPS */
+"DMS" = "Grad, Minuten, Sekunden";
+
 /* No comment provided by engineer. */
 "Domain" = "Domain";
 
@@ -127,6 +160,9 @@
 
 /* No comment provided by engineer. */
 "Done" = "Fertig";
+
+/* No comment provided by engineer. */
+"Enable camera access in settings to use the Barcode Scanner." = "Aktiviere den Kamerazugriff, um den Barcode Scanner zu nutzen.";
 
 /* No comment provided by engineer. */
 "Encryption" = "Verschlüsselung";
@@ -164,14 +200,23 @@
 /* No comment provided by engineer. */
 "Host" = "Host";
 
+/* LAN Scanner */
+"hostname" = "hostname";
+
 /* No comment provided by engineer. */
 "inch" = "Zoll";
+
+/* LAN Scanner */
+"ip" = "ip";
 
 /* Menu item */
 "IP-Checker" = "IP-Adresse";
 
 /* No comment provided by engineer. */
 "kg" = "kg";
+
+/* Menu item */
+"LAN Scanner" = "LAN Scanner";
 
 /* No comment provided by engineer. */
 "Last update" = "Letztes Update";
@@ -188,6 +233,9 @@
 /* No comment provided by engineer. */
 "Longitude" = "Längengrad";
 
+/* LAN Scanner */
+"mac" = "mac";
+
 /* No comment provided by engineer. */
 "Made with ❤️ by Sivery" = "Made with ❤️ by Sivery";
 
@@ -195,7 +243,7 @@
 "Mail" = "Mail";
 
 /* No comment provided by engineer. */
-"Mailing-List" = "Mailing-Liste";
+"Mailing list" = "Mailingliste";
 
 /* No comment provided by engineer. */
 "Max" = "Max";
@@ -274,10 +322,13 @@
 "QR-Generator" = "QR Generator";
 
 /* Menu item */
+"Random Letter" = "Zufälliger Buchstabe";
+
+/* Menu item */
 "Random Number" = "Zufällige Zahl";
 
 /* No comment provided by engineer. */
-"Rate App" = "App Bewerten";
+"Rate app" = "App bewerten";
 
 /* No comment provided by engineer. */
 "Receiver" = "Empfänger";
@@ -338,6 +389,12 @@
 "Start Date:" = "Startdatum:";
 
 /* No comment provided by engineer. */
+"Start scanner" = "Scanner starten";
+
+/* No comment provided by engineer. */
+"Stop scanner" = "Scanner stoppen";
+
+/* No comment provided by engineer. */
 "Subject" = "Betreff";
 
 /* No comment provided by engineer. */
@@ -350,13 +407,13 @@
 "Text" = "Text";
 
 /* No comment provided by engineer. */
+"The app will close after deleting the data. You can instantly reopen it." = "Die App wird auch dem Löschen der Daten geschlossen. Das kannst sie aber direkt wieder öffnen.";
+
+/* No comment provided by engineer. */
 "Time" = "Zeit";
 
 /* No comment provided by engineer. */
 "To:" = "Bis:";
-
-/* No comment provided by engineer. */
-"Toolbox" = "Toolbox";
 
 /* WhatsNewKit item */
 "Toolbox has gone fully OpenSource and it's source code is available through GitHub" = "Toolbox ist ab sofort komplett Open Source und der Source Code ist auf GitHub erhältlich";
@@ -366,6 +423,9 @@
 
 /* No comment provided by engineer. */
 "toolbox@sivery.de" = "toolbox@sivery.de";
+
+/* Barcode */
+"type" = "Art";
 
 /* No comment provided by engineer. */
 "Type" = "Typ";

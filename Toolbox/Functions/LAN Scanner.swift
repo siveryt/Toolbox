@@ -8,6 +8,8 @@
 import SwiftUI
 import LanScanner
 import ToastSwiftUI
+import Network
+import Foundation
 
 struct LAN_Scanner: View {
     
@@ -16,58 +18,85 @@ struct LAN_Scanner: View {
     @State var detailSheet = false
     @State private var itemIndex: Int? = nil
     @State var scanning = false
+    @State private var showNoNetworkPermissionText = false
 
     var body: some View {
         
-        Form{
-            if(!scanning){
-            Button("Start scanner"){
-                viewModel.reload()
-                withAnimation(.linear(duration: 0.1)){
-                    scanning = true
-                    }
-            }} else {
-                Button("Stop scanner"){
-                    viewModel.stop()
-                    scanning = false
-                }
-            }
-            
-            HStack {
-                Spacer()
-                ProgressView(value: viewModel.progress)
-                    .frame(height: 20)
-            }
-            Section{
-                ForEach(Array(viewModel.connectedDevices.enumerated()), id: \.offset) { index, device in
-            Button(action: {itemIndex = index
-                detailSheet = true}, label: {VStack(alignment: .leading) {
-                Text(device.ipAddress)
-                    .font(.body)
-                Text(device.mac)
-                    .font(.caption)
-            }})
-            .tint(.primary)
 
-            }
-            }
-        }
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle("LAN Scanner")
-        .sheet(isPresented: Binding<Bool>(
-            get: { ($itemIndex.wrappedValue != nil) && detailSheet },
-            set: { _ in self.detailSheet = false }
-        )) {
-            if let index = itemIndex, index < viewModel.connectedDevices.count {
-                LANDetail(device: viewModel.connectedDevices[index])
-                    .environment(\.showingSheet, self.$detailSheet)
-            }
-                
-        }
         
+        VStack {
+                    if showNoNetworkPermissionText {
+                        Text("Toolbox does not have network permission. Please allow local network access in the settings.")
+                            .padding()
+                        Button("Open Settings") {
+                            if let appSettings = URL(string: UIApplication.openSettingsURLString) {
+                                UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
+                            }
+                        }
+                    } else {
+                        Form{
+                            if(!viewModel.scanning){
+                            Button("Start scanner"){
+                                viewModel.reload()
+                                withAnimation(.linear(duration: 0.1)){
+                                    viewModel.scanning = true
+                                    }
+                            }} else {
+                                Button("Stop scanner"){
+                                    viewModel.stop()
+                                    viewModel.scanning = false
+                                }
+                            }
+                            
+                            HStack {
+                                Spacer()
+                                ProgressView(value: viewModel.progress)
+                                    .frame(height: 20)
+                            }
+                            Section{
+                                ForEach(Array(viewModel.connectedDevices.enumerated()), id: \.offset) { index, device in
+                            Button(action: {itemIndex = index
+                                detailSheet = true}, label: {VStack(alignment: .leading) {
+                                Text(device.ipAddress)
+                                    .font(.body)
+                                Text(device.mac)
+                                    .font(.caption)
+                            }})
+                            .tint(.primary)
+
+                            }
+                            }
+                        }
+                        
+                        .sheet(isPresented: Binding<Bool>(
+                            get: { ($itemIndex.wrappedValue != nil) && detailSheet },
+                            set: { _ in self.detailSheet = false }
+                        )) {
+                            if let index = itemIndex, index < viewModel.connectedDevices.count {
+                                LANDetail(device: viewModel.connectedDevices[index])
+                                    .environment(\.showingSheet, self.$detailSheet)
+                            }
+                                
+                        }
+                    }
+                }
+                .onAppear {
+                    checkNetworkPermission()
+                }
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationTitle("LAN Scanner")
+
         
         
     }
+    private func checkNetworkPermission() {
+            let authorization = LocalNetworkAuthorization()
+            authorization.requestAuthorization { hasPermission in
+                DispatchQueue.main.async {
+                    self.showNoNetworkPermissionText = !hasPermission
+                }
+            }
+        }
 }
 
 struct LANDetail: View {
@@ -126,6 +155,7 @@ class CountViewModel: ObservableObject {
     @Published var progress: CGFloat = .zero
     @Published var title: String = .init()
     @Published var showAlert = false
+    @Published var scanning = false
 
     private lazy var scanner = LanScanner(delegate: self)
 
@@ -155,9 +185,67 @@ extension CountViewModel: LanScannerDelegate {
 
     func lanScanDidFinishScanning() {
         showAlert = true
+        
     }
 }
 
 extension LanDevice: Identifiable {
     public var id: UUID { .init() }
+}
+
+@available(iOS 14.0, *)
+public class LocalNetworkAuthorization: NSObject {
+    private var browser: NWBrowser?
+    private var netService: NetService?
+    private var completion: ((Bool) -> Void)?
+    
+    public func requestAuthorization(completion: @escaping (Bool) -> Void) {
+        self.completion = completion
+        
+        // Create parameters, and allow browsing over peer-to-peer link.
+        let parameters = NWParameters()
+        parameters.includePeerToPeer = true
+        
+        // Browse for a custom service type.
+        let browser = NWBrowser(for: .bonjour(type: "_bonjour._tcp", domain: nil), using: parameters)
+        self.browser = browser
+        browser.stateUpdateHandler = { newState in
+            switch newState {
+            case .failed(let error):
+                print(error.localizedDescription)
+            case .ready, .cancelled:
+                break
+            case let .waiting(error):
+                print("Local network permission has been denied: \(error)")
+                self.reset()
+                self.completion?(false)
+            default:
+                break
+            }
+        }
+        
+        self.netService = NetService(domain: "local.", type:"_lnp._tcp.", name: "LocalNetworkPrivacy", port: 1100)
+        self.netService?.delegate = self
+        
+        self.browser?.start(queue: .main)
+        self.netService?.publish()
+    }
+    
+    
+    
+    private func reset() {
+        self.browser?.cancel()
+        self.browser = nil
+        self.netService?.stop()
+        self.netService = nil
+    }
+}
+
+@available(iOS 14.0, *)
+extension LocalNetworkAuthorization : NetServiceDelegate {
+    public func netServiceDidPublish(_ sender: NetService) {
+        self.reset()
+        print("Local network permission has been granted")
+        completion?(true)
+    }
 }
