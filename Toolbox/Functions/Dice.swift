@@ -110,9 +110,10 @@ struct DiceView: View {
         VStack{
             LazyVGrid(columns: diceCount > 1 ? [GridItem(), GridItem()] : [GridItem()]) {
                 ForEach(0..<diceCount, id: \.self) {i in
+                    if(rolled.count > i){
                     Image(String(sides == 20 || sides == 10 ? 8 : sides)+"-"+rolled[i])
                         .resizable()
-                        .scaledToFit()
+                        .scaledToFit()}
                         
                 }
                 

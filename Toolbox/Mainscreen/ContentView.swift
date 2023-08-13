@@ -43,6 +43,7 @@ struct ContentView: View {
         Tool(view: AnyView(Speed()), title: NSLocalizedString("Speed", comment: "Menu item"), icon: "speedometer"),
         Tool(view: AnyView(Barcode()), title: NSLocalizedString("Barcode Scanner", comment: "Menu item"), icon: "barcode"),
         Tool(view: AnyView(Random_Letter()), title: NSLocalizedString("Random Letter", comment: "Menu item"), icon: "character"),
+        Tool(view: AnyView(LAN_Scanner()), title: NSLocalizedString("LAN Scanner", comment: "Menu item"), icon: "magnifyingglass"),
         
     ]
     @State private var tools:[Tool] = []
@@ -71,7 +72,7 @@ struct ContentView: View {
                         .environment(\.showingSheet, self.$infoPresented)
                 }
             }
-            .navigationTitle("Toolbox")
+            .navigationTitle("Toolbox \(Image("Toolbox"))")
             .toolbar(){
                 ToolbarItem(placement: .primaryAction) {
                     Button(action: {

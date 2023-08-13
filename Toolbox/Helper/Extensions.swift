@@ -78,10 +78,18 @@ struct ShowingIntKey: EnvironmentKey {
     static let defaultValue: Int? = nil
 }
 
+struct CopyToastKey:  EnvironmentKey {
+    static let defaultValue: Binding<Bool>? = nil
+}
+
 extension EnvironmentValues {
     var showingSheet: Binding<Bool>? {
         get { self[ShowingSheetKey.self] }
         set { self[ShowingSheetKey.self] = newValue }
+    }
+    var copyToast: Binding<Bool>? {
+        get { self[CopyToastKey.self] }
+        set { self[CopyToastKey.self] = newValue }
     }
     
     var showingInt: Int? {

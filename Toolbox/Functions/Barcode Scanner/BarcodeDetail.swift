@@ -11,19 +11,25 @@ import AVFoundation
 import Foundation
 import UIKit
 import CoreImage.CIFilterBuiltins
+import Haptica
+import ToastSwiftUI
 
 struct BarcodeDetail: View {
     @Environment(\.showingSheet) var showingSheet
     var barcode: ScannedBarcode?
+    @State var isPresentingToast = false
     
     var body: some View {
         NavigationView {
             VStack {
 //                Text(barcode?.content ?? "No content")
                 List {
-                    BarcodeTextProperty(content: barcode?.content, propertyName: "content")
-                    BarcodeTextProperty(content: barcode?.type, propertyName: "type")
-                    BarcodeTextProperty(content: formatDate(date: barcode?.date), propertyName: "date")
+                    KeyValueProperty(content: barcode?.content, propertyName: NSLocalizedString("content", comment: "Barcode"))
+                        .environment(\.copyToast, $isPresentingToast)
+                    KeyValueProperty(content: barcode?.type, propertyName: NSLocalizedString("type", comment: "Barcode"))
+                        .environment(\.copyToast, $isPresentingToast)
+                    KeyValueProperty(content: formatDate(date: barcode?.date), propertyName: NSLocalizedString("date", comment: "Barcode"))
+                        .environment(\.copyToast, $isPresentingToast)
                     Image(uiImage: generateQRCode( barcode?.content ?? "error", type: barcode?.type))
                         .resizable()
                         .scaledToFit()
@@ -35,8 +41,11 @@ struct BarcodeDetail: View {
             .navigationBarTitle(barcode?.content ?? "No content")
             .navigationBarItems(trailing: backButton)
             .navigationBarTitleDisplayMode(.inline)
+//            .toast(isPresenting: $isPresentingToast, message: NSLocalizedString("Copied", comment: "Copy toast"), icon: .custom(Image(systemName: "doc.on.clipboard")), autoDismiss: .none)
         }
+        .toast(isPresenting: $isPresentingToast, message: NSLocalizedString("Copied", comment: "Copy toast"), icon: .custom(Image(systemName: "doc.on.clipboard")), autoDismiss: .none)
     }
+        
     
     func formatDate(date: Date?) -> String {
         
@@ -129,28 +138,45 @@ struct BarcodeDetail: View {
 }
 
 
-struct BarcodeTextProperty: View {
+struct KeyValueProperty: View {
     
     var content: String?
     var propertyName: String
+    @Environment(\.copyToast) var copyToast
     
     var body: some View {
-        VStack{
-            HStack {
-                Text(propertyName)
-                    .font(.callout)
-                    .dynamicTypeSize(.small)
+        
+            
+        Button(action: {
+            withAnimation {
+                copyToast?.wrappedValue = true
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                withAnimation {
+                    copyToast?.wrappedValue = false
+                }
+            }
+            UIPasteboard.general.string = content
+        }, label:
+        {
+                VStack{
+                    HStack {
+                        Text(propertyName)
+                            .font(.callout)
+                            .dynamicTypeSize(.small)
 
-                    .textCase(/*@START_MENU_TOKEN@*/.uppercase/*@END_MENU_TOKEN@*/)
-                .foregroundColor(.secondary)
-                Spacer()
-            }
-            HStack {
-                Text(content ?? "No content")
-                    
-                Spacer()
-            }
-        }
+                            .textCase(/*@START_MENU_TOKEN@*/.uppercase/*@END_MENU_TOKEN@*/)
+                        .foregroundColor(.secondary)
+                        Spacer()
+                    }
+                    HStack {
+                        Text(content ?? "No content")
+                        Spacer()
+                    }
+                }
+        }).tint(.primary)
+        
+        
     }
 }
 

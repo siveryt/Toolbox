@@ -68,6 +68,8 @@
 		5EE65E032A8576280061120B /* Dice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1383EA29159ADE00CF4FAB /* Dice.swift */; };
 		5EE65E042A8576280061120B /* Random Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1383F12915A23100CF4FAB /* Random Number.swift */; };
 		5EF8C35D2A8859AC0089BCA3 /* Random Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8C35C2A8859AC0089BCA3 /* Random Letter.swift */; };
+		5EF8C35F2A88665D0089BCA3 /* LAN Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8C35E2A88665D0089BCA3 /* LAN Scanner.swift */; };
+		5EF8C3622A88669A0089BCA3 /* LanScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 5EF8C3612A88669A0089BCA3 /* LanScanner */; };
 		5EFACB1429B37C9A00EB8989 /* ScannedBarcodes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5EFACB1229B37C9A00EB8989 /* ScannedBarcodes.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -159,6 +161,7 @@
 		5EE65DF82A8576000061120B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5EE65E072A8578840061120B /* Toolbox-WatchOS-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Toolbox-WatchOS-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		5EF8C35C2A8859AC0089BCA3 /* Random Letter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Random Letter.swift"; sourceTree = "<group>"; };
+		5EF8C35E2A88665D0089BCA3 /* LAN Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LAN Scanner.swift"; sourceTree = "<group>"; };
 		5EFACB1329B37C9A00EB8989 /* ScannedBarcodes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ScannedBarcodes.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -172,6 +175,7 @@
 				5E26D15D2A86C84F0010D51C /* CodeScanner in Frameworks */,
 				5E35DBE72917C62500D2FC8A /* WhatsNewKit in Frameworks */,
 				5E5C620B29166566004F44CC /* SwiftyPing in Frameworks */,
+				5EF8C3622A88669A0089BCA3 /* LanScanner in Frameworks */,
 				5EB6030628B22C1B00133561 /* ToastSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -334,6 +338,7 @@
 				5ED81C4927E36ED500FC42E8 /* Dice.swift */,
 				5ED81C4B27E372E700FC42E8 /* DomainResolver.swift */,
 				5ED3943A28BD139D00798FFE /* ipChecker.swift */,
+				5EF8C35E2A88665D0089BCA3 /* LAN Scanner.swift */,
 				5EDFF1E527E76D34005BBA3C /* LiveClock.swift */,
 				5E5C62072916654F004F44CC /* Ping.swift */,
 				5EB7897627F9CCA900F07140 /* QRGenerator.swift */,
@@ -402,6 +407,7 @@
 				5E5C620A29166566004F44CC /* SwiftyPing */,
 				5E35DBE62917C62500D2FC8A /* WhatsNewKit */,
 				5E26D15C2A86C84F0010D51C /* CodeScanner */,
+				5EF8C3612A88669A0089BCA3 /* LanScanner */,
 			);
 			productName = Toolbox;
 			productReference = 5EC7B21B27D7978100699FD3 /* Toolbox.app */;
@@ -463,6 +469,7 @@
 				5E35DBE52917C62500D2FC8A /* XCRemoteSwiftPackageReference "WhatsNewKit" */,
 				5E6308932A866EB000212E8C /* XCRemoteSwiftPackageReference "SwiftUI-Apple-Watch-Decimal-Pad" */,
 				5E26D15B2A86C84F0010D51C /* XCRemoteSwiftPackageReference "CodeScanner" */,
+				5EF8C3602A88669A0089BCA3 /* XCRemoteSwiftPackageReference "lan-scanner" */,
 			);
 			productRefGroup = 5EC7B21C27D7978100699FD3 /* Products */;
 			projectDirPath = "";
@@ -529,6 +536,7 @@
 				5EC7B22127D7978100699FD3 /* ContentView.swift in Sources */,
 				5E020C5027EA29D7009871F9 /* DateDifference.swift in Sources */,
 				5E878B702916CCFD0038A5E3 /* Extensions.swift in Sources */,
+				5EF8C35F2A88665D0089BCA3 /* LAN Scanner.swift in Sources */,
 				5E878B722916CD4F0038A5E3 /* InfoView.swift in Sources */,
 				5EC7B21F27D7978100699FD3 /* ToolboxApp.swift in Sources */,
 				5EB9CEA62916A445009D29F4 /* Coordinates.swift in Sources */,
@@ -963,6 +971,14 @@
 				kind = branch;
 			};
 		};
+		5EF8C3602A88669A0089BCA3 /* XCRemoteSwiftPackageReference "lan-scanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MaatheusGois/lan-scanner";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1000,6 +1016,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5EB6030428B22C1B00133561 /* XCRemoteSwiftPackageReference "ToastSwiftUI" */;
 			productName = ToastSwiftUI;
+		};
+		5EF8C3612A88669A0089BCA3 /* LanScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5EF8C3602A88669A0089BCA3 /* XCRemoteSwiftPackageReference "lan-scanner" */;
+			productName = LanScanner;
 		};
 /* End XCSwiftPackageProductDependency section */
 
