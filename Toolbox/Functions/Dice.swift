@@ -71,16 +71,24 @@ struct DiceView: View {
     @State var settingsSheet = false
     @AppStorage("diceSides") var sides = 6
     @AppStorage("diceCount") var diceCount = 1
+    @AppStorage("diceKept") var kept:[Int] = []
     
     
     
     func roll(){
         
+        if(kept.count >= diceCount) {return};
+        
         for dqI in 1...9 {
             DispatchQueue.main.asyncAfter(deadline: .now() + Double("0.\(dqI)")!) {
+                let oldRolled = rolled
                 rolled = []
-                for _ in 0...8 {
-                    rolled.append(String(Int.random(in: 1...sides)))
+                for diceNr in 0...8 {
+                    if (kept.contains(diceNr)) {
+                        rolled.append(oldRolled[diceNr])
+                    } else {
+                        rolled.append(String(Int.random(in: 1...sides)))
+                    }
                 }
                 Haptic.impact(.light).generate()
             }
@@ -93,6 +101,16 @@ struct DiceView: View {
         }
     }
     
+    func toggleKeep(index: Int) {
+        Haptic.impact(.medium).generate()
+        if let existingIndex = kept.firstIndex(of: index) {
+            kept.remove(at: existingIndex)
+        } else {
+            kept.append(index)
+        }
+    }
+
+    
     
     
     var body: some View {
@@ -102,36 +120,50 @@ struct DiceView: View {
         }, set: {
             
                 self.sides = $0
+            self.kept = []
             
             roll()
             
         })
         
-        VStack{
+        VStack {
             LazyVGrid(columns: diceCount > 1 ? [GridItem(), GridItem()] : [GridItem()]) {
-                ForEach(0..<diceCount, id: \.self) {i in
-                    if(rolled.count > i){
-                    Image(String(sides == 20 || sides == 10 ? 8 : sides)+"-"+rolled[i])
-                        .resizable()
-                        .scaledToFit()}
-                        
-                }
-                
-            }
-            
-            
+                            ForEach(0..<diceCount, id: \.self) { i in
+                                if rolled.count > i {
+                                    Image(String(sides == 20 || sides == 10 ? 8 : sides) + "-" + rolled[i])
+                                        .resizable()
+                                        .scaledToFit()
+                                        
+                                        .overlay(
+                                            HStack {
+                                                VStack {
+                                                    if(kept.contains(i)) {
+                                                        diceLock()
+                                                    }
+                                                    Spacer()
+                                                }
+                                                Spacer()
+                                            }
+                                                        )
+                                        .onTapGesture {
+                                            roll()
+                                        }
+                                        .onLongPressGesture {
+                                            toggleKeep(index: i)
+                                        }
+                                }
+                            }
+                        }
+
             if guidance {
                 Text("Shake or tap to get started").foregroundColor(.secondary)
             }
         }
-        .onTapGesture {
-            roll()
-        }
         .padding(.all, 50.0)
         .frame(maxWidth: 500)
-
-        .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
+        .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Dice")
+
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button(action: {
@@ -166,12 +198,15 @@ struct DiceView: View {
                         Stepper("Dice Count:", value: $diceCount, in: 1...8)
                         Text(String(diceCount))
                     }
+                    Section("Hint: You can hold one dice to lock it"){
+                        
+                    }
                     
                     
                     
                 }
                 .navigationBarTitle("Dice Settings")
-                .navigationBarTitleDisplayMode(.large)
+                .navigationBarTitleDisplayMode(.inline)
                 .navigationBarItems(trailing:
                                         Button("Done") {
                     settingsSheet = false
@@ -184,3 +219,11 @@ struct DiceView: View {
     
 }
 
+
+struct diceLock: View {
+    var body: some View{
+        Image(systemName: "lock.fill")
+            .font(.system(size: 30))
+            .foregroundStyle(Color.accentColor)
+    }
+}
