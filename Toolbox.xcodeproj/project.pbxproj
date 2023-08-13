@@ -67,6 +67,7 @@
 		5EE65E022A8576280061120B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1383E02915974E00CF4FAB /* ContentView.swift */; };
 		5EE65E032A8576280061120B /* Dice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1383EA29159ADE00CF4FAB /* Dice.swift */; };
 		5EE65E042A8576280061120B /* Random Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1383F12915A23100CF4FAB /* Random Number.swift */; };
+		5EF8C35D2A8859AC0089BCA3 /* Random Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8C35C2A8859AC0089BCA3 /* Random Letter.swift */; };
 		5EFACB1429B37C9A00EB8989 /* ScannedBarcodes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5EFACB1229B37C9A00EB8989 /* ScannedBarcodes.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -157,6 +158,7 @@
 		5EE65DF12A8575FE0061120B /* Toolbox_WatchOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbox_WatchOSApp.swift; sourceTree = "<group>"; };
 		5EE65DF82A8576000061120B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5EE65E072A8578840061120B /* Toolbox-WatchOS-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Toolbox-WatchOS-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
+		5EF8C35C2A8859AC0089BCA3 /* Random Letter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Random Letter.swift"; sourceTree = "<group>"; };
 		5EFACB1329B37C9A00EB8989 /* ScannedBarcodes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ScannedBarcodes.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -335,6 +337,7 @@
 				5EDFF1E527E76D34005BBA3C /* LiveClock.swift */,
 				5E5C62072916654F004F44CC /* Ping.swift */,
 				5EB7897627F9CCA900F07140 /* QRGenerator.swift */,
+				5EF8C35C2A8859AC0089BCA3 /* Random Letter.swift */,
 				5EDFF1DF27E74572005BBA3C /* RandomNumber.swift */,
 				5E020C4C27EA29D7009871F9 /* RomanConverter.swift */,
 				5E878B6A2916B6B60038A5E3 /* Speed.swift */,
@@ -522,6 +525,7 @@
 				5E47B19B27F1F3F4008FD3C0 /* Counter.swift in Sources */,
 				5E878B6B2916B6B60038A5E3 /* Speed.swift in Sources */,
 				5E0AA80A2837BFB7006CD0EA /* IconNames.swift in Sources */,
+				5EF8C35D2A8859AC0089BCA3 /* Random Letter.swift in Sources */,
 				5EC7B22127D7978100699FD3 /* ContentView.swift in Sources */,
 				5E020C5027EA29D7009871F9 /* DateDifference.swift in Sources */,
 				5E878B702916CCFD0038A5E3 /* Extensions.swift in Sources */,

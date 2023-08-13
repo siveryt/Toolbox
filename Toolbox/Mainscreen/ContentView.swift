@@ -42,6 +42,7 @@ struct ContentView: View {
         Tool(view: AnyView(Coordinates()), title: NSLocalizedString("Coordinates", comment: "Menu item"), icon: "location"),
         Tool(view: AnyView(Speed()), title: NSLocalizedString("Speed", comment: "Menu item"), icon: "speedometer"),
         Tool(view: AnyView(Barcode()), title: NSLocalizedString("Barcode Scanner", comment: "Menu item"), icon: "barcode"),
+        Tool(view: AnyView(Random_Letter()), title: NSLocalizedString("Random Letter", comment: "Menu item"), icon: "character"),
         
     ]
     @State private var tools:[Tool] = []
