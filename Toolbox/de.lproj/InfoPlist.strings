@@ -4,6 +4,9 @@
 /* Bundle name */
 "CFBundleName" = "Toolbox";
 
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "Toolbox braucht zugriff auf deine Kamera, um Barcodes zu lesen";
+
 /* Privacy - Location Always and When In Use Usage Description */
 "NSLocationAlwaysAndWhenInUseUsageDescription" = "Toolbox benutzt deinen Standort um deine GPS Koordinaten und deine Geschwindigkeit zu berechnen";
 

@@ -37,6 +37,12 @@
 /* No comment provided by engineer. */
 "Accuracy" = "Genauigkeit";
 
+/* WhatsNewKit item */
+"Added a 10 sided and a 20 sided dice and dices can now be locked into place" = "10-seitigen und 20-seitigen Würfel hinzugefügt und Würfel können gesperrt werden";
+
+/* WhatsNewKit item */
+"Added support for DMS coordinates and get your coordinates as a whole string" = "Unterstützung für DMS Koordinaten hinzugefügt und es werden deine Koordinaten an einem Stück zum kopieren angezeigt.";
+
 /* No comment provided by engineer. */
 "Again" = "Erneut";
 
@@ -58,7 +64,8 @@
 /* No comment provided by engineer. */
 "Barcode" = "Barcode";
 
-/* Menu item */
+/* Menu item
+   WhatsNewKit item */
 "Barcode Scanner" = "Barcode Scanner";
 
 /* Menu item */
@@ -69,6 +76,9 @@
 
 /* No comment provided by engineer. */
 "Check again" = "Erneut abfragen";
+
+/* WhatsNewKit item */
+"Check the IP of devices on your network" = "Überprüfe die IP Adresse von Geräten in deinem Netzwerk";
 
 /* No comment provided by engineer. */
 "Choose color" = "Wähle Farbe";
@@ -84,9 +94,6 @@
 
 /* No comment provided by engineer. */
 "Colorcodes" = "Farbcodes";
-
-/* WhatsNewKit item */
-"Configuration" = "Konfiguration";
 
 /* Barcode */
 "content" = "Inhalt";
@@ -131,7 +138,8 @@
 /* No comment provided by engineer. */
 "Delete data" = "Daten löschen";
 
-/* Menu item */
+/* Menu item
+   WhatsNewKit item */
 "Dice" = "Würfel";
 
 /* No comment provided by engineer. */
@@ -170,6 +178,9 @@
 /* No comment provided by engineer. */
 "End Date:" = "Enddatum:";
 
+/* WhatsNewKit item */
+"Enjoy some functions of the app on your wrist for easy access" = "Benutze manche Funktionen der App an deinem Handgelenk um einfacher drauf zuzugreifen";
+
 /* No comment provided by engineer. */
 "Feedback" = "Feedback";
 
@@ -177,13 +188,7 @@
 "From:" = "Von:";
 
 /* WhatsNewKit item */
-"Get some basic features onto your wrist for easy access" = "Bekomme einfache Funktionen auf dein Handgelenk um si einfacher zu erreichen";
-
-/* WhatsNewKit item */
-"Get your current speed calculated from your GPS coordinates" = "Bekomme deine aktuelle Geschwindigkeit aus deinen Koordinaten ausgerechnet";
-
-/* WhatsNewKit item */
-"Get your exact coordinates from your iPhone's GPS sensor" = "Bekomme deine Koordinaten von dem GPS-Sensor deines iPhones";
+"Generate a random letter" = "Generiere zufällige Buchstaben";
 
 /* No comment provided by engineer. */
 "Great Feature Idea!" = "Tolle Feature-Idee";
@@ -196,6 +201,9 @@
 
 /* No comment provided by engineer. */
 "Hidden" = "Versteckt";
+
+/* No comment provided by engineer. */
+"Hint: You can hold one dice to lock it" = "Hinweis: Halte einen Würfel gedrückt, um ihn zu sperren";
 
 /* No comment provided by engineer. */
 "Host" = "Host";
@@ -215,7 +223,8 @@
 /* No comment provided by engineer. */
 "kg" = "kg";
 
-/* Menu item */
+/* Menu item
+   WhatsNewKit item */
 "LAN Scanner" = "LAN Scanner";
 
 /* No comment provided by engineer. */
@@ -293,9 +302,6 @@
 /* No comment provided by engineer. */
 "Open Settings" = "Einstellungen öffnen";
 
-/* WhatsNewKit item */
-"OpenSource" = "OpenSource";
-
 /* No comment provided by engineer. */
 "OpenSource-Licenses" = "OpenSource-Lizenzen";
 
@@ -305,8 +311,7 @@
 /* No comment provided by engineer. */
 "Password" = "Passwort";
 
-/* Menu item
-   WhatsNewKit item */
+/* Menu item */
 "Ping" = "Ping";
 
 /* No comment provided by engineer. */
@@ -321,7 +326,8 @@
 /* No comment provided by engineer. */
 "QR-Generator" = "QR Generator";
 
-/* Menu item */
+/* Menu item
+   WhatsNewKit item */
 "Random Letter" = "Zufälliger Buchstabe";
 
 /* Menu item */
@@ -332,9 +338,6 @@
 
 /* No comment provided by engineer. */
 "Receiver" = "Empfänger";
-
-/* WhatsNewKit item */
-"Reorder tools the way you like it" = "Ändere die Reihenfolge von Funktionen, so wie du es möchtest.";
 
 /* No comment provided by engineer. */
 "Reset" = "Zurücksetzen";
@@ -360,6 +363,9 @@
 /* Menu item */
 "Roman Numbers" = "Römische Zahlen";
 
+/* WhatsNewKit item */
+"Scan Barcodes, Aztec, QR-Codes and many more" = "Scanne Barcodes, Aztec, QR-Codes und viele mehr";
+
 /* No comment provided by engineer. */
 "Select a tool" = "Wähle ein Tool aus";
 
@@ -375,8 +381,7 @@
 /* No comment provided by engineer. */
 "Sides:" = "Seiten:";
 
-/* Menu item
-   WhatsNewKit item */
+/* Menu item */
 "Speed" = "Geschwindigkeit";
 
 /* No comment provided by engineer. */
@@ -400,9 +405,6 @@
 /* No comment provided by engineer. */
 "Support the development" = "Unterstütze die Entwicklung";
 
-/* WhatsNewKit item */
-"Test the latency between you and a server" = "Teste die Latenz zwischen dir und einem Server";
-
 /* No comment provided by engineer. */
 "Text" = "Text";
 
@@ -415,8 +417,11 @@
 /* No comment provided by engineer. */
 "To:" = "Bis:";
 
-/* WhatsNewKit item */
-"Toolbox has gone fully OpenSource and it's source code is available through GitHub" = "Toolbox ist ab sofort komplett Open Source und der Source Code ist auf GitHub erhältlich";
+/* No comment provided by engineer. */
+"Toolbox" = "Toolbox";
+
+/* No comment provided by engineer. */
+"Toolbox does not have network permission. Please allow local network access in the settings." = "Toolbox hat keinen Netzwerkzugriff. Bitte erlaube diesen in den Einstellungen";
 
 /* No comment provided by engineer. */
 "toolbox.sivery.de" = "toolbox.sivery.de";

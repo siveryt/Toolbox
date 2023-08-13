@@ -5,7 +5,7 @@
 "+" = "+";
 
 /* No comment provided by engineer. */
-"Again" = "Erneut";
+"Again" = "Nochmal";
 
 /* No comment provided by engineer. */
 "Counter" = "Zähler";
@@ -14,13 +14,13 @@
 "Dice" = "Würfel";
 
 /* No comment provided by engineer. */
-"From" = "Von";
+"From" = "Bis";
 
 /* No comment provided by engineer. */
-"Options" = "Optionen";
+"Options" = "Einstellungen";
 
 /* No comment provided by engineer. */
-"Random Number" = "Zufällige Zahl";
+"Random Number" = "ZUfallszahl";
 
 /* No comment provided by engineer. */
 "Reset" = "Zurücksetzen";
@@ -29,7 +29,7 @@
 "Reset counter?" = "Zähler zurücksetzen?";
 
 /* No comment provided by engineer. */
-"To" = "Bis";
+"To" = "Von";
 
 /* No comment provided by engineer. */
 "Toolbox" = "Toolbox";

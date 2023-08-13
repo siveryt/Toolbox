@@ -20,11 +20,12 @@
 		5E35DBE42917C5BD00D2FC8A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E35DBE22917C5BD00D2FC8A /* Localizable.strings */; };
 		5E35DBE72917C62500D2FC8A /* WhatsNewKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5E35DBE62917C62500D2FC8A /* WhatsNewKit */; };
 		5E47B19B27F1F3F4008FD3C0 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E47B19A27F1F3F4008FD3C0 /* Counter.swift */; };
+		5E4BA9372A8955D00039D341 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4BA9362A8955D00039D341 /* ContentView.swift */; };
+		5E4BA93A2A8958CC0039D341 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E4BA9382A8958CC0039D341 /* Localizable.strings */; };
 		5E528A9027E2379F00B2AE01 /* Haptica in Frameworks */ = {isa = PBXBuildFile; productRef = 5E528A8F27E2379F00B2AE01 /* Haptica */; };
 		5E5C62082916654F004F44CC /* Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5C62072916654F004F44CC /* Ping.swift */; };
 		5E5C620B29166566004F44CC /* SwiftyPing in Frameworks */ = {isa = PBXBuildFile; productRef = 5E5C620A29166566004F44CC /* SwiftyPing */; };
 		5E6308952A866EB000212E8C /* SwiftUI Apple Watch Decimal Pad in Frameworks */ = {isa = PBXBuildFile; productRef = 5E6308942A866EB000212E8C /* SwiftUI Apple Watch Decimal Pad */; };
-		5E64E8BE281718D600294633 /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 5E64E8BD281718D600294633 /* en.lproj */; };
 		5E72B597283BB91300DEAD50 /* Blueish_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E72B594283BB91200DEAD50 /* Blueish_white@2x.png */; };
 		5E72B598283BB91300DEAD50 /* Blueish_white@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E72B595283BB91200DEAD50 /* Blueish_white@1x.png */; };
 		5E72B599283BB91300DEAD50 /* Blueish_white@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E72B596283BB91300DEAD50 /* Blueish_white@3x.png */; };
@@ -64,7 +65,6 @@
 		5EE65DF92A8576000061120B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EE65DF82A8576000061120B /* Preview Assets.xcassets */; };
 		5EE65DFC2A8576000061120B /* Toolbox WatchOS Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 5EE65DEF2A8575FE0061120B /* Toolbox WatchOS Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5EE65E012A8576280061120B /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1383EF29159DD800CF4FAB /* Counter.swift */; };
-		5EE65E022A8576280061120B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1383E02915974E00CF4FAB /* ContentView.swift */; };
 		5EE65E032A8576280061120B /* Dice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1383EA29159ADE00CF4FAB /* Dice.swift */; };
 		5EE65E042A8576280061120B /* Random Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1383F12915A23100CF4FAB /* Random Number.swift */; };
 		5EF8C35D2A8859AC0089BCA3 /* Random Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8C35C2A8859AC0089BCA3 /* Random Letter.swift */; };
@@ -104,19 +104,17 @@
 		5E0AA8042837BF59006CD0EA /* whitegradient_red@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whitegradient_red@1x.png"; sourceTree = "<group>"; };
 		5E0AA8052837BF59006CD0EA /* whitegradient_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whitegradient_red@2x.png"; sourceTree = "<group>"; };
 		5E0AA8092837BFB7006CD0EA /* IconNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconNames.swift; sourceTree = "<group>"; };
-		5E1383E02915974E00CF4FAB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = "../Toolbox Watch Watch App/ContentView.swift"; sourceTree = "<group>"; };
 		5E1383E22915975000CF4FAB /* Assets WatchOS.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets WatchOS.xcassets"; sourceTree = "<group>"; };
 		5E1383EA29159ADE00CF4FAB /* Dice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dice.swift; sourceTree = "<group>"; };
 		5E1383EF29159DD800CF4FAB /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		5E1383F12915A23100CF4FAB /* Random Number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Random Number.swift"; sourceTree = "<group>"; };
-		5E35DBDA2917C5BD00D2FC8A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		5E35DBDD2917C5BD00D2FC8A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = "de.lproj/Toolbox Watch Watch App-InfoPlist.strings"; sourceTree = "<group>"; };
 		5E35DBE02917C5BD00D2FC8A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5E35DBE32917C5BD00D2FC8A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5E47B19A27F1F3F4008FD3C0 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
+		5E4BA9362A8955D00039D341 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5E4BA9392A8958CC0039D341 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5E5C62072916654F004F44CC /* Ping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ping.swift; sourceTree = "<group>"; };
 		5E5C620E291681C1004F44CC /* appstore.svg */ = {isa = PBXFileReference; lastKnownFileType = text; path = appstore.svg; sourceTree = "<group>"; };
-		5E64E8BD281718D600294633 /* en.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = en.lproj; sourceTree = "<group>"; };
 		5E72B594283BB91200DEAD50 /* Blueish_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blueish_white@2x.png"; sourceTree = "<group>"; };
 		5E72B595283BB91200DEAD50 /* Blueish_white@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blueish_white@1x.png"; sourceTree = "<group>"; };
 		5E72B596283BB91300DEAD50 /* Blueish_white@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blueish_white@3x.png"; sourceTree = "<group>"; };
@@ -269,8 +267,6 @@
 			children = (
 				5E35DBE22917C5BD00D2FC8A /* Localizable.strings */,
 				5E35DBDF2917C5BD00D2FC8A /* InfoPlist.strings */,
-				5E35DBDC2917C5BD00D2FC8A /* Toolbox Watch Watch App-InfoPlist.strings */,
-				5E64E8BD281718D600294633 /* en.lproj */,
 				5EC7B24F27D79DDC00699FD3 /* .gitignore */,
 				5EC7B24E27D79D5400699FD3 /* LICENSE */,
 				5E5C620F291681D5004F44CC /* assets */,
@@ -295,7 +291,6 @@
 			isa = PBXGroup;
 			children = (
 				5E74426C29B375B500F43CB4 /* DataModels */,
-				5E35DBD92917C5BD00D2FC8A /* Localizable.strings */,
 				5E878B6C2916BF560038A5E3 /* Helper */,
 				5E26F5CE28A18DE60094D057 /* Mainscreen */,
 				5ECEBECD280303730096E5A5 /* Future Versions */,
@@ -363,11 +358,12 @@
 			isa = PBXGroup;
 			children = (
 				5EE65E072A8578840061120B /* Toolbox-WatchOS-Watch-App-Info.plist */,
+				5E4BA9382A8958CC0039D341 /* Localizable.strings */,
 				5EE65DF12A8575FE0061120B /* Toolbox_WatchOSApp.swift */,
 				5E1383EA29159ADE00CF4FAB /* Dice.swift */,
 				5E1383F12915A23100CF4FAB /* Random Number.swift */,
 				5E1383EF29159DD800CF4FAB /* Counter.swift */,
-				5E1383E02915974E00CF4FAB /* ContentView.swift */,
+				5E4BA9362A8955D00039D341 /* ContentView.swift */,
 				5E1383E22915975000CF4FAB /* Assets WatchOS.xcassets */,
 				5EE65DF72A8576000061120B /* Preview Content */,
 			);
@@ -488,7 +484,6 @@
 			files = (
 				5E0AA8082837BF59006CD0EA /* whitegradient_red@2x.png in Resources */,
 				5E35DBE12917C5BD00D2FC8A /* InfoPlist.strings in Resources */,
-				5E64E8BE281718D600294633 /* en.lproj in Resources */,
 				5EDFF1E927E7AE4D005BBA3C /* LaunchScreen.storyboard in Resources */,
 				5E72B598283BB91300DEAD50 /* Blueish_white@1x.png in Resources */,
 				5E72B5B1283BB9F300DEAD50 /* black@3x.png in Resources */,
@@ -516,6 +511,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EE65DF92A8576000061120B /* Preview Assets.xcassets in Resources */,
+				5E4BA93A2A8958CC0039D341 /* Localizable.strings in Resources */,
 				5E2A28232A857AC000F7F444 /* Assets WatchOS.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -561,9 +557,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EE65DF22A8575FE0061120B /* Toolbox_WatchOSApp.swift in Sources */,
+				5E4BA9372A8955D00039D341 /* ContentView.swift in Sources */,
 				5EE65E042A8576280061120B /* Random Number.swift in Sources */,
 				5EE65E032A8576280061120B /* Dice.swift in Sources */,
-				5EE65E022A8576280061120B /* ContentView.swift in Sources */,
 				5EE65E012A8576280061120B /* Counter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -579,24 +575,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		5E35DBD92917C5BD00D2FC8A /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5E35DBDA2917C5BD00D2FC8A /* de */,
-			);
-			name = Localizable.strings;
-			path = "../Toolbox Watch Watch App";
-			sourceTree = "<group>";
-		};
-		5E35DBDC2917C5BD00D2FC8A /* Toolbox Watch Watch App-InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5E35DBDD2917C5BD00D2FC8A /* de */,
-			);
-			name = "Toolbox Watch Watch App-InfoPlist.strings";
-			path = "Toolbox Watch Watch App";
-			sourceTree = "<group>";
-		};
 		5E35DBDF2917C5BD00D2FC8A /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -613,6 +591,15 @@
 			);
 			name = Localizable.strings;
 			path = Toolbox;
+			sourceTree = "<group>";
+		};
+		5E4BA9382A8958CC0039D341 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5E4BA9392A8958CC0039D341 /* de */,
+			);
+			name = Localizable.strings;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
