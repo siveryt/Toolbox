@@ -43,6 +43,11 @@ struct BodyMassIndex: View {
                         defaults.set(h, forKey: "bmiHeightD")
                         
                     }
+                    .onReceive(NotificationCenter.default.publisher(for: UITextField.textDidBeginEditingNotification)) { obj in
+                        if let textField = obj.object as? UITextField {
+                            textField.selectedTextRange = textField.textRange(from: textField.beginningOfDocument, to: textField.endOfDocument)
+                        }
+                    }
                     
                 Text(metric ? "cm" : "inch")
 
@@ -62,6 +67,11 @@ struct BodyMassIndex: View {
                         w = Double(weight) ?? 0
                         defaults.set(weight, forKey: "bmiWeight")
                         defaults.set(w, forKey: "bmiWeightD")
+                    }
+                    .onReceive(NotificationCenter.default.publisher(for: UITextField.textDidBeginEditingNotification)) { obj in
+                        if let textField = obj.object as? UITextField {
+                            textField.selectedTextRange = textField.textRange(from: textField.beginningOfDocument, to: textField.endOfDocument)
+                        }
                     }
                 
                 
