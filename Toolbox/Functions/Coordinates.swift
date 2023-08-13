@@ -78,94 +78,16 @@ struct Coordinates: View {
                         }
                     
                 }
-                
-                Button(action: {
-                    if(display == "decimal"){
-                        UIPasteboard.general.string = String(userLatitude)
-                    } else {
-                        UIPasteboard.general.string = decimalToDMS(coordinate: userLatitude, isLatitude: true)
-                    }
-                    
-                    Haptic.impact(.light).generate()
-                    presentToast()
-                }){
-                    HStack {
-                        Text("Latitude")
-                        Spacer()
-                        if(display == "decimal"){
-                        Text(String(userLatitude))
-                        } else {
-                            Text(decimalToDMS(coordinate: userLatitude, isLatitude: true))
-                        }
-                    }
-                }
-                .tint(.primary)
-                
-                Button(action: {
-                    if(display == "decimal"){
-                        UIPasteboard.general.string = String(userLongitude)
-                    } else {
-                        UIPasteboard.general.string = decimalToDMS(coordinate: userLongitude, isLatitude:false)
-                    }
-                    Haptic.impact(.light).generate()
-                    presentToast()
-                }){
-                    HStack {
-                        Text("Longitude")
-                        Spacer()
-                        if(display == "decimal"){
-                        Text(String(userLongitude))
-                        } else {
-                            Text(decimalToDMS(coordinate: userLongitude, isLatitude:false))
-                        }
-                    }
-                }
-                .tint(.primary)
-                
-                Button(action: {
-                    UIPasteboard.general.string = decimalToDMS(coordinate: userLatitude, isLatitude: true) + ", " + decimalToDMS(coordinate: userLongitude, isLatitude: false)
-                    Haptic.impact(.light).generate()
-                    presentToast()
-                }){
-                    HStack {
-                        Text("Coordinate String")
-                        Spacer()
-                        if (display == "decimal") {
-                            Text(String(userLatitude) + ", " + String(userLongitude))
-                        } else {
-                            Text(decimalToDMS(coordinate: userLatitude, isLatitude: true) + ", " + decimalToDMS(coordinate: userLongitude, isLatitude: false))
-                        }
-                        
-                    }
-                }
-                .tint(.primary)
-                
-                Button(action: {
-                    UIPasteboard.general.string = String(userAltitude)
-                    Haptic.impact(.light).generate()
-                    presentToast()
-                }){
-                    HStack {
-                        Text("Altitude")
-                        Spacer()
-                        Text(String(userAltitude) + " m")
-                    }
-                }
-                .tint(.primary)
-                
-                Button(action: {
-                    UIPasteboard.general.string = String(userCoordAccuracy)
-                    Haptic.impact(.light).generate()
-                    presentToast()
-                }){
-                    HStack {
-                        Text("Accuracy")
-                        Spacer()
-                        Text(String(userCoordAccuracy) + " m")
-                    }
-                    
-                }
-                .tint(.primary)
+                KeyValueProperty(content: display == "decimal" ? String(userLatitude) : decimalToDMS(coordinate: userLatitude, isLatitude: true), propertyName: NSLocalizedString("Latitude", comment: ""))
+                    .environment(\.copyToast, $isPresentingToast)
+                KeyValueProperty(content: display == "decimal" ? String(userLongitude) : decimalToDMS(coordinate: userLongitude, isLatitude: false), propertyName: NSLocalizedString("Longitude", comment: ""))
+                    .environment(\.copyToast, $isPresentingToast)
+                KeyValueProperty(content: display == "decimal" ? String(userLatitude) + ", " + String(userLongitude) : decimalToDMS(coordinate: userLatitude, isLatitude: true) + ", " + decimalToDMS(coordinate: userLongitude, isLatitude: false), propertyName: NSLocalizedString("Coordinate String", comment: ""))
+                    .environment(\.copyToast, $isPresentingToast)
+                KeyValueProperty(content: String(userAltitude) + " m", propertyName: NSLocalizedString("Altitude", comment: ""))
+                    .environment(\.copyToast, $isPresentingToast)
+                KeyValueProperty(content: String(abs(userCoordAccuracy)) + " m", propertyName: NSLocalizedString("Accuracy", comment: ""))
+                    .environment(\.copyToast, $isPresentingToast)
             } else {
                 VStack{
                     Text("You first have to allow Toolbox to access your location in order to see your coordinates.")
