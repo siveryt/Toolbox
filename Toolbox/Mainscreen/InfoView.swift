@@ -49,7 +49,7 @@ struct infoView: View {
                         UIApplication.shared.open(url)
                     }
                 }) {
-                    Label("Rate App", systemImage: "star")
+                    Label("Rate app", systemImage: "star")
                 }
                 .tint(.primary)
                 
@@ -58,7 +58,7 @@ struct infoView: View {
                         UIApplication.shared.open(url)
                     }
                 }) {
-                    Label("Mailing-List", systemImage: "mail.stack")
+                    Label("Mailing list", systemImage: "mail.stack")
                 }
                 .tint(.primary)
                 
@@ -84,7 +84,7 @@ struct infoView: View {
                 Button(action: {
                     deleteAlert = true
                 }) {
-                    Label("Delete Data", systemImage: "trash")
+                    Label("Delete data", systemImage: "trash")
                 }
                 .tint(.primary)
             }
@@ -134,7 +134,7 @@ struct infoView: View {
         }
         .alert(isPresented: $deleteAlert){
             Alert(title: Text("Are you sure, you want to clear the app's data?"),
-                  
+                  message: Text("The app will close after deleting the data. You can instantly reopen it."),
                   primaryButton: .cancel(),
                   secondaryButton: .destructive(Text("Delete")) {
                 let domain = Bundle.main.bundleIdentifier!
@@ -142,6 +142,8 @@ struct infoView: View {
                 UserDefaults.standard.synchronize()
                 print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
                 SBDataController().resetBarcodes(context: managedContext)
+                UIControl().sendAction(#selector(NSXPCConnection.suspend), to: UIApplication.shared, for: nil)
+                exit(-1)
             }
             )
         }
