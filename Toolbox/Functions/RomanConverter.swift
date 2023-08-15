@@ -10,7 +10,7 @@ struct RomanConverter: View {
             self.arabic
         }, set: {
             
-            
+            if(!isNumeric(string: $0)) {return}
             self.arabic = $0
             
             do {
@@ -73,6 +73,14 @@ struct RomanConverter: View {
         .navigationTitle("Roman Numbers")
     
     }
+    func isNumeric(string: String) -> Bool {
+        if let _ = Double(string) {
+            return true
+        } else {
+            return false
+        }
+    }
+
 }
 
 struct RomanConverter_Previews: PreviewProvider {
