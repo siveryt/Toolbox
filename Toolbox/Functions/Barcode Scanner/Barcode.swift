@@ -14,15 +14,21 @@ import SwiftUI
 
 struct Barcode: View {
     @State var scanSheet = false
-    @State var detailSheet = false
-    @State private var itemIndex: Int? = nil
+    @StateObject private var selectedItemIndex = SelectedItemIndex()
     @Environment(\.managedObjectContext) var managedContext
     @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var codes: FetchedResults<ScannedBarcode>
     
     var body: some View {
         VStack {
             if codes.count > 0 {
-                CodeListView(codes: codes, itemIndex: $itemIndex, detailSheet: $detailSheet)
+                List {
+                    ForEach(Array(codes.enumerated()), id: \.offset) { index, code in
+                        Button(code.content!) {
+                            selectedItemIndex.index = index
+                        }
+                    }
+                    .onDelete(perform: deleteCode)
+                }
                     
             } else {
                 Text("Click on the \(Image(systemName: "viewfinder")) to scan your first barcode")
@@ -45,36 +51,10 @@ struct Barcode: View {
             .presentationDetents([.medium, .large])
         }
         
-        .sheet(isPresented: Binding<Bool>(
-            get: { ($itemIndex.wrappedValue != nil) && detailSheet },
-            set: { _ in }
-        )) {
-            if let index = itemIndex, index < codes.count {
+        .sheet(item: $selectedItemIndex.index) { index in
                 BarcodeDetail(barcode: codes[index])
-                    .environment(\.showingSheet, self.$detailSheet)
-            }
         }
-    }
-    
-    
-}
-
-struct CodeListView: View {
-    var codes: FetchedResults<ScannedBarcode>
-    @Binding var itemIndex: Int?
-    @Binding var detailSheet: Bool
-    @Environment(\.managedObjectContext) var managedContext
-    
-    var body: some View {
-        List {
-            ForEach(Array(codes.enumerated()), id: \.offset) { index, code in
-                Button(code.content!) {
-                    itemIndex = index
-                    detailSheet = true
-                }
-            }
-            .onDelete(perform: deleteCode)
-        }
+        
     }
     func deleteCode(offsets: IndexSet) {
         withAnimation {
@@ -84,10 +64,8 @@ struct CodeListView: View {
             SBDataController().save(context: managedContext)
         }
     }
+    
 }
-
-
-
 
 struct BarcodeScanner: View {
     

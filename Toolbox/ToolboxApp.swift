@@ -33,6 +33,7 @@ extension App: SwiftUI.App {
                         whatsNewCollection: self
                      )
                 )
+                .environmentObject(SelectedItemIndex())
         }
     }
     

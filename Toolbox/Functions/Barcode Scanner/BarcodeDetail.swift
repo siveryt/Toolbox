@@ -15,14 +15,13 @@ import Haptica
 import ToastSwiftUI
 
 struct BarcodeDetail: View {
-    @Environment(\.showingSheet) var showingSheet
     var barcode: ScannedBarcode?
     @State var isPresentingToast = false
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         NavigationView {
             VStack {
-//                Text(barcode?.content ?? "No content")
                 List {
                     KeyValueProperty(content: barcode?.content, propertyName: NSLocalizedString("content", comment: "Barcode"))
                         .environment(\.copyToast, $isPresentingToast)
@@ -33,7 +32,6 @@ struct BarcodeDetail: View {
                     Image(uiImage: generateQRCode( barcode?.content ?? "error", type: barcode?.type))
                         .resizable()
                         .scaledToFit()
-//                        .frame(width: 200, height: 300)
                 }
                 
                 
@@ -41,7 +39,6 @@ struct BarcodeDetail: View {
             .navigationBarTitle(barcode?.content ?? "No content")
             .navigationBarItems(trailing: backButton)
             .navigationBarTitleDisplayMode(.inline)
-//            .toast(isPresenting: $isPresentingToast, message: NSLocalizedString("Copied", comment: "Copy toast"), icon: .custom(Image(systemName: "doc.on.clipboard")), autoDismiss: .none)
         }
         .toast(isPresenting: $isPresentingToast, message: NSLocalizedString("Copied", comment: "Copy toast"), icon: .custom(Image(systemName: "doc.on.clipboard")), autoDismiss: .none)
     }
@@ -58,25 +55,6 @@ struct BarcodeDetail: View {
             formatter.timeStyle = .medium
             return formatter.string(from: date!)
     }
-    
-//    func generateQRCode(_ string: String) -> UIImage {
-//
-//          if !string.isEmpty {
-//
-//              let data = string.data(using: String.Encoding.ascii)
-//
-//              let filter = CIFilter.qrCodeGenerator()
-//              // Check the KVC for the selected code generator
-//              filter.setValue(data, forKey: "inputMessage")
-//
-//              let transform = CGAffineTransform(scaleX: 15, y: 15)
-//              let output = filter.outputImage?.transformed(by: transform)
-//
-//              return UIImage(ciImage: output!)
-//          } else {
-//              return UIImage()
-//          }
-//    }
     
     func generateQRCode(_ string: String, type: String?) -> UIImage {
         let context = CIContext()
@@ -131,8 +109,7 @@ struct BarcodeDetail: View {
     
     private var backButton: some View {
         Button("Done") {
-            // Todo: handle back
-            self.showingSheet?.wrappedValue = false
+            dismiss()
         }
     }
 }
@@ -177,11 +154,5 @@ struct KeyValueProperty: View {
         }).tint(.primary)
         
         
-    }
-}
-
-struct BarcodeDetail_Previews: PreviewProvider {
-    static var previews: some View {
-        return BarcodeDetail()
     }
 }

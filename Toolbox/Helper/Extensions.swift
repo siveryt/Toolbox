@@ -30,6 +30,11 @@ enum Coordinator {
     }
 }
 
+class SelectedItemIndex: ObservableObject {
+    @Published var index: Int?
+}
+
+
 public extension UIApplication {
     func currentUIWindow() -> UIWindow? {
         let connectedScenes = UIApplication.shared.connectedScenes
