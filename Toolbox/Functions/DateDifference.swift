@@ -31,24 +31,24 @@ struct DateDifference: View{
         
         if displayDays {
             let dateComponents = calendar.dateComponents([.day, .month, .year], from: dateFrom, to: dateTo)
-            days = "\(dateComponents.day ?? 0)"
+            days = "\(abs(dateComponents.day ?? 0))"
             
             if displayMonths {
-                months = "\(dateComponents.month ?? 0)"
+                months = "\(abs(dateComponents.month ?? 0))"
             }
             
             if displayYears {
-                years = "\(dateComponents.year ?? 0)"
+                years = "\(abs(dateComponents.year ?? 0))"
             }
         } else {
             let dateComponents = calendar.dateComponents([.month, .year], from: dateFrom, to: dateTo)
             
             if displayMonths {
-                months = "\(dateComponents.month ?? 0)"
+                months = "\(abs(dateComponents.month ?? 0))"
             }
             
             if displayYears {
-                years = "\(dateComponents.year ?? 0)"
+                years = "\(abs(dateComponents.year ?? 0))"
             }
         }
         
@@ -135,47 +135,15 @@ struct DateDifference: View{
             Section("Difference") {
                 
                 if displayDays {
-                    Button(action:{
-                        UIPasteboard.general.string = days
-                        Haptic.impact(.light).generate()
-                        presentToast()
-                    }){
-                        HStack{
-                            Text("Days:")
-                            Spacer()
-                            Text(days)
-                        }
-                    }
-                    .tint(.primary)
+                    KeyValueProperty(content: days, propertyName: NSLocalizedString("Days", comment: "Date difference"))
                 }
                 
                 if displayMonths {
-                    Button(action:{
-                        UIPasteboard.general.string = months
-                        Haptic.impact(.light).generate()
-                        presentToast()
-                    }){
-                    HStack{
-                        Text("Months:")
-                        Spacer()
-                        Text(months)
-                    }
-                    .tint(.primary)
+                    KeyValueProperty(content: months, propertyName: NSLocalizedString("Months", comment: "Date difference"))
                 }
-                }
+                
                 if displayYears {
-                    Button(action:{
-                        UIPasteboard.general.string = years
-                        Haptic.impact(.light).generate()
-                        presentToast()
-                    }){
-                        HStack{
-                            Text("Years:")
-                            Spacer()
-                            Text(years)
-                        }
-                    }
-                    .tint(.primary)
+                    KeyValueProperty(content: years, propertyName: NSLocalizedString("Years", comment: "Date difference"))
                 }
             }.transition(.slide)
             
