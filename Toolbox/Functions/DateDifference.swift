@@ -27,25 +27,30 @@ struct DateDifference: View{
     }
     
     func calcDiff (){
-        
-        var components:Set<Calendar.Component> = []
-        if displayYears {
-            components.insert(.year)
-        }
-        if displayMonths {
-            components.insert(.month)
-        }
-        if displayDays {
-            components.insert(.day)
-        }
-        
         let calendar = Calendar.current
-        let diff = calendar.dateComponents(components, from: dateFrom, to: dateTo)
         
-        days = "\(abs(diff.day ?? 0))"
-        months = "\(abs(diff.month ?? 0))"
-        years = "\(abs(diff.year ?? 0))"
-        
+        if displayDays {
+            let dateComponents = calendar.dateComponents([.day, .month, .year], from: dateFrom, to: dateTo)
+            days = "\(dateComponents.day ?? 0)"
+            
+            if displayMonths {
+                months = "\(dateComponents.month ?? 0)"
+            }
+            
+            if displayYears {
+                years = "\(dateComponents.year ?? 0)"
+            }
+        } else {
+            let dateComponents = calendar.dateComponents([.month, .year], from: dateFrom, to: dateTo)
+            
+            if displayMonths {
+                months = "\(dateComponents.month ?? 0)"
+            }
+            
+            if displayYears {
+                years = "\(dateComponents.year ?? 0)"
+            }
+        }
         
     }
     
