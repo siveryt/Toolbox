@@ -169,7 +169,7 @@ struct infoVersion: View {
                 HStack{
                     Text("Last update")
                     Spacer()
-                    Text("14-08-2023")
+                    Text("19-08-2023")
                 }
                 
             }
