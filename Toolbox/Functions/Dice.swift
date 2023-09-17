@@ -72,6 +72,7 @@ struct DiceView: View {
     @AppStorage("diceSides") var sides = 6
     @AppStorage("diceCount") var diceCount = 1
     @AppStorage("diceKept") var kept:[Int] = []
+    @AppStorage("diceIdleTimerDisabled") var idleTimerDisabled = true
     
     
     
@@ -198,9 +199,18 @@ struct DiceView: View {
                         Stepper("Dice Count:", value: $diceCount, in: 1...8)
                         Text(String(diceCount))
                     }
+                    Section {
+                        Toggle(isOn: $idleTimerDisabled) {
+                                Text("Disable auto lock")
+                        }.onChange(of: idleTimerDisabled) {
+                            UIApplication.shared.isIdleTimerDisabled = idleTimerDisabled
+                        }
+                    }
+
                     Section("Hint: You can hold one dice to lock it"){
                         
                     }
+                    
                     
                     
                     
@@ -214,6 +224,12 @@ struct DiceView: View {
                 )
                 
             }
+        }
+        .onAppear()  {
+            UIApplication.shared.isIdleTimerDisabled = idleTimerDisabled
+        }
+        .onDisappear() {
+            UIApplication.shared.isIdleTimerDisabled = false
         }
     }
     
