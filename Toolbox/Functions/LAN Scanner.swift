@@ -19,6 +19,7 @@ struct LAN_Scanner: View {
     @State private var itemIndex: Int? = nil
     @State var scanning = false
     @State private var showNoNetworkPermissionText = false
+    @State var isPresentingToast = false
 
     var body: some View {
         
@@ -55,12 +56,28 @@ struct LAN_Scanner: View {
                             }
                             Section{
                                 ForEach(Array(viewModel.connectedDevices.enumerated()), id: \.offset) { index, device in
-                            Button(action: {itemIndex = index
-                                detailSheet = true}, label: {VStack(alignment: .leading) {
+                                    Button(action: {
+                                        if(device.ipAddress == device.name){
+                                            withAnimation {
+                                                isPresentingToast = true
+                                            }
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                                withAnimation {
+                                                    isPresentingToast = false
+                                                }
+                                            }
+                                            UIPasteboard.general.string = device.ipAddress
+                                        } else {
+                                            itemIndex = index
+                                            detailSheet = true
+                                        }
+                                    }, label: {VStack(alignment: .leading) {
                                 Text(device.ipAddress)
                                     .font(.body)
-                                Text(device.mac)
-                                    .font(.caption)
+                                    if(device.ipAddress != device.name){
+                                        Text(device.name)
+                                            .font(.caption)
+                                    }
                             }})
                             .tint(.primary)
 
@@ -85,6 +102,7 @@ struct LAN_Scanner: View {
                 }
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationTitle("LAN Scanner")
+                .toast(isPresenting: $isPresentingToast, message: NSLocalizedString("Copied", comment: "Copy toast"), icon: .custom(Image(systemName: "doc.on.clipboard")), autoDismiss: .none)
 
         
         
@@ -117,8 +135,12 @@ struct LANDetail: View {
                         KeyValueProperty(content: device.ipAddress, propertyName: NSLocalizedString("hostname", comment: "LAN Scanner"))
                             .environment(\.copyToast, $isPresentingToast)
                     }
-                    KeyValueProperty(content: device.mac, propertyName: NSLocalizedString("mac", comment: "LAN Scanner"))
-                        .environment(\.copyToast, $isPresentingToast)
+                    
+                    if(device.mac != "02:00:00:00:00:00"){
+                        KeyValueProperty(content: device.mac, propertyName: NSLocalizedString("mac", comment: "LAN Scanner"))
+                            .environment(\.copyToast, $isPresentingToast)
+                    }
+                    
                     if(device.brand != ""){
                         KeyValueProperty(content: device.brand, propertyName: NSLocalizedString("brand", comment: "LAN Scanner"))
                             .environment(\.copyToast, $isPresentingToast)
