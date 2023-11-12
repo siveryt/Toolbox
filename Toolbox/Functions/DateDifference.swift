@@ -26,32 +26,39 @@ struct DateDifference: View{
         }
     }
     
-    func calcDiff (){
+    func calcDiff() {
         let calendar = Calendar.current
-        
-        if displayDays {
-            let dateComponents = calendar.dateComponents([.day, .month, .year], from: dateFrom, to: dateTo)
-            days = "\(abs(dateComponents.day ?? 0))"
-            
-            if displayMonths {
-                months = "\(abs(dateComponents.month ?? 0))"
-            }
-            
-            if displayYears {
-                years = "\(abs(dateComponents.year ?? 0))"
-            }
-        } else {
-            let dateComponents = calendar.dateComponents([.month, .year], from: dateFrom, to: dateTo)
-            
-            if displayMonths {
-                months = "\(abs(dateComponents.month ?? 0))"
-            }
-            
-            if displayYears {
-                years = "\(abs(dateComponents.year ?? 0))"
-            }
+
+        // Initialize an empty array to store the components based on user preferences
+        var dateComponentsArray: [Calendar.Component] = []
+
+        if displayYears {
+            dateComponentsArray.append(.year)
         }
-        
+
+        if displayMonths {
+            dateComponentsArray.append(.month)
+        }
+
+        if displayDays {
+            dateComponentsArray.append(.day)
+        }
+
+        // Calculate the difference between two dates with the dynamically created dateComponents array
+        let components = calendar.dateComponents(Set(dateComponentsArray), from: dateFrom, to: dateTo)
+
+        // Set global variables based on user preferences
+        if displayYears {
+            years = "\(abs(components.year ?? 0))"
+        }
+
+        if displayMonths {
+            months = "\(abs(components.month ?? 0))"
+        }
+
+        if displayDays {
+            days = "\(abs(components.day ?? 0))"
+        }
     }
     
     
@@ -90,7 +97,6 @@ struct DateDifference: View{
             
             self.displayMonths = $0
                 
-            
             calcDiff()
         })
         
