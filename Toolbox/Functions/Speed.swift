@@ -23,9 +23,20 @@ struct Speed: View {
         let speedExample = Measurement(value: max(locationManager.lastLocation?.speed ?? 0, 0), unit: UnitSpeed.metersPerSecond)
 
         let formattedSpeed = formatter.string(from: speedExample)
-        return formattedSpeed
+        return String(formattedSpeed.split(separator: " ")[0])
     }
-    var userSpeedAccuracy: Double {
+    
+    var userSpeedUnit: String {
+        let formatter = MeasurementFormatter()
+        let locale = Locale.current
+        formatter.locale = locale
+        let speedExample = Measurement(value: max(locationManager.lastLocation?.speed ?? 0, 0), unit: UnitSpeed.metersPerSecond)
+
+        let formattedSpeed = formatter.string(from: speedExample)
+        return String(formattedSpeed.split(separator: " ")[1])
+    }
+    
+    var userSpeedAccuracy: String {
         let formatter = MeasurementFormatter()
         let locale = Locale.current
         formatter.locale = locale
@@ -47,34 +58,31 @@ struct Speed: View {
     }
     
     var body: some View {
-        Form {
+        VStack{
+            
+        
             if(locationManager.locationStatus != .denied){
-                Button(action: {
-                    UIPasteboard.general.string = String(userSpeed)
-                    Haptic.impact(.light).generate()
-                    presentToast()
-                }){
-                    HStack {
-                        Text("Speed")
+                GeometryReader { geometry in
+                    VStack{
                         Spacer()
-                        Text(userSpeed)
+                        VStack {
+                            
+                            Text(userSpeed)
+                                .font(.system(size: min(geometry.size.width, geometry.size.height) * 0.8, design: .default)).monospacedDigit()
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.01)
+                                .padding() // Adds default padding
+                                .frame(maxWidth: .infinity)
+                            
+                            Text(userSpeedUnit)
+                                .font(.system(size: min(geometry.size.width, geometry.size.height) * 0.1, design: .default))
+                        }
+                        Spacer()
+                        
+                        Text("±" + userSpeedAccuracy)
+                            .foregroundStyle(.secondary)
                     }
                 }
-                .tint(.primary)
-                
-                Button(action: {
-                    UIPasteboard.general.string = String(userSpeedAccuracy)
-                    Haptic.impact(.light).generate()
-                    presentToast()
-                }){
-                    HStack {
-                        Text("Speed Accuracy")
-                        Spacer()
-                        Text(String(userSpeedAccuracy) + " km/h")
-                    }
-                }
-                .tint(.primary)
-                
             } else {
                 VStack{
                     Text("You first have to allow Toolbox to access your location in order to see your speed.")
@@ -88,6 +96,7 @@ struct Speed: View {
         }
         .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
         .navigationTitle("Speed")
+        
     }
 }
 
