@@ -15,15 +15,24 @@ struct Speed: View {
     
     @StateObject var locationManager = Location_helper()
     
-    var userSpeed: Double {
-        var speed = (locationManager.lastLocation?.speed ?? 0) * 3.6
-        if (speed < 0) {speed = 0}
-        return speed.rounded(toPlaces: 2)
+    var userSpeed: String {
+        
+        let formatter = MeasurementFormatter()
+        let locale = Locale.current
+        formatter.locale = locale
+        let speedExample = Measurement(value: max(locationManager.lastLocation?.speed ?? 0, 0), unit: UnitSpeed.metersPerSecond)
+
+        let formattedSpeed = formatter.string(from: speedExample)
+        return formattedSpeed
     }
     var userSpeedAccuracy: Double {
-        var accuracy = (locationManager.lastLocation?.speedAccuracy ?? 0) * 3.6
-        if (accuracy < 0) {accuracy = 0}
-        return accuracy.rounded(toPlaces: 2)
+        let formatter = MeasurementFormatter()
+        let locale = Locale.current
+        formatter.locale = locale
+        let speedExample = Measurement(value: max(locationManager.lastLocation?.speedAccuracy ?? 0, 0), unit: UnitSpeed.metersPerSecond)
+
+        let formattedSpeed = formatter.string(from: speedExample)
+        return formattedSpeed
     }
     
     func presentToast() {
@@ -48,7 +57,7 @@ struct Speed: View {
                     HStack {
                         Text("Speed")
                         Spacer()
-                        Text(String(userSpeed) + " km/h")
+                        Text(userSpeed)
                     }
                 }
                 .tint(.primary)
