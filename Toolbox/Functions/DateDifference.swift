@@ -1,8 +1,46 @@
 import SwiftUI
+import Foundation
 import Haptica
 import ToastSwiftUI
 
 struct DateDifference: View{
+    
+    func calcDiff(from startDate: Date, to endDate: Date) {
+        
+        var elements: Set<Calendar.Component> = []
+        if(displayDays) {
+            elements.insert(Calendar.Component.day)
+        }
+        if(displayYears) {
+            elements.insert(Calendar.Component.year)
+        }
+        if(displayMonths) {
+            elements.insert(Calendar.Component.month)
+        }
+        
+        let calendar = Calendar.current
+        
+        
+        
+        // Define which components are needed
+        var components = calendar.dateComponents(elements, from: startDate <= endDate ? startDate : endDate, to: startDate <= endDate ? endDate : startDate)
+        
+        // If endDate < startDate add 1 day
+        if endDate < startDate {
+            // Add 1 day to the endDate
+            let adjustedEndDate = calendar.date(byAdding: .day, value: 1, to: endDate)!
+            components = calendar.dateComponents(elements, from: startDate, to: adjustedEndDate)
+        }
+
+        // Extract the values
+        years = String(components.year ?? 0)
+        months = String(components.month ?? 0)
+        days = String(components.day ?? 0)
+
+        
+        
+    }
+    
     let defaults = UserDefaults.standard
     
     @State private var dateFrom = Date()
@@ -26,40 +64,7 @@ struct DateDifference: View{
         }
     }
     
-    func calcDiff() {
-        let calendar = Calendar.current
 
-        // Initialize an empty array to store the components based on user preferences
-        var dateComponentsArray: [Calendar.Component] = []
-
-        if displayYears {
-            dateComponentsArray.append(.year)
-        }
-
-        if displayMonths {
-            dateComponentsArray.append(.month)
-        }
-
-        if displayDays {
-            dateComponentsArray.append(.day)
-        }
-
-        // Calculate the difference between two dates with the dynamically created dateComponents array
-        let components = calendar.dateComponents(Set(dateComponentsArray), from: dateFrom, to: dateTo)
-
-        // Set global variables based on user preferences
-        if displayYears {
-            years = "\(abs(components.year ?? 0))"
-        }
-
-        if displayMonths {
-            months = "\(abs(components.month ?? 0))"
-        }
-
-        if displayDays {
-            days = "\(abs(components.day ?? 0))"
-        }
-    }
     
     
     var body: some View{
@@ -68,14 +73,14 @@ struct DateDifference: View{
         }, set: {
             self.dateFrom = $0
             defaults.set(dateFrom, forKey: "dateFrom")
-            calcDiff()
+            calcDiff(from: dateFrom, to: dateTo)
         })
         let dateToBinding = Binding<Date>(get: {
             self.dateTo
         }, set: {
             self.dateTo = $0
             defaults.set(dateTo, forKey: "dateFrom")
-            calcDiff()
+            calcDiff(from: dateFrom, to: dateTo)
         })
         
         
@@ -83,21 +88,19 @@ struct DateDifference: View{
             self.displayDays
         }, set: {
             self.displayDays = $0
-            calcDiff()
+            calcDiff(from: dateFrom, to: dateTo)
         })
         let displayYearsBinding = Binding<Bool>(get: {
             self.displayYears
         }, set: {
             self.displayYears = $0
-            calcDiff()
+            calcDiff(from: dateFrom, to: dateTo)
         })
         let displayMonthsBinding = Binding<Bool>(get: {
             self.displayMonths
         }, set: {
-            
             self.displayMonths = $0
-                
-            calcDiff()
+            calcDiff(from: dateFrom, to: dateTo)
         })
         
         Form{
@@ -161,11 +164,11 @@ struct DateDifference: View{
         .onAppear(){
             if(defaults.valueExists(forKey: "dateFrom")){
                 dateFrom = defaults.object(forKey: "dateFrom") as! Date
-                calcDiff()
+                calcDiff(from: dateFrom, to: dateTo)
             }
             if(defaults.valueExists(forKey: "dateTo")){
                 dateTo = defaults.object(forKey: "dateTo") as! Date
-                calcDiff()
+                calcDiff(from: dateFrom, to: dateTo)
             }
             
         }
