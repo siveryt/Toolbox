@@ -64,17 +64,15 @@ extension View {
     }
 }
 
-struct DiceView: View {
+struct DieView: View {
+    var number: String
+    var sides: Int
+    var index: Int
     
-    @AppStorage("diceRolled") var rolled = ["1", "1", "2", "3", "4", "4", "4", "2"]
-    @AppStorage("diceGuidance") var guidance = true
-    @State var settingsSheet = false
-    @AppStorage("diceSides") var sides = 6
-    @AppStorage("diceCount") var diceCount = 1
     @AppStorage("diceKept") var kept:[Int] = []
-    @AppStorage("diceIdleTimerDisabled") var idleTimerDisabled = true
-    
-    
+    @AppStorage("diceCount") var diceCount = 1
+    @AppStorage("diceRolled") var rolled = ["1", "1", "2", "3", "4", "4", "4", "2", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1"]
+    @AppStorage("diceGuidance") var guidance = true
     
     func roll(){
         
@@ -84,7 +82,7 @@ struct DiceView: View {
             DispatchQueue.main.asyncAfter(deadline: .now() + Double("0.\(dqI)")!) {
                 let oldRolled = rolled
                 rolled = []
-                for diceNr in 0...8 {
+                for diceNr in 0...32 {
                     if (kept.contains(diceNr)) {
                         rolled.append(oldRolled[diceNr])
                     } else {
@@ -111,6 +109,126 @@ struct DiceView: View {
         }
     }
 
+    var body: some View {
+        Image("\(sides)-\(number)")
+            .resizable()
+            .aspectRatio(1, contentMode: .fit)
+        
+            .overlay(
+                HStack {
+                    VStack {
+                        if(kept.contains(index)) {
+                            diceLock()
+                        }
+                        Spacer()
+                    }
+                    Spacer()
+                }
+                            )
+            
+            .onTapGesture {
+                roll()
+            }
+        
+            .onLongPressGesture {
+                toggleKeep(index: index)
+            }
+    }
+}
+
+struct DiceGridView: View {
+    var diceCount: Int
+    var faces: [String]
+    var sides: Int
+    
+    
+
+    
+    private var columns: [GridItem] {
+        let screenWidth = UIScreen.main.bounds.width
+        let columnWidth = (screenWidth / 2  - 20) // Adjust the divisor here for the number of columns you want
+        return Array(repeating: .init(.fixed(columnWidth)), count: diceCount == 1 ? 1 : 2)
+    }
+    
+    private var size: CGFloat {
+        var size = UIScreen.main.bounds.width
+        if (diceCount != 1) {
+            size = size / 2 - 20
+        } else {
+            size -= 40
+        }
+        
+        return size
+    }
+    
+    var body: some View {
+        
+        if((size + 40) * CGFloat(diceCount) > UIScreen.main.bounds.height*2) {
+            ScrollView {
+                // Your content goes here
+                LazyVGrid(columns: columns, alignment: .center) { // Set spacing to 0 if you don't want any space between the dice
+                    ForEach(1...diceCount, id: \.self) { i in
+                        DieView(number: faces[i], sides: sides, index: i)  // This will cycle through 1 to 6 for the dice numbers
+                            .frame(width: size, height: size) // Enforce the dice to be square and fill the column width
+                            //.padding([.bottom], 10)
+                    }
+                }
+            }
+        } else {
+            LazyVGrid(columns: columns, alignment: .center) { // Set spacing to 0 if you don't want any space between the dice
+                ForEach(1...diceCount, id: \.self) { i in
+                    DieView(number: faces[i], sides: sides, index: i)  // This will cycle through 1 to 6 for the dice numbers
+                        .frame(width: size, height: size) // Enforce the dice to be square and fill the column width
+                        //.padding([.bottom], 10)
+                }
+            }
+        }
+            
+        
+    }
+}
+
+
+struct DiceView: View {
+    
+    @AppStorage("diceRolled") var rolled = ["1", "1", "2", "3", "4", "4", "4", "2", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1"]
+    @AppStorage("diceGuidance") var guidance = true
+    @State var settingsSheet = false
+    @AppStorage("diceSides") var sides = 6
+    @AppStorage("diceCount") var diceCount = 1
+    @AppStorage("diceKept") var kept:[Int] = []
+    @AppStorage("diceIdleTimerDisabled") var idleTimerDisabled = true
+    
+    
+    
+    func roll(){
+        
+        if(kept.count >= diceCount) {return};
+        
+        for dqI in 1...9 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double("0.\(dqI)")!) {
+                let oldRolled = rolled
+                rolled = []
+                for diceNr in 0...32 {
+                    if (kept.contains(diceNr)) {
+                        rolled.append(oldRolled[diceNr])
+                    } else {
+                        rolled.append(String(Int.random(in: 1...sides)))
+                    }
+                }
+                Haptic.impact(.light).generate()
+            }
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            withAnimation(){
+                guidance = false
+            }
+        }
+    }
+    
+
+
     
     
     
@@ -128,40 +246,12 @@ struct DiceView: View {
         })
         
         VStack {
-            LazyVGrid(columns: diceCount > 1 ? [GridItem(), GridItem()] : [GridItem()]) {
-                            ForEach(0..<diceCount, id: \.self) { i in
-                                if rolled.count > i {
-                                    Image(String(sides == 20 || sides == 10 ? 8 : sides) + "-" + rolled[i])
-                                        .resizable()
-                                        .scaledToFit()
-                                        
-                                        .overlay(
-                                            HStack {
-                                                VStack {
-                                                    if(kept.contains(i)) {
-                                                        diceLock()
-                                                    }
-                                                    Spacer()
-                                                }
-                                                Spacer()
-                                            }
-                                                        )
-                                        .onTapGesture {
-                                            roll()
-                                        }
-                                        .onLongPressGesture {
-                                            toggleKeep(index: i)
-                                        }
-                                }
-                            }
-                        }
+            DiceGridView(diceCount: diceCount, faces: rolled, sides: sides)
 
             if guidance {
                 Text("Shake or tap to get started").foregroundColor(.secondary)
             }
         }
-        .padding(.all, 50.0)
-        .frame(maxWidth: 500)
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Dice")
 
@@ -196,7 +286,7 @@ struct DiceView: View {
                     
                     
                     HStack {
-                        Stepper("Dice Count:", value: $diceCount, in: 1...8)
+                        Stepper("Dice Count:", value: $diceCount, in: 1...32)
                         Text(String(diceCount))
                     }
                     Section {
