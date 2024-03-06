@@ -64,6 +64,26 @@ extension View {
     }
 }
 
+struct DeviceRotationViewModifier: ViewModifier {
+    let action: (UIDeviceOrientation) -> Void
+
+    func body(content: Content) -> some View {
+        content
+            .onAppear()
+            .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
+                action(UIDevice.current.orientation)
+            }
+    }
+}
+
+// A View wrapper to make the modifier easier to use
+extension View {
+    func onRotate(perform action: @escaping (UIDeviceOrientation) -> Void) -> some View {
+        self.modifier(DeviceRotationViewModifier(action: action))
+    }
+}
+
+
 struct DieView: View {
     var number: String
     var sides: Int
@@ -110,7 +130,7 @@ struct DieView: View {
     }
 
     var body: some View {
-        Image("\(sides)-\(number)")
+        Image("\(sides == 20 || sides == 10 ? 8 : sides)-\(number)")
             .resizable()
             .aspectRatio(1, contentMode: .fit)
         
@@ -141,49 +161,74 @@ struct DiceGridView: View {
     var faces: [String]
     var sides: Int
     
-    
-
+    @State private var orientation = UIDeviceOrientation.portrait
     
     private var columns: [GridItem] {
         let screenWidth = UIScreen.main.bounds.width
-        let columnWidth = (screenWidth / 2  - 20) // Adjust the divisor here for the number of columns you want
-        return Array(repeating: .init(.fixed(columnWidth)), count: diceCount == 1 ? 1 : 2)
+        let portrait = UIScreen.main.bounds.width < UIScreen.main.bounds.height
+
+        let columnWidth = (screenWidth / (portrait ? 2 : 4) - 20) // Adjust the divisor here for the number of columns you want
+        return Array(repeating: .init(.fixed(columnWidth)), count: diceCount == 1 ? 1 : (portrait ? 2 : 4))
     }
     
     private var size: CGFloat {
-        var size = UIScreen.main.bounds.width
-        if (diceCount != 1) {
-            size = size / 2 - 20
-        } else {
-            size -= 40
+        var size = min(UIScreen.main.bounds.width, UIScreen.main.bounds.height)
+        
+        if(diceCount > 1){
+            size = size / 2
         }
+        
+        size -= 40
+        
+        print("CALCULATED \(Date().timeIntervalSince1970)")
         
         return size
     }
     
+    var items: [GridItem] {
+        Array(repeating: .init(.adaptive(minimum: size)), count: diceCount == 1 ? 1 :2)
+    }
+    
     var body: some View {
         
-        if((size + 40) * CGFloat(diceCount) > UIScreen.main.bounds.height*2) {
-            ScrollView {
-                // Your content goes here
-                LazyVGrid(columns: columns, alignment: .center) { // Set spacing to 0 if you don't want any space between the dice
-                    ForEach(1...diceCount, id: \.self) { i in
-                        DieView(number: faces[i], sides: sides, index: i)  // This will cycle through 1 to 6 for the dice numbers
-                            .frame(width: size, height: size) // Enforce the dice to be square and fill the column width
-                            //.padding([.bottom], 10)
+        VStack {
+            GeometryReader { geometry in
+                ScrollView(.vertical, showsIndicators: false) {
+                    VStack{
+                        LazyVGrid(columns: items, spacing: 10) {
+                            ForEach(1...diceCount, id: \.self) { i in
+                                HStack {
+                                    Spacer()
+                                    DieView(number: faces[i], sides: sides, index: i)
+                                        .padding([.bottom], 10)
+                                    Spacer()
+                                }
+                            }
+                        }
+                        .padding(.horizontal)
                     }
+                    .frame(minHeight: (geometry.size.height - 40))
                 }
             }
-        } else {
-            LazyVGrid(columns: columns, alignment: .center) { // Set spacing to 0 if you don't want any space between the dice
-                ForEach(1...diceCount, id: \.self) { i in
-                    DieView(number: faces[i], sides: sides, index: i)  // This will cycle through 1 to 6 for the dice numbers
-                        .frame(width: size, height: size) // Enforce the dice to be square and fill the column width
-                        //.padding([.bottom], 10)
-                }
+            
+        }
+        .onRotate { newOrientation in
+            if (!newOrientation.isFlat) {
+                orientation = newOrientation
+            }
+            
+            print(size)
+            
+        }
+        .onAppear {
+            if UIScreen.main.bounds.width < UIScreen.main.bounds.height {
+                orientation = .portrait
+                print("portrait")
+            } else {
+                orientation = .landscapeLeft
             }
         }
-            
+                
         
     }
 }
@@ -201,9 +246,18 @@ struct DiceView: View {
     
     
     
-    func roll(){
+    func roll(max: Int, instant: Bool = false){
         
-        if(kept.count >= diceCount) {return};
+        if (kept.count >= diceCount) {return};
+        
+        if (instant) {
+            var newRolled: [String] = []
+            for _ in 0...32 {
+                newRolled.append(String(Int.random(in: 1...max)))
+            }
+            rolled = newRolled
+            return;
+        }
         
         for dqI in 1...9 {
             DispatchQueue.main.asyncAfter(deadline: .now() + Double("0.\(dqI)")!) {
@@ -213,7 +267,7 @@ struct DiceView: View {
                     if (kept.contains(diceNr)) {
                         rolled.append(oldRolled[diceNr])
                     } else {
-                        rolled.append(String(Int.random(in: 1...sides)))
+                        rolled.append(String(Int.random(in: 1...max)))
                     }
                 }
                 Haptic.impact(.light).generate()
@@ -227,27 +281,22 @@ struct DiceView: View {
         }
     }
     
-
-
-    
-    
-    
     var body: some View {
         
         let sidesBinding = Binding<Int>(get: {
             self.sides
         }, set: {
+            roll(max: $0, instant: true)
             
-                self.sides = $0
+            self.sides = $0
             self.kept = []
             
-            roll()
+            
             
         })
         
         VStack {
             DiceGridView(diceCount: diceCount, faces: rolled, sides: sides)
-
             if guidance {
                 Text("Shake or tap to get started").foregroundColor(.secondary)
             }
@@ -266,7 +315,7 @@ struct DiceView: View {
         }
        
         .onShake{
-            roll()
+            roll(max: sides)
         }
 
         .sheet(isPresented: $settingsSheet){
