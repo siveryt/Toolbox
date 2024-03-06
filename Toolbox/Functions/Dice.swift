@@ -179,9 +179,6 @@ struct DiceGridView: View {
         }
         
         size -= 40
-        
-        print("CALCULATED \(Date().timeIntervalSince1970)")
-        
         return size
     }
     
