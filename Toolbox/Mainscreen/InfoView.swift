@@ -26,6 +26,11 @@ struct infoView: View {
                 NavigationLink(destination: appIcon().environmentObject(IconNames())) {
                     Label("App Icon", systemImage: "square")
                 }
+                
+                NavigationLink(destination: permissions()){
+                    Label("Permissions", systemImage: "shield")
+                }
+                
                 Button(action: {
                     if let url = URL(string: "http://toolbox.sivery.de") {
                         UIApplication.shared.open(url)
@@ -87,6 +92,8 @@ struct infoView: View {
                     Label("Delete data", systemImage: "trash")
                 }
                 .tint(.primary)
+                
+                
             }
             
             
@@ -228,4 +235,95 @@ struct appIcon: View {
     }
 }
 
+struct permissions: View {
+    
+    @StateObject var locationManager = Location_helper()
+    @State var localNetworkAccess:Bool? = nil
+    
+    @State var showingInfoAlert = false
+    
+    var body: some View {
+        List {
+            HStack {
+                Label("Location", systemImage: "location.fill")
+                Spacer()
+                if (locationManager.locationStatus == .authorizedAlways) {
+                    Text("Always")
+                }
+                if (locationManager.locationStatus == .authorizedWhenInUse) {
+                    Text("While Using")
+                }
+                if (locationManager.locationStatus == .denied) {
+                    Text("Denied")
+                }
+                if (locationManager.locationStatus == .restricted) {
+                    Text("restricted")
+                }
+                if (locationManager.locationStatus == .notDetermined) {
+                    Text("Not Determined")
+                }
+                if (locationManager.locationStatus == .none) {
+                    Text("None")
+                }
+            }
+            
+            HStack {
+                Label("Local Network", systemImage: "network")
+                Spacer()
+                if (localNetworkAccess == true) {
+                    Text("Allowed")
+                }
+                if (localNetworkAccess == false) {
+                    Text("Denied")
+                }
+                if (localNetworkAccess == nil) {
+                    Text("")
+                }
+            }
+            
+            Section{
+                Button("Open Settings") {
+                    if let appSettings = URL(string: UIApplication.openSettingsURLString) {
+                        UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
+                    }
+                }
+            }
+        }
+        .onAppear {
+            checkNetworkPermission()
+        }
+        .alert(isPresented: $showingInfoAlert) {
+            Alert(
+                title: Text("Why?"),
+                message: Text("Toolbox uses your location to calculate your speed and your coordinates when using the corresponding tools.\n Toolbox needs access to your local network when using the LAN Scanner."),
+                dismissButton: .destructive(Text("Got it!")) // I have to use .destructive and not .default, because .default often times is the default primary blue and not the color set in Assets AccentColor
+            )
+                }
+        .toolbar(){
+            ToolbarItem(placement: .primaryAction) {
+                Button(action: {
+                    showingInfoAlert = true
+                }, label: {
+                    Image(systemName: "questionmark.circle")
+                })
+            }
+        }
+        
+        .navigationTitle("Permissions")
+    }
+    
+    private func checkNetworkPermission() {
+            let authorization = LocalNetworkAuthorization()
+            authorization.requestAuthorization { hasPermission in
+                DispatchQueue.main.async {
+                    self.localNetworkAccess = hasPermission
+                }
+            }
+        }
+}
 
+struct permissions_Previews: PreviewProvider {
+    static var previews: some View {
+        permissions()
+    }
+}
