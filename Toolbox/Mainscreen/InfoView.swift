@@ -174,14 +174,14 @@ struct infoVersion: View {
                     Text(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Can't find version")
                 }
                 HStack{
-                    Text("Last update")
+                    Text("Last updated")
                     Spacer()
-                    Text("19-08-2023")
+                    Text(Bundle.main.infoDictionary?["LAST_UPDATE"] as? String ?? "Can't find last update")
                 }
                 HStack {
                     Text("Build")
                     Spacer()
-                    Text(Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "Can't find version")
+                    Text(Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "Can't find build")
                 }
                 
             }

@@ -119,6 +119,8 @@
 	</array>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>LAST_UPDATE</key>
+	<string>$(LAST_UPDATE)</string>
 	<key>NSBonjourServices</key>
 	<array>
 		<string>_bonjour._tcp</string>
