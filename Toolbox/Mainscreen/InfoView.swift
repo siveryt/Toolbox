@@ -178,6 +178,11 @@ struct infoVersion: View {
                     Spacer()
                     Text("19-08-2023")
                 }
+                HStack {
+                    Text("Build")
+                    Spacer()
+                    Text(Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "Can't find version")
+                }
                 
             }
             Section {
