@@ -191,6 +191,7 @@ struct infoVersion: View {
         }
         
         .navigationTitle("Version")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
@@ -232,6 +233,7 @@ struct appIcon: View {
             
         }
         .navigationTitle("App Icon")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
@@ -310,6 +312,7 @@ struct permissions: View {
         }
         
         .navigationTitle("Permissions")
+        .navigationBarTitleDisplayMode(.inline)
     }
     
     private func checkNetworkPermission() {
