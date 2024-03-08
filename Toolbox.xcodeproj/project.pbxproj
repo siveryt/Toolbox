@@ -133,6 +133,7 @@
 		5E878B6A2916B6B60038A5E3 /* Speed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speed.swift; sourceTree = "<group>"; };
 		5E878B6F2916CCFD0038A5E3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5E878B712916CD4F0038A5E3 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		5EB252B92B9BBFC800CF2A18 /* Buildnumber.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Buildnumber.xcconfig; sourceTree = "<group>"; };
 		5EB64699280580FA000D4243 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		5EB7897627F9CCA900F07140 /* QRGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRGenerator.swift; sourceTree = "<group>"; };
 		5EB9CEA52916A445009D29F4 /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
@@ -265,6 +266,7 @@
 		5EC7B21227D7978100699FD3 = {
 			isa = PBXGroup;
 			children = (
+				5EB252B92B9BBFC800CF2A18 /* Buildnumber.xcconfig */,
 				5E35DBE22917C5BD00D2FC8A /* Localizable.strings */,
 				5E35DBDF2917C5BD00D2FC8A /* InfoPlist.strings */,
 				5EC7B24F27D79DDC00699FD3 /* .gitignore */,
@@ -385,6 +387,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5EC7B24427D7978200699FD3 /* Build configuration list for PBXNativeTarget "Toolbox" */;
 			buildPhases = (
+				5EB252BA2B9BC06900CF2A18 /* Update Build Number (SCRIPT) */,
 				5EC7B21727D7978100699FD3 /* Sources */,
 				5EC7B21827D7978100699FD3 /* Frameworks */,
 				5EC7B21927D7978100699FD3 /* Resources */,
@@ -517,6 +520,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5EB252BA2B9BC06900CF2A18 /* Update Build Number (SCRIPT) */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Update Build Number (SCRIPT)";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "#!/bin/bash\n\n# Define the path to the Buildnumber.xcconfig file\nFILE=\"${PROJECT_DIR}/Buildnumber.xcconfig\"\n\n# Check if the Buildnumber.xcconfig file exists\nif [ ! -f \"$FILE\" ]; then\n    echo \"Error: ${FILE} does not exist.\"\n    exit 1\nfi\n\n# Read the current build number from the file\nCURRENT_BUILD_NUMBER=$(grep -o 'BUILD_NUMBER = [0-9]\\+' \"${FILE}\" | grep -o '[0-9]\\+')\n\n# If the current build number is not found, exit the script\nif [ -z \"${CURRENT_BUILD_NUMBER}\" ]; then\n    echo \"Error: Build number not found in ${FILE}.\"\n    exit 1\nfi\n\n# Increment the build number\nNEW_BUILD_NUMBER=$((CURRENT_BUILD_NUMBER + 1))\n\n# Replace the old build number with the new build number in the file\nsed -i '' \"s/BUILD_NUMBER = ${CURRENT_BUILD_NUMBER}/BUILD_NUMBER = ${NEW_BUILD_NUMBER}/g\" \"${FILE}\"\n\n# Optionally, print the new build number\necho \"New Build Number: ${NEW_BUILD_NUMBER}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5EC7B21727D7978100699FD3 /* Sources */ = {
@@ -725,13 +749,14 @@
 		};
 		5EC7B24527D7978200699FD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5EB252B92B9BBFC800CF2A18 /* Buildnumber.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = "$(BUILD_NUMBER)";
 				DEVELOPMENT_ASSET_PATHS = "\"Toolbox/Preview Content\"";
 				DEVELOPMENT_TEAM = VA79D2T9W7;
 				ENABLE_PREVIEWS = YES;
@@ -765,13 +790,14 @@
 		};
 		5EC7B24627D7978200699FD3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5EB252B92B9BBFC800CF2A18 /* Buildnumber.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = "$(BUILD_NUMBER)";
 				DEVELOPMENT_ASSET_PATHS = "\"Toolbox/Preview Content\"";
 				DEVELOPMENT_TEAM = VA79D2T9W7;
 				ENABLE_PREVIEWS = YES;
