@@ -44,6 +44,15 @@
 		5E878B6B2916B6B60038A5E3 /* Speed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E878B6A2916B6B60038A5E3 /* Speed.swift */; };
 		5E878B702916CCFD0038A5E3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E878B6F2916CCFD0038A5E3 /* Extensions.swift */; };
 		5E878B722916CD4F0038A5E3 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E878B712916CD4F0038A5E3 /* InfoView.swift */; };
+		5E9ABFCD2B9CB840005448FB /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9ABFCC2B9CB840005448FB /* WidgetKit.framework */; };
+		5E9ABFCF2B9CB840005448FB /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9ABFCE2B9CB840005448FB /* SwiftUI.framework */; };
+		5E9ABFD22B9CB840005448FB /* diceWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9ABFD12B9CB840005448FB /* diceWidgetBundle.swift */; };
+		5E9ABFD42B9CB840005448FB /* diceWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9ABFD32B9CB840005448FB /* diceWidget.swift */; };
+		5E9ABFD82B9CB843005448FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E9ABFD72B9CB843005448FB /* Assets.xcassets */; };
+		5E9ABFDC2B9CB843005448FB /* diceWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5E9ABFCB2B9CB840005448FB /* diceWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5E9ABFE92B9CEFD4005448FB /* Faces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9ABFE72B9CEFD4005448FB /* Faces.swift */; };
+		5E9ABFEA2B9CEFD4005448FB /* FaceCountAppEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9ABFE82B9CEFD4005448FB /* FaceCountAppEnum.swift */; };
+		5E9ABFEC2B9CF8B0005448FB /* TapIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9ABFEB2B9CF8B0005448FB /* TapIntent.swift */; };
 		5EB6030628B22C1B00133561 /* ToastSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5EB6030528B22C1B00133561 /* ToastSwiftUI */; };
 		5EB6469A280580FA000D4243 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5EB64699280580FA000D4243 /* Settings.bundle */; };
 		5EB7897727F9CCA900F07140 /* QRGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB7897627F9CCA900F07140 /* QRGenerator.swift */; };
@@ -74,6 +83,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5E9ABFDA2B9CB843005448FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5EC7B21327D7978100699FD3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5E9ABFCA2B9CB840005448FB;
+			remoteInfo = diceWidgetExtension;
+		};
 		5EE65DFA2A8576000061120B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5EC7B21327D7978100699FD3 /* Project object */;
@@ -84,6 +100,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		5E9ABFE02B9CB843005448FB /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5E9ABFDC2B9CB843005448FB /* diceWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5EE65E002A8576000061120B /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -133,6 +160,16 @@
 		5E878B6A2916B6B60038A5E3 /* Speed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speed.swift; sourceTree = "<group>"; };
 		5E878B6F2916CCFD0038A5E3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5E878B712916CD4F0038A5E3 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		5E9ABFCB2B9CB840005448FB /* diceWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = diceWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E9ABFCC2B9CB840005448FB /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		5E9ABFCE2B9CB840005448FB /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		5E9ABFD12B9CB840005448FB /* diceWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = diceWidgetBundle.swift; sourceTree = "<group>"; };
+		5E9ABFD32B9CB840005448FB /* diceWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = diceWidget.swift; sourceTree = "<group>"; };
+		5E9ABFD72B9CB843005448FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5E9ABFD92B9CB843005448FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5E9ABFE72B9CEFD4005448FB /* Faces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Faces.swift; sourceTree = "<group>"; };
+		5E9ABFE82B9CEFD4005448FB /* FaceCountAppEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceCountAppEnum.swift; sourceTree = "<group>"; };
+		5E9ABFEB2B9CF8B0005448FB /* TapIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapIntent.swift; sourceTree = "<group>"; };
 		5EB252B92B9BBFC800CF2A18 /* Buildnumber.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Buildnumber.xcconfig; sourceTree = "<group>"; };
 		5EB64699280580FA000D4243 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		5EB7897627F9CCA900F07140 /* QRGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRGenerator.swift; sourceTree = "<group>"; };
@@ -165,6 +202,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5E9ABFC82B9CB840005448FB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E9ABFCF2B9CB840005448FB /* SwiftUI.framework in Frameworks */,
+				5E9ABFCD2B9CB840005448FB /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5EC7B21827D7978100699FD3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -216,6 +262,8 @@
 		5E1383EC29159D2600CF4FAB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5E9ABFCC2B9CB840005448FB /* WidgetKit.framework */,
+				5E9ABFCE2B9CB840005448FB /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -263,6 +311,20 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		5E9ABFD02B9CB840005448FB /* diceWidget */ = {
+			isa = PBXGroup;
+			children = (
+				5E9ABFE72B9CEFD4005448FB /* Faces.swift */,
+				5E9ABFE82B9CEFD4005448FB /* FaceCountAppEnum.swift */,
+				5E9ABFD12B9CB840005448FB /* diceWidgetBundle.swift */,
+				5E9ABFD32B9CB840005448FB /* diceWidget.swift */,
+				5E9ABFD72B9CB843005448FB /* Assets.xcassets */,
+				5E9ABFD92B9CB843005448FB /* Info.plist */,
+				5E9ABFEB2B9CF8B0005448FB /* TapIntent.swift */,
+			);
+			path = diceWidget;
+			sourceTree = "<group>";
+		};
 		5EC7B21227D7978100699FD3 = {
 			isa = PBXGroup;
 			children = (
@@ -275,6 +337,7 @@
 				5EC7B24D27D797E100699FD3 /* README.md */,
 				5EC7B21D27D7978100699FD3 /* Toolbox */,
 				5EE65DF02A8575FE0061120B /* Toolbox WatchOS Watch App */,
+				5E9ABFD02B9CB840005448FB /* diceWidget */,
 				5EC7B21C27D7978100699FD3 /* Products */,
 				5E1383EC29159D2600CF4FAB /* Frameworks */,
 			);
@@ -285,6 +348,7 @@
 			children = (
 				5EC7B21B27D7978100699FD3 /* Toolbox.app */,
 				5EE65DEF2A8575FE0061120B /* Toolbox WatchOS Watch App.app */,
+				5E9ABFCB2B9CB840005448FB /* diceWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -383,6 +447,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5E9ABFCA2B9CB840005448FB /* diceWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5E9ABFDD2B9CB843005448FB /* Build configuration list for PBXNativeTarget "diceWidgetExtension" */;
+			buildPhases = (
+				5E9ABFC72B9CB840005448FB /* Sources */,
+				5E9ABFC82B9CB840005448FB /* Frameworks */,
+				5E9ABFC92B9CB840005448FB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = diceWidgetExtension;
+			productName = diceWidgetExtension;
+			productReference = 5E9ABFCB2B9CB840005448FB /* diceWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		5EC7B21A27D7978100699FD3 /* Toolbox */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5EC7B24427D7978200699FD3 /* Build configuration list for PBXNativeTarget "Toolbox" */;
@@ -392,11 +473,13 @@
 				5EC7B21827D7978100699FD3 /* Frameworks */,
 				5EC7B21927D7978100699FD3 /* Resources */,
 				5EE65E002A8576000061120B /* Embed Watch Content */,
+				5E9ABFE02B9CB843005448FB /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				5EE65DFB2A8576000061120B /* PBXTargetDependency */,
+				5E9ABFDB2B9CB843005448FB /* PBXTargetDependency */,
 			);
 			name = Toolbox;
 			packageProductDependencies = (
@@ -439,9 +522,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1430;
+				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
+					5E9ABFCA2B9CB840005448FB = {
+						CreatedOnToolsVersion = 15.3;
+					};
 					5EC7B21A27D7978100699FD3 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -476,11 +562,20 @@
 			targets = (
 				5EC7B21A27D7978100699FD3 /* Toolbox */,
 				5EE65DEE2A8575FE0061120B /* Toolbox WatchOS Watch App */,
+				5E9ABFCA2B9CB840005448FB /* diceWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5E9ABFC92B9CB840005448FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E9ABFD82B9CB843005448FB /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5EC7B21927D7978100699FD3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -543,6 +638,18 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5E9ABFC72B9CB840005448FB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E9ABFE92B9CEFD4005448FB /* Faces.swift in Sources */,
+				5E9ABFEA2B9CEFD4005448FB /* FaceCountAppEnum.swift in Sources */,
+				5E9ABFEC2B9CF8B0005448FB /* TapIntent.swift in Sources */,
+				5E9ABFD42B9CB840005448FB /* diceWidget.swift in Sources */,
+				5E9ABFD22B9CB840005448FB /* diceWidgetBundle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5EC7B21727D7978100699FD3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -591,6 +698,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5E9ABFDB2B9CB843005448FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5E9ABFCA2B9CB840005448FB /* diceWidgetExtension */;
+			targetProxy = 5E9ABFDA2B9CB843005448FB /* PBXContainerItemProxy */;
+		};
 		5EE65DFB2A8576000061120B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5EE65DEE2A8575FE0061120B /* Toolbox WatchOS Watch App */;
@@ -629,6 +741,73 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5E9ABFDE2B9CB843005448FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VA79D2T9W7;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = diceWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = diceWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.sivery.toolbox.diceWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5E9ABFDF2B9CB843005448FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VA79D2T9W7;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = diceWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = diceWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.sivery.toolbox.diceWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		5EC7B24227D7978200699FD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -898,6 +1077,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5E9ABFDD2B9CB843005448FB /* Build configuration list for PBXNativeTarget "diceWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E9ABFDE2B9CB843005448FB /* Debug */,
+				5E9ABFDF2B9CB843005448FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5EC7B21627D7978100699FD3 /* Build configuration list for PBXProject "Toolbox" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

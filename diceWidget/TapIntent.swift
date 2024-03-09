@@ -1,0 +1,24 @@
+//
+//  TapIntent.swift
+//  diceWidgetExtension
+//
+//  Created by Christian Nagel on 09.03.24.
+//
+
+
+import AppIntents
+import WidgetKit
+
+struct RollDiceIntent: AppIntent {
+    static var title: LocalizedStringResource = "Roll Dice"
+    static var description = IntentDescription("Log a drink and its caffeine amount.")
+
+
+    init() {}
+
+
+    func perform() async throws -> some IntentResult {
+        WidgetCenter.shared.reloadTimelines(ofKind: "LocationForecast")
+        return .result()
+    }
+}
