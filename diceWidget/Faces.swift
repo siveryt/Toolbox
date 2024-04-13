@@ -17,20 +17,25 @@ struct Faces: AppIntent, WidgetConfigurationIntent, CustomIntentMigratedAppInten
 
     @Parameter(title: "Faces", default: .six)
     var Faces: FaceCountAppEnum?
+    
+    @Parameter(title: "Reroll Indicator", default: true)
+    var reroll: Bool?
 
     static var parameterSummary: some ParameterSummary {
         Summary {
             \.$Faces
+            \.$reroll
         }
     }
 
     static var predictionConfiguration: some IntentPredictionConfiguration {
-        IntentPrediction(parameters: (\.$Faces)) { Faces in
+        IntentPrediction(parameters: (\.$Faces, \.$reroll)) { Faces, reroll in
             DisplayRepresentation(
                 title: "",
                 subtitle: ""
             )
         }
+        
     }
 
     func perform() async throws -> some IntentResult {

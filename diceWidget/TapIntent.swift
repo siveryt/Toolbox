@@ -18,7 +18,16 @@ struct RollDiceIntent: AppIntent {
 
 
     func perform() async throws -> some IntentResult {
+        
+        /*for dqI in 1...5 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double("0.\(dqI)")!) {
+                
+                print("REFRESH")
+            }
+        }*/
         WidgetCenter.shared.reloadTimelines(ofKind: "LocationForecast")
+        
+        
         return .result()
     }
 }
