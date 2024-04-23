@@ -35,6 +35,9 @@ struct LiveClock: View {
                 .onDisappear {
                     timer.upstream.connect().cancel()
                 }
+                .onAppear {
+                    now = Date()
+                }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
