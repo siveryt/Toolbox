@@ -1,0 +1,87 @@
+{
+  "originHash" : "f61d28334c75cc2d1dd1f49456c24cb96c477c3f01afc5d42a0512ec607747b7",
+  "pins" : [
+    {
+      "identity" : "codescanner",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/twostraws/CodeScanner",
+      "state" : {
+        "revision" : "bf5d7087015620b250ee6c865b3c9039fc159d1a",
+        "version" : "2.3.3"
+      }
+    },
+    {
+      "identity" : "haptica",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/efremidze/Haptica",
+      "state" : {
+        "revision" : "e03932406d2f36f10beefd31717730b2c2fa9014",
+        "version" : "3.0.3"
+      }
+    },
+    {
+      "identity" : "lan-scanner",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/MaatheusGois/lan-scanner",
+      "state" : {
+        "branch" : "main",
+        "revision" : "1b142a27fc5bc02362abbb3af467a06f2a067202"
+      }
+    },
+    {
+      "identity" : "romannumeralkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kylehughes/RomanNumeralKit",
+      "state" : {
+        "revision" : "738d9ea027823f0ed592a10e4c6ecbf08636f76f",
+        "version" : "1.2.1"
+      }
+    },
+    {
+      "identity" : "swift-async-dns-resolver",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-async-dns-resolver",
+      "state" : {
+        "revision" : "b7079b75cd604bc675af080edef56b486decb155",
+        "version" : "0.3.1"
+      }
+    },
+    {
+      "identity" : "swiftui-apple-watch-decimal-pad",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ApplebaumIan/SwiftUI-Apple-Watch-Decimal-Pad.git",
+      "state" : {
+        "revision" : "9053d7c278be988e51ec4fbcfd4aa32cc24bf309",
+        "version" : "1.0.4"
+      }
+    },
+    {
+      "identity" : "swiftyping",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/samiyr/SwiftyPing.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "05591bc0047e41e0e1d98135c6bc457192a72d39"
+      }
+    },
+    {
+      "identity" : "toastswiftui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/huynguyencong/ToastSwiftUI.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "19acc0985eb456373ca276e960626373bd686ffe"
+      }
+    },
+    {
+      "identity" : "whatsnewkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SvenTiigi/WhatsNewKit.git",
+      "state" : {
+        "revision" : "50a121a99a17c9eed90ccf1197ebd03165309c61",
+        "version" : "2.0.3"
+      }
+    }
+  ],
+  "version" : 3
+}

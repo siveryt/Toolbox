@@ -50,3 +50,4 @@ xcuserdata/
 # End of https://www.toptal.com/developers/gitignore/api/xcode,macos
 AppStore/
 Buildnumber.xcconfig
+!Toolbox.xcodeproj/project.xcworkspace/
