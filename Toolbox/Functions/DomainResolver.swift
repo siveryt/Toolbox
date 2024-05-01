@@ -8,11 +8,13 @@
 import SwiftUI
 import Haptica
 import ToastSwiftUI
+import AsyncDNSResolver
 
 struct DomainResolver: View {
     @AppStorage("resolverResolve") var toResolve = ""
     @State var resolved = ""
     @State var autoResolve = true
+    @State var resolving = false
     
     @State var isPresentingToast: Bool = false
     
@@ -27,7 +29,30 @@ struct DomainResolver: View {
         }
     }
     
-    func resolve() {
+    
+    
+    func resolve() async {
+        resolving = true
+        resolved = ""
+        do {
+            let resolver = try AsyncDNSResolver()
+            let aRecords = try await resolver.queryA(name: toResolve)
+            for record in aRecords {
+                resolved += "\(record.address) \n"
+                print(record.address)
+            }
+            print(resolved)
+            
+            resolved = String(resolved.dropLast(2))
+        } catch {
+            resolved = ""
+        }
+        resolving = false
+        
+        
+        
+        
+        /*
         if(toResolve != ""){
             let host = CFHostCreateWithName(nil,toResolve as CFString).takeRetainedValue()
             CFHostStartInfoResolution(host, .addresses, nil)
@@ -41,7 +66,7 @@ struct DomainResolver: View {
                     resolved = numAddress
                 }
             }
-        }
+        }*/
     }
     
     var body: some View {
@@ -56,7 +81,9 @@ struct DomainResolver: View {
                 .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                 .multilineTextAlignment(.trailing)
                 .onSubmit(of: /*@START_MENU_TOKEN@*/.text/*@END_MENU_TOKEN@*/) {
-                    resolve()
+                    Task {
+                        await resolve()
+                    }
                 }
                 .disableAutocorrection(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
             .submitLabel(.go)
@@ -71,13 +98,18 @@ struct DomainResolver: View {
                         presentToast()
                     }
                 }) {
-                    Text(resolved == "" ? NSLocalizedString("Not Found", comment: "Domain Not found") : resolved)
-                        .multilineTextAlignment(.trailing)
-                        .onReceive(NotificationCenter.default.publisher(for: UITextField.textDidBeginEditingNotification)) { obj in
-                            if let textField = obj.object as? UITextField {
-                                textField.selectedTextRange = textField.textRange(from: textField.beginningOfDocument, to: textField.endOfDocument)
+                    if(resolving){
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle())
+                    } else {
+                        Text(resolved == "" ? NSLocalizedString("Not Found", comment: "Domain Not found") : resolved)
+                            .multilineTextAlignment(.trailing)
+                            .onReceive(NotificationCenter.default.publisher(for: UITextField.textDidBeginEditingNotification)) { obj in
+                                if let textField = obj.object as? UITextField {
+                                    textField.selectedTextRange = textField.textRange(from: textField.beginningOfDocument, to: textField.endOfDocument)
+                                }
                             }
-                        }
+                    }
                         
                         
                 }
@@ -91,6 +123,11 @@ struct DomainResolver: View {
         .toast(isPresenting: $isPresentingToast, message: NSLocalizedString("Copied", comment: "Copy toast"), icon: .custom(Image(systemName: "doc.on.clipboard")), autoDismiss: .none)
         .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
         .navigationTitle("Domain Resolver")
+        .onAppear() {
+            Task {
+                await resolve()
+            }
+        }
     }
 }
 
