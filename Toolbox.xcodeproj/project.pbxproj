@@ -77,6 +77,7 @@
 		5EE65E032A8576280061120B /* Dice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1383EA29159ADE00CF4FAB /* Dice.swift */; };
 		5EE65E042A8576280061120B /* Random Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1383F12915A23100CF4FAB /* Random Number.swift */; };
 		5EF0DD1B2BE2133E00F46B5C /* AsyncDNSResolver in Frameworks */ = {isa = PBXBuildFile; productRef = 5EF0DD1A2BE2133E00F46B5C /* AsyncDNSResolver */; };
+		5EF0DD1F2BE2196700F46B5C /* PulsingFlashlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF0DD1E2BE2196700F46B5C /* PulsingFlashlight.swift */; };
 		5EF8C35D2A8859AC0089BCA3 /* Random Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8C35C2A8859AC0089BCA3 /* Random Letter.swift */; };
 		5EF8C35F2A88665D0089BCA3 /* LAN Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8C35E2A88665D0089BCA3 /* LAN Scanner.swift */; };
 		5EF8C3622A88669A0089BCA3 /* LanScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 5EF8C3612A88669A0089BCA3 /* LanScanner */; };
@@ -197,6 +198,7 @@
 		5EE65DF12A8575FE0061120B /* Toolbox_WatchOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbox_WatchOSApp.swift; sourceTree = "<group>"; };
 		5EE65DF82A8576000061120B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5EE65E072A8578840061120B /* Toolbox-WatchOS-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Toolbox-WatchOS-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
+		5EF0DD1E2BE2196700F46B5C /* PulsingFlashlight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulsingFlashlight.swift; sourceTree = "<group>"; };
 		5EF8C35C2A8859AC0089BCA3 /* Random Letter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Random Letter.swift"; sourceTree = "<group>"; };
 		5EF8C35E2A88665D0089BCA3 /* LAN Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LAN Scanner.swift"; sourceTree = "<group>"; };
 		5EFACB1329B37C9A00EB8989 /* ScannedBarcodes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ScannedBarcodes.xcdatamodel; sourceTree = "<group>"; };
@@ -404,6 +406,7 @@
 				5EF8C35E2A88665D0089BCA3 /* LAN Scanner.swift */,
 				5EDFF1E527E76D34005BBA3C /* LiveClock.swift */,
 				5E5C62072916654F004F44CC /* Ping.swift */,
+				5EF0DD1E2BE2196700F46B5C /* PulsingFlashlight.swift */,
 				5EB7897627F9CCA900F07140 /* QRGenerator.swift */,
 				5EF8C35C2A8859AC0089BCA3 /* Random Letter.swift */,
 				5EDFF1DF27E74572005BBA3C /* RandomNumber.swift */,
@@ -671,6 +674,7 @@
 				5E878B722916CD4F0038A5E3 /* InfoView.swift in Sources */,
 				5EC7B21F27D7978100699FD3 /* ToolboxApp.swift in Sources */,
 				5EB9CEA62916A445009D29F4 /* Coordinates.swift in Sources */,
+				5EF0DD1F2BE2196700F46B5C /* PulsingFlashlight.swift in Sources */,
 				5ED3943B28BD139D00798FFE /* ipChecker.swift in Sources */,
 				5ECEBECF280303A30096E5A5 /* BodyMassIndex.swift in Sources */,
 				5E878B692916B0190038A5E3 /* Location helper.swift in Sources */,
