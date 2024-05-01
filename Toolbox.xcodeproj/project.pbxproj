@@ -78,9 +78,9 @@
 		5EE65E042A8576280061120B /* Random Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1383F12915A23100CF4FAB /* Random Number.swift */; };
 		5EF0DD1B2BE2133E00F46B5C /* AsyncDNSResolver in Frameworks */ = {isa = PBXBuildFile; productRef = 5EF0DD1A2BE2133E00F46B5C /* AsyncDNSResolver */; };
 		5EF0DD1F2BE2196700F46B5C /* PulsingFlashlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF0DD1E2BE2196700F46B5C /* PulsingFlashlight.swift */; };
+		5EF0DD222BE22F8700F46B5C /* LanScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 5EF0DD212BE22F8700F46B5C /* LanScanner */; };
 		5EF8C35D2A8859AC0089BCA3 /* Random Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8C35C2A8859AC0089BCA3 /* Random Letter.swift */; };
 		5EF8C35F2A88665D0089BCA3 /* LAN Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8C35E2A88665D0089BCA3 /* LAN Scanner.swift */; };
-		5EF8C3622A88669A0089BCA3 /* LanScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 5EF8C3612A88669A0089BCA3 /* LanScanner */; };
 		5EFACB1429B37C9A00EB8989 /* ScannedBarcodes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5EFACB1229B37C9A00EB8989 /* ScannedBarcodes.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -224,8 +224,8 @@
 				5E35DBE72917C62500D2FC8A /* WhatsNewKit in Frameworks */,
 				5E5C620B29166566004F44CC /* SwiftyPing in Frameworks */,
 				5EF0DD1B2BE2133E00F46B5C /* AsyncDNSResolver in Frameworks */,
-				5EF8C3622A88669A0089BCA3 /* LanScanner in Frameworks */,
 				5EB6030628B22C1B00133561 /* ToastSwiftUI in Frameworks */,
+				5EF0DD222BE22F8700F46B5C /* LanScanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,8 +494,8 @@
 				5E5C620A29166566004F44CC /* SwiftyPing */,
 				5E35DBE62917C62500D2FC8A /* WhatsNewKit */,
 				5E26D15C2A86C84F0010D51C /* CodeScanner */,
-				5EF8C3612A88669A0089BCA3 /* LanScanner */,
 				5EF0DD1A2BE2133E00F46B5C /* AsyncDNSResolver */,
+				5EF0DD212BE22F8700F46B5C /* LanScanner */,
 			);
 			productName = Toolbox;
 			productReference = 5EC7B21B27D7978100699FD3 /* Toolbox.app */;
@@ -560,8 +560,8 @@
 				5E35DBE52917C62500D2FC8A /* XCRemoteSwiftPackageReference "WhatsNewKit" */,
 				5E6308932A866EB000212E8C /* XCRemoteSwiftPackageReference "SwiftUI-Apple-Watch-Decimal-Pad" */,
 				5E26D15B2A86C84F0010D51C /* XCRemoteSwiftPackageReference "CodeScanner" */,
-				5EF8C3602A88669A0089BCA3 /* XCRemoteSwiftPackageReference "lan-scanner" */,
 				5EF0DD192BE2133E00F46B5C /* XCRemoteSwiftPackageReference "swift-async-dns-resolver" */,
+				5EF0DD202BE22F8700F46B5C /* XCRemoteSwiftPackageReference "lan-scanner" */,
 			);
 			productRefGroup = 5EC7B21C27D7978100699FD3 /* Products */;
 			projectDirPath = "";
@@ -1188,11 +1188,11 @@
 				minimumVersion = 0.3.1;
 			};
 		};
-		5EF8C3602A88669A0089BCA3 /* XCRemoteSwiftPackageReference "lan-scanner" */ = {
+		5EF0DD202BE22F8700F46B5C /* XCRemoteSwiftPackageReference "lan-scanner" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/MaatheusGois/lan-scanner";
+			repositoryURL = "https://github.com/siveryt/lan-scanner";
 			requirement = {
-				branch = main;
+				branch = develop;
 				kind = branch;
 			};
 		};
@@ -1239,9 +1239,9 @@
 			package = 5EF0DD192BE2133E00F46B5C /* XCRemoteSwiftPackageReference "swift-async-dns-resolver" */;
 			productName = AsyncDNSResolver;
 		};
-		5EF8C3612A88669A0089BCA3 /* LanScanner */ = {
+		5EF0DD212BE22F8700F46B5C /* LanScanner */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5EF8C3602A88669A0089BCA3 /* XCRemoteSwiftPackageReference "lan-scanner" */;
+			package = 5EF0DD202BE22F8700F46B5C /* XCRemoteSwiftPackageReference "lan-scanner" */;
 			productName = LanScanner;
 		};
 /* End XCSwiftPackageProductDependency section */

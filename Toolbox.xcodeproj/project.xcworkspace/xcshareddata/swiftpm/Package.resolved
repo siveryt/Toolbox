@@ -1,5 +1,5 @@
 {
-  "originHash" : "f61d28334c75cc2d1dd1f49456c24cb96c477c3f01afc5d42a0512ec607747b7",
+  "originHash" : "f83fcb2720e90a8f6e1dcfcb936a9a6970c8b6d6cb9a7374ad194680a5776574",
   "pins" : [
     {
       "identity" : "codescanner",
@@ -22,10 +22,10 @@
     {
       "identity" : "lan-scanner",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/MaatheusGois/lan-scanner",
+      "location" : "https://github.com/siveryt/lan-scanner",
       "state" : {
-        "branch" : "main",
-        "revision" : "1b142a27fc5bc02362abbb3af467a06f2a067202"
+        "branch" : "develop",
+        "revision" : "557f62cfcfb3ce6a0f26c72a76552ae14b12080b"
       }
     },
     {
