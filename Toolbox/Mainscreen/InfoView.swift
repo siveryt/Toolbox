@@ -319,7 +319,7 @@ struct permissions: View {
         .alert(isPresented: $showingInfoAlert) {
             Alert(
                 title: Text("Why?"),
-                message: Text("Toolbox uses your location to calculate your speed and your coordinates when using the corresponding tools.\n Toolbox needs access to your local network when using the LAN Scanner."),
+                message: Text("Toolbox uses your location to calculate your speed and your coordinates when using the corresponding tools.\n Toolbox needs access to your local network when using the LAN Scanner.\nToolbox needs access to your camera when scanning barcodes."),
                 dismissButton: .destructive(Text("Got it!")) // I have to use .destructive and not .default, because .default often times is the default primary blue and not the color set in Assets AccentColor
             )
                 }
