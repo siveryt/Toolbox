@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import CoreData
+import AVFoundation
 
 
 struct infoView: View {
@@ -246,6 +247,7 @@ struct permissions: View {
     
     @StateObject var locationManager = Location_helper()
     @State var localNetworkAccess:Bool? = nil
+    @State var cameraAccess:Bool? = nil
     
     @State var showingInfoAlert = false
     
@@ -288,6 +290,20 @@ struct permissions: View {
                 }
             }
             
+            HStack {
+                Label("Camera", systemImage: "camera")
+                Spacer()
+                if (cameraAccess == true) {
+                    Text("Allowed")
+                }
+                if (cameraAccess == false) {
+                    Text("Denied")
+                }
+                if (cameraAccess == nil) {
+                    Text("")
+                }
+            }
+            
             Section{
                 Button("Open Settings") {
                     if let appSettings = URL(string: UIApplication.openSettingsURLString) {
@@ -298,6 +314,7 @@ struct permissions: View {
         }
         .onAppear {
             checkNetworkPermission()
+            checkCameraPermission()
         }
         .alert(isPresented: $showingInfoAlert) {
             Alert(
@@ -325,6 +342,13 @@ struct permissions: View {
             authorization.requestAuthorization { hasPermission in
                 DispatchQueue.main.async {
                     self.localNetworkAccess = hasPermission
+                }
+            }
+        }
+    private func checkCameraPermission() {
+            AVCaptureDevice.requestAccess(for: .video) { hasPermission in
+                DispatchQueue.main.async {
+                    self.cameraAccess = hasPermission
                 }
             }
         }
