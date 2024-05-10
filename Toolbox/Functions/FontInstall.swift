@@ -39,9 +39,11 @@ struct FontInstall: View {
             Button("Install Font") {
                 isShowingSafari = true
             }
+            
             .sheet(isPresented: $isShowingSafari) {
                 if let url = serverURL {
                     SafariView(url: url)
+                        .edgesIgnoringSafeArea(.all)
                 }
             }
         }
@@ -124,10 +126,10 @@ struct SafariView: UIViewControllerRepresentable {
     let url: URL
 
     func makeUIViewController(context: UIViewControllerRepresentableContext<SafariView>) -> SFSafariViewController {
-        return SFSafariViewController(url: url)
+        let safariViewController = SFSafariViewController(url: url)
+        safariViewController.modalPresentationStyle = .fullScreen // Ensuring it's full screen
+        return safariViewController
     }
 
-    func updateUIViewController(_ uiViewController: SFSafariViewController, context: UIViewControllerRepresentableContext<SafariView>) {
-        // No update action needed
-    }
+    func updateUIViewController(_ uiViewController: SFSafariViewController, context: UIViewControllerRepresentableContext<SafariView>) {}
 }
