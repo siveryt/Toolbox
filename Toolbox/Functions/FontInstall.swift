@@ -14,10 +14,11 @@ struct FontInstall: View {
     @State private var isShowingSafari = false
     @State private var serverURL = URL(string: "about:blank")
     @State private var isFilePickerPresented = false
+    @State private var fontName:String? = nil
     private let server = HttpServer()
 
     var body: some View {
-        VStack {
+        List {
             Button("Select Font File") {
                 isFilePickerPresented = true
             }
@@ -29,24 +30,33 @@ struct FontInstall: View {
                 switch result {
                 case .success(let urls):
                     guard let url = urls.first else { return }
+                    fontName = url.lastPathComponent
                     startServerAndPrepareProfile(withFontURL: url)
-                    isShowingSafari = true
                 case .failure(let error):
                     print("Error selecting the file: \(error.localizedDescription)")
                 }
             }
-
-            Button("Install Font") {
-                isShowingSafari = true
+            Text("Font selected: " + (fontName ?? "None"))
+            
+            Section {
+                Button("Install Font") {
+                    isShowingSafari = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                                    self.isShowingSafari = false
+                                }
+                }
+                .disabled(fontName ==  nil)
             }
             
-            .sheet(isPresented: $isShowingSafari) {
-                if let url = serverURL {
-                    SafariView(url: url)
-                        .edgesIgnoringSafeArea(.all)
-                }
+        }
+        .sheet(isPresented: $isShowingSafari) {
+            if let url = serverURL {
+                SafariView(url: url)
+                    .edgesIgnoringSafeArea(.all)
             }
         }
+        .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
+        .navigationTitle("Font Installer")
     }
 
     func startServerAndPrepareProfile(withFontURL fontURL: URL) {
