@@ -126,6 +126,10 @@
 		<string>_bonjour._tcp</string>
 		<string>_lnp._tcp.</string>
 	</array>
+	<key>NSDocumentDirectoryUsageDescription</key>
+	<string>Fonts</string>
+	<key>NSUserDomainMaskUsageDescription</key>
+	<string>Fonts II</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

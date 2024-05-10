@@ -14,6 +14,8 @@
 		5E0AA8072837BF59006CD0EA /* whitegradient_red@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E0AA8042837BF59006CD0EA /* whitegradient_red@1x.png */; };
 		5E0AA8082837BF59006CD0EA /* whitegradient_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E0AA8052837BF59006CD0EA /* whitegradient_red@2x.png */; };
 		5E0AA80A2837BFB7006CD0EA /* IconNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0AA8092837BFB7006CD0EA /* IconNames.swift */; };
+		5E135E442BE27159000FD246 /* FontInstall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E135E432BE27159000FD246 /* FontInstall.swift */; };
+		5E135E472BE27E01000FD246 /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = 5E135E462BE27E01000FD246 /* Swifter */; };
 		5E26D15D2A86C84F0010D51C /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 5E26D15C2A86C84F0010D51C /* CodeScanner */; };
 		5E2A28232A857AC000F7F444 /* Assets WatchOS.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E1383E22915975000CF4FAB /* Assets WatchOS.xcassets */; };
 		5E35DBE12917C5BD00D2FC8A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E35DBDF2917C5BD00D2FC8A /* InfoPlist.strings */; };
@@ -133,6 +135,8 @@
 		5E0AA8042837BF59006CD0EA /* whitegradient_red@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whitegradient_red@1x.png"; sourceTree = "<group>"; };
 		5E0AA8052837BF59006CD0EA /* whitegradient_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whitegradient_red@2x.png"; sourceTree = "<group>"; };
 		5E0AA8092837BFB7006CD0EA /* IconNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconNames.swift; sourceTree = "<group>"; };
+		5E135E422BE26D8F000FD246 /* Toolbox.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Toolbox.entitlements; sourceTree = "<group>"; };
+		5E135E432BE27159000FD246 /* FontInstall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontInstall.swift; sourceTree = "<group>"; };
 		5E1383E22915975000CF4FAB /* Assets WatchOS.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets WatchOS.xcassets"; sourceTree = "<group>"; };
 		5E1383EA29159ADE00CF4FAB /* Dice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dice.swift; sourceTree = "<group>"; };
 		5E1383EF29159DD800CF4FAB /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
@@ -218,6 +222,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E135E472BE27E01000FD246 /* Swifter in Frameworks */,
 				5E020C5327EA2A59009871F9 /* RomanNumeralKit in Frameworks */,
 				5E528A9027E2379F00B2AE01 /* Haptica in Frameworks */,
 				5E26D15D2A86C84F0010D51C /* CodeScanner in Frameworks */,
@@ -360,6 +365,7 @@
 		5EC7B21D27D7978100699FD3 /* Toolbox */ = {
 			isa = PBXGroup;
 			children = (
+				5E135E422BE26D8F000FD246 /* Toolbox.entitlements */,
 				5E74426C29B375B500F43CB4 /* DataModels */,
 				5E878B6C2916BF560038A5E3 /* Helper */,
 				5E26F5CE28A18DE60094D057 /* Mainscreen */,
@@ -400,6 +406,7 @@
 				5EB9CEA52916A445009D29F4 /* Coordinates.swift */,
 				5E47B19A27F1F3F4008FD3C0 /* Counter.swift */,
 				5E020C4D27EA29D7009871F9 /* DateDifference.swift */,
+				5E135E432BE27159000FD246 /* FontInstall.swift */,
 				5ED81C4927E36ED500FC42E8 /* Dice.swift */,
 				5ED81C4B27E372E700FC42E8 /* DomainResolver.swift */,
 				5ED3943A28BD139D00798FFE /* ipChecker.swift */,
@@ -496,6 +503,7 @@
 				5E26D15C2A86C84F0010D51C /* CodeScanner */,
 				5EF0DD1A2BE2133E00F46B5C /* AsyncDNSResolver */,
 				5EF0DD242BE2320500F46B5C /* LanScanner */,
+				5E135E462BE27E01000FD246 /* Swifter */,
 			);
 			productName = Toolbox;
 			productReference = 5EC7B21B27D7978100699FD3 /* Toolbox.app */;
@@ -562,6 +570,7 @@
 				5E26D15B2A86C84F0010D51C /* XCRemoteSwiftPackageReference "CodeScanner" */,
 				5EF0DD192BE2133E00F46B5C /* XCRemoteSwiftPackageReference "swift-async-dns-resolver" */,
 				5EF0DD232BE2320500F46B5C /* XCRemoteSwiftPackageReference "lan-scanner" */,
+				5E135E452BE27E01000FD246 /* XCRemoteSwiftPackageReference "swifter" */,
 			);
 			productRefGroup = 5EC7B21C27D7978100699FD3 /* Products */;
 			projectDirPath = "";
@@ -679,6 +688,7 @@
 				5ECEBECF280303A30096E5A5 /* BodyMassIndex.swift in Sources */,
 				5E878B692916B0190038A5E3 /* Location helper.swift in Sources */,
 				5E74426829B10F8B00F43CB4 /* Barcode.swift in Sources */,
+				5E135E442BE27159000FD246 /* FontInstall.swift in Sources */,
 				5EB7897727F9CCA900F07140 /* QRGenerator.swift in Sources */,
 				5E5C62082916654F004F44CC /* Ping.swift in Sources */,
 				5EE65DEA2A8572A80061120B /* BarcodeDetail.swift in Sources */,
@@ -942,6 +952,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_Debug;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = Toolbox/Toolbox.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(BUILD_NUMBER)";
 				DEVELOPMENT_ASSET_PATHS = "\"Toolbox/Preview Content\"";
@@ -952,6 +963,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Toolbox;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Toolbox needs access to the camera, to read barcodes.";
+				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "Toolbox needs to access your files to let you select a font file to install";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Toolbox uses you location in order to calculate you GPS coordinates and speed";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Toolbox uses you location in order to calculate you GPS coordinates and speed";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Toolbox uses you location in order to calculate you GPS coordinates and speed";
@@ -983,6 +995,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = Toolbox/Toolbox.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(BUILD_NUMBER)";
 				DEVELOPMENT_ASSET_PATHS = "\"Toolbox/Preview Content\"";
@@ -993,6 +1006,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Toolbox;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Toolbox needs access to the camera, to read barcodes.";
+				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "Toolbox needs to access your files to let you select a font file to install";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Toolbox uses you location in order to calculate you GPS coordinates and speed";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Toolbox uses you location in order to calculate you GPS coordinates and speed";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Toolbox uses you location in order to calculate you GPS coordinates and speed";
@@ -1132,6 +1146,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		5E135E452BE27E01000FD246 /* XCRemoteSwiftPackageReference "swifter" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/httpswift/swifter.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.0;
+			};
+		};
 		5E26D15B2A86C84F0010D51C /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/twostraws/CodeScanner";
@@ -1203,6 +1225,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5E020C5127EA2A59009871F9 /* XCRemoteSwiftPackageReference "RomanNumeralKit" */;
 			productName = RomanNumeralKit;
+		};
+		5E135E462BE27E01000FD246 /* Swifter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5E135E452BE27E01000FD246 /* XCRemoteSwiftPackageReference "swifter" */;
+			productName = Swifter;
 		};
 		5E26D15C2A86C84F0010D51C /* CodeScanner */ = {
 			isa = XCSwiftPackageProductDependency;
