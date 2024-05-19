@@ -7,6 +7,7 @@
 
 import SwiftUI
 import WhatsNewKit
+import TipKit
 
 // MARK: - App
 /// The App
@@ -34,6 +35,12 @@ extension App: SwiftUI.App {
                      )
                 )
                 .environmentObject(SelectedItemIndex())
+                .task {
+                    try? Tips.configure([
+                        .displayFrequency(.immediate),
+                        .datastoreLocation(.applicationDefault)
+                    ])
+                }
         }
     }
     

@@ -8,6 +8,7 @@
 import SwiftUI
 import StoreKit
 import WhatsNewKit
+import TipKit
 
 struct Tool: Identifiable {
     var id = UUID()
@@ -21,9 +22,12 @@ struct Tool: Identifiable {
 
 struct ContentView: View {
     
+    let moveTip = MainscreenMoveTip()
+    
     @State var infoPresented = false
     @AppStorage("cvLoaded") var viewLoaded = 0
     @AppStorage("cvOrder") var order = [0]
+    @AppStorage("cvHasAlreadyEdited") var hasAlreadyEdited = false
     
     
     @State var toollist:[Tool] = [
@@ -55,38 +59,41 @@ struct ContentView: View {
     private func onMove(source: IndexSet, destination: Int) {
             tools.move(fromOffsets: source, toOffset: destination)
         order.move(fromOffsets: source, toOffset: destination)
+        hasAlreadyEdited = true
         }
     
     var body: some View {
-        NavigationView {
-            List() {
-                
-                ForEach(tools) { tool in
-                    NavigationLink(destination: tool.view) {
-                        Label(tool.title, systemImage: tool.icon).foregroundColor(.primary)
+        VStack{
+            NavigationView {
+                List() {
+                    ForEach(tools) { tool in
+                        NavigationLink(destination: tool.view) {
+                            Label(tool.title, systemImage: tool.icon).foregroundColor(.primary)
+                        }
+                        
                     }
+                    .onMove(perform: onMove)
+                }
+                .sheet(isPresented: $infoPresented){
+                    NavigationView{
+                        infoView()
+                            .environment(\.showingSheet, self.$infoPresented)
+                    }
+                }
+                .navigationTitle("Toolbox")
+                .toolbar(){
+                    ToolbarItem(placement: .primaryAction) {
+                        Button(action: {
+                            infoPresented = true
+                        }, label: {
+                            Image(systemName: "info.circle")
+                        })
+                        .popoverTip(moveTip, arrowEdge: .top)
+                    }
+                }
+                Text("Select a tool")
                     
-                }
-                .onMove(perform: onMove)
             }
-            .sheet(isPresented: $infoPresented){
-                NavigationView{
-                    infoView()
-                        .environment(\.showingSheet, self.$infoPresented)
-                }
-            }
-            .navigationTitle("Toolbox")
-            .toolbar(){
-                ToolbarItem(placement: .primaryAction) {
-                    Button(action: {
-                        infoPresented = true
-                    }, label: {
-                        Image(systemName: "info.circle")
-                    })
-                }
-            }
-            Text("Select a tool")
-                
         }.onAppear() {
             
             if(order.count != toollist.count) {
@@ -120,7 +127,13 @@ struct ContentView: View {
                     return
                 }
                 SKStoreReviewController.requestReview(in: currentScene)
+                
             }
+            
+            MainscreenMoveTip.hasAlreadyMoved = hasAlreadyEdited
+            MainscreenMoveTip.appStarts = viewLoaded
+            
+            Tips.showAllTipsForTesting()
         }
         .whatsNewSheet()
     }

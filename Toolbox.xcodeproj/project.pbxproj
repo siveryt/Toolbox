@@ -71,6 +71,7 @@
 		5EDFF1E027E74572005BBA3C /* RandomNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDFF1DF27E74572005BBA3C /* RandomNumber.swift */; };
 		5EDFF1E627E76D34005BBA3C /* LiveClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDFF1E527E76D34005BBA3C /* LiveClock.swift */; };
 		5EDFF1E927E7AE4D005BBA3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EDFF1E827E7AE4D005BBA3C /* LaunchScreen.storyboard */; };
+		5EE3E0562BEEB022001CC33A /* MainscreenMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE3E0552BEEB022001CC33A /* MainscreenMove.swift */; };
 		5EE65DEA2A8572A80061120B /* BarcodeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE65DE92A8572A80061120B /* BarcodeDetail.swift */; };
 		5EE65DF22A8575FE0061120B /* Toolbox_WatchOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE65DF12A8575FE0061120B /* Toolbox_WatchOSApp.swift */; };
 		5EE65DF92A8576000061120B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EE65DF82A8576000061120B /* Preview Assets.xcassets */; };
@@ -197,6 +198,7 @@
 		5EDFF1DF27E74572005BBA3C /* RandomNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNumber.swift; sourceTree = "<group>"; };
 		5EDFF1E527E76D34005BBA3C /* LiveClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveClock.swift; sourceTree = "<group>"; };
 		5EDFF1E827E7AE4D005BBA3C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5EE3E0552BEEB022001CC33A /* MainscreenMove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainscreenMove.swift; sourceTree = "<group>"; };
 		5EE65DE92A8572A80061120B /* BarcodeDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeDetail.swift; sourceTree = "<group>"; };
 		5EE65DEF2A8575FE0061120B /* Toolbox WatchOS Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Toolbox WatchOS Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EE65DF12A8575FE0061120B /* Toolbox_WatchOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbox_WatchOSApp.swift; sourceTree = "<group>"; };
@@ -368,6 +370,7 @@
 				5E135E422BE26D8F000FD246 /* Toolbox.entitlements */,
 				5E74426C29B375B500F43CB4 /* DataModels */,
 				5E878B6C2916BF560038A5E3 /* Helper */,
+				5EE3E0542BEEB00D001CC33A /* Tips */,
 				5E26F5CE28A18DE60094D057 /* Mainscreen */,
 				5ECEBECD280303730096E5A5 /* Future Versions */,
 				5EDFF1E727E7715E005BBA3C /* Functions */,
@@ -421,6 +424,14 @@
 				5E878B6A2916B6B60038A5E3 /* Speed.swift */,
 			);
 			path = Functions;
+			sourceTree = "<group>";
+		};
+		5EE3E0542BEEB00D001CC33A /* Tips */ = {
+			isa = PBXGroup;
+			children = (
+				5EE3E0552BEEB022001CC33A /* MainscreenMove.swift */,
+			);
+			path = Tips;
 			sourceTree = "<group>";
 		};
 		5EE65DE82A85727F0061120B /* Barcode Scanner */ = {
@@ -682,6 +693,7 @@
 				5EF8C35F2A88665D0089BCA3 /* LAN Scanner.swift in Sources */,
 				5E878B722916CD4F0038A5E3 /* InfoView.swift in Sources */,
 				5EC7B21F27D7978100699FD3 /* ToolboxApp.swift in Sources */,
+				5EE3E0562BEEB022001CC33A /* MainscreenMove.swift in Sources */,
 				5EB9CEA62916A445009D29F4 /* Coordinates.swift in Sources */,
 				5EF0DD1F2BE2196700F46B5C /* PulsingFlashlight.swift in Sources */,
 				5ED3943B28BD139D00798FFE /* ipChecker.swift in Sources */,

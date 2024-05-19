@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import CoreData
 import AVFoundation
-
+import TipKit
 
 struct infoView: View {
     
@@ -145,9 +145,13 @@ struct infoView: View {
                   message: Text("The app will close after deleting the data. You can instantly reopen it."),
                   primaryButton: .cancel(),
                   secondaryButton: .destructive(Text("Delete")) {
+                
                 let domain = Bundle.main.bundleIdentifier!
                 UserDefaults.standard.removePersistentDomain(forName: domain)
                 UserDefaults.standard.synchronize()
+                
+                try? Tips.resetDatastore()
+                
                 print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
                 SBDataController().resetBarcodes(context: managedContext)
                 UIControl().sendAction(#selector(NSXPCConnection.suspend), to: UIApplication.shared, for: nil)
