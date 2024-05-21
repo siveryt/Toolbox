@@ -18,6 +18,7 @@
 		5E135E472BE27E01000FD246 /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = 5E135E462BE27E01000FD246 /* Swifter */; };
 		5E26D15D2A86C84F0010D51C /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 5E26D15C2A86C84F0010D51C /* CodeScanner */; };
 		5E2A28232A857AC000F7F444 /* Assets WatchOS.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E1383E22915975000CF4FAB /* Assets WatchOS.xcassets */; };
+		5E30EA692BFA855200070117 /* Scrolling Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E30EA682BFA855200070117 /* Scrolling Text.swift */; };
 		5E35DBE12917C5BD00D2FC8A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E35DBDF2917C5BD00D2FC8A /* InfoPlist.strings */; };
 		5E35DBE42917C5BD00D2FC8A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E35DBE22917C5BD00D2FC8A /* Localizable.strings */; };
 		5E35DBE72917C62500D2FC8A /* WhatsNewKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5E35DBE62917C62500D2FC8A /* WhatsNewKit */; };
@@ -46,6 +47,8 @@
 		5E878B6B2916B6B60038A5E3 /* Speed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E878B6A2916B6B60038A5E3 /* Speed.swift */; };
 		5E878B702916CCFD0038A5E3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E878B6F2916CCFD0038A5E3 /* Extensions.swift */; };
 		5E878B722916CD4F0038A5E3 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E878B712916CD4F0038A5E3 /* InfoView.swift */; };
+		5E98DE662BFC9A7F00B459A8 /* MarqueeText in Frameworks */ = {isa = PBXBuildFile; productRef = 5E98DE652BFC9A7F00B459A8 /* MarqueeText */; };
+		5E98DE692BFC9AA900B459A8 /* MarqueeText in Frameworks */ = {isa = PBXBuildFile; productRef = 5E98DE682BFC9AA900B459A8 /* MarqueeText */; };
 		5E9ABFCD2B9CB840005448FB /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9ABFCC2B9CB840005448FB /* WidgetKit.framework */; };
 		5E9ABFCF2B9CB840005448FB /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9ABFCE2B9CB840005448FB /* SwiftUI.framework */; };
 		5E9ABFD22B9CB840005448FB /* diceWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9ABFD12B9CB840005448FB /* diceWidgetBundle.swift */; };
@@ -142,6 +145,7 @@
 		5E1383EA29159ADE00CF4FAB /* Dice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dice.swift; sourceTree = "<group>"; };
 		5E1383EF29159DD800CF4FAB /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		5E1383F12915A23100CF4FAB /* Random Number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Random Number.swift"; sourceTree = "<group>"; };
+		5E30EA682BFA855200070117 /* Scrolling Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scrolling Text.swift"; sourceTree = "<group>"; };
 		5E35DBE02917C5BD00D2FC8A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5E35DBE32917C5BD00D2FC8A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5E47B19A27F1F3F4008FD3C0 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
@@ -225,9 +229,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E135E472BE27E01000FD246 /* Swifter in Frameworks */,
+				5E98DE692BFC9AA900B459A8 /* MarqueeText in Frameworks */,
 				5E020C5327EA2A59009871F9 /* RomanNumeralKit in Frameworks */,
 				5E528A9027E2379F00B2AE01 /* Haptica in Frameworks */,
 				5E26D15D2A86C84F0010D51C /* CodeScanner in Frameworks */,
+				5E98DE662BFC9A7F00B459A8 /* MarqueeText in Frameworks */,
 				5E35DBE72917C62500D2FC8A /* WhatsNewKit in Frameworks */,
 				5E5C620B29166566004F44CC /* SwiftyPing in Frameworks */,
 				5EF0DD1B2BE2133E00F46B5C /* AsyncDNSResolver in Frameworks */,
@@ -421,6 +427,7 @@
 				5EF8C35C2A8859AC0089BCA3 /* Random Letter.swift */,
 				5EDFF1DF27E74572005BBA3C /* RandomNumber.swift */,
 				5E020C4C27EA29D7009871F9 /* RomanConverter.swift */,
+				5E30EA682BFA855200070117 /* Scrolling Text.swift */,
 				5E878B6A2916B6B60038A5E3 /* Speed.swift */,
 			);
 			path = Functions;
@@ -515,6 +522,8 @@
 				5EF0DD1A2BE2133E00F46B5C /* AsyncDNSResolver */,
 				5EF0DD242BE2320500F46B5C /* LanScanner */,
 				5E135E462BE27E01000FD246 /* Swifter */,
+				5E98DE652BFC9A7F00B459A8 /* MarqueeText */,
+				5E98DE682BFC9AA900B459A8 /* MarqueeText */,
 			);
 			productName = Toolbox;
 			productReference = 5EC7B21B27D7978100699FD3 /* Toolbox.app */;
@@ -582,6 +591,7 @@
 				5EF0DD192BE2133E00F46B5C /* XCRemoteSwiftPackageReference "swift-async-dns-resolver" */,
 				5EF0DD232BE2320500F46B5C /* XCRemoteSwiftPackageReference "lan-scanner" */,
 				5E135E452BE27E01000FD246 /* XCRemoteSwiftPackageReference "swifter" */,
+				5E98DE672BFC9AA900B459A8 /* XCRemoteSwiftPackageReference "MarqueeText" */,
 			);
 			productRefGroup = 5EC7B21C27D7978100699FD3 /* Products */;
 			projectDirPath = "";
@@ -694,6 +704,7 @@
 				5E878B722916CD4F0038A5E3 /* InfoView.swift in Sources */,
 				5EC7B21F27D7978100699FD3 /* ToolboxApp.swift in Sources */,
 				5EE3E0562BEEB022001CC33A /* MainscreenMove.swift in Sources */,
+				5E30EA692BFA855200070117 /* Scrolling Text.swift in Sources */,
 				5EB9CEA62916A445009D29F4 /* Coordinates.swift in Sources */,
 				5EF0DD1F2BE2196700F46B5C /* PulsingFlashlight.swift in Sources */,
 				5ED3943B28BD139D00798FFE /* ipChecker.swift in Sources */,
@@ -1206,6 +1217,14 @@
 				minimumVersion = 1.0.4;
 			};
 		};
+		5E98DE672BFC9AA900B459A8 /* XCRemoteSwiftPackageReference "MarqueeText" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siveryt/MarqueeText";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		5EB6030428B22C1B00133561 /* XCRemoteSwiftPackageReference "ToastSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/huynguyencong/ToastSwiftUI.git";
@@ -1267,6 +1286,15 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5E6308932A866EB000212E8C /* XCRemoteSwiftPackageReference "SwiftUI-Apple-Watch-Decimal-Pad" */;
 			productName = "SwiftUI Apple Watch Decimal Pad";
+		};
+		5E98DE652BFC9A7F00B459A8 /* MarqueeText */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MarqueeText;
+		};
+		5E98DE682BFC9AA900B459A8 /* MarqueeText */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5E98DE672BFC9AA900B459A8 /* XCRemoteSwiftPackageReference "MarqueeText" */;
+			productName = MarqueeText;
 		};
 		5EB6030528B22C1B00133561 /* ToastSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;

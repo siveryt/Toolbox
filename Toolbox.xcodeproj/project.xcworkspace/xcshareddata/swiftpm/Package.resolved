@@ -1,5 +1,5 @@
 {
-  "originHash" : "0460db74c86b8ade03c1c64710e620fe3ccc793eb3f1994c77cedfacea211f68",
+  "originHash" : "1372f9c4b33de8dda3ea50edcaa85046ea4d17329e67613f7e9140895259e8a1",
   "pins" : [
     {
       "identity" : "codescanner",
@@ -26,6 +26,15 @@
       "state" : {
         "branch" : "develop",
         "revision" : "72b828f66db470f093d7d41f8b3eec1e707d60e9"
+      }
+    },
+    {
+      "identity" : "marqueetext",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/siveryt/MarqueeText",
+      "state" : {
+        "branch" : "master",
+        "revision" : "644f967792b4ea4b037bc034bb2d93391ca4a8af"
       }
     },
     {
