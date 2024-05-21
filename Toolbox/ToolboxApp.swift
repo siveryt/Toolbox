@@ -8,6 +8,7 @@
 import SwiftUI
 import WhatsNewKit
 import TipKit
+import SwiftData
 
 // MARK: - App
 /// The App
@@ -35,6 +36,12 @@ extension App: SwiftUI.App {
                      )
                 )
                 .environmentObject(SelectedItemIndex())
+                
+                .modelContainer(for: [
+                                    WOLDevice.self,
+                                ],
+                                isAutosaveEnabled: true)
+            
                 .task {
                     try? Tips.configure([
                         .displayFrequency(.immediate),

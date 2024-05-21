@@ -49,6 +49,9 @@
 		5E878B722916CD4F0038A5E3 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E878B712916CD4F0038A5E3 /* InfoView.swift */; };
 		5E98DE662BFC9A7F00B459A8 /* MarqueeText in Frameworks */ = {isa = PBXBuildFile; productRef = 5E98DE652BFC9A7F00B459A8 /* MarqueeText */; };
 		5E98DE692BFC9AA900B459A8 /* MarqueeText in Frameworks */ = {isa = PBXBuildFile; productRef = 5E98DE682BFC9AA900B459A8 /* MarqueeText */; };
+		5E98DE6B2BFC9BE600B459A8 /* Wake On Lan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E98DE6A2BFC9BE600B459A8 /* Wake On Lan.swift */; };
+		5E98DE6F2BFC9CED00B459A8 /* WOL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E98DE6E2BFC9CED00B459A8 /* WOL.swift */; };
+		5E98DE722BFC9D4700B459A8 /* Awake in Frameworks */ = {isa = PBXBuildFile; productRef = 5E98DE712BFC9D4700B459A8 /* Awake */; };
 		5E9ABFCD2B9CB840005448FB /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9ABFCC2B9CB840005448FB /* WidgetKit.framework */; };
 		5E9ABFCF2B9CB840005448FB /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9ABFCE2B9CB840005448FB /* SwiftUI.framework */; };
 		5E9ABFD22B9CB840005448FB /* diceWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9ABFD12B9CB840005448FB /* diceWidgetBundle.swift */; };
@@ -171,6 +174,8 @@
 		5E878B6A2916B6B60038A5E3 /* Speed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speed.swift; sourceTree = "<group>"; };
 		5E878B6F2916CCFD0038A5E3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5E878B712916CD4F0038A5E3 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		5E98DE6A2BFC9BE600B459A8 /* Wake On Lan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Wake On Lan.swift"; sourceTree = "<group>"; };
+		5E98DE6E2BFC9CED00B459A8 /* WOL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WOL.swift; sourceTree = "<group>"; };
 		5E9ABFCB2B9CB840005448FB /* diceWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = diceWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E9ABFCC2B9CB840005448FB /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		5E9ABFCE2B9CB840005448FB /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -234,6 +239,7 @@
 				5E528A9027E2379F00B2AE01 /* Haptica in Frameworks */,
 				5E26D15D2A86C84F0010D51C /* CodeScanner in Frameworks */,
 				5E98DE662BFC9A7F00B459A8 /* MarqueeText in Frameworks */,
+				5E98DE722BFC9D4700B459A8 /* Awake in Frameworks */,
 				5E35DBE72917C62500D2FC8A /* WhatsNewKit in Frameworks */,
 				5E5C620B29166566004F44CC /* SwiftyPing in Frameworks */,
 				5EF0DD1B2BE2133E00F46B5C /* AsyncDNSResolver in Frameworks */,
@@ -328,6 +334,14 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		5E98DE6D2BFC9CD800B459A8 /* Swift Data */ = {
+			isa = PBXGroup;
+			children = (
+				5E98DE6E2BFC9CED00B459A8 /* WOL.swift */,
+			);
+			path = "Swift Data";
+			sourceTree = "<group>";
+		};
 		5E9ABFD02B9CB840005448FB /* diceWidget */ = {
 			isa = PBXGroup;
 			children = (
@@ -374,6 +388,7 @@
 			isa = PBXGroup;
 			children = (
 				5E135E422BE26D8F000FD246 /* Toolbox.entitlements */,
+				5E98DE6D2BFC9CD800B459A8 /* Swift Data */,
 				5E74426C29B375B500F43CB4 /* DataModels */,
 				5E878B6C2916BF560038A5E3 /* Helper */,
 				5EE3E0542BEEB00D001CC33A /* Tips */,
@@ -429,6 +444,7 @@
 				5E020C4C27EA29D7009871F9 /* RomanConverter.swift */,
 				5E30EA682BFA855200070117 /* Scrolling Text.swift */,
 				5E878B6A2916B6B60038A5E3 /* Speed.swift */,
+				5E98DE6A2BFC9BE600B459A8 /* Wake On Lan.swift */,
 			);
 			path = Functions;
 			sourceTree = "<group>";
@@ -524,6 +540,7 @@
 				5E135E462BE27E01000FD246 /* Swifter */,
 				5E98DE652BFC9A7F00B459A8 /* MarqueeText */,
 				5E98DE682BFC9AA900B459A8 /* MarqueeText */,
+				5E98DE712BFC9D4700B459A8 /* Awake */,
 			);
 			productName = Toolbox;
 			productReference = 5EC7B21B27D7978100699FD3 /* Toolbox.app */;
@@ -592,6 +609,7 @@
 				5EF0DD232BE2320500F46B5C /* XCRemoteSwiftPackageReference "lan-scanner" */,
 				5E135E452BE27E01000FD246 /* XCRemoteSwiftPackageReference "swifter" */,
 				5E98DE672BFC9AA900B459A8 /* XCRemoteSwiftPackageReference "MarqueeText" */,
+				5E98DE702BFC9D4700B459A8 /* XCRemoteSwiftPackageReference "Awake" */,
 			);
 			productRefGroup = 5EC7B21C27D7978100699FD3 /* Products */;
 			projectDirPath = "";
@@ -656,6 +674,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		5EB252BA2B9BC06900CF2A18 /* Update Build Number (SCRIPT) */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -713,12 +732,14 @@
 				5E74426829B10F8B00F43CB4 /* Barcode.swift in Sources */,
 				5E135E442BE27159000FD246 /* FontInstall.swift in Sources */,
 				5EB7897727F9CCA900F07140 /* QRGenerator.swift in Sources */,
+				5E98DE6F2BFC9CED00B459A8 /* WOL.swift in Sources */,
 				5E5C62082916654F004F44CC /* Ping.swift in Sources */,
 				5EE65DEA2A8572A80061120B /* BarcodeDetail.swift in Sources */,
 				5E74427229B3787D00F43CB4 /* Controller.swift in Sources */,
 				5EFACB1429B37C9A00EB8989 /* ScannedBarcodes.xcdatamodeld in Sources */,
 				5E020C4F27EA29D7009871F9 /* RomanConverter.swift in Sources */,
 				5ED81C4A27E36ED500FC42E8 /* Dice.swift in Sources */,
+				5E98DE6B2BFC9BE600B459A8 /* Wake On Lan.swift in Sources */,
 				5EDFF1E627E76D34005BBA3C /* LiveClock.swift in Sources */,
 				5ED81C4C27E372E700FC42E8 /* DomainResolver.swift in Sources */,
 			);
@@ -1225,6 +1246,14 @@
 				kind = branch;
 			};
 		};
+		5E98DE702BFC9D4700B459A8 /* XCRemoteSwiftPackageReference "Awake" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jesper-lindberg/Awake";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		5EB6030428B22C1B00133561 /* XCRemoteSwiftPackageReference "ToastSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/huynguyencong/ToastSwiftUI.git";
@@ -1295,6 +1324,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5E98DE672BFC9AA900B459A8 /* XCRemoteSwiftPackageReference "MarqueeText" */;
 			productName = MarqueeText;
+		};
+		5E98DE712BFC9D4700B459A8 /* Awake */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5E98DE702BFC9D4700B459A8 /* XCRemoteSwiftPackageReference "Awake" */;
+			productName = Awake;
 		};
 		5EB6030528B22C1B00133561 /* ToastSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
