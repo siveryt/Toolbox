@@ -22,8 +22,6 @@ struct Tool: Identifiable {
 
 struct ContentView: View {
     
-    let moveTip = MainscreenMoveTip()
-    
     @State var infoPresented = false
     @AppStorage("cvLoaded") var viewLoaded = 0
     @AppStorage("cvOrder") var order = [0]
@@ -63,17 +61,26 @@ struct ContentView: View {
         }
     
     var body: some View {
-        VStack{
             NavigationView {
                 List() {
-                    ForEach(tools) { tool in
-                        NavigationLink(destination: tool.view) {
-                            Label(tool.title, systemImage: tool.icon).foregroundColor(.primary)
+                    ForEach(Array(zip(tools.indices, tools)), id: \.0) { toolIndex, tool in
+                        if (toolIndex == 0){
+                            NavigationLink(destination: tools[toolIndex].view) {
+                                Label(tools[toolIndex].title, systemImage: tools[toolIndex].icon).foregroundColor(.primary)
+                            }
+                            .popoverTip(MainscreenMoveTip())
+                        } else {
+                            NavigationLink(destination: tools[toolIndex].view) {
+                                Label(tools[toolIndex].title, systemImage: tools[toolIndex].icon).foregroundColor(.primary)
+                            }
                         }
+                        
+                        
                         
                     }
                     .onMove(perform: onMove)
                 }
+                
                 .sheet(isPresented: $infoPresented){
                     NavigationView{
                         infoView()
@@ -88,13 +95,12 @@ struct ContentView: View {
                         }, label: {
                             Image(systemName: "info.circle")
                         })
-                        .popoverTip(moveTip, arrowEdge: .top)
                     }
                 }
                 Text("Select a tool")
                     
             }
-        }.onAppear() {
+            .onAppear() {
             
             if(order.count != toollist.count) {
                 order = []

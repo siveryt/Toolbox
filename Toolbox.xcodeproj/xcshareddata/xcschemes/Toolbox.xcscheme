@@ -73,14 +73,14 @@
       <CommandLineArguments>
          <CommandLineArgument
             argument = "com.apple.TipKit.ShowAllTips 1"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "com.apple.TipKit.ShowAllTips"
             value = "1"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </EnvironmentVariable>
       </EnvironmentVariables>
    </LaunchAction>

@@ -24,9 +24,8 @@ struct MainscreenMoveTip: Tip {
         Text("Press and hold a feature to move it around as you like")
     }
     
-    /// Doesn't work but idk why may fix?
-    var asset: Image? {
-            Image(systemName: "lightbulb")
+    var image: Image? {
+            Image(systemName: "text.line.first.and.arrowtriangle.forward")
         }
     
     
