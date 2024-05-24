@@ -40,6 +40,7 @@ struct Wake_On_Lan: View {
             ForEach(devices) { device in
                 Button(device.name, action: {
                     selectedDevice = Awake.Device(MAC: device.mac, BroadcastAddr: device.broadcast, Port: UInt16(device.port ?? 9))
+                    sheet_editDevice = device
                     wakeAlertPresented = true
                 })
                 .tint(.primary)
@@ -47,6 +48,9 @@ struct Wake_On_Lan: View {
                     Button {
                         print("\(device.name) swiped")
                         selectedDevice = Awake.Device(MAC: device.mac, BroadcastAddr: device.broadcast, Port: UInt16(device.port ?? 9))
+                        withAnimation { ///Why doesnt this animate? 
+                            device.lastUsed = Date()
+                        }
                         wake()
                     } label: {
                         Text("Wake")
@@ -268,6 +272,12 @@ struct Wake_On_Lan: View {
                   primaryButton: .cancel(),
                   secondaryButton: .default(Text("Yes")) {
                 wake()
+                if (sheet_editDevice != nil) {
+                    withAnimation {
+                        sheet_editDevice!.lastUsed = Date()
+                    }
+                }
+                sheet_editDevice = nil
             })
         })
     }
