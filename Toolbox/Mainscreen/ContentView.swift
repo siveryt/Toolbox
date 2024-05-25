@@ -49,7 +49,8 @@ struct ContentView: View {
         Tool(view: AnyView(PulsingFlashlight()), title: NSLocalizedString("Pulsing Flashlight", comment: "Menu item"), icon: "flashlight.off.fill"),
         Tool(view: AnyView(FontInstall()), title: NSLocalizedString("Font Installer", comment: "Menu item"), icon: "character.magnify"),
         Tool(view: AnyView(Scrolling_Text()), title: NSLocalizedString("Scrolling Text", comment: "Menu item"), icon: "textformat.abc"),
-        Tool(view: AnyView(Wake_On_Lan()), title: NSLocalizedString("Wake On Lan", comment: "Menu item"), icon: "power")
+        Tool(view: AnyView(Wake_On_Lan()), title: NSLocalizedString("Wake On Lan", comment: "Menu item"), icon: "power"),
+        Tool(view: AnyView(Metronome()), title: NSLocalizedString("Metronome", comment: "Menu item"), icon: "metronome"),
         
     ]
     @State private var tools:[Tool] = []
