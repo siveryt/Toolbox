@@ -252,6 +252,7 @@ struct permissions: View {
     @StateObject var locationManager = Location_helper()
     @State var localNetworkAccess:Bool? = nil
     @State var cameraAccess:Bool? = nil
+    @State var micAccess:Bool? = nil
     
     @State var showingInfoAlert = false
     
@@ -297,14 +298,30 @@ struct permissions: View {
             HStack {
                 Label("Camera", systemImage: "camera")
                 Spacer()
-                if (cameraAccess == true) {
-                    Text("Allowed")
-                }
-                if (cameraAccess == false) {
+                switch AVCaptureDevice.authorizationStatus(for: .video) {
+                case .authorized:
+                    Text("Allows")
+                case .notDetermined:
+                    Text("Not Requested yet")
+                case .denied, .restricted:
                     Text("Denied")
+                @unknown default:
+                    Text("Unknown")
                 }
-                if (cameraAccess == nil) {
-                    Text("")
+            }
+            
+            HStack {
+                Label("Microphone", systemImage: "mic")
+                Spacer()
+                switch AVCaptureDevice.authorizationStatus(for: .audio) {
+                case .authorized:
+                    Text("Allowed")
+                case .notDetermined:
+                    Text("Not Requested yet")
+                case .denied, .restricted:
+                    Text("Denied")
+                @unknown default:
+                    Text("Unknown")
                 }
             }
             
@@ -318,12 +335,11 @@ struct permissions: View {
         }
         .onAppear {
             checkNetworkPermission()
-            checkCameraPermission()
         }
         .alert(isPresented: $showingInfoAlert) {
             Alert(
                 title: Text("Why?"),
-                message: Text("Toolbox uses your location to calculate your speed and your coordinates when using the corresponding tools.\n Toolbox needs access to your local network when using the LAN Scanner.\nToolbox needs access to your camera when scanning barcodes."),
+                message: Text("Toolbox uses your location to calculate your speed and your coordinates when using the corresponding tools.\n\n Toolbox needs access to your local network when using the LAN Scanner.\n\nToolbox needs access to your camera when scanning barcodes.\n\nToolbox needs acces to your camera to measure audio levels."),
                 dismissButton: .destructive(Text("Got it!")) // I have to use .destructive and not .default, because .default often times is the default primary blue and not the color set in Assets AccentColor
             )
                 }
@@ -346,13 +362,6 @@ struct permissions: View {
             authorization.requestAuthorization { hasPermission in
                 DispatchQueue.main.async {
                     self.localNetworkAccess = hasPermission
-                }
-            }
-        }
-    private func checkCameraPermission() {
-            AVCaptureDevice.requestAccess(for: .video) { hasPermission in
-                DispatchQueue.main.async {
-                    self.cameraAccess = hasPermission
                 }
             }
         }

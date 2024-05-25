@@ -51,6 +51,7 @@ struct ContentView: View {
         Tool(view: AnyView(Scrolling_Text()), title: NSLocalizedString("Scrolling Text", comment: "Menu item"), icon: "textformat.abc"),
         Tool(view: AnyView(Wake_On_Lan()), title: NSLocalizedString("Wake On Lan", comment: "Menu item"), icon: "power"),
         Tool(view: AnyView(Metronome()), title: NSLocalizedString("Metronome", comment: "Menu item"), icon: "metronome"),
+        Tool(view: AnyView(DecibelMeter()), title: NSLocalizedString("Decibel Meter", comment: "Menu item"), icon: "speaker")
         
     ]
     @State private var tools:[Tool] = []
