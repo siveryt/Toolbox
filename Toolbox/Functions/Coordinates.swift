@@ -69,8 +69,9 @@ struct Coordinates: View {
     }
     
     var body: some View {
-        Form {
+        Group {
             if(locationManager.locationStatus != .denied){
+                Form {
                 Section{
                         Picker(selection: $display, label: Text("Display")) {
                             Text(NSLocalizedString("Decimal Degrees", comment: "GPS")).tag("decimal")
@@ -88,6 +89,7 @@ struct Coordinates: View {
                     .environment(\.copyToast, $isPresentingToast)
                 KeyValueProperty(content: String(abs(userCoordAccuracy)) + " m", propertyName: NSLocalizedString("Accuracy", comment: ""))
                     .environment(\.copyToast, $isPresentingToast)
+                }
             } else {
                 VStack{
                     Text("You first have to allow Toolbox to access your location in order to see your coordinates.")
@@ -98,8 +100,8 @@ struct Coordinates: View {
                     }
                 }
             }
-            
-        }
+            }
+        
         .toast(isPresenting: $isPresentingToast, message: NSLocalizedString("Copied", comment: "Copy toast"), icon: .custom(Image(systemName: "doc.on.clipboard")), autoDismiss: .none)
         .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
         .navigationTitle("Coordinates")
