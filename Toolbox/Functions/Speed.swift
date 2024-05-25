@@ -16,15 +16,29 @@ struct Speed: View {
     @StateObject var locationManager = Location_helper()
     
     var userSpeed: String {
-        
         let formatter = MeasurementFormatter()
         let locale = Locale.current
         formatter.locale = locale
-        let speedExample = Measurement(value: max(locationManager.lastLocation?.speed ?? 0, 0), unit: UnitSpeed.metersPerSecond)
-
+        let speedValue = max(locationManager.lastLocation?.speed ?? 0, 0)
+        
+        // Use NumberFormatter to limit the decimal places and respect locale
+        let numberFormatter = NumberFormatter()
+        numberFormatter.maximumFractionDigits = 1
+        numberFormatter.minimumFractionDigits = 1
+        numberFormatter.locale = locale
+        numberFormatter.numberStyle = .decimal
+        
+        let speedExample = Measurement(value: speedValue, unit: UnitSpeed.metersPerSecond)
         let formattedSpeed = formatter.string(from: speedExample)
-        return String(formattedSpeed.split(separator: " ")[0])
+        
+        if let speedValue = Double(formattedSpeed.split(separator: " ")[0]) {
+            return numberFormatter.string(from: NSNumber(value: speedValue)) ?? numberFormatter.string(from: NSNumber(value: 0.0))!
+        } else {
+            return numberFormatter.string(from: NSNumber(value: 0.0))!
+        }
     }
+
+
     
     var userSpeedUnit: String {
         let formatter = MeasurementFormatter()
