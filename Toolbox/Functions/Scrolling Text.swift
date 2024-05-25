@@ -10,12 +10,12 @@ import MarqueeText
 import Combine
 
 struct Scrolling_Text: View {
+    @State var enabled = false
     @State var scrollerActive = false
     @State var rotateAlert = false
     @AppStorage("Scrolling Text-speed") var scrollingSpeed = 1.0
     @AppStorage("Scrolling Text-text") var text = ""
-    
-    @State var orientation = UIDevice.current.orientation
+
 
         let orientationChanged = NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)
             .makeConnectable()
@@ -38,26 +38,30 @@ struct Scrolling_Text: View {
             
             Section {
                 Button("Start scrolling"){
-                    if(orientation.isLandscape) {
+                    enabled = UIScreen.main.bounds.width > UIScreen.main.bounds.height
+                    if(enabled) {
                         scrollerActive = true
                     } else {
                         rotateAlert = true
                     }
                 }
-                .tint(orientation.isLandscape ? .accentColor : .secondary)
+                .tint(enabled ? .accentColor : .secondary)
             }
             
         }
         .onReceive(orientationChanged) { _ in
-            self.orientation = UIDevice.current.orientation
-            if (!orientation.isLandscape) {
-                scrollerActive = false
-            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
+                enabled = UIScreen.main.bounds.width > UIScreen.main.bounds.height
+                scrollerActive = enabled ? scrollerActive : false
+            })
         }
         .alert(isPresented: $rotateAlert) {
             Alert(title: Text("Info"),
                   message: Text("You need to rotate your device to show the scrolling text.")
             )
+        }
+        .onAppear {
+            enabled = UIScreen.main.bounds.width > UIScreen.main.bounds.height
         }
         
         .fullScreenCover(isPresented: $scrollerActive) {
