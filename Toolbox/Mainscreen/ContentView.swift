@@ -137,10 +137,8 @@ struct ContentView: View {
                 
             }
             
-            MainscreenMoveTip.hasAlreadyMoved = hasAlreadyEdited
             MainscreenMoveTip.appStarts = viewLoaded
-            
-            Tips.showAllTipsForTesting()
+                
         }
         .whatsNewSheet()
     }

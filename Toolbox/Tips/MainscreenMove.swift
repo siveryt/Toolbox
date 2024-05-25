@@ -11,9 +11,6 @@ import TipKit
 struct MainscreenMoveTip: Tip {
     
     @Parameter
-    static var hasAlreadyMoved: Bool = false
-    
-    @Parameter
     static var appStarts: Int = 0
     
     var title: Text {
@@ -21,7 +18,7 @@ struct MainscreenMoveTip: Tip {
     }
     
     public var message: Text? {
-        Text("Press and hold a feature to move it around as you like")
+        Text("Press and hold a tool to move it around as you like")
     }
     
     var image: Image? {
@@ -32,8 +29,7 @@ struct MainscreenMoveTip: Tip {
     var options: [TipOption] = [MaxDisplayCount(1)]
     
     var rules: [Rule] {
-        #Rule(Self.$hasAlreadyMoved) { $0 == false }
-        #Rule(Self.$appStarts) { $0 > 5 }
+        #Rule(Self.$appStarts) { $0 == 5 }
     }
     
 }
