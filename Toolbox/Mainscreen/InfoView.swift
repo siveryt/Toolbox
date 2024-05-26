@@ -304,7 +304,7 @@ struct permissions: View {
                 Spacer()
                 switch AVCaptureDevice.authorizationStatus(for: .video) {
                 case .authorized:
-                    Text("Allows")
+                    Text("Allowed")
                 case .notDetermined:
                     Text("Not Requested Yet")
                 case .denied, .restricted:
