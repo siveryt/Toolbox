@@ -13,8 +13,10 @@ struct Metronome: View {
     @AppStorage("metronome_bpmeasure") private var bpmeasure: Double = 4
     @State private var progress: Double = 0
     
-    @State private var progressFrom: [Double] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    @AppStorage("metronome_progressFrom") private var progressFrom: [Double] = Array(repeating: 0, count: 16)
     @State private var beat: Int = 0
+    
+    @State private var fullscreen = false
     
     @State private var timer: Timer?
     @State private var isPlaying: Bool = false
@@ -67,11 +69,10 @@ struct Metronome: View {
                     .keyboardType(.numberPad)
                 
                 
-                Slider(value: $bpmeasure, in: 1...16, step: 1)
+                Slider(value: $bpmeasure, in: 1...32, step: 1)
                     .onChange(of: bpmeasure) { _ in
-                        bpmeasure = min(bpmeasure, 32)
-                        progressFrom = Array(repeating: 0, count: Int(bpmeasure))
                         bpmeasure = Double(Int(bpmeasure))
+                        progressFrom = Array(repeating: 0, count: Int(bpmeasure))
                         if isPlaying {
                             restartMetronome()
                         }
@@ -85,14 +86,44 @@ struct Metronome: View {
             }
             Section {
                 HStack {
-                    ForEach (1...Int(bpmeasure)) { i in
-                        ProgressView(value: progressFrom[i - 1], total: 1.0)
+                    ForEach (0..<Int(bpmeasure), id: \.self) { i in
+                        ProgressView(value: progressFrom[i], total: 1.0)
                             .progressViewStyle(LinearProgressViewStyle(tint: .accentColor))
                             .scaleEffect(x: 1, y: 4, anchor: .center)
                     }
                 }
                 
             }
+        }
+        .fullScreenCover(isPresented: $fullscreen) {
+            VStack {
+                LazyVGrid(columns: Array.init(repeating: GridItem(), count: min(8, Int(bpmeasure))), spacing: 20.0) {
+                    ForEach(0..<Int(bpmeasure), id: \.self) { i in
+                        ProgressView(value: progressFrom[i], total: 1.0)
+                            .progressViewStyle(LinearProgressViewStyle(tint: .accentColor))
+                            .scaleEffect(x: 1, y: 4, anchor: .center)
+                    }
+                }
+            }
+            .padding(.horizontal)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .contentShape(Rectangle())
+            .gesture(
+                MagnificationGesture()
+                    .onEnded { value in
+                        fullscreen = false
+                        isPlaying = false
+                    }
+            )
+        }
+
+        .toolbar {
+            Button(action: {
+                fullscreen = true
+                isPlaying = true
+            }, label: {
+                Image(systemName: "arrow.down.left.and.arrow.up.right")
+            })
         }
         .onChange(of: isPlaying) { playing in
             if playing {
@@ -128,7 +159,7 @@ struct Metronome: View {
     }
 
     private func setupTimer() {
-        let interval = 60.0 / (bpm * bpmeasure)
+        let interval = 60.0 / bpm
         timer = Timer.scheduledTimer(withTimeInterval: interval / 100, repeats: true) { _ in
             self.updateProgress()
         }
@@ -138,7 +169,7 @@ struct Metronome: View {
         progress += 0.01
         if progress >= bpmeasure {
             progress = 0
-            progressFrom = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+            progressFrom = Array(repeating: 0, count: Int(bpmeasure))
         }
         distributeProgress()
         if progress.truncatingRemainder(dividingBy: 1) < 0.01 {
@@ -147,8 +178,8 @@ struct Metronome: View {
     }
     
     private func distributeProgress() {
-        progressFrom[Int(progress)] = progress - floor(progress)
-        
+        let index = Int(progress) % progressFrom.count
+        progressFrom[index] = progress - floor(progress)
     }
 
     private func playClickSound() {
@@ -207,7 +238,4 @@ struct ButtonToggleStyle: ToggleStyle {
                 .cornerRadius(10)
         }
     }
-
 }
-
-
