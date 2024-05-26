@@ -163,6 +163,7 @@ struct Metronome: View {
         timer = Timer.scheduledTimer(withTimeInterval: interval / 100, repeats: true) { _ in
             self.updateProgress()
         }
+        playTickSound()
     }
 
     private func updateProgress() {
@@ -172,8 +173,10 @@ struct Metronome: View {
             progressFrom = Array(repeating: 0, count: Int(bpmeasure))
         }
         distributeProgress()
-        if progress.truncatingRemainder(dividingBy: 1) < 0.01 {
-            playClickSound()
+        if progress < 0.01 {
+            playTickSound()
+        } else if progress.truncatingRemainder(dividingBy: 1) < 0.01 {
+            playTockSound()
         }
     }
     
@@ -182,7 +185,7 @@ struct Metronome: View {
         progressFrom[index] = progress - floor(progress)
     }
 
-    private func playClickSound() {
+    private func playTockSound() {
         DispatchQueue.main.async {
         guard let soundURL = Bundle.main.url(forResource: "tock", withExtension: "wav") else { return }
         do {
@@ -192,6 +195,18 @@ struct Metronome: View {
             print("Unable to play sound: \(error.localizedDescription)")
         }}
     }
+    
+    private func playTickSound() {
+        DispatchQueue.main.async {
+        guard let soundURL = Bundle.main.url(forResource: "tick", withExtension: "wav") else { return }
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
+            audioPlayer?.play()
+        } catch {
+            print("Unable to play sound: \(error.localizedDescription)")
+        }}
+    }
+    
 
     private func tapToSetBPM() {
         let now = Date()

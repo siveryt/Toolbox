@@ -16,6 +16,7 @@
 		5E0AA80A2837BFB7006CD0EA /* IconNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0AA8092837BFB7006CD0EA /* IconNames.swift */; };
 		5E135E442BE27159000FD246 /* FontInstall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E135E432BE27159000FD246 /* FontInstall.swift */; };
 		5E135E472BE27E01000FD246 /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = 5E135E462BE27E01000FD246 /* Swifter */; };
+		5E1644F22C03754800EEDFFD /* tick.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5E1644F12C03754800EEDFFD /* tick.wav */; };
 		5E1DB0F22C0225CF00D59AAD /* Decibel Meter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1DB0F12C0225CF00D59AAD /* Decibel Meter.swift */; };
 		5E1DB0F42C02275000D59AAD /* Metronome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1DB0F32C02275000D59AAD /* Metronome.swift */; };
 		5E1DB0F62C022AF800D59AAD /* tock.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5E1DB0F52C022AF800D59AAD /* tock.wav */; };
@@ -151,6 +152,7 @@
 		5E1383EA29159ADE00CF4FAB /* Dice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dice.swift; sourceTree = "<group>"; };
 		5E1383EF29159DD800CF4FAB /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		5E1383F12915A23100CF4FAB /* Random Number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Random Number.swift"; sourceTree = "<group>"; };
+		5E1644F12C03754800EEDFFD /* tick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tick.wav; sourceTree = "<group>"; };
 		5E1DB0F12C0225CF00D59AAD /* Decibel Meter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decibel Meter.swift"; sourceTree = "<group>"; };
 		5E1DB0F32C02275000D59AAD /* Metronome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metronome.swift; sourceTree = "<group>"; };
 		5E1DB0F52C022AF800D59AAD /* tock.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tock.wav; sourceTree = "<group>"; };
@@ -444,6 +446,7 @@
 				5EF8C35E2A88665D0089BCA3 /* LAN Scanner.swift */,
 				5EDFF1E527E76D34005BBA3C /* LiveClock.swift */,
 				5E1DB0F32C02275000D59AAD /* Metronome.swift */,
+				5E1644F12C03754800EEDFFD /* tick.wav */,
 				5E1DB0F52C022AF800D59AAD /* tock.wav */,
 				5E5C62072916654F004F44CC /* Ping.swift */,
 				5EF0DD1E2BE2196700F46B5C /* PulsingFlashlight.swift */,
@@ -650,6 +653,7 @@
 				5E72B598283BB91300DEAD50 /* Blueish_white@1x.png in Resources */,
 				5E72B5B1283BB9F300DEAD50 /* black@3x.png in Resources */,
 				5E72B5AB283BB9BC00DEAD50 /* whiteOnly@3x.png in Resources */,
+				5E1644F22C03754800EEDFFD /* tick.wav in Resources */,
 				5E72B5AA283BB9BC00DEAD50 /* whiteOnly@1x.png in Resources */,
 				5E72B5B0283BB9F300DEAD50 /* black@2x.png in Resources */,
 				5E72B59F283BB94000DEAD50 /* Blueish_red@2x.png in Resources */,
