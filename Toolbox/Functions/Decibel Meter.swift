@@ -43,6 +43,8 @@ struct DecibelMeter: View {
         default:
             VStack{
                 Text("You first have to allow Toolbox to access your microphone to measure audio levels.")
+                    .multilineTextAlignment(.center)
+                    .padding()
                 Button("Open Settings") {
                     if let appSettings = URL(string: UIApplication.openSettingsURLString) {
                         UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)

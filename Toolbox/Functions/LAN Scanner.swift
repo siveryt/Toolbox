@@ -28,6 +28,7 @@ struct LAN_Scanner: View {
         VStack {
                     if showNoNetworkPermissionText {
                         Text("Toolbox does not have network permissions. Please allow local network access in the settings.")
+                            .multilineTextAlignment(.center)
                             .padding()
                         Button("Open Settings") {
                             if let appSettings = URL(string: UIApplication.openSettingsURLString) {
