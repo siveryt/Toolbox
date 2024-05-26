@@ -46,7 +46,7 @@ struct Metronome: View {
                     .onChange(of: bpm) {
                         bpm = Double(Int(bpm))
                         if isPlaying {
-                            restartMetronome()
+                            stopMetronome()
                         }
                         bpmString = String(Int(bpm))
                     }
@@ -71,10 +71,10 @@ struct Metronome: View {
                 
                 Slider(value: $bpmeasure, in: 1...32, step: 1)
                     .onChange(of: bpmeasure) {
-                        bpmeasure = Double(Int(bpmeasure))
+                        bpmeasure = Double(min(Int(bpmeasure), 32))
                         progressFrom = Array(repeating: 0, count: Int(bpmeasure))
                         if isPlaying {
-                            restartMetronome()
+                            stopMetronome()
                         }
                         bpmeasureString = String(Int(bpmeasure))
                     }
@@ -186,25 +186,33 @@ struct Metronome: View {
     }
 
     private func playTockSound() {
-        DispatchQueue.main.async {
-        guard let soundURL = Bundle.main.url(forResource: "tock", withExtension: "wav") else { return }
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
-            audioPlayer?.play()
-        } catch {
-            print("Unable to play sound: \(error.localizedDescription)")
-        }}
+        DispatchQueue.global(qos: .background).async {
+            guard let soundURL = Bundle.main.url(forResource: "tock", withExtension: "wav") else { return }
+            do {
+                let player = try AVAudioPlayer(contentsOf: soundURL)
+                DispatchQueue.main.async {
+                    audioPlayer = player
+                    audioPlayer?.play()
+                }
+            } catch {
+                print("Unable to play sound: \(error.localizedDescription)")
+            }
+        }
     }
     
     private func playTickSound() {
-        DispatchQueue.main.async {
-        guard let soundURL = Bundle.main.url(forResource: "tick", withExtension: "wav") else { return }
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
-            audioPlayer?.play()
-        } catch {
-            print("Unable to play sound: \(error.localizedDescription)")
-        }}
+        DispatchQueue.global(qos: .background).async {
+            guard let soundURL = Bundle.main.url(forResource: "tick", withExtension: "wav") else { return }
+            do {
+                let player = try AVAudioPlayer(contentsOf: soundURL)
+                DispatchQueue.main.async {
+                    audioPlayer = player
+                    audioPlayer?.play()
+                }
+            } catch {
+                print("Unable to play sound: \(error.localizedDescription)")
+            }
+        }
     }
     
 
