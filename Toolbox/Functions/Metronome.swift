@@ -87,7 +87,7 @@ struct Metronome: View {
                 HStack {
                     ForEach (1...Int(bpmeasure)) { i in
                         ProgressView(value: progressFrom[i - 1], total: 1.0)
-                            .progressViewStyle(LinearProgressViewStyle(tint: .blue))
+                            .progressViewStyle(LinearProgressViewStyle(tint: .accentColor))
                             .scaleEffect(x: 1, y: 4, anchor: .center)
                     }
                 }
