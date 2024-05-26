@@ -69,6 +69,7 @@ struct Metronome: View {
                 
                 Slider(value: $bpmeasure, in: 1...16, step: 1)
                     .onChange(of: bpmeasure) { _ in
+                        progressFrom = Array(repeating: 0, count: Int(bpmeasure))
                         bpmeasure = Double(Int(bpmeasure))
                         if isPlaying {
                             restartMetronome()
@@ -89,7 +90,7 @@ struct Metronome: View {
                             .scaleEffect(x: 1, y: 4, anchor: .center)
                     }
                 }
-                    
+                
             }
         }
         .onChange(of: isPlaying) { playing in
@@ -101,6 +102,9 @@ struct Metronome: View {
         }
         .onDisappear {
             stopMetronome()
+        }
+        .onAppear() {
+            progressFrom = Array(repeating: 0, count: Int(bpmeasure))
         }
         .navigationTitle("Metronome")
         .navigationBarTitleDisplayMode(.inline)
@@ -114,7 +118,7 @@ struct Metronome: View {
         timer?.invalidate()
         timer = nil
         progress = 0
-        progressFrom = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+        progressFrom = Array(repeating: 0, count: Int(bpmeasure))
     }
     
     private func restartMetronome() {
