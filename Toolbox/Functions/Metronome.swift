@@ -69,6 +69,7 @@ struct Metronome: View {
                 
                 Slider(value: $bpmeasure, in: 1...16, step: 1)
                     .onChange(of: bpmeasure) { _ in
+                        bpmeasure = min(bpmeasure, 32)
                         progressFrom = Array(repeating: 0, count: Int(bpmeasure))
                         bpmeasure = Double(Int(bpmeasure))
                         if isPlaying {
