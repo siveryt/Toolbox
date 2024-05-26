@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/twostraws/CodeScanner",
       "state" : {
-        "revision" : "bf5d7087015620b250ee6c865b3c9039fc159d1a",
-        "version" : "2.3.3"
+        "revision" : "944a6a1ca030dbd890e647a678e718fc2115d35c",
+        "version" : "2.4.1"
       }
     },
     {
@@ -60,8 +60,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-async-dns-resolver",
       "state" : {
-        "revision" : "b7079b75cd604bc675af080edef56b486decb155",
-        "version" : "0.3.1"
+        "revision" : "08c07ff31a745ee5e522ac10132fb4949834d925",
+        "version" : "0.4.0"
       }
     },
     {
@@ -97,7 +97,7 @@
       "location" : "https://github.com/huynguyencong/ToastSwiftUI.git",
       "state" : {
         "branch" : "master",
-        "revision" : "19acc0985eb456373ca276e960626373bd686ffe"
+        "revision" : "7fb1cb8f79cdea539b9d4037bc6b39f1144b114d"
       }
     },
     {
@@ -105,8 +105,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SvenTiigi/WhatsNewKit.git",
       "state" : {
-        "revision" : "50a121a99a17c9eed90ccf1197ebd03165309c61",
-        "version" : "2.0.3"
+        "revision" : "6157c77e8be9b3d2310bc680681b61a8d9e290ac",
+        "version" : "2.2.1"
       }
     }
   ],
