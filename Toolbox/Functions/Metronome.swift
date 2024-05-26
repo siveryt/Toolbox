@@ -10,29 +10,35 @@ import AVFoundation
 
 struct Metronome: View {
     @AppStorage("metronome_bpm") private var bpm: Double = 120
+    @AppStorage("metronome_bpmeasure") private var bpmeasure: Double = 4
     @State private var progress: Double = 0
+    
+    @State private var progressFrom: [Double] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    @State private var beat: Int = 0
+    
     @State private var timer: Timer?
     @State private var isPlaying: Bool = false
     @State private var audioPlayer: AVAudioPlayer?
     @State private var tapTimes: [Date] = []
 
-    @AppStorage("metronome_bpString") private var bpmString: String = "120"
+    @AppStorage("metronome_bpmString") private var bpmString: String = "120"
+    @AppStorage("metronome_bpmeasureString") private var bpmeasureString: String = "4"
     
     var body: some View {
         Form {
-            Section {
-                    TextField("BPM", text: $bpmString)
-                        .onChange(of: bpmString) { newValue in
-                            // Attempt to convert the string to a double
-                            if let value = Double(newValue) {
-                                bpm = value
-                            } else if (!bpmString.isEmpty) {
-                                bpmString = String(bpm)
-                            }
-                            
+            Section("Beats per Minute") {
+                TextField("BPM", text: $bpmString)
+                    .onChange(of: bpmString) { newValue in
+                        // Attempt to convert the string to a double
+                        if let value = Double(newValue) {
+                            bpm = value
+                        } else if (!bpmString.isEmpty) {
+                            bpmString = String(bpm)
                         }
-                        .keyboardType(.numberPad)
-                    
+                        
+                    }
+                    .keyboardType(.numberPad)
+                
                 
                 Slider(value: $bpm, in: 40...240, step: 1)
                     .onChange(of: bpm) { _ in
@@ -47,15 +53,42 @@ struct Metronome: View {
                     Text("Tap to Set BPM")
                 }
             }
+            Section("Beats per measure") {
+                TextField("Beats per measure", text: $bpmeasureString)
+                    .onChange(of: bpmeasureString) { newValue in
+                        // Attempt to convert the string to a double
+                        if let value = Double(newValue) {
+                            bpmeasure = value
+                        } else if (!bpmeasureString.isEmpty) {
+                            bpmeasureString = String(bpmeasure)
+                        }
+                        
+                    }
+                    .keyboardType(.numberPad)
+                
+                
+                Slider(value: $bpmeasure, in: 1...16, step: 1)
+                    .onChange(of: bpmeasure) { _ in
+                        bpmeasure = Double(Int(bpmeasure))
+                        if isPlaying {
+                            restartMetronome()
+                        }
+                        bpmeasureString = String(Int(bpmeasure))
+                    }
+            }
             Section {
                 Button(isPlaying ? "Stop":"Start") {
                     isPlaying.toggle()
                 }
             }
             Section {
-                ProgressView(value: progress, total: 1.0)
-                    .progressViewStyle(LinearProgressViewStyle(tint: .blue))
-                    .scaleEffect(x: 1, y: 4, anchor: .center)
+                HStack {
+                    ForEach (1...Int(bpmeasure)) { i in
+                        ProgressView(value: progressFrom[i - 1], total: 1.0)
+                            .progressViewStyle(LinearProgressViewStyle(tint: .blue))
+                            .scaleEffect(x: 1, y: 4, anchor: .center)
+                    }
+                }
                     
             }
         }
@@ -81,6 +114,7 @@ struct Metronome: View {
         timer?.invalidate()
         timer = nil
         progress = 0
+        progressFrom = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     }
     
     private func restartMetronome() {
@@ -97,20 +131,30 @@ struct Metronome: View {
 
     private func updateProgress() {
         progress += 0.01
-        if progress >= 1.0 {
+        distributeProgress()
+        if progress >= bpmeasure {
             progress = 0
+            progressFrom = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+        }
+        if progress.truncatingRemainder(dividingBy: 1) < 0.01 {
             playClickSound()
         }
     }
+    
+    private func distributeProgress() {
+        progressFrom[Int(progress)] = progress - floor(progress)
+        
+    }
 
     private func playClickSound() {
+        DispatchQueue.main.async {
         guard let soundURL = Bundle.main.url(forResource: "tock", withExtension: "wav") else { return }
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
             audioPlayer?.play()
         } catch {
             print("Unable to play sound: \(error.localizedDescription)")
-        }
+        }}
     }
 
     private func tapToSetBPM() {
