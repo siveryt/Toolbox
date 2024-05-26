@@ -59,58 +59,74 @@ extension App: WhatsNewCollectionProvider {
     /// A WhatsNewCollection
     var whatsNewCollection: WhatsNewCollection {
         WhatsNew(
-            version: "1.3.0",
+            version: "1.4.0",
             title: .init(stringLiteral: NSLocalizedString("What's New in Toolbox", comment: "WhatsNewKit item")),
             features: [
                 .init(
                     image: .init(
-                        systemName: "applewatch",
-                        foregroundColor: .green
+                        systemName: "metronome",
+                        foregroundColor: .accentColor
                     ),
-                    title: .init(stringLiteral: NSLocalizedString("WatchOS", comment: "WhatsNewKit item")),
-                    subtitle: .init(stringLiteral: NSLocalizedString("Enjoy some functions of the app on your wrist for easy access", comment: "WhatsNewKit item"))
+                    title: .init(stringLiteral: NSLocalizedString("Metronome", comment: "WhatsNewKit item")),
+                    subtitle: .init(stringLiteral: NSLocalizedString("Keep perfect time with adjustable BPM and various time signatures", comment: "WhatsNewKit item"))
                 ),
                 .init(
                     image: .init(
-                        systemName: "location.fill",
-                        foregroundColor: .blue
+                        systemName: "speaker",
+                        foregroundColor: .accentColor
                     ),
-                    title: .init(stringLiteral: NSLocalizedString("Coordinates", comment: "WhatsNewKit item")),
-                    subtitle: .init(stringLiteral: NSLocalizedString("Added support for DMS coordinates and get your coordinates as a whole string", comment: "WhatsNewKit item"))
-                ),
-                
-                .init(
-                    image: .init(
-                        systemName: "dice",
-                        foregroundColor: .purple
-                    ),
-                    title: .init(stringLiteral: NSLocalizedString("Dice", comment: "WhatsNewKit item")),
-                    subtitle: .init(stringLiteral: NSLocalizedString("Added a 10 sided and a 20 sided dice and dices can now be locked into place", comment: "WhatsNewKit item"))
+                    title: .init(stringLiteral: NSLocalizedString("Decibel Meter", comment: "WhatsNewKit item")),
+                    subtitle: .init(stringLiteral: NSLocalizedString("Measure sound levels to monitor noise", comment: "WhatsNewKit item"))
                 ),
                 .init(
                     image: .init(
-                        systemName: "magnifyingglass",
-                        foregroundColor: .gray
+                        systemName: "flashlight.off.fill",
+                        foregroundColor: .accentColor
                     ),
-                    title: .init(stringLiteral: NSLocalizedString("LAN Scanner", comment: "WhatsNewKit item")),
-                    subtitle: .init(stringLiteral: NSLocalizedString("Check the IP of devices on your network", comment: "WhatsNewKit item"))
+                    title: .init(stringLiteral: NSLocalizedString("Pulsing Flashlight", comment: "WhatsNewKit item")),
+                    subtitle: .init(stringLiteral: NSLocalizedString("Emit light pulses for enhanced visibility", comment: "WhatsNewKit item"))
                 ),
                 .init(
                     image: .init(
-                        systemName: "character",
-                        foregroundColor: .yellow
+                        systemName: "character.magnify",
+                        foregroundColor: .accentColor
                     ),
-                    title: .init(stringLiteral: NSLocalizedString("Random Letter", comment: "WhatsNewKit item")),
-                    subtitle: .init(stringLiteral: NSLocalizedString("Generate a random letter", comment: "WhatsNewKit item"))
+                    title: .init(stringLiteral: NSLocalizedString("Font Installer", comment: "WhatsNewKit item")),
+                    subtitle: .init(stringLiteral: NSLocalizedString("Use custom fonts in other apps", comment: "WhatsNewKit item"))
                 ),
                 
                 .init(
                     image: .init(
-                        systemName: "barcode",
-                        foregroundColor: .black
+                        systemName: "textformat.abc",
+                        foregroundColor: .accentColor
                     ),
-                    title: .init(stringLiteral: NSLocalizedString("Barcode Scanner", comment: "WhatsNewKit item")),
-                    subtitle: .init(stringLiteral: NSLocalizedString("Scan Barcodes, Aztec, QR-Codes and many more", comment: "WhatsNewKit item"))
+                    title: .init(stringLiteral: NSLocalizedString("Scrolling Text", comment: "WhatsNewKit item")),
+                    subtitle: .init(stringLiteral: NSLocalizedString("Display  text banners to share important messages", comment: "WhatsNewKit item"))
+                ),
+                .init(
+                    image: .init(
+                        systemName: "power",
+                        foregroundColor: .accentColor
+                    ),
+                    title: .init(stringLiteral: NSLocalizedString("Wake On Lan", comment: "WhatsNewKit item")),
+                    subtitle: .init(stringLiteral: NSLocalizedString("Remotely power on your devices", comment: "WhatsNewKit item"))
+                ),
+                
+                .init(
+                    image: .init(
+                        systemName: "eye.slash",
+                        foregroundColor: .accentColor
+                    ),
+                    title: .init(stringLiteral: NSLocalizedString("Hide Tools", comment: "WhatsNewKit item")),
+                    subtitle: .init(stringLiteral: NSLocalizedString("Move tools you don't use out of your way", comment: "WhatsNewKit item"))
+                ),
+                .init(
+                    image: .init(
+                        systemName: "text.line.first.and.arrowtriangle.forward",
+                        foregroundColor: .accentColor
+                    ),
+                    title: .init(stringLiteral: NSLocalizedString("Move Tools", comment: "WhatsNewKit item")),
+                    subtitle: .init(stringLiteral: NSLocalizedString("Reorder tools to have your favorites on top of the list", comment: "WhatsNewKit item"))
                 ),
                 
             ],
@@ -124,11 +140,11 @@ extension App: WhatsNewCollectionProvider {
                     #endif
                 }()
             )
-//            ,
-//            secondaryAction: .init(
-//                title: "Learn more",
-//                action: .openURL(.init(string: "https://github.com/SvenTiigi/WhatsNewKit"))
-//            )
+            ,
+            secondaryAction: .init(
+                title: "Learn more",
+                action: .openURL(.init(string: "https://toolbox.sivery.de/#version1.4"))
+            )
         )
     }
     
