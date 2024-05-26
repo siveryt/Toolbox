@@ -28,6 +28,8 @@ struct ContentView: View {
     @AppStorage("cvHasAlreadyEdited") var hasAlreadyEdited = false
     
     @AppStorage("cvHidden") var hidden: [Int] = []
+    @AppStorage("cvHasHiddenAnythingYet") var hasHiddenAnythingYet = false
+    @State var hiddenAlert = false
     
     @State var toollist:[Tool] = [
         Tool(view: AnyView(DiceView()), title: NSLocalizedString("Dice", comment: "Menu item"), icon: "dice"),
@@ -157,6 +159,13 @@ struct ContentView: View {
             MainscreenMoveTip.appStarts = viewLoaded
                 
         }
+            .alert(isPresented: $hiddenAlert) {
+                Alert(
+                    title: Text("Hidden Tools"),
+                    message: Text("You just hid your first tool! You can still find it in the settings under \"Hidden Tools\""),
+                    dismissButton: .destructive(Text("Got it!")) // I have to use .destructive and not .default, because .default often times is the default primary blue and not the color set in Assets AccentColor
+                )
+                    }
         .whatsNewSheet()
     }
     
@@ -164,6 +173,10 @@ struct ContentView: View {
         print("Hiding \(index)")
         withAnimation{
             hidden.append(index)
+        }
+        if(!hasHiddenAnythingYet) {
+            hasHiddenAnythingYet = true
+            hiddenAlert = true
         }
     }
     

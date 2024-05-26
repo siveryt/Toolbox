@@ -33,7 +33,7 @@ struct infoView: View {
                 }
                 
                 NavigationLink(destination: infoHidden()){
-                    Label("Hidden", systemImage: "eye.slash")
+                    Label("Hidden Tools", systemImage: "eye.slash")
                 }
                 
                 Button(action: {
