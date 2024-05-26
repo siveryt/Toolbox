@@ -33,8 +33,8 @@ struct ColorPickerView: View {
     var body: some View {
         Form{
             ColorPicker("Choose Color", selection: $drawSwiftUIColor, supportsOpacity: true)
-                .onChange(of: drawSwiftUIColor) { newValue in
-                    getColorsFromPicker(pickerColor: newValue)
+                .onChange(of: drawSwiftUIColor) {
+                    getColorsFromPicker(pickerColor: drawSwiftUIColor)
                     guard let data : Data = try? NSKeyedArchiver.archivedData(withRootObject: drawUIColor, requiringSecureCoding: false) as Data else { return }
                     UserDefaults.standard.set(data, forKey: "UserSelectedColor")
                     UserDefaults.standard.synchronize()

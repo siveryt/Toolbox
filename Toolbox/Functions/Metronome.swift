@@ -30,9 +30,9 @@ struct Metronome: View {
         Form {
             Section("Beats per Minute") {
                 TextField("BPM", text: $bpmString)
-                    .onChange(of: bpmString) { newValue in
+                    .onChange(of: bpmString) {
                         // Attempt to convert the string to a double
-                        if let value = Double(newValue) {
+                        if let value = Double(bpmString) {
                             bpm = value
                         } else if (!bpmString.isEmpty) {
                             bpmString = String(bpm)
@@ -43,7 +43,7 @@ struct Metronome: View {
                 
                 
                 Slider(value: $bpm, in: 40...240, step: 1)
-                    .onChange(of: bpm) { _ in
+                    .onChange(of: bpm) {
                         bpm = Double(Int(bpm))
                         if isPlaying {
                             restartMetronome()
@@ -57,9 +57,9 @@ struct Metronome: View {
             }
             Section("Beats per Measure") {
                 TextField("Beats per measure", text: $bpmeasureString)
-                    .onChange(of: bpmeasureString) { newValue in
+                    .onChange(of: bpmeasureString) {
                         // Attempt to convert the string to a double
-                        if let value = Double(newValue) {
+                        if let value = Double(bpmeasureString) {
                             bpmeasure = value
                         } else if (!bpmeasureString.isEmpty) {
                             bpmeasureString = String(bpmeasure)
@@ -70,7 +70,7 @@ struct Metronome: View {
                 
                 
                 Slider(value: $bpmeasure, in: 1...32, step: 1)
-                    .onChange(of: bpmeasure) { _ in
+                    .onChange(of: bpmeasure) {
                         bpmeasure = Double(Int(bpmeasure))
                         progressFrom = Array(repeating: 0, count: Int(bpmeasure))
                         if isPlaying {
@@ -125,8 +125,8 @@ struct Metronome: View {
                 Image(systemName: "arrow.down.left.and.arrow.up.right")
             })
         }
-        .onChange(of: isPlaying) { playing in
-            if playing {
+        .onChange(of: isPlaying) {
+            if isPlaying {
                 startMetronome()
             } else {
                 stopMetronome()
