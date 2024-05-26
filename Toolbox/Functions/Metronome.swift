@@ -128,7 +128,7 @@ struct Metronome: View {
     }
 
     private func setupTimer() {
-        let interval = 60.0 / bpm
+        let interval = 60.0 / (bpm * bpmeasure)
         timer = Timer.scheduledTimer(withTimeInterval: interval / 100, repeats: true) { _ in
             self.updateProgress()
         }
@@ -136,11 +136,11 @@ struct Metronome: View {
 
     private func updateProgress() {
         progress += 0.01
-        distributeProgress()
         if progress >= bpmeasure {
             progress = 0
             progressFrom = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         }
+        distributeProgress()
         if progress.truncatingRemainder(dividingBy: 1) < 0.01 {
             playClickSound()
         }
