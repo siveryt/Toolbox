@@ -99,7 +99,7 @@ struct Speed: View {
                 }
             } else {
                 VStack{
-                    Text("You first have to allow Toolbox to access your location in order to see your speed.")
+                    Text("You first have to allow Toolbox to access your location to see your speed.")
                     Button("Open Settings") {
                         if let appSettings = URL(string: UIApplication.openSettingsURLString) {
                             UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)

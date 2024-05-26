@@ -37,7 +37,7 @@ struct Scrolling_Text: View {
             Slider(value: $scrollingSpeed, in: 0.1...2.0, step: 0.1)
             
             Section {
-                Button("Start scrolling"){
+                Button("Start Scrolling"){
                     enabled = UIScreen.main.bounds.width > UIScreen.main.bounds.height
                     if(enabled) {
                         scrollerActive = true
@@ -57,7 +57,7 @@ struct Scrolling_Text: View {
         }
         .alert(isPresented: $rotateAlert) {
             Alert(title: Text("Info"),
-                  message: Text("You need to rotate your device to show the scrolling text.")
+                  message: Text("You need to rotate your device to enable the scrolling text.")
             )
         }
         .onAppear {

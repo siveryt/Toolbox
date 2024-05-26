@@ -295,7 +295,7 @@ struct DiceView: View {
         VStack {
             DiceGridView(diceCount: diceCount, faces: rolled, sides: sides)
             if guidance {
-                Text("Shake or tap to get started").foregroundColor(.secondary)
+                Text("Shake or Tap to Get Started").foregroundColor(.secondary)
             }
         }
         .navigationBarTitleDisplayMode(.inline)
@@ -319,7 +319,7 @@ struct DiceView: View {
             NavigationView {
                 
                 Form {
-                    Picker(selection: sidesBinding, label: Text("Sides:")) {
+                    Picker(selection: sidesBinding, label: Text("Sides")) {
                         Text("4").tag(4)
                         Text("6").tag(6)
                         Text("8").tag(8)
@@ -332,12 +332,12 @@ struct DiceView: View {
                     
                     
                     HStack {
-                        Stepper("Dice Count:", value: $diceCount, in: 1...32)
+                        Stepper("Dice Count", value: $diceCount, in: 1...32)
                         Text(String(diceCount))
                     }
                     Section {
                         Toggle(isOn: $idleTimerDisabled) {
-                                Text("Disable auto lock")
+                                Text("Disable Auto Lock")
                         }.onChange(of: idleTimerDisabled) {
                             UIApplication.shared.isIdleTimerDisabled = idleTimerDisabled
                         }

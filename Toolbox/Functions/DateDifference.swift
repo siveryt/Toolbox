@@ -105,14 +105,14 @@ struct DateDifference: View{
         
         Form{
             DatePicker(
-                "Start Date:",
+                "Start Date",
                 selection: dateFromBinding,
                 displayedComponents: [.date]
             )
             .datePickerStyle(.automatic)
             
             DatePicker(
-                "End Date:",
+                "End Date",
                 selection: dateToBinding,
                 displayedComponents: [.date]
             )

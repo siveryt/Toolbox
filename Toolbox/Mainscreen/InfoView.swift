@@ -85,7 +85,7 @@ struct infoView: View {
                         UIApplication.shared.open(url)
                     }
                 }) {
-                    Label("Support the development", systemImage: "heart")
+                    Label("Support the Development", systemImage: "heart")
                 }
                 .tint(.primary)
                 
@@ -94,7 +94,7 @@ struct infoView: View {
                 Button(action: {
                     deleteAlert = true
                 }) {
-                    Label("Delete data", systemImage: "trash")
+                    Label("Delete Data", systemImage: "trash")
                 }
                 .tint(.primary)
                 
@@ -306,7 +306,7 @@ struct permissions: View {
                 case .authorized:
                     Text("Allows")
                 case .notDetermined:
-                    Text("Not Requested yet")
+                    Text("Not Requested Yet")
                 case .denied, .restricted:
                     Text("Denied")
                 @unknown default:
@@ -321,7 +321,7 @@ struct permissions: View {
                 case .authorized:
                     Text("Allowed")
                 case .notDetermined:
-                    Text("Not Requested yet")
+                    Text("Not Requested Yet")
                 case .denied, .restricted:
                     Text("Denied")
                 @unknown default:
@@ -343,8 +343,8 @@ struct permissions: View {
         .alert(isPresented: $showingInfoAlert) {
             Alert(
                 title: Text("Why?"),
-                message: Text("Toolbox uses your location to calculate your speed and your coordinates when using the corresponding tools.\n\n Toolbox needs access to your local network when using the LAN Scanner.\n\nToolbox needs access to your camera when scanning barcodes.\n\nToolbox needs acces to your camera to measure audio levels."),
-                dismissButton: .destructive(Text("Got it!")) // I have to use .destructive and not .default, because .default often times is the default primary blue and not the color set in Assets AccentColor
+                message: Text("Toolbox uses your location to calculate your speed and your coordinates when using the corresponding tools.\n\n Toolbox needs access to your local network when using the LAN Scanner.\n\nToolbox needs access to your camera when scanning barcodes.\n\nToolbox needs acces to your microphone to measure audio levels."),
+                dismissButton: .destructive(Text("Got It!")) // I have to use .destructive and not .default, because .default often times is the default primary blue and not the color set in Assets AccentColor
             )
                 }
         .toolbar(){
@@ -405,7 +405,7 @@ struct infoHidden: View {
             Alert(
                 title: Text("What?"),
                 message: Text("Tools you previously hid on the app's main screen can be used here.\nIf you want to move them back to the main screen, tap and hold them.\nThe same goes for hiding them again."),
-                dismissButton: .destructive(Text("Got it!")) // I have to use .destructive and not .default, because .default often times is the default primary blue and not the color set in Assets AccentColor
+                dismissButton: .destructive(Text("Got It!")) // I have to use .destructive and not .default, because .default often times is the default primary blue and not the color set in Assets AccentColor
             )
                 }
         .toolbar(){

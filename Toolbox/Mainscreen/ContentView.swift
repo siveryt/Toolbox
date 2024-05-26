@@ -117,7 +117,7 @@ struct ContentView: View {
                         })
                     }
                 }
-                Text("Select a tool")
+                Text("Select a Tool")
                     
             }
             .onAppear() {
@@ -162,8 +162,8 @@ struct ContentView: View {
             .alert(isPresented: $hiddenAlert) {
                 Alert(
                     title: Text("Hidden Tools"),
-                    message: Text("You just hid your first tool! You can still find it in the settings under \"Hidden Tools\""),
-                    dismissButton: .destructive(Text("Got it!")) // I have to use .destructive and not .default, because .default often times is the default primary blue and not the color set in Assets AccentColor
+                    message: Text("You just hid your first tool! You can still find it in the settings under \"Hidden Tools\"."),
+                    dismissButton: .destructive(Text("Got It!")) // I have to use .destructive and not .default, because .default often times is the default primary blue and not the color set in Assets AccentColor
                 )
                     }
         .whatsNewSheet()

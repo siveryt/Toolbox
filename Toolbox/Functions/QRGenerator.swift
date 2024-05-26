@@ -51,7 +51,7 @@ struct QRGenerator: View {
     
     var body: some View {
         Form {
-            Section("QR-Code content") {
+            Section("QR-Code Content") {
                 Picker("Type", selection: $qrType){
                     Text("URL").tag(qrTypes.url)
                     Text("Text").tag(qrTypes.text)

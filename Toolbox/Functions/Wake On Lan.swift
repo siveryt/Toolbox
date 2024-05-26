@@ -216,7 +216,7 @@ struct Wake_On_Lan: View {
                         }
                         if(invalid_port_empty) {
                             HStack{
-                                Text("You can't leave the Port empty")
+                                Text("You can't leave the port empty")
                                     .font(.footnote)
                                     .foregroundStyle(.red)
                                 Spacer()
@@ -232,7 +232,7 @@ struct Wake_On_Lan: View {
                         }
                     }
                 }
-                .navigationBarTitle("Add new device")
+                .navigationBarTitle("Add new Device")
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarItems(leading:
                                         Button("Cancel") {

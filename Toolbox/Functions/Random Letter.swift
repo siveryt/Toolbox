@@ -38,7 +38,7 @@ struct Random_Letter: View {
             .tint(.primary)
             
             if guidance {
-                            Text("Shake or tap to get started").foregroundColor(.secondary)
+                            Text("Shake or Tap to Get Started").foregroundColor(.secondary)
                         }
         }
         .onShake{

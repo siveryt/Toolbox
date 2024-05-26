@@ -14,7 +14,7 @@ struct MainscreenMoveTip: Tip {
     static var appStarts: Int = 0
     
     var title: Text {
-        Text("Move tools around")
+        Text("Move Tools Around")
     }
     
     public var message: Text? {

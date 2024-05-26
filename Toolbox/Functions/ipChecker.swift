@@ -47,14 +47,14 @@ struct ipChecker: View {
                 presentToast()
             }) {
                 HStack{
-                    Text("Your current IP:")
+                    Text("Your current IP")
                     Spacer()
                     Text(ip)
                 }
                 .tint(.primary)
             }
             
-            Button("Check again") {
+            Button("Check Again") {
                 Task {
                     ip = await checkIP()
                     

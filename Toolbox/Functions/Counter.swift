@@ -48,7 +48,7 @@ struct Counter: View {
                         title: Text("Reset Counter"),
                         message: Text("Are you sure, you want to reset the counter?"),
                         primaryButton: .default(
-                            Text("Don't reset"),
+                            Text("Don't Reset"),
                             action: {
                                 showAlert = false
                             }

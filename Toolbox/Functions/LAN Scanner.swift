@@ -27,7 +27,7 @@ struct LAN_Scanner: View {
         
         VStack {
                     if showNoNetworkPermissionText {
-                        Text("Toolbox does not have network permission. Please allow local network access in the settings.")
+                        Text("Toolbox does not have network permissions. Please allow local network access in the settings.")
                             .padding()
                         Button("Open Settings") {
                             if let appSettings = URL(string: UIApplication.openSettingsURLString) {
@@ -37,13 +37,13 @@ struct LAN_Scanner: View {
                     } else {
                         Form{
                             if(!viewModel.scanning){
-                            Button("Start scanner"){
+                            Button("Start Scanner"){
                                 viewModel.reload()
                                 withAnimation(.linear(duration: 0.1)){
                                     viewModel.scanning = true
                                     }
                             }} else {
-                                Button("Stop scanner"){
+                                Button("Stop Scanner"){
                                     viewModel.stop()
                                     viewModel.scanning = false
                                 }
@@ -127,7 +127,6 @@ struct LANDetail: View {
     var body: some View {
         NavigationView {
             VStack {
-//                Text(barcode?.content ?? "No content")
                 List {
                     KeyValueProperty(content: device.name, propertyName: NSLocalizedString("ip", comment: "LAN Scanner"))
                         .environment(\.copyToast, $isPresentingToast)
@@ -146,7 +145,6 @@ struct LANDetail: View {
                             .environment(\.copyToast, $isPresentingToast)
                     }
                     
-//                        .frame(width: 200, height: 300)
                 }
                 
                 

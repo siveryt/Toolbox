@@ -68,7 +68,7 @@ struct RandomNumber: View {
         
         Form {
             HStack {
-                Text("From:")
+                Text("From")
                 Spacer()
                 TextField("1", text: minBinding)
                     .multilineTextAlignment(.trailing)
@@ -81,7 +81,7 @@ struct RandomNumber: View {
             }
             
             HStack {
-                Text("To:")
+                Text("To")
                 Spacer()
                 TextField("1", text: maxBinding)
                     .multilineTextAlignment(.trailing)
@@ -99,7 +99,7 @@ struct RandomNumber: View {
                     presentToast()
                 }){
                     HStack {
-                        Text("Result:")
+                        Text("Result")
                         Spacer()
                         Text(result)
                         

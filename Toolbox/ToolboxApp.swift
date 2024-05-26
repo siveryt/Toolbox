@@ -101,7 +101,7 @@ extension App: WhatsNewCollectionProvider {
                         foregroundColor: .accentColor
                     ),
                     title: .init(stringLiteral: NSLocalizedString("Scrolling Text", comment: "WhatsNewKit item")),
-                    subtitle: .init(stringLiteral: NSLocalizedString("Display  text banners to share important messages", comment: "WhatsNewKit item"))
+                    subtitle: .init(stringLiteral: NSLocalizedString("Display text banners to share important messages", comment: "WhatsNewKit item"))
                 ),
                 .init(
                     image: .init(

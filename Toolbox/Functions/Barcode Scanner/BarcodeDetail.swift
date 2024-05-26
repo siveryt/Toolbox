@@ -36,7 +36,7 @@ struct BarcodeDetail: View {
                 
                 
             }
-            .navigationBarTitle(barcode?.content ?? "No content")
+            .navigationBarTitle(barcode?.content ?? "No Content")
             .navigationBarItems(trailing: backButton)
             .navigationBarTitleDisplayMode(.inline)
         }
@@ -147,7 +147,7 @@ struct KeyValueProperty: View {
                         Spacer()
                     }
                     HStack {
-                        Text(content ?? "No content")
+                        Text(content ?? "No Content")
                         Spacer()
                     }
                 }

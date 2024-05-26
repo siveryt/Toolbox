@@ -65,7 +65,7 @@ struct RomanConverter: View {
         }
         .alert(isPresented: $alert) {
             Alert(
-                title: Text("Number to big!"),
+                title: Text("Number too big"),
                 message: Text("You can't convert numbers bigger than 3999.")
             )
         }

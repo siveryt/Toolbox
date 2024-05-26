@@ -55,7 +55,7 @@ struct Metronome: View {
                     Text("Tap to Set BPM")
                 }
             }
-            Section("Beats per measure") {
+            Section("Beats per Measure") {
                 TextField("Beats per measure", text: $bpmeasureString)
                     .onChange(of: bpmeasureString) { newValue in
                         // Attempt to convert the string to a double
