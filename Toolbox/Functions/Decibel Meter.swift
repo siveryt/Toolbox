@@ -27,7 +27,7 @@ struct DecibelMeter: View {
                         .padding() // Adds default padding
                     
                     ProgressView(value: level, total: 1.0)
-                        .progressViewStyle(LinearProgressViewStyle(tint: .blue))
+                        .progressViewStyle(LinearProgressViewStyle(tint: .accentColor))
                         .scaleEffect(x: 1, y: 4, anchor: .center)
                         .padding()
                     Spacer()
