@@ -27,6 +27,7 @@ struct ContentView: View {
     @AppStorage("cvOrder") var order = [0]
     @AppStorage("cvHasAlreadyEdited") var hasAlreadyEdited = false
     
+    @AppStorage("cvHidden") var hidden: [Int] = []
     
     @State var toollist:[Tool] = [
         Tool(view: AnyView(DiceView()), title: NSLocalizedString("Dice", comment: "Menu item"), icon: "dice"),
@@ -67,17 +68,32 @@ struct ContentView: View {
             NavigationView {
                 List() {
                     ForEach(Array(zip(tools.indices, tools)), id: \.0) { toolIndex, tool in
-                        if (toolIndex == 0){
-                            NavigationLink(destination: tools[toolIndex].view) {
-                                Label(tools[toolIndex].title, systemImage: tools[toolIndex].icon).foregroundColor(.primary)
-                            }
-                            .popoverTip(MainscreenMoveTip())
-                        } else {
-                            NavigationLink(destination: tools[toolIndex].view) {
-                                Label(tools[toolIndex].title, systemImage: tools[toolIndex].icon).foregroundColor(.primary)
+                        if (!hidden.contains(toolIndex)) {
+                            if (toolIndex == 0){
+                                NavigationLink(destination: tools[toolIndex].view) {
+                                    Label(tools[toolIndex].title, systemImage: tools[toolIndex].icon).foregroundColor(.primary)
+                                }
+                                .popoverTip(MainscreenMoveTip())
+                                .contextMenu {
+                                    Button(action:{
+                                        hide(index: toolIndex)
+                                    }){
+                                        Label("Hide", systemImage: "eye.slash")
+                                    }
+                                }
+                            } else {
+                                NavigationLink(destination: tools[toolIndex].view) {
+                                    Label(tools[toolIndex].title, systemImage: tools[toolIndex].icon).foregroundColor(.primary)
+                                }
+                                .contextMenu {
+                                    Button(action:{
+                                        hide(index: toolIndex)
+                                    }){
+                                        Label("Hide", systemImage: "eye.slash")
+                                    }
+                                }
                             }
                         }
-                        
                         
                         
                     }
@@ -143,6 +159,13 @@ struct ContentView: View {
                 
         }
         .whatsNewSheet()
+    }
+    
+    private func hide(index: Int) {
+        print("Hiding \(index)")
+        withAnimation{
+            hidden.append(index)
+        }
     }
     
 }

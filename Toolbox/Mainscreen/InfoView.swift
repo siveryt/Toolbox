@@ -32,6 +32,10 @@ struct infoView: View {
                     Label("Permissions", systemImage: "shield")
                 }
                 
+                NavigationLink(destination: infoHidden()){
+                    Label("Hidden", systemImage: "eye.slash")
+                }
+                
                 Button(action: {
                     if let url = URL(string: "http://toolbox.sivery.de") {
                         UIApplication.shared.open(url)
@@ -365,6 +369,61 @@ struct permissions: View {
                 }
             }
         }
+}
+
+struct infoHidden: View {
+    @AppStorage("cvHidden") var hidden: [Int] = []
+    @State var tools = ContentView().toollist
+    @State var showingInfoAlert = false
+    
+    var body: some View {
+        VStack {
+            if (hidden.count != 0){
+                List {
+                    ForEach(Array(zip(tools.indices, tools)), id: \.0) { toolIndex, tool in
+                        if (hidden.contains(toolIndex)) {
+                            NavigationLink(destination: tools[toolIndex].view) {
+                                Label(tools[toolIndex].title, systemImage: tools[toolIndex].icon).foregroundColor(.primary)
+                            }
+                            .contextMenu {
+                                Button(action:{
+                                    unhide(index: toolIndex)
+                                }){
+                                    Label("Show Again", systemImage: "eye")
+                                }
+                            }
+                        }
+                    }
+                }
+            } else {
+                Text("You have no tools hidden")
+            }
+        }
+        .navigationTitle("Hidden Tools")
+        .navigationBarTitleDisplayMode(.inline)
+        .alert(isPresented: $showingInfoAlert) {
+            Alert(
+                title: Text("What?"),
+                message: Text("Tools you previously hid on the app's main screen can be used here.\nIf you want to move them back to the main screen, tap and hold them.\nThe same goes for hiding them again."),
+                dismissButton: .destructive(Text("Got it!")) // I have to use .destructive and not .default, because .default often times is the default primary blue and not the color set in Assets AccentColor
+            )
+                }
+        .toolbar(){
+            ToolbarItem(placement: .primaryAction) {
+                Button(action: {
+                    showingInfoAlert = true
+                }, label: {
+                    Image(systemName: "questionmark.circle")
+                })
+            }
+        }
+    }
+    
+    private func unhide(index: Int) {
+        withAnimation {
+            hidden.removeAll { $0 == index }
+        }
+    }
 }
 
 struct permissions_Previews: PreviewProvider {
