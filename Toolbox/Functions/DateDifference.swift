@@ -23,19 +23,20 @@ struct DateDifference: View{
         
         
         // Define which components are needed
-        var components = calendar.dateComponents(elements, from: startDate <= endDate ? startDate : endDate, to: startDate <= endDate ? endDate : startDate)
-        
-        // If endDate < startDate add 1 day
-        if endDate < startDate {
-            // Add 1 day to the endDate
-            let adjustedEndDate = calendar.date(byAdding: .day, value: 1, to: endDate)!
-            components = calendar.dateComponents(elements, from: startDate, to: adjustedEndDate)
-        }
+        var components = calendar.dateComponents(elements, from: startDate, to: endDate)
 
-        // Extract the values
-        years = String(components.year ?? 0)
-        months = String(components.month ?? 0)
-        days = String(components.day ?? 0)
+        // Extract values
+        var diffYears = components.year ?? 0
+        var diffMonths = components.month ?? 0
+        var diffDays = components.day ?? 0
+        
+        diffYears = diffYears < 0 ? abs(diffYears)+1 : diffYears
+        diffMonths = diffMonths < 0 ? abs(diffMonths)+1 : diffMonths
+        diffDays = diffDays < 0 ? abs(diffDays)+1 : diffDays
+        
+        years = String(diffYears)
+        months = String(diffMonths)
+        days = String(diffDays)
 
         
         
