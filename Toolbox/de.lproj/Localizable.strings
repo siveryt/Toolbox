@@ -5,6 +5,9 @@
 "+" = "+";
 
 /* No comment provided by engineer. */
+"00:1A:2B:3C:4D:5E" = "00:1A:2B:3C:4D:5E";
+
+/* No comment provided by engineer. */
 "1" = "1";
 
 /* No comment provided by engineer. */
@@ -14,10 +17,10 @@
 "6" = "6";
 
 /* No comment provided by engineer. */
-"6-11-2022" = "6-11-2022";
+"8" = "8";
 
 /* No comment provided by engineer. */
-"8" = "8";
+"9" = "9";
 
 /* No comment provided by engineer. */
 "10" = "10";
@@ -29,6 +32,9 @@
 "20" = "20";
 
 /* No comment provided by engineer. */
+"255.255.255.255" = "255.255.255.255";
+
+/* No comment provided by engineer. */
 "2022" = "2022";
 
 /* No comment provided by engineer. */
@@ -37,23 +43,29 @@
 /* No comment provided by engineer. */
 "Accuracy" = "Genauigkeit";
 
-/* WhatsNewKit item */
-"Added a 10 sided and a 20 sided dice and dices can now be locked into place" = "10-seitigen und 20-seitigen Würfel hinzugefügt und Würfel können gesperrt werden";
-
-/* WhatsNewKit item */
-"Added support for DMS coordinates and get your coordinates as a whole string" = "Unterstützung für DMS Koordinaten hinzugefügt und es werden deine Koordinaten an einem Stück zum kopieren angezeigt.";
+/* No comment provided by engineer. */
+"Add new Device" = "Neues Gerät hinzufügen";
 
 /* No comment provided by engineer. */
 "Again" = "Erneut";
 
 /* No comment provided by engineer. */
+"Allowed" = "Erlaubt";
+
+/* No comment provided by engineer. */
 "Altitude" = "Höhe";
+
+/* No comment provided by engineer. */
+"Always" = "Immer";
 
 /* No comment provided by engineer. */
 "App Icon" = "App Icon";
 
 /* No comment provided by engineer. */
 "Arabic" = "Arabisch";
+
+/* No comment provided by engineer. */
+"Are you sure you want to start the device?" = "Bist du dir sicher, dass du das Gerät starten möchtest";
 
 /* No comment provided by engineer. */
 "Are you sure, you want to clear the app's data?" = "Bist du dir sicher, dass du alle Daten zurücksetzen möchtest?";
@@ -64,24 +76,44 @@
 /* No comment provided by engineer. */
 "Barcode" = "Barcode";
 
-/* Menu item
-   WhatsNewKit item */
+/* Menu item */
 "Barcode Scanner" = "Barcode Scanner";
+
+/* No comment provided by engineer. */
+"Beats per measure" = "Beats per MEasure";
+
+/* No comment provided by engineer. */
+"Beats per Measure" = "Beats pro Takt";
+
+/* No comment provided by engineer. */
+"Beats per Minute" = "Beats pro Minute";
 
 /* Menu item */
 "BMI" = "BMI";
+
+/* No comment provided by engineer. */
+"BPM" = "BPM";
 
 /* LAN Scanner */
 "brand" = "hersteller";
 
 /* No comment provided by engineer. */
-"Check again" = "Erneut abfragen";
-
-/* WhatsNewKit item */
-"Check the IP of devices on your network" = "Überprüfe die IP Adresse von Geräten in deinem Netzwerk";
+"Broadcast" = "Broadcast";
 
 /* No comment provided by engineer. */
-"Choose color" = "Wähle Farbe";
+"Build" = "Build";
+
+/* No comment provided by engineer. */
+"Camera" = "Kamera";
+
+/* No comment provided by engineer. */
+"Cancel" = "Abbrechen";
+
+/* No comment provided by engineer. */
+"Check Again" = "Erneut überprüfen";
+
+/* No comment provided by engineer. */
+"Choose Color" = "Wähle Farbe";
 
 /* No comment provided by engineer. */
 "Click on the %@ to scan your first barcode" = "Drücke auf %@ um deinen ersten Barcode zu scannen.";
@@ -107,8 +139,7 @@
 /* No comment provided by engineer. */
 "Coordinate String" = "Komplette koordinaten";
 
-/* Menu item
-   WhatsNewKit item */
+/* Menu item */
 "Coordinates" = "Koordinaten";
 
 /* Copy toast */
@@ -123,11 +154,12 @@
 /* Menu item */
 "Date Difference" = "Datumsunterschied";
 
-/* No comment provided by engineer. */
+/* Date difference */
 "Days" = "Tage";
 
-/* No comment provided by engineer. */
-"Days:" = "Tage:";
+/* Menu item
+   WhatsNewKit item */
+"Decibel Meter" = "Dezibelmesser";
 
 /* GPS */
 "Decimal Degrees" = "Dezimalgrade";
@@ -136,14 +168,19 @@
 "Delete" = "Löschen";
 
 /* No comment provided by engineer. */
-"Delete data" = "Daten löschen";
+"Delete Data" = "Daten löschen";
 
-/* Menu item
-   WhatsNewKit item */
+/* No comment provided by engineer. */
+"Denied" = "Verweigert";
+
+/* No comment provided by engineer. */
+"Device Name" = "Gerätename";
+
+/* Menu item */
 "Dice" = "Würfel";
 
 /* No comment provided by engineer. */
-"Dice Count:" = "Würfel-Anzahl:";
+"Dice Count" = "Wüfelanzahl";
 
 /* No comment provided by engineer. */
 "Dice Settings" = "Würfel Einstellungen";
@@ -152,7 +189,13 @@
 "Difference" = "Unterschied";
 
 /* No comment provided by engineer. */
+"Disable Auto Lock" = "Auto Lock deaktivieren";
+
+/* No comment provided by engineer. */
 "Display" = "Anzeige";
+
+/* WhatsNewKit item */
+"Display text banners to share important messages" = "Zeige Lauftexte um lange Nachrichten zu verbreiten";
 
 /* GPS */
 "DMS" = "Grad, Minuten, Sekunden";
@@ -164,31 +207,41 @@
 "Domain Resolver" = "Domain auflösen";
 
 /* No comment provided by engineer. */
-"Don't reset" = "Nicht zurücksetzen";
+"Don't Reset" = "Nicht Zurücksetzen";
 
 /* No comment provided by engineer. */
 "Done" = "Fertig";
 
 /* No comment provided by engineer. */
+"Edit" = "Bearbeiten";
+
+/* WhatsNewKit item */
+"Emit light pulses for enhanced visibility" = "Starte das Stroboskop um besser zu erkennen zu sein.";
+
+/* No comment provided by engineer. */
 "Enable camera access in settings to use the Barcode Scanner." = "Aktiviere den Kamerazugriff, um den Barcode Scanner zu nutzen.";
+
+/* No comment provided by engineer. */
+"Enabled" = "Aktiviert";
 
 /* No comment provided by engineer. */
 "Encryption" = "Verschlüsselung";
 
 /* No comment provided by engineer. */
-"End Date:" = "Enddatum:";
-
-/* WhatsNewKit item */
-"Enjoy some functions of the app on your wrist for easy access" = "Benutze manche Funktionen der App an deinem Handgelenk um einfacher drauf zuzugreifen";
+"End Date" = "End Datum";
 
 /* No comment provided by engineer. */
 "Feedback" = "Feedback";
 
-/* No comment provided by engineer. */
-"From:" = "Von:";
+/* Menu item
+   WhatsNewKit item */
+"Font Installer" = "Fonts Installieren";
 
-/* WhatsNewKit item */
-"Generate a random letter" = "Generiere zufällige Buchstaben";
+/* No comment provided by engineer. */
+"From" = "Von";
+
+/* No comment provided by engineer. */
+"Got It!" = "Verstanden!";
 
 /* No comment provided by engineer. */
 "Great Feature Idea!" = "Tolle Feature-Idee";
@@ -203,6 +256,15 @@
 "Hidden" = "Versteckt";
 
 /* No comment provided by engineer. */
+"Hidden Tools" = "Versteckte Tools";
+
+/* No comment provided by engineer. */
+"Hide" = "Verstecken";
+
+/* WhatsNewKit item */
+"Hide Tools" = "Verstecke Tools";
+
+/* No comment provided by engineer. */
 "Hint: You can hold one dice to lock it" = "Hinweis: Halte einen Würfel gedrückt, um ihn zu sperren";
 
 /* No comment provided by engineer. */
@@ -214,21 +276,29 @@
 /* No comment provided by engineer. */
 "inch" = "Zoll";
 
+/* No comment provided by engineer. */
+"Info" = "Info";
+
+/* No comment provided by engineer. */
+"Install Font" = "Font installieren";
+
 /* LAN Scanner */
 "ip" = "ip";
 
 /* Menu item */
 "IP-Checker" = "IP-Adresse";
 
+/* WhatsNewKit item */
+"Keep perfect time with adjustable BPM and various time signatures" = "Bleibe im Takt mit verstellbaren BPM und verschiedenen Taktarten.";
+
 /* No comment provided by engineer. */
 "kg" = "kg";
 
-/* Menu item
-   WhatsNewKit item */
+/* Menu item */
 "LAN Scanner" = "LAN Scanner";
 
 /* No comment provided by engineer. */
-"Last update" = "Letztes Update";
+"Last updated" = "Zuletzt geupdatet";
 
 /* No comment provided by engineer. */
 "Latitude" = "Breitengrad";
@@ -236,14 +306,26 @@
 /* No comment provided by engineer. */
 "lb" = "lb";
 
+/* WhatsNewKit item */
+"Learn more" = "Mehr erfahren";
+
 /* Menu item */
 "Live Clock" = "Live Uhr";
+
+/* No comment provided by engineer. */
+"Local Network" = "Lokales Netzwerk";
+
+/* No comment provided by engineer. */
+"Location" = "Standort";
 
 /* No comment provided by engineer. */
 "Longitude" = "Längengrad";
 
 /* LAN Scanner */
 "mac" = "mac";
+
+/* No comment provided by engineer. */
+"MAC" = "MAC";
 
 /* No comment provided by engineer. */
 "Made with ❤️ by Sivery" = "Made with ❤️ by Sivery";
@@ -255,19 +337,41 @@
 "Mailing list" = "Mailingliste";
 
 /* No comment provided by engineer. */
+"Make sure you entered in the right value" = "Stelle sicher, dass du den richtigen Wert eingegeben hast.";
+
+/* No comment provided by engineer. */
 "Max" = "Max";
+
+/* WhatsNewKit item */
+"Measure sound levels to monitor noise" = "Messe Dezibel";
+
+/* Menu item
+   WhatsNewKit item */
+"Metronome" = "Metronom";
+
+/* No comment provided by engineer. */
+"Microphone" = "Mikrofon";
 
 /* No comment provided by engineer. */
 "MMXXII" = "MMXXII";
 
-/* No comment provided by engineer. */
+/* Date difference */
 "Months" = "Monate";
 
 /* No comment provided by engineer. */
-"Months:" = "Monate:";
+"More Information" = "Weitere Informationen";
+
+/* WhatsNewKit item */
+"Move Tools" = "Bewege Tools";
 
 /* No comment provided by engineer. */
-"More Information" = "Weitere Informationen";
+"Move Tools Around" = "Bewege Tools gerum";
+
+/* WhatsNewKit item */
+"Move tools you don't use out of your way" = "Bewege Tools, die du nicht benutzt aus dem Weg.";
+
+/* No comment provided by engineer. */
+"Name" = "Name";
 
 /* No comment provided by engineer. */
 "Network Name" = "Netzwerkname";
@@ -284,6 +388,9 @@
 /* No comment provided by engineer. */
 "Normal weight" = "Normalgewichtig";
 
+/* No comment provided by engineer. */
+"Not Determined" = "Nicht ermittelt";
+
 /* IP-Checker not found */
 "Not found" = "Nicht gefunden";
 
@@ -291,7 +398,10 @@
 "Not Found" = "Nicht gefunden";
 
 /* No comment provided by engineer. */
-"Number to big!" = "Zahl zu groß!";
+"Not Requested Yet" = "Bisher nicht angefragt";
+
+/* No comment provided by engineer. */
+"Number too big" = "Nummer zu groß";
 
 /* No comment provided by engineer. */
 "Obese" = "Fettleibig";
@@ -311,14 +421,27 @@
 /* No comment provided by engineer. */
 "Password" = "Passwort";
 
+/* No comment provided by engineer. */
+"Permissions" = "Berechtigungen";
+
 /* Menu item */
 "Ping" = "Ping";
 
 /* No comment provided by engineer. */
-"Privacy Policy" = "Datenschutzrichtlinie";
+"Port" = "Port";
 
 /* No comment provided by engineer. */
-"QR-Code content" = "QR-Code Inhalt";
+"Press and hold a tool to move it around as you like" = "Drücke und halte ein Tool um er herumzuschieben";
+
+/* No comment provided by engineer. */
+"Privacy Policy" = "Datenschutzrichtlinie";
+
+/* Menu item
+   WhatsNewKit item */
+"Pulsing Flashlight" = "Stroboskop";
+
+/* No comment provided by engineer. */
+"QR-Code Content" = "QR-Code Inhalt";
 
 /* Menu item */
 "QR-Code Generator" = "QR-Code Generator";
@@ -326,8 +449,7 @@
 /* No comment provided by engineer. */
 "QR-Generator" = "QR Generator";
 
-/* Menu item
-   WhatsNewKit item */
+/* Menu item */
 "Random Letter" = "Zufälliger Buchstabe";
 
 /* Menu item */
@@ -339,6 +461,12 @@
 /* No comment provided by engineer. */
 "Receiver" = "Empfänger";
 
+/* WhatsNewKit item */
+"Remotely power on your devices" = "Schalte deiner Geräte über dein iPhone an.";
+
+/* WhatsNewKit item */
+"Reorder tools to have your favorites on top of the list" = "Sortiere Tools neu um deine Favoriten ganz oben in der Liste zu haben.";
+
 /* No comment provided by engineer. */
 "Reset" = "Zurücksetzen";
 
@@ -346,10 +474,10 @@
 "Reset Counter" = "Zähler zurücksetzen";
 
 /* No comment provided by engineer. */
-"Result" = "Ergebnis";
+"restricted" = "eingeschränkt";
 
 /* No comment provided by engineer. */
-"Result:" = "Ergebnis:";
+"Result" = "Ergebnis";
 
 /* No comment provided by engineer. */
 "RGB" = "RGB";
@@ -363,47 +491,63 @@
 /* Menu item */
 "Roman Numbers" = "Römische Zahlen";
 
-/* WhatsNewKit item */
-"Scan Barcodes, Aztec, QR-Codes and many more" = "Scanne Barcodes, Aztec, QR-Codes und viele mehr";
+/* Menu item
+   WhatsNewKit item */
+"Scrolling Text" = "Lauftext";
 
 /* No comment provided by engineer. */
-"Select a tool" = "Wähle ein Tool aus";
+"Select a Tool" = "Wähle ein Tool aus";
+
+/* No comment provided by engineer. */
+"Select Font File" = "Wähle eine Font aus";
 
 /* No comment provided by engineer. */
 "Settings" = "Einstellungen";
 
 /* No comment provided by engineer. */
-"Shake or tap to get started" = "Schütteln oder tippen zum starten";
+"Shake or Tap to Get Started" = "Schüttle oder tippe um zu starten.";
 
 /* No comment provided by engineer. */
 "Share" = "Teilen";
 
 /* No comment provided by engineer. */
-"Sides:" = "Seiten:";
+"Show Again" = "Erneut Anzeigen";
+
+/* No comment provided by engineer. */
+"Sides" = "Seiten";
 
 /* Menu item */
 "Speed" = "Geschwindigkeit";
 
 /* No comment provided by engineer. */
-"Speed Accuracy" = "Genauigkeit";
-
-/* No comment provided by engineer. */
 "SSID" = "SSID";
 
 /* No comment provided by engineer. */
-"Start Date:" = "Startdatum:";
+"Start" = "Start";
 
 /* No comment provided by engineer. */
-"Start scanner" = "Scanner starten";
+"Start Date" = "Start Datum";
 
 /* No comment provided by engineer. */
-"Stop scanner" = "Scanner stoppen";
+"Start Scanner" = "Starte Scanner";
+
+/* No comment provided by engineer. */
+"Start Scrolling" = "Starte Lauftext";
+
+/* No comment provided by engineer. */
+"Stop" = "Stopp";
+
+/* No comment provided by engineer. */
+"Stop Scanner" = "Stoppe den Scanner";
 
 /* No comment provided by engineer. */
 "Subject" = "Betreff";
 
 /* No comment provided by engineer. */
-"Support the development" = "Unterstütze die Entwicklung";
+"Support the Development" = "Unterstütze die Entwicklung";
+
+/* No comment provided by engineer. */
+"Tap to Set BPM" = "Tippe um BPM zu setzen";
 
 /* No comment provided by engineer. */
 "Text" = "Text";
@@ -415,19 +559,25 @@
 "Time" = "Zeit";
 
 /* No comment provided by engineer. */
-"To:" = "Bis:";
+"To" = "Bis";
 
 /* No comment provided by engineer. */
 "Toolbox" = "Toolbox";
 
 /* No comment provided by engineer. */
-"Toolbox does not have network permission. Please allow local network access in the settings." = "Toolbox hat keinen Netzwerkzugriff. Bitte erlaube diesen in den Einstellungen";
+"Toolbox does not have network permissions. Please allow local network access in the settings." = "Toolbox hat keine Netzwerk-Berechtigungen. Bitte erlaube den Zugriff auf das lokale Netzwerk in den Einstellungen";
+
+/* No comment provided by engineer. */
+"Toolbox uses your location to calculate your speed and your coordinates when using the corresponding tools.\n\n Toolbox needs access to your local network when using the LAN Scanner.\n\nToolbox needs access to your camera when scanning barcodes.\n\nToolbox needs acces to your microphone to measure audio levels." = "Toolbox nutzt deinen Standort zum berechnen deiner Geschwindigkeit und deiner Koordinaten, wenn du die entsprechenden Tools benutzt.\n\nToolbox braucht Zugriff auf dein lokales Netzwerk wenn du den LAN Scanner benutzt.\n\nToolbox braucht Zugriff auf deine Kamera wenn du Barcodes scannst.\n\nToolbox braucht Zugriff auf dein Mikrofon wenn du Dezibel misst.";
 
 /* No comment provided by engineer. */
 "toolbox.sivery.de" = "toolbox.sivery.de";
 
 /* No comment provided by engineer. */
 "toolbox@sivery.de" = "toolbox@sivery.de";
+
+/* No comment provided by engineer. */
+"Tools you previously hid on the app's main screen can be used here.\nIf you want to move them back to the main screen, tap and hold them.\nThe same goes for hiding them again." = "Tools, welche du zuvor versteckt hast auf dem Main-Menü können hier weiterhin benutzt werden. Wenn du die Tools wieder anzeigen lassen möchtest, tippe und halte sie. Genauso kannst du die auch wieder verstecken.";
 
 /* Barcode */
 "type" = "Art";
@@ -439,13 +589,23 @@
 "Underweight" = "Untergewichtig";
 
 /* No comment provided by engineer. */
+"Unknown" = "Unbekannt";
+
+/* No comment provided by engineer. */
 "URL" = "URL";
+
+/* WhatsNewKit item */
+"Use custom fonts in other apps" = "Nutze eigene Fonts in anderen Apps";
 
 /* No comment provided by engineer. */
 "Version" = "Version";
 
-/* WhatsNewKit item */
-"WatchOS" = "WatchOS";
+/* No comment provided by engineer. */
+"Wake" = "Aufwachen";
+
+/* Menu item
+   WhatsNewKit item */
+"Wake On Lan" = "Wake On Lan";
 
 /* No comment provided by engineer. */
 "Website" = "Website";
@@ -456,8 +616,17 @@
 /* No comment provided by engineer. */
 "WEP" = "WEP";
 
+/* No comment provided by engineer. */
+"What?" = "Was ist das?";
+
 /* WhatsNewKit item */
 "What's New in Toolbox" = "Neues in Toolbox";
+
+/* No comment provided by engineer. */
+"While Using" = "Während der Nutzung";
+
+/* No comment provided by engineer. */
+"Why?" = "Warum?";
 
 /* No comment provided by engineer. */
 "Wi-Fi" = "WLAN";
@@ -465,21 +634,48 @@
 /* No comment provided by engineer. */
 "WPA (most common)" = "WPA (am häufigsten)";
 
-/* No comment provided by engineer. */
+/* Date difference */
 "Years" = "Jahre";
 
 /* No comment provided by engineer. */
-"Years:" = "Jahre:";
+"Yes" = "Ja";
 
 /* No comment provided by engineer. */
 "You can't convert numbers bigger than 3999." = "Du kannst keine Zahlen größer als 3999 konvertieren.";
 
 /* No comment provided by engineer. */
-"You first have to allow Toolbox to access your location in order to see your coordinates." = "Du musst Toolbox den Zugriff auf deinen Standort erlauben, um deine Koordinaten zu sehen.";
+"You can't leave the Broadcast empty" = "Du kannst den Broadcast nicht leer lassen.";
 
 /* No comment provided by engineer. */
-"You first have to allow Toolbox to access your location in order to see your speed." = "Du musst Toolbox den Zugriff auf deinen Standort erlauben, um deine Geschwindigkeit zu sehen.";
+"You can't leave the MAC empty" = "Du kannst die MAC nicht leer lassen.";
 
 /* No comment provided by engineer. */
-"Your current IP:" = "Aktuelle IP:";
+"You can't leave the name empty" = "Du kannst den Namen nicht leer lassen.";
+
+/* No comment provided by engineer. */
+"You can't leave the port empty" = "Du kannst den Port nicht leer lassen";
+
+/* No comment provided by engineer. */
+"You can't use the same name twice" = "Du kannst den gleichen Namen nicht zweimal verwenden.";
+
+/* No comment provided by engineer. */
+"You first have to allow Toolbox to access your location to see your coordinates." = "Du musst Toolbox erlauben deinen Standort zu nutzen um dir deine Koordinaten anzeigen zu lassen.";
+
+/* No comment provided by engineer. */
+"You first have to allow Toolbox to access your location to see your speed." = "Du musst Toolbox erlauben deinen Standort zu nutzen um dir deine Geschwindigkeit anzeigen zu lassen.";
+
+/* No comment provided by engineer. */
+"You first have to allow Toolbox to access your microphone to measure audio levels." = "Du musst Toolbox erlauben deinen Mikrofon zu nutzen um Dezibel messen zu lassen.";
+
+/* No comment provided by engineer. */
+"You have no tools hidden" = "Du hast keine Tools versteckt.";
+
+/* No comment provided by engineer. */
+"You just hid your first tool! You can still find it in the settings under \"Hidden Tools\"." = "Du hast dein erstes Tool versteckt! Du kannst es immer noch in den Einstellungen unter \"Versteckte Tools\" finden";
+
+/* No comment provided by engineer. */
+"You need to rotate your device to enable the scrolling text." = "Du musst dein Gerät rotieren um den Lauftext anzuzeigen.";
+
+/* No comment provided by engineer. */
+"Your current IP" = "Deine aktuelle IP";
 

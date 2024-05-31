@@ -5,7 +5,10 @@
 "CFBundleName" = "Toolbox";
 
 /* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "Toolbox braucht zugriff auf deine Kamera, um Barcodes zu lesen";
+"NSCameraUsageDescription" = "Toolbox braucht Zugriff auf deine Kamera, um Barcodes zu lesen";
+
+/* Privacy - Documents Folder Usage Description */
+"NSDocumentsFolderUsageDescription" = "Toolbox braucht Zugriff auf deine Dateien, um eine Font zu installieren.";
 
 /* Privacy - Location Always and When In Use Usage Description */
 "NSLocationAlwaysAndWhenInUseUsageDescription" = "Toolbox benutzt deinen Standort um deine GPS Koordinaten und deine Geschwindigkeit zu berechnen";
@@ -15,4 +18,7 @@
 
 /* Privacy - Location When In Use Usage Description */
 "NSLocationWhenInUseUsageDescription" = "Toolbox benutzt deinen Standort um deine GPS Koordinaten und deine Geschwindigkeit zu berechnen";
+
+/* Privacy - Microphone Usage Description */
+"NSMicrophoneUsageDescription" = "Toolbox benutzt dein Mikrofon um Dezibel zu messen.";
 

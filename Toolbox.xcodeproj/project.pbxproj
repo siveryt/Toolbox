@@ -77,6 +77,7 @@
 		5EA282432C09D5AF003E735A /* green@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EA2823D2C09D5AF003E735A /* green@3x.png */; };
 		5EA282442C09D5AF003E735A /* purple@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EA2823E2C09D5AF003E735A /* purple@1x.png */; };
 		5EA282452C09D5AF003E735A /* purple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EA2823F2C09D5AF003E735A /* purple@2x.png */; };
+		5EA282472C09DE91003E735A /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5EA282462C09DE91003E735A /* Localizable.xcstrings */; };
 		5EB6030628B22C1B00133561 /* ToastSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5EB6030528B22C1B00133561 /* ToastSwiftUI */; };
 		5EB6469A280580FA000D4243 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5EB64699280580FA000D4243 /* Settings.bundle */; };
 		5EB7897727F9CCA900F07140 /* QRGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB7897627F9CCA900F07140 /* QRGenerator.swift */; };
@@ -218,6 +219,7 @@
 		5EA2823D2C09D5AF003E735A /* green@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "green@3x.png"; sourceTree = "<group>"; };
 		5EA2823E2C09D5AF003E735A /* purple@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "purple@1x.png"; sourceTree = "<group>"; };
 		5EA2823F2C09D5AF003E735A /* purple@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "purple@2x.png"; sourceTree = "<group>"; };
+		5EA282462C09DE91003E735A /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		5EB252B92B9BBFC800CF2A18 /* Buildnumber.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Buildnumber.xcconfig; sourceTree = "<group>"; };
 		5EB64699280580FA000D4243 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		5EB7897627F9CCA900F07140 /* QRGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRGenerator.swift; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 		5E9ABFD02B9CB840005448FB /* diceWidget */ = {
 			isa = PBXGroup;
 			children = (
+				5EA282462C09DE91003E735A /* Localizable.xcstrings */,
 				5E9ABFE72B9CEFD4005448FB /* Faces.swift */,
 				5E9ABFE82B9CEFD4005448FB /* FaceCountAppEnum.swift */,
 				5E9ABFD12B9CB840005448FB /* diceWidgetBundle.swift */,
@@ -675,6 +678,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EA282472C09DE91003E735A /* Localizable.xcstrings in Resources */,
 				5E9ABFD82B9CB843005448FB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -142,7 +142,7 @@ extension App: WhatsNewCollectionProvider {
             )
             ,
             secondaryAction: .init(
-                title: "Learn more",
+                title: .init(stringLiteral:NSLocalizedString("Learn more", comment: "WhatsNewKit item")),
                 action: .openURL(.init(string: "https://toolbox.sivery.de/#version1.4"))
             )
         )

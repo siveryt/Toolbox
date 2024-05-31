@@ -1,0 +1,93 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+
+    },
+    "4" : {
+
+    },
+    "6" : {
+
+    },
+    "8" : {
+
+    },
+    "10" : {
+
+    },
+    "12" : {
+
+    },
+    "20" : {
+
+    },
+    "Face Count" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seitenanzahl"
+          }
+        }
+      }
+    },
+    "Faces" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seiten"
+          }
+        }
+      }
+    },
+    "Just to confirm, you wanted ‘%@’?" : {
+
+    },
+    "Log a drink and its caffeine amount." : {
+
+    },
+    "Reroll Indicator" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"Am Würfeln\"-Anzeige"
+          }
+        }
+      }
+    },
+    "Rerolling" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Am Würfeln"
+          }
+        }
+      }
+    },
+    "Roll Dice" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Würfeln"
+          }
+        }
+      }
+    },
+    "There are %lld options matching ‘%@’." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "There are %1$lld options matching ‘%2$@’."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
