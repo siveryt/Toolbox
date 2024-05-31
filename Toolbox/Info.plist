@@ -27,6 +27,34 @@
 					<string>black</string>
 				</array>
 			</dict>
+			<key>blue</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>blue</string>
+				</array>
+			</dict>
+			<key>green</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>green</string>
+				</array>
+			</dict>
+			<key>pink</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>pink</string>
+				</array>
+			</dict>
+			<key>purple</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>purple</string>
+				</array>
+			</dict>
 			<key>whiteOnly</key>
 			<dict>
 				<key>CFBundleIconFiles</key>

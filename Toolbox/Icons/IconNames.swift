@@ -16,7 +16,7 @@ class IconNames: ObservableObject {
     init() {
         getAlternateIconNames()
         print(iconNames)
-        iconNames = [nil, Optional("whitegradient_red"), Optional("whiteOnly"), Optional("Blueish_red"), Optional("Blueish_white"), Optional("black") ]
+        iconNames = [nil, Optional("whitegradient_red"), Optional("whiteOnly"), Optional("Blueish_red"), Optional("Blueish_white"), Optional("black"), Optional("blue"), Optional("pink"), Optional("green"), Optional("purple") ]
         if let currentIcon = UIApplication.shared.alternateIconName{
             self.currentIndex = iconNames.firstIndex(of: currentIcon) ?? 0
         }

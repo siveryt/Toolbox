@@ -65,6 +65,18 @@
 		5E9ABFE92B9CEFD4005448FB /* Faces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9ABFE72B9CEFD4005448FB /* Faces.swift */; };
 		5E9ABFEA2B9CEFD4005448FB /* FaceCountAppEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9ABFE82B9CEFD4005448FB /* FaceCountAppEnum.swift */; };
 		5E9ABFEC2B9CF8B0005448FB /* TapIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9ABFEB2B9CF8B0005448FB /* TapIntent.swift */; };
+		5EA282342C09D359003E735A /* blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EA2822E2C09D358003E735A /* blue@2x.png */; };
+		5EA282352C09D359003E735A /* pink@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EA2822F2C09D359003E735A /* pink@1x.png */; };
+		5EA282362C09D359003E735A /* pink@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EA282302C09D359003E735A /* pink@2x.png */; };
+		5EA282372C09D359003E735A /* blue@3.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EA282312C09D359003E735A /* blue@3.png */; };
+		5EA282382C09D359003E735A /* pink@3.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EA282322C09D359003E735A /* pink@3.png */; };
+		5EA282392C09D359003E735A /* blue@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EA282332C09D359003E735A /* blue@1x.png */; };
+		5EA282402C09D5AF003E735A /* green@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EA2823A2C09D5AF003E735A /* green@1x.png */; };
+		5EA282412C09D5AF003E735A /* green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EA2823B2C09D5AF003E735A /* green@2x.png */; };
+		5EA282422C09D5AF003E735A /* purple@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EA2823C2C09D5AF003E735A /* purple@3x.png */; };
+		5EA282432C09D5AF003E735A /* green@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EA2823D2C09D5AF003E735A /* green@3x.png */; };
+		5EA282442C09D5AF003E735A /* purple@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EA2823E2C09D5AF003E735A /* purple@1x.png */; };
+		5EA282452C09D5AF003E735A /* purple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EA2823F2C09D5AF003E735A /* purple@2x.png */; };
 		5EB6030628B22C1B00133561 /* ToastSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5EB6030528B22C1B00133561 /* ToastSwiftUI */; };
 		5EB6469A280580FA000D4243 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5EB64699280580FA000D4243 /* Settings.bundle */; };
 		5EB7897727F9CCA900F07140 /* QRGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB7897627F9CCA900F07140 /* QRGenerator.swift */; };
@@ -194,6 +206,18 @@
 		5E9ABFE72B9CEFD4005448FB /* Faces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Faces.swift; sourceTree = "<group>"; };
 		5E9ABFE82B9CEFD4005448FB /* FaceCountAppEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceCountAppEnum.swift; sourceTree = "<group>"; };
 		5E9ABFEB2B9CF8B0005448FB /* TapIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapIntent.swift; sourceTree = "<group>"; };
+		5EA2822E2C09D358003E735A /* blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue@2x.png"; sourceTree = "<group>"; };
+		5EA2822F2C09D359003E735A /* pink@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pink@1x.png"; sourceTree = "<group>"; };
+		5EA282302C09D359003E735A /* pink@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pink@2x.png"; sourceTree = "<group>"; };
+		5EA282312C09D359003E735A /* blue@3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue@3.png"; sourceTree = "<group>"; };
+		5EA282322C09D359003E735A /* pink@3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pink@3.png"; sourceTree = "<group>"; };
+		5EA282332C09D359003E735A /* blue@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue@1x.png"; sourceTree = "<group>"; };
+		5EA2823A2C09D5AF003E735A /* green@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "green@1x.png"; sourceTree = "<group>"; };
+		5EA2823B2C09D5AF003E735A /* green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "green@2x.png"; sourceTree = "<group>"; };
+		5EA2823C2C09D5AF003E735A /* purple@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "purple@3x.png"; sourceTree = "<group>"; };
+		5EA2823D2C09D5AF003E735A /* green@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "green@3x.png"; sourceTree = "<group>"; };
+		5EA2823E2C09D5AF003E735A /* purple@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "purple@1x.png"; sourceTree = "<group>"; };
+		5EA2823F2C09D5AF003E735A /* purple@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "purple@2x.png"; sourceTree = "<group>"; };
 		5EB252B92B9BBFC800CF2A18 /* Buildnumber.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Buildnumber.xcconfig; sourceTree = "<group>"; };
 		5EB64699280580FA000D4243 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		5EB7897627F9CCA900F07140 /* QRGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRGenerator.swift; sourceTree = "<group>"; };
@@ -270,6 +294,18 @@
 		5E0AA7F02837BA6D006CD0EA /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				5EA282332C09D359003E735A /* blue@1x.png */,
+				5EA2822E2C09D358003E735A /* blue@2x.png */,
+				5EA282312C09D359003E735A /* blue@3.png */,
+				5EA2822F2C09D359003E735A /* pink@1x.png */,
+				5EA282302C09D359003E735A /* pink@2x.png */,
+				5EA282322C09D359003E735A /* pink@3.png */,
+				5EA2823A2C09D5AF003E735A /* green@1x.png */,
+				5EA2823B2C09D5AF003E735A /* green@2x.png */,
+				5EA2823D2C09D5AF003E735A /* green@3x.png */,
+				5EA2823E2C09D5AF003E735A /* purple@1x.png */,
+				5EA2823F2C09D5AF003E735A /* purple@2x.png */,
+				5EA2823C2C09D5AF003E735A /* purple@3x.png */,
 				5E72B5AC283BB9F300DEAD50 /* black@1x.png */,
 				5E72B5AD283BB9F300DEAD50 /* black@2x.png */,
 				5E72B5AE283BB9F300DEAD50 /* black@3x.png */,
@@ -283,8 +319,8 @@
 				5E72B594283BB91200DEAD50 /* Blueish_white@2x.png */,
 				5E72B596283BB91300DEAD50 /* Blueish_white@3x.png */,
 				5E0AA8032837BF59006CD0EA /* whitegradient_red@3x.png */,
-				5E0AA8052837BF59006CD0EA /* whitegradient_red@2x.png */,
 				5E0AA8042837BF59006CD0EA /* whitegradient_red@1x.png */,
+				5E0AA8052837BF59006CD0EA /* whitegradient_red@2x.png */,
 				5E0AA8092837BFB7006CD0EA /* IconNames.swift */,
 			);
 			path = Icons;
@@ -647,27 +683,39 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EA282342C09D359003E735A /* blue@2x.png in Resources */,
 				5E0AA8082837BF59006CD0EA /* whitegradient_red@2x.png in Resources */,
+				5EA282452C09D5AF003E735A /* purple@2x.png in Resources */,
 				5E35DBE12917C5BD00D2FC8A /* InfoPlist.strings in Resources */,
+				5EA282432C09D5AF003E735A /* green@3x.png in Resources */,
+				5EA282422C09D5AF003E735A /* purple@3x.png in Resources */,
 				5EDFF1E927E7AE4D005BBA3C /* LaunchScreen.storyboard in Resources */,
 				5E72B598283BB91300DEAD50 /* Blueish_white@1x.png in Resources */,
 				5E72B5B1283BB9F300DEAD50 /* black@3x.png in Resources */,
 				5E72B5AB283BB9BC00DEAD50 /* whiteOnly@3x.png in Resources */,
 				5E1644F22C03754800EEDFFD /* tick.wav in Resources */,
 				5E72B5AA283BB9BC00DEAD50 /* whiteOnly@1x.png in Resources */,
+				5EA282412C09D5AF003E735A /* green@2x.png in Resources */,
 				5E72B5B0283BB9F300DEAD50 /* black@2x.png in Resources */,
+				5EA282382C09D359003E735A /* pink@3.png in Resources */,
 				5E72B59F283BB94000DEAD50 /* Blueish_red@2x.png in Resources */,
+				5EA282442C09D5AF003E735A /* purple@1x.png in Resources */,
 				5E72B5A9283BB9BC00DEAD50 /* whiteOnly@2x.png in Resources */,
 				5E72B599283BB91300DEAD50 /* Blueish_white@3x.png in Resources */,
 				5EB6469A280580FA000D4243 /* Settings.bundle in Resources */,
 				5E35DBE42917C5BD00D2FC8A /* Localizable.strings in Resources */,
 				5E72B59D283BB94000DEAD50 /* Blueish_red@3x.png in Resources */,
+				5EA282372C09D359003E735A /* blue@3.png in Resources */,
 				5E72B5AF283BB9F300DEAD50 /* black@1x.png in Resources */,
 				5E0AA8062837BF59006CD0EA /* whitegradient_red@3x.png in Resources */,
 				5E72B597283BB91300DEAD50 /* Blueish_white@2x.png in Resources */,
+				5EA282402C09D5AF003E735A /* green@1x.png in Resources */,
 				5E72B59E283BB94000DEAD50 /* Blueish_red@1x.png in Resources */,
 				5EC7B22627D7978200699FD3 /* Preview Assets.xcassets in Resources */,
 				5EC7B22327D7978200699FD3 /* Assets.xcassets in Resources */,
+				5EA282362C09D359003E735A /* pink@2x.png in Resources */,
+				5EA282392C09D359003E735A /* blue@1x.png in Resources */,
+				5EA282352C09D359003E735A /* pink@1x.png in Resources */,
 				5E0AA8072837BF59006CD0EA /* whitegradient_red@1x.png in Resources */,
 				5E1DB0F62C022AF800D59AAD /* tock.wav in Resources */,
 			);
