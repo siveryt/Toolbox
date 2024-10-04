@@ -341,10 +341,10 @@
       "comment" : "LAN Scanner"
     },
     "MAC" : {
-
+      "shouldTranslate" : false
     },
     "Made with ❤️ by Sivery" : {
-
+      "shouldTranslate" : false
     },
     "Mail" : {
 
@@ -368,7 +368,7 @@
 
     },
     "MMXXII" : {
-
+      "shouldTranslate" : false
     },
     "Months" : {
       "comment" : "Date difference"
@@ -506,10 +506,10 @@
 
     },
     "RGB" : {
-
+      "shouldTranslate" : false
     },
     "RGBA" : {
-
+      "shouldTranslate" : false
     },
     "Roll Dice" : {
 
@@ -548,7 +548,7 @@
       "comment" : "Menu item"
     },
     "SSID" : {
-
+      "shouldTranslate" : false
     },
     "Start" : {
 
@@ -609,10 +609,10 @@
 
     },
     "toolbox.sivery.de" : {
-
+      "shouldTranslate" : false
     },
     "toolbox@sivery.de" : {
-
+      "shouldTranslate" : false
     },
     "Tools you previously hid on the app's main screen can be used here.\nIf you want to move them back to the main screen, tap and hold them.\nThe same goes for hiding them again." : {
 
