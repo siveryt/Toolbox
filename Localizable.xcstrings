@@ -1,0 +1,721 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+
+    },
+    "-" : {
+      "shouldTranslate" : false
+    },
+    "+" : {
+      "shouldTranslate" : false
+    },
+    "00:1A:2B:3C:4D:5E" : {
+      "shouldTranslate" : false
+    },
+    "1" : {
+      "shouldTranslate" : false
+    },
+    "4" : {
+      "shouldTranslate" : false
+    },
+    "6" : {
+      "shouldTranslate" : false
+    },
+    "8" : {
+      "shouldTranslate" : false
+    },
+    "9" : {
+      "shouldTranslate" : false
+    },
+    "10" : {
+      "shouldTranslate" : false
+    },
+    "12" : {
+      "shouldTranslate" : false
+    },
+    "20" : {
+      "shouldTranslate" : false
+    },
+    "255.255.255.255" : {
+      "shouldTranslate" : false
+    },
+    "2022" : {
+      "shouldTranslate" : false
+    },
+    "12345678" : {
+      "shouldTranslate" : false
+    },
+    "Accuracy" : {
+
+    },
+    "Add new Device" : {
+
+    },
+    "Again" : {
+
+    },
+    "Allowed" : {
+
+    },
+    "Altitude" : {
+
+    },
+    "Always" : {
+
+    },
+    "App Icon" : {
+
+    },
+    "Arabic" : {
+
+    },
+    "Are you sure you want to start the device?" : {
+
+    },
+    "Are you sure, you want to clear the app's data?" : {
+
+    },
+    "Are you sure, you want to reset the counter?" : {
+
+    },
+    "Barcode" : {
+
+    },
+    "Barcode Scanner" : {
+      "comment" : "Menu item"
+    },
+    "Beats per measure" : {
+
+    },
+    "Beats per Measure" : {
+
+    },
+    "Beats per Minute" : {
+
+    },
+    "BMI" : {
+      "comment" : "Menu item"
+    },
+    "BPM" : {
+
+    },
+    "brand" : {
+      "comment" : "LAN Scanner"
+    },
+    "Broadcast" : {
+
+    },
+    "Build" : {
+
+    },
+    "Camera" : {
+
+    },
+    "Cancel" : {
+
+    },
+    "Check Again" : {
+
+    },
+    "Choose Color" : {
+
+    },
+    "Click on the %@ to scan your first barcode" : {
+
+    },
+    "cm" : {
+
+    },
+    "Color Picker" : {
+      "comment" : "Menu item"
+    },
+    "Colorcodes" : {
+
+    },
+    "content" : {
+      "comment" : "Barcode"
+    },
+    "Continue" : {
+      "comment" : "WhatsNewKit item"
+    },
+    "Contribute" : {
+
+    },
+    "Coordinate String" : {
+
+    },
+    "Coordinates" : {
+      "comment" : "Menu item"
+    },
+    "Copied" : {
+      "comment" : "Copy toast"
+    },
+    "Counter" : {
+      "comment" : "Menu item"
+    },
+    "date" : {
+      "comment" : "Barcode"
+    },
+    "Date Difference" : {
+      "comment" : "Menu item"
+    },
+    "Days" : {
+      "comment" : "Date difference"
+    },
+    "Decibel Meter" : {
+      "comment" : "Menu item\nWhatsNewKit item"
+    },
+    "Decimal Degrees" : {
+      "comment" : "GPS"
+    },
+    "Delete" : {
+
+    },
+    "Delete Data" : {
+
+    },
+    "Denied" : {
+
+    },
+    "Device Name" : {
+
+    },
+    "Dice" : {
+      "comment" : "Menu item"
+    },
+    "Dice Count" : {
+
+    },
+    "Dice Settings" : {
+
+    },
+    "Difference" : {
+
+    },
+    "Disable Auto Lock" : {
+
+    },
+    "Display" : {
+
+    },
+    "Display text banners to share important messages" : {
+      "comment" : "WhatsNewKit item"
+    },
+    "DMS" : {
+      "comment" : "GPS"
+    },
+    "Domain" : {
+
+    },
+    "Domain Resolver" : {
+      "comment" : "Menu item"
+    },
+    "Don't Reset" : {
+
+    },
+    "Done" : {
+
+    },
+    "Edit" : {
+
+    },
+    "Emit light pulses for enhanced visibility" : {
+      "comment" : "WhatsNewKit item"
+    },
+    "Enable camera access in settings to use the Barcode Scanner." : {
+
+    },
+    "Enabled" : {
+
+    },
+    "Encryption" : {
+
+    },
+    "End Date" : {
+
+    },
+    "Face Count" : {
+
+    },
+    "Faces" : {
+
+    },
+    "Feedback" : {
+
+    },
+    "Font Installer" : {
+      "comment" : "Menu item\nWhatsNewKit item"
+    },
+    "From" : {
+
+    },
+    "Got It!" : {
+
+    },
+    "Great Feature Idea!" : {
+
+    },
+    "Height" : {
+
+    },
+    "HEX" : {
+
+    },
+    "Hidden" : {
+
+    },
+    "Hidden Tools" : {
+
+    },
+    "Hide" : {
+
+    },
+    "Hide Tools" : {
+      "comment" : "WhatsNewKit item"
+    },
+    "Hint: You can hold one dice to lock it" : {
+
+    },
+    "Host" : {
+
+    },
+    "hostname" : {
+      "comment" : "LAN Scanner"
+    },
+    "inch" : {
+
+    },
+    "Info" : {
+
+    },
+    "Install Font" : {
+
+    },
+    "ip" : {
+      "comment" : "LAN Scanner"
+    },
+    "IP-Checker" : {
+      "comment" : "Menu item"
+    },
+    "Just to confirm, you wanted ‘%@’?" : {
+
+    },
+    "Keep perfect time with adjustable BPM and various time signatures" : {
+      "comment" : "WhatsNewKit item"
+    },
+    "kg" : {
+
+    },
+    "LAN Scanner" : {
+      "comment" : "Menu item"
+    },
+    "Last updated" : {
+
+    },
+    "Latitude" : {
+
+    },
+    "lb" : {
+
+    },
+    "Learn more" : {
+      "comment" : "WhatsNewKit item"
+    },
+    "Live Clock" : {
+      "comment" : "Menu item"
+    },
+    "Local Network" : {
+
+    },
+    "Location" : {
+
+    },
+    "Log a drink and its caffeine amount." : {
+
+    },
+    "Longitude" : {
+
+    },
+    "mac" : {
+      "comment" : "LAN Scanner"
+    },
+    "MAC" : {
+
+    },
+    "Made with ❤️ by Sivery" : {
+
+    },
+    "Mail" : {
+
+    },
+    "Mailing list" : {
+
+    },
+    "Make sure you entered in the right value" : {
+
+    },
+    "Max" : {
+
+    },
+    "Measure sound levels to monitor noise" : {
+      "comment" : "WhatsNewKit item"
+    },
+    "Metronome" : {
+      "comment" : "Menu item\nWhatsNewKit item"
+    },
+    "Microphone" : {
+
+    },
+    "MMXXII" : {
+
+    },
+    "Months" : {
+      "comment" : "Date difference"
+    },
+    "More Information" : {
+
+    },
+    "Move Tools" : {
+      "comment" : "WhatsNewKit item"
+    },
+    "Move Tools Around" : {
+
+    },
+    "Move tools you don't use out of your way" : {
+      "comment" : "WhatsNewKit item"
+    },
+    "Name" : {
+
+    },
+    "Network Name" : {
+
+    },
+    "New Number" : {
+
+    },
+    "No Encryption" : {
+
+    },
+    "None" : {
+
+    },
+    "Normal weight" : {
+
+    },
+    "Not Determined" : {
+
+    },
+    "Not found" : {
+      "comment" : "IP-Checker not found"
+    },
+    "Not Found" : {
+      "comment" : "Domain Not found"
+    },
+    "Not Requested Yet" : {
+
+    },
+    "Number too big" : {
+
+    },
+    "Obese" : {
+
+    },
+    "Open AppStore" : {
+
+    },
+    "Open Settings" : {
+
+    },
+    "OpenSource-Licenses" : {
+
+    },
+    "Options" : {
+
+    },
+    "Overweight" : {
+
+    },
+    "Password" : {
+
+    },
+    "Permissions" : {
+
+    },
+    "Ping" : {
+      "comment" : "Menu item"
+    },
+    "Port" : {
+
+    },
+    "Press and hold a tool to move it around as you like" : {
+
+    },
+    "Privacy Policy" : {
+
+    },
+    "Pulsing Flashlight" : {
+      "comment" : "Menu item\nWhatsNewKit item"
+    },
+    "QR-Code Content" : {
+
+    },
+    "QR-Code Generator" : {
+      "comment" : "Menu item"
+    },
+    "QR-Generator" : {
+
+    },
+    "Random Letter" : {
+      "comment" : "Menu item"
+    },
+    "Random Number" : {
+      "comment" : "Menu item"
+    },
+    "Rate app" : {
+
+    },
+    "Receiver" : {
+
+    },
+    "Remotely power on your devices" : {
+      "comment" : "WhatsNewKit item"
+    },
+    "Reorder tools to have your favorites on top of the list" : {
+      "comment" : "WhatsNewKit item"
+    },
+    "Reroll Indicator" : {
+
+    },
+    "Rerolling" : {
+
+    },
+    "Reset" : {
+
+    },
+    "Reset Counter" : {
+
+    },
+    "Reset counter?" : {
+
+    },
+    "restricted" : {
+
+    },
+    "Result" : {
+
+    },
+    "RGB" : {
+
+    },
+    "RGBA" : {
+
+    },
+    "Roll Dice" : {
+
+    },
+    "Roman" : {
+
+    },
+    "Roman Numbers" : {
+      "comment" : "Menu item"
+    },
+    "Scrolling Text" : {
+      "comment" : "Menu item\nWhatsNewKit item"
+    },
+    "Select a Tool" : {
+
+    },
+    "Select Font File" : {
+
+    },
+    "Settings" : {
+
+    },
+    "Shake or Tap to Get Started" : {
+
+    },
+    "Share" : {
+
+    },
+    "Show Again" : {
+
+    },
+    "Sides" : {
+
+    },
+    "Speed" : {
+      "comment" : "Menu item"
+    },
+    "SSID" : {
+
+    },
+    "Start" : {
+
+    },
+    "Start Date" : {
+
+    },
+    "Start Scanner" : {
+
+    },
+    "Start Scrolling" : {
+
+    },
+    "Stop" : {
+
+    },
+    "Stop Scanner" : {
+
+    },
+    "Subject" : {
+
+    },
+    "Support the Development" : {
+
+    },
+    "Tap to Set BPM" : {
+
+    },
+    "Text" : {
+
+    },
+    "The app will close after deleting the data. You can instantly reopen it." : {
+
+    },
+    "There are %lld options matching ‘%@’." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "There are %1$lld options matching ‘%2$@’."
+          }
+        }
+      }
+    },
+    "Time" : {
+
+    },
+    "To" : {
+
+    },
+    "Toolbox" : {
+
+    },
+    "Toolbox does not have network permissions. Please allow local network access in the settings." : {
+
+    },
+    "Toolbox uses your location to calculate your speed and your coordinates when using the corresponding tools.\n\n Toolbox needs access to your local network when using the LAN Scanner.\n\nToolbox needs access to your camera when scanning barcodes.\n\nToolbox needs acces to your microphone to measure audio levels." : {
+
+    },
+    "toolbox.sivery.de" : {
+
+    },
+    "toolbox@sivery.de" : {
+
+    },
+    "Tools you previously hid on the app's main screen can be used here.\nIf you want to move them back to the main screen, tap and hold them.\nThe same goes for hiding them again." : {
+
+    },
+    "type" : {
+      "comment" : "Barcode"
+    },
+    "Type" : {
+
+    },
+    "Underweight" : {
+
+    },
+    "Unknown" : {
+
+    },
+    "URL" : {
+
+    },
+    "Use custom fonts in other apps" : {
+      "comment" : "WhatsNewKit item"
+    },
+    "Version" : {
+
+    },
+    "Wake" : {
+
+    },
+    "Wake On Lan" : {
+      "comment" : "Menu item\nWhatsNewKit item"
+    },
+    "Website" : {
+
+    },
+    "Weight" : {
+
+    },
+    "WEP" : {
+
+    },
+    "What?" : {
+
+    },
+    "What's New in Toolbox" : {
+      "comment" : "WhatsNewKit item"
+    },
+    "While Using" : {
+
+    },
+    "Why?" : {
+
+    },
+    "Wi-Fi" : {
+
+    },
+    "WPA (most common)" : {
+
+    },
+    "Years" : {
+      "comment" : "Date difference"
+    },
+    "Yes" : {
+
+    },
+    "You can't convert numbers bigger than 3999." : {
+
+    },
+    "You can't leave the Broadcast empty" : {
+
+    },
+    "You can't leave the MAC empty" : {
+
+    },
+    "You can't leave the name empty" : {
+
+    },
+    "You can't leave the port empty" : {
+
+    },
+    "You can't use the same name twice" : {
+
+    },
+    "You first have to allow Toolbox to access your location to see your coordinates." : {
+
+    },
+    "You first have to allow Toolbox to access your location to see your speed." : {
+
+    },
+    "You first have to allow Toolbox to access your microphone to measure audio levels." : {
+
+    },
+    "You have no tools hidden" : {
+
+    },
+    "You just hid your first tool! You can still find it in the settings under \"Hidden Tools\"." : {
+
+    },
+    "You need to rotate your device to enable the scrolling text." : {
+
+    },
+    "Your current IP" : {
+
+    }
+  },
+  "version" : "1.0"
+}
