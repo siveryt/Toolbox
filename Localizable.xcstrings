@@ -2,7 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "" : {
-
+      "shouldTranslate" : false
     },
     "-" : {
       "shouldTranslate" : false
@@ -47,298 +47,1003 @@
       "shouldTranslate" : false
     },
     "Accuracy" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genauigkeit"
+          }
+        }
+      }
     },
     "Add new Device" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neues Gerät Hinzufügen"
+          }
+        }
+      }
     },
     "Again" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nochmal"
+          }
+        }
+      }
     },
     "Allowed" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erlaubt"
+          }
+        }
+      }
     },
     "Altitude" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Höhenmeter"
+          }
+        }
+      }
     },
     "Always" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Immer"
+          }
+        }
+      }
     },
     "App Icon" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Icon"
+          }
+        }
+      }
     },
     "Arabic" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arabisch"
+          }
+        }
+      }
     },
     "Are you sure you want to start the device?" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bist du dir sicher, dass du das Gerät starten möchtest?"
+          }
+        }
+      }
     },
     "Are you sure, you want to clear the app's data?" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bist du dir sicher, dass du alle Daten zurücksetzen möchtest?"
+          }
+        }
+      }
     },
     "Are you sure, you want to reset the counter?" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bist du dir sicher, dass du den Zähler zurücksetzen möchtest?"
+          }
+        }
+      }
     },
     "Barcode" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Barcode"
+          }
+        }
+      }
     },
     "Barcode Scanner" : {
-      "comment" : "Menu item"
+      "comment" : "Menu item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Barcode Scanner"
+          }
+        }
+      }
     },
     "Beats per measure" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beats pro Takt"
+          }
+        }
+      }
     },
     "Beats per Measure" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beats pro Takt"
+          }
+        }
+      }
     },
     "Beats per Minute" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beats pro Minute"
+          }
+        }
+      }
     },
     "BMI" : {
-      "comment" : "Menu item"
+      "comment" : "Menu item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BMI"
+          }
+        }
+      }
     },
     "BPM" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BPM"
+          }
+        }
+      }
     },
     "brand" : {
-      "comment" : "LAN Scanner"
+      "comment" : "LAN Scanner",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hersteller"
+          }
+        }
+      }
     },
     "Broadcast" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Broadcast"
+          }
+        }
+      }
     },
     "Build" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Build"
+          }
+        }
+      }
     },
     "Camera" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kamera"
+          }
+        }
+      }
     },
     "Cancel" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abbrechen"
+          }
+        }
+      }
     },
     "Check Again" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erneut überprüfen"
+          }
+        }
+      }
     },
     "Choose Color" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle Farbe"
+          }
+        }
+      }
     },
     "Click on the %@ to scan your first barcode" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drücke auf %@ um deinen ersten Barcode zu scannen."
+          }
+        }
+      }
     },
     "cm" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "cm"
+          }
+        }
+      }
     },
     "Color Picker" : {
-      "comment" : "Menu item"
+      "comment" : "Menu item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Farbwähler"
+          }
+        }
+      }
     },
     "Colorcodes" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Farbcodes"
+          }
+        }
+      }
     },
     "content" : {
-      "comment" : "Barcode"
+      "comment" : "Barcode",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inhalt"
+          }
+        }
+      }
     },
     "Continue" : {
-      "comment" : "WhatsNewKit item"
+      "comment" : "WhatsNewKit item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fortfahren"
+          }
+        }
+      }
     },
     "Contribute" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beitragen"
+          }
+        }
+      }
     },
     "Coordinate String" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gesamte Koordinaten"
+          }
+        }
+      }
     },
     "Coordinates" : {
-      "comment" : "Menu item"
+      "comment" : "Menu item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koordinaten"
+          }
+        }
+      }
     },
     "Copied" : {
-      "comment" : "Copy toast"
+      "comment" : "Copy toast",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kopiert"
+          }
+        }
+      }
     },
     "Counter" : {
-      "comment" : "Menu item"
+      "comment" : "Menu item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zähler"
+          }
+        }
+      }
     },
     "date" : {
-      "comment" : "Barcode"
+      "comment" : "Barcode",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datum"
+          }
+        }
+      }
     },
     "Date Difference" : {
-      "comment" : "Menu item"
+      "comment" : "Menu item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datumsunterschied"
+          }
+        }
+      }
     },
     "Days" : {
-      "comment" : "Date difference"
+      "comment" : "Date difference",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tage"
+          }
+        }
+      }
     },
     "Decibel Meter" : {
-      "comment" : "Menu item\nWhatsNewKit item"
+      "comment" : "Menu item\nWhatsNewKit item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dezibelmesser"
+          }
+        }
+      }
     },
     "Decimal Degrees" : {
-      "comment" : "GPS"
+      "comment" : "GPS",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dezimalgrade"
+          }
+        }
+      }
     },
     "Delete" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Löschen"
+          }
+        }
+      }
     },
     "Delete Data" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daten löschen"
+          }
+        }
+      }
     },
     "Denied" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verweigert"
+          }
+        }
+      }
     },
     "Device Name" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gerätename"
+          }
+        }
+      }
     },
     "Dice" : {
-      "comment" : "Menu item"
+      "comment" : "Menu item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Würfel"
+          }
+        }
+      }
     },
     "Dice Count" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Würfelanzahl"
+          }
+        }
+      }
     },
     "Dice Settings" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Würfel Einstellungen"
+          }
+        }
+      }
     },
     "Difference" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unterschied"
+          }
+        }
+      }
     },
     "Disable Auto Lock" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatische Sperre deaktivieren"
+          }
+        }
+      }
     },
     "Display" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anzeige"
+          }
+        }
+      }
     },
     "Display text banners to share important messages" : {
-      "comment" : "WhatsNewKit item"
+      "comment" : "WhatsNewKit item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeige Lauftexte um lange Nachrichten zu teilen"
+          }
+        }
+      }
     },
     "DMS" : {
-      "comment" : "GPS"
+      "comment" : "GPS",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grad, Minuten, Sekunden"
+          }
+        }
+      }
     },
     "Domain" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domain"
+          }
+        }
+      }
     },
     "Domain Resolver" : {
-      "comment" : "Menu item"
+      "comment" : "Menu item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domain auflösen"
+          }
+        }
+      }
     },
     "Don't Reset" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicht zurücksetzen"
+          }
+        }
+      }
     },
     "Done" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fertig"
+          }
+        }
+      }
     },
     "Edit" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bearbeiten"
+          }
+        }
+      }
     },
     "Emit light pulses for enhanced visibility" : {
-      "comment" : "WhatsNewKit item"
+      "comment" : "WhatsNewKit item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starte das Stroboskop um besser zu erkennen zu sein"
+          }
+        }
+      }
     },
     "Enable camera access in settings to use the Barcode Scanner." : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktiviere den Kamerazugriff, um den Barcode Scanner zu nutzen."
+          }
+        }
+      }
     },
     "Enabled" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktiviert"
+          }
+        }
+      }
     },
     "Encryption" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verschlüsselung"
+          }
+        }
+      }
     },
     "End Date" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enddatum"
+          }
+        }
+      }
     },
     "Face Count" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seitenanzahl"
+          }
+        }
+      }
     },
     "Faces" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seiten"
+          }
+        }
+      }
     },
     "Feedback" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feedback"
+          }
+        }
+      }
     },
     "Font Installer" : {
-      "comment" : "Menu item\nWhatsNewKit item"
+      "comment" : "Menu item\nWhatsNewKit item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fonts Installieren"
+          }
+        }
+      }
     },
     "From" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Von"
+          }
+        }
+      }
     },
     "Got It!" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verstanden"
+          }
+        }
+      }
     },
     "Great Feature Idea!" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tolle Feature-Idee"
+          }
+        }
+      }
     },
     "Height" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Höhe"
+          }
+        }
+      }
     },
     "HEX" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HEX"
+          }
+        }
+      }
     },
     "Hidden" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versteckt"
+          }
+        }
+      }
     },
     "Hidden Tools" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versteckte Tools"
+          }
+        }
+      }
     },
     "Hide" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verstecken"
+          }
+        }
+      }
     },
     "Hide Tools" : {
-      "comment" : "WhatsNewKit item"
+      "comment" : "WhatsNewKit item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verstecke Tools"
+          }
+        }
+      }
     },
     "Hint: You can hold one dice to lock it" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hinweis: Halte einen Würfel gedrückt, um ihn zu sperren."
+          }
+        }
+      }
     },
     "Host" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Host"
+          }
+        }
+      }
     },
     "hostname" : {
-      "comment" : "LAN Scanner"
+      "comment" : "LAN Scanner",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "hostname"
+          }
+        }
+      }
     },
     "inch" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zoll"
+          }
+        }
+      }
     },
     "Info" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Info"
+          }
+        }
+      }
     },
     "Install Font" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Font Installieren"
+          }
+        }
+      }
     },
     "ip" : {
-      "comment" : "LAN Scanner"
+      "comment" : "LAN Scanner",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ip"
+          }
+        }
+      }
     },
     "IP-Checker" : {
-      "comment" : "Menu item"
+      "comment" : "Menu item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IP-Adresse"
+          }
+        }
+      }
     },
     "Just to confirm, you wanted ‘%@’?" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nur um sicher zu gehen, du wolltest ‚%@’?"
+          }
+        }
+      }
     },
     "Keep perfect time with adjustable BPM and various time signatures" : {
-      "comment" : "WhatsNewKit item"
+      "comment" : "WhatsNewKit item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bleibe im Takt mit verstellbaren BPM und verschiedenen Taktarten."
+          }
+        }
+      }
     },
     "kg" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kg"
+          }
+        }
+      }
     },
     "LAN Scanner" : {
-      "comment" : "Menu item"
+      "comment" : "Menu item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LAN Scanner"
+          }
+        }
+      }
     },
     "Last updated" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zuletzt geupdatet"
+          }
+        }
+      }
     },
     "Latitude" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Breitengrad"
+          }
+        }
+      }
     },
     "lb" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "lb"
+          }
+        }
+      }
     },
     "Learn more" : {
-      "comment" : "WhatsNewKit item"
+      "comment" : "WhatsNewKit item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mehr erfahren"
+          }
+        }
+      }
     },
     "Live Clock" : {
-      "comment" : "Menu item"
+      "comment" : "Menu item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live Uhr"
+          }
+        }
+      }
     },
     "Local Network" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lokales netzwerk"
+          }
+        }
+      }
     },
     "Location" : {
-
-    },
-    "Log a drink and its caffeine amount." : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standort"
+          }
+        }
+      }
     },
     "Longitude" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Längengrad"
+          }
+        }
+      }
     },
     "mac" : {
-      "comment" : "LAN Scanner"
+      "comment" : "LAN Scanner",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "mac"
+          }
+        }
+      }
     },
     "MAC" : {
       "shouldTranslate" : false
@@ -347,163 +1052,541 @@
       "shouldTranslate" : false
     },
     "Mail" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mail"
+          }
+        }
+      }
     },
     "Mailing list" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mailingliste"
+          }
+        }
+      }
     },
     "Make sure you entered in the right value" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stelle sicher, dass du den richtigen Wert eingegeben hast."
+          }
+        }
+      }
     },
     "Max" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Max"
+          }
+        }
+      }
     },
     "Measure sound levels to monitor noise" : {
-      "comment" : "WhatsNewKit item"
+      "comment" : "WhatsNewKit item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Messe die Lautstärke um dich herum"
+          }
+        }
+      }
     },
     "Metronome" : {
-      "comment" : "Menu item\nWhatsNewKit item"
+      "comment" : "Menu item\nWhatsNewKit item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metronom"
+          }
+        }
+      }
     },
     "Microphone" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mikrofon"
+          }
+        }
+      }
     },
     "MMXXII" : {
       "shouldTranslate" : false
     },
     "Months" : {
-      "comment" : "Date difference"
+      "comment" : "Date difference",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monate"
+          }
+        }
+      }
     },
     "More Information" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weitere Informationen"
+          }
+        }
+      }
     },
     "Move Tools" : {
-      "comment" : "WhatsNewKit item"
+      "comment" : "WhatsNewKit item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bewege Tools"
+          }
+        }
+      }
     },
     "Move Tools Around" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bewege Tools umher"
+          }
+        }
+      }
     },
     "Move tools you don't use out of your way" : {
-      "comment" : "WhatsNewKit item"
+      "comment" : "WhatsNewKit item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bewege Tools, die du nicht benutzt aus dem Weg"
+          }
+        }
+      }
     },
     "Name" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name"
+          }
+        }
+      }
     },
     "Network Name" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Netzwerkname"
+          }
+        }
+      }
     },
     "New Number" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neue Zahl"
+          }
+        }
+      }
     },
     "No Encryption" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Verschlüsselung"
+          }
+        }
+      }
     },
     "None" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine"
+          }
+        }
+      }
     },
     "Normal weight" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Normalgewichtig"
+          }
+        }
+      }
     },
     "Not Determined" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicht ermittelt"
+          }
+        }
+      }
     },
     "Not found" : {
-      "comment" : "IP-Checker not found"
+      "comment" : "IP-Checker not found",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicht gefunden"
+          }
+        }
+      }
     },
     "Not Found" : {
-      "comment" : "Domain Not found"
+      "comment" : "Domain Not found",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicht gefunden"
+          }
+        }
+      }
     },
     "Not Requested Yet" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bisher nicht angefragt"
+          }
+        }
+      }
     },
     "Number too big" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zahl zu Groß"
+          }
+        }
+      }
     },
     "Obese" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fettleibig"
+          }
+        }
+      }
     },
     "Open AppStore" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AppStore öffnen"
+          }
+        }
+      }
     },
     "Open Settings" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen öffnen"
+          }
+        }
+      }
     },
     "OpenSource-Licenses" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OpenSource-Lizenzen"
+          }
+        }
+      }
     },
     "Options" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen"
+          }
+        }
+      }
     },
     "Overweight" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Übergewichtig"
+          }
+        }
+      }
     },
     "Password" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passwort"
+          }
+        }
+      }
     },
     "Permissions" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Berechtigungen"
+          }
+        }
+      }
     },
     "Ping" : {
-      "comment" : "Menu item"
+      "comment" : "Menu item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ping"
+          }
+        }
+      }
     },
     "Port" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Port"
+          }
+        }
+      }
     },
     "Press and hold a tool to move it around as you like" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drücke und halte ein Tool, um es zu bewegen"
+          }
+        }
+      }
     },
     "Privacy Policy" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datenschutzrichtlinie"
+          }
+        }
+      }
     },
     "Pulsing Flashlight" : {
-      "comment" : "Menu item\nWhatsNewKit item"
+      "comment" : "Menu item\nWhatsNewKit item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stroboskop"
+          }
+        }
+      }
     },
     "QR-Code Content" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QR-Code Inhalt"
+          }
+        }
+      }
     },
     "QR-Code Generator" : {
-      "comment" : "Menu item"
+      "comment" : "Menu item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QR-Code Generator"
+          }
+        }
+      }
     },
     "QR-Generator" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QR-Code Generator"
+          }
+        }
+      }
     },
     "Random Letter" : {
-      "comment" : "Menu item"
+      "comment" : "Menu item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zufälliger Buchstabe"
+          }
+        }
+      }
     },
     "Random Number" : {
-      "comment" : "Menu item"
+      "comment" : "Menu item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zufällige Zahl"
+          }
+        }
+      }
     },
     "Rate app" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App bewerten"
+          }
+        }
+      }
     },
     "Receiver" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empfänger"
+          }
+        }
+      }
     },
     "Remotely power on your devices" : {
-      "comment" : "WhatsNewKit item"
+      "comment" : "WhatsNewKit item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schalte deinen Computer über das Netzwerk an"
+          }
+        }
+      }
     },
     "Reorder tools to have your favorites on top of the list" : {
-      "comment" : "WhatsNewKit item"
+      "comment" : "WhatsNewKit item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sortiere Tools neu, um deine Favoriten ganz oben in der Liste zu haben."
+          }
+        }
+      }
     },
     "Reroll Indicator" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Würfel-Neuwurf-Anzeige"
+          }
+        }
+      }
     },
     "Rerolling" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Am Würfeln"
+          }
+        }
+      }
     },
     "Reset" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zurücksetzen"
+          }
+        }
+      }
     },
     "Reset Counter" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zähler Zurücksetzen"
+          }
+        }
+      }
     },
     "Reset counter?" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zähler zurücksetzen?"
+          }
+        }
+      }
     },
-    "restricted" : {
-
+    "Restricted" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eingeschränkt"
+          }
+        }
+      }
     },
     "Result" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ergebnis"
+          }
+        }
+      }
     },
     "RGB" : {
       "shouldTranslate" : false
@@ -511,77 +1594,251 @@
     "RGBA" : {
       "shouldTranslate" : false
     },
+    "Roll a Die" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Würfle einen Würfel"
+          }
+        }
+      }
+    },
     "Roll Dice" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Würfle"
+          }
+        }
+      }
     },
     "Roman" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Römisch"
+          }
+        }
+      }
     },
     "Roman Numbers" : {
-      "comment" : "Menu item"
+      "comment" : "Menu item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Römische Zahlen"
+          }
+        }
+      }
     },
     "Scrolling Text" : {
-      "comment" : "Menu item\nWhatsNewKit item"
+      "comment" : "Menu item\nWhatsNewKit item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lauftext"
+          }
+        }
+      }
     },
     "Select a Tool" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle ein Tool aus"
+          }
+        }
+      }
     },
     "Select Font File" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle eine Font aus"
+          }
+        }
+      }
     },
     "Settings" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen"
+          }
+        }
+      }
     },
     "Shake or Tap to Get Started" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schüttle oder tippe, um zu starten."
+          }
+        }
+      }
     },
     "Share" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teilen"
+          }
+        }
+      }
     },
     "Show Again" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erneut Anzeigen"
+          }
+        }
+      }
     },
     "Sides" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seiten"
+          }
+        }
+      }
     },
     "Speed" : {
-      "comment" : "Menu item"
+      "comment" : "Menu item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geschwindigkeit"
+          }
+        }
+      }
     },
     "SSID" : {
       "shouldTranslate" : false
     },
     "Start" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start"
+          }
+        }
+      }
     },
     "Start Date" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Startdatum"
+          }
+        }
+      }
     },
     "Start Scanner" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starte Scanner"
+          }
+        }
+      }
     },
     "Start Scrolling" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starte Lauftext"
+          }
+        }
+      }
     },
     "Stop" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stopp"
+          }
+        }
+      }
     },
     "Stop Scanner" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scanner stoppen"
+          }
+        }
+      }
     },
     "Subject" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Betreff"
+          }
+        }
+      }
     },
     "Support the Development" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unterstütze die Entwicklung der App"
+          }
+        }
+      }
     },
     "Tap to Set BPM" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tippe um BPM zu setzen"
+          }
+        }
+      }
     },
     "Text" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Text"
+          }
+        }
+      }
     },
     "The app will close after deleting the data. You can instantly reopen it." : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die App wird auch dem Löschen der Daten geschlossen. Das kannst sie aber direkt wieder öffnen."
+          }
+        }
+      }
     },
     "There are %lld options matching ‘%@’." : {
       "localizations" : {
@@ -591,22 +1848,51 @@
             "value" : "There are %1$lld options matching ‘%2$@’."
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "Time" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeit"
+          }
+        }
+      }
     },
     "To" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bis"
+          }
+        }
+      }
     },
     "Toolbox" : {
-
+      "shouldTranslate" : false
     },
     "Toolbox does not have network permissions. Please allow local network access in the settings." : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toolbox hat keine Netzwerk-Berechtigungen. Bitte erlaube den Zugriff auf das lokale Netzwerk in den Einstellungen"
+          }
+        }
+      }
     },
     "Toolbox uses your location to calculate your speed and your coordinates when using the corresponding tools.\n\n Toolbox needs access to your local network when using the LAN Scanner.\n\nToolbox needs access to your camera when scanning barcodes.\n\nToolbox needs acces to your microphone to measure audio levels." : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toolbox nutzt deinen Standort zum berechnen deiner Geschwindigkeit und deiner Koordinaten, wenn du die entsprechenden Tools benutzt.\n\nToolbox braucht Zugriff auf dein lokales Netzwerk wenn du den LAN Scanner benutzt.\n\nToolbox braucht Zugriff auf deine Kamera wenn du Barcodes scannst.\n\nToolbox braucht Zugriff auf dein Mikrofon wenn du Dezibel misst."
+          }
+        }
+      }
     },
     "toolbox.sivery.de" : {
       "shouldTranslate" : false
@@ -615,106 +1901,349 @@
       "shouldTranslate" : false
     },
     "Tools you previously hid on the app's main screen can be used here.\nIf you want to move them back to the main screen, tap and hold them.\nThe same goes for hiding them again." : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tools, welche du zuvor versteckt hast auf dem Main-Menü können hier weiterhin benutzt werden. Wenn du die Tools wieder anzeigen lassen möchtest, tippe und halte sie. Genauso kannst du die auch wieder verstecken."
+          }
+        }
+      }
     },
     "type" : {
-      "comment" : "Barcode"
+      "comment" : "Barcode",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Art"
+          }
+        }
+      }
     },
     "Type" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Typ"
+          }
+        }
+      }
     },
     "Underweight" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Untergewichtig"
+          }
+        }
+      }
     },
     "Unknown" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unbekannt"
+          }
+        }
+      }
     },
     "URL" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL"
+          }
+        }
+      }
     },
     "Use custom fonts in other apps" : {
-      "comment" : "WhatsNewKit item"
+      "comment" : "WhatsNewKit item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nutze eigene Fonts in anderen Apps"
+          }
+        }
+      }
     },
     "Version" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version"
+          }
+        }
+      }
     },
     "Wake" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aufwecken"
+          }
+        }
+      }
     },
     "Wake On Lan" : {
-      "comment" : "Menu item\nWhatsNewKit item"
+      "comment" : "Menu item\nWhatsNewKit item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wake On Lan"
+          }
+        }
+      }
     },
     "Website" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Website"
+          }
+        }
+      }
     },
     "Weight" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gewicht"
+          }
+        }
+      }
     },
     "WEP" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "WEP"
+          }
+        }
+      }
     },
     "What?" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Was ist das?"
+          }
+        }
+      }
     },
     "What's New in Toolbox" : {
-      "comment" : "WhatsNewKit item"
+      "comment" : "WhatsNewKit item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neues in Toolbox"
+          }
+        }
+      }
     },
     "While Using" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Während der Nutzung"
+          }
+        }
+      }
     },
     "Why?" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warum?"
+          }
+        }
+      }
     },
     "Wi-Fi" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "WLAN"
+          }
+        }
+      }
     },
     "WPA (most common)" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "WPA (am häufigsten)"
+          }
+        }
+      }
     },
     "Years" : {
-      "comment" : "Date difference"
+      "comment" : "Date difference",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jahre"
+          }
+        }
+      }
     },
     "Yes" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ja"
+          }
+        }
+      }
     },
     "You can't convert numbers bigger than 3999." : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du kannst keine Zahlen größer als 3999 konvertieren."
+          }
+        }
+      }
     },
     "You can't leave the Broadcast empty" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du kannst den Broadcast nicht leer lassen."
+          }
+        }
+      }
     },
     "You can't leave the MAC empty" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du kannst die MAC nicht leer lassen."
+          }
+        }
+      }
     },
     "You can't leave the name empty" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du kannst den Namen nicht leer lassen."
+          }
+        }
+      }
     },
     "You can't leave the port empty" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du kannst den Port nicht leer lassen"
+          }
+        }
+      }
     },
     "You can't use the same name twice" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du kannst den gleichen Namen nicht zweimal verwenden."
+          }
+        }
+      }
     },
     "You first have to allow Toolbox to access your location to see your coordinates." : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du musst Toolbox erlauben deinen Standort zu nutzen um dir deine Koordinaten anzeigen zu lassen."
+          }
+        }
+      }
     },
     "You first have to allow Toolbox to access your location to see your speed." : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du musst Toolbox erlauben deinen Standort zu nutzen um dir deine Geschwindigkeit anzeigen zu lassen."
+          }
+        }
+      }
     },
     "You first have to allow Toolbox to access your microphone to measure audio levels." : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du musst Toolbox erlauben deinen Mikrofon zu nutzen um Dezibel messen zu lassen."
+          }
+        }
+      }
     },
     "You have no tools hidden" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du hast keine Tools versteckt."
+          }
+        }
+      }
     },
     "You just hid your first tool! You can still find it in the settings under \"Hidden Tools\"." : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du hast dein erstes Tool versteckt! Du kannst es immer noch in den Einstellungen unter \"Versteckte Tools\" finden"
+          }
+        }
+      }
     },
     "You need to rotate your device to enable the scrolling text." : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du musst dein Gerät rotieren, um den Lauftext anzuzeigen."
+          }
+        }
+      }
     },
     "Your current IP" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deine aktuelle IP"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
