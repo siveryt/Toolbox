@@ -74,9 +74,6 @@
 		5EA282432C09D5AF003E735A /* green@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EA2823D2C09D5AF003E735A /* green@3x.png */; };
 		5EA282442C09D5AF003E735A /* purple@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EA2823E2C09D5AF003E735A /* purple@1x.png */; };
 		5EA282452C09D5AF003E735A /* purple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EA2823F2C09D5AF003E735A /* purple@2x.png */; };
-		5EA28DCA2CB0696A0027D111 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5EA28DC92CB0696A0027D111 /* Localizable.xcstrings */; };
-		5EA28DCB2CB0696A0027D111 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5EA28DC92CB0696A0027D111 /* Localizable.xcstrings */; };
-		5EA28DCC2CB0696A0027D111 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5EA28DC92CB0696A0027D111 /* Localizable.xcstrings */; };
 		5EB6030628B22C1B00133561 /* ToastSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5EB6030528B22C1B00133561 /* ToastSwiftUI */; };
 		5EB6469A280580FA000D4243 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5EB64699280580FA000D4243 /* Settings.bundle */; };
 		5EB7897727F9CCA900F07140 /* QRGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB7897627F9CCA900F07140 /* QRGenerator.swift */; };
@@ -101,6 +98,9 @@
 		5EE65E012A8576280061120B /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1383EF29159DD800CF4FAB /* Counter.swift */; };
 		5EE65E032A8576280061120B /* Dice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1383EA29159ADE00CF4FAB /* Dice.swift */; };
 		5EE65E042A8576280061120B /* Random Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1383F12915A23100CF4FAB /* Random Number.swift */; };
+		5EE7679E2CB12952002B0A74 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5EE7679D2CB12952002B0A74 /* Localizable.xcstrings */; };
+		5EE7679F2CB12952002B0A74 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5EE7679D2CB12952002B0A74 /* Localizable.xcstrings */; };
+		5EE767A02CB12952002B0A74 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5EE7679D2CB12952002B0A74 /* Localizable.xcstrings */; };
 		5EF0DD1B2BE2133E00F46B5C /* AsyncDNSResolver in Frameworks */ = {isa = PBXBuildFile; productRef = 5EF0DD1A2BE2133E00F46B5C /* AsyncDNSResolver */; };
 		5EF0DD1F2BE2196700F46B5C /* PulsingFlashlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF0DD1E2BE2196700F46B5C /* PulsingFlashlight.swift */; };
 		5EF0DD252BE2320500F46B5C /* LanScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 5EF0DD242BE2320500F46B5C /* LanScanner */; };
@@ -215,7 +215,6 @@
 		5EA2823D2C09D5AF003E735A /* green@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "green@3x.png"; sourceTree = "<group>"; };
 		5EA2823E2C09D5AF003E735A /* purple@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "purple@1x.png"; sourceTree = "<group>"; };
 		5EA2823F2C09D5AF003E735A /* purple@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "purple@2x.png"; sourceTree = "<group>"; };
-		5EA28DC92CB0696A0027D111 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		5EB252B92B9BBFC800CF2A18 /* Buildnumber.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Buildnumber.xcconfig; sourceTree = "<group>"; };
 		5EB64699280580FA000D4243 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		5EB7897627F9CCA900F07140 /* QRGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRGenerator.swift; sourceTree = "<group>"; };
@@ -243,6 +242,8 @@
 		5EE65DF12A8575FE0061120B /* Toolbox_WatchOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbox_WatchOSApp.swift; sourceTree = "<group>"; };
 		5EE65DF82A8576000061120B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5EE65E072A8578840061120B /* Toolbox-WatchOS-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Toolbox-WatchOS-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
+		5EE7679C2CB12943002B0A74 /* InfoPlist.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
+		5EE7679D2CB12952002B0A74 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		5EF0DD1E2BE2196700F46B5C /* PulsingFlashlight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulsingFlashlight.swift; sourceTree = "<group>"; };
 		5EF8C35C2A8859AC0089BCA3 /* Random Letter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Random Letter.swift"; sourceTree = "<group>"; };
 		5EF8C35E2A88665D0089BCA3 /* LAN Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LAN Scanner.swift"; sourceTree = "<group>"; };
@@ -401,12 +402,13 @@
 		5EC7B21227D7978100699FD3 = {
 			isa = PBXGroup;
 			children = (
-				5EA28DC92CB0696A0027D111 /* Localizable.xcstrings */,
+				5EC7B24D27D797E100699FD3 /* README.md */,
+				5EC7B24E27D79D5400699FD3 /* LICENSE */,
+				5EE7679C2CB12943002B0A74 /* InfoPlist.strings */,
+				5EE7679D2CB12952002B0A74 /* Localizable.xcstrings */,
 				5EB252B92B9BBFC800CF2A18 /* Buildnumber.xcconfig */,
 				5EC7B24F27D79DDC00699FD3 /* .gitignore */,
-				5EC7B24E27D79D5400699FD3 /* LICENSE */,
 				5E5C620F291681D5004F44CC /* assets */,
-				5EC7B24D27D797E100699FD3 /* README.md */,
 				5EC7B21D27D7978100699FD3 /* Toolbox */,
 				5EE65DF02A8575FE0061120B /* Toolbox WatchOS Watch App */,
 				5E9ABFD02B9CB840005448FB /* diceWidget */,
@@ -670,8 +672,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EE7679F2CB12952002B0A74 /* Localizable.xcstrings in Resources */,
 				5E9ABFD82B9CB843005448FB /* Assets.xcassets in Resources */,
-				5EA28DCC2CB0696A0027D111 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -697,7 +699,7 @@
 				5EA282442C09D5AF003E735A /* purple@1x.png in Resources */,
 				5E72B5A9283BB9BC00DEAD50 /* whiteOnly@2x.png in Resources */,
 				5E72B599283BB91300DEAD50 /* Blueish_white@3x.png in Resources */,
-				5EA28DCA2CB0696A0027D111 /* Localizable.xcstrings in Resources */,
+				5EE7679E2CB12952002B0A74 /* Localizable.xcstrings in Resources */,
 				5EB6469A280580FA000D4243 /* Settings.bundle in Resources */,
 				5E72B59D283BB94000DEAD50 /* Blueish_red@3x.png in Resources */,
 				5EA282372C09D359003E735A /* blue@3.png in Resources */,
@@ -722,7 +724,7 @@
 			files = (
 				5EE65DF92A8576000061120B /* Preview Assets.xcassets in Resources */,
 				5E2A28232A857AC000F7F444 /* Assets WatchOS.xcassets in Resources */,
-				5EA28DCB2CB0696A0027D111 /* Localizable.xcstrings in Resources */,
+				5EE767A02CB12952002B0A74 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
