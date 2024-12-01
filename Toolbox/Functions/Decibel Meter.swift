@@ -12,10 +12,10 @@ struct DecibelMeter: View {
     @State private var audioRecorder: AVAudioRecorder?
     @State private var level: Float = 0.0
     @State private var timer: Timer?
+    @State private var hasPermission: Bool = false
 
     var body: some View {
-        switch AVCaptureDevice.authorizationStatus(for: .audio) {
-        case .authorized:
+        if hasPermission {
             GeometryReader { geometry in
                 VStack {
                     Spacer()
@@ -40,8 +40,8 @@ struct DecibelMeter: View {
             .onDisappear {
                 self.stopMonitoring()
             }
-        default:
-            VStack{
+        } else {
+            VStack {
                 Text("You first have to allow Toolbox to access your microphone to measure audio levels.")
                     .multilineTextAlignment(.center)
                     .padding()
@@ -51,9 +51,23 @@ struct DecibelMeter: View {
                     }
                 }
             }
+            .onAppear {
+                checkMicrophoneAccess()
+                requestMicrophoneAccess()
+            }
         }
-        
-        
+    }
+
+    private func requestMicrophoneAccess() {
+        AVCaptureDevice.requestAccess(for: .audio) { granted in
+            DispatchQueue.main.async {
+                self.hasPermission = granted
+            }
+        }
+    }
+
+    private func checkMicrophoneAccess() {
+        self.hasPermission = AVCaptureDevice.authorizationStatus(for: .audio) == .authorized
     }
 
     private func startMonitoring() {

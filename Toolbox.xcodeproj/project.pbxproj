@@ -1044,6 +1044,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Toolbox needs access to the camera, to read barcodes.";
 				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "Toolbox needs to access your files to let you select a font file to install";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Toolbox needs access to your local network to use the LAN Scanner";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Toolbox uses you location to calculate your GPS coordinates and speed";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Toolbox uses you location to calculate your GPS coordinates and speed";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Toolbox uses you location to calculate your GPS coordinates and speed";
@@ -1088,6 +1089,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Toolbox needs access to the camera, to read barcodes.";
 				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "Toolbox needs to access your files to let you select a font file to install";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Toolbox needs access to your local network to use the LAN Scanner";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Toolbox uses you location to calculate your GPS coordinates and speed";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Toolbox uses you location to calculate your GPS coordinates and speed";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Toolbox uses you location to calculate your GPS coordinates and speed";

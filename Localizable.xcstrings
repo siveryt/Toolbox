@@ -1240,6 +1240,7 @@
       }
     },
     "Not Determined" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1874,7 +1875,11 @@
     "Toolbox" : {
       "shouldTranslate" : false
     },
+    "Toolbox does not have local network permissions. Please allow local network access in the settings." : {
+
+    },
     "Toolbox does not have network permissions. Please allow local network access in the settings." : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
