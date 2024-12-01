@@ -11,7 +11,7 @@ import WidgetKit
 
 struct RollDiceIntent: AppIntent {
     static var title: LocalizedStringResource = "Roll Dice"
-    static var description = IntentDescription("Log a drink and its caffeine amount.")
+    static var description = IntentDescription("Roll a Die")
 
 
     init() {}

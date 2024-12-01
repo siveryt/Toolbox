@@ -275,7 +275,7 @@ struct permissions: View {
                     Text("Denied")
                 }
                 if (locationManager.locationStatus == .restricted) {
-                    Text("restricted")
+                    Text("Restricted")
                 }
                 if (locationManager.locationStatus == .notDetermined) {
                     Text("Not Determined")

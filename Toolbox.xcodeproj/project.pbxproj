@@ -23,12 +23,9 @@
 		5E26D15D2A86C84F0010D51C /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 5E26D15C2A86C84F0010D51C /* CodeScanner */; };
 		5E2A28232A857AC000F7F444 /* Assets WatchOS.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E1383E22915975000CF4FAB /* Assets WatchOS.xcassets */; };
 		5E30EA692BFA855200070117 /* Scrolling Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E30EA682BFA855200070117 /* Scrolling Text.swift */; };
-		5E35DBE12917C5BD00D2FC8A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E35DBDF2917C5BD00D2FC8A /* InfoPlist.strings */; };
-		5E35DBE42917C5BD00D2FC8A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E35DBE22917C5BD00D2FC8A /* Localizable.strings */; };
 		5E35DBE72917C62500D2FC8A /* WhatsNewKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5E35DBE62917C62500D2FC8A /* WhatsNewKit */; };
 		5E47B19B27F1F3F4008FD3C0 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E47B19A27F1F3F4008FD3C0 /* Counter.swift */; };
 		5E4BA9372A8955D00039D341 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4BA9362A8955D00039D341 /* ContentView.swift */; };
-		5E4BA93A2A8958CC0039D341 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E4BA9382A8958CC0039D341 /* Localizable.strings */; };
 		5E528A9027E2379F00B2AE01 /* Haptica in Frameworks */ = {isa = PBXBuildFile; productRef = 5E528A8F27E2379F00B2AE01 /* Haptica */; };
 		5E5C62082916654F004F44CC /* Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5C62072916654F004F44CC /* Ping.swift */; };
 		5E5C620B29166566004F44CC /* SwiftyPing in Frameworks */ = {isa = PBXBuildFile; productRef = 5E5C620A29166566004F44CC /* SwiftyPing */; };
@@ -77,7 +74,6 @@
 		5EA282432C09D5AF003E735A /* green@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EA2823D2C09D5AF003E735A /* green@3x.png */; };
 		5EA282442C09D5AF003E735A /* purple@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EA2823E2C09D5AF003E735A /* purple@1x.png */; };
 		5EA282452C09D5AF003E735A /* purple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EA2823F2C09D5AF003E735A /* purple@2x.png */; };
-		5EA282472C09DE91003E735A /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5EA282462C09DE91003E735A /* Localizable.xcstrings */; };
 		5EB6030628B22C1B00133561 /* ToastSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5EB6030528B22C1B00133561 /* ToastSwiftUI */; };
 		5EB6469A280580FA000D4243 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5EB64699280580FA000D4243 /* Settings.bundle */; };
 		5EB7897727F9CCA900F07140 /* QRGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB7897627F9CCA900F07140 /* QRGenerator.swift */; };
@@ -102,6 +98,10 @@
 		5EE65E012A8576280061120B /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1383EF29159DD800CF4FAB /* Counter.swift */; };
 		5EE65E032A8576280061120B /* Dice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1383EA29159ADE00CF4FAB /* Dice.swift */; };
 		5EE65E042A8576280061120B /* Random Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1383F12915A23100CF4FAB /* Random Number.swift */; };
+		5EE7679E2CB12952002B0A74 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5EE7679D2CB12952002B0A74 /* Localizable.xcstrings */; };
+		5EE7679F2CB12952002B0A74 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5EE7679D2CB12952002B0A74 /* Localizable.xcstrings */; };
+		5EE767A02CB12952002B0A74 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5EE7679D2CB12952002B0A74 /* Localizable.xcstrings */; };
+		5EEA47EC2CB1426800E8CB60 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5EEA47EB2CB1426800E8CB60 /* InfoPlist.xcstrings */; };
 		5EF0DD1B2BE2133E00F46B5C /* AsyncDNSResolver in Frameworks */ = {isa = PBXBuildFile; productRef = 5EF0DD1A2BE2133E00F46B5C /* AsyncDNSResolver */; };
 		5EF0DD1F2BE2196700F46B5C /* PulsingFlashlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF0DD1E2BE2196700F46B5C /* PulsingFlashlight.swift */; };
 		5EF0DD252BE2320500F46B5C /* LanScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 5EF0DD242BE2320500F46B5C /* LanScanner */; };
@@ -170,11 +170,8 @@
 		5E1DB0F32C02275000D59AAD /* Metronome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metronome.swift; sourceTree = "<group>"; };
 		5E1DB0F52C022AF800D59AAD /* tock.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tock.wav; sourceTree = "<group>"; };
 		5E30EA682BFA855200070117 /* Scrolling Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scrolling Text.swift"; sourceTree = "<group>"; };
-		5E35DBE02917C5BD00D2FC8A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		5E35DBE32917C5BD00D2FC8A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5E47B19A27F1F3F4008FD3C0 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		5E4BA9362A8955D00039D341 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		5E4BA9392A8958CC0039D341 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5E5C62072916654F004F44CC /* Ping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ping.swift; sourceTree = "<group>"; };
 		5E5C620E291681C1004F44CC /* appstore.svg */ = {isa = PBXFileReference; lastKnownFileType = text; path = appstore.svg; sourceTree = "<group>"; };
 		5E72B594283BB91200DEAD50 /* Blueish_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blueish_white@2x.png"; sourceTree = "<group>"; };
@@ -219,7 +216,6 @@
 		5EA2823D2C09D5AF003E735A /* green@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "green@3x.png"; sourceTree = "<group>"; };
 		5EA2823E2C09D5AF003E735A /* purple@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "purple@1x.png"; sourceTree = "<group>"; };
 		5EA2823F2C09D5AF003E735A /* purple@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "purple@2x.png"; sourceTree = "<group>"; };
-		5EA282462C09DE91003E735A /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		5EB252B92B9BBFC800CF2A18 /* Buildnumber.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Buildnumber.xcconfig; sourceTree = "<group>"; };
 		5EB64699280580FA000D4243 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		5EB7897627F9CCA900F07140 /* QRGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRGenerator.swift; sourceTree = "<group>"; };
@@ -247,6 +243,8 @@
 		5EE65DF12A8575FE0061120B /* Toolbox_WatchOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbox_WatchOSApp.swift; sourceTree = "<group>"; };
 		5EE65DF82A8576000061120B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5EE65E072A8578840061120B /* Toolbox-WatchOS-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Toolbox-WatchOS-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
+		5EE7679D2CB12952002B0A74 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		5EEA47EB2CB1426800E8CB60 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		5EF0DD1E2BE2196700F46B5C /* PulsingFlashlight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulsingFlashlight.swift; sourceTree = "<group>"; };
 		5EF8C35C2A8859AC0089BCA3 /* Random Letter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Random Letter.swift"; sourceTree = "<group>"; };
 		5EF8C35E2A88665D0089BCA3 /* LAN Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LAN Scanner.swift"; sourceTree = "<group>"; };
@@ -391,7 +389,6 @@
 		5E9ABFD02B9CB840005448FB /* diceWidget */ = {
 			isa = PBXGroup;
 			children = (
-				5EA282462C09DE91003E735A /* Localizable.xcstrings */,
 				5E9ABFE72B9CEFD4005448FB /* Faces.swift */,
 				5E9ABFE82B9CEFD4005448FB /* FaceCountAppEnum.swift */,
 				5E9ABFD12B9CB840005448FB /* diceWidgetBundle.swift */,
@@ -406,13 +403,12 @@
 		5EC7B21227D7978100699FD3 = {
 			isa = PBXGroup;
 			children = (
-				5EB252B92B9BBFC800CF2A18 /* Buildnumber.xcconfig */,
-				5E35DBE22917C5BD00D2FC8A /* Localizable.strings */,
-				5E35DBDF2917C5BD00D2FC8A /* InfoPlist.strings */,
-				5EC7B24F27D79DDC00699FD3 /* .gitignore */,
-				5EC7B24E27D79D5400699FD3 /* LICENSE */,
-				5E5C620F291681D5004F44CC /* assets */,
 				5EC7B24D27D797E100699FD3 /* README.md */,
+				5EC7B24E27D79D5400699FD3 /* LICENSE */,
+				5EE7679D2CB12952002B0A74 /* Localizable.xcstrings */,
+				5EB252B92B9BBFC800CF2A18 /* Buildnumber.xcconfig */,
+				5EC7B24F27D79DDC00699FD3 /* .gitignore */,
+				5E5C620F291681D5004F44CC /* assets */,
 				5EC7B21D27D7978100699FD3 /* Toolbox */,
 				5EE65DF02A8575FE0061120B /* Toolbox WatchOS Watch App */,
 				5E9ABFD02B9CB840005448FB /* diceWidget */,
@@ -448,6 +444,7 @@
 				5EB64699280580FA000D4243 /* Settings.bundle */,
 				5EC7B22227D7978200699FD3 /* Assets.xcassets */,
 				5EC7B22427D7978200699FD3 /* Preview Content */,
+				5EEA47EB2CB1426800E8CB60 /* InfoPlist.xcstrings */,
 			);
 			path = Toolbox;
 			sourceTree = "<group>";
@@ -521,7 +518,6 @@
 			isa = PBXGroup;
 			children = (
 				5EE65E072A8578840061120B /* Toolbox-WatchOS-Watch-App-Info.plist */,
-				5E4BA9382A8958CC0039D341 /* Localizable.strings */,
 				5EE65DF12A8575FE0061120B /* Toolbox_WatchOSApp.swift */,
 				5E1383EA29159ADE00CF4FAB /* Dice.swift */,
 				5E1383F12915A23100CF4FAB /* Random Number.swift */,
@@ -678,7 +674,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5EA282472C09DE91003E735A /* Localizable.xcstrings in Resources */,
+				5EE7679F2CB12952002B0A74 /* Localizable.xcstrings in Resources */,
 				5E9ABFD82B9CB843005448FB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -688,9 +684,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EA282342C09D359003E735A /* blue@2x.png in Resources */,
+				5EEA47EC2CB1426800E8CB60 /* InfoPlist.xcstrings in Resources */,
 				5E0AA8082837BF59006CD0EA /* whitegradient_red@2x.png in Resources */,
 				5EA282452C09D5AF003E735A /* purple@2x.png in Resources */,
-				5E35DBE12917C5BD00D2FC8A /* InfoPlist.strings in Resources */,
 				5EA282432C09D5AF003E735A /* green@3x.png in Resources */,
 				5EA282422C09D5AF003E735A /* purple@3x.png in Resources */,
 				5EDFF1E927E7AE4D005BBA3C /* LaunchScreen.storyboard in Resources */,
@@ -706,8 +702,8 @@
 				5EA282442C09D5AF003E735A /* purple@1x.png in Resources */,
 				5E72B5A9283BB9BC00DEAD50 /* whiteOnly@2x.png in Resources */,
 				5E72B599283BB91300DEAD50 /* Blueish_white@3x.png in Resources */,
+				5EE7679E2CB12952002B0A74 /* Localizable.xcstrings in Resources */,
 				5EB6469A280580FA000D4243 /* Settings.bundle in Resources */,
-				5E35DBE42917C5BD00D2FC8A /* Localizable.strings in Resources */,
 				5E72B59D283BB94000DEAD50 /* Blueish_red@3x.png in Resources */,
 				5EA282372C09D359003E735A /* blue@3.png in Resources */,
 				5E72B5AF283BB9F300DEAD50 /* black@1x.png in Resources */,
@@ -730,8 +726,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EE65DF92A8576000061120B /* Preview Assets.xcassets in Resources */,
-				5E4BA93A2A8958CC0039D341 /* Localizable.strings in Resources */,
 				5E2A28232A857AC000F7F444 /* Assets WatchOS.xcassets in Resources */,
+				5EE767A02CB12952002B0A74 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -839,36 +835,6 @@
 			targetProxy = 5EE65DFA2A8576000061120B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		5E35DBDF2917C5BD00D2FC8A /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5E35DBE02917C5BD00D2FC8A /* de */,
-			);
-			name = InfoPlist.strings;
-			path = Toolbox;
-			sourceTree = "<group>";
-		};
-		5E35DBE22917C5BD00D2FC8A /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5E35DBE32917C5BD00D2FC8A /* de */,
-			);
-			name = Localizable.strings;
-			path = Toolbox;
-			sourceTree = "<group>";
-		};
-		5E4BA9382A8958CC0039D341 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5E4BA9392A8958CC0039D341 /* de */,
-			);
-			name = Localizable.strings;
-			path = ..;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		5E9ABFDE2B9CB843005448FB /* Debug */ = {
@@ -996,6 +962,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -1051,6 +1018,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
