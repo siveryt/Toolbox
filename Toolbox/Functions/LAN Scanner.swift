@@ -18,7 +18,8 @@ struct LAN_Scanner: View {
     @State var detailSheet = false
     @State private var itemIndex: Int? = nil
     @State var scanning = false
-    @State private var showNoNetworkPermissionText = false
+    @AppStorage("LANSCANNER_showNoNetworkPermissionText") private var showNoNetworkPermissionText = true
+    @AppStorage("PERMS_alreadyRequestedLAN") private var alreadyRequestedLAN = false
     @State var isPresentingToast = false
 
     var body: some View {
@@ -27,7 +28,7 @@ struct LAN_Scanner: View {
         
         VStack {
                     if showNoNetworkPermissionText {
-                        Text("Toolbox does not have network permissions. Please allow local network access in the settings.")
+                        Text("Toolbox does not have local network permissions. Please allow local network access in the settings.")
                             .multilineTextAlignment(.center)
                             .padding()
                         Button("Open Settings") {
@@ -115,6 +116,7 @@ struct LAN_Scanner: View {
                     self.showNoNetworkPermissionText = !hasPermission
                 }
             }
+            alreadyRequestedLAN = true;
         }
 }
 
