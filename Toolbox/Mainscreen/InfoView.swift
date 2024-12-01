@@ -10,6 +10,7 @@ import SwiftUI
 import CoreData
 import AVFoundation
 import TipKit
+import CoreLocation
 
 struct infoView: View {
     
@@ -253,48 +254,46 @@ struct appIcon: View {
 
 struct permissions: View {
     
-    @StateObject var locationManager = Location_helper()
+    @StateObject private var locationManager = LocationPermsChecker()
     @State var localNetworkAccess:Bool? = nil
     @State var cameraAccess:Bool? = nil
     @State var micAccess:Bool? = nil
     
     @State var showingInfoAlert = false
     
+    @AppStorage("PERMS_alreadyRequestedLAN") private var alreadyRequestedLAN = false
+    
     var body: some View {
         List {
             HStack {
                 Label("Location", systemImage: "location.fill")
                 Spacer()
-                if (locationManager.locationStatus == .authorizedAlways) {
+                switch locationManager.authorizationStatus {
+                case .authorizedAlways:
                     Text("Always")
-                }
-                if (locationManager.locationStatus == .authorizedWhenInUse) {
+                case .authorizedWhenInUse:
                     Text("While Using")
-                }
-                if (locationManager.locationStatus == .denied) {
+                case .denied:
                     Text("Denied")
-                }
-                if (locationManager.locationStatus == .restricted) {
+                case .restricted:
                     Text("Restricted")
-                }
-                if (locationManager.locationStatus == .notDetermined) {
-                    Text("Not Determined")
-                }
-                if (locationManager.locationStatus == .none) {
-                    Text("None")
+                case .notDetermined:
+                    Text("Not Requested Yet")
+                @unknown default:
+                    Text("Unknown")
                 }
             }
             
             HStack {
                 Label("Local Network", systemImage: "network")
                 Spacer()
-                if (localNetworkAccess == true) {
+                if (!alreadyRequestedLAN) {
+                    Text("Not Requested Yet")
+                } else if (localNetworkAccess == true) {
                     Text("Allowed")
-                }
-                if (localNetworkAccess == false) {
+                } else if (localNetworkAccess == false) {
                     Text("Denied")
-                }
-                if (localNetworkAccess == nil) {
+                } else if (localNetworkAccess == nil) {
                     Text("")
                 }
             }
@@ -338,7 +337,9 @@ struct permissions: View {
             }
         }
         .onAppear {
-            checkNetworkPermission()
+            if alreadyRequestedLAN {
+                checkNetworkPermission()
+            }
         }
         .alert(isPresented: $showingInfoAlert) {
             Alert(
@@ -369,6 +370,22 @@ struct permissions: View {
                 }
             }
         }
+}
+
+class LocationPermsChecker: NSObject, ObservableObject, CLLocationManagerDelegate {
+    private let manager = CLLocationManager()
+    @Published var authorizationStatus: CLAuthorizationStatus
+
+    override init() {
+        self.authorizationStatus = manager.authorizationStatus
+        super.init()
+        self.manager.delegate = self
+        // No need to request authorization here
+    }
+
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        self.authorizationStatus = manager.authorizationStatus
+    }
 }
 
 struct infoHidden: View {
