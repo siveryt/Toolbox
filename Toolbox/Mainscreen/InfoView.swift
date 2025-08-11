@@ -255,13 +255,11 @@ struct appIcon: View {
 struct permissions: View {
     
     @StateObject private var locationManager = LocationPermsChecker()
-    @State var localNetworkAccess:Bool? = nil
     @State var cameraAccess:Bool? = nil
     @State var micAccess:Bool? = nil
     
     @State var showingInfoAlert = false
     
-    @AppStorage("PERMS_alreadyRequestedLAN") private var alreadyRequestedLAN = false
     
     var body: some View {
         List {
@@ -281,20 +279,6 @@ struct permissions: View {
                     Text("Not Requested Yet")
                 @unknown default:
                     Text("Unknown")
-                }
-            }
-            
-            HStack {
-                Label("Local Network", systemImage: "network")
-                Spacer()
-                if (!alreadyRequestedLAN) {
-                    Text("Not Requested Yet")
-                } else if (localNetworkAccess == true) {
-                    Text("Allowed")
-                } else if (localNetworkAccess == false) {
-                    Text("Denied")
-                } else if (localNetworkAccess == nil) {
-                    Text("")
                 }
             }
             
@@ -329,22 +313,17 @@ struct permissions: View {
             }
             
             Section{
-                Button("Open Settings") {
+                Button("Change in Settings") {
                     if let appSettings = URL(string: UIApplication.openSettingsURLString) {
                         UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
                     }
                 }
             }
         }
-        .onAppear {
-            if alreadyRequestedLAN {
-                checkNetworkPermission()
-            }
-        }
         .alert(isPresented: $showingInfoAlert) {
             Alert(
                 title: Text("Why?"),
-                message: Text("Toolbox uses your location to calculate your speed and your coordinates when using the corresponding tools.\n\n Toolbox needs access to your local network when using the LAN Scanner.\n\nToolbox needs access to your camera when scanning barcodes.\n\nToolbox needs acces to your microphone to measure audio levels."),
+                message: Text("Toolbox uses your location to calculate your speed and your coordinates when using the corresponding tools.\n\nToolbox needs access to your local network when using the LAN Scanner.\n\nToolbox needs access to your camera when scanning barcodes.\n\nToolbox needs acces to your microphone to measure audio levels."),
                 dismissButton: .destructive(Text("Got It!")) // I have to use .destructive and not .default, because .default often times is the default primary blue and not the color set in Assets AccentColor
             )
                 }
@@ -362,14 +341,6 @@ struct permissions: View {
         .navigationBarTitleDisplayMode(.inline)
     }
     
-    private func checkNetworkPermission() {
-            let authorization = LocalNetworkAuthorization()
-            authorization.requestAuthorization { hasPermission in
-                DispatchQueue.main.async {
-                    self.localNetworkAccess = hasPermission
-                }
-            }
-        }
 }
 
 class LocationPermsChecker: NSObject, ObservableObject, CLLocationManagerDelegate {

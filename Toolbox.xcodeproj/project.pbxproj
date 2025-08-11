@@ -102,9 +102,9 @@
 		5EE7679F2CB12952002B0A74 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5EE7679D2CB12952002B0A74 /* Localizable.xcstrings */; };
 		5EE767A02CB12952002B0A74 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5EE7679D2CB12952002B0A74 /* Localizable.xcstrings */; };
 		5EEA47EC2CB1426800E8CB60 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5EEA47EB2CB1426800E8CB60 /* InfoPlist.xcstrings */; };
+		5EEC4BE22D2F1D6D0061B6E2 /* LanScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 5EEC4BE12D2F1D6D0061B6E2 /* LanScanner */; };
 		5EF0DD1B2BE2133E00F46B5C /* AsyncDNSResolver in Frameworks */ = {isa = PBXBuildFile; productRef = 5EF0DD1A2BE2133E00F46B5C /* AsyncDNSResolver */; };
 		5EF0DD1F2BE2196700F46B5C /* PulsingFlashlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF0DD1E2BE2196700F46B5C /* PulsingFlashlight.swift */; };
-		5EF0DD252BE2320500F46B5C /* LanScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 5EF0DD242BE2320500F46B5C /* LanScanner */; };
 		5EF8C35D2A8859AC0089BCA3 /* Random Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8C35C2A8859AC0089BCA3 /* Random Letter.swift */; };
 		5EF8C35F2A88665D0089BCA3 /* LAN Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8C35E2A88665D0089BCA3 /* LAN Scanner.swift */; };
 		5EFACB1429B37C9A00EB8989 /* ScannedBarcodes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5EFACB1229B37C9A00EB8989 /* ScannedBarcodes.xcdatamodeld */; };
@@ -268,6 +268,7 @@
 				5E135E472BE27E01000FD246 /* Swifter in Frameworks */,
 				5E98DE692BFC9AA900B459A8 /* MarqueeText in Frameworks */,
 				5E020C5327EA2A59009871F9 /* RomanNumeralKit in Frameworks */,
+				5EEC4BE22D2F1D6D0061B6E2 /* LanScanner in Frameworks */,
 				5E528A9027E2379F00B2AE01 /* Haptica in Frameworks */,
 				5E26D15D2A86C84F0010D51C /* CodeScanner in Frameworks */,
 				5E98DE662BFC9A7F00B459A8 /* MarqueeText in Frameworks */,
@@ -276,7 +277,6 @@
 				5E5C620B29166566004F44CC /* SwiftyPing in Frameworks */,
 				5EF0DD1B2BE2133E00F46B5C /* AsyncDNSResolver in Frameworks */,
 				5EB6030628B22C1B00133561 /* ToastSwiftUI in Frameworks */,
-				5EF0DD252BE2320500F46B5C /* LanScanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,11 +583,11 @@
 				5E35DBE62917C62500D2FC8A /* WhatsNewKit */,
 				5E26D15C2A86C84F0010D51C /* CodeScanner */,
 				5EF0DD1A2BE2133E00F46B5C /* AsyncDNSResolver */,
-				5EF0DD242BE2320500F46B5C /* LanScanner */,
 				5E135E462BE27E01000FD246 /* Swifter */,
 				5E98DE652BFC9A7F00B459A8 /* MarqueeText */,
 				5E98DE682BFC9AA900B459A8 /* MarqueeText */,
 				5E98DE712BFC9D4700B459A8 /* Awake */,
+				5EEC4BE12D2F1D6D0061B6E2 /* LanScanner */,
 			);
 			productName = Toolbox;
 			productReference = 5EC7B21B27D7978100699FD3 /* Toolbox.app */;
@@ -653,10 +653,10 @@
 				5E6308932A866EB000212E8C /* XCRemoteSwiftPackageReference "SwiftUI-Apple-Watch-Decimal-Pad" */,
 				5E26D15B2A86C84F0010D51C /* XCRemoteSwiftPackageReference "CodeScanner" */,
 				5EF0DD192BE2133E00F46B5C /* XCRemoteSwiftPackageReference "swift-async-dns-resolver" */,
-				5EF0DD232BE2320500F46B5C /* XCRemoteSwiftPackageReference "lan-scanner" */,
 				5E135E452BE27E01000FD246 /* XCRemoteSwiftPackageReference "swifter" */,
 				5E98DE672BFC9AA900B459A8 /* XCRemoteSwiftPackageReference "MarqueeText" */,
 				5E98DE702BFC9D4700B459A8 /* XCRemoteSwiftPackageReference "Awake" */,
+				5EEC4BE02D2F1D6D0061B6E2 /* XCRemoteSwiftPackageReference "lan-scanner" */,
 			);
 			productRefGroup = 5EC7B21C27D7978100699FD3 /* Products */;
 			projectDirPath = "";
@@ -1052,7 +1052,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1097,7 +1097,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1302,20 +1302,20 @@
 				kind = branch;
 			};
 		};
+		5EEC4BE02D2F1D6D0061B6E2 /* XCRemoteSwiftPackageReference "lan-scanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siveryt/lan-scanner";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
 		5EF0DD192BE2133E00F46B5C /* XCRemoteSwiftPackageReference "swift-async-dns-resolver" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-async-dns-resolver";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.3.1;
-			};
-		};
-		5EF0DD232BE2320500F46B5C /* XCRemoteSwiftPackageReference "lan-scanner" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/siveryt/lan-scanner";
-			requirement = {
-				branch = develop;
-				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1375,15 +1375,15 @@
 			package = 5EB6030428B22C1B00133561 /* XCRemoteSwiftPackageReference "ToastSwiftUI" */;
 			productName = ToastSwiftUI;
 		};
+		5EEC4BE12D2F1D6D0061B6E2 /* LanScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5EEC4BE02D2F1D6D0061B6E2 /* XCRemoteSwiftPackageReference "lan-scanner" */;
+			productName = LanScanner;
+		};
 		5EF0DD1A2BE2133E00F46B5C /* AsyncDNSResolver */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5EF0DD192BE2133E00F46B5C /* XCRemoteSwiftPackageReference "swift-async-dns-resolver" */;
 			productName = AsyncDNSResolver;
-		};
-		5EF0DD242BE2320500F46B5C /* LanScanner */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5EF0DD232BE2320500F46B5C /* XCRemoteSwiftPackageReference "lan-scanner" */;
-			productName = LanScanner;
 		};
 /* End XCSwiftPackageProductDependency section */
 
