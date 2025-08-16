@@ -351,13 +351,7 @@ struct DiceView: View {
                     
                     
                 }
-                .navigationBarTitle("Dice Settings")
-                .navigationBarTitleDisplayMode(.inline)
-                .navigationBarItems(trailing:
-                                        Button("Done") {
-                    settingsSheet = false
-                }
-                )
+
                 
             }
         }

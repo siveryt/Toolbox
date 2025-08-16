@@ -234,11 +234,7 @@ struct Wake_On_Lan: View {
                 }
                 .navigationBarTitle("Add new Device")
                 .navigationBarTitleDisplayMode(.inline)
-                .navigationBarItems(leading:
-                                        Button("Cancel") {
-                    resetSheetData()
-                    sheetDisplayed = false
-                }, trailing:
+                .navigationBarItems(trailing:
                                         Button("Done") {
                     sheet_mac = sheet_mac.replacingOccurrences(of: "-", with: ":")
                     if(editing && sheet_editDevice != nil) {
