@@ -1127,7 +1127,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Toolbox-WatchOS-Watch-App-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Toolbox WatchOS";
+				INFOPLIST_KEY_CFBundleDisplayName = Toolbox;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = de.sivery.toolbox;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
@@ -1160,7 +1160,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Toolbox-WatchOS-Watch-App-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Toolbox WatchOS";
+				INFOPLIST_KEY_CFBundleDisplayName = Toolbox;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = de.sivery.toolbox;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
