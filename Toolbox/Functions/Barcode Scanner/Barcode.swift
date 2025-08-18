@@ -101,6 +101,7 @@ struct BarcodeScanner: View {
                             print(error.localizedDescription)
                     }
                 }
+                .ignoresSafeArea()
             }
             VStack {
                 HStack {
