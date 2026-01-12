@@ -1184,6 +1184,9 @@
     "Made with ❤️ by Sivery" : {
       "shouldTranslate" : false
     },
+    "Maidenhead" : {
+      "comment" : "GPS"
+    },
     "Mail" : {
       "localizations" : {
         "de" : {

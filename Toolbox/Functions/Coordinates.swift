@@ -68,6 +68,41 @@ struct Coordinates: View {
         return ("\(degrees)° \(minutes)' \(String(format: "%.2f", seconds))\" \(direction)")
     }
     
+    func decimalToMaidenhead(latitude: Double, longitude: Double) -> String {
+        var lat = latitude + 90.0
+        var lon = longitude + 180.0
+        var maidenhead = ""
+        
+        let letters = "ABCDEFGHIJKLMNOPQRSTUVWX"
+        let numbers = "0123456789"
+        
+        // Field: 20° longitude × 10° latitude
+        let lonFieldIndex = Int(lon / 20)
+        let latFieldIndex = Int(lat / 10)
+        maidenhead.append(letters[letters.index(letters.startIndex, offsetBy: lonFieldIndex)])
+        maidenhead.append(letters[letters.index(letters.startIndex, offsetBy: latFieldIndex)])
+        
+        lon = fmod(lon, 20)
+        lat = fmod(lat, 10)
+        
+        // Square: 2° longitude × 1° latitude
+        let lonSquareIndex = Int(lon / 2)
+        let latSquareIndex = Int(lat / 1)
+        maidenhead.append(numbers[numbers.index(numbers.startIndex, offsetBy: lonSquareIndex)])
+        maidenhead.append(numbers[numbers.index(numbers.startIndex, offsetBy: latSquareIndex)])
+        
+        lon = fmod(lon, 2) * 60
+        lat = fmod(lat, 1) * 60
+        
+        // Subsquare: 5 minutes longitude × 2.5 minutes latitude
+        let lonSubIndex = Int(lon / 5)
+        let latSubIndex = Int(lat / 2.5)
+        maidenhead.append(letters[letters.index(letters.startIndex, offsetBy: lonSubIndex)])
+        maidenhead.append(letters[letters.index(letters.startIndex, offsetBy: latSubIndex)])
+        
+        return maidenhead
+    }
+    
     var body: some View {
         Group {
             if(locationManager.locationStatus != .denied){
@@ -76,14 +111,17 @@ struct Coordinates: View {
                         Picker(selection: $display, label: Text("Display")) {
                             Text(NSLocalizedString("Decimal Degrees", comment: "GPS")).tag("decimal")
                             Text(NSLocalizedString("DMS", comment: "GPS")).tag("dms")
+                            Text(NSLocalizedString("Maidenhead", comment: "GPS")).tag("maidenhead")
                         }
                     
                 }
-                KeyValueProperty(content: display == "decimal" ? String(userLatitude) : decimalToDMS(coordinate: userLatitude, isLatitude: true), propertyName: NSLocalizedString("Latitude", comment: ""))
-                    .environment(\.copyToast, $isPresentingToast)
-                KeyValueProperty(content: display == "decimal" ? String(userLongitude) : decimalToDMS(coordinate: userLongitude, isLatitude: false), propertyName: NSLocalizedString("Longitude", comment: ""))
-                    .environment(\.copyToast, $isPresentingToast)
-                KeyValueProperty(content: display == "decimal" ? String(userLatitude) + ", " + String(userLongitude) : decimalToDMS(coordinate: userLatitude, isLatitude: true) + ", " + decimalToDMS(coordinate: userLongitude, isLatitude: false), propertyName: NSLocalizedString("Coordinate String", comment: ""))
+                if display != "maidenhead" {
+                    KeyValueProperty(content: display == "decimal" ? String(userLatitude) : decimalToDMS(coordinate: userLatitude, isLatitude: true), propertyName: NSLocalizedString("Latitude", comment: ""))
+                        .environment(\.copyToast, $isPresentingToast)
+                    KeyValueProperty(content: display == "decimal" ? String(userLongitude) : decimalToDMS(coordinate: userLongitude, isLatitude: false), propertyName: NSLocalizedString("Longitude", comment: ""))
+                        .environment(\.copyToast, $isPresentingToast)
+                }
+                KeyValueProperty(content: display == "maidenhead" ? decimalToMaidenhead(latitude: userLatitude, longitude: userLongitude) : (display == "decimal" ? String(userLatitude) + ", " + String(userLongitude) : decimalToDMS(coordinate: userLatitude, isLatitude: true) + ", " + decimalToDMS(coordinate: userLongitude, isLatitude: false)), propertyName: display == "maidenhead" ? NSLocalizedString("Maidenhead", comment: "") : NSLocalizedString("Coordinate String", comment: ""))
                     .environment(\.copyToast, $isPresentingToast)
                 KeyValueProperty(content: String(userAltitude) + " m", propertyName: NSLocalizedString("Altitude", comment: ""))
                     .environment(\.copyToast, $isPresentingToast)
