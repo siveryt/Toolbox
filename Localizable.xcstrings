@@ -26,7 +26,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "• Nicht alle Apps unterstützen eigene Schriften"
+            "value" : "• Nicht alle Apps unterstützen eigene Fonts"
           }
         }
       }
@@ -50,7 +50,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "• OpenType Collection (.otc), wird in einzelne Schriften aufgeteilt"
+            "value" : "• OpenType Collection (.otc), wird in einzelne Fonts aufgeteilt"
           }
         }
       }
@@ -62,7 +62,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "• Manche Apps müssen neu gestartet werden, um neue Schriften zu erkennen"
+            "value" : "• Manche Apps müssen neu gestartet werden, um neue Fonts zu erkennen"
           }
         }
       }
@@ -108,7 +108,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "• Zum Entfernen einer Schrift gehe zu Einstellungen → Allgemein → Schriften und streiche beim Schriftnamen nach links"
+            "value" : "• Zum Entfernen einer Font gehe zu Einstellungen → Allgemein → Schriften und streiche beim Font-Namen nach links"
           }
         }
       }
@@ -128,7 +128,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "• TrueType Collection (.ttc), wird in einzelne Schriften aufgeteilt"
+            "value" : "• TrueType Collection (.ttc), wird in einzelne Fonts aufgeteilt"
           }
         }
       }
@@ -185,7 +185,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "2. Deine installierte Schrift sollte in der Liste erscheinen"
+            "value" : "2. Deine installierte Font sollte in der Liste erscheinen"
           }
         }
       }
@@ -197,7 +197,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "3. Die Schrift ist jetzt in kompatiblen Apps verfügbar"
+            "value" : "3. Die Font ist jetzt in kompatiblen Apps verfügbar"
           }
         }
       }
@@ -209,7 +209,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "3. Suche unter 'Geladenes Profil' dein Schriftprofil"
+            "value" : "3. Suche unter 'Geladenes Profil' dein Font-Profil"
           }
         }
       }
@@ -322,7 +322,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nachdem das Konfigurationsprofil geladen wurde, führe diese Schritte aus, um die Schriftinstallation abzuschließen:"
+            "value" : "Nachdem das Konfigurationsprofil geladen wurde, führe diese Schritte aus, um die Font-Installation abzuschließen:"
           }
         }
       }
@@ -566,7 +566,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Schrift auswählen"
+            "value" : "Font auswählen"
           }
         }
       }
@@ -1045,7 +1045,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Schriftsammlungen enthalten mehrere Schriften in einer Datei. iOS installiert immer nur eine Schrift, daher wird eine Sammlung aufgeteilt und du wählst, welche Schrift installiert wird. Variable Schriften werden von iOS-Profilen nicht unterstützt; verwende stattdessen eine statische Variante."
+            "value" : "Font-Sammlungen enthalten mehrere Fonts in einer Datei. iOS installiert immer nur eine Font, daher wird eine Sammlung aufgeteilt und du wählst, welche Font installiert wird. Variable Fonts werden von iOS-Profilen nicht unterstützt; verwende stattdessen eine statische Variante."
           }
         }
       }
@@ -1068,7 +1068,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Schriftauswahl"
+            "value" : "Font-Auswahl"
           }
         }
       }
@@ -1214,7 +1214,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Schriften unter iOS installieren"
+            "value" : "Fonts unter iOS installieren"
           }
         }
       }
@@ -1290,7 +1290,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "iOS kann immer nur eine Schrift installieren. Diese Datei ist eine Sammlung. Wähle die Schrift aus, die du installieren möchtest."
+            "value" : "iOS kann immer nur eine Font installieren. Diese Datei ist eine Sammlung. Wähle die Font aus, die du installieren möchtest."
           }
         }
       }
@@ -2339,7 +2339,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Unterstützte Schriftformate"
+            "value" : "Unterstützte Font-Formate"
           }
         }
       }
@@ -2392,7 +2392,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Diese Datei sieht aus wie eine Schriftsammlung, aber die einzelnen Schriften ließen sich nicht extrahieren. Bitte verwende stattdessen eine einzelne Schriftdatei (.ttf/.otf)."
+            "value" : "Diese Datei sieht aus wie eine Font-Sammlung, aber die einzelnen Fonts ließen sich nicht extrahieren. Bitte verwende stattdessen eine einzelne Font-Datei (.ttf/.otf)."
           }
         }
       }
@@ -2802,7 +2802,107 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ausgewählte Schrift: %@"
+            "value" : "Ausgewählte Font: %@"
+          }
+        }
+      }
+    },
+    "Error selecting file: %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fehler beim Auswählen der Datei: %@"
+          }
+        }
+      }
+    },
+    "Unable to access the selected file" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auf die ausgewählte Datei kann nicht zugegriffen werden"
+          }
+        }
+      }
+    },
+    "Unable to read font file or file is empty" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Font-Datei konnte nicht gelesen werden oder ist leer"
+          }
+        }
+      }
+    },
+    "Unsupported file type. Please select a TrueType (.ttf) or OpenType (.otf) font file." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicht unterstützter Dateityp. Bitte wähle eine TrueType- (.ttf) oder OpenType-Datei (.otf) aus."
+          }
+        }
+      }
+    },
+    "This is a variable font. iOS can't install variable fonts through profiles. Use a static instance, such as a single weight, instead." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das ist eine Variable Font. iOS kann Variable Fonts nicht über Profile installieren. Verwende stattdessen eine statische Variante, etwa einen einzelnen Schnitt."
+          }
+        }
+      }
+    },
+    "Valid %@ font file." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gültige %@-Font-Datei."
+          }
+        }
+      }
+    },
+    "Invalid font file format. The file doesn't appear to be a valid font." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ungültiges Font-Format. Die Datei scheint keine gültige Font zu sein."
+          }
+        }
+      }
+    },
+    "Couldn't extract fonts from this collection." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aus dieser Sammlung konnten keine Fonts extrahiert werden."
+          }
+        }
+      }
+    },
+    "'%@' is a variable font, which iOS can't install through profiles." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "'%@' ist eine Variable Font, die iOS nicht über Profile installieren kann."
+          }
+        }
+      }
+    },
+    "Extracted '%@' from the collection." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "'%@' aus der Sammlung extrahiert."
           }
         }
       }

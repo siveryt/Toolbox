@@ -47,7 +47,7 @@ struct FontInstall: View {
                         guard let url = urls.first else { return }
                         validateAndSetFont(url: url)
                     case .failure(let error):
-                        fontValidationMessage = "Error selecting file: \(error.localizedDescription)"
+                        fontValidationMessage = String(format: NSLocalizedString("Error selecting file: %@", comment: "Shown when the file picker returns an error"), error.localizedDescription)
                         isValidFont = false
                     }
                 }
@@ -133,7 +133,7 @@ struct FontInstall: View {
 
     func validateAndSetFont(url: URL) {
         guard url.startAccessingSecurityScopedResource() else {
-            fontValidationMessage = "Unable to access the selected file"
+            fontValidationMessage = NSLocalizedString("Unable to access the selected file", comment: "Font selection error")
             isValidFont = false
             return
         }
@@ -147,7 +147,7 @@ struct FontInstall: View {
         // Read the file up front while we still hold access to the security-scoped
         // resource, so nothing needs to be read lazily after this call returns.
         guard let fontData = try? Data(contentsOf: url), fontData.count > 0 else {
-            fontValidationMessage = "Unable to read font file or file is empty"
+            fontValidationMessage = NSLocalizedString("Unable to read font file or file is empty", comment: "Font selection error")
             isValidFont = false
             fontName = nil
             return
@@ -163,7 +163,7 @@ struct FontInstall: View {
 
         let supportedExtensions = ["ttf", "otf"]
         guard supportedExtensions.contains(fileExtension) else {
-            fontValidationMessage = "Unsupported file type. Please select a TrueType (.ttf) or OpenType (.otf) font file."
+            fontValidationMessage = NSLocalizedString("Unsupported file type. Please select a TrueType (.ttf) or OpenType (.otf) font file.", comment: "Font selection error")
             isValidFont = false
             fontName = nil
             return
@@ -174,13 +174,13 @@ struct FontInstall: View {
             // iOS rejects variable fonts (it reports them as an unsupported font
             // collection), so catch them here with a clear message.
             if isVariableFont(fontData) {
-                fontValidationMessage = "This is a variable font. iOS can't install variable fonts through profiles. Use a static instance, such as a single weight, instead."
+                fontValidationMessage = NSLocalizedString("This is a variable font. iOS can't install variable fonts through profiles. Use a static instance, such as a single weight, instead.", comment: "Font selection error")
                 isValidFont = false
                 fontName = nil
                 return
             }
             fontName = url.lastPathComponent
-            fontValidationMessage = "Valid \(fileExtension.uppercased()) font file."
+            fontValidationMessage = String(format: NSLocalizedString("Valid %@ font file.", comment: "Font validation success, %@ is TTF or OTF"), fileExtension.uppercased())
             isValidFont = true
             prepareProfile(fontData: fontData, name: url.deletingPathExtension().lastPathComponent)
 
@@ -188,7 +188,7 @@ struct FontInstall: View {
             handleCollection(data: fontData)
 
         case .invalid:
-            fontValidationMessage = "Invalid font file format. The file doesn't appear to be a valid font."
+            fontValidationMessage = NSLocalizedString("Invalid font file format. The file doesn't appear to be a valid font.", comment: "Font selection error")
             isValidFont = false
             fontName = nil
         }
@@ -201,7 +201,7 @@ struct FontInstall: View {
 
         switch fonts.count {
         case 0:
-            fontValidationMessage = "Couldn't extract fonts from this collection."
+            fontValidationMessage = NSLocalizedString("Couldn't extract fonts from this collection.", comment: "Font collection error")
             isValidFont = false
             fontName = nil
             collectionFonts = []
@@ -217,13 +217,13 @@ struct FontInstall: View {
     /// Adopt a single face extracted from a collection as the font to install.
     private func selectExtractedFont(_ font: ExtractedFont) {
         if isVariableFont(font.data) {
-            fontValidationMessage = "'\(font.name)' is a variable font, which iOS can't install through profiles."
+            fontValidationMessage = String(format: NSLocalizedString("'%@' is a variable font, which iOS can't install through profiles.", comment: "Font collection error, %@ is a font name"), font.name)
             isValidFont = false
             fontName = nil
             return
         }
         fontName = font.name
-        fontValidationMessage = "Extracted '\(font.name)' from the collection."
+        fontValidationMessage = String(format: NSLocalizedString("Extracted '%@' from the collection.", comment: "Font collection success, %@ is a font name"), font.name)
         isValidFont = true
         prepareProfile(fontData: font.data, name: font.name)
     }
