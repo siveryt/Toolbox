@@ -19,6 +19,10 @@ This is a pure Xcode project (`Toolbox.xcodeproj`), no CocoaPods/Fastlane. Depen
 - There is a UI test target directory (`ToolboxUITests/`) but it is effectively empty — there is no meaningful automated test suite. Verify changes by running the app.
 - `Buildnumber.xcconfig` (holds `BUILD_NUMBER` / `LAST_UPDATE`) and the `AppStore/` directory are git-ignored; `CURRENT_PROJECT_VERSION` reads `$(BUILD_NUMBER)` from that file, so a clean checkout may need it present to build the Release config.
 
+### Driving the app in the iOS Simulator
+
+The simulator control tool's `tap`/`swipe` coordinates are in **device points** (e.g. 402×874 for an iPhone 17 Pro), **not** screenshot pixels. Screenshots come back at the device scale factor (≈2.27× on that device, so ≈913 px wide). Read a position off a screenshot in pixels and you must divide by the scale factor before tapping — e.g. a row at screenshot pixel `(276, 1578)` is point `(≈121, ≈695)`. Feeding raw pixel values makes taps land far below the intended target (and silently hit the wrong row).
+
 ## Architecture
 
 ### Tool registration is index-based — this is the most important gotcha
