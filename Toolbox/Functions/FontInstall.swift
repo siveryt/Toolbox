@@ -56,8 +56,8 @@ struct FontInstall: View {
 
                 if !fontValidationMessage.isEmpty {
                     Text(fontValidationMessage)
-                        .foregroundColor(isValidFont ? .green : .red)
                         .font(.caption)
+                        .foregroundStyle(.secondary)
                 }
             }
 
@@ -97,16 +97,15 @@ struct FontInstall: View {
                             } label: {
                                 HStack {
                                     Text(font.name)
-                                        .foregroundColor(.primary)
                                     Spacer()
                                     Image(systemName: "chevron.right")
                                         .font(.caption.weight(.semibold))
-                                        .foregroundColor(.secondary)
+                                        .foregroundStyle(.secondary)
                                 }
                             }
                         }
                     } footer: {
-                        Text("iOS can only install one font at a time. This file is a collection — pick the font you want to install.")
+                        Text("iOS can only install one font at a time. This file is a collection, so pick the font you want to install.")
                     }
                 }
                 .navigationTitle("Choose a Font")
@@ -155,14 +154,13 @@ struct FontInstall: View {
         }
 
         // Font collections (.ttc/.otc, or a "ttcf" signature) can't be installed
-        // directly — split them into individual faces and let the user pick one.
+        // directly, so split them into individual faces and let the user pick one.
         if fileExtension == "ttc" || fileExtension == "otc"
             || validateFontSignature(data: fontData, fileextension: fileExtension) == .collection {
             handleCollection(data: fontData)
             return
         }
 
-        // Check file fileextension for supported single font formats
         let supportedExtensions = ["ttf", "otf"]
         guard supportedExtensions.contains(fileExtension) else {
             fontValidationMessage = "Unsupported file type. Please select a TrueType (.ttf) or OpenType (.otf) font file."
@@ -171,19 +169,18 @@ struct FontInstall: View {
             return
         }
 
-        // Basic font file signature validation
         switch validateFontSignature(data: fontData, fileextension: fileExtension) {
         case .valid:
-            // iOS profile installation rejects variable fonts (it reports them as an
-            // unsupported "font collection"), so catch them here with a clear message.
+            // iOS rejects variable fonts (it reports them as an unsupported font
+            // collection), so catch them here with a clear message.
             if isVariableFont(fontData) {
-                fontValidationMessage = "⚠️ This is a variable font. iOS can't install variable fonts via profiles — use a static instance (e.g. a single weight) instead."
+                fontValidationMessage = "This is a variable font. iOS can't install variable fonts through profiles. Use a static instance, such as a single weight, instead."
                 isValidFont = false
                 fontName = nil
                 return
             }
             fontName = url.lastPathComponent
-            fontValidationMessage = "✓ Valid \(fileExtension.uppercased()) font file detected"
+            fontValidationMessage = "Valid \(fileExtension.uppercased()) font file."
             isValidFont = true
             prepareProfile(fontData: fontData, name: url.deletingPathExtension().lastPathComponent)
 
@@ -204,7 +201,7 @@ struct FontInstall: View {
 
         switch fonts.count {
         case 0:
-            fontValidationMessage = "⚠️ Couldn't extract fonts from this collection"
+            fontValidationMessage = "Couldn't extract fonts from this collection."
             isValidFont = false
             fontName = nil
             collectionFonts = []
@@ -220,13 +217,13 @@ struct FontInstall: View {
     /// Adopt a single face extracted from a collection as the font to install.
     private func selectExtractedFont(_ font: ExtractedFont) {
         if isVariableFont(font.data) {
-            fontValidationMessage = "⚠️ “\(font.name)” is a variable font, which iOS can't install via profiles."
+            fontValidationMessage = "'\(font.name)' is a variable font, which iOS can't install through profiles."
             isValidFont = false
             fontName = nil
             return
         }
         fontName = font.name
-        fontValidationMessage = "✓ Extracted “\(font.name)” from collection"
+        fontValidationMessage = "Extracted '\(font.name)' from the collection."
         isValidFont = true
         prepareProfile(fontData: font.data, name: font.name)
     }
@@ -324,7 +321,6 @@ struct FontInstall: View {
     }
 
     func startServer() {
-        // Stop server if already running
         server.stop()
 
         let fontProfilePath = "/font-profile.mobileconfig"
@@ -448,27 +444,24 @@ struct InstallationInstructionsView: View {
                 Group {
                     Text("Supported Font Formats")
                         .font(.headline)
-                        .foregroundColor(.blue)
 
-                    Text("✓ TrueType (.ttf) - Recommended")
-                    Text("✓ OpenType (.otf) - Recommended")
-                    Text("✓ TrueType Collection (.ttc) - Split into single fonts")
-                    Text("✓ OpenType Collection (.otc) - Split into single fonts")
+                    Text("• TrueType (.ttf)")
+                    Text("• OpenType (.otf)")
+                    Text("• TrueType Collection (.ttc), split into single fonts")
+                    Text("• OpenType Collection (.otc), split into single fonts")
 
-                    Text("Note: Font collections contain several fonts in one file. iOS installs one font at a time, so a collection is split and you choose which font to install.")
+                    Text("Font collections contain several fonts in one file. iOS installs one font at a time, so a collection is split and you choose which font to install. Variable fonts aren't supported by iOS profiles; use a static instance instead.")
                         .font(.caption)
-                        .foregroundColor(.secondary)
+                        .foregroundStyle(.secondary)
                 }
 
                 Group {
                     Text("Important Notes")
                         .font(.headline)
-                        .foregroundColor(.orange)
 
                     Text("• Some apps may require a restart to recognize new fonts")
                     Text("• Not all apps support custom fonts")
                     Text("• To remove a font, go to Settings → General → Fonts and swipe left on the font name")
-                    Text("• Font collections (.ttc/.otc) are split so you can install one font at a time")
                 }
             }
             .padding()
