@@ -174,6 +174,14 @@ struct FontInstall: View {
         // Basic font file signature validation
         switch validateFontSignature(data: fontData, fileextension: fileExtension) {
         case .valid:
+            // iOS profile installation rejects variable fonts (it reports them as an
+            // unsupported "font collection"), so catch them here with a clear message.
+            if isVariableFont(fontData) {
+                fontValidationMessage = "⚠️ This is a variable font. iOS can't install variable fonts via profiles — use a static instance (e.g. a single weight) instead."
+                isValidFont = false
+                fontName = nil
+                return
+            }
             fontName = url.lastPathComponent
             fontValidationMessage = "✓ Valid \(fileExtension.uppercased()) font file detected"
             isValidFont = true
@@ -211,10 +219,35 @@ struct FontInstall: View {
 
     /// Adopt a single face extracted from a collection as the font to install.
     private func selectExtractedFont(_ font: ExtractedFont) {
+        if isVariableFont(font.data) {
+            fontValidationMessage = "⚠️ “\(font.name)” is a variable font, which iOS can't install via profiles."
+            isValidFont = false
+            fontName = nil
+            return
+        }
         fontName = font.name
         fontValidationMessage = "✓ Extracted “\(font.name)” from collection"
         isValidFont = true
         prepareProfile(fontData: font.data, name: font.name)
+    }
+
+    /// True if the sfnt contains an `fvar` table, i.e. it's a variable font.
+    /// iOS configuration-profile font payloads reject these outright.
+    private func isVariableFont(_ data: Data) -> Bool {
+        let base = data.startIndex
+        guard data.count >= 12 else { return false }
+        let numTables = (Int(data[base + 4]) << 8) | Int(data[base + 5])
+        var offset = 12
+        for _ in 0..<numTables {
+            guard data.count >= offset + 16 else { break }
+            // 'fvar' == 0x66 0x76 0x61 0x72
+            if data[base + offset] == 0x66, data[base + offset + 1] == 0x76,
+               data[base + offset + 2] == 0x61, data[base + offset + 3] == 0x72 {
+                return true
+            }
+            offset += 16
+        }
+        return false
     }
 
     func installFont() {
