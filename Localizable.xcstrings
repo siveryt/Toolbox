@@ -1,6 +1,61 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Acquiring GPS…" : {
+      "comment" : "GPS signal status",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GPS wird gesucht…"
+          }
+        }
+      }
+    },
+    "Fair GPS signal" : {
+      "comment" : "GPS signal status",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mäßiges GPS-Signal"
+          }
+        }
+      }
+    },
+    "Good GPS signal" : {
+      "comment" : "GPS signal status",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gutes GPS-Signal"
+          }
+        }
+      }
+    },
+    "Poor GPS signal" : {
+      "comment" : "GPS signal status",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schlechtes GPS-Signal"
+          }
+        }
+      }
+    },
+    "Strong GPS signal" : {
+      "comment" : "GPS signal status",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starkes GPS-Signal"
+          }
+        }
+      }
+    },
     "" : {
       "shouldTranslate" : false
     },
