@@ -134,17 +134,6 @@
 			<false/>
 		</dict>
 	</dict>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>App-Prefs</string>
-			</array>
-		</dict>
-	</array>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LAST_UPDATE</key>
