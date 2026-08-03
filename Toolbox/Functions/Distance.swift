@@ -155,7 +155,7 @@ struct Distance: View {
                 }
 
                 centerPin
-                    .position(x: centerPt.x, y: centerPt.y - markerTipOffset) // tip rests on the exact center
+                    .position(x: centerPt.x, y: centerPt.y - markerTipOffset)
             }
         }
         .ignoresSafeArea()
@@ -166,9 +166,7 @@ struct Distance: View {
     /// tip, so `.position` can land the tip exactly on the measured centre point.
     private let markerTipOffset: CGFloat = 20
 
-    /// The moving second point: the real native `MKMarkerAnnotationView` (the exact
-    /// view MapKit renders markers with), shown as a fixed screen overlay so it never
-    /// lags behind the map center.
+    /// The moving second point (marker "B"), pinned to the map centre.
     private var centerPin: some View {
         NativeMarker(tint: UIColor(Color.accentColor), glyphText: "B")
             .frame(width: 40, height: 50)
