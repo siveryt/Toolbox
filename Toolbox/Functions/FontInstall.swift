@@ -8,10 +8,8 @@
 import SwiftUI
 import UniformTypeIdentifiers
 import Swifter
-import SafariServices
 
 struct FontInstall: View {
-    @State private var isShowingSafari = false
     @State private var serverURL = URL(string: "about:blank")
     @State private var isFilePickerPresented = false
     @State private var fontName: String? = nil
@@ -53,23 +51,13 @@ struct FontInstall: View {
 
             Section("Installation") {
                 Button("Install Font") {
-                    isShowingSafari = true
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                        self.isShowingSafari = false
-                        self.showingInstructions = true
-                    }
+                    installFont()
                 }
                 .disabled(!isValidFont)
 
                 Button("Show Installation Instructions") {
                     showingInstructions = true
                 }
-            }
-        }
-        .sheet(isPresented: $isShowingSafari) {
-            if let url = serverURL {
-                SafariView(url: url)
-                    .edgesIgnoringSafeArea(.all)
             }
         }
         .sheet(isPresented: $showingInstructions) {
@@ -158,6 +146,33 @@ struct FontInstall: View {
             fontValidationMessage = "Invalid font file format. The file doesn't appear to be a valid font."
             isValidFont = false
             fontName = nil
+        }
+    }
+
+    func installFont() {
+        guard let url = serverURL else { return }
+
+        // Configuration profiles can only be installed by the system Safari app,
+        // not by an in-app SFSafariViewController. Opening the URL here backgrounds
+        // us, so hold a background task to keep the local HTTP server responsive
+        // while Safari fetches the profile from localhost.
+        var backgroundTask: UIBackgroundTaskIdentifier = .invalid
+        backgroundTask = UIApplication.shared.beginBackgroundTask(withName: "ServeFontProfile") {
+            if backgroundTask != .invalid {
+                UIApplication.shared.endBackgroundTask(backgroundTask)
+                backgroundTask = .invalid
+            }
+        }
+
+        UIApplication.shared.open(url) { _ in
+            showingInstructions = true
+            // Give Safari time to download the profile before releasing the server.
+            DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+                if backgroundTask != .invalid {
+                    UIApplication.shared.endBackgroundTask(backgroundTask)
+                    backgroundTask = .invalid
+                }
+            }
         }
     }
 
@@ -366,14 +381,3 @@ struct InstallationInstructionsView: View {
     }
 }
 
-struct SafariView: UIViewControllerRepresentable {
-    let url: URL
-
-    func makeUIViewController(context: UIViewControllerRepresentableContext<SafariView>) -> SFSafariViewController {
-        let safariViewController = SFSafariViewController(url: url)
-        safariViewController.modalPresentationStyle = .fullScreen
-        return safariViewController
-    }
-
-    func updateUIViewController(_ uiViewController: SFSafariViewController, context: UIViewControllerRepresentableContext<SafariView>) {}
-}
