@@ -39,10 +39,19 @@ struct Distance: View {
     }
 
     private func formatted(_ meters: Double) -> String {
-        if meters < 1000 {
-            return String(format: "%.0f m", meters)
+        // Follow the user's regional setting: metric shows m/km, imperial shows ft/mi.
+        if Locale.current.measurementSystem == .metric {
+            if meters < 1000 {
+                return String(format: "%.0f m", meters)
+            }
+            return String(format: "%.2f km", meters / 1000)
+        } else {
+            let feet = meters * 3.280839895
+            if feet < 1000 {
+                return String(format: "%.0f ft", feet)
+            }
+            return String(format: "%.2f mi", meters / 1609.344)
         }
-        return String(format: "%.2f km", meters / 1000)
     }
 
     // MARK: - Body
