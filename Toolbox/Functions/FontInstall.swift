@@ -52,7 +52,7 @@ struct FontInstall: View {
                     }
                 }
 
-                Text("Font selected: " + (fontName ?? "None"))
+                Text("Font selected: \(fontName ?? NSLocalizedString("None", comment: "No font selected"))")
 
                 if !fontValidationMessage.isEmpty {
                     Text(fontValidationMessage)

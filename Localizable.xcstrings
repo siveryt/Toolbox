@@ -2796,6 +2796,16 @@
           }
         }
       }
+    },
+    "Font selected: %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ausgewählte Schrift: %@"
+          }
+        }
+      }
     }
   },
   "version" : "1.1"
