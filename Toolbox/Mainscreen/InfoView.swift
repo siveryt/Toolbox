@@ -145,24 +145,22 @@ struct infoView: View {
             }
             
         }
-        .alert(isPresented: $deleteAlert){
-            Alert(title: Text("Are you sure, you want to clear the app's data?"),
-                  message: Text("The app will close after deleting the data. You can instantly reopen it."),
-                  primaryButton: .cancel(),
-                  secondaryButton: .destructive(Text("Delete")) {
-                
+        .alert("Are you sure, you want to clear the app's data?", isPresented: $deleteAlert) {
+            Button("Cancel", role: .cancel) { }
+            Button("Delete", role: .destructive) {
                 let domain = Bundle.main.bundleIdentifier!
                 UserDefaults.standard.removePersistentDomain(forName: domain)
                 UserDefaults.standard.synchronize()
-                
+
                 try? Tips.resetDatastore()
-                
+
                 print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
                 SBDataController().resetBarcodes(context: managedContext)
                 UIControl().sendAction(#selector(NSXPCConnection.suspend), to: UIApplication.shared, for: nil)
                 exit(-1)
             }
-            )
+        } message: {
+            Text("The app will close after deleting the data. You can instantly reopen it.")
         }
         .navigationTitle("Info")
         .navigationBarTitleDisplayMode(.inline)
@@ -321,13 +319,11 @@ struct permissions: View {
                 }
             }
         }
-        .alert(isPresented: $showingInfoAlert) {
-            Alert(
-                title: Text("Why?"),
-                message: Text("Toolbox uses your location to calculate your speed and your coordinates when using the corresponding tools.\n\nToolbox needs access to your local network when using the LAN Scanner.\n\nToolbox needs access to your camera when scanning barcodes.\n\nToolbox needs acces to your microphone to measure audio levels."),
-                dismissButton: .destructive(Text("Got It!")) // I have to use .destructive and not .default, because .default often times is the default primary blue and not the color set in Assets AccentColor
-            )
-                }
+        .alert("Why?", isPresented: $showingInfoAlert) {
+            Button("Got It!") { }
+        } message: {
+            Text("Toolbox uses your location to calculate your speed and your coordinates when using the corresponding tools.\n\nToolbox needs access to your local network when using the LAN Scanner.\n\nToolbox needs access to your camera when scanning barcodes.\n\nToolbox needs acces to your microphone to measure audio levels.")
+        }
         .toolbar(){
             ToolbarItem(placement: .primaryAction) {
                 Button(action: {
@@ -390,13 +386,11 @@ struct infoHidden: View {
         }
         .navigationTitle("Hidden Tools")
         .navigationBarTitleDisplayMode(.inline)
-        .alert(isPresented: $showingInfoAlert) {
-            Alert(
-                title: Text("What?"),
-                message: Text("Tools you previously hid on the app's main screen can be used here.\nIf you want to move them back to the main screen, tap and hold them.\nThe same goes for hiding them again."),
-                dismissButton: .destructive(Text("Got It!")) // I have to use .destructive and not .default, because .default often times is the default primary blue and not the color set in Assets AccentColor
-            )
-                }
+        .alert("What?", isPresented: $showingInfoAlert) {
+            Button("Got It!") { }
+        } message: {
+            Text("Tools you previously hid on the app's main screen can be used here.\nIf you want to move them back to the main screen, tap and hold them.\nThe same goes for hiding them again.")
+        }
         .toolbar(){
             ToolbarItem(placement: .primaryAction) {
                 Button(action: {

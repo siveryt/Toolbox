@@ -20,7 +20,7 @@ struct BarcodeDetail: View {
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 List {
                     KeyValueProperty(content: barcode?.content, propertyName: NSLocalizedString("content", comment: "Barcode"))

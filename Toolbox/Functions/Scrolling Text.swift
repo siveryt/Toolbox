@@ -55,10 +55,9 @@ struct Scrolling_Text: View {
                 scrollerActive = enabled ? scrollerActive : false
             })
         }
-        .alert(isPresented: $rotateAlert) {
-            Alert(title: Text("Info"),
-                  message: Text("You need to rotate your device to enable the scrolling text.")
-            )
+        .alert("Info", isPresented: $rotateAlert) {
+        } message: {
+            Text("You need to rotate your device to enable the scrolling text.")
         }
         .onAppear {
             enabled = UIScreen.main.bounds.width > UIScreen.main.bounds.height

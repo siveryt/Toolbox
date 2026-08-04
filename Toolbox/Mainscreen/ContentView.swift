@@ -67,7 +67,7 @@ struct ContentView: View {
         }
     
     var body: some View {
-            NavigationView {
+            NavigationStack {
                 List() {
                     ForEach(Array(zip(tools.indices, tools)), id: \.0) { toolIndex, tool in
                         if (!hidden.contains(toolIndex)) {
@@ -103,7 +103,7 @@ struct ContentView: View {
                 }
                 
                 .sheet(isPresented: $infoPresented){
-                    NavigationView{
+                    NavigationStack{
                         infoView()
                             .environment(\.showingSheet, self.$infoPresented)
                     }
@@ -118,8 +118,6 @@ struct ContentView: View {
                         })
                     }
                 }
-                Text("Select a Tool")
-                    
             }
             .onAppear() {
             
@@ -160,13 +158,11 @@ struct ContentView: View {
             MainscreenMoveTip.appStarts = viewLoaded
                 
         }
-            .alert(isPresented: $hiddenAlert) {
-                Alert(
-                    title: Text("Hidden Tools"),
-                    message: Text("You just hid your first tool! You can still find it in the settings under \"Hidden Tools\"."),
-                    dismissButton: .destructive(Text("Got It!")) // I have to use .destructive and not .default, because .default often times is the default primary blue and not the color set in Assets AccentColor
-                )
-                    }
+            .alert("Hidden Tools", isPresented: $hiddenAlert) {
+                Button("Got It!") { }
+            } message: {
+                Text("You just hid your first tool! You can still find it in the settings under \"Hidden Tools\".")
+            }
         .whatsNewSheet()
     }
     

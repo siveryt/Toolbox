@@ -63,11 +63,9 @@ struct RomanConverter: View {
                     .multilineTextAlignment(.trailing)
             }
         }
-        .alert(isPresented: $alert) {
-            Alert(
-                title: Text("Number too big"),
-                message: Text("You can't convert numbers bigger than 3999.")
-            )
+        .alert("Number too big", isPresented: $alert) {
+        } message: {
+            Text("You can't convert numbers bigger than 3999.")
         }
         .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
         .navigationTitle("Roman Numbers")

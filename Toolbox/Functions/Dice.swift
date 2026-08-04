@@ -316,7 +316,7 @@ struct DiceView: View {
         }
 
         .sheet(isPresented: $settingsSheet){
-            NavigationView {
+            NavigationStack {
                 
                 Form {
                     Picker(selection: sidesBinding, label: Text("Sides")) {

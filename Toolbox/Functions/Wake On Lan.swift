@@ -86,7 +86,7 @@ struct Wake_On_Lan: View {
             .onDelete(perform: delete)
         }
         .sheet(isPresented: $sheetDisplayed, content: {
-            NavigationView {
+            NavigationStack {
                 Form {
                     Section {
                         VStack {
@@ -265,10 +265,9 @@ struct Wake_On_Lan: View {
                 Image(systemName: "plus")
             })
         }
-        .alert(isPresented: $wakeAlertPresented, content: {
-            Alert(title: Text("Are you sure you want to start the device?"),
-                  primaryButton: .cancel(),
-                  secondaryButton: .default(Text("Yes")) {
+        .alert("Are you sure you want to start the device?", isPresented: $wakeAlertPresented) {
+            Button("Cancel", role: .cancel) { }
+            Button("Yes") {
                 wake()
                 if (sheet_editDevice != nil) {
                     withAnimation {
@@ -276,8 +275,8 @@ struct Wake_On_Lan: View {
                     }
                 }
                 sheet_editDevice = nil
-            })
-        })
+            }
+        }
     }
     
     func delete(_ indexSet: IndexSet) {

@@ -258,15 +258,3 @@ struct Metronome: View {
         }
     }
 }
-
-struct ButtonToggleStyle: ToggleStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        Button(action: { configuration.isOn.toggle() }) {
-            configuration.label
-                .padding()
-                .background(configuration.isOn ? Color.red : Color.green)
-                .foregroundColor(.white)
-                .cornerRadius(10)
-        }
-    }
-}
