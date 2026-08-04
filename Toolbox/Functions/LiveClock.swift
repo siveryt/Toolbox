@@ -80,13 +80,14 @@ struct LiveClock: View {
         .navigationTitle("Live Clock")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Menu {
-                    Toggle(isOn: $showUTC) {
-                        Label(NSLocalizedString("Show UTC", comment: "Live Clock setting"), systemImage: "globe")
+                Button {
+                    withAnimation(.easeInOut(duration: 0.2)) {
+                        showUTC.toggle()
                     }
                 } label: {
-                    Label(NSLocalizedString("Settings", comment: "Live Clock setting"), systemImage: "ellipsis.circle")
+                    Label(NSLocalizedString("Show UTC", comment: "Live Clock setting"), systemImage: "globe")
                 }
+                .tint(showUTC ? .accentColor : .primary)
             }
         }
     }
