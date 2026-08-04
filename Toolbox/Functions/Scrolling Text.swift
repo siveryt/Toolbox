@@ -8,8 +8,23 @@
 import SwiftUI
 import MarqueeText
 import Combine
+import TipKit
+
+/// Hint shown in the scrolling-text full-screen mode explaining how to exit it.
+struct ScrollingTextFullscreenTip: Tip {
+    var title: Text {
+        Text("Exit Fullscreen")
+    }
+    var message: Text? {
+        Text("Tap anywhere to minimize")
+    }
+    var image: Image? {
+        Image(systemName: "arrow.down.right.and.arrow.up.left")
+    }
+}
 
 struct Scrolling_Text: View {
+    private let fullscreenTip = ScrollingTextFullscreenTip()
     @State var enabled = false
     @State var scrollerActive = false
     @State var rotateAlert = false
@@ -73,19 +88,16 @@ struct Scrolling_Text: View {
                             startDelay: 0,
                             duration: Double(text.count)/(2.0 * scrollingSpeed)
                         )
-                        .gesture(MagnifyGesture()
-                            .onEnded { value in
-                                scrollerActive = false
-                            }
-                        )
                         .ignoresSafeArea()
                     }
-                    .overlay(alignment: .topTrailing) {
-                        Button(role: .close) {
-                            scrollerActive = false
-                        }
-                        .buttonStyle(.glass)
-                        .padding()
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        scrollerActive = false
+                        fullscreenTip.invalidate(reason: .actionPerformed)
+                    }
+                    .overlay(alignment: .top) {
+                        TipView(fullscreenTip)
+                            .padding()
                     }
         }
         
