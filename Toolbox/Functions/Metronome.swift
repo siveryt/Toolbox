@@ -7,8 +7,24 @@
 
 import SwiftUI
 import AVFoundation
+import TipKit
+
+/// Hint shown in the metronome's full-screen mode explaining how to exit it.
+struct MetronomeFullscreenTip: Tip {
+    var title: Text {
+        Text("Exit Fullscreen")
+    }
+    var message: Text? {
+        Text("Tap anywhere to minimize")
+    }
+    var image: Image? {
+        Image(systemName: "arrow.down.right.and.arrow.up.left")
+    }
+}
 
 struct Metronome: View {
+    private let fullscreenTip = MetronomeFullscreenTip()
+
     @AppStorage("metronome_bpm") private var bpm: Double = 120
     @AppStorage("metronome_bpmeasure") private var bpmeasure: Double = 4
     @State private var progress: Double = 0
@@ -108,20 +124,14 @@ struct Metronome: View {
             .padding(.horizontal)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .contentShape(Rectangle())
-            .gesture(
-                MagnificationGesture()
-                    .onEnded { value in
-                        fullscreen = false
-                        isPlaying = false
-                    }
-            )
-            .overlay(alignment: .topTrailing) {
-                Button(role: .close) {
-                    fullscreen = false
-                    isPlaying = false
-                }
-                .buttonStyle(.glass)
-                .padding()
+            .onTapGesture {
+                fullscreen = false
+                isPlaying = false
+                fullscreenTip.invalidate(reason: .actionPerformed)
+            }
+            .overlay(alignment: .top) {
+                TipView(fullscreenTip)
+                    .padding()
             }
         }
 
