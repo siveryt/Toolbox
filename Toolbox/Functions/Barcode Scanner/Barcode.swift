@@ -104,11 +104,8 @@ struct BarcodeScanner: View {
                 .ignoresSafeArea()
             }
         }
-        // The sheet is dismissed by the standard swipe-down gesture (it uses
-        // .medium/.large detents) or automatically once a code is scanned, so
-        // no custom close control is needed on iOS 26+.
     }
-    
+
 }
 
 struct Barcode_Previews: PreviewProvider {
