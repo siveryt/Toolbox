@@ -166,6 +166,7 @@ struct infoView: View {
         }
         .navigationTitle("Info")
         .navigationBarTitleDisplayMode(.inline)
+        .contentMargins(.top, 0, for: .scrollContent)
         .toolbar {
             Button(role: .close) {
                 self.showingSheet?.wrappedValue = false
