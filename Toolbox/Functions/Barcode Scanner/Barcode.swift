@@ -103,25 +103,10 @@ struct BarcodeScanner: View {
                 }
                 .ignoresSafeArea()
             }
-            VStack {
-                HStack {
-                    Spacer()
-                    Button(action: {
-                        dismiss()
-                    }) {
-                        Image(systemName: "xmark.circle.fill")
-                            .resizable()
-                            .frame(width: 24, height: 24)
-                            .symbolRenderingMode(.palette)
-                            .foregroundStyle(.secondary, .tertiary)
-                    }
-                    .padding(.trailing, 16)
-                    .padding(.top, 16)
-                }
-                Spacer()
-            }
         }
-        
+        // The sheet is dismissed by the standard swipe-down gesture (it uses
+        // .medium/.large detents) or automatically once a code is scanned, so
+        // no custom close control is needed on iOS 26+.
     }
     
 }

@@ -344,15 +344,20 @@ struct DiceView: View {
                     }
 
                     Section("Hint: You can hold one dice to lock it"){
-                        
-                    }
-                    
-                    
-                    
-                    
-                }
 
-                
+                    }
+
+
+
+
+                }
+                .navigationTitle("Settings")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    Button(role: .close) {
+                        settingsSheet = false
+                    }
+                }
             }
         }
         .onAppear()  {

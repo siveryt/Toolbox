@@ -234,23 +234,25 @@ struct Wake_On_Lan: View {
                 }
                 .navigationBarTitle("Add new Device")
                 .navigationBarTitleDisplayMode(.inline)
-                .navigationBarItems(trailing:
-                                        Button("Done") {
-                    sheet_mac = sheet_mac.replacingOccurrences(of: "-", with: ":")
-                    if(editing && sheet_editDevice != nil) {
-                        sheet_editDevice!.mac = sheet_mac
-                        sheet_editDevice!.name = sheet_name
-                        sheet_editDevice!.port = Int(sheet_port)
-                        sheet_editDevice!.broadcast = sheet_broadcast
-                    } else {
-                        modelContext.insert(WOLDevice(name: sheet_name, mac: sheet_mac, broadcast: sheet_broadcast, port: Int(sheet_port) ?? 9))
+                .toolbar {
+                    ToolbarItem(placement: .confirmationAction) {
+                        Button(role: .confirm) {
+                            sheet_mac = sheet_mac.replacingOccurrences(of: "-", with: ":")
+                            if(editing && sheet_editDevice != nil) {
+                                sheet_editDevice!.mac = sheet_mac
+                                sheet_editDevice!.name = sheet_name
+                                sheet_editDevice!.port = Int(sheet_port)
+                                sheet_editDevice!.broadcast = sheet_broadcast
+                            } else {
+                                modelContext.insert(WOLDevice(name: sheet_name, mac: sheet_mac, broadcast: sheet_broadcast, port: Int(sheet_port) ?? 9))
+                            }
+                            sheetDisplayed = false
+                            editing = false
+                            resetSheetData()
+                        }
+                        .disabled(invalid_mac_empty || invalid_name_same || invalid_name_empty || invalid_port_empty || invalid_broadcast_empty)
                     }
-                    sheetDisplayed = false
-                    editing = false
-                    resetSheetData()
                 }
-                    .disabled(invalid_mac_empty || invalid_name_same || invalid_name_empty || invalid_port_empty || invalid_broadcast_empty)
-                )
             }
         })
         .navigationBarTitle("Wake On Lan")

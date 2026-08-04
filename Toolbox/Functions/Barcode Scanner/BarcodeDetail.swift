@@ -37,7 +37,11 @@ struct BarcodeDetail: View {
                 
             }
             .navigationBarTitle(barcode?.content ?? "No Content")
-            .navigationBarItems(trailing: backButton)
+            .toolbar {
+                Button(role: .close) {
+                    dismiss()
+                }
+            }
             .navigationBarTitleDisplayMode(.inline)
         }
         .toast(isPresenting: $isPresentingToast, message: NSLocalizedString("Copied", comment: "Copy toast"), icon: .custom(Image(systemName: "doc.on.clipboard")), autoDismiss: .none)
@@ -104,13 +108,6 @@ struct BarcodeDetail: View {
         
 
         return UIImage(systemName: "xmark.circle") ?? UIImage()
-    }
-      
-    
-    private var backButton: some View {
-        Button("Done") {
-            dismiss()
-        }
     }
 }
 
