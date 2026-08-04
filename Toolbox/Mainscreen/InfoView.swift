@@ -164,13 +164,13 @@ struct infoView: View {
             }
             )
         }
-//        .navigationBarTitle("Settings")
-//        .navigationBarTitleDisplayMode(.large)
-//        .navigationBarItems(trailing:
-//                                Button("Done") {
-//            self.showingSheet?.wrappedValue = false
-//        }
-//        )
+        .navigationTitle("Info")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            Button(role: .close) {
+                self.showingSheet?.wrappedValue = false
+            }
+        }
     }
 }
 

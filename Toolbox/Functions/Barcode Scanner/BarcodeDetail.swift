@@ -36,7 +36,7 @@ struct BarcodeDetail: View {
                 
                 
             }
-            .navigationBarTitle(barcode?.content ?? "No Content")
+            .navigationTitle("Details")
             .toolbar {
                 Button(role: .close) {
                     dismiss()
