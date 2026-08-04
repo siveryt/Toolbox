@@ -81,6 +81,13 @@ struct Scrolling_Text: View {
                         )
                         .ignoresSafeArea()
                     }
+                    .overlay(alignment: .topTrailing) {
+                        Button(role: .close) {
+                            scrollerActive = false
+                        }
+                        .buttonStyle(.glass)
+                        .padding()
+                    }
         }
         
         .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)

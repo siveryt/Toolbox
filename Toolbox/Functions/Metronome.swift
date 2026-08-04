@@ -115,6 +115,14 @@ struct Metronome: View {
                         isPlaying = false
                     }
             )
+            .overlay(alignment: .topTrailing) {
+                Button(role: .close) {
+                    fullscreen = false
+                    isPlaying = false
+                }
+                .buttonStyle(.glass)
+                .padding()
+            }
         }
 
         .toolbar {

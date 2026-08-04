@@ -9,7 +9,6 @@ import LanScanner
 
 struct LAN_Scanner: View {
     @ObservedObject var viewModel = LAN_ScannerViewModel()
-    @State var showSettings = false
     
     var body: some View {
         ZStack {
@@ -55,9 +54,6 @@ struct LAN_Scanner: View {
         }
         .onDisappear() {
             viewModel.stop()
-        }
-        .sheet(isPresented: $showSettings) {
-            Text("Scanning finished")
         }
         .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
         .navigationTitle("LAN Scanner")

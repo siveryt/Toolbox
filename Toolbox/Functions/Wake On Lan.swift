@@ -232,7 +232,7 @@ struct Wake_On_Lan: View {
                         }
                     }
                 }
-                .navigationBarTitle("Add new Device")
+                .navigationTitle("Add new Device")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .confirmationAction) {
@@ -255,7 +255,7 @@ struct Wake_On_Lan: View {
                 }
             }
         })
-        .navigationBarTitle("Wake On Lan")
+        .navigationTitle("Wake On Lan")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             Button(action: {
