@@ -20,7 +20,7 @@ struct BarcodeDetail: View {
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 List {
                     KeyValueProperty(content: barcode?.content, propertyName: NSLocalizedString("content", comment: "Barcode"))
@@ -36,8 +36,12 @@ struct BarcodeDetail: View {
                 
                 
             }
-            .navigationBarTitle(barcode?.content ?? "No Content")
-            .navigationBarItems(trailing: backButton)
+            .navigationTitle("Details")
+            .toolbar {
+                Button(role: .close) {
+                    dismiss()
+                }
+            }
             .navigationBarTitleDisplayMode(.inline)
         }
         .toast(isPresenting: $isPresentingToast, message: NSLocalizedString("Copied", comment: "Copy toast"), icon: .custom(Image(systemName: "doc.on.clipboard")), autoDismiss: .none)
@@ -104,13 +108,6 @@ struct BarcodeDetail: View {
         
 
         return UIImage(systemName: "xmark.circle") ?? UIImage()
-    }
-      
-    
-    private var backButton: some View {
-        Button("Done") {
-            dismiss()
-        }
     }
 }
 

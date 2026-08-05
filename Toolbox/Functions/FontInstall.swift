@@ -73,15 +73,13 @@ struct FontInstall: View {
             }
         }
         .sheet(isPresented: $showingInstructions) {
-            NavigationView {
+            NavigationStack {
                 InstallationInstructionsView()
                     .navigationTitle("Installation Guide")
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            Button("Done") {
-                                showingInstructions = false
-                            }
+                        Button(role: .close) {
+                            showingInstructions = false
                         }
                     }
             }

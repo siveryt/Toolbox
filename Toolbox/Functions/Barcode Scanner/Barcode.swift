@@ -103,27 +103,9 @@ struct BarcodeScanner: View {
                 }
                 .ignoresSafeArea()
             }
-            VStack {
-                HStack {
-                    Spacer()
-                    Button(action: {
-                        dismiss()
-                    }) {
-                        Image(systemName: "xmark.circle.fill")
-                            .resizable()
-                            .frame(width: 24, height: 24)
-                            .symbolRenderingMode(.palette)
-                            .foregroundStyle(.secondary, .tertiary)
-                    }
-                    .padding(.trailing, 16)
-                    .padding(.top, 16)
-                }
-                Spacer()
-            }
         }
-        
     }
-    
+
 }
 
 struct Barcode_Previews: PreviewProvider {

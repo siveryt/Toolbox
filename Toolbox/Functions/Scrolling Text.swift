@@ -8,8 +8,23 @@
 import SwiftUI
 import MarqueeText
 import Combine
+import TipKit
+
+/// Hint shown in the scrolling-text full-screen mode explaining how to exit it.
+struct ScrollingTextFullscreenTip: Tip {
+    var title: Text {
+        Text("Exit Fullscreen")
+    }
+    var message: Text? {
+        Text("Tap anywhere to minimize")
+    }
+    var image: Image? {
+        Image(systemName: "arrow.down.right.and.arrow.up.left")
+    }
+}
 
 struct Scrolling_Text: View {
+    private let fullscreenTip = ScrollingTextFullscreenTip()
     @State var enabled = false
     @State var scrollerActive = false
     @State var rotateAlert = false
@@ -55,10 +70,9 @@ struct Scrolling_Text: View {
                 scrollerActive = enabled ? scrollerActive : false
             })
         }
-        .alert(isPresented: $rotateAlert) {
-            Alert(title: Text("Info"),
-                  message: Text("You need to rotate your device to enable the scrolling text.")
-            )
+        .alert("Info", isPresented: $rotateAlert) {
+        } message: {
+            Text("You need to rotate your device to enable the scrolling text.")
         }
         .onAppear {
             enabled = UIScreen.main.bounds.width > UIScreen.main.bounds.height
@@ -74,12 +88,16 @@ struct Scrolling_Text: View {
                             startDelay: 0,
                             duration: Double(text.count)/(2.0 * scrollingSpeed)
                         )
-                        .gesture(MagnifyGesture()
-                            .onEnded { value in
-                                scrollerActive = false
-                            }
-                        )
                         .ignoresSafeArea()
+                    }
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        scrollerActive = false
+                        fullscreenTip.invalidate(reason: .actionPerformed)
+                    }
+                    .overlay(alignment: .top) {
+                        TipView(fullscreenTip)
+                            .padding()
                     }
         }
         

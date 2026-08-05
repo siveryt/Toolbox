@@ -43,26 +43,18 @@ struct Counter: View {
                     showAlert = true
                     Haptic.impact(.rigid).generate()
                 }
-                .alert(isPresented: $showAlert) {
-                    Alert(
-                        title: Text("Reset Counter"),
-                        message: Text("Are you sure, you want to reset the counter?"),
-                        primaryButton: .default(
-                            Text("Don't Reset"),
-                            action: {
-                                showAlert = false
-                            }
-                        ),
-                        secondaryButton: .destructive(
-                            Text("Reset"),
-                            action: {
-                                count = 0
-                                defaults.set(count, forKey: "count")
-                                showAlert = false
-                                Haptic.impact(.medium).generate()
-                            }
-                        )
-                    )
+                .alert("Reset Counter", isPresented: $showAlert) {
+                    Button("Don't Reset", role: .cancel) {
+                        showAlert = false
+                    }
+                    Button("Reset", role: .destructive) {
+                        count = 0
+                        defaults.set(count, forKey: "count")
+                        showAlert = false
+                        Haptic.impact(.medium).generate()
+                    }
+                } message: {
+                    Text("Are you sure, you want to reset the counter?")
                 }
                 .dynamicTypeSize(.accessibility3)
                 .tint(.primary)

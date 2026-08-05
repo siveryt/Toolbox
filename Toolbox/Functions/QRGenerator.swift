@@ -157,20 +157,22 @@ struct QRGenerator: View {
 
 
         }
-        .navigationBarItems(trailing:
-                                Button(action: {
-            switch qrType {
-            case .text:
-                shareFromView(shareItem: [generateQRCode(from: text)])
-            case .wifi:
-                shareFromView(shareItem: [generateQRCode(from: "WIFI:T:\(wifiTYPE);S:\(wifiSSID);P:\(wifiPASSWORD);H:\(String(wifiHIDDEN));")])
-            case .url:
-                shareFromView(shareItem: [generateQRCode(from: url)])
-            case .mail:
-                shareFromView(shareItem: [generateQRCode(from: "MATMSG:TO:\(mailReceiver);SUB:\(mailSubject);BODY:;;")])
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button(action: {
+                    switch qrType {
+                    case .text:
+                        shareFromView(shareItem: [generateQRCode(from: text)])
+                    case .wifi:
+                        shareFromView(shareItem: [generateQRCode(from: "WIFI:T:\(wifiTYPE);S:\(wifiSSID);P:\(wifiPASSWORD);H:\(String(wifiHIDDEN));")])
+                    case .url:
+                        shareFromView(shareItem: [generateQRCode(from: url)])
+                    case .mail:
+                        shareFromView(shareItem: [generateQRCode(from: "MATMSG:TO:\(mailReceiver);SUB:\(mailSubject);BODY:;;")])
+                    }
+                }, label: {Image(systemName: "square.and.arrow.up")})
             }
-        }, label: {Image(systemName: "square.and.arrow.up")})
-        )
+        }
         .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
         .navigationTitle("QR-Generator")
         

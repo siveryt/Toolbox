@@ -86,7 +86,7 @@ struct Wake_On_Lan: View {
             .onDelete(perform: delete)
         }
         .sheet(isPresented: $sheetDisplayed, content: {
-            NavigationView {
+            NavigationStack {
                 Form {
                     Section {
                         VStack {
@@ -232,28 +232,30 @@ struct Wake_On_Lan: View {
                         }
                     }
                 }
-                .navigationBarTitle("Add new Device")
+                .navigationTitle("Add new Device")
                 .navigationBarTitleDisplayMode(.inline)
-                .navigationBarItems(trailing:
-                                        Button("Done") {
-                    sheet_mac = sheet_mac.replacingOccurrences(of: "-", with: ":")
-                    if(editing && sheet_editDevice != nil) {
-                        sheet_editDevice!.mac = sheet_mac
-                        sheet_editDevice!.name = sheet_name
-                        sheet_editDevice!.port = Int(sheet_port)
-                        sheet_editDevice!.broadcast = sheet_broadcast
-                    } else {
-                        modelContext.insert(WOLDevice(name: sheet_name, mac: sheet_mac, broadcast: sheet_broadcast, port: Int(sheet_port) ?? 9))
+                .toolbar {
+                    ToolbarItem(placement: .confirmationAction) {
+                        Button(role: .confirm) {
+                            sheet_mac = sheet_mac.replacingOccurrences(of: "-", with: ":")
+                            if(editing && sheet_editDevice != nil) {
+                                sheet_editDevice!.mac = sheet_mac
+                                sheet_editDevice!.name = sheet_name
+                                sheet_editDevice!.port = Int(sheet_port)
+                                sheet_editDevice!.broadcast = sheet_broadcast
+                            } else {
+                                modelContext.insert(WOLDevice(name: sheet_name, mac: sheet_mac, broadcast: sheet_broadcast, port: Int(sheet_port) ?? 9))
+                            }
+                            sheetDisplayed = false
+                            editing = false
+                            resetSheetData()
+                        }
+                        .disabled(invalid_mac_empty || invalid_name_same || invalid_name_empty || invalid_port_empty || invalid_broadcast_empty)
                     }
-                    sheetDisplayed = false
-                    editing = false
-                    resetSheetData()
                 }
-                    .disabled(invalid_mac_empty || invalid_name_same || invalid_name_empty || invalid_port_empty || invalid_broadcast_empty)
-                )
             }
         })
-        .navigationBarTitle("Wake On Lan")
+        .navigationTitle("Wake On Lan")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             Button(action: {
@@ -263,10 +265,9 @@ struct Wake_On_Lan: View {
                 Image(systemName: "plus")
             })
         }
-        .alert(isPresented: $wakeAlertPresented, content: {
-            Alert(title: Text("Are you sure you want to start the device?"),
-                  primaryButton: .cancel(),
-                  secondaryButton: .default(Text("Yes")) {
+        .alert("Are you sure you want to start the device?", isPresented: $wakeAlertPresented) {
+            Button("Cancel", role: .cancel) { }
+            Button("Yes") {
                 wake()
                 if (sheet_editDevice != nil) {
                     withAnimation {
@@ -274,8 +275,8 @@ struct Wake_On_Lan: View {
                     }
                 }
                 sheet_editDevice = nil
-            })
-        })
+            }
+        }
     }
     
     func delete(_ indexSet: IndexSet) {
