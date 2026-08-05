@@ -1936,6 +1936,17 @@
         }
       }
     },
+    "Show" : {
+      "comment" : "Date difference",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anzeigen"
+          }
+        }
+      }
+    },
     "Show Again" : {
       "localizations" : {
         "de" : {
