@@ -548,6 +548,7 @@
 				5E9ABFC72B9CB840005448FB /* Sources */,
 				5E9ABFC82B9CB840005448FB /* Frameworks */,
 				5E9ABFC92B9CB840005448FB /* Resources */,
+				5EA1C0DE2C00000100000003 /* Stamp Version Metadata (SCRIPT) */,
 			);
 			buildRules = (
 			);
@@ -601,6 +602,7 @@
 				5EE65DEB2A8575FE0061120B /* Sources */,
 				5EE65DEC2A8575FE0061120B /* Frameworks */,
 				5EE65DED2A8575FE0061120B /* Resources */,
+				5EA1C0DE2C00000100000002 /* Stamp Version Metadata (SCRIPT) */,
 			);
 			buildRules = (
 			);
@@ -754,6 +756,44 @@
 			shellPath = /bin/bash;
 			shellScript = "#!/bin/bash\n# Stamps version metadata into the assembled Info.plist:\n#\n#   CFBundleVersion  BUILD_NUMBER_BASE + number of commits reachable from HEAD\n#   GIT_COMMIT       short hash, with a trailing '*' when the tree is dirty\n#   LAST_UPDATE      commit date of HEAD\n#\n# Runs as the last build phase: after the bundle is assembled, before codesigning,\n# so the values are covered by the signature.\n#\n# Why not an xcconfig: build settings are evaluated once when the build starts, so\n# a value written by a build phase only lands in the NEXT build. For a plain\n# counter that is merely surprising; for anything derived from HEAD it is wrong.\nset -e\n\n# Keep in sync with BUILD_NUMBER_BASE in .github/workflows/testflight.yml, which\n# cross-checks the stamped value. The offset lifts the commit count above 736,\n# the last build number uploaded by hand from Xcode Organizer.\nBUILD_NUMBER_BASE=1000\n\nGIT_BIN=/usr/bin/git\nPLIST=\"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n\nif [ ! -f \"${PLIST}\" ]; then\n    echo \"warning: Info.plist not found at ${PLIST}, skipping version stamp\"\n    exit 0\nfi\n\nif [ -x \"${GIT_BIN}\" ] && \"${GIT_BIN}\" -C \"${PROJECT_DIR}\" rev-parse --git-dir >/dev/null 2>&1; then\n    # A shallow clone cannot produce a correct commit count, and silently\n    # stamping a too-low build number would be rejected by App Store Connect\n    # much later, with an error that points nowhere near the cause.\n    if [ \"$(\"${GIT_BIN}\" -C \"${PROJECT_DIR}\" rev-parse --is-shallow-repository)\" = \"true\" ]; then\n        echo \"error: shallow git clone: cannot derive a build number. Fetch full history (git fetch --unshallow).\"\n        exit 1\n    fi\n\n    COMMIT=$(\"${GIT_BIN}\" -C \"${PROJECT_DIR}\" rev-parse --short HEAD)\n    COUNT=$(\"${GIT_BIN}\" -C \"${PROJECT_DIR}\" rev-list --count HEAD)\n    DATE=$(\"${GIT_BIN}\" -C \"${PROJECT_DIR}\" log -1 --format=%cd --date=short)\n    BUILD=$(( BUILD_NUMBER_BASE + COUNT ))\n\n    # Marks a build that does not correspond to any commit, so it can never be\n    # mistaken for an exact reproduction of one.\n    if [ -n \"$(\"${GIT_BIN}\" -C \"${PROJECT_DIR}\" status --porcelain)\" ]; then\n        COMMIT=\"${COMMIT}*\"\n    fi\nelse\n    echo \"warning: no git repository at ${PROJECT_DIR}; stamping placeholders\"\n    COMMIT=\"unknown\"\n    DATE=\"unknown\"\n    BUILD=0\nfi\n\nstamp() {\n    /usr/libexec/PlistBuddy -c \"Set :$1 $2\" \"${PLIST}\" 2>/dev/null \\\n        || /usr/libexec/PlistBuddy -c \"Add :$1 string $2\" \"${PLIST}\"\n}\n\nstamp CFBundleVersion \"${BUILD}\"\nstamp GIT_COMMIT \"${COMMIT}\"\nstamp LAST_UPDATE \"${DATE}\"\n\necho \"CFBundleVersion = ${BUILD}\"\necho \"GIT_COMMIT = ${COMMIT}\"\necho \"LAST_UPDATE = ${DATE}\"\n";
 		};
+		5EA1C0DE2C00000100000002 /* Stamp Version Metadata (SCRIPT) */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Stamp Version Metadata (SCRIPT)";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "#!/bin/bash\n# Stamps version metadata into the assembled Info.plist:\n#\n#   CFBundleVersion  BUILD_NUMBER_BASE + number of commits reachable from HEAD\n#   GIT_COMMIT       short hash, with a trailing '*' when the tree is dirty\n#   LAST_UPDATE      commit date of HEAD\n#\n# Runs as the last build phase: after the bundle is assembled, before codesigning,\n# so the values are covered by the signature.\n#\n# Why not an xcconfig: build settings are evaluated once when the build starts, so\n# a value written by a build phase only lands in the NEXT build. For a plain\n# counter that is merely surprising; for anything derived from HEAD it is wrong.\nset -e\n\n# Keep in sync with BUILD_NUMBER_BASE in .github/workflows/testflight.yml, which\n# cross-checks the stamped value. The offset lifts the commit count above 736,\n# the last build number uploaded by hand from Xcode Organizer.\nBUILD_NUMBER_BASE=1000\n\nGIT_BIN=/usr/bin/git\nPLIST=\"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n\nif [ ! -f \"${PLIST}\" ]; then\n    echo \"warning: Info.plist not found at ${PLIST}, skipping version stamp\"\n    exit 0\nfi\n\nif [ -x \"${GIT_BIN}\" ] && \"${GIT_BIN}\" -C \"${PROJECT_DIR}\" rev-parse --git-dir >/dev/null 2>&1; then\n    # A shallow clone cannot produce a correct commit count, and silently\n    # stamping a too-low build number would be rejected by App Store Connect\n    # much later, with an error that points nowhere near the cause.\n    if [ \"$(\"${GIT_BIN}\" -C \"${PROJECT_DIR}\" rev-parse --is-shallow-repository)\" = \"true\" ]; then\n        echo \"error: shallow git clone: cannot derive a build number. Fetch full history (git fetch --unshallow).\"\n        exit 1\n    fi\n\n    COMMIT=$(\"${GIT_BIN}\" -C \"${PROJECT_DIR}\" rev-parse --short HEAD)\n    COUNT=$(\"${GIT_BIN}\" -C \"${PROJECT_DIR}\" rev-list --count HEAD)\n    DATE=$(\"${GIT_BIN}\" -C \"${PROJECT_DIR}\" log -1 --format=%cd --date=short)\n    BUILD=$(( BUILD_NUMBER_BASE + COUNT ))\n\n    # Marks a build that does not correspond to any commit, so it can never be\n    # mistaken for an exact reproduction of one.\n    if [ -n \"$(\"${GIT_BIN}\" -C \"${PROJECT_DIR}\" status --porcelain)\" ]; then\n        COMMIT=\"${COMMIT}*\"\n    fi\nelse\n    echo \"warning: no git repository at ${PROJECT_DIR}; stamping placeholders\"\n    COMMIT=\"unknown\"\n    DATE=\"unknown\"\n    BUILD=0\nfi\n\nstamp() {\n    /usr/libexec/PlistBuddy -c \"Set :$1 $2\" \"${PLIST}\" 2>/dev/null \\\n        || /usr/libexec/PlistBuddy -c \"Add :$1 string $2\" \"${PLIST}\"\n}\n\nstamp CFBundleVersion \"${BUILD}\"\nstamp GIT_COMMIT \"${COMMIT}\"\nstamp LAST_UPDATE \"${DATE}\"\n\necho \"CFBundleVersion = ${BUILD}\"\necho \"GIT_COMMIT = ${COMMIT}\"\necho \"LAST_UPDATE = ${DATE}\"\n";
+		};
+		5EA1C0DE2C00000100000003 /* Stamp Version Metadata (SCRIPT) */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Stamp Version Metadata (SCRIPT)";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "#!/bin/bash\n# Stamps version metadata into the assembled Info.plist:\n#\n#   CFBundleVersion  BUILD_NUMBER_BASE + number of commits reachable from HEAD\n#   GIT_COMMIT       short hash, with a trailing '*' when the tree is dirty\n#   LAST_UPDATE      commit date of HEAD\n#\n# Runs as the last build phase: after the bundle is assembled, before codesigning,\n# so the values are covered by the signature.\n#\n# Why not an xcconfig: build settings are evaluated once when the build starts, so\n# a value written by a build phase only lands in the NEXT build. For a plain\n# counter that is merely surprising; for anything derived from HEAD it is wrong.\nset -e\n\n# Keep in sync with BUILD_NUMBER_BASE in .github/workflows/testflight.yml, which\n# cross-checks the stamped value. The offset lifts the commit count above 736,\n# the last build number uploaded by hand from Xcode Organizer.\nBUILD_NUMBER_BASE=1000\n\nGIT_BIN=/usr/bin/git\nPLIST=\"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n\nif [ ! -f \"${PLIST}\" ]; then\n    echo \"warning: Info.plist not found at ${PLIST}, skipping version stamp\"\n    exit 0\nfi\n\nif [ -x \"${GIT_BIN}\" ] && \"${GIT_BIN}\" -C \"${PROJECT_DIR}\" rev-parse --git-dir >/dev/null 2>&1; then\n    # A shallow clone cannot produce a correct commit count, and silently\n    # stamping a too-low build number would be rejected by App Store Connect\n    # much later, with an error that points nowhere near the cause.\n    if [ \"$(\"${GIT_BIN}\" -C \"${PROJECT_DIR}\" rev-parse --is-shallow-repository)\" = \"true\" ]; then\n        echo \"error: shallow git clone: cannot derive a build number. Fetch full history (git fetch --unshallow).\"\n        exit 1\n    fi\n\n    COMMIT=$(\"${GIT_BIN}\" -C \"${PROJECT_DIR}\" rev-parse --short HEAD)\n    COUNT=$(\"${GIT_BIN}\" -C \"${PROJECT_DIR}\" rev-list --count HEAD)\n    DATE=$(\"${GIT_BIN}\" -C \"${PROJECT_DIR}\" log -1 --format=%cd --date=short)\n    BUILD=$(( BUILD_NUMBER_BASE + COUNT ))\n\n    # Marks a build that does not correspond to any commit, so it can never be\n    # mistaken for an exact reproduction of one.\n    if [ -n \"$(\"${GIT_BIN}\" -C \"${PROJECT_DIR}\" status --porcelain)\" ]; then\n        COMMIT=\"${COMMIT}*\"\n    fi\nelse\n    echo \"warning: no git repository at ${PROJECT_DIR}; stamping placeholders\"\n    COMMIT=\"unknown\"\n    DATE=\"unknown\"\n    BUILD=0\nfi\n\nstamp() {\n    /usr/libexec/PlistBuddy -c \"Set :$1 $2\" \"${PLIST}\" 2>/dev/null \\\n        || /usr/libexec/PlistBuddy -c \"Add :$1 string $2\" \"${PLIST}\"\n}\n\nstamp CFBundleVersion \"${BUILD}\"\nstamp GIT_COMMIT \"${COMMIT}\"\nstamp LAST_UPDATE \"${DATE}\"\n\necho \"CFBundleVersion = ${BUILD}\"\necho \"GIT_COMMIT = ${COMMIT}\"\necho \"LAST_UPDATE = ${DATE}\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -849,7 +889,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VA79D2T9W7;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = diceWidget/Info.plist;
@@ -862,7 +902,6 @@
 					"@executable_path/../../Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.sivery.toolbox.diceWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -883,7 +922,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VA79D2T9W7;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = diceWidget/Info.plist;
@@ -896,7 +935,6 @@
 					"@executable_path/../../Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.sivery.toolbox.diceWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -959,6 +997,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1016,6 +1055,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1058,7 +1098,6 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = de.sivery.toolbox;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1102,7 +1141,6 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = de.sivery.toolbox;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1121,7 +1159,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = VA79D2T9W7;
 				ENABLE_PREVIEWS = YES;
@@ -1135,7 +1173,6 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = de.sivery.toolbox.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1154,7 +1191,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = VA79D2T9W7;
 				ENABLE_PREVIEWS = YES;
@@ -1168,7 +1205,6 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = de.sivery.toolbox.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;

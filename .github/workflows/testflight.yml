@@ -250,6 +250,29 @@ jobs:
             exit 1
           fi
 
+          # App Store Connect rejects an upload when an embedded watch app does
+          # not carry the exact same CFBundleShortVersionString and
+          # CFBundleVersion as its host (error 90379); for an appex the same
+          # mismatch is warning 90473. Both are checked here rather than in
+          # altool, which only reports them after the archive and export have
+          # already run.
+          FAIL=0
+          for NESTED in \
+            "Watch/Toolbox WatchOS Watch App.app" \
+            "PlugIns/diceWidgetExtension.appex"; do
+            NP="$(dirname "$PLIST")/$NESTED/Info.plist"
+            if [ ! -f "$NP" ]; then
+              echo "::error::Embedded bundle missing from the archive: $NESTED"
+              FAIL=1; continue
+            fi
+            NV=$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" "$NP")
+            NB=$(/usr/libexec/PlistBuddy -c "Print :CFBundleVersion" "$NP")
+            echo "  $NESTED -> $NV ($NB)"
+            [ "$NV" = "$VERSION" ] || { echo "::error::$NESTED has CFBundleShortVersionString $NV, host has $VERSION."; FAIL=1; }
+            [ "$NB" = "$BUILD" ]   || { echo "::error::$NESTED has CFBundleVersion $NB, host has $BUILD."; FAIL=1; }
+          done
+          [ "$FAIL" = "0" ] || exit 1
+
           {
             echo "### Build $BUILD"
             echo ""

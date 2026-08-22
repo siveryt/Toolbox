@@ -204,6 +204,21 @@ punktgetrennte Integer) und pro `MARKETING_VERSION` echt steigen — ein Hash is
 dort nicht zulässig. Der Info-Screen der App zeigt unter „Build" deshalb
 `GIT_COMMIT`, nicht die Zahl.
 
+**Alle drei Bundles tragen dieselben Werte.** App Store Connect lehnt einen
+Upload ab, wenn die eingebettete Watch-App nicht exakt dieselbe
+`CFBundleShortVersionString` **und** `CFBundleVersion` hat wie die Host-App
+(Fehler 90379); beim Widget ist dieselbe Abweichung nur eine Warnung (90473).
+Deshalb hat die Stamp-Phase jedes der drei Targets, jeweils als letzte Phase vor
+dessen eigener Signatur — die eingebetteten Bundles nachträglich zu patchen
+würde ihre Signatur brechen.
+
+`MARKETING_VERSION` steht dafür nur noch **einmal** auf Projektebene. Vorher
+hatte jedes Target einen eigenen Wert (1.4 / 1.0.1 / 1.0), was genau diesen
+Fehler erzeugt hat. Ein Versionssprung ist jetzt eine einzige Änderung.
+
+Der Workflow prüft das direkt nach dem Archive, statt es `altool` erst nach
+Archive und Export finden zu lassen.
+
 **`BUILD_NUMBER_BASE` steht an zwei Stellen:** in der Build-Phase (maßgeblich)
 und als `env` im Workflow (nur zur Gegenprobe). Weichen sie voneinander ab,
 bricht der Step *Verify stamped build metadata* ab, statt eine überraschende
