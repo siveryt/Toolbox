@@ -306,6 +306,14 @@ jobs:
           # uploads. Setting it to "upload" makes exportArchive upload directly,
           # which works but reports API errors far less legibly.
 
+          # PITFALL: "Cloud signing permission error", followed by a
+          # "No profiles for '<bundle id>' were found" line per target, is a
+          # permission problem on the API key, not a missing profile. Export has
+          # to mint a distribution profile and reach the cloud-managed
+          # distribution certificate, which needs the Admin role - App Manager is
+          # enough to upload a build but not to issue signing assets, so the
+          # archive above still succeeds and only this step fails. Fix the role
+          # first; only if the error persists check that all three App IDs exist.
           xcodebuild -exportArchive \
             -archivePath "$RUNNER_TEMP/Toolbox.xcarchive" \
             -exportPath "$RUNNER_TEMP/export" \

@@ -36,10 +36,24 @@ im Workflow als `env.TEAM_ID` hinterlegt.
 **App Store Connect → Users and Access → Integrations → App Store Connect API →
 Team Keys → +**
 
-- **Rolle: `App Manager`.** `Developer` reicht nicht — der Key muss beim Archive
-  über `-allowProvisioningUpdates` Provisioning Profiles erzeugen und ändern
-  dürfen, und beim Upload einen Build anlegen. Mit `Developer` scheitert der Lauf
-  je nach Zustand entweder beim Signieren oder erst beim Upload.
+- **Rolle: `Admin`.** `App Manager` reicht **nicht**. Sie genügt zwar zum
+  Hochladen eines Builds, aber beim `exportArchive` muss der Key per Cloud
+  Signing ein Distribution-Profil ausstellen und auf das Cloud-Managed
+  Distribution Certificate zugreifen — das ist Admin vorbehalten. Mit
+  `App Manager` läuft das Archive noch durch und der Export bricht dann ab mit:
+
+  ```
+  error: exportArchive Cloud signing permission error
+  error: exportArchive No profiles for 'de.sivery.toolbox' were found
+  ```
+
+  Die „No profiles"-Zeilen sind Folgefehler; maßgeblich ist die
+  Permission-Zeile darüber. Die Rolle eines bestehenden Keys lässt sich in
+  App Store Connect nicht nachträglich ändern — in dem Fall den alten Key
+  widerrufen und einen neuen als `Admin` anlegen.
+- **Team Key, kein Individual Key.** Individual Keys hängen an einer Person und
+  haben keinen Zugriff auf Certificates, Identifiers & Profiles. Der Key muss
+  unter **Team Keys** stehen.
 - Nach dem Anlegen die `.p8`-Datei herunterladen. **Der Download ist einmalig** —
   Apple gibt sie kein zweites Mal heraus. Geht sie verloren, muss der Key
   widerrufen und neu erzeugt werden.
