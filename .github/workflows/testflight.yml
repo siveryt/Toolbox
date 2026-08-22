@@ -13,6 +13,11 @@ concurrency:
   cancel-in-progress: false
 
 env:
+  # Pinned to a major rather than "newest available": the runner image gains
+  # new Xcode majors on its own schedule, and a silent jump to 27 would change
+  # the toolchain under the build without anyone asking for it. Raise this
+  # deliberately. The minimum is 26, set by IPHONEOS_DEPLOYMENT_TARGET = 26.0.
+  XCODE_MAJOR: 26
   XCODE_PROJECT: Toolbox.xcodeproj
   XCODE_SCHEME: Toolbox
   # de.sivery.toolbox — read out of project.pbxproj, not guessed. The team ID is
@@ -46,22 +51,35 @@ jobs:
         run: |
           set -euo pipefail
           # The app targets IPHONEOS_DEPLOYMENT_TARGET = 26.0, so anything older
-          # than Xcode 26 cannot build it ("SDK does not contain libarclite" or
-          # an unsupported-deployment-target error). macos-latest occasionally
-          # lags a major Xcode release behind, so pick explicitly and fail loudly
-          # rather than falling back to a default that cannot work.
+          # than Xcode 26 cannot build it. Pick explicitly and fail loudly rather
+          # than inheriting whatever the image happens to default to.
           echo "Available Xcode versions on this runner:"
           ls -d /Applications/Xcode*.app
 
-          XCODE_APP=$(ls -d /Applications/Xcode*.app | sort -V | tail -1)
-          sudo xcode-select -s "$XCODE_APP/Contents/Developer"
-          xcodebuild -version
-
-          MAJOR=$(xcodebuild -version | head -1 | sed -E 's/Xcode ([0-9]+).*/\1/')
-          if [ "$MAJOR" -lt 26 ]; then
-            echo "::error::Xcode $MAJOR is too old — the Toolbox target needs Xcode 26+ (iOS 26.0 deployment target). Pin a runner image that ships it, or lower IPHONEOS_DEPLOYMENT_TARGET."
+          # Only versioned bundles, so the unversioned /Applications/Xcode.app
+          # symlink cannot win the sort and make the choice depend on whatever
+          # the image points it at.
+          XCODE_APP=$(ls -d "/Applications/Xcode_${XCODE_MAJOR}"*.app 2>/dev/null | sort -V | tail -1 || true)
+          if [ -z "$XCODE_APP" ]; then
+            echo "::error::No Xcode ${XCODE_MAJOR}.x on this runner. Raise XCODE_MAJOR to a version the image ships, or pin an older runner image."
             exit 1
           fi
+
+          sudo xcode-select -s "$XCODE_APP/Contents/Developer"
+
+          # PITFALL: never pipe xcodebuild into head. It writes two lines here,
+          # head closes the pipe after the first, and xcodebuild does not handle
+          # SIGPIPE - it throws NSFileHandleOperationException and aborts with
+          # exit 134. Capture the output once and parse it from the variable.
+          XCODE_VERSION=$(xcodebuild -version)
+          echo "$XCODE_VERSION"
+
+          MAJOR=$(printf '%s\n' "$XCODE_VERSION" | sed -n '1s/^Xcode \([0-9][0-9]*\).*/\1/p')
+          if [ -z "$MAJOR" ] || [ "$MAJOR" -lt 26 ]; then
+            echo "::error::Selected toolchain reports '$XCODE_VERSION'; the Toolbox target needs Xcode 26 or newer for its iOS 26.0 deployment target."
+            exit 1
+          fi
+
           echo "DEVELOPER_DIR=$XCODE_APP/Contents/Developer" >> "$GITHUB_ENV"
 
       # ----------------------------------------------------------------------

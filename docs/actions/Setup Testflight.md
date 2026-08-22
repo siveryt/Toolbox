@@ -169,9 +169,12 @@ Damit der **erste** Upload durchgeht:
    offen sein — sonst schlägt der Upload mit einer generischen
    „not authorized"-Meldung fehl, die nicht auf die Ursache hinweist.
 
-5. **Xcode-Version.** Das iOS-Target steht auf Deployment Target **26.0**, der Job
-   bricht deshalb bewusst ab, wenn der Runner nur Xcode < 26 anbietet. Sollte das
-   passieren, zeigt der Step *Select Xcode* die verfügbaren Versionen im Log.
+5. **Xcode-Version.** Das iOS-Target steht auf Deployment Target **26.0**. Der
+   Workflow wählt die neueste Xcode-Version mit dem Major aus `XCODE_MAJOR`
+   (aktuell `26`) — bewusst gepinnt und nicht „das Neueste, was da ist", damit
+   ein neuer Major im Runner-Image nicht unbemerkt die Toolchain wechselt.
+   Verschwindet 26 irgendwann aus dem Image, bricht der Step ab und listet die
+   vorhandenen Versionen; dann `XCODE_MAJOR` bewusst anheben.
 
 ---
 
