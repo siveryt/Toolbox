@@ -51,3 +51,6 @@ xcuserdata/
 AppStore/
 Buildnumber.xcconfig
 !Toolbox.xcodeproj/project.xcworkspace/
+
+# Generated release notes
+dist/

@@ -4,6 +4,11 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Build and generate release notes, but upload nothing and tag nothing"
+        type: boolean
+        default: true
 
 # Two pushes in quick succession would otherwise race for the same build number
 # and upload slot. Queue them instead of cancelling: a cancelled run still burns
@@ -106,78 +111,6 @@ jobs:
             echo "::error::Working tree is dirty on a fresh checkout; the build would be stamped as unreproducible."
             git status --porcelain
             exit 1
-          fi
-
-      - name: Build "What to Test" changelog
-        run: |
-          set -euo pipefail
-          # Produces the release notes to paste into TestFlight by hand. Setting
-          # the field automatically would mean talking to the App Store Connect
-          # API and waiting for the build to finish processing first, which is a
-          # lot of moving parts for a field that is reviewed before it ships.
-          #
-          # Runs before the build so the notes exist even when the build fails.
-
-          # Prefer a v-prefixed release tag. Fall back to any tag, then to the
-          # full history, so this still produces something before the convention
-          # is established.
-          BASE=$(git tag --list 'v*' --sort=-version:refname | head -1)
-          ORIGIN="tag ${BASE}"
-          if [ -z "$BASE" ]; then
-            BASE=$(git tag --sort=-version:refname | head -1)
-            [ -n "$BASE" ] && ORIGIN="tag ${BASE} - no v* tag exists yet"
-          fi
-          if [ -z "$BASE" ]; then
-            RANGE="HEAD"; ORIGIN="entire history - no tags at all"
-          else
-            RANGE="${BASE}..HEAD"
-          fi
-
-          # A commit counts as relevant as soon as one changed path lies outside
-          # .github/ and docs/. Merge commits list no paths and drop out too.
-          RELEVANT=""
-          while IFS= read -r SHA; do
-            [ -n "$SHA" ] || continue
-            FILES=$(git show --pretty='' --name-only "$SHA")
-            [ -n "$FILES" ] || continue
-            if printf '%s\n' "$FILES" | grep -qv -e '^\.github/' -e '^docs/'; then
-              RELEVANT="${RELEVANT}${SHA}"$'\n'
-            fi
-          done < <(git log --format='%H' "$RANGE")
-
-          TOTAL=$(git log --format='%H' "$RANGE" | grep -c . || true)
-          KEPT=$(printf '%s' "$RELEVANT" | grep -c . || true)
-
-          # Deliberately not truncated - the whole point is a complete list that
-          # can be pasted as-is or handed to something that summarises it.
-          NOTES="$RUNNER_TEMP/WhatToTest.txt"
-          FULL="$RUNNER_TEMP/changelog-full.txt"
-          : > "$NOTES"; : > "$FULL"
-          while IFS= read -r SHA; do
-            [ -n "$SHA" ] || continue
-            git log -1 --format='- %s' "$SHA" >> "$NOTES"
-            git log -1 --format='%h %ad %s%n%b' --date=short "$SHA" >> "$FULL"
-            echo >> "$FULL"
-          done <<< "$RELEVANT"
-
-          CHARS=$(wc -c < "$NOTES" | tr -d ' ')
-          echo "Range $RANGE ($ORIGIN): $KEPT of $TOTAL commits, $CHARS characters."
-
-          {
-            echo "### What to Test"
-            echo ""
-            echo "Since **$ORIGIN** - $KEPT of $TOTAL commits, $CHARS characters."
-            echo ""
-            echo '```'
-            cat "$NOTES"
-            echo '```'
-            echo ""
-          } >> "$GITHUB_STEP_SUMMARY"
-
-          # TestFlight caps the field at 4000 characters.
-          if [ "$CHARS" -gt 4000 ]; then
-            echo "::warning::The notes are $CHARS characters; TestFlight accepts at most 4000. Shorten them before pasting, or tag a release so the range gets smaller."
-            echo "> The list exceeds TestFlight's 4000 character limit and needs shortening before it is pasted." >> "$GITHUB_STEP_SUMMARY"
           fi
 
       # ----------------------------------------------------------------------
@@ -439,6 +372,9 @@ jobs:
           ls -lh "$RUNNER_TEMP/export"
 
       - name: Upload to TestFlight
+        # A manual run defaults to dry_run, so nothing reaches TestFlight unless
+        # it was asked for. Pushes to main always upload.
+        if: github.event_name != 'workflow_dispatch' || !inputs.dry_run
         env:
           ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
           ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
@@ -475,17 +411,6 @@ jobs:
       # ----------------------------------------------------------------------
       # Diagnostics & cleanup
       # ----------------------------------------------------------------------
-      - name: Upload changelog
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: whats-new
-          path: |
-            ${{ runner.temp }}/WhatToTest.txt
-            ${{ runner.temp }}/changelog-full.txt
-          if-no-files-found: warn
-          retention-days: 30
-
       - name: Upload build logs on failure
         if: failure()
         uses: actions/upload-artifact@v4
@@ -510,3 +435,84 @@ jobs:
           rm -f "$RUNNER_TEMP/certificate.p12"
           rm -rf "$HOME/.appstoreconnect/private_keys"
           echo "Cleanup done."
+
+  # --------------------------------------------------------------------------
+  # Release notes
+  # --------------------------------------------------------------------------
+  # Its own job for two reasons: contents:write is needed for the anchor tag and
+  # should not be handed to the build job, and none of this needs macOS.
+  release-notes:
+    needs: testflight
+    if: success()
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Full history for the commit range, tags for both the v* release tag
+          # and the build/* anchor. fetch-depth 0 already brings tags along;
+          # fetch-tags is set so the requirement survives someone shrinking the
+          # depth later.
+          fetch-depth: 0
+          fetch-tags: true
+
+      - name: Lint scripts
+        run: shellcheck scripts/release-notes/*.sh
+
+      - name: Generate release notes
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: ./scripts/release-notes/generate.sh
+
+      - name: Write notes to the job summary
+        run: |
+          set -euo pipefail
+          BUILD=$(( BUILD_NUMBER_BASE + $(git rev-list --count HEAD) ))
+          {
+            echo "## Release notes for build ${BUILD}"
+            echo ""
+            echo "Paste into the TestFlight \"What to Test\" field."
+            echo ""
+            echo "### de-DE"
+            echo '```'
+            cat dist/notes/WhatToTest.de-DE.txt
+            echo '```'
+            echo ""
+            echo "### en-US"
+            echo '```'
+            cat dist/notes/WhatToTest.en-US.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload notes
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-notes
+          path: dist/notes/
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Update the release-notes anchor
+        # Skipped on a dry run. A single moving tag rather than one per build:
+        # the next run only ever needs the immediately preceding notes, and a
+        # tag per build would bury the v* release tags in the tag list. Stored
+        # in a tag rather than a commit so the push cannot trigger another run
+        # - the push trigger filters on branches, which no refs/tags/* push
+        # matches. The message holds both locales, so the English wording is
+        # held steady across builds too.
+        if: github.event_name != 'workflow_dispatch' || !inputs.dry_run
+        run: |
+          set -euo pipefail
+          TAG="release-notes/latest"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # -f locally and --force on the push, because the tag deliberately
+          # moves to a new commit on every build.
+          git tag -f -a "$TAG" -F dist/notes/notes.json
+          git push --force origin "refs/tags/${TAG}"
+          echo "Anchor ${TAG} now points at $(git rev-parse --short HEAD)."

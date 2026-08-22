@@ -20,6 +20,7 @@ Die Namen müssen exakt so lauten:
 | `ASC_KEY_ID` | Key ID des App-Store-Connect-API-Keys, 10 Zeichen (Schritt 2) |
 | `ASC_ISSUER_ID` | Issuer ID, eine UUID. Steht über der Key-Liste und gilt für das ganze Team |
 | `ASC_KEY_P8_BASE64` | Die `.p8`-Datei des API-Keys, base64-kodiert (Schritt 2) |
+| `ANTHROPIC_API_KEY` | Nur für die Release Notes (Abschnitt 6). Fehlt er, läuft der Job durch und nutzt den Fallback |
 
 Nicht als Secret nötig: die **Team ID** `VA79D2T9W7` steht bereits als
 `DEVELOPMENT_TEAM` in `project.pbxproj` und ist damit ohnehin öffentlich. Sie ist
@@ -238,36 +239,80 @@ Zwei Dinge, die die Phase bewusst hart abbricht bzw. markiert:
 
 ## 6. Release Notes für „What to Test"
 
-Der Workflow **setzt das Feld nicht selbst** — er bereitet den Text auf, du fügst
-ihn in App Store Connect ein. Automatisch setzen ginge nur über die
-`betaBuildLocalizations`-Ressource der ASC-API, und die ist erst erreichbar,
-wenn der Build fertig verarbeitet ist; der Job müsste also 5–15 Minuten pollen.
-Für ein Feld, das vor dem Ausliefern ohnehin gegengelesen wird, lohnt das nicht.
+Der Workflow **setzt das Feld nicht in App Store Connect** — er erzeugt die Texte
+und legt sie ab, du fügst sie beim Freigeben ein. Erzeugt wird für **de-DE** und
+**en-US** per LLM aus den Commits.
 
-Zu finden nach jedem Lauf an zwei Stellen:
+Zu finden nach jedem Lauf:
 
-- in der **Job-Summary** als Codeblock zum direkten Kopieren
-- als Artefakt **`whats-new`**, mit zwei Dateien:
-  - `WhatToTest.txt` — nur die Commit-Betreffs, das ist der Text zum Einfügen
-  - `changelog-full.txt` — dieselben Commits mit Datum und vollem Body, gedacht
-    als Vorlage, falls du daraus etwas Lesbares zusammenfassen lässt
+- in der **Job-Summary** des Jobs `release-notes`, beide Sprachen als Codeblock
+- als Artefakt **`release-notes`** mit `WhatToTest.de-DE.txt`,
+  `WhatToTest.en-US.txt` und `notes.json` (beide Sprachen), 90 Tage aufbewahrt
 
-Der Schritt läuft **vor** dem Build, die Notizen liegen also auch dann vor, wenn
-das Archiv scheitert. Das Artefakt wird 30 Tage aufbewahrt.
+### Bereich
 
-**Bereich:** alle Commits seit dem letzten Tag, der auf `v*` passt. Gibt es
-keinen, fällt der Schritt auf den neuesten Tag beliebiger Form zurück, sonst auf
-die gesamte Historie — die Summary schreibt jeweils dazu, welche Quelle benutzt
-wurde. Aktuell greift der Rückfall: der einzige Tag im Repo ist `1.3.2` vom
-August 2023, entsprechend lang ist die Liste. **Sobald du pro Release ein `v1.4`
-o.ä. setzt, wird der Bereich sinnvoll.**
+Immer `<letzter v*-Tag>..HEAD` — die Notes sind damit **kumulativ für den ganzen
+Testzyklus** und für einen gegebenen Commit reproduzierbar, statt inkrementell
+fortgeschrieben zu werden. Gibt es keinen `v*`-Tag, greift ein Fallback auf die
+letzten 50 Commits. Aktuell ist das der Fall: der einzige Tag im Repo ist `1.3.2`
+und passt nicht auf `v*`. **Setz beim nächsten Release `v1.4`**, dann stimmt der
+Bereich.
 
-**Gefiltert** werden Commits, die ausschließlich `.github/` oder `docs/`
-anfassen — reine Pipeline- und Doku-Arbeit interessiert Tester nicht. Sobald ein
-Commit *irgendeine* Datei außerhalb dieser beiden Pfade berührt, bleibt er drin.
+### Formulierungen bleiben stabil
 
-Die Liste wird **nicht gekürzt**. TestFlight nimmt maximal 4000 Zeichen an; wird
-das überschritten, warnt der Lauf und schreibt es in die Summary.
+Die Notes des vorherigen Builds werden dem Modell als Anker mitgegeben, damit es
+bestehende Zeilen nicht bei jedem Build neu formuliert.
+
+Abgelegt sind sie in der Message des annotierten Tags **`release-notes/latest`**,
+der bei jedem Lauf auf den neuen Commit verschoben wird. Bewusst **ein** Tag und
+nicht einer pro Build: der nächste Lauf braucht ohnehin nur den unmittelbaren
+Vorgänger, und ein Tag pro Build würde die `v*`-Release-Tags in der Tag-Übersicht
+untergehen lassen. Die Texte einzelner Builds liegen 90 Tage als Artefakt.
+
+Bewusst ein Tag und kein Commit, damit das Zurückschreiben keinen weiteren
+Workflow-Lauf auslöst. Der Push-Trigger filtert ohnehin auf `branches`, worauf
+kein `refs/tags/*`-Push passt.
+
+Die Tag-Message enthält `notes.json` mit **beiden** Sprachen — sonst bliebe nur
+das Deutsche stabil und das Englische würde bei jedem Build neu übersetzt.
+
+### Trailer haben Vorrang
+
+Ein Commit kann den Text selbst vorgeben. Das Modell übernimmt ihn dann
+wortwörtlich, statt zu formulieren:
+
+```
+Add Maidenhead locator to the coordinates tool
+
+Release-Note-de: Koordinaten zeigen jetzt den Maidenhead-Locator.
+Release-Note-en: Coordinates now show the Maidenhead locator.
+```
+
+### Manuell übersteuern
+
+Liegt `release-notes/WhatToTest.de-DE.txt` im Repo, wird das Modell übersprungen
+und diese Datei verwendet (zusammen mit `WhatToTest.en-US.txt`, falls vorhanden).
+Gedacht für Releases, deren Text du selbst schreiben willst.
+
+### Wenn etwas schiefgeht
+
+`generate.sh` lässt den Build **niemals** scheitern. Fehlt der API-Key, antwortet
+die API nicht mit 200, oder ist das JSON kaputt, landet stattdessen
+`git log --oneline` in beiden Dateien und der Lauf loggt eine Warning. Texte über
+4000 Zeichen — die harte Grenze von App Store Connect — werden an einer
+Zeilengrenze gekürzt.
+
+### Dry-Run
+
+`workflow_dispatch` hat den Input **`dry_run`**, standardmäßig **an**. Ein
+manueller Lauf baut und archiviert dann zwar, lädt aber **nicht** nach TestFlight
+hoch und verschiebt den Anker-Tag nicht; die Notes landen trotzdem in Summary und
+Artefakt. Zum echten Hochladen aus einem manuellen Lauf den Haken entfernen.
+Pushes auf `main` laden immer hoch.
+
+### Zusätzliches Secret
+
+`ANTHROPIC_API_KEY`. Ohne ihn läuft der Job durch und nutzt den Fallback.
 
 ---
 
