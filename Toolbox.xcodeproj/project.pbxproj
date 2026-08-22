@@ -217,7 +217,6 @@
 		5EA2823D2C09D5AF003E735A /* green@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "green@3x.png"; sourceTree = "<group>"; };
 		5EA2823E2C09D5AF003E735A /* purple@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "purple@1x.png"; sourceTree = "<group>"; };
 		5EA2823F2C09D5AF003E735A /* purple@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "purple@2x.png"; sourceTree = "<group>"; };
-		5EB252B92B9BBFC800CF2A18 /* Buildnumber.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Buildnumber.xcconfig; sourceTree = "<group>"; };
 		5EB64699280580FA000D4243 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		5EB7897627F9CCA900F07140 /* QRGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRGenerator.swift; sourceTree = "<group>"; };
 		5EB9CEA52916A445009D29F4 /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
@@ -408,7 +407,6 @@
 				5EC7B24D27D797E100699FD3 /* README.md */,
 				5EC7B24E27D79D5400699FD3 /* LICENSE */,
 				5EE7679D2CB12952002B0A74 /* Localizable.xcstrings */,
-				5EB252B92B9BBFC800CF2A18 /* Buildnumber.xcconfig */,
 				5EC7B24F27D79DDC00699FD3 /* .gitignore */,
 				5E5C620F291681D5004F44CC /* assets */,
 				5EC7B21D27D7978100699FD3 /* Toolbox */,
@@ -564,12 +562,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5EC7B24427D7978200699FD3 /* Build configuration list for PBXNativeTarget "Toolbox" */;
 			buildPhases = (
-				5EB252BA2B9BC06900CF2A18 /* Update Build Number (SCRIPT) */,
 				5EC7B21727D7978100699FD3 /* Sources */,
 				5EC7B21827D7978100699FD3 /* Frameworks */,
 				5EC7B21927D7978100699FD3 /* Resources */,
 				5EE65E002A8576000061120B /* Embed Watch Content */,
 				5E9ABFE02B9CB843005448FB /* Embed Foundation Extensions */,
+				5EA1C0DE2C00000100000001 /* Stamp Version Metadata (SCRIPT) */,
 			);
 			buildRules = (
 			);
@@ -737,7 +735,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5EB252BA2B9BC06900CF2A18 /* Update Build Number (SCRIPT) */ = {
+		5EA1C0DE2C00000100000001 /* Stamp Version Metadata (SCRIPT) */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -747,14 +745,14 @@
 			);
 			inputPaths = (
 			);
-			name = "Update Build Number (SCRIPT)";
+			name = "Stamp Version Metadata (SCRIPT)";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "#!/bin/bash\n\n# Define the path to the Buildnumber.xcconfig file\nFILE=\"${PROJECT_DIR}/Buildnumber.xcconfig\"\n\n# Check if the Buildnumber.xcconfig file exists\nif [ ! -f \"$FILE\" ]; then\n    echo \"Error: ${FILE} does not exist.\"\n    exit 1\nfi\n\n# Read the current build number from the file\nCURRENT_BUILD_NUMBER=$(grep -o 'BUILD_NUMBER = [0-9]\\+' \"${FILE}\" | grep -o '[0-9]\\+')\n\n# If the current build number is not found, exit the script\nif [ -z \"${CURRENT_BUILD_NUMBER}\" ]; then\n    echo \"Error: Build number not found in ${FILE}.\"\n    exit 1\nfi\n\n# Increment the build number\nNEW_BUILD_NUMBER=$((CURRENT_BUILD_NUMBER + 1))\n\nCURRENT_DATE=$(date '+%Y-%m-%d')\n\n# Replace the old build number with the new build number in the file\nsed -i '' \"s/BUILD_NUMBER = ${CURRENT_BUILD_NUMBER}/BUILD_NUMBER = ${NEW_BUILD_NUMBER}/g\" \"${FILE}\"\nsed -i '' \"s/LAST_UPDATE = .*/LAST_UPDATE = ${CURRENT_DATE}/g\" \"${FILE}\"\n\n# Optionally, print the new build number\necho \"New Build Number: ${NEW_BUILD_NUMBER}\"\n";
+			shellScript = "#!/bin/bash\n# Stamps version metadata into the assembled Info.plist:\n#\n#   CFBundleVersion  BUILD_NUMBER_BASE + number of commits reachable from HEAD\n#   GIT_COMMIT       short hash, with a trailing '*' when the tree is dirty\n#   LAST_UPDATE      commit date of HEAD\n#\n# Runs as the last build phase: after the bundle is assembled, before codesigning,\n# so the values are covered by the signature.\n#\n# Why not an xcconfig: build settings are evaluated once when the build starts, so\n# a value written by a build phase only lands in the NEXT build. For a plain\n# counter that is merely surprising; for anything derived from HEAD it is wrong.\nset -e\n\n# Keep in sync with BUILD_NUMBER_BASE in .github/workflows/testflight.yml, which\n# cross-checks the stamped value. The offset lifts the commit count above 736,\n# the last build number uploaded by hand from Xcode Organizer.\nBUILD_NUMBER_BASE=1000\n\nGIT_BIN=/usr/bin/git\nPLIST=\"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n\nif [ ! -f \"${PLIST}\" ]; then\n    echo \"warning: Info.plist not found at ${PLIST}, skipping version stamp\"\n    exit 0\nfi\n\nif [ -x \"${GIT_BIN}\" ] && \"${GIT_BIN}\" -C \"${PROJECT_DIR}\" rev-parse --git-dir >/dev/null 2>&1; then\n    # A shallow clone cannot produce a correct commit count, and silently\n    # stamping a too-low build number would be rejected by App Store Connect\n    # much later, with an error that points nowhere near the cause.\n    if [ \"$(\"${GIT_BIN}\" -C \"${PROJECT_DIR}\" rev-parse --is-shallow-repository)\" = \"true\" ]; then\n        echo \"error: shallow git clone: cannot derive a build number. Fetch full history (git fetch --unshallow).\"\n        exit 1\n    fi\n\n    COMMIT=$(\"${GIT_BIN}\" -C \"${PROJECT_DIR}\" rev-parse --short HEAD)\n    COUNT=$(\"${GIT_BIN}\" -C \"${PROJECT_DIR}\" rev-list --count HEAD)\n    DATE=$(\"${GIT_BIN}\" -C \"${PROJECT_DIR}\" log -1 --format=%cd --date=short)\n    BUILD=$(( BUILD_NUMBER_BASE + COUNT ))\n\n    # Marks a build that does not correspond to any commit, so it can never be\n    # mistaken for an exact reproduction of one.\n    if [ -n \"$(\"${GIT_BIN}\" -C \"${PROJECT_DIR}\" status --porcelain)\" ]; then\n        COMMIT=\"${COMMIT}*\"\n    fi\nelse\n    echo \"warning: no git repository at ${PROJECT_DIR}; stamping placeholders\"\n    COMMIT=\"unknown\"\n    DATE=\"unknown\"\n    BUILD=0\nfi\n\nstamp() {\n    /usr/libexec/PlistBuddy -c \"Set :$1 $2\" \"${PLIST}\" 2>/dev/null \\\n        || /usr/libexec/PlistBuddy -c \"Add :$1 string $2\" \"${PLIST}\"\n}\n\nstamp CFBundleVersion \"${BUILD}\"\nstamp GIT_COMMIT \"${COMMIT}\"\nstamp LAST_UPDATE \"${DATE}\"\n\necho \"CFBundleVersion = ${BUILD}\"\necho \"GIT_COMMIT = ${COMMIT}\"\necho \"LAST_UPDATE = ${DATE}\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1030,7 +1028,6 @@
 		};
 		5EC7B24527D7978200699FD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5EB252B92B9BBFC800CF2A18 /* Buildnumber.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_Debug;
@@ -1038,7 +1035,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Toolbox/Toolbox.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "$(BUILD_NUMBER)";
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Toolbox/Preview Content\"";
 				DEVELOPMENT_TEAM = VA79D2T9W7;
 				ENABLE_PREVIEWS = YES;
@@ -1075,7 +1072,6 @@
 		};
 		5EC7B24627D7978200699FD3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5EB252B92B9BBFC800CF2A18 /* Buildnumber.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1083,7 +1079,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Toolbox/Toolbox.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "$(BUILD_NUMBER)";
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Toolbox/Preview Content\"";
 				DEVELOPMENT_TEAM = VA79D2T9W7;
 				ENABLE_PREVIEWS = YES;

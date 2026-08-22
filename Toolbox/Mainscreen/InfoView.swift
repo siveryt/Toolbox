@@ -190,7 +190,7 @@ struct infoVersion: View {
                 HStack {
                     Text("Build")
                     Spacer()
-                    Text(Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "Can't find build")
+                    Text(Bundle.main.infoDictionary?["GIT_COMMIT"] as? String ?? "Can't find build")
                 }
                 
             }

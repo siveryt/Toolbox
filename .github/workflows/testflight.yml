@@ -1,0 +1,380 @@
+name: TestFlight
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Two pushes in quick succession would otherwise race for the same build number
+# and upload slot. Queue them instead of cancelling: a cancelled run still burns
+# a commit count, and a half-finished upload confuses App Store Connect.
+concurrency:
+  group: testflight
+  cancel-in-progress: false
+
+env:
+  XCODE_PROJECT: Toolbox.xcodeproj
+  XCODE_SCHEME: Toolbox
+  # de.sivery.toolbox — read out of project.pbxproj, not guessed. The team ID is
+  # already committed in the project file, so it is not a secret.
+  TEAM_ID: VA79D2T9W7
+  # Only used to cross-check what the build stamped. The authoritative copy of
+  # this constant lives in the "Stamp Version Metadata" build phase of the
+  # Toolbox target, which derives CFBundleVersion as BUILD_NUMBER_BASE plus the
+  # commit count - identically for local builds and CI. Keep the two in sync.
+  # The offset lifts the count above 736, the last build uploaded by hand.
+  BUILD_NUMBER_BASE: 1000
+
+jobs:
+  testflight:
+    runs-on: macos-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # PITFALL: fetch-depth 0 is required. The default shallow clone makes
+          # `git rev-list --count HEAD` return 1, which would produce build
+          # number 1001 on every single run and get rejected as a duplicate.
+          fetch-depth: 0
+
+      # ----------------------------------------------------------------------
+      # Toolchain
+      # ----------------------------------------------------------------------
+      - name: Select Xcode
+        run: |
+          set -euo pipefail
+          # The app targets IPHONEOS_DEPLOYMENT_TARGET = 26.0, so anything older
+          # than Xcode 26 cannot build it ("SDK does not contain libarclite" or
+          # an unsupported-deployment-target error). macos-latest occasionally
+          # lags a major Xcode release behind, so pick explicitly and fail loudly
+          # rather than falling back to a default that cannot work.
+          echo "Available Xcode versions on this runner:"
+          ls -d /Applications/Xcode*.app
+
+          XCODE_APP=$(ls -d /Applications/Xcode*.app | sort -V | tail -1)
+          sudo xcode-select -s "$XCODE_APP/Contents/Developer"
+          xcodebuild -version
+
+          MAJOR=$(xcodebuild -version | head -1 | sed -E 's/Xcode ([0-9]+).*/\1/')
+          if [ "$MAJOR" -lt 26 ]; then
+            echo "::error::Xcode $MAJOR is too old — the Toolbox target needs Xcode 26+ (iOS 26.0 deployment target). Pin a runner image that ships it, or lower IPHONEOS_DEPLOYMENT_TARGET."
+            exit 1
+          fi
+          echo "DEVELOPER_DIR=$XCODE_APP/Contents/Developer" >> "$GITHUB_ENV"
+
+      # ----------------------------------------------------------------------
+      # Build number / version
+      # ----------------------------------------------------------------------
+      - name: Compute expected build metadata
+        run: |
+          set -euo pipefail
+          # Nothing is written to the repo here. The "Stamp Version Metadata"
+          # build phase derives CFBundleVersion, GIT_COMMIT and LAST_UPDATE from
+          # git itself, for local builds and CI alike. This step only recomputes
+          # the expected number so a later step can cross-check what was stamped.
+          #
+          # BUILD_NUMBER_BASE must match the constant in that build phase
+          # (Toolbox target, last phase). If the two ever drift, the verify step
+          # below fails loudly instead of shipping a surprising build number.
+          COUNT=$(git rev-list --count HEAD)
+          echo "EXPECTED_BUILD=$(( BUILD_NUMBER_BASE + COUNT ))" >> "$GITHUB_ENV"
+          echo "GIT_COMMIT_SHORT=$(git rev-parse --short HEAD)" >> "$GITHUB_ENV"
+
+          # The stamp phase appends '*' to GIT_COMMIT when the tree is dirty and
+          # refuses to run on a shallow clone. Neither may happen here.
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "::error::Working tree is dirty on a fresh checkout; the build would be stamped as unreproducible."
+            git status --porcelain
+            exit 1
+          fi
+
+      # ----------------------------------------------------------------------
+      # Dependencies
+      # ----------------------------------------------------------------------
+      - name: Cache SwiftPM dependencies
+        uses: actions/cache@v4
+        with:
+          # Resolving 12 packages from scratch costs a couple of minutes.
+          # -clonedSourcePackagesDirPath (below) puts them here instead of in
+          # DerivedData, which makes them cacheable by a stable path.
+          path: ${{ runner.temp }}/SourcePackages
+          key: spm-${{ runner.os }}-${{ hashFiles('Toolbox.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved') }}
+          restore-keys: |
+            spm-${{ runner.os }}-
+
+      - name: Resolve SwiftPM dependencies
+        run: |
+          set -euo pipefail
+          # Done as its own step so a dependency failure (a moved fork, a dead
+          # branch ref — several pins track `master`/`develop` rather than a tag)
+          # is reported as a dependency problem and not buried in build output.
+          # PITFALL: five of the twelve dependencies track a moving branch
+          # (awake, lan-scanner, marqueetext, swiftyping, toastswiftui — all on
+          # master/develop) rather than a version tag. Without
+          # -onlyUsePackageVersionsFromResolvedFile a CI run can silently pull
+          # newer commits from those forks than the committed Package.resolved
+          # names, so the build would no longer match the lockfile. With it, a
+          # stale lockfile fails the job loudly instead.
+          xcodebuild -resolvePackageDependencies \
+            -onlyUsePackageVersionsFromResolvedFile \
+            -project "$XCODE_PROJECT" \
+            -scheme "$XCODE_SCHEME" \
+            -clonedSourcePackagesDirPath "${{ runner.temp }}/SourcePackages"
+
+      # ----------------------------------------------------------------------
+      # Signing material
+      # ----------------------------------------------------------------------
+      - name: Import signing certificate into a temporary keychain
+        env:
+          BUILD_CERTIFICATE_BASE64: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
+          P12_PASSWORD: ${{ secrets.P12_PASSWORD }}
+          KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
+        run: |
+          set -euo pipefail
+          CERT_PATH="$RUNNER_TEMP/certificate.p12"
+          KEYCHAIN_PATH="$RUNNER_TEMP/app-signing.keychain-db"
+
+          echo -n "$BUILD_CERTIFICATE_BASE64" | base64 --decode -o "$CERT_PATH"
+
+          security create-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+          # PITFALL: without set-keychain-settings the keychain re-locks after
+          # the default 5 minutes and codesign fails partway through a long
+          # archive with "User interaction is not allowed". -lut 21600 keeps it
+          # unlocked for the whole job; -u drops the lock-on-sleep behaviour.
+          security set-keychain-settings -lut 21600 "$KEYCHAIN_PATH"
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+
+          security import "$CERT_PATH" \
+            -P "$P12_PASSWORD" \
+            -A -t cert -f pkcs12 \
+            -k "$KEYCHAIN_PATH"
+
+          # PITFALL: this is the single most common first-run failure. Without
+          # set-key-partition-list, codesign cannot reach the imported private
+          # key non-interactively and dies with "errSecInternalComponent"
+          # (or hangs waiting for a GUI prompt that will never appear).
+          security set-key-partition-list \
+            -S apple-tool:,apple:,codesign: \
+            -s -k "$KEYCHAIN_PASSWORD" \
+            "$KEYCHAIN_PATH" >/dev/null
+
+          # PITFALL: the new keychain must be on the search list or xcodebuild
+          # will not see the identity ("No signing certificate ... found").
+          # Keep login.keychain-db in the list too — dropping it breaks other
+          # tooling on the runner.
+          security list-keychain -d user -s "$KEYCHAIN_PATH" login.keychain-db
+
+          echo "KEYCHAIN_PATH=$KEYCHAIN_PATH" >> "$GITHUB_ENV"
+
+          echo "Identities available to codesign:"
+          security find-identity -v -p codesigning "$KEYCHAIN_PATH"
+
+      - name: Write App Store Connect API key
+        env:
+          ASC_KEY_P8_BASE64: ${{ secrets.ASC_KEY_P8_BASE64 }}
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+        run: |
+          set -euo pipefail
+          # Two consumers, two locations:
+          #  - xcodebuild -authenticationKeyPath takes an explicit absolute path
+          #  - altool/iTMSTransporter only look in ~/.appstoreconnect/private_keys
+          #    and insist on the AuthKey_<KEYID>.p8 filename
+          mkdir -p "$HOME/.appstoreconnect/private_keys"
+          KEY_PATH="$HOME/.appstoreconnect/private_keys/AuthKey_${ASC_KEY_ID}.p8"
+          echo -n "$ASC_KEY_P8_BASE64" | base64 --decode -o "$KEY_PATH"
+          chmod 600 "$KEY_PATH"
+          echo "ASC_KEY_PATH=$KEY_PATH" >> "$GITHUB_ENV"
+
+      # ----------------------------------------------------------------------
+      # Archive
+      # ----------------------------------------------------------------------
+      - name: Archive
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+        run: |
+          set -euo pipefail
+          # One archive covers all three targets: the Toolbox target embeds
+          # "Toolbox WatchOS Watch App" (Embed Watch Content) and
+          # "diceWidgetExtension" (Embed Foundation Extensions), and both are
+          # target dependencies. -destination 'generic/platform=iOS' is correct
+          # even though a watch app is involved.
+          xcodebuild archive \
+            -project "$XCODE_PROJECT" \
+            -scheme "$XCODE_SCHEME" \
+            -configuration Release \
+            -destination 'generic/platform=iOS' \
+            -archivePath "$RUNNER_TEMP/Toolbox.xcarchive" \
+            -resultBundlePath "$RUNNER_TEMP/Toolbox.xcresult" \
+            -clonedSourcePackagesDirPath "${{ runner.temp }}/SourcePackages" \
+            -onlyUsePackageVersionsFromResolvedFile \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$ASC_KEY_PATH" \
+            -authenticationKeyID "$ASC_KEY_ID" \
+            -authenticationKeyIssuerID "$ASC_ISSUER_ID" \
+            OTHER_CODE_SIGN_FLAGS="--keychain $KEYCHAIN_PATH"
+
+          # PITFALL: -allowProvisioningUpdates creates/repairs profiles via the
+          # API key, but it can only do so if the App IDs already exist and the
+          # key's role permits it. All THREE bundle IDs need to exist:
+          #   de.sivery.toolbox, de.sivery.toolbox.watchkitapp,
+          #   de.sivery.toolbox.diceWidget
+          # A missing widget App ID is easy to overlook and fails the archive
+          # with "No profiles for 'de.sivery.toolbox.diceWidget' were found".
+          #
+          # PITFALL: OTHER_CODE_SIGN_FLAGS pins codesign to the temporary
+          # keychain. Without it, codesign occasionally picks an identity from
+          # the runner's login keychain and signs with the wrong certificate.
+
+      - name: Verify stamped build metadata
+        run: |
+          set -euo pipefail
+          # Cheap guard before the slow export/upload: catches a stamp phase that
+          # silently fell back to placeholders (no git, wrong PROJECT_DIR).
+          PLIST="$RUNNER_TEMP/Toolbox.xcarchive/Products/Applications/Toolbox.app/Info.plist"
+          VERSION=$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" "$PLIST")
+          BUILD=$(/usr/libexec/PlistBuddy -c "Print :CFBundleVersion" "$PLIST")
+          COMMIT=$(/usr/libexec/PlistBuddy -c "Print :GIT_COMMIT" "$PLIST")
+          UPDATED=$(/usr/libexec/PlistBuddy -c "Print :LAST_UPDATE" "$PLIST")
+
+          echo "Version: $VERSION / Build: $BUILD / Commit: $COMMIT / Updated: $UPDATED"
+
+          if [ "$BUILD" != "$EXPECTED_BUILD" ]; then
+            echo "::error::CFBundleVersion is $BUILD but should be $EXPECTED_BUILD. Either the stamp phase did not run, or BUILD_NUMBER_BASE in this workflow no longer matches the constant in the build phase."
+            exit 1
+          fi
+          if [ "$COMMIT" != "$GIT_COMMIT_SHORT" ]; then
+            echo "::error::GIT_COMMIT is '$COMMIT', expected '$GIT_COMMIT_SHORT'. A trailing '*' means the tree was dirty during the build."
+            exit 1
+          fi
+
+          {
+            echo "### Build $BUILD"
+            echo ""
+            echo "| | |"
+            echo "|---|---|"
+            echo "| Version | \`$VERSION\` |"
+            echo "| Build | \`$BUILD\` |"
+            echo "| Commit | \`$COMMIT\` |"
+            echo "| Last update | \`$UPDATED\` |"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # ----------------------------------------------------------------------
+      # Export & upload
+      # ----------------------------------------------------------------------
+      - name: Export IPA
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+        run: |
+          set -euo pipefail
+          # Generated here rather than committed so there is exactly one place
+          # that describes the pipeline.
+          cat > "$RUNNER_TEMP/ExportOptions.plist" <<EOF
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+            <key>method</key>
+            <string>app-store-connect</string>
+            <key>teamID</key>
+            <string>${TEAM_ID}</string>
+            <key>signingStyle</key>
+            <string>automatic</string>
+            <key>destination</key>
+            <string>export</string>
+            <key>uploadSymbols</key>
+            <true/>
+            <key>manageAppVersionAndBuildNumber</key>
+            <false/>
+          </dict>
+          </plist>
+          EOF
+
+          # PITFALL: <method> was renamed in Xcode 15.3. Use "app-store-connect"
+          # on Xcode 15.3+; on anything older it must be "app-store" or the
+          # export fails with "Provisioning profile ... doesn't match method".
+          #
+          # PITFALL: manageAppVersionAndBuildNumber MUST be false. It defaults
+          # to true, and then Xcode silently rewrites CFBundleVersion to its own
+          # counter — the number written to Buildnumber.xcconfig would be
+          # discarded and TestFlight would show something unrelated.
+          #
+          # PITFALL: destination "export" produces an .ipa that the next step
+          # uploads. Setting it to "upload" makes exportArchive upload directly,
+          # which works but reports API errors far less legibly.
+
+          xcodebuild -exportArchive \
+            -archivePath "$RUNNER_TEMP/Toolbox.xcarchive" \
+            -exportPath "$RUNNER_TEMP/export" \
+            -exportOptionsPlist "$RUNNER_TEMP/ExportOptions.plist" \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$ASC_KEY_PATH" \
+            -authenticationKeyID "$ASC_KEY_ID" \
+            -authenticationKeyIssuerID "$ASC_ISSUER_ID"
+
+          ls -lh "$RUNNER_TEMP/export"
+
+      - name: Upload to TestFlight
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+        run: |
+          set -euo pipefail
+          IPA=$(find "$RUNNER_TEMP/export" -name '*.ipa' -maxdepth 1 | head -1)
+          if [ -z "$IPA" ]; then
+            echo "::error::No .ipa produced by exportArchive."
+            exit 1
+          fi
+
+          # --apiKey/--apiIssuer make altool read
+          # ~/.appstoreconnect/private_keys/AuthKey_<KEYID>.p8, which the
+          # "Write App Store Connect API key" step placed there.
+          #
+          # PITFALL: validate-app catches the recoverable problems (duplicate
+          # build number, missing icon, bad entitlement) in ~30s instead of
+          # after a multi-minute upload.
+          xcrun altool --validate-app \
+            -f "$IPA" \
+            -t ios \
+            --apiKey "$ASC_KEY_ID" \
+            --apiIssuer "$ASC_ISSUER_ID"
+
+          xcrun altool --upload-app \
+            -f "$IPA" \
+            -t ios \
+            --apiKey "$ASC_KEY_ID" \
+            --apiIssuer "$ASC_ISSUER_ID"
+
+          echo "Uploaded build $EXPECTED_BUILD ($GIT_COMMIT_SHORT) to TestFlight." >> "$GITHUB_STEP_SUMMARY"
+          echo "Processing in App Store Connect usually takes 5–15 minutes." >> "$GITHUB_STEP_SUMMARY"
+
+      # ----------------------------------------------------------------------
+      # Diagnostics & cleanup
+      # ----------------------------------------------------------------------
+      - name: Upload build logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-logs
+          path: |
+            ${{ runner.temp }}/Toolbox.xcresult
+            ${{ runner.temp }}/ExportOptions.plist
+          if-no-files-found: ignore
+          retention-days: 7
+
+      - name: Clean up keychain and API key
+        # if: always() so the signing material never outlives the job, including
+        # when the archive fails. Runner VMs are ephemeral, but a leaked
+        # keychain on a self-hosted runner would be a real problem.
+        if: always()
+        run: |
+          # Deliberately no `set -e`: every one of these is best-effort, and a
+          # cleanup failure must not mask the real error from an earlier step.
+          security delete-keychain "$RUNNER_TEMP/app-signing.keychain-db" 2>/dev/null || true
+          security list-keychain -d user -s login.keychain-db 2>/dev/null || true
+          rm -f "$RUNNER_TEMP/certificate.p12"
+          rm -rf "$HOME/.appstoreconnect/private_keys"
+          echo "Cleanup done."
