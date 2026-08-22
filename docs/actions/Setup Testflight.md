@@ -233,7 +233,42 @@ Zwei Dinge, die die Phase bewusst hart abbricht bzw. markiert:
 
 ---
 
-## 6. Erster Lauf
+## 6. Release Notes für „What to Test"
+
+Der Workflow **setzt das Feld nicht selbst** — er bereitet den Text auf, du fügst
+ihn in App Store Connect ein. Automatisch setzen ginge nur über die
+`betaBuildLocalizations`-Ressource der ASC-API, und die ist erst erreichbar,
+wenn der Build fertig verarbeitet ist; der Job müsste also 5–15 Minuten pollen.
+Für ein Feld, das vor dem Ausliefern ohnehin gegengelesen wird, lohnt das nicht.
+
+Zu finden nach jedem Lauf an zwei Stellen:
+
+- in der **Job-Summary** als Codeblock zum direkten Kopieren
+- als Artefakt **`whats-new`**, mit zwei Dateien:
+  - `WhatToTest.txt` — nur die Commit-Betreffs, das ist der Text zum Einfügen
+  - `changelog-full.txt` — dieselben Commits mit Datum und vollem Body, gedacht
+    als Vorlage, falls du daraus etwas Lesbares zusammenfassen lässt
+
+Der Schritt läuft **vor** dem Build, die Notizen liegen also auch dann vor, wenn
+das Archiv scheitert. Das Artefakt wird 30 Tage aufbewahrt.
+
+**Bereich:** alle Commits seit dem letzten Tag, der auf `v*` passt. Gibt es
+keinen, fällt der Schritt auf den neuesten Tag beliebiger Form zurück, sonst auf
+die gesamte Historie — die Summary schreibt jeweils dazu, welche Quelle benutzt
+wurde. Aktuell greift der Rückfall: der einzige Tag im Repo ist `1.3.2` vom
+August 2023, entsprechend lang ist die Liste. **Sobald du pro Release ein `v1.4`
+o.ä. setzt, wird der Bereich sinnvoll.**
+
+**Gefiltert** werden Commits, die ausschließlich `.github/` oder `docs/`
+anfassen — reine Pipeline- und Doku-Arbeit interessiert Tester nicht. Sobald ein
+Commit *irgendeine* Datei außerhalb dieser beiden Pfade berührt, bleibt er drin.
+
+Die Liste wird **nicht gekürzt**. TestFlight nimmt maximal 4000 Zeichen an; wird
+das überschritten, warnt der Lauf und schreibt es in die Summary.
+
+---
+
+## 7. Erster Lauf
 
 Nicht direkt auf `main` pushen zum Testen. Der Workflow hat `workflow_dispatch`:
 **Actions → TestFlight → Run workflow**, Branch auswählen, starten.

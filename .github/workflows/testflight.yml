@@ -90,6 +90,78 @@ jobs:
             exit 1
           fi
 
+      - name: Build "What to Test" changelog
+        run: |
+          set -euo pipefail
+          # Produces the release notes to paste into TestFlight by hand. Setting
+          # the field automatically would mean talking to the App Store Connect
+          # API and waiting for the build to finish processing first, which is a
+          # lot of moving parts for a field that is reviewed before it ships.
+          #
+          # Runs before the build so the notes exist even when the build fails.
+
+          # Prefer a v-prefixed release tag. Fall back to any tag, then to the
+          # full history, so this still produces something before the convention
+          # is established.
+          BASE=$(git tag --list 'v*' --sort=-version:refname | head -1)
+          ORIGIN="tag ${BASE}"
+          if [ -z "$BASE" ]; then
+            BASE=$(git tag --sort=-version:refname | head -1)
+            [ -n "$BASE" ] && ORIGIN="tag ${BASE} - no v* tag exists yet"
+          fi
+          if [ -z "$BASE" ]; then
+            RANGE="HEAD"; ORIGIN="entire history - no tags at all"
+          else
+            RANGE="${BASE}..HEAD"
+          fi
+
+          # A commit counts as relevant as soon as one changed path lies outside
+          # .github/ and docs/. Merge commits list no paths and drop out too.
+          RELEVANT=""
+          while IFS= read -r SHA; do
+            [ -n "$SHA" ] || continue
+            FILES=$(git show --pretty='' --name-only "$SHA")
+            [ -n "$FILES" ] || continue
+            if printf '%s\n' "$FILES" | grep -qv -e '^\.github/' -e '^docs/'; then
+              RELEVANT="${RELEVANT}${SHA}"$'\n'
+            fi
+          done < <(git log --format='%H' "$RANGE")
+
+          TOTAL=$(git log --format='%H' "$RANGE" | grep -c . || true)
+          KEPT=$(printf '%s' "$RELEVANT" | grep -c . || true)
+
+          # Deliberately not truncated - the whole point is a complete list that
+          # can be pasted as-is or handed to something that summarises it.
+          NOTES="$RUNNER_TEMP/WhatToTest.txt"
+          FULL="$RUNNER_TEMP/changelog-full.txt"
+          : > "$NOTES"; : > "$FULL"
+          while IFS= read -r SHA; do
+            [ -n "$SHA" ] || continue
+            git log -1 --format='- %s' "$SHA" >> "$NOTES"
+            git log -1 --format='%h %ad %s%n%b' --date=short "$SHA" >> "$FULL"
+            echo >> "$FULL"
+          done <<< "$RELEVANT"
+
+          CHARS=$(wc -c < "$NOTES" | tr -d ' ')
+          echo "Range $RANGE ($ORIGIN): $KEPT of $TOTAL commits, $CHARS characters."
+
+          {
+            echo "### What to Test"
+            echo ""
+            echo "Since **$ORIGIN** - $KEPT of $TOTAL commits, $CHARS characters."
+            echo ""
+            echo '```'
+            cat "$NOTES"
+            echo '```'
+            echo ""
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          # TestFlight caps the field at 4000 characters.
+          if [ "$CHARS" -gt 4000 ]; then
+            echo "::warning::The notes are $CHARS characters; TestFlight accepts at most 4000. Shorten them before pasting, or tag a release so the range gets smaller."
+            echo "> The list exceeds TestFlight's 4000 character limit and needs shortening before it is pasted." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
       # ----------------------------------------------------------------------
       # Dependencies
       # ----------------------------------------------------------------------
@@ -385,6 +457,17 @@ jobs:
       # ----------------------------------------------------------------------
       # Diagnostics & cleanup
       # ----------------------------------------------------------------------
+      - name: Upload changelog
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: whats-new
+          path: |
+            ${{ runner.temp }}/WhatToTest.txt
+            ${{ runner.temp }}/changelog-full.txt
+          if-no-files-found: warn
+          retention-days: 30
+
       - name: Upload build logs on failure
         if: failure()
         uses: actions/upload-artifact@v4
