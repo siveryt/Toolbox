@@ -28,6 +28,7 @@ Only user-visible changes. Ignore anything the tester cannot see:
 - At most 3800 characters per language.
 - If there is no user-visible change at all, the German text is exactly:
   `Interner Build ohne sichtbare Änderungen.`
+- Omit Markdown Formatting. The "What to Test" notes are plain text only.
 
 ## Output
 
