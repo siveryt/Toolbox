@@ -1,15 +1,6 @@
 {
-  "originHash" : "7614fa72c7d18b65c772b9ddedc2e6073be5c00bf48e88579f2b1f7cc4e33981",
+  "originHash" : "e39651b73db92d0576b94fa4e074bae886ca6b2bb8fc3fa5754b714ad5dac0f8",
   "pins" : [
-    {
-      "identity" : "awake",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/jesper-lindberg/Awake",
-      "state" : {
-        "branch" : "master",
-        "revision" : "caa1316d9b8f1e9ffee7ceb99254a149488f93a9"
-      }
-    },
     {
       "identity" : "codescanner",
       "kind" : "remoteSourceControl",

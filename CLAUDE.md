@@ -65,4 +65,4 @@ When shipping a user-visible feature, update the WhatsNewKit collection in [Tool
 
 ## Key third-party dependencies (SPM)
 
-`RomanNumeralKit`, `CodeScanner` (barcode/QR), `LanScanner` (fork under `siveryt`), `SwiftyPing` (ping), `Awake` (Wake-on-LAN), `swift-async-dns-resolver`, `Swifter` (HTTP server), `MarqueeText` (fork under `siveryt`, scrolling text), `WhatsNewKit`, `Haptica`, `ToastSwiftUI`, `SwiftUI-Apple-Watch-Decimal-Pad`.
+`RomanNumeralKit`, `CodeScanner` (barcode/QR), `LanScanner` (fork under `siveryt`), `SwiftyPing` (ping), `swift-async-dns-resolver`, `Swifter` (HTTP server), `MarqueeText` (fork under `siveryt`, scrolling text), `WhatsNewKit`, `Haptica`, `ToastSwiftUI`, `SwiftUI-Apple-Watch-Decimal-Pad`.
