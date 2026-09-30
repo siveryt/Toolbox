@@ -64,26 +64,6 @@ extension View {
     }
 }
 
-struct DeviceRotationViewModifier: ViewModifier {
-    let action: (UIDeviceOrientation) -> Void
-
-    func body(content: Content) -> some View {
-        content
-            .onAppear()
-            .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
-                action(UIDevice.current.orientation)
-            }
-    }
-}
-
-// A View wrapper to make the modifier easier to use
-extension View {
-    func onRotate(perform action: @escaping (UIDeviceOrientation) -> Void) -> some View {
-        self.modifier(DeviceRotationViewModifier(action: action))
-    }
-}
-
-
 struct DieView: View {
     var number: String
     var sides: Int
@@ -161,72 +141,51 @@ struct DiceGridView: View {
     var faces: [String]
     var sides: Int
     
-    @State private var orientation = UIDeviceOrientation.portrait
+    private let spacing: CGFloat = 20
+    private let minimumDieSize: CGFloat = 60
     
-    private var columns: [GridItem] {
-        let screenWidth = UIScreen.main.bounds.width
-        let portrait = UIScreen.main.bounds.width < UIScreen.main.bounds.height
-
-        let columnWidth = (screenWidth / (portrait ? 2 : 4) - 20) // Adjust the divisor here for the number of columns you want
-        return Array(repeating: .init(.fixed(columnWidth)), count: diceCount == 1 ? 1 : (portrait ? 2 : 4))
-    }
-    
-    private var size: CGFloat {
-        var size = min(UIScreen.main.bounds.width, UIScreen.main.bounds.height)
+    /// Picks the column count that gives the biggest dice while still fitting the available width and height.
+    private func layout(for containerSize: CGSize) -> (columns: Int, dieSize: CGFloat) {
+        let width = containerSize.width - 2 * spacing
+        let height = containerSize.height - 2 * spacing
+        var best = (columns: 1, dieSize: CGFloat(0))
         
-        if(diceCount > 1){
-            size = size / 2
+        for columns in 1...diceCount {
+            let rows = Int((Double(diceCount) / Double(columns)).rounded(.up))
+            let fittingWidth = (width - CGFloat(columns - 1) * spacing) / CGFloat(columns)
+            let fittingHeight = (height - CGFloat(rows - 1) * spacing) / CGFloat(rows)
+            let dieSize = min(fittingWidth, fittingHeight)
+            if dieSize > best.dieSize {
+                best = (columns, dieSize)
+            }
         }
         
-        size -= 40
-        return size
-    }
-    
-    var items: [GridItem] {
-        Array(repeating: .init(.adaptive(minimum: size)), count: diceCount == 1 ? 1 :2)
+        // With lots of dice on a small screen, keep them tappable and let the grid scroll instead.
+        // The bigger dice may no longer fit the chosen column count, so reduce it to what fits the width.
+        if best.dieSize < minimumDieSize {
+            best.dieSize = minimumDieSize
+            let fittingColumns = Int((width + spacing) / (minimumDieSize + spacing))
+            best.columns = max(1, min(best.columns, fittingColumns))
+        }
+        return best
     }
     
     var body: some View {
         
-        VStack {
-            GeometryReader { geometry in
-                ScrollView(.vertical, showsIndicators: false) {
-                    VStack{
-                        LazyVGrid(columns: items, spacing: 10) {
-                            ForEach(1...diceCount, id: \.self) { i in
-                                HStack {
-                                    Spacer()
-                                    DieView(number: faces[i], sides: sides, index: i)
-                                        .padding([.bottom], 10)
-                                    Spacer()
-                                }
-                            }
-                        }
-                        .padding(.horizontal)
+        GeometryReader { geometry in
+            let layout = layout(for: geometry.size)
+            ScrollView(.vertical, showsIndicators: false) {
+                LazyVGrid(columns: Array(repeating: GridItem(.fixed(layout.dieSize), spacing: spacing), count: layout.columns), spacing: spacing) {
+                    ForEach(1...diceCount, id: \.self) { i in
+                        DieView(number: faces[i], sides: sides, index: i)
+                            .frame(width: layout.dieSize, height: layout.dieSize)
                     }
-                    .frame(minHeight: (geometry.size.height - 40))
                 }
-            }
-            
-        }
-        .onRotate { newOrientation in
-            if (!newOrientation.isFlat) {
-                orientation = newOrientation
-            }
-            
-            print(size)
-            
-        }
-        .onAppear {
-            if UIScreen.main.bounds.width < UIScreen.main.bounds.height {
-                orientation = .portrait
-                print("portrait")
-            } else {
-                orientation = .landscapeLeft
+                .padding(spacing)
+                .frame(minWidth: geometry.size.width, minHeight: geometry.size.height)
             }
         }
-                
-        
+        .avoidingActiveDivision()
     }
 }
 

@@ -439,7 +439,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 }
 
 #Preview {
-    NavigationView {
+    NavigationStack {
         Speed()
     }
 }
