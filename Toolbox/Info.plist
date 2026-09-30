@@ -136,8 +136,6 @@
 	</dict>
 	<key>GIT_COMMIT</key>
 	<string>unknown</string>
-	<key>ITSAppUsesNonExemptEncryption</key>
-	<false/>
 	<key>LAST_UPDATE</key>
 	<string>unknown</string>
 	<key>NSBonjourServices</key>

@@ -1078,6 +1078,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Toolbox/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Toolbox;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Toolbox needs access to the camera to read barcodes and to show scrolling text on the back display.";
 				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "Toolbox needs to access your files to let you select a font file to install";
@@ -1121,6 +1122,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Toolbox/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Toolbox;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Toolbox needs access to the camera to read barcodes and to show scrolling text on the back display.";
 				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "Toolbox needs to access your files to let you select a font file to install";
