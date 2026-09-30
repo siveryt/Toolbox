@@ -160,8 +160,13 @@ struct DiceGridView: View {
             }
         }
         
-        // With lots of dice on a small screen, keep them tappable and let the grid scroll instead
-        best.dieSize = max(best.dieSize, minimumDieSize)
+        // With lots of dice on a small screen, keep them tappable and let the grid scroll instead.
+        // The bigger dice may no longer fit the chosen column count, so reduce it to what fits the width.
+        if best.dieSize < minimumDieSize {
+            best.dieSize = minimumDieSize
+            let fittingColumns = Int((width + spacing) / (minimumDieSize + spacing))
+            best.columns = max(1, min(best.columns, fittingColumns))
+        }
         return best
     }
     

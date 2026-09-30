@@ -57,12 +57,17 @@ struct Scrolling_Text: View {
             }
             
         }
-        // Use the available space instead of the device orientation, so this also works on unusual display shapes (e.g. iPhone Duo)
-        .onGeometryChange(for: Bool.self) { proxy in
-            proxy.size.width > proxy.size.height
-        } action: { isWide in
-            enabled = isWide
-            scrollerActive = isWide ? scrollerActive : false
+        // Use the available space instead of the device orientation, so this also works on unusual display shapes (e.g. iPhone Duo).
+        // Measured on a background that ignores the keyboard, otherwise typing would make a portrait window look wide.
+        .background {
+            Color.clear
+                .ignoresSafeArea(.keyboard)
+                .onGeometryChange(for: Bool.self) { proxy in
+                    proxy.size.width > proxy.size.height
+                } action: { isWide in
+                    enabled = isWide
+                    scrollerActive = isWide ? scrollerActive : false
+                }
         }
         .alert("Info", isPresented: $rotateAlert) {
         } message: {
