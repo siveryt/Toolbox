@@ -14,33 +14,37 @@ struct Random_Letter: View {
     @AppStorage("letterGuidance") var guidance = true
     
     var body: some View {
-        VStack{
-            Button(action: {
-                for dqI in 1...9 {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + Double("0.\(dqI)")!) {
-                        letter = String("ABCDEFGHIJKLMNOPQRSTUVWXYZ".randomElement() ?? "Z")
-                        Haptic.impact(.light).generate()
+        GeometryReader { geometry in
+            VStack{
+                Button(action: {
+                    for dqI in 1...9 {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + Double("0.\(dqI)")!) {
+                            letter = String("ABCDEFGHIJKLMNOPQRSTUVWXYZ".randomElement() ?? "Z")
+                            Haptic.impact(.light).generate()
+                        }
                     }
-                }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                            withAnimation(){
-                                guidance = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                withAnimation(){
+                                    guidance = false
+                                }
                             }
-                        }
                 
-            }) {
-                Text(letter)
-                    .font(.system(size: UIScreen.main.bounds.width * 0.4)) // Set font size to 30% of screen width
-                    .background(Color.clear) // Transparent background
-                    .padding(50) // Add padding to increase the hitbox
-            }
-            .buttonStyle(PlainButtonStyle())
-            .tint(.primary)
+                }) {
+                    Text(letter)
+                        .font(.system(size: min(geometry.size.width * 0.4, geometry.size.height * 0.5))) // Scale with the available space, not the screen
+                        .background(Color.clear) // Transparent background
+                        .padding(50) // Add padding to increase the hitbox
+                }
+                .buttonStyle(PlainButtonStyle())
+                .tint(.primary)
             
-            if guidance {
-                            Text("Shake or Tap to Get Started").foregroundColor(.secondary)
-                        }
+                if guidance {
+                                Text("Shake or Tap to Get Started").foregroundColor(.secondary)
+                            }
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
+        .avoidingActiveDivision()
         .onShake{
             for dqI in 1...9 {
                 DispatchQueue.main.asyncAfter(deadline: .now() + Double("0.\(dqI)")!) {

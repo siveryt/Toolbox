@@ -9,12 +9,6 @@ import Foundation
 import SwiftUI
 import AVFoundation
 
-extension UIApplication {
-    
-    static let keyWindow = keyWindowScene?.windows.filter(\.isKeyWindow).first
-    static let keyWindowScene = shared.connectedScenes.first { $0.activationState == .foregroundActive } as? UIWindowScene
-    
-}
 enum Coordinator {
     static func topViewController(_ viewController: UIViewController? = nil) -> UIViewController? {
         let vc = viewController ?? UIApplication.shared.currentUIWindow()?.rootViewController
@@ -66,13 +60,45 @@ extension View {
         if let vc = UIApplication.shared.currentUIWindow()?.rootViewController{
             shareActivity.popoverPresentationController?.sourceView = vc.view
             //Setup share activity position on screen on bottom center
-            shareActivity.popoverPresentationController?.sourceRect = CGRect(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height, width: 0, height: 0)
+            shareActivity.popoverPresentationController?.sourceRect = CGRect(x: vc.view.bounds.midX, y: vc.view.bounds.maxY, width: 0, height: 0)
             shareActivity.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.down
             vc.present(shareActivity, animated: true, completion: nil)
         }
     }
-    
-    
+
+    /// Keeps the content out of an active fold (e.g. a partially folded iPhone Duo) by placing it in the larger of the two halves.
+    func avoidingActiveDivision() -> some View {
+        modifier(AvoidActiveDivisionModifier())
+    }
+}
+
+struct AvoidActiveDivisionModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        GeometryReader { proxy in
+            let rect = usableRect(in: proxy)
+            content
+                .frame(width: rect.width, height: rect.height)
+                .position(x: rect.midX, y: rect.midY)
+        }
+    }
+
+    private func usableRect(in proxy: GeometryProxy) -> CGRect {
+        let bounds = CGRect(origin: .zero, size: proxy.size)
+        guard #available(iOS 27.1, *),
+              let division = proxy.reservedRegions(kind: .division).first(where: \.isActive)?.frame,
+              division.intersects(bounds)
+        else { return bounds }
+
+        let candidates = [
+            CGRect(x: bounds.minX, y: bounds.minY, width: division.minX - bounds.minX, height: bounds.height),
+            CGRect(x: division.maxX, y: bounds.minY, width: bounds.maxX - division.maxX, height: bounds.height),
+            CGRect(x: bounds.minX, y: bounds.minY, width: bounds.width, height: division.minY - bounds.minY),
+            CGRect(x: bounds.minX, y: division.maxY, width: bounds.width, height: bounds.maxY - division.maxY),
+        ]
+        return candidates
+            .filter { $0.width > 0 && $0.height > 0 }
+            .max { $0.width * $0.height < $1.width * $1.height } ?? bounds
+    }
 }
 
 struct ShowingSheetKey: EnvironmentKey {

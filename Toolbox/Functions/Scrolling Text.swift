@@ -7,7 +7,6 @@
 
 import SwiftUI
 import MarqueeText
-import Combine
 import TipKit
 
 /// Hint shown in the scrolling-text full-screen mode explaining how to exit it.
@@ -30,11 +29,6 @@ struct Scrolling_Text: View {
     @State var rotateAlert = false
     @AppStorage("Scrolling Text-speed") var scrollingSpeed = 1.0
     @AppStorage("Scrolling Text-text") var text = ""
-
-
-        let orientationChanged = NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)
-            .makeConnectable()
-            .autoconnect()
     
     var body: some View {
         
@@ -53,7 +47,6 @@ struct Scrolling_Text: View {
             
             Section {
                 Button("Start Scrolling"){
-                    enabled = UIScreen.main.bounds.width > UIScreen.main.bounds.height
                     if(enabled) {
                         scrollerActive = true
                     } else {
@@ -64,20 +57,17 @@ struct Scrolling_Text: View {
             }
             
         }
-        .onReceive(orientationChanged) { _ in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
-                enabled = UIScreen.main.bounds.width > UIScreen.main.bounds.height
-                scrollerActive = enabled ? scrollerActive : false
-            })
+        // Use the available space instead of the device orientation, so this also works on unusual display shapes (e.g. iPhone Duo)
+        .onGeometryChange(for: Bool.self) { proxy in
+            proxy.size.width > proxy.size.height
+        } action: { isWide in
+            enabled = isWide
+            scrollerActive = isWide ? scrollerActive : false
         }
         .alert("Info", isPresented: $rotateAlert) {
         } message: {
             Text("You need to rotate your device to enable the scrolling text.")
         }
-        .onAppear {
-            enabled = UIScreen.main.bounds.width > UIScreen.main.bounds.height
-        }
-        
         .fullScreenCover(isPresented: $scrollerActive) {
                     GeometryReader { geometry in
                         MarqueeText(
@@ -90,6 +80,7 @@ struct Scrolling_Text: View {
                         )
                         .ignoresSafeArea()
                     }
+                    .avoidingActiveDivision()
                     .contentShape(Rectangle())
                     .onTapGesture {
                         scrollerActive = false

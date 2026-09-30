@@ -70,7 +70,8 @@ struct PulsingFlashlight: View {
     }
     
     func setFlash(on: Bool) {
-        guard let device = AVCaptureDevice.default(for: AVMediaType.video) else { return }
+        // Ask for the back camera explicitly, devices like iPhone Duo have cameras on several sides
+        guard let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) else { return }
         guard device.hasTorch else { return }
 
         do {
