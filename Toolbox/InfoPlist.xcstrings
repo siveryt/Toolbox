@@ -34,13 +34,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Toolbox braucht Zugriff auf deine Kamera, um Barcodes zu lesen"
+            "value" : "Toolbox braucht Zugriff auf deine Kamera, um Barcodes zu lesen und Laufschrift auf der Rückseite anzuzeigen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Toolbox needs access to the camera, to read barcodes."
+            "value" : "Toolbox needs access to the camera to read barcodes and to show scrolling text on the back display."
           }
         }
       }
