@@ -2663,6 +2663,86 @@
           }
         }
       }
+    },
+    "Start Scrolling on Back Display" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Laufschrift auf Rückseite starten"
+          }
+        }
+      }
+    },
+    "Stop Scrolling on Back Display" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Laufschrift auf Rückseite beenden"
+          }
+        }
+      }
+    },
+    "Start Scrolling on External Display" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Laufschrift auf externem Display starten"
+          }
+        }
+      }
+    },
+    "Stop Scrolling on External Display" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Laufschrift auf externem Display beenden"
+          }
+        }
+      }
+    },
+    "The back display is only available while the camera is active, so the camera turns on while the text is shown there." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Rückseite ist nur verfügbar, während die Kamera aktiv ist. Deshalb schaltet sich die Kamera ein, solange der Text dort angezeigt wird."
+          }
+        }
+      }
+    },
+    "Camera Access Needed" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kamerazugriff benötigt"
+          }
+        }
+      }
+    },
+    "The back display is only available while the camera is active. Allow camera access to show the scrolling text there." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Rückseite ist nur verfügbar, während die Kamera aktiv ist. Erlaube den Kamerazugriff, um die Laufschrift dort anzuzeigen."
+          }
+        }
+      }
+    },
+    "The back display isn't available right now." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Rückseite ist gerade nicht verfügbar."
+          }
+        }
+      }
     }
   },
   "version" : "1.1"
