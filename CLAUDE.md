@@ -16,7 +16,8 @@ This is a pure Xcode project (`Toolbox.xcodeproj`), no CocoaPods/Fastlane. Depen
   ```bash
   xcodebuild -project Toolbox.xcodeproj -scheme Toolbox -destination 'generic/platform=iOS' build
   ```
-- There is a UI test target directory (`ToolboxUITests/`) but it is effectively empty — there is no meaningful automated test suite. Verify changes by running the app.
+- There is no functional test suite. `ToolboxUITests/` and `ToolboxWatchUITests/` only drive the apps for App Store screenshots — verify changes by running the app.
+- Screenshots: `bundle exec fastlane screenshots` (lanes `capture`, `capture_watch`, `frame` in [fastlane/Fastfile](fastlane/Fastfile)). snapshot captures, frameit adds bezels/titles/background per [Framefile.json](fastlane/screenshots/Framefile.json); custom scripts go in [fastlane/hooks/](fastlane/hooks/README.md). The UI tests find menu rows by the accessibility identifier `tool.<icon>`.
 - `Buildnumber.xcconfig` (holds `BUILD_NUMBER` / `LAST_UPDATE`) and the `AppStore/` directory are git-ignored; `CURRENT_PROJECT_VERSION` reads `$(BUILD_NUMBER)` from that file, so a clean checkout may need it present to build the Release config.
 
 ## Architecture

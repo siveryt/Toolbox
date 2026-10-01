@@ -54,3 +54,14 @@ Buildnumber.xcconfig
 
 # Generated release notes
 dist/
+
+# fastlane / screenshots
+.bundle/
+vendor/bundle/
+fastlane/report.xml
+fastlane/test_output/
+fastlane/screenshots/**/*.png
+fastlane/screenshots/screenshots.html
+fastlane/screenshots/fonts/
+fastlane/screenshots-watch/
+fastlane/upload/

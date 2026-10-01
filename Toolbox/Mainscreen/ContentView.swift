@@ -75,6 +75,7 @@ struct ContentView: View {
                                 NavigationLink(destination: tools[toolIndex].view) {
                                     Label(tools[toolIndex].title, systemImage: tools[toolIndex].icon).foregroundColor(.primary)
                                 }
+                                .accessibilityIdentifier("tool." + tools[toolIndex].icon)
                                 .popoverTip(MainscreenMoveTip())
                                 .contextMenu {
                                     Button(action:{
@@ -87,6 +88,7 @@ struct ContentView: View {
                                 NavigationLink(destination: tools[toolIndex].view) {
                                     Label(tools[toolIndex].title, systemImage: tools[toolIndex].icon).foregroundColor(.primary)
                                 }
+                                .accessibilityIdentifier("tool." + tools[toolIndex].icon)
                                 .contextMenu {
                                     Button(action:{
                                         hide(index: toolIndex)

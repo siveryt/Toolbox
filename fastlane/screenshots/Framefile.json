@@ -1,0 +1,24 @@
+{
+  "device_frame_version": "latest",
+  "default": {
+    "keyword": {
+      "font": "./fonts/headline.ttf",
+      "color": "#FFFFFF"
+    },
+    "title": {
+      "font": "./fonts/headline.ttf",
+      "color": "#D6E4FF"
+    },
+    "background": "./background.jpg",
+    "padding": 60,
+    "stack_title": true,
+    "show_complete_frame": false,
+    "title_below_image": false
+  },
+  "data": [
+    {
+      "filter": "iPad",
+      "padding": 120
+    }
+  ]
+}

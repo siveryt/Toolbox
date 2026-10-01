@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E6EFAED7A2F6EBCC4E32D79 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B0652AF1409AAF2C643D59 /* SnapshotHelper.swift */; };
+		2708F627159919345FEA9AD0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA1A0F1CE53A09DB36639C1 /* Foundation.framework */; };
+		36032CC96F2D127B3DF332D4 /* WatchScreenshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8224FC5099A1DFBEDF0B95A /* WatchScreenshotTests.swift */; };
+		56C12AD6E4BB781008E4C583 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B0652AF1409AAF2C643D59 /* SnapshotHelper.swift */; };
 		5E020C4F27EA29D7009871F9 /* RomanConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E020C4C27EA29D7009871F9 /* RomanConverter.swift */; };
 		5E020C5027EA29D7009871F9 /* DateDifference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E020C4D27EA29D7009871F9 /* DateDifference.swift */; };
 		5E020C5327EA2A59009871F9 /* RomanNumeralKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5E020C5227EA2A59009871F9 /* RomanNumeralKit */; };
@@ -107,7 +111,9 @@
 		5EF8C35D2A8859AC0089BCA3 /* Random Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8C35C2A8859AC0089BCA3 /* Random Letter.swift */; };
 		5EF8C35F2A88665D0089BCA3 /* LAN Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8C35E2A88665D0089BCA3 /* LAN Scanner.swift */; };
 		5EFACB1429B37C9A00EB8989 /* ScannedBarcodes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5EFACB1229B37C9A00EB8989 /* ScannedBarcodes.xcdatamodeld */; };
+		7EC41563C3B315C633F6058B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D1FA36F7D93C2E01A9E02A /* Foundation.framework */; };
 		AAC839962F151FDD00DA8C4B /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC839952F151FDD00DA8C4B /* Distance.swift */; };
+		AD9928A2C0E9F932E1DB0392 /* ScreenshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF94783760E8135AD10602D5 /* ScreenshotTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +130,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 5EE65DEE2A8575FE0061120B;
 			remoteInfo = "Toolbox WatchOS Watch App";
+		};
+		84D286C9670A28E982FE753C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5EC7B21327D7978100699FD3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5EE65DEE2A8575FE0061120B;
+			remoteInfo = "Toolbox WatchOS Watch App";
+		};
+		8B9E1FD036A84095ACFB8C68 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5EC7B21327D7978100699FD3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5EC7B21A27D7978100699FD3;
+			remoteInfo = Toolbox;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -153,6 +173,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		38B0652AF1409AAF2C643D59 /* SnapshotHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		5E020C4C27EA29D7009871F9 /* RomanConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RomanConverter.swift; sourceTree = "<group>"; };
 		5E020C4D27EA29D7009871F9 /* DateDifference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateDifference.swift; sourceTree = "<group>"; };
 		5E0AA8032837BF59006CD0EA /* whitegradient_red@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whitegradient_red@3x.png"; sourceTree = "<group>"; };
@@ -248,7 +269,13 @@
 		5EF8C35C2A8859AC0089BCA3 /* Random Letter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Random Letter.swift"; sourceTree = "<group>"; };
 		5EF8C35E2A88665D0089BCA3 /* LAN Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LAN Scanner.swift"; sourceTree = "<group>"; };
 		5EFACB1329B37C9A00EB8989 /* ScannedBarcodes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ScannedBarcodes.xcdatamodel; sourceTree = "<group>"; };
+		65D1FA36F7D93C2E01A9E02A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS26.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		779CD6AAAB01E99BD748EB96 /* ToolboxUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToolboxUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAA1A0F1CE53A09DB36639C1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		AAC839952F151FDD00DA8C4B /* Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
+		B06FC4129E5EF7B6BCD3958E /* ToolboxWatchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToolboxWatchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8224FC5099A1DFBEDF0B95A /* WatchScreenshotTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WatchScreenshotTests.swift; sourceTree = "<group>"; };
+		FF94783760E8135AD10602D5 /* ScreenshotTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ScreenshotTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,9 +314,51 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7453591B914D5CDF5E0D5E1E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7EC41563C3B315C633F6058B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		885DB135F53C3B8386B8FBDF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2708F627159919345FEA9AD0 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B55F4801AF1556DD23CDB57 /* ToolboxUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FF94783760E8135AD10602D5 /* ScreenshotTests.swift */,
+			);
+			name = ToolboxUITests;
+			path = ToolboxUITests;
+			sourceTree = "<group>";
+		};
+		579B4D045662C8925CAB17E2 /* watchOS */ = {
+			isa = PBXGroup;
+			children = (
+				65D1FA36F7D93C2E01A9E02A /* Foundation.framework */,
+			);
+			name = watchOS;
+			sourceTree = "<group>";
+		};
+		5A1B429E9DE055AE9AE96468 /* ToolboxWatchUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E8224FC5099A1DFBEDF0B95A /* WatchScreenshotTests.swift */,
+			);
+			name = ToolboxWatchUITests;
+			path = ToolboxWatchUITests;
+			sourceTree = "<group>";
+		};
 		5E0AA7F02837BA6D006CD0EA /* Icons */ = {
 			isa = PBXGroup;
 			children = (
@@ -330,6 +399,8 @@
 			children = (
 				5E9ABFCC2B9CB840005448FB /* WidgetKit.framework */,
 				5E9ABFCE2B9CB840005448FB /* SwiftUI.framework */,
+				80E05064360A7D5CB5EB7B1D /* iOS */,
+				579B4D045662C8925CAB17E2 /* watchOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -412,6 +483,9 @@
 				5E9ABFD02B9CB840005448FB /* diceWidget */,
 				5EC7B21C27D7978100699FD3 /* Products */,
 				5E1383EC29159D2600CF4FAB /* Frameworks */,
+				B1C9B3BF987A653F8D56E1D9 /* fastlane */,
+				1B55F4801AF1556DD23CDB57 /* ToolboxUITests */,
+				5A1B429E9DE055AE9AE96468 /* ToolboxWatchUITests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -421,6 +495,8 @@
 				5EC7B21B27D7978100699FD3 /* Toolbox.app */,
 				5EE65DEF2A8575FE0061120B /* Toolbox WatchOS Watch App.app */,
 				5E9ABFCB2B9CB840005448FB /* diceWidgetExtension.appex */,
+				779CD6AAAB01E99BD748EB96 /* ToolboxUITests.xctest */,
+				B06FC4129E5EF7B6BCD3958E /* ToolboxWatchUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -536,6 +612,23 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		80E05064360A7D5CB5EB7B1D /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				AAA1A0F1CE53A09DB36639C1 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		B1C9B3BF987A653F8D56E1D9 /* fastlane */ = {
+			isa = PBXGroup;
+			children = (
+				38B0652AF1409AAF2C643D59 /* SnapshotHelper.swift */,
+			);
+			name = fastlane;
+			path = fastlane;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -613,6 +706,42 @@
 			productReference = 5EE65DEF2A8575FE0061120B /* Toolbox WatchOS Watch App.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A19F5E4EFDB7E7B188D498C2 /* ToolboxUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9FC9587E54835FBF1355BA8A /* Build configuration list for PBXNativeTarget "ToolboxUITests" */;
+			buildPhases = (
+				F4B85ADAE6379DA02558114D /* Sources */,
+				885DB135F53C3B8386B8FBDF /* Frameworks */,
+				2605E71C74F7C129B8359926 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0DF959246E9233A3DAB6C480 /* PBXTargetDependency */,
+			);
+			name = ToolboxUITests;
+			productName = ToolboxUITests;
+			productReference = 779CD6AAAB01E99BD748EB96 /* ToolboxUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		DF46C87125C69E6155843240 /* ToolboxWatchUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B632812AA95E15942460CF26 /* Build configuration list for PBXNativeTarget "ToolboxWatchUITests" */;
+			buildPhases = (
+				D3164EA45BCC66E8EEF29456 /* Sources */,
+				7453591B914D5CDF5E0D5E1E /* Frameworks */,
+				86C8567410CABA68D9DFB8E4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B0A979ED80CEB8B0CA602F2C /* PBXTargetDependency */,
+			);
+			name = ToolboxWatchUITests;
+			productName = ToolboxWatchUITests;
+			productReference = B06FC4129E5EF7B6BCD3958E /* ToolboxWatchUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -631,6 +760,14 @@
 					};
 					5EE65DEE2A8575FE0061120B = {
 						CreatedOnToolsVersion = 14.3.1;
+					};
+					A19F5E4EFDB7E7B188D498C2 = {
+						CreatedOnToolsVersion = 27.1;
+						TestTargetID = 5EC7B21A27D7978100699FD3;
+					};
+					DF46C87125C69E6155843240 = {
+						CreatedOnToolsVersion = 27.1;
+						TestTargetID = 5EE65DEE2A8575FE0061120B;
 					};
 				};
 			};
@@ -664,11 +801,20 @@
 				5EC7B21A27D7978100699FD3 /* Toolbox */,
 				5EE65DEE2A8575FE0061120B /* Toolbox WatchOS Watch App */,
 				5E9ABFCA2B9CB840005448FB /* diceWidgetExtension */,
+				A19F5E4EFDB7E7B188D498C2 /* ToolboxUITests */,
+				DF46C87125C69E6155843240 /* ToolboxWatchUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2605E71C74F7C129B8359926 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5E9ABFC92B9CB840005448FB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -727,6 +873,13 @@
 				5EE65DF92A8576000061120B /* Preview Assets.xcassets in Resources */,
 				5E2A28232A857AC000F7F444 /* Assets WatchOS.xcassets in Resources */,
 				5EE767A02CB12952002B0A74 /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		86C8567410CABA68D9DFB8E4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -859,9 +1012,33 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D3164EA45BCC66E8EEF29456 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36032CC96F2D127B3DF332D4 /* WatchScreenshotTests.swift in Sources */,
+				1E6EFAED7A2F6EBCC4E32D79 /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4B85ADAE6379DA02558114D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD9928A2C0E9F932E1DB0392 /* ScreenshotTests.swift in Sources */,
+				56C12AD6E4BB781008E4C583 /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		0DF959246E9233A3DAB6C480 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Toolbox;
+			target = 5EC7B21A27D7978100699FD3 /* Toolbox */;
+			targetProxy = 8B9E1FD036A84095ACFB8C68 /* PBXContainerItemProxy */;
+		};
 		5E9ABFDB2B9CB843005448FB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5E9ABFCA2B9CB840005448FB /* diceWidgetExtension */;
@@ -872,9 +1049,53 @@
 			target = 5EE65DEE2A8575FE0061120B /* Toolbox WatchOS Watch App */;
 			targetProxy = 5EE65DFA2A8576000061120B /* PBXContainerItemProxy */;
 		};
+		B0A979ED80CEB8B0CA602F2C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Toolbox WatchOS Watch App";
+			target = 5EE65DEE2A8575FE0061120B /* Toolbox WatchOS Watch App */;
+			targetProxy = 84D286C9670A28E982FE753C /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		37CF5E07F7FBDD9141A2E851 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VA79D2T9W7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.sivery.toolbox.watchkitapp.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "Toolbox WatchOS Watch App";
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 9.4;
+			};
+			name = Release;
+		};
+		448B567EAB9642873F5F0982 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VA79D2T9W7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.sivery.toolbox.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Toolbox;
+			};
+			name = Debug;
+		};
 		5E9ABFDE2B9CB843005448FB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1214,6 +1435,44 @@
 			};
 			name = Release;
 		};
+		8CFD00FCC83A807866A232EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VA79D2T9W7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.sivery.toolbox.watchkitapp.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "Toolbox WatchOS Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 9.4;
+			};
+			name = Debug;
+		};
+		97052D45B22C376BAF833D57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VA79D2T9W7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.sivery.toolbox.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Toolbox;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1249,6 +1508,24 @@
 			buildConfigurations = (
 				5EE65DFE2A8576000061120B /* Debug */,
 				5EE65DFF2A8576000061120B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9FC9587E54835FBF1355BA8A /* Build configuration list for PBXNativeTarget "ToolboxUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				97052D45B22C376BAF833D57 /* Release */,
+				448B567EAB9642873F5F0982 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B632812AA95E15942460CF26 /* Build configuration list for PBXNativeTarget "ToolboxWatchUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37CF5E07F7FBDD9141A2E851 /* Release */,
+				8CFD00FCC83A807866A232EE /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

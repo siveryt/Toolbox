@@ -1,0 +1,97 @@
+# App Store screenshot pipeline: capture (snapshot) -> bezels, titles, backgrounds (frameit) -> hooks.
+# Run with `bundle exec fastlane <lane>`; see fastlane/hooks/README.md for adding scripts.
+
+default_platform(:ios)
+
+ROOT = File.expand_path("..", __dir__)
+SCREENSHOTS = File.join(ROOT, "fastlane", "screenshots")             # iPhone + iPad, framed by frameit
+WATCH_SCREENSHOTS = File.join(ROOT, "fastlane", "screenshots-watch") # raw only, frameit has no watch frames
+HOOKS = File.join(ROOT, "fastlane", "hooks")
+WATCH_DEVICES = ["Apple Watch Series 12 (46mm)"]
+
+# Font referenced by Framefile.json. frameit only accepts paths relative to the
+# Framefile, so the system font is copied in unless you put your own file there.
+FONTS = {
+  "headline.ttf" => "/System/Library/Fonts/Supplemental/Arial Rounded Bold.ttf"
+}
+UPLOAD = File.join(ROOT, "fastlane", "upload") # staging folder for upload_screenshots
+
+# Runs every executable in fastlane/hooks/<stage>.d in name order.
+def run_hooks(stage, screenshots_dir)
+  Dir.glob(File.join(HOOKS, "#{stage}.d", "*")).sort.each do |hook|
+    next unless File.file?(hook) && File.executable?(hook)
+    UI.message("Hook #{stage}: #{File.basename(hook)}")
+    env = { "SCREENSHOTS_DIR" => screenshots_dir, "PROJECT_ROOT" => ROOT, "HOOK_STAGE" => stage }
+    UI.user_error!("Hook #{hook} failed") unless system(env, hook, chdir: ROOT)
+  end
+end
+
+platform :ios do
+  desc "Everything: capture iPhone, iPad and Watch, then frame"
+  lane :screenshots do
+    capture
+    capture_watch
+    frame
+  end
+
+  desc "Capture iPhone and iPad screenshots (devices and languages: Snapfile)"
+  lane :capture do
+    snapshot
+    run_hooks("post_capture", SCREENSHOTS)
+  end
+
+  desc "Capture Apple Watch screenshots (raw, no bezel)"
+  lane :capture_watch do
+    snapshot(
+      scheme: "ToolboxWatchUITests",
+      devices: WATCH_DEVICES,
+      output_directory: WATCH_SCREENSHOTS,
+      override_status_bar: false
+    )
+    run_hooks("post_capture_watch", WATCH_SCREENSHOTS)
+  end
+
+  desc "Add bezels, titles and backgrounds to the iPhone and iPad screenshots (layout: screenshots/Framefile.json)"
+  lane :frame do
+    FONTS.each do |name, source|
+      target = File.join(SCREENSHOTS, "fonts", name)
+      next if File.exist?(target)
+      FileUtils.mkdir_p(File.dirname(target))
+      FileUtils.cp(source, target)
+    end
+    frameit(path: SCREENSHOTS)
+    run_hooks("post_frame", SCREENSHOTS)
+  end
+
+  desc "Upload the framed iPhone/iPad and the Watch screenshots to App Store Connect (needs ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_PATH)"
+  lane :upload_screenshots do
+    FileUtils.rm_rf(UPLOAD)
+    [[SCREENSHOTS, "*_framed.png"], [WATCH_SCREENSHOTS, "*.png"]].each do |dir, pattern|
+      Dir.glob(File.join(dir, "*", pattern)).each do |file|
+        language = File.join(UPLOAD, File.basename(File.dirname(file)))
+        FileUtils.mkdir_p(language)
+        FileUtils.cp(file, language)
+      end
+    end
+    UI.user_error!("Nothing to upload, run `fastlane screenshots` first") unless Dir.exist?(UPLOAD)
+    run_hooks("pre_upload", UPLOAD)
+
+    api_key = app_store_connect_api_key(
+      key_id: ENV.fetch("ASC_KEY_ID"),
+      issuer_id: ENV.fetch("ASC_ISSUER_ID"),
+      key_filepath: ENV.fetch("ASC_KEY_PATH")
+    )
+    # Replaces the screenshots of the editable app version; touches nothing else.
+    upload_to_app_store(
+      api_key: api_key,
+      app_identifier: "de.sivery.toolbox",
+      screenshots_path: UPLOAD,
+      overwrite_screenshots: true,
+      skip_binary_upload: true,
+      skip_metadata: true,
+      skip_app_version_update: true,
+      run_precheck_before_submit: false,
+      force: true
+    )
+  end
+end
