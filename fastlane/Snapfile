@@ -1,0 +1,23 @@
+# Defaults for the iPhone/iPad capture (`fastlane capture`).
+# The watch lane in the Fastfile overrides scheme, devices and output_directory.
+
+# Names must match `xcrun simctl list devices`. frameit picks the bezel from the
+# device name in the file name, falling back to the screenshot resolution, so only
+# use devices frameit has frames for (see `fastlane frameit download_frames`).
+devices([
+  "iPhone 17 Pro",         # 1206x2622, App Store 6.3" slot
+  "iPad Air 13-inch (M4)"  # 2048x2732, App Store 13" slot (framed as iPad Pro 12.9")
+])
+
+languages([
+  "en-US",
+  "de-DE"
+])
+
+project("./Toolbox.xcodeproj")
+scheme("ToolboxUITests")
+output_directory("./fastlane/screenshots")
+clear_previous_screenshots(true)
+override_status_bar(true)
+skip_open_summary(true)
+stop_after_first_error(true)

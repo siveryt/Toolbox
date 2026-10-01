@@ -32,7 +32,8 @@ extension App: SwiftUI.App {
                     \.whatsNew,
                      .init(
                         versionStore: UserDefaultsWhatsNewVersionStore(),
-                        whatsNewCollection: self
+                        // fastlane snapshot launches the app with -FASTLANE_SNAPSHOT; keep the sheet out of the screenshots
+                        whatsNewCollection: UserDefaults.standard.bool(forKey: "FASTLANE_SNAPSHOT") ? [] : self.whatsNewCollection
                      )
                 )
                 .environmentObject(SelectedItemIndex())

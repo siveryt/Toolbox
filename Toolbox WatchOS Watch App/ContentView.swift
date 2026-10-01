@@ -16,12 +16,15 @@ struct ContentView: View {
                 NavigationLink(destination: Dice()) {
                         Label("Dice", systemImage: "dice").foregroundColor(.primary)
                     }
+                .accessibilityIdentifier("tool.dice")
                 NavigationLink(destination: Counter()) {
                     Label("Counter", systemImage: "plusminus").foregroundColor(.primary)
                 }
+                .accessibilityIdentifier("tool.plusminus")
                 NavigationLink(destination: Random_Number()) {
                     Label("Random Number", systemImage: "number").foregroundColor(.primary)
                 }
+                .accessibilityIdentifier("tool.number")
             }
             
             .navigationTitle("Toolbox")
