@@ -18,13 +18,13 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  # Pinned to a major rather than "newest available": the runner image gains
-  # new Xcode majors on its own schedule, and a silent jump to the next one
-  # would change the toolchain under the build without anyone asking for it.
-  # Raise this deliberately. The minimum is 27 (27.1 in practice): the iPhone
-  # Duo code uses iOS 27.1 SDK symbols (reservedRegions, sceneAccessory), and
-  # `#available` does not help - the SDK must have them at compile time.
-  XCODE_MAJOR: 27
+  # Pinned to an exact version rather than "newest available": the xcode-27
+  # image also ships betas (27.2 beta at the time of writing), and App Store
+  # Connect rejects archives built with a beta toolchain. Raise this
+  # deliberately. The minimum is 27.1: the iPhone Duo code uses iOS 27.1 SDK
+  # symbols (reservedRegions, sceneAccessory), and `#available` does not help -
+  # the SDK must have them at compile time.
+  XCODE_VERSION: "27.1"
   XCODE_PROJECT: Toolbox.xcodeproj
   XCODE_SCHEME: Toolbox
   # de.sivery.toolbox — read out of project.pbxproj, not guessed. The team ID is
@@ -39,7 +39,9 @@ env:
 
 jobs:
   testflight:
-    runs-on: macos-latest
+    # macos-latest (macos-26) only ships Xcode 26.x; Xcode 27 lives on the
+    # separate xcode-27 image.
+    runs-on: xcode-27
     timeout-minutes: 60
 
     steps:
@@ -63,12 +65,12 @@ jobs:
           echo "Available Xcode versions on this runner:"
           ls -d /Applications/Xcode*.app
 
-          # Only versioned bundles, so the unversioned /Applications/Xcode.app
-          # symlink cannot win the sort and make the choice depend on whatever
-          # the image points it at.
-          XCODE_APP=$(ls -d "/Applications/Xcode_${XCODE_MAJOR}"*.app 2>/dev/null | sort -V | tail -1 || true)
-          if [ -z "$XCODE_APP" ]; then
-            echo "::error::No Xcode ${XCODE_MAJOR}.x on this runner. Raise XCODE_MAJOR to a version the image ships, or pin an older runner image."
+          # The exact versioned bundle, never the unversioned
+          # /Applications/Xcode.app symlink or a glob: the image's default is
+          # 27.0 and its newest is a beta.
+          XCODE_APP="/Applications/Xcode_${XCODE_VERSION}.app"
+          if [ ! -d "$XCODE_APP" ]; then
+            echo "::error::No Xcode ${XCODE_VERSION} on this runner. Set XCODE_VERSION to a version the image ships, or pin another runner image."
             exit 1
           fi
 
@@ -78,12 +80,12 @@ jobs:
           # head closes the pipe after the first, and xcodebuild does not handle
           # SIGPIPE - it throws NSFileHandleOperationException and aborts with
           # exit 134. Capture the output once and parse it from the variable.
-          XCODE_VERSION=$(xcodebuild -version)
-          echo "$XCODE_VERSION"
+          SELECTED=$(xcodebuild -version)
+          echo "$SELECTED"
 
-          MAJOR=$(printf '%s\n' "$XCODE_VERSION" | sed -n '1s/^Xcode \([0-9][0-9]*\).*/\1/p')
-          if [ -z "$MAJOR" ] || [ "$MAJOR" -lt 27 ]; then
-            echo "::error::Selected toolchain reports '$XCODE_VERSION'; the Toolbox target needs Xcode 27.1 or newer for the iOS 27.1 SDK."
+          REPORTED=$(printf '%s\n' "$SELECTED" | sed -n '1s/^Xcode \([0-9.]*\).*/\1/p')
+          if [ "$REPORTED" != "$XCODE_VERSION" ]; then
+            echo "::error::Selected toolchain reports '$SELECTED'; expected Xcode ${XCODE_VERSION}."
             exit 1
           fi
 
