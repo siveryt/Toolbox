@@ -193,6 +193,14 @@ jobs:
           # tooling on the runner.
           security list-keychain -d user -s "$KEYCHAIN_PATH" login.keychain-db
 
+          # PITFALL: the archive is signed with an "Apple Development: Created
+          # via API" certificate that -allowProvisioningUpdates creates during
+          # the build, and Xcode stores it in the DEFAULT keychain. The Archive
+          # step pins codesign to this keychain (OTHER_CODE_SIGN_FLAGS), so if
+          # the default is still login.keychain-db codesign fails with
+          # "<hash>: no identity found".
+          security default-keychain -d user -s "$KEYCHAIN_PATH"
+
           echo "KEYCHAIN_PATH=$KEYCHAIN_PATH" >> "$GITHUB_ENV"
 
           echo "Identities available to codesign:"
@@ -436,6 +444,7 @@ jobs:
           # cleanup failure must not mask the real error from an earlier step.
           security delete-keychain "$RUNNER_TEMP/app-signing.keychain-db" 2>/dev/null || true
           security list-keychain -d user -s login.keychain-db 2>/dev/null || true
+          security default-keychain -d user -s login.keychain-db 2>/dev/null || true
           rm -f "$RUNNER_TEMP/certificate.p12"
           rm -rf "$HOME/.appstoreconnect/private_keys"
           echo "Cleanup done."
