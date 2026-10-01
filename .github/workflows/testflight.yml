@@ -19,10 +19,12 @@ concurrency:
 
 env:
   # Pinned to a major rather than "newest available": the runner image gains
-  # new Xcode majors on its own schedule, and a silent jump to 27 would change
-  # the toolchain under the build without anyone asking for it. Raise this
-  # deliberately. The minimum is 26, set by IPHONEOS_DEPLOYMENT_TARGET = 26.0.
-  XCODE_MAJOR: 26
+  # new Xcode majors on its own schedule, and a silent jump to the next one
+  # would change the toolchain under the build without anyone asking for it.
+  # Raise this deliberately. The minimum is 27 (27.1 in practice): the iPhone
+  # Duo code uses iOS 27.1 SDK symbols (reservedRegions, sceneAccessory), and
+  # `#available` does not help - the SDK must have them at compile time.
+  XCODE_MAJOR: 27
   XCODE_PROJECT: Toolbox.xcodeproj
   XCODE_SCHEME: Toolbox
   # de.sivery.toolbox — read out of project.pbxproj, not guessed. The team ID is
@@ -55,9 +57,9 @@ jobs:
       - name: Select Xcode
         run: |
           set -euo pipefail
-          # The app targets IPHONEOS_DEPLOYMENT_TARGET = 26.0, so anything older
-          # than Xcode 26 cannot build it. Pick explicitly and fail loudly rather
-          # than inheriting whatever the image happens to default to.
+          # The app uses iOS 27.1 SDK symbols, so anything older than Xcode 27
+          # cannot build it. Pick explicitly and fail loudly rather than
+          # inheriting whatever the image happens to default to.
           echo "Available Xcode versions on this runner:"
           ls -d /Applications/Xcode*.app
 
@@ -80,8 +82,8 @@ jobs:
           echo "$XCODE_VERSION"
 
           MAJOR=$(printf '%s\n' "$XCODE_VERSION" | sed -n '1s/^Xcode \([0-9][0-9]*\).*/\1/p')
-          if [ -z "$MAJOR" ] || [ "$MAJOR" -lt 26 ]; then
-            echo "::error::Selected toolchain reports '$XCODE_VERSION'; the Toolbox target needs Xcode 26 or newer for its iOS 26.0 deployment target."
+          if [ -z "$MAJOR" ] || [ "$MAJOR" -lt 27 ]; then
+            echo "::error::Selected toolchain reports '$XCODE_VERSION'; the Toolbox target needs Xcode 27.1 or newer for the iOS 27.1 SDK."
             exit 1
           fi
 
