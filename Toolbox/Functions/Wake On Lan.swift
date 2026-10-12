@@ -26,7 +26,6 @@ struct Wake_On_Lan: View {
     /// Fields the user already interacted with. Validation errors are only shown for these,
     /// so an empty form doesn't greet the user with a wall of red text.
     @State var touchedFields: Set<Field> = []
-    @FocusState var focusedField: Field?
 
     @State var sheet_name = ""
     @State var sheet_mac = ""
@@ -79,92 +78,19 @@ struct Wake_On_Lan: View {
             .onDelete(perform: delete)
         }
         .sheet(isPresented: $sheetDisplayed, onDismiss: resetSheetData, content: {
-            NavigationStack {
-                Form {
-                    Section {
-                        VStack {
-                            HStack {
-                                Text("Name")
-                                Spacer()
-                                TextField("Device Name", text: $sheet_name)
-                                    .multilineTextAlignment(.trailing)
-                                    .focused($focusedField, equals: .name)
-                            }
-                            errorLabel(nameError, for: .name)
-                        }
-                        VStack {
-                            HStack {
-                                Text("MAC")
-                                Spacer()
-                                TextField("00:1A:2B:3C:4D:5E", text: $sheet_mac)
-                                    .multilineTextAlignment(.trailing)
-                                    .focused($focusedField, equals: .mac)
-                                    .keyboardType(.asciiCapable)
-                                    .textInputAutocapitalization(.characters)
-                                    .autocorrectionDisabled()
-                            }
-                            errorLabel(macError, for: .mac)
-                        }
-                        VStack {
-                            HStack {
-                                Text("Broadcast")
-                                Spacer()
-                                TextField("255.255.255.255", text: $sheet_broadcast)
-                                    .multilineTextAlignment(.trailing)
-                                    .focused($focusedField, equals: .broadcast)
-                                    .keyboardType(.numbersAndPunctuation)
-                                    .autocorrectionDisabled()
-                            }
-                            errorLabel(broadcastError, for: .broadcast)
-                        }
-                        VStack {
-                            HStack {
-                                Text("Port")
-                                Spacer()
-                                TextField("9", text: $sheet_port)
-                                    .multilineTextAlignment(.trailing)
-                                    .focused($focusedField, equals: .port)
-                                    .keyboardType(.numberPad)
-                            }
-                            errorLabel(portError, for: .port)
-                        }
-                    }
-                }
-                .onChange(of: sheet_name) { touchedFields.insert(.name) }
-                .onChange(of: sheet_mac) { touchedFields.insert(.mac) }
-                .onChange(of: sheet_broadcast) { touchedFields.insert(.broadcast) }
-                .onChange(of: sheet_port) { _, newValue in
-                    let filtered = newValue.filter { "0123456789".contains($0) }
-                    if filtered != newValue {
-                        sheet_port = filtered
-                    }
-                    touchedFields.insert(.port)
-                }
-                .onChange(of: focusedField) { oldValue, _ in
-                    // Leaving a field counts as touching it, so skipped required fields get flagged
-                    if let oldValue {
-                        touchedFields.insert(oldValue)
-                    }
-                }
-                .onReceive(NotificationCenter.default.publisher(
-                    for: UITextField.textDidBeginEditingNotification)) { _ in
-                        DispatchQueue.main.async {
-                            UIApplication.shared.sendAction(
-                                #selector(UIResponder.selectAll(_:)), to: nil, from: nil, for: nil
-                            )
-                        }
-                    }
-                .navigationTitle("Add new Device")
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .confirmationAction) {
-                        Button(role: .confirm) {
-                            save()
-                        }
-                        .disabled(!formIsValid)
-                    }
-                }
-            }
+            WOLDeviceForm(
+                name: $sheet_name,
+                mac: $sheet_mac,
+                broadcast: $sheet_broadcast,
+                port: $sheet_port,
+                touchedFields: $touchedFields,
+                nameError: nameError,
+                macError: macError,
+                broadcastError: broadcastError,
+                portError: portError,
+                formIsValid: formIsValid,
+                onSave: save
+            )
         })
         .navigationTitle("Wake On Lan")
         .navigationBarTitleDisplayMode(.inline)
@@ -239,16 +165,6 @@ struct Wake_On_Lan: View {
         nameError == nil && macError == nil && broadcastError == nil && portError == nil
     }
 
-    @ViewBuilder
-    func errorLabel(_ message: LocalizedStringKey?, for field: Field) -> some View {
-        if let message, touchedFields.contains(field) {
-            Text(message)
-                .font(.footnote)
-                .foregroundStyle(.red)
-                .frame(maxWidth: .infinity, alignment: .leading)
-        }
-    }
-
     // MARK: - Actions
 
     func save() {
@@ -300,7 +216,6 @@ struct Wake_On_Lan: View {
     func resetSheetData() {
         editing = false
         touchedFields = []
-        focusedField = nil
 
         sheet_name = ""
         sheet_mac = ""
@@ -337,6 +252,143 @@ struct Wake_On_Lan: View {
         }
 
         return nil
+    }
+}
+
+/// The add/edit form shown in a sheet.
+///
+/// Lives in its own view because `@FocusState` owned by the presenting view doesn't reach
+/// into sheet content – moving focus from one field to the next silently did nothing.
+struct WOLDeviceForm: View {
+    typealias Field = Wake_On_Lan.Field
+
+    @Binding var name: String
+    @Binding var mac: String
+    @Binding var broadcast: String
+    @Binding var port: String
+    @Binding var touchedFields: Set<Field>
+
+    let nameError: LocalizedStringKey?
+    let macError: LocalizedStringKey?
+    let broadcastError: LocalizedStringKey?
+    let portError: LocalizedStringKey?
+    let formIsValid: Bool
+    let onSave: () -> Void
+
+    @FocusState private var focusedField: Field?
+
+    var body: some View {
+        NavigationStack {
+            Form {
+                Section {
+                    VStack {
+                        HStack {
+                            Text("Name")
+                            Spacer()
+                            TextField("Device Name", text: $name)
+                                .multilineTextAlignment(.trailing)
+                                .focused($focusedField, equals: .name)
+                                .submitLabel(.next)
+                                .onSubmit { focusedField = .mac }
+                        }
+                        errorLabel(nameError, for: .name)
+                    }
+                    VStack {
+                        HStack {
+                            Text("MAC")
+                            Spacer()
+                            TextField("00:1A:2B:3C:4D:5E", text: $mac)
+                                .multilineTextAlignment(.trailing)
+                                .focused($focusedField, equals: .mac)
+                                .keyboardType(.asciiCapable)
+                                .textInputAutocapitalization(.characters)
+                                .autocorrectionDisabled()
+                                .submitLabel(.next)
+                                .onSubmit { focusedField = .broadcast }
+                        }
+                        errorLabel(macError, for: .mac)
+                    }
+                    VStack {
+                        HStack {
+                            Text("Broadcast")
+                            Spacer()
+                            TextField("255.255.255.255", text: $broadcast)
+                                .multilineTextAlignment(.trailing)
+                                .focused($focusedField, equals: .broadcast)
+                                .keyboardType(.numbersAndPunctuation)
+                                .autocorrectionDisabled()
+                                .submitLabel(.next)
+                                .onSubmit { focusedField = .port }
+                        }
+                        errorLabel(broadcastError, for: .broadcast)
+                    }
+                    VStack {
+                        HStack {
+                            Text("Port")
+                            Spacer()
+                            TextField("9", text: $port)
+                                .multilineTextAlignment(.trailing)
+                                .focused($focusedField, equals: .port)
+                                .keyboardType(.numberPad)
+                        }
+                        errorLabel(portError, for: .port)
+                    }
+                }
+            }
+            .onChange(of: name) { touchedFields.insert(.name) }
+            .onChange(of: mac) { touchedFields.insert(.mac) }
+            .onChange(of: broadcast) { touchedFields.insert(.broadcast) }
+            .onChange(of: port) { _, newValue in
+                let filtered = newValue.filter { "0123456789".contains($0) }
+                if filtered != newValue {
+                    port = filtered
+                }
+                touchedFields.insert(.port)
+            }
+            .onChange(of: focusedField) { oldValue, _ in
+                // Leaving a field counts as touching it, so skipped required fields get flagged
+                if let oldValue {
+                    touchedFields.insert(oldValue)
+                }
+            }
+            .onReceive(NotificationCenter.default.publisher(
+                for: UITextField.textDidBeginEditingNotification)) { _ in
+                    DispatchQueue.main.async {
+                        UIApplication.shared.sendAction(
+                            #selector(UIResponder.selectAll(_:)), to: nil, from: nil, for: nil
+                        )
+                    }
+                }
+            .navigationTitle("Add new Device")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button(role: .confirm) {
+                        onSave()
+                    }
+                    .disabled(!formIsValid)
+                }
+                // The number pad has no return key, so the port field gets its own way to finish
+                ToolbarItemGroup(placement: .keyboard) {
+                    if focusedField == .port {
+                        Spacer()
+                        Button("Done") {
+                            focusedField = nil
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @ViewBuilder
+    func errorLabel(_ message: LocalizedStringKey?, for field: Field) -> some View {
+        if let message, touchedFields.contains(field) {
+            Text(message)
+                .font(.footnote)
+                .foregroundStyle(.red)
+                .frame(maxWidth: .infinity, alignment: .leading)
+        }
     }
 }
 
