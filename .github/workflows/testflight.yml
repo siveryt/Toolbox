@@ -3,6 +3,11 @@ name: TestFlight
 on:
   push:
     branches: [main]
+    # Changes that don't touch the app don't need a new TestFlight build
+    paths-ignore:
+      - "web/**"
+      - ".github/workflows/web.yml"
+      - "README.md"
   workflow_dispatch:
     inputs:
       dry_run:
