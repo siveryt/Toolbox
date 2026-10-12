@@ -16,6 +16,14 @@ import SwiftData
 struct App {
     @StateObject private var sbDataController = SBDataController()
     
+    init() {
+        // Configure TipKit before any view appears, so events donated on launch are recorded
+        try? Tips.configure([
+            .displayFrequency(.immediate),
+            .datastoreLocation(.applicationDefault)
+        ])
+    }
+    
 }
 
 // MARK: - SwiftUI.App
@@ -42,13 +50,7 @@ extension App: SwiftUI.App {
                                     WOLDevice.self,
                                 ],
                                 isAutosaveEnabled: true)
-            
-                .task {
-                    try? Tips.configure([
-                        .displayFrequency(.immediate),
-                        .datastoreLocation(.applicationDefault)
-                    ])
-                }
+
         }
     }
     

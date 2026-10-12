@@ -10,8 +10,7 @@ import TipKit
 
 struct MainscreenMoveTip: Tip {
     
-    @Parameter
-    static var appStarts: Int = 0
+    static let appStarted = Event(id: "mainscreenAppStarted")
     
     var title: Text {
         Text("Move Tools Around")
@@ -29,7 +28,7 @@ struct MainscreenMoveTip: Tip {
     var options: [TipOption] = [MaxDisplayCount(1)]
     
     var rules: [Rule] {
-        #Rule(Self.$appStarts) { $0 == 5 }
+        #Rule(Self.appStarted) { $0.donations.count >= 10 }
     }
     
 }

@@ -64,6 +64,7 @@ struct ContentView: View {
             tools.move(fromOffsets: source, toOffset: destination)
         order.move(fromOffsets: source, toOffset: destination)
         hasAlreadyEdited = true
+        MainscreenMoveTip().invalidate(reason: .actionPerformed)
         }
     
     var body: some View {
@@ -157,7 +158,7 @@ struct ContentView: View {
                 
             }
             
-            MainscreenMoveTip.appStarts = viewLoaded
+            MainscreenMoveTip.appStarted.sendDonation()
                 
         }
             .alert("Hidden Tools", isPresented: $hiddenAlert) {
