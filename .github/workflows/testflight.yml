@@ -8,6 +8,10 @@ on:
       - "web/**"
       - ".github/workflows/web.yml"
       - "README.md"
+      # Screenshot tooling, not part of the app
+      - "fastlane/**"
+      - "Gemfile"
+      - "Gemfile.lock"
   workflow_dispatch:
     inputs:
       dry_run:

@@ -4,7 +4,8 @@ Einmalige Einrichtung für [`.github/workflows/testflight.yml`](../../.github/wo
 Der Workflow archiviert bei jedem Push auf `main` das `Toolbox`-Schema (iOS-App
 inklusive eingebetteter Watch-App und Dice-Widget) und lädt das Ergebnis nach
 TestFlight hoch. Kein App-Store-Release, keine Screenshots. Pushes, die nur die
-Website (`web/`, `web.yml`) oder die `README.md` ändern, lösen keinen Build aus.
+Website (`web/`, `web.yml`), die `README.md` oder das Screenshot-Tooling
+(`fastlane/`, `Gemfile`, `Gemfile.lock`) ändern, lösen keinen Build aus.
 
 ---
 
