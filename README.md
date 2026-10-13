@@ -33,6 +33,8 @@ This captures iPhone, iPad and Apple Watch and frames the results. The single st
 
 Custom scripts that run between the steps go into [fastlane/hooks/](fastlane/hooks/README.md).
 
+The `frame` lane also puts the English iPhone main screen on the website (`web/assets/mainscreen.webp`, in an iPhone frame without background) via [fastlane/hooks/post_frame.d/50-website](fastlane/hooks/post_frame.d/50-website). This needs ImageMagick (`brew install imagemagick`). Commit the updated image to publish it.
+
 ## Website
 The website in `web/` is static HTML served by nginx. Build and run it locally with Docker:
 

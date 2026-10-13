@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+#
+# Puts the English iPhone main screen on the website (web/assets/mainscreen.webp).
+#
+# The App Store images from frameit have a background and a title baked in.
+# The website wants the iPhone frame only, so this runs frameit a second time
+# on a copy of the raw screenshot, in a folder without a Framefile.json:
+# that gives a plain device frame on a transparent background.
+# The result is shrunk and saved as WebP.
+
+set -euo pipefail
+
+LANGUAGE="en-US"
+DEVICE="iPhone"
+SCREEN="01Menu"
+WIDTH=600
+OUT="$PROJECT_ROOT/web/assets/mainscreen.webp"
+
+if ! command -v magick >/dev/null; then
+    echo "ImageMagick is missing, install it with: brew install imagemagick" >&2
+    exit 1
+fi
+
+WORK="$(mktemp -d)"
+trap 'rm -rf "$WORK"' EXIT
+
+# The raw screenshot, not the App Store version next to it
+for file in "$SCREENSHOTS_DIR/$LANGUAGE/$DEVICE"*"-$SCREEN.png"; do
+    [[ -f "$file" ]] && cp "$file" "$WORK/"
+done
+
+if [[ -z "$(ls -A "$WORK")" ]]; then
+    echo "No $DEVICE $SCREEN screenshot for $LANGUAGE in $SCREENSHOTS_DIR, nothing to put on the website" >&2
+    exit 1
+fi
+
+bundle exec --gemfile "$PROJECT_ROOT/Gemfile" fastlane run frameit path:"$WORK"
+
+# With several iPhones in the Snapfile, the first one wins
+framed="$(ls "$WORK"/*_framed.png | head -n 1)"
+magick "$framed" -resize "${WIDTH}x" -strip -quality 82 -define webp:method=6 "$OUT"
+echo "Website: $OUT"
