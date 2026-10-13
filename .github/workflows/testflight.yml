@@ -55,7 +55,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           # PITFALL: fetch-depth 0 is required. The default shallow clone makes
           # `git rev-list --count HEAD` return 1, which would produce build
@@ -130,7 +130,7 @@ jobs:
       # Dependencies
       # ----------------------------------------------------------------------
       - name: Cache SwiftPM dependencies
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           # Resolving 12 packages from scratch costs a couple of minutes.
           # -clonedSourcePackagesDirPath (below) puts them here instead of in
@@ -434,7 +434,7 @@ jobs:
       # ----------------------------------------------------------------------
       - name: Upload build logs on failure
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: build-logs
           path: |
@@ -472,7 +472,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           # Full history for the commit range, tags for both the v* release tag
           # and the build/* anchor. fetch-depth 0 already brings tags along;
@@ -510,7 +510,7 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload notes
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: release-notes
           path: dist/notes/
