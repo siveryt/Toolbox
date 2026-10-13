@@ -895,6 +895,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"$(TARGET_BUILD_DIR)/$(INFOPLIST_PATH)",
 			);
 			name = "Stamp Version Metadata (SCRIPT)";
 			outputFileListPaths = (
@@ -914,6 +915,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"$(TARGET_BUILD_DIR)/$(INFOPLIST_PATH)",
 			);
 			name = "Stamp Version Metadata (SCRIPT)";
 			outputFileListPaths = (
@@ -933,6 +935,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"$(TARGET_BUILD_DIR)/$(INFOPLIST_PATH)",
 			);
 			name = "Stamp Version Metadata (SCRIPT)";
 			outputFileListPaths = (
