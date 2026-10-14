@@ -80,15 +80,16 @@ def wait_for_build(app_id, build_number):
 
 
 def set_what_to_test(build_id, locale, text, existing):
+    # The API calls the "What to Test" field "whatsNew"
     if locale in existing:
         request("PATCH", f"/betaBuildLocalizations/{existing[locale]}", {
-            "data": {"type": "betaBuildLocalizations", "id": existing[locale], "attributes": {"whatToTest": text}},
+            "data": {"type": "betaBuildLocalizations", "id": existing[locale], "attributes": {"whatsNew": text}},
         })
     else:
         request("POST", "/betaBuildLocalizations", {
             "data": {
                 "type": "betaBuildLocalizations",
-                "attributes": {"locale": locale, "whatToTest": text},
+                "attributes": {"locale": locale, "whatsNew": text},
                 "relationships": {"build": {"data": {"type": "builds", "id": build_id}}},
             },
         })
