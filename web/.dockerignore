@@ -2,3 +2,4 @@ Dockerfile
 .dockerignore
 .DS_Store
 contributionAssets/*.psd
+.prettierrc.json

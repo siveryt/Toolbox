@@ -13,64 +13,64 @@
  *   6. Small screens
  */
 
-
 /* 1. Colors and sizes ---------------------------------------------------- */
 
 :root {
-    color-scheme: light dark;
+	color-scheme: light dark;
 
-    /* The app's accent color (AccentColor in the asset catalog) */
-    --accent: #ff463c;
-    /* Darker shade for links and text: the accent itself is too light to read on white */
-    --accent-text: #c4281f;
+	/* The app's accent color (AccentColor in the asset catalog) */
+	--accent: #ff463c;
+	/* Darker shade for links and text: the accent itself is too light to read on white */
+	--accent-text: #c4281f;
 
-    /* Slightly warm paper white */
-    --background: #fbfaf7;
-    --text: #1d1d1f;
-    --text-muted: #5f5f66;
-    --border: #e2e1dc;
+	/* Slightly warm paper white */
+	--background: #fbfaf7;
+	--text: #1d1d1f;
+	--text-muted: #5f5f66;
+	--border: #e2e1dc;
 
-    /* Graph paper behind the top of the page: thin lines every cell, stronger lines every 5 cells */
-    --grid-cell: 24px;
-    --grid-line: rgb(0 0 0 / 0.025);
-    --grid-line-strong: rgb(0 0 0 / 0.05);
+	/* Graph paper behind the top of the page: thin lines every cell, stronger lines every 5 cells */
+	--grid-cell: 24px;
+	--grid-line: rgb(0 0 0 / 0.025);
+	--grid-line-strong: rgb(0 0 0 / 0.05);
 
-    --content-width: 68ch;
-    --page-width: 72rem;
+	--content-width: 68ch;
+	--page-width: 72rem;
 }
 
 @media (prefers-color-scheme: dark) {
-    :root {
-        --accent-text: #ff6b62;
+	:root {
+		--accent-text: #ff6b62;
 
-        --background: #121214;
-        --text: #f2f2f4;
-        --text-muted: #a1a1aa;
-        --border: #2c2c31;
+		--background: #121214;
+		--text: #f2f2f4;
+		--text-muted: #a1a1aa;
+		--border: #2c2c31;
 
-        --grid-line: rgb(255 255 255 / 0.02);
-        --grid-line-strong: rgb(255 255 255 / 0.045);
-    }
+		--grid-line: rgb(255 255 255 / 0.02);
+		--grid-line-strong: rgb(255 255 255 / 0.045);
+	}
 }
-
 
 /* 2. Base text ----------------------------------------------------------- */
 
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    position: relative;
-    background-color: var(--background);
-    color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    font-size: 1.0625rem;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
+	margin: 0;
+	position: relative;
+	background-color: var(--background);
+	color: var(--text);
+	font-family:
+		-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+		Arial, sans-serif;
+	font-size: 1.0625rem;
+	line-height: 1.6;
+	-webkit-font-smoothing: antialiased;
 }
 
 /*
@@ -79,235 +79,239 @@ body {
  * fades out downwards and towards the sides.
  */
 body::before {
-    content: "";
-    position: absolute;
-    inset: 0 0 auto;
-    height: 110vh;
-    z-index: -1;
-    pointer-events: none;
-    background-image:
-        linear-gradient(to right, var(--grid-line-strong) 1px, transparent 1px),
-        linear-gradient(to bottom, var(--grid-line-strong) 1px, transparent 1px),
-        linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
-        linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
-    background-size:
-        calc(var(--grid-cell) * 5) calc(var(--grid-cell) * 5),
-        calc(var(--grid-cell) * 5) calc(var(--grid-cell) * 5),
-        var(--grid-cell) var(--grid-cell),
-        var(--grid-cell) var(--grid-cell);
-    background-position: center top;
-    mask-image: radial-gradient(ellipse 80% 90% at 50% 0%, black 30%, transparent 100%);
+	content: "";
+	position: absolute;
+	inset: 0 0 auto;
+	height: 110vh;
+	z-index: -1;
+	pointer-events: none;
+	background-image:
+		linear-gradient(to right, var(--grid-line-strong) 1px, transparent 1px),
+		linear-gradient(to bottom, var(--grid-line-strong) 1px, transparent 1px),
+		linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+		linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+	background-size:
+		calc(var(--grid-cell) * 5) calc(var(--grid-cell) * 5),
+		calc(var(--grid-cell) * 5) calc(var(--grid-cell) * 5),
+		var(--grid-cell) var(--grid-cell),
+		var(--grid-cell) var(--grid-cell);
+	background-position: center top;
+	mask-image: radial-gradient(
+		ellipse 80% 90% at 50% 0%,
+		black 30%,
+		transparent 100%
+	);
 }
 
 h1,
 h2,
 h3,
 h4 {
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-    margin: 2em 0 0.5em;
+	line-height: 1.2;
+	letter-spacing: -0.01em;
+	margin: 2em 0 0.5em;
 }
 
 h1 {
-    font-size: clamp(2.25rem, 5vw, 3.25rem);
-    letter-spacing: -0.03em;
-    margin-top: 0;
+	font-size: clamp(2.25rem, 5vw, 3.25rem);
+	letter-spacing: -0.03em;
+	margin-top: 0;
 }
 
 h2 {
-    font-size: 1.6rem;
+	font-size: 1.6rem;
 }
 
 h3 {
-    font-size: 1.2rem;
+	font-size: 1.2rem;
 }
 
 h4 {
-    font-size: 1rem;
+	font-size: 1rem;
 }
 
 p,
 ul {
-    margin: 0 0 1em;
+	margin: 0 0 1em;
 }
 
 li {
-    margin-bottom: 0.25em;
+	margin-bottom: 0.25em;
 }
 
 a {
-    color: var(--accent-text);
-    text-underline-offset: 0.2em;
+	color: var(--accent-text);
+	text-underline-offset: 0.2em;
 }
 
 a:hover {
-    text-decoration-thickness: 2px;
+	text-decoration-thickness: 2px;
 }
 
 hr {
-    border: 0;
-    border-top: 1px solid var(--border);
-    margin: 3rem 0;
+	border: 0;
+	border-top: 1px solid var(--border);
+	margin: 3rem 0;
 }
 
 img {
-    max-width: 100%;
-    height: auto;
+	max-width: 100%;
+	height: auto;
 }
 
 /* Visible focus ring for keyboard users */
 :focus-visible {
-    outline: 3px solid var(--accent);
-    outline-offset: 3px;
-    border-radius: 4px;
+	outline: 3px solid var(--accent);
+	outline-offset: 3px;
+	border-radius: 4px;
 }
-
 
 /* 3. Header and footer --------------------------------------------------- */
 
 .site-header,
 .site-footer {
-    max-width: var(--page-width);
-    margin: 0 auto;
-    padding: 1.25rem 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
+	max-width: var(--page-width);
+	margin: 0 auto;
+	padding: 1.25rem 1.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
 }
 
 .brand {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--text);
-    font-weight: 700;
-    font-size: 1.15rem;
-    text-decoration: none;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	color: var(--text);
+	font-weight: 700;
+	font-size: 1.15rem;
+	text-decoration: none;
 }
 
 .brand img {
-    width: 2rem;
+	width: 2rem;
 }
 
 .site-header nav,
 .site-footer nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.25rem 1.25rem;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.25rem 1.25rem;
 }
 
 .site-header nav a {
-    color: var(--text-muted);
-    text-decoration: none;
-    font-weight: 500;
+	color: var(--text-muted);
+	text-decoration: none;
+	font-weight: 500;
 }
 
 .site-header nav a:hover,
 .site-header nav a[aria-current="page"] {
-    color: var(--text);
+	color: var(--text);
 }
 
 .site-footer {
-    border-top: 1px solid var(--border);
-    margin-top: 4rem;
-    color: var(--text-muted);
-    font-size: 0.9rem;
+	border-top: 1px solid var(--border);
+	margin-top: 4rem;
+	color: var(--text-muted);
+	font-size: 0.9rem;
 }
 
 .site-footer a {
-    color: inherit;
+	color: inherit;
 }
-
 
 /* 4. Start page ---------------------------------------------------------- */
 
 .hero {
-    max-width: var(--page-width);
-    margin: 0 auto;
-    padding: 3rem 1.5rem 2rem;
-    display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    align-items: center;
-    gap: 3rem;
+	max-width: var(--page-width);
+	margin: 0 auto;
+	padding: 3rem 1.5rem 2rem;
+	display: grid;
+	grid-template-columns: 1.4fr 1fr;
+	align-items: center;
+	gap: 3rem;
 }
 
 .tagline {
-    font-size: 1.35rem;
-    color: var(--text-muted);
-    margin-top: -0.25rem;
+	font-size: 1.35rem;
+	color: var(--text-muted);
+	margin-top: -0.25rem;
 }
 
 .app-store-badge {
-    display: inline-block;
-    margin-top: 0.5rem;
+	display: inline-block;
+	margin-top: 0.5rem;
 }
 
 .app-store-badge img {
-    width: 10rem;
+	width: 10rem;
 }
 
 .phone {
-    justify-self: center;
-    width: min(100%, 18rem);
-    filter: drop-shadow(0 1.5rem 2.5rem rgb(0 0 0 / 0.18));
-    animation: float 6s ease-in-out infinite;
+	justify-self: center;
+	width: min(100%, 18rem);
+	filter: drop-shadow(0 1.5rem 2.5rem rgb(0 0 0 / 0.18));
+	animation: float 6s ease-in-out infinite;
 }
 
 @keyframes float {
-    50% { transform: translateY(-0.75rem); }
+	50% {
+		transform: translateY(-0.75rem);
+	}
 }
 
 /* Respect the "Reduce motion" setting */
 @media (prefers-reduced-motion: reduce) {
-    .phone {
-        animation: none;
-    }
+	.phone {
+		animation: none;
+	}
 }
 
 /* Sections below the hero: one centered text column */
 .section {
-    max-width: calc(var(--content-width) + 3rem);
-    margin: 0 auto;
-    padding: 0 1.5rem;
+	max-width: calc(var(--content-width) + 3rem);
+	margin: 0 auto;
+	padding: 0 1.5rem;
 }
 
 /* Release notes: the newest version is open, older ones fold away */
 .release h3 {
-    margin-top: 1.5rem;
+	margin-top: 1.5rem;
 }
 
 details.release {
-    border-top: 1px solid var(--border);
-    padding: 0.75rem 0;
+	border-top: 1px solid var(--border);
+	padding: 0.75rem 0;
 }
 
 details.release summary {
-    cursor: pointer;
-    font-weight: 600;
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+	cursor: pointer;
+	font-weight: 600;
+	list-style: none;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
 }
 
 /* Hide the default triangle (Safari), we draw our own chevron */
 details.release summary::-webkit-details-marker {
-    display: none;
+	display: none;
 }
 
 details.release summary::before {
-    content: "";
-    width: 0.45em;
-    height: 0.45em;
-    border-right: 2px solid currentColor;
-    border-bottom: 2px solid currentColor;
-    transform: rotate(-45deg);
-    transition: transform 0.25s ease;
+	content: "";
+	width: 0.45em;
+	height: 0.45em;
+	border-right: 2px solid currentColor;
+	border-bottom: 2px solid currentColor;
+	transform: rotate(-45deg);
+	transition: transform 0.25s ease;
 }
 
 details.release[open] summary::before {
-    transform: rotate(45deg);
+	transform: rotate(45deg);
 }
 
 /*
@@ -315,79 +319,77 @@ details.release[open] summary::before {
  * simply open the section without animation.
  */
 details.release {
-    interpolate-size: allow-keywords;
+	interpolate-size: allow-keywords;
 }
 
 details.release::details-content {
-    block-size: 0;
-    overflow: clip;
-    opacity: 0;
-    transition:
-        block-size 0.3s ease,
-        opacity 0.3s ease,
-        content-visibility 0.3s allow-discrete;
+	block-size: 0;
+	overflow: clip;
+	opacity: 0;
+	transition:
+		block-size 0.3s ease,
+		opacity 0.3s ease,
+		content-visibility 0.3s allow-discrete;
 }
 
 details.release[open]::details-content {
-    block-size: auto;
-    opacity: 1;
+	block-size: auto;
+	opacity: 1;
 }
 
 details.release summary + * {
-    margin-top: 0.5rem;
+	margin-top: 0.5rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
-    details.release summary::before,
-    details.release::details-content {
-        transition: none;
-    }
+	details.release summary::before,
+	details.release::details-content {
+		transition: none;
+	}
 }
 
 .release ul {
-    padding-left: 1.25rem;
+	padding-left: 1.25rem;
 }
 
 .fine-print {
-    color: var(--text-muted);
-    font-size: 0.85rem;
+	color: var(--text-muted);
+	font-size: 0.85rem;
 }
-
 
 /* 5. Text pages ---------------------------------------------------------- */
 
 .page {
-    max-width: calc(var(--content-width) + 3rem);
-    margin: 0 auto;
-    padding: 2rem 1.5rem 0;
+	max-width: calc(var(--content-width) + 3rem);
+	margin: 0 auto;
+	padding: 2rem 1.5rem 0;
 }
 
 .page .lead {
-    font-size: 1.2rem;
-    color: var(--text-muted);
+	font-size: 1.2rem;
+	color: var(--text-muted);
 }
 
 .back-link {
-    display: inline-block;
-    margin-top: 2rem;
+	display: inline-block;
+	margin-top: 2rem;
 }
-
 
 /* 6. Small screens ------------------------------------------------------- */
 
 @media (max-width: 760px) {
-    .hero {
-        grid-template-columns: 1fr;
-        padding-top: 1.5rem;
-    }
+	.hero {
+		grid-template-columns: 1fr;
+		padding-top: 1.5rem;
+	}
 
-    .phone {
-        width: min(70%, 15rem);
-        grid-row: 2;
-    }
+	.phone {
+		width: min(70%, 15rem);
+		grid-row: 2;
+	}
 
-    .site-footer {
-        flex-direction: column;
-        text-align: center;
-    }
+	.site-footer {
+		flex-direction: column;
+		text-align: center;
+	}
 }
