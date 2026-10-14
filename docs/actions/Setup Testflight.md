@@ -241,9 +241,9 @@ Zwei Dinge, die die Phase bewusst hart abbricht bzw. markiert:
 
 ## 6. Release Notes für „What to Test"
 
-Der Workflow **setzt das Feld nicht in App Store Connect** — er erzeugt die Texte
-und legt sie ab, du fügst sie beim Freigeben ein. Erzeugt wird für **de-DE** und
-**en-US** per LLM aus den Commits.
+Der Workflow erzeugt die Texte für **de-DE** und **en-US** per LLM aus den
+Commits und trägt sie danach **automatisch** als „What to Test“ beim neuen Build
+in App Store Connect ein (Job `what-to-test`, siehe unten).
 
 Zu finden nach jedem Lauf:
 
@@ -304,12 +304,28 @@ die API nicht mit 200, oder ist das JSON kaputt, landet stattdessen
 4000 Zeichen — die harte Grenze von App Store Connect — werden an einer
 Zeilengrenze gekürzt.
 
+### Automatisch in App Store Connect
+
+Der Job `what-to-test` läuft nach `release-notes`. Er wartet, bis App Store
+Connect den hochgeladenen Build kennt (meist ein paar Minuten, höchstens 30), und
+setzt dann pro Sprache das Feld „What to Test“ über die App Store Connect API
+([`upload-what-to-test.py`](../../scripts/release-notes/upload-what-to-test.py)).
+Er nutzt denselben API-Key wie der Upload, also keine neuen Secrets.
+
+Damit eine Sprache gesetzt werden kann, muss sie in App Store Connect unter
+**TestFlight → Testinformationen** angelegt sein. Fehlt sie, schlägt nur dieser
+Job mit einer Meldung pro Sprache fehl; der Build selbst ist dann trotzdem
+hochgeladen, und die Texte liegen wie gewohnt im Artefakt.
+
+Neue Sprache: in `generate.sh` die Datei erzeugen lassen und in
+`upload-what-to-test.py` bei `LOCALES` ergänzen.
+
 ### Dry-Run
 
 `workflow_dispatch` hat den Input **`dry_run`**, standardmäßig **an**. Ein
 manueller Lauf baut und archiviert dann zwar, lädt aber **nicht** nach TestFlight
-hoch und verschiebt den Anker-Tag nicht; die Notes landen trotzdem in Summary und
-Artefakt. Zum echten Hochladen aus einem manuellen Lauf den Haken entfernen.
+hoch, verschiebt den Anker-Tag nicht und setzt kein „What to Test“; die Notes
+landen trotzdem in Summary und Artefakt. Zum echten Hochladen aus einem manuellen Lauf den Haken entfernen.
 Pushes auf `main` laden immer hoch.
 
 ### Zusätzliches Secret

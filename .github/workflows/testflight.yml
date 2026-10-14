@@ -496,7 +496,7 @@ jobs:
           {
             echo "## Release notes for build ${BUILD}"
             echo ""
-            echo "Paste into the TestFlight \"What to Test\" field."
+            echo "Set as TestFlight \"What to Test\" by the what-to-test job."
             echo ""
             echo "### de-DE"
             echo '```'
@@ -538,3 +538,42 @@ jobs:
           git tag -f -a "$TAG" -F dist/notes/notes.json
           git push --force origin "refs/tags/${TAG}"
           echo "Anchor ${TAG} now points at $(git rev-parse --short HEAD)."
+
+  # --------------------------------------------------------------------------
+  # What to Test
+  # --------------------------------------------------------------------------
+  # Puts the release notes into the TestFlight "What to Test" field of the new
+  # build, in every language. Its own job so the App Store Connect key is not
+  # handed to the job that can push tags, and so a failure here is visible
+  # without hiding that the build itself was uploaded fine.
+  what-to-test:
+    needs: release-notes
+    if: success() && (github.event_name != 'workflow_dispatch' || !inputs.dry_run)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          # Full history: the build number is derived from the commit count
+          fetch-depth: 0
+
+      - name: Download notes
+        uses: actions/download-artifact@v8
+        with:
+          name: release-notes
+          path: dist/notes
+
+      - name: Set What to Test in App Store Connect
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_KEY_P8_BASE64: ${{ secrets.ASC_KEY_P8_BASE64 }}
+        run: |
+          set -euo pipefail
+          pip install --quiet "pyjwt[crypto]==2.10.1"
+          BUILD=$(( BUILD_NUMBER_BASE + $(git rev-list --count HEAD) ))
+          ASC_KEY_P8="$(echo "$ASC_KEY_P8_BASE64" | base64 --decode)" \
+            ./scripts/release-notes/upload-what-to-test.py "$BUILD" dist/notes
