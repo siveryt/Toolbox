@@ -68,6 +68,30 @@ extension App: WhatsNewCollectionProvider {
             features: [
                 .init(
                     image: .init(
+                        systemName: "sparkles",
+                        foregroundColor: .accentColor
+                    ),
+                    title: .init(stringLiteral: NSLocalizedString("New Look", comment: "WhatsNewKit item")),
+                    subtitle: .init(stringLiteral: NSLocalizedString("Redesigned for iOS 26 with Liquid Glass and a fresh app icon", comment: "WhatsNewKit item"))
+                ),
+                .init(
+                    image: .init(
+                        systemName: "app.badge",
+                        foregroundColor: .accentColor
+                    ),
+                    title: .init(stringLiteral: NSLocalizedString("App Icons", comment: "WhatsNewKit item")),
+                    subtitle: .init(stringLiteral: NSLocalizedString("Pick one of ten app icons in Settings, including a Pride icon", comment: "WhatsNewKit item"))
+                ),
+                .init(
+                    image: .init(
+                        systemName: "ruler",
+                        foregroundColor: .accentColor
+                    ),
+                    title: .init(stringLiteral: NSLocalizedString("Distance", comment: "WhatsNewKit item")),
+                    subtitle: .init(stringLiteral: NSLocalizedString("Measure the distance between two places on a map", comment: "WhatsNewKit item"))
+                ),
+                .init(
+                    image: .init(
                         systemName: "metronome",
                         foregroundColor: .accentColor
                     ),
@@ -98,7 +122,6 @@ extension App: WhatsNewCollectionProvider {
                     title: .init(stringLiteral: NSLocalizedString("Font Installer", comment: "WhatsNewKit item")),
                     subtitle: .init(stringLiteral: NSLocalizedString("Use custom fonts in other apps", comment: "WhatsNewKit item"))
                 ),
-                
                 .init(
                     image: .init(
                         systemName: "textformat.abc",
@@ -115,24 +138,14 @@ extension App: WhatsNewCollectionProvider {
                     title: .init(stringLiteral: NSLocalizedString("Wake On Lan", comment: "WhatsNewKit item")),
                     subtitle: .init(stringLiteral: NSLocalizedString("Remotely power on your devices", comment: "WhatsNewKit item"))
                 ),
-                
                 .init(
                     image: .init(
-                        systemName: "eye.slash",
+                        systemName: "list.bullet.indent",
                         foregroundColor: .accentColor
                     ),
-                    title: .init(stringLiteral: NSLocalizedString("Hide Tools", comment: "WhatsNewKit item")),
-                    subtitle: .init(stringLiteral: NSLocalizedString("Move tools you don't use out of your way", comment: "WhatsNewKit item"))
+                    title: .init(stringLiteral: NSLocalizedString("Your Tools, Your Order", comment: "WhatsNewKit item")),
+                    subtitle: .init(stringLiteral: NSLocalizedString("Hide tools you don't use and move your favorites to the top", comment: "WhatsNewKit item"))
                 ),
-                .init(
-                    image: .init(
-                        systemName: "text.line.first.and.arrowtriangle.forward",
-                        foregroundColor: .accentColor
-                    ),
-                    title: .init(stringLiteral: NSLocalizedString("Move Tools", comment: "WhatsNewKit item")),
-                    subtitle: .init(stringLiteral: NSLocalizedString("Reorder tools to have your favorites on top of the list", comment: "WhatsNewKit item"))
-                ),
-                
             ],
             primaryAction: .init(
                 title: .init(stringLiteral:NSLocalizedString("Continue", comment: "WhatsNewKit item")),

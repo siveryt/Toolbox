@@ -116,16 +116,16 @@ struct Coordinates: View {
                     
                 }
                 if display != "maidenhead" {
-                    KeyValueProperty(content: display == "decimal" ? String(userLatitude) : decimalToDMS(coordinate: userLatitude, isLatitude: true), propertyName: NSLocalizedString("Latitude", comment: ""))
+                    KeyValueProperty(content: display == "decimal" ? String(userLatitude) : decimalToDMS(coordinate: userLatitude, isLatitude: true), propertyName: NSLocalizedString("Latitude", comment: "Coordinates tool: row label"))
                         .environment(\.copyToast, $isPresentingToast)
-                    KeyValueProperty(content: display == "decimal" ? String(userLongitude) : decimalToDMS(coordinate: userLongitude, isLatitude: false), propertyName: NSLocalizedString("Longitude", comment: ""))
+                    KeyValueProperty(content: display == "decimal" ? String(userLongitude) : decimalToDMS(coordinate: userLongitude, isLatitude: false), propertyName: NSLocalizedString("Longitude", comment: "Coordinates tool: row label"))
                         .environment(\.copyToast, $isPresentingToast)
                 }
-                KeyValueProperty(content: display == "maidenhead" ? decimalToMaidenhead(latitude: userLatitude, longitude: userLongitude) : (display == "decimal" ? String(userLatitude) + ", " + String(userLongitude) : decimalToDMS(coordinate: userLatitude, isLatitude: true) + ", " + decimalToDMS(coordinate: userLongitude, isLatitude: false)), propertyName: display == "maidenhead" ? NSLocalizedString("Maidenhead", comment: "") : NSLocalizedString("Coordinate String", comment: ""))
+                KeyValueProperty(content: display == "maidenhead" ? decimalToMaidenhead(latitude: userLatitude, longitude: userLongitude) : (display == "decimal" ? String(userLatitude) + ", " + String(userLongitude) : decimalToDMS(coordinate: userLatitude, isLatitude: true) + ", " + decimalToDMS(coordinate: userLongitude, isLatitude: false)), propertyName: display == "maidenhead" ? NSLocalizedString("Maidenhead", comment: "Coordinates tool: row label for the Maidenhead grid locator, a ham radio location code") : NSLocalizedString("Coordinate String", comment: "Coordinates tool: row label for latitude and longitude combined into one copyable text"))
                     .environment(\.copyToast, $isPresentingToast)
-                KeyValueProperty(content: String(userAltitude) + " m", propertyName: NSLocalizedString("Altitude", comment: ""))
+                KeyValueProperty(content: String(userAltitude) + " m", propertyName: NSLocalizedString("Altitude", comment: "Coordinates tool: row label"))
                     .environment(\.copyToast, $isPresentingToast)
-                KeyValueProperty(content: String(abs(userCoordAccuracy)) + " m", propertyName: NSLocalizedString("Accuracy", comment: ""))
+                KeyValueProperty(content: String(abs(userCoordAccuracy)) + " m", propertyName: NSLocalizedString("Accuracy", comment: "Coordinates tool: row label, accuracy of the position in meters"))
                     .environment(\.copyToast, $isPresentingToast)
                 }
             } else {

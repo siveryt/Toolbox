@@ -17,7 +17,7 @@ struct permissions: View {
     var body: some View {
         List {
             PermissionRow(
-                title: NSLocalizedString("Location", comment: ""),
+                title: NSLocalizedString("Location", comment: "Permission name"),
                 symbol: "location.fill",
                 color: .blue,
                 status: Self.title(for: locationManager.authorizationStatus),
@@ -25,7 +25,7 @@ struct permissions: View {
                 tools: ["Coordinates", "Distance", "Speed"]
             )
             PermissionRow(
-                title: NSLocalizedString("Camera", comment: ""),
+                title: NSLocalizedString("Camera", comment: "Permission name"),
                 symbol: "camera.fill",
                 color: .gray,
                 status: Self.title(for: camera),
@@ -33,7 +33,7 @@ struct permissions: View {
                 tools: ["Barcode Scanner", "Scrolling Text"]
             )
             PermissionRow(
-                title: NSLocalizedString("Microphone", comment: ""),
+                title: NSLocalizedString("Microphone", comment: "Permission name"),
                 symbol: "mic.fill",
                 color: .orange,
                 status: Self.title(for: microphone),
@@ -42,7 +42,7 @@ struct permissions: View {
             )
             // iOS doesn't tell apps whether local network access was granted, so there is no status
             PermissionRow(
-                title: NSLocalizedString("Local Network", comment: ""),
+                title: NSLocalizedString("Local Network", comment: "Permission name"),
                 symbol: "network",
                 color: .green,
                 status: nil,
@@ -71,21 +71,21 @@ struct permissions: View {
 
     private static func title(for status: AVAuthorizationStatus) -> String {
         switch status {
-        case .authorized: NSLocalizedString("Allowed", comment: "")
-        case .notDetermined: NSLocalizedString("Not Requested Yet", comment: "")
-        case .denied, .restricted: NSLocalizedString("Denied", comment: "")
-        @unknown default: NSLocalizedString("Unknown", comment: "")
+        case .authorized: NSLocalizedString("Allowed", comment: "Permission state")
+        case .notDetermined: NSLocalizedString("Not Requested Yet", comment: "Permission state: the app hasn't asked yet")
+        case .denied, .restricted: NSLocalizedString("Denied", comment: "Permission state")
+        @unknown default: NSLocalizedString("Unknown", comment: "Permission state")
         }
     }
 
     private static func title(for status: CLAuthorizationStatus) -> String {
         switch status {
-        case .authorizedAlways: NSLocalizedString("Always", comment: "")
-        case .authorizedWhenInUse: NSLocalizedString("While Using", comment: "")
-        case .denied: NSLocalizedString("Denied", comment: "")
-        case .restricted: NSLocalizedString("Restricted", comment: "")
-        case .notDetermined: NSLocalizedString("Not Requested Yet", comment: "")
-        @unknown default: NSLocalizedString("Unknown", comment: "")
+        case .authorizedAlways: NSLocalizedString("Always", comment: "Location permission state")
+        case .authorizedWhenInUse: NSLocalizedString("While Using", comment: "Location permission state: only while the app is in use")
+        case .denied: NSLocalizedString("Denied", comment: "Permission state")
+        case .restricted: NSLocalizedString("Restricted", comment: "Permission state: blocked, e.g. by Screen Time")
+        case .notDetermined: NSLocalizedString("Not Requested Yet", comment: "Permission state: the app hasn't asked yet")
+        @unknown default: NSLocalizedString("Unknown", comment: "Permission state")
         }
     }
 }

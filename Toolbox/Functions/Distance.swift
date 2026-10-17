@@ -67,7 +67,7 @@ struct Distance: View {
         mapContent
         .toast(isPresenting: $isPresentingToast, message: toastMessage, icon: .custom(Image(systemName: "doc.on.clipboard")), autoDismiss: .none)
         .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle(NSLocalizedString("Distance", comment: ""))
+        .navigationTitle(NSLocalizedString("Distance", comment: "Navigation title of the Distance tool"))
         .toolbar {
             if let distanceMeters {
                 ToolbarItem(placement: .principal) {
@@ -92,7 +92,7 @@ struct Distance: View {
                     Image(systemName: "location.fill")
                 }
                 .disabled(locationManager.lastLocation == nil)
-                .accessibilityLabel(Text(NSLocalizedString("Center on my location", comment: "")))
+                .accessibilityLabel(Text(NSLocalizedString("Center on my location", comment: "Distance tool: accessibility label of the location button")))
             }
         }
     }
@@ -107,7 +107,7 @@ struct Distance: View {
                 }
 
                 if let startPoint {
-                    Marker(startPlaceName ?? NSLocalizedString("Start", comment: ""), monogram: Text("A"), coordinate: startPoint)
+                    Marker(startPlaceName ?? NSLocalizedString("Start", comment: "Distance tool: map marker of the start point when its place name is unknown"), monogram: Text("A"), coordinate: startPoint)
                         .tint(.red)
                 }
             }
@@ -175,7 +175,7 @@ struct Distance: View {
     @ViewBuilder
     private var startHint: some View {
         if startPoint == nil {
-            Label(NSLocalizedString("Move the map and tap to set the start point", comment: ""), systemImage: "hand.tap.fill")
+            Label(NSLocalizedString("Move the map and tap to set the start point", comment: "Distance tool: hint before a start point is set"), systemImage: "hand.tap.fill")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
                 .padding(.horizontal, 14)
