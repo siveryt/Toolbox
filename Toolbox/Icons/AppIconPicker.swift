@@ -175,6 +175,8 @@ struct LiveAppIcon: View {
         .clipShape(shape)
         .rotation3DEffect(.degrees(Double(tilt.width) * 12), axis: (x: 0, y: 1, z: 0))
         .rotation3DEffect(.degrees(Double(-tilt.height) * 12), axis: (x: 1, y: 0, z: 0))
+        // the icons in their regular look also in dark mode, otherwise every one would show up dark
+        .environment(\.colorScheme, .light)
     }
 }
 

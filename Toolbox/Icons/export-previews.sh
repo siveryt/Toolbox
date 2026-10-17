@@ -3,8 +3,9 @@
 # which the app icon picker in Settings shows. Run it again after editing an icon.
 #
 # The picker draws the tool glyph itself so it can move it when the device tilts, so
-# every icon is exported without its glyph as "Background <name>" (light and dark), and
-# the glyph is stored once as the vector image "Icon Glyph".
+# every icon is exported without its glyph as "Background <name>", and the glyph is
+# stored once as the vector image "Icon Glyph". Only the regular look is exported:
+# the picker shows it in dark mode too, so people can tell the icons apart.
 
 set -e
 cd "$(dirname "$0")"
@@ -35,26 +36,14 @@ for layer in icon["groups"][0]["layers"]:
 json.dump(icon, open(path, "w"), indent=2)
 ' "$TMP/bg.icon/icon.json"
 
-	for rendition in Default Dark; do
-		"$ICTOOL" "$TMP/bg.icon" --export-image --output-file "$set/$rendition.png" \
-			--platform iOS --rendition $rendition --width 220 --height 220 --scale 3 > /dev/null
-	done
+	"$ICTOOL" "$TMP/bg.icon" --export-image --output-file "$set/Default.png" \
+		--platform iOS --rendition Default --width 220 --height 220 --scale 3 > /dev/null
 
 	cat > "$set/Contents.json" <<EOF
 {
   "images" : [
     {
       "filename" : "Default.png",
-      "idiom" : "universal"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "filename" : "Dark.png",
       "idiom" : "universal"
     }
   ],
