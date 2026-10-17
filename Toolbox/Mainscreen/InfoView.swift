@@ -36,6 +36,60 @@ struct infoView: View {
                 }
                 
                 Button(action: {
+                    deleteAlert = true
+                }) {
+                    Label("Delete Data", systemImage: "trash")
+                }
+                .tint(.primary)
+            }
+            
+            Section {
+                Button(action: {
+                    if let url = URL(string: "https://itunes.apple.com/app/id1638758005?action=write-review") {
+                        UIApplication.shared.open(url)
+                    }
+                }) {
+                    Label("Rate app", systemImage: "star")
+                }
+                .tint(.primary)
+                
+                Button(action: {
+                    shareFromSheet(shareItem: [URL(string: "http://toolbox.sivery.de/download")!])
+                }) {
+                    Label("Share", systemImage: "square.and.arrow.up")
+                }
+                .tint(.primary)
+                
+                Button(action: {
+                    if let url = URL(string: "http://mailing.sivery.de/subscription/form") {
+                        UIApplication.shared.open(url)
+                    }
+                }) {
+                    Label("Mailing list", systemImage: "mail.stack")
+                }
+                .tint(.primary)
+                
+                Button(action: {
+                    if let url = URL(string: "http://toolbox.sivery.de/support") {
+                        UIApplication.shared.open(url)
+                    }
+                }) {
+                    Label("Support the Development", systemImage: "heart")
+                }
+                .tint(.primary)
+                
+                Button(action: {
+                    if let url = URL(string: "http://toolbox.sivery.de/contribution.html") {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    }
+                }) {
+                    Label("Contribute", systemImage: "person.3")
+                }
+                .tint(.primary)
+            }
+            
+            Section {
+                Button(action: {
                     if let url = URL(string: "http://toolbox.sivery.de") {
                         UIApplication.shared.open(url)
                     }
@@ -54,56 +108,6 @@ struct infoView: View {
                 .tint(.primary)
                 
                 Button(action: {
-                    if let url = URL(string: "https://itunes.apple.com/app/id1638758005?action=write-review") {
-                        UIApplication.shared.open(url)
-                    }
-                }) {
-                    Label("Rate app", systemImage: "star")
-                }
-                .tint(.primary)
-                
-                Button(action: {
-                    if let url = URL(string: "http://mailing.sivery.de/subscription/form") {
-                        UIApplication.shared.open(url)
-                    }
-                }) {
-                    Label("Mailing list", systemImage: "mail.stack")
-                }
-                .tint(.primary)
-                
-                
-                Button(action: {
-                    shareFromSheet(shareItem: [URL(string: "http://toolbox.sivery.de/download")!])
-                }) {
-                    Label("Share", systemImage: "square.and.arrow.up")
-                }
-                .tint(.primary)
-                
-                Button(action: {
-                    if let url = URL(string: "http://toolbox.sivery.de/support") {
-                        UIApplication.shared.open(url)
-                    }
-                }) {
-                    Label("Support the Development", systemImage: "heart")
-                }
-                .tint(.primary)
-                
-                
-                
-                Button(action: {
-                    deleteAlert = true
-                }) {
-                    Label("Delete Data", systemImage: "trash")
-                }
-                .tint(.primary)
-                
-                
-            }
-            
-            
-            Section{
-                
-                Button(action: {
                     if let appSettings = URL(string: UIApplication.openSettingsURLString) {
                         UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
                     }
@@ -111,7 +115,6 @@ struct infoView: View {
                     Label("OpenSource-Licenses", systemImage: "checkmark.seal")
                 }
                 .tint(.primary)
-                
                 
                 Button(action: {
                     if let privacy = URL(string: "http://toolbox.sivery.de/privacy.html") {
@@ -121,17 +124,6 @@ struct infoView: View {
                     Label("Privacy Policy", systemImage: "lock")
                 }
                 .tint(.primary)
-                
-                Button(action: {
-                    if let privacy = URL(string: "http://toolbox.sivery.de/contribution.html") {
-                        UIApplication.shared.open(privacy, options: [:], completionHandler: nil)
-                    }
-                }) {
-                    Label("Contribute", systemImage: "person.3")
-                }
-                .tint(.primary)
-                
-                
             }
             
             Section {
