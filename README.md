@@ -61,6 +61,8 @@ The steps are separate lanes as well (prefix each with `LANG=en_US.UTF-8 bundle 
 | `upload_screenshots` | iPhone, iPad, iPhone Duo and Watch screenshots (replaces the existing ones) | |
 | `upload_asset_library` | Header and search results images via the App Asset Library API; add `dry_run:true` to only print the plan | |
 
+`upload_screenshots` and `upload_asset_library` take `languages:en-GB,de-DE` to upload only some languages. English (U.K.) has its own texts in `fastlane/metadata/en-GB` but reuses the en-US screenshots and images (`MIRRORED_LANGUAGES` in the Fastfile).
+
 Selecting the build and submitting the version for review stays manual in App Store Connect.
 
 The look (background, headline and title colors) of every screenshot and image comes from `fastlane/screenshots/Framefile.json` and `background.jpg` next to it.

@@ -1,0 +1,6 @@
+Toolbox 1.4 is a big one:
+• A new look for iOS 26 with Liquid Glass and a fresh app icon
+• Ten app icons to choose from, including a Pride icon
+• New tools: Distance, Metronome, Decibel Meter, Pulsing Flashlight, Font Installer, Scrolling Text and Wake On Lan
+• Hide the tools you don't use and move your favourites to the top
+• Now in English, German, Spanish, French, Dutch, Polish, Portuguese and Swedish

@@ -8,6 +8,9 @@ SCREENSHOTS = File.join(ROOT, "fastlane", "screenshots")             # iPhone + 
 WATCH_SCREENSHOTS = File.join(ROOT, "fastlane", "screenshots-watch") # raw only, frameit has no watch frames
 DUO_SCREENSHOTS = File.join(ROOT, "fastlane", "screenshots-duo")     # outer display, laid out by a hook (no frameit bezel)
 CREATIVE_ASSETS = File.join(ROOT, "fastlane", "creative-assets")     # header and search results images, built by a hook
+# App Store languages that reuse the screenshots and images of another one instead of being
+# captured themselves (their texts are in fastlane/metadata as usual).
+MIRRORED_LANGUAGES = { "en-GB" => "en-US" }
 PPO = File.join(ROOT, "fastlane", "ppo")                             # product page optimization test variants (variants.json)
 HOOKS = File.join(ROOT, "fastlane", "hooks")
 WATCH_DEVICES = ["Apple Watch Series 12 (46mm)"]
@@ -34,6 +37,11 @@ def install_fonts
     FileUtils.mkdir_p(File.dirname(target))
     FileUtils.cp(source, target)
   end
+end
+
+# The languages a lane should upload: all, or the comma-separated `languages:` option.
+def selected_languages(options)
+  options[:languages]&.split(",")&.map(&:strip)
 end
 
 # Runs every executable in fastlane/hooks/<stage>.d in name order.
@@ -141,6 +149,7 @@ platform :ios do
       library: library,
       config: JSON.parse(File.read(File.join(PPO, "variants.json"))),
       variants_dir: PPO,
+      mirrors: MIRRORED_LANGUAGES,
       log: log
     ).create(dry_run: options[:dry_run])
   end
@@ -167,7 +176,7 @@ platform :ios do
     )
   end
 
-  desc "Upload the product page header and search results images through the App Asset Library API, which deliver doesn't support (needs ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_PATH; dry_run:true only prints the plan)"
+  desc "Upload the product page header and search results images through the App Asset Library API, which deliver doesn't support (needs ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_PATH; dry_run:true only prints the plan; languages:'en-GB,de-DE' limits it)"
   lane :upload_asset_library do |options|
     require_relative "asset_library"
     token = Spaceship::ConnectAPI::Token.create(
@@ -181,13 +190,19 @@ platform :ios do
       jobs << { locale: locale, placement_type: "PRODUCT_PAGE_HEADER_ASSET", display_class: nil, files: [File.join(dir, "header.png")] }
       jobs << { locale: locale, placement_type: "APP_STORE_SEARCH_RESULTS_ASSET", display_class: nil, files: [File.join(dir, "search.png")] }
     end
+    MIRRORED_LANGUAGES.each do |language, source|
+      jobs += jobs.select { |job| job[:locale] == source }.map { |job| job.merge(locale: language) }
+    end
+    if (languages = selected_languages(options))
+      jobs.select! { |job| languages.include?(job[:locale]) }
+    end
     UI.user_error!("Nothing to upload, run `fastlane screenshots` first") if jobs.empty?
     AssetLibrary.new(token: token, bundle_id: "de.sivery.toolbox", dry_run: options[:dry_run],
                      log: ->(message) { UI.message(message) }).upload(jobs)
   end
 
-  desc "Upload the framed iPhone, iPad and iPhone Duo and the Watch screenshots to App Store Connect (needs ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_PATH)"
-  lane :upload_screenshots do
+  desc "Upload the framed iPhone, iPad and iPhone Duo and the Watch screenshots to App Store Connect, replacing the existing ones (needs ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_PATH; languages:'en-GB,de-DE' limits it)"
+  lane :upload_screenshots do |options|
     FileUtils.rm_rf(UPLOAD)
     # deliver sorts them into display types by pixel size (the iPhone Duo since fastlane 2.241)
     [[SCREENSHOTS, "*_framed.png"], [WATCH_SCREENSHOTS, "*.png"], [DUO_SCREENSHOTS, "*_framed.png"]].each do |dir, pattern|
@@ -198,6 +213,12 @@ platform :ios do
       end
     end
     UI.user_error!("Nothing to upload, run `fastlane screenshots` first") unless Dir.exist?(UPLOAD)
+    MIRRORED_LANGUAGES.each do |language, source|
+      FileUtils.cp_r(File.join(UPLOAD, source), File.join(UPLOAD, language)) if Dir.exist?(File.join(UPLOAD, source))
+    end
+    if (languages = selected_languages(options))
+      Dir.glob(File.join(UPLOAD, "*")).each { |dir| FileUtils.rm_rf(dir) unless languages.include?(File.basename(dir)) }
+    end
     run_hooks("pre_upload", UPLOAD)
 
     api_key = app_store_connect_api_key(

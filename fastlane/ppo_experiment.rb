@@ -17,10 +17,12 @@ class PPOExperiment
   # uses 66 too.
   TRAFFIC_PROPORTION = 66
 
-  def initialize(library:, config:, variants_dir:, log:)
+  # mirrors: languages that reuse another language's screenshots, e.g. { "en-GB" => "en-US" }
+  def initialize(library:, config:, variants_dir:, log:, mirrors: {})
     @library = library
     @config = config
     @variants_dir = variants_dir
+    @mirrors = mirrors
     @log = log
   end
 
@@ -100,14 +102,16 @@ class PPOExperiment
 
   # Languages with framed screenshots for this variant (the folders are App Store locales)
   def locales(variant)
-    Dir.glob(File.join(@variants_dir, variant, "screenshots", "*"))
-       .select { |dir| File.directory?(dir) && Dir.glob(File.join(dir, "*_framed.png")).any? }
-       .map { |dir| File.basename(dir) }.sort
+    captured = Dir.glob(File.join(@variants_dir, variant, "screenshots", "*"))
+                  .select { |dir| File.directory?(dir) && Dir.glob(File.join(dir, "*_framed.png")).any? }
+                  .map { |dir| File.basename(dir) }
+    (captured + @mirrors.select { |_, source| captured.include?(source) }.keys).sort
   end
 
   def screenshots(variant, locale)
+    source = @mirrors.fetch(locale, locale)
     %w[screenshots screenshots-duo].flat_map do |folder|
-      Dir.glob(File.join(@variants_dir, variant, folder, locale, "*_framed.png"))
+      Dir.glob(File.join(@variants_dir, variant, folder, source, "*_framed.png"))
     end.sort
   end
 

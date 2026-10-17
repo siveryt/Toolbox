@@ -1,0 +1,27 @@
+Toolbox bundles the small tools you need every now and then into one tidy app – so you don't need a separate app for every little task.
+
+TOOLS
+• Dice and Random Letter – shake to roll, hold a die to keep it
+• Random Number, Counter and Live Clock
+• Date Difference – count the days between two dates
+• Roman Numbers – convert both ways
+• QR-Code Generator – for links, text, Wi-Fi and email
+• Barcode Scanner – with a history of your scanned codes
+• Color Picker – with HEX and RGB codes
+• BMI calculator
+• Network tools: IP-Checker, Domain Resolver, Ping, LAN Scanner and Wake On Lan
+• Location: Coordinates (decimal, DMS and Maidenhead), Speed and Distance
+• Sound: Metronome and Decibel Meter
+• Pulsing Flashlight, Scrolling Text and Font Installer
+
+MAKE IT YOURS
+Hide the tools you don't use, move your favourites to the top and pick one of ten app icons, including a Pride icon.
+
+ALSO ON APPLE WATCH
+Dice, Counter and Random Number are on your wrist, and a widget rolls the dice right on your Home Screen.
+
+PRIVATE BY DESIGN
+No account, no ads, no tracking. Toolbox keeps your data on your device.
+
+OPEN SOURCE
+Toolbox is open source. Help translate it or add your own tool: toolbox.sivery.de/contribution.html

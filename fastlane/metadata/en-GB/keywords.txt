@@ -1,0 +1,1 @@
+dice,qr code,converter,ping,lan scanner,metronome,decibel,bmi,counter,roman numerals,wake on lan
