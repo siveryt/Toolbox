@@ -1,0 +1,10 @@
+# Community translations on https://crowdin.com/project/toolbox, synced by the
+# Crowdin GitHub integration. String Catalogs hold every language in one file,
+# so Crowdin writes the translations back into the source file itself.
+files:
+  - source: /Localizable.xcstrings
+    translation: /Localizable.xcstrings
+    multilingual: true
+  - source: /Toolbox/InfoPlist.xcstrings
+    translation: /Toolbox/InfoPlist.xcstrings
+    multilingual: true
