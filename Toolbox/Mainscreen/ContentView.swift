@@ -137,7 +137,7 @@ struct ContentView: View {
             
             viewLoaded += 1
             print("App Started \(viewLoaded) times")
-            if (viewLoaded == 50) {
+            if (viewLoaded == 5 || viewLoaded == 50) {
                 guard let currentScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
                     print("UNABLE TO GET CURRENT SCENE")
                     return
