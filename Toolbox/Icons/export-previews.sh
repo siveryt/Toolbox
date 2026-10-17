@@ -66,6 +66,58 @@ json.dump(icon, open(path, "w"), indent=2)
 EOF
 done
 
+# the full primary icon for the launch screen, which can't draw an .icon file itself
+launch="$PREVIEWS/Launch Icon.imageset"
+mkdir -p "$launch"
+for rendition in Default Dark; do
+	for scale in 2 3; do
+		"$ICTOOL" Toolbox.icon --export-image --output-file "$launch/$rendition@${scale}x.png" \
+			--platform iOS --rendition $rendition --width 160 --height 160 --scale $scale > /dev/null
+	done
+done
+cat > "$launch/Contents.json" <<EOF
+{
+  "images" : [
+    {
+      "filename" : "Default@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "Dark@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Default@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "Dark@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
+EOF
+
 # both glyph layers in one SVG, same 160×160 canvas as in the .icon files
 glyph="$PREVIEWS/Icon Glyph.imageset"
 mkdir -p "$glyph"

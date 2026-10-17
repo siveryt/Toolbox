@@ -23,6 +23,7 @@ struct AppIconOption: Identifiable {
     var background: String { "Background " + id }
 }
 
+@MainActor
 class IconNames: ObservableObject {
     static let all: [AppIconOption] = [
         AppIconOption(name: nil, title: NSLocalizedString("Red", comment: "App icon name")),
@@ -55,20 +56,19 @@ class IconNames: ObservableObject {
         "whiteOnly": "Toolbox White",
     ]
 
-    @MainActor
     func select(_ icon: AppIconOption) {
         guard icon.name != current else { return }
-        UIApplication.shared.setAlternateIconName(icon.name) { error in
-            if let error = error {
+        Task {
+            do {
+                try await UIApplication.shared.setAlternateIconName(icon.name)
+                current = icon.name
+            } catch {
                 print(error.localizedDescription)
-            } else {
-                DispatchQueue.main.async { self.current = icon.name }
             }
         }
     }
 
     /// Moves users who picked one of the removed PNG icons to its new counterpart, or to the primary icon.
-    @MainActor
     static func migrateRemovedIcon() {
         guard let currentIcon = UIApplication.shared.alternateIconName,
               !all.contains(where: { $0.name == currentIcon }) else { return }

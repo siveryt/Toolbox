@@ -1229,7 +1229,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_Debug;
+				ASSETCATALOG_COMPILER_APPICON_NAME = Toolbox;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "\"Toolbox Black\" \"Toolbox Blue\" \"Toolbox Green\" \"Toolbox Lime\" \"Toolbox Orange\" \"Toolbox Pink\" \"Toolbox Pride\" \"Toolbox Purple\" \"Toolbox White\"";
 				CODE_SIGN_ENTITLEMENTS = Toolbox/Toolbox.entitlements;

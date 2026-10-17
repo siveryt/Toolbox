@@ -58,7 +58,7 @@ The watchOS app ([Toolbox WatchOS Watch App/](Toolbox WatchOS Watch App/)) and t
 
 ### App icons
 
-The icons are Icon Composer files in [Toolbox/Icons/](Toolbox/Icons/). `Toolbox.icon` is the primary icon (iOS Release and watchOS; iOS Debug keeps `AppIcon_Debug`), the colored variants are alternate icons listed in `ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES` and in `IconNames.all` (with a localized title and glyph color). The picker in Settings ([AppIconPicker.swift](Toolbox/Icons/AppIconPicker.swift)) draws each icon live from its exported background plus the vector tool glyph, so the glyph can react to device tilt; both live in `Assets.xcassets/Icon Previews`. After adding or editing an icon, run `Toolbox/Icons/export-previews.sh` to regenerate them.
+The icons are Icon Composer files in [Toolbox/Icons/](Toolbox/Icons/). `Toolbox.icon` is the primary icon (iOS and watchOS), the colored variants are alternate icons listed in `ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES` and in `IconNames.all` (with a localized title and glyph color). The picker in Settings ([AppIconPicker.swift](Toolbox/Icons/AppIconPicker.swift)) draws each icon live from its exported background plus the vector tool glyph, so the glyph can react to device tilt; both live in `Assets.xcassets/Icon Previews`, next to `Launch Icon`, the full primary icon as PNG for the launch screen. After adding or editing an icon, run `Toolbox/Icons/export-previews.sh` to regenerate them.
 
 ## Localization
 

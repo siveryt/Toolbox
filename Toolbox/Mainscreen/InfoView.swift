@@ -172,8 +172,21 @@ struct infoView: View {
 }
 
 struct infoVersion: View {
+    @StateObject private var icons = IconNames()
+
     var body: some View  {
         List{
+            Section {
+                VStack(spacing: 12) {
+                    LiveAppIcon(icon: icons.currentIcon, size: 96)
+                        .shadow(color: .black.opacity(0.15), radius: 8, y: 4)
+                    Text(verbatim: "Toolbox")
+                        .font(.title2.bold())
+                }
+                .frame(maxWidth: .infinity)
+                .listRowBackground(Color.clear)
+                .accessibilityElement(children: .combine)
+            }
             Section{
                 HStack{
                     Text("Version")
