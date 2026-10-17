@@ -60,44 +60,14 @@ struct infoView: View {
                 }
                 .tint(.primary)
                 
-                Button(action: {
-                    if let url = URL(string: "http://mailing.sivery.de/subscription/form") {
-                        UIApplication.shared.open(url)
-                    }
-                }) {
-                    Label("Mailing list", systemImage: "mail.stack")
-                }
-                .tint(.primary)
-                
-                Button(action: {
-                    if let url = URL(string: "http://toolbox.sivery.de/support") {
-                        UIApplication.shared.open(url)
-                    }
-                }) {
-                    Label("Support the Development", systemImage: "heart")
-                }
-                .tint(.primary)
-                
-                Button(action: {
-                    if let url = URL(string: "http://toolbox.sivery.de/contribution.html") {
-                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                    }
-                }) {
-                    Label("Contribute", systemImage: "person.3")
-                }
-                .tint(.primary)
+                ExternalLinkRow("Mailing list", systemImage: "mail.stack", url: "http://mailing.sivery.de/subscription/form")
+                ExternalLinkRow("Support the Development", systemImage: "heart", url: "http://toolbox.sivery.de/support")
+                ExternalLinkRow("Contribute", systemImage: "person.3", url: "http://toolbox.sivery.de/contribution.html")
             }
             
             Section {
-                Button(action: {
-                    if let url = URL(string: "http://toolbox.sivery.de") {
-                        UIApplication.shared.open(url)
-                    }
-                }) {
-                    Label("Website", systemImage: "globe")
-                }
-                .tint(.primary)
-                
+                ExternalLinkRow("Website", systemImage: "globe", url: "http://toolbox.sivery.de")
+
                 Button(action: {
                     if let url = URL(string: "mailto:toolbox@sivery.de") {
                         UIApplication.shared.open(url)
@@ -106,24 +76,17 @@ struct infoView: View {
                     Label("Feedback", systemImage: "mail")
                 }
                 .tint(.primary)
-                
+
                 Button(action: {
                     if let appSettings = URL(string: UIApplication.openSettingsURLString) {
-                        UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
+                        UIApplication.shared.open(appSettings)
                     }
                 }) {
                     Label("OpenSource-Licenses", systemImage: "checkmark.seal")
                 }
                 .tint(.primary)
-                
-                Button(action: {
-                    if let privacy = URL(string: "http://toolbox.sivery.de/privacy.html") {
-                        UIApplication.shared.open(privacy, options: [:], completionHandler: nil)
-                    }
-                }) {
-                    Label("Privacy Policy", systemImage: "lock")
-                }
-                .tint(.primary)
+
+                ExternalLinkRow("Privacy Policy", systemImage: "lock", url: "http://toolbox.sivery.de/privacy.html")
             }
             
             Section {
@@ -160,6 +123,38 @@ struct infoView: View {
                 self.showingSheet?.wrappedValue = false
             }
         }
+    }
+}
+
+/// A row that opens a web page in the browser, marked with an arrow at its trailing edge.
+struct ExternalLinkRow: View {
+    let title: LocalizedStringKey
+    let systemImage: String
+    let url: String
+    
+    init(_ title: LocalizedStringKey, systemImage: String, url: String) {
+        self.title = title
+        self.systemImage = systemImage
+        self.url = url
+    }
+    
+    var body: some View {
+        Button(action: {
+            if let url = URL(string: url) {
+                UIApplication.shared.open(url)
+            }
+        }) {
+            HStack {
+                Label(title, systemImage: systemImage)
+                Spacer()
+                Image(systemName: "arrow.up.right")
+                    .font(.footnote.weight(.semibold))
+                    .foregroundStyle(.tertiary)
+                    .accessibilityHidden(true)
+            }
+        }
+        .tint(.primary)
+        .accessibilityAddTraits(.isLink)
     }
 }
 
