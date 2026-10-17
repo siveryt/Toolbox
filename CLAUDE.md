@@ -62,7 +62,9 @@ The icons are Icon Composer files in [Toolbox/Icons/](Toolbox/Icons/). `Toolbox.
 
 ## Localization
 
-All user-facing strings must be wrapped in `NSLocalizedString(_, comment:)`. Translations live in the String Catalog [Localizable.xcstrings](Localizable.xcstrings) (source language English; currently English + German). Menu titles use `comment: "Menu item"`; WhatsNewKit strings use `comment: "WhatsNewKit item"`. Adding a new string means adding it to the catalog for existing languages.
+All user-facing strings must be wrapped in `NSLocalizedString(_, comment:)`. Translations live in the String Catalog [Localizable.xcstrings](Localizable.xcstrings) (source language English; currently English + German). Menu titles use `comment: "Menu item"`; WhatsNewKit strings use `comment: "WhatsNewKit item"`.
+
+Crowdin is the source of truth for translations: add new strings in English only and translate them, German included, on Crowdin. Its "New Crowdin updates" pull requests (from the `crowdin` branch) rewrite the catalogs and would turn a translation that only exists in the repository back into the English text.
 
 Give every string a comment that says where it appears and what it is (e.g. `comment: "Wake On Lan form: validation error"`): community translators on [Crowdin](https://crowdin.com/project/toolbox) only see the text and its comment. The Crowdin GitHub integration reads both catalogs as configured in [crowdin.yml](crowdin.yml) and opens pull requests with the translations.
 
