@@ -2,51 +2,838 @@
   "sourceLanguage" : "en",
   "strings" : {
     "" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : ""
+          }
+        }
+      },
       "shouldTranslate" : false
     },
     "-" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "-"
+          }
+        }
+      },
       "shouldTranslate" : false
+    },
+    "%@: UTC%@" : {
+      "comment" : "A label displaying the local time zone offset from UTC. The text is formatted as \"Local time: UTC±XX:XX\". The first argument is the string “Local time”. The second argument is the string “%1$@%2$02d:%3$02d”.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@: UTC%2$@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@: UTC%2$@"
+          }
+        }
+      }
+    },
+    "%lld" : {
+      "comment" : "A numeric value representing a duration in years, months, or days.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%lld"
+          }
+        }
+      }
+    },
+    "App Icons" : {
+      "comment" : "WhatsNewKit item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App-Icons"
+          }
+        }
+      }
+    },
+    "Black" : {
+      "comment" : "App icon name",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schwarz"
+          }
+        }
+      }
+    },
+    "Blue" : {
+      "comment" : "App icon name",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blau"
+          }
+        }
+      }
+    },
+    "Current Icon" : {
+      "comment" : "App icon picker",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktuelles Icon"
+          }
+        }
+      }
+    },
+    "Discard Changes" : {
+      "comment" : "Wake On Lan form",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Änderungen verwerfen"
+          }
+        }
+      }
+    },
+    "Green" : {
+      "comment" : "App icon name",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grün"
+          }
+        }
+      }
+    },
+    "Hide tools you don't use and move your favorites to the top" : {
+      "comment" : "WhatsNewKit item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verstecke Tools, die du nicht brauchst, und schieb deine Favoriten nach oben"
+          }
+        }
+      }
+    },
+    "Home Screen preview" : {
+      "comment" : "App icon picker",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorschau des Home-Bildschirms"
+          }
+        }
+      }
+    },
+    "Keep Editing" : {
+      "comment" : "Wake On Lan form",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weiter bearbeiten"
+          }
+        }
+      }
+    },
+    "Lime" : {
+      "comment" : "App icon name",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limette"
+          }
+        }
+      }
+    },
+    "Measure the distance between two places on a map" : {
+      "comment" : "WhatsNewKit item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Miss die Entfernung zwischen zwei Orten auf der Karte"
+          }
+        }
+      }
+    },
+    "New Look" : {
+      "comment" : "WhatsNewKit item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neuer Look"
+          }
+        }
+      }
+    },
+    "No Barcodes" : {
+      "comment" : "Barcode Scanner empty state",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Barcodes"
+          }
+        }
+      }
+    },
+    "No Devices" : {
+      "comment" : "Wake On Lan empty state",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Geräte"
+          }
+        }
+      }
+    },
+    "No Devices Found" : {
+      "comment" : "LAN Scanner empty state",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Geräte gefunden"
+          }
+        }
+      }
+    },
+    "No Hidden Tools" : {
+      "comment" : "Hidden Tools empty state",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine versteckten Tools"
+          }
+        }
+      }
+    },
+    "Orange" : {
+      "comment" : "App icon name",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Orange"
+          }
+        }
+      }
+    },
+    "Pick one of ten app icons in Settings, including a Pride icon" : {
+      "comment" : "WhatsNewKit item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle in den Einstellungen eines von zehn App-Icons, darunter ein Pride-Icon"
+          }
+        }
+      }
+    },
+    "Pink" : {
+      "comment" : "App icon name",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Pink"
+          }
+        }
+      }
+    },
+    "Pride" : {
+      "comment" : "App icon name",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Pride"
+          }
+        }
+      }
+    },
+    "Purple" : {
+      "comment" : "App icon name",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lila"
+          }
+        }
+      }
+    },
+    "Red" : {
+      "comment" : "App icon name",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rot"
+          }
+        }
+      }
+    },
+    "Redesigned for iOS 26 with Liquid Glass and a fresh app icon" : {
+      "comment" : "WhatsNewKit item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neu gestaltet für iOS 26 mit Liquid Glass und einem frischen App-Icon"
+          }
+        }
+      }
+    },
+    "Tap %@ to scan again. If nothing shows up, check that Toolbox can access your local network in Settings." : {
+      "comment" : "LAN Scanner empty state, %@ is the reload symbol",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tippe auf %@, um erneut zu suchen. Wenn nichts erscheint, prüfe in den Einstellungen, ob Toolbox auf dein lokales Netzwerk zugreifen darf."
+          }
+        }
+      }
+    },
+    "Tap %@ to scan your first barcode." : {
+      "comment" : "Barcode Scanner empty state, %@ is the scan symbol",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tippe auf %@, um deinen ersten Barcode zu scannen."
+          }
+        }
+      }
+    },
+    "Tap + to add a device you want to wake up." : {
+      "comment" : "Wake On Lan empty state",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tippe auf +, um ein Gerät hinzuzufügen, das du aufwecken möchtest."
+          }
+        }
+      }
+    },
+    "Tilt your iPhone to see the light play on the glass." : {
+      "comment" : "App icon picker hint",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neige dein iPhone, um das Licht auf dem Glas spielen zu sehen."
+          }
+        }
+      }
+    },
+    "To find devices on your network and to wake them up." : {
+      "comment" : "Permission reason",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Um Geräte in deinem Netzwerk zu finden und aufzuwecken."
+          }
+        }
+      }
+    },
+    "To measure the sound level around you." : {
+      "comment" : "Permission reason",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Um den Geräuschpegel um dich herum zu messen."
+          }
+        }
+      }
+    },
+    "To scan barcodes and to show scrolling text on the back display." : {
+      "comment" : "Permission reason",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Um Barcodes zu scannen und Lauftext auf dem Rückdisplay anzuzeigen."
+          }
+        }
+      }
+    },
+    "To show your coordinates and speed and to measure distances." : {
+      "comment" : "Permission reason",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Um deine Koordinaten und Geschwindigkeit anzuzeigen und Entfernungen zu messen."
+          }
+        }
+      }
+    },
+    "Touch and hold a tool on the main screen to hide it." : {
+      "comment" : "Hidden Tools empty state",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Halte ein Tool auf dem Hauptbildschirm gedrückt, um es zu verstecken."
+          }
+        }
+      }
+    },
+    "Use This Icon" : {
+      "comment" : "App icon picker",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieses Icon verwenden"
+          }
+        }
+      }
+    },
+    "Used by %@." : {
+      "comment" : "Permission footer, followed by a list of tools",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verwendet von %@."
+          }
+        }
+      }
+    },
+    "White" : {
+      "comment" : "App icon name",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weiß"
+          }
+        }
+      }
+    },
+    "Your Tools, Your Order" : {
+      "comment" : "WhatsNewKit item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deine Tools, deine Reihenfolge"
+          }
+        }
+      }
+    },
+    "• Enter your device passcode if requested" : {
+      "comment" : "A note within the \"Step 1: Install the Profile\" section, instructing the user to enter their device passcode if prompted.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "• Enter your device passcode if requested"
+          }
+        }
+      }
+    },
+    "• Font collections (.ttc/.otc) are not supported by iOS" : {
+      "comment" : "An explanation that font collections (.ttc/.otc) are not supported by iOS.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "• Font collections (.ttc/.otc) are not supported by iOS"
+          }
+        }
+      }
+    },
+    "• Not all apps support custom fonts" : {
+      "comment" : "A note reminding that not all apps support custom fonts.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "• Not all apps support custom fonts"
+          }
+        }
+      }
+    },
+    "• Some apps may require a restart to recognize new fonts" : {
+      "comment" : "A note explaining that some apps might need a restart to use newly installed fonts.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "• Some apps may require a restart to recognize new fonts"
+          }
+        }
+      }
+    },
+    "• Tap 'Install' again to confirm" : {
+      "comment" : "A step in the font installation process, instructing the user to tap 'Install' again to confirm.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "• Tap 'Install' again to confirm"
+          }
+        }
+      }
+    },
+    "• Tap 'Install' when prompted" : {
+      "comment" : "A step in the installation instructions, instructing the user to tap \"Install\" when prompted.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "• Tap 'Install' when prompted"
+          }
+        }
+      }
+    },
+    "• The configuration profile should automatically open in Safari" : {
+      "comment" : "Font Installer guide: step after downloading the profile",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "• The configuration profile should automatically open in Safari"
+          }
+        }
+      }
+    },
+    "• To remove a font, go to Settings → General → Fonts and swipe left on the font name" : {
+      "comment" : "A step in the installation process, explaining how to remove a font.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "• To remove a font, go to Settings → General → Fonts and swipe left on the font name"
+          }
+        }
+      }
     },
     "+" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "+"
+          }
+        }
+      },
       "shouldTranslate" : false
     },
+    "✓ OpenType (.otf) - Recommended" : {
+      "comment" : "A note indicating that OpenType (.otf) is a recommended font format.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "✓ OpenType (.otf) - Recommended"
+          }
+        }
+      }
+    },
+    "✓ TrueType (.ttf) - Recommended" : {
+      "comment" : "A note in the installation instructions that a certain font format is supported.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "✓ TrueType (.ttf) - Recommended"
+          }
+        }
+      }
+    },
+    "✗ OpenType Collection (.otc) - Not supported" : {
+      "comment" : "A note indicating that OpenType Collection files (.otc) are not supported on iOS.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "✗ OpenType Collection (.otc) - Not supported"
+          }
+        }
+      }
+    },
+    "✗ TrueType Collection (.ttc) - Not supported" : {
+      "comment" : "A note indicating that TrueType Collection files (.ttc) are not supported.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "✗ TrueType Collection (.ttc) - Not supported"
+          }
+        }
+      }
+    },
     "00:1A:2B:3C:4D:5E" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "00:1A:2B:3C:4D:5E"
+          }
+        }
+      },
       "shouldTranslate" : false
     },
     "1" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "1"
+          }
+        }
+      },
       "shouldTranslate" : false
+    },
+    "1. Go to Settings → General → Fonts" : {
+      "comment" : "A step in the installation process, describing how to access the list of fonts on an iOS device.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "1. Go to Settings → General → Fonts"
+          }
+        }
+      }
+    },
+    "1. Open the Settings app" : {
+      "comment" : "A step in the installation process, describing how to open the Settings app.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "1. Open the Settings app"
+          }
+        }
+      }
+    },
+    "2. Navigate to: General → VPN & Device Management" : {
+      "comment" : "A step in the installation process, describing the navigation path in the Settings app.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "2. Navigate to: General → VPN & Device Management"
+          }
+        }
+      }
+    },
+    "2. Your installed font should appear in the list" : {
+      "comment" : "A step in the font installation process, describing what should happen after installing a font.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "2. Your installed font should appear in the list"
+          }
+        }
+      }
+    },
+    "3. The font is now available in compatible apps" : {
+      "comment" : "A note explaining that a newly installed font is now available in compatible apps.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "3. The font is now available in compatible apps"
+          }
+        }
+      }
+    },
+    "3. Under 'Downloaded Profile', find your font profile" : {
+      "comment" : "A step in the installation process, instructing the user to find their downloaded font profile in the Settings app.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "3. Under 'Downloaded Profile', find your font profile"
+          }
+        }
+      }
     },
     "4" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "4"
+          }
+        }
+      },
       "shouldTranslate" : false
+    },
+    "4. Tap on the profile and then tap 'Install'" : {
+      "comment" : "A step in the installation process, instructing them to tap on a downloaded font profile and then tap \"Install\".",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "4. Tap on the profile and then tap 'Install'"
+          }
+        }
+      }
+    },
+    "5. Enter your passcode when prompted" : {
+      "comment" : "A step in the installation instructions, instructing the user to enter their passcode.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "5. Enter your passcode when prompted"
+          }
+        }
+      }
     },
     "6" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "6"
+          }
+        }
+      },
       "shouldTranslate" : false
     },
+    "6. Tap 'Install' to confirm" : {
+      "comment" : "A step in the font installation process.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "6. Tap 'Install' to confirm"
+          }
+        }
+      }
+    },
     "8" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "8"
+          }
+        }
+      },
       "shouldTranslate" : false
     },
     "9" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "9"
+          }
+        }
+      },
       "shouldTranslate" : false
     },
     "10" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "10"
+          }
+        }
+      },
       "shouldTranslate" : false
     },
     "12" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "12"
+          }
+        }
+      },
       "shouldTranslate" : false
     },
     "20" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "20"
+          }
+        }
+      },
       "shouldTranslate" : false
     },
     "255.255.255.255" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "255.255.255.255"
+          }
+        }
+      },
       "shouldTranslate" : false
     },
     "2022" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "2022"
+          }
+        }
+      },
       "shouldTranslate" : false
     },
     "12345678" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "12345678"
+          }
+        }
+      },
       "shouldTranslate" : false
     },
+    "A" : {
+      "comment" : "A monogram for a marker.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "A"
+          }
+        }
+      }
+    },
     "Accuracy" : {
+      "comment" : "Coordinates tool: row label, accuracy of the position in meters",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -56,7 +843,19 @@
         }
       }
     },
+    "Acquiring GPS…" : {
+      "comment" : "GPS signal status",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GPS wird gesucht…"
+          }
+        }
+      }
+    },
     "Add new Device" : {
+      "comment" : "Wake On Lan: title of the sheet to add or edit a device",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -66,7 +865,19 @@
         }
       }
     },
+    "After downloading the configuration profile, follow these steps to complete the font installation:" : {
+      "comment" : "A step-by-step guide for installing fonts on iOS.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "After downloading the configuration profile, follow these steps to complete the font installation:"
+          }
+        }
+      }
+    },
     "Again" : {
+      "comment" : "Button that runs the ping again (Ping tool) or draws a new number (Apple Watch Random Number)",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -77,6 +888,7 @@
       }
     },
     "Allowed" : {
+      "comment" : "Permission state",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -87,6 +899,7 @@
       }
     },
     "Altitude" : {
+      "comment" : "Coordinates tool: row label",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -97,6 +910,7 @@
       }
     },
     "Always" : {
+      "comment" : "Location permission state",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -107,16 +921,18 @@
       }
     },
     "App Icon" : {
+      "comment" : "Info screen: row that opens the app icon picker, and its title",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "new",
             "value" : "App Icon"
           }
         }
       }
     },
     "Arabic" : {
+      "comment" : "Roman Numbers tool: label of the field for regular (Arabic) numbers like 2024",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -127,6 +943,7 @@
       }
     },
     "Are you sure you want to start the device?" : {
+      "comment" : "Wake On Lan: alert before sending the wake signal",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -137,6 +954,7 @@
       }
     },
     "Are you sure, you want to clear the app's data?" : {
+      "comment" : "Info screen: alert title before deleting all app data",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -147,6 +965,7 @@
       }
     },
     "Are you sure, you want to reset the counter?" : {
+      "comment" : "Counter tool: confirmation message",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -157,10 +976,11 @@
       }
     },
     "Barcode" : {
+      "comment" : "Barcode Scanner: navigation title",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "new",
             "value" : "Barcode"
           }
         }
@@ -171,13 +991,14 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "new",
             "value" : "Barcode Scanner"
           }
         }
       }
     },
     "Beats per measure" : {
+      "comment" : "Metronome: placeholder of the text field",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -188,6 +1009,7 @@
       }
     },
     "Beats per Measure" : {
+      "comment" : "Metronome: section header",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -198,6 +1020,7 @@
       }
     },
     "Beats per Minute" : {
+      "comment" : "Metronome: section header",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -212,55 +1035,47 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "new",
             "value" : "BMI"
           }
         }
       }
     },
     "BPM" : {
+      "comment" : "Metronome: placeholder of the text field, abbreviation of beats per minute",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "new",
             "value" : "BPM"
           }
         }
       }
     },
-    "brand" : {
-      "comment" : "LAN Scanner",
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hersteller"
-          }
-        }
-      }
-    },
     "Broadcast" : {
+      "comment" : "Wake On Lan form: label of the broadcast IP address field",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "new",
             "value" : "Broadcast"
           }
         }
       }
     },
     "Build" : {
+      "comment" : "Version screen: row label for the build identifier",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "new",
             "value" : "Build"
           }
         }
       }
     },
     "Camera" : {
+      "comment" : "Permission name",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -271,6 +1086,7 @@
       }
     },
     "Cancel" : {
+      "comment" : "Button that cancels an alert",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -280,7 +1096,30 @@
         }
       }
     },
+    "Center on my location" : {
+      "comment" : "Distance tool: accessibility label of the location button",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Center on my location"
+          }
+        }
+      }
+    },
+    "Change in Settings" : {
+      "comment" : "A button that opens the user settings to allow Toolbox to access the device's microphone, camera, and location.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In den Einstellungen ändern"
+          }
+        }
+      }
+    },
     "Check Again" : {
+      "comment" : "IP-Checker: button that reloads the public IP address",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -291,6 +1130,7 @@
       }
     },
     "Choose Color" : {
+      "comment" : "Color Picker tool: label of the color well",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -300,21 +1140,12 @@
         }
       }
     },
-    "Click on the %@ to scan your first barcode" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Drücke auf %@ um deinen ersten Barcode zu scannen."
-          }
-        }
-      }
-    },
     "cm" : {
+      "comment" : "BMI tool: unit for centimeters",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "new",
             "value" : "cm"
           }
         }
@@ -332,6 +1163,7 @@
       }
     },
     "Colorcodes" : {
+      "comment" : "Color Picker tool: section header for HEX/RGB codes",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -364,6 +1196,7 @@
       }
     },
     "Contribute" : {
+      "comment" : "Info screen: row that opens the contribution page on the website",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -374,6 +1207,7 @@
       }
     },
     "Coordinate String" : {
+      "comment" : "Coordinates tool: row label for latitude and longitude combined into one copyable text",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -407,7 +1241,25 @@
     },
     "Copy" : {
       "comment" : "A button label that says \"Copy\".",
-      "isCommentAutoGenerated" : true
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Copy"
+          }
+        }
+      }
+    },
+    "Couldn't wake the device" : {
+      "comment" : "Wake On Lan: alert title when sending the wake signal failed",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das Gerät konnte nicht gestartet werden"
+          }
+        }
+      }
     },
     "Counter" : {
       "comment" : "Menu item",
@@ -476,6 +1328,7 @@
       }
     },
     "Delete" : {
+      "comment" : "Info screen: destructive button that deletes all app data",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -486,6 +1339,7 @@
       }
     },
     "Delete Data" : {
+      "comment" : "Info screen: row that deletes all app data",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -496,6 +1350,7 @@
       }
     },
     "Denied" : {
+      "comment" : "Permission state",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -505,7 +1360,19 @@
         }
       }
     },
+    "Details" : {
+      "comment" : "Barcode Scanner: title of the sheet with a scanned code's details",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Details"
+          }
+        }
+      }
+    },
     "Device Name" : {
+      "comment" : "Wake On Lan form: placeholder of the name field",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -527,6 +1394,7 @@
       }
     },
     "Dice Count" : {
+      "comment" : "Dice settings: stepper for the number of dice",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -536,17 +1404,8 @@
         }
       }
     },
-    "Dice Settings" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Würfel Einstellungen"
-          }
-        }
-      }
-    },
     "Difference" : {
+      "comment" : "Date difference",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -557,6 +1416,7 @@
       }
     },
     "Disable Auto Lock" : {
+      "comment" : "Dice settings: toggle that keeps the screen on",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -567,6 +1427,7 @@
       }
     },
     "Display" : {
+      "comment" : "Coordinates tool: picker for the coordinate format (decimal, DMS, Maidenhead)",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -582,7 +1443,18 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zeige Lauftexte um lange Nachrichten zu teilen"
+            "value" : "Zeige Lauftexte, um wichtige Nachrichten zu teilen"
+          }
+        }
+      }
+    },
+    "Distance" : {
+      "comment" : "Name of the Distance tool",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entfernung"
           }
         }
       }
@@ -599,10 +1471,11 @@
       }
     },
     "Domain" : {
+      "comment" : "Domain Resolver: label of the domain input",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "new",
             "value" : "Domain"
           }
         }
@@ -620,6 +1493,7 @@
       }
     },
     "Don't Reset" : {
+      "comment" : "Counter tool: cancel button of the reset confirmation",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -630,6 +1504,7 @@
       }
     },
     "Done" : {
+      "comment" : "Wake On Lan form: keyboard toolbar button that closes the number pad",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -640,6 +1515,7 @@
       }
     },
     "Edit" : {
+      "comment" : "Wake On Lan: context menu action to edit a device",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -655,12 +1531,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Starte das Stroboskop um besser zu erkennen zu sein"
+            "value" : "Starte das Stroboskop, um besser gesehen zu werden"
           }
         }
       }
     },
     "Enable camera access in settings to use the Barcode Scanner." : {
+      "comment" : "Barcode Scanner: shown when camera access was denied",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -671,6 +1548,7 @@
       }
     },
     "Enabled" : {
+      "comment" : "Pulsing Flashlight: toggle that turns the flashing on",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -681,6 +1559,7 @@
       }
     },
     "Encryption" : {
+      "comment" : "QR-Code Generator: picker for the Wi-Fi security type",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -691,6 +1570,7 @@
       }
     },
     "End Date" : {
+      "comment" : "Date Difference: date picker label",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -700,7 +1580,52 @@
         }
       }
     },
+    "Enter a port between 1 and 65535" : {
+      "comment" : "Wake On Lan form: validation error",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gib einen Port zwischen 1 und 65535 ein"
+          }
+        }
+      }
+    },
+    "Enter a valid IPv4 address, e.g. 192.168.1.255" : {
+      "comment" : "Wake On Lan form: validation error for the broadcast address",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gib eine gültige IPv4-Adresse ein, z. B. 192.168.1.255"
+          }
+        }
+      }
+    },
+    "Enter a valid MAC address, e.g. 00:1A:2B:3C:4D:5E" : {
+      "comment" : "Wake On Lan form: validation error",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gib eine gültige MAC-Adresse ein, z. B. 00:1A:2B:3C:4D:5E"
+          }
+        }
+      }
+    },
+    "Exit Fullscreen" : {
+      "comment" : "Metronome and Scrolling Text: button that leaves full screen",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vollbild verlassen"
+          }
+        }
+      }
+    },
     "Face Count" : {
+      "comment" : "Dice widget: name of the type that holds the number of faces, shown when configuring the widget",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -711,6 +1636,7 @@
       }
     },
     "Faces" : {
+      "comment" : "Dice widget: configuration option for the number of faces of the die",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -720,12 +1646,35 @@
         }
       }
     },
-    "Feedback" : {
+    "Fair GPS signal" : {
+      "comment" : "GPS signal status",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Mäßiges GPS-Signal"
+          }
+        }
+      }
+    },
+    "Feedback" : {
+      "comment" : "Info screen: row that opens an email to send feedback",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
             "value" : "Feedback"
+          }
+        }
+      }
+    },
+    "Font Collection Not Supported" : {
+      "comment" : "An alert title indicating that font collections are not supported.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Font Collection Not Supported"
           }
         }
       }
@@ -741,7 +1690,19 @@
         }
       }
     },
+    "Font Selection" : {
+      "comment" : "A section header for selecting a font file.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Font Selection"
+          }
+        }
+      }
+    },
     "From" : {
+      "comment" : "Random Number tool: lower bound of the range",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -751,7 +1712,19 @@
         }
       }
     },
+    "Good GPS signal" : {
+      "comment" : "GPS signal status",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gutes GPS-Signal"
+          }
+        }
+      }
+    },
     "Got It!" : {
+      "comment" : "Button that closes an explanation alert",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -762,6 +1735,7 @@
       }
     },
     "Great Feature Idea!" : {
+      "comment" : "QR-Code Generator: example placeholder for an email subject",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -772,6 +1746,7 @@
       }
     },
     "Height" : {
+      "comment" : "BMI tool: label of the body height input",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -782,16 +1757,18 @@
       }
     },
     "HEX" : {
+      "comment" : "Color Picker tool: label for the hexadecimal color code",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "new",
             "value" : "HEX"
           }
         }
       }
     },
     "Hidden" : {
+      "comment" : "QR-Code Generator: toggle for a hidden Wi-Fi network (one that doesn't broadcast its name)",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -802,6 +1779,7 @@
       }
     },
     "Hidden Tools" : {
+      "comment" : "Info screen: row and title of the list of tools hidden from the main screen",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -812,6 +1790,7 @@
       }
     },
     "Hide" : {
+      "comment" : "Main screen: context menu action that hides a tool",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -821,18 +1800,8 @@
         }
       }
     },
-    "Hide Tools" : {
-      "comment" : "WhatsNewKit item",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Verstecke Tools"
-          }
-        }
-      }
-    },
     "Hint: You can hold one dice to lock it" : {
+      "comment" : "Dice settings: hint below the settings",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -843,28 +1812,40 @@
       }
     },
     "Host" : {
+      "comment" : "Ping tool: label of the host name or IP address input",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "new",
             "value" : "Host"
           }
         }
       }
     },
-    "hostname" : {
-      "comment" : "LAN Scanner",
-      "extractionState" : "stale",
+    "How to Install Fonts on iOS" : {
+      "comment" : "A title that explains how to install fonts on iOS.",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "hostname"
+            "state" : "new",
+            "value" : "How to Install Fonts on iOS"
+          }
+        }
+      }
+    },
+    "Important Notes" : {
+      "comment" : "Font Installer guide: section header",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Important Notes"
           }
         }
       }
     },
     "inch" : {
+      "comment" : "BMI tool: unit for inches",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -875,16 +1856,18 @@
       }
     },
     "Info" : {
+      "comment" : "Title of the Info screen, and title of informational alerts in Scrolling Text",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "new",
             "value" : "Info"
           }
         }
       }
     },
     "Install Font" : {
+      "comment" : "Font Installer: button that starts the installation",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -894,14 +1877,35 @@
         }
       }
     },
-    "ip" : {
-      "comment" : "LAN Scanner",
-      "extractionState" : "stale",
+    "Installation" : {
+      "comment" : "A section header that indicates font installation.",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "ip"
+            "state" : "new",
+            "value" : "Installation"
+          }
+        }
+      }
+    },
+    "Installation Guide" : {
+      "comment" : "The title of a view that provides instructions on how to install a font.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Installation Guide"
+          }
+        }
+      }
+    },
+    "iOS does not support font collections (.ttc/.otc files). Please use individual font files (.ttf/.otf) instead. Font collections contain multiple fonts in one file, but iOS can only install single fonts through configuration profiles." : {
+      "comment" : "An alert message explaining that iOS does not support font collections.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "iOS does not support font collections (.ttc/.otc files). Please use individual font files (.ttf/.otf) instead. Font collections contain multiple fonts in one file, but iOS can only install single fonts through configuration profiles."
           }
         }
       }
@@ -918,6 +1922,7 @@
       }
     },
     "Just to confirm, you wanted ‘%@’?" : {
+      "comment" : "Dice widget: Siri confirmation when picking the number of faces, %@ is the choice",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -933,16 +1938,17 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bleibe im Takt mit verstellbaren BPM und verschiedenen Taktarten."
+            "value" : "Bleibe im Takt mit verstellbaren BPM und verschiedenen Taktarten"
           }
         }
       }
     },
     "kg" : {
+      "comment" : "BMI tool: unit for kilograms",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "new",
             "value" : "kg"
           }
         }
@@ -953,13 +1959,14 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "new",
             "value" : "LAN Scanner"
           }
         }
       }
     },
     "Last updated" : {
+      "comment" : "Version screen: row label for the release date",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -970,6 +1977,7 @@
       }
     },
     "Latitude" : {
+      "comment" : "Coordinates tool: row label",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -980,10 +1988,11 @@
       }
     },
     "lb" : {
+      "comment" : "BMI tool: unit for pounds",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "new",
             "value" : "lb"
           }
         }
@@ -1012,16 +2021,29 @@
       }
     },
     "Local Network" : {
+      "comment" : "Permission name",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lokales netzwerk"
+            "value" : "Lokales Netzwerk"
+          }
+        }
+      }
+    },
+    "Local time" : {
+      "comment" : "Live Clock",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ortszeit"
           }
         }
       }
     },
     "Location" : {
+      "comment" : "Permission name",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1031,7 +2053,19 @@
         }
       }
     },
+    "Location Access Required" : {
+      "comment" : "A message displayed when the user hasn't granted location access to the app.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Location Access Required"
+          }
+        }
+      }
+    },
     "Longitude" : {
+      "comment" : "Coordinates tool: row label",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1041,35 +2075,52 @@
         }
       }
     },
-    "mac" : {
-      "comment" : "LAN Scanner",
-      "extractionState" : "stale",
+    "MAC" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "mac"
+            "state" : "new",
+            "value" : "MAC"
+          }
+        }
+      },
+      "shouldTranslate" : false
+    },
+    "Made with ❤️ by Sivery" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Made with ❤️ by Sivery"
+          }
+        }
+      },
+      "shouldTranslate" : false
+    },
+    "Maidenhead" : {
+      "comment" : "Coordinates tool: Maidenhead grid locator, a ham radio location code",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Maidenhead"
           }
         }
       }
     },
-    "MAC" : {
-      "shouldTranslate" : false
-    },
-    "Made with ❤️ by Sivery" : {
-      "shouldTranslate" : false
-    },
     "Mail" : {
+      "comment" : "QR-Code Generator: content type for an email",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "new",
             "value" : "Mail"
           }
         }
       }
     },
     "Mailing list" : {
+      "comment" : "Info screen: row that opens the newsletter sign-up",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1079,21 +2130,12 @@
         }
       }
     },
-    "Make sure you entered in the right value" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Stelle sicher, dass du den richtigen Wert eingegeben hast."
-          }
-        }
-      }
-    },
     "Max" : {
+      "comment" : "Ping tool: label of the longest response time",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "new",
             "value" : "Max"
           }
         }
@@ -1122,6 +2164,7 @@
       }
     },
     "Microphone" : {
+      "comment" : "Permission name",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1132,6 +2175,14 @@
       }
     },
     "MMXXII" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "MMXXII"
+          }
+        }
+      },
       "shouldTranslate" : false
     },
     "Months" : {
@@ -1146,6 +2197,7 @@
       }
     },
     "More Information" : {
+      "comment" : "BMI tool: button that opens an explanation of the BMI",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1155,18 +2207,19 @@
         }
       }
     },
-    "Move Tools" : {
-      "comment" : "WhatsNewKit item",
+    "Move the map and tap to set the start point" : {
+      "comment" : "Distance tool: hint before a start point is set",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bewege Tools"
+            "state" : "new",
+            "value" : "Move the map and tap to set the start point"
           }
         }
       }
     },
     "Move Tools Around" : {
+      "comment" : "Tip on the main screen: title",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1176,28 +2229,19 @@
         }
       }
     },
-    "Move tools you don't use out of your way" : {
-      "comment" : "WhatsNewKit item",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bewege Tools, die du nicht benutzt aus dem Weg"
-          }
-        }
-      }
-    },
     "Name" : {
+      "comment" : "Wake On Lan form: label of the device name field",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "new",
             "value" : "Name"
           }
         }
       }
     },
     "Network Name" : {
+      "comment" : "QR-Code Generator: placeholder for the Wi-Fi network name (SSID)",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1208,6 +2252,7 @@
       }
     },
     "New Number" : {
+      "comment" : "Random Number tool: button that draws a new number",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1218,6 +2263,7 @@
       }
     },
     "No Encryption" : {
+      "comment" : "QR-Code Generator: Wi-Fi security type for open networks",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1228,6 +2274,7 @@
       }
     },
     "None" : {
+      "comment" : "Ping tool: shown instead of a time when there is no result",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1238,22 +2285,12 @@
       }
     },
     "Normal weight" : {
+      "comment" : "BMI tool: result category",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Normalgewichtig"
-          }
-        }
-      }
-    },
-    "Not Determined" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nicht ermittelt"
           }
         }
       }
@@ -1281,6 +2318,7 @@
       }
     },
     "Not Requested Yet" : {
+      "comment" : "Permission state: the app hasn't asked yet",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1290,7 +2328,19 @@
         }
       }
     },
+    "Note: Font collections contain multiple fonts in one file, but iOS can only install individual fonts through configuration profiles." : {
+      "comment" : "A footnote explaining that font collections are not supported by iOS.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Note: Font collections contain multiple fonts in one file, but iOS can only install individual fonts through configuration profiles."
+          }
+        }
+      }
+    },
     "Number too big" : {
+      "comment" : "Roman Numbers tool: alert title",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1301,6 +2351,7 @@
       }
     },
     "Obese" : {
+      "comment" : "BMI tool: result category",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1310,7 +2361,19 @@
         }
       }
     },
+    "OK" : {
+      "comment" : "The OK button in an alert dialog.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "OK"
+          }
+        }
+      }
+    },
     "Open AppStore" : {
+      "comment" : "Version screen: button that opens Toolbox in the App Store",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1321,6 +2384,7 @@
       }
     },
     "Open Settings" : {
+      "comment" : "Button that opens the app's page in the Settings app",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1331,6 +2395,7 @@
       }
     },
     "OpenSource-Licenses" : {
+      "comment" : "Info screen: row that opens the licenses of used open source libraries",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1341,6 +2406,7 @@
       }
     },
     "Options" : {
+      "comment" : "Apple Watch Random Number: button that opens the range settings",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1351,6 +2417,7 @@
       }
     },
     "Overweight" : {
+      "comment" : "BMI tool: result category",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1361,6 +2428,7 @@
       }
     },
     "Password" : {
+      "comment" : "QR-Code Generator: label of the Wi-Fi password field",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1371,6 +2439,7 @@
       }
     },
     "Permissions" : {
+      "comment" : "Info screen: row and title of the permissions overview",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1385,23 +2454,47 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "new",
             "value" : "Ping"
           }
         }
       }
     },
-    "Port" : {
+    "Poor GPS signal" : {
+      "comment" : "GPS signal status",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Schlechtes GPS-Signal"
+          }
+        }
+      }
+    },
+    "Port" : {
+      "comment" : "Wake On Lan form: label of the UDP port field",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
             "value" : "Port"
           }
         }
       }
     },
+    "Precise Location Required" : {
+      "comment" : "A message displayed when precise location is required for speed tracking.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Precise Location Required"
+          }
+        }
+      }
+    },
     "Press and hold a tool to move it around as you like" : {
+      "comment" : "Tip on the main screen: message",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1412,6 +2505,7 @@
       }
     },
     "Privacy Policy" : {
+      "comment" : "Info screen: row that opens the privacy policy",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1433,6 +2527,7 @@
       }
     },
     "QR-Code Content" : {
+      "comment" : "QR-Code Generator: section header",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1447,13 +2542,14 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "new",
             "value" : "QR-Code Generator"
           }
         }
       }
     },
     "QR-Generator" : {
+      "comment" : "QR-Code Generator: navigation title",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1486,6 +2582,7 @@
       }
     },
     "Rate app" : {
+      "comment" : "Info screen: row that asks for an App Store rating",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1496,6 +2593,7 @@
       }
     },
     "Receiver" : {
+      "comment" : "QR-Code Generator: label of the email recipient field",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1516,18 +2614,19 @@
         }
       }
     },
-    "Reorder tools to have your favorites on top of the list" : {
-      "comment" : "WhatsNewKit item",
+    "Request Precise Location" : {
+      "comment" : "A button that requests precise location access.",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sortiere Tools neu, um deine Favoriten ganz oben in der Liste zu haben."
+            "state" : "new",
+            "value" : "Request Precise Location"
           }
         }
       }
     },
     "Reroll Indicator" : {
+      "comment" : "Dice widget: configuration option that shows when the die is rolled again",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1538,6 +2637,7 @@
       }
     },
     "Rerolling" : {
+      "comment" : "Dice widget: shown while the die is rolled again",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1548,6 +2648,7 @@
       }
     },
     "Reset" : {
+      "comment" : "Counter tool: button that sets the counter back to zero",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1558,6 +2659,7 @@
       }
     },
     "Reset Counter" : {
+      "comment" : "Counter tool: alert title",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1568,6 +2670,7 @@
       }
     },
     "Reset counter?" : {
+      "comment" : "Counter tool: confirmation dialog title",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1578,6 +2681,7 @@
       }
     },
     "Restricted" : {
+      "comment" : "Permission state: blocked, e.g. by Screen Time",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1588,6 +2692,7 @@
       }
     },
     "Result" : {
+      "comment" : "Domain Resolver and Random Number: label of the result",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1598,12 +2703,29 @@
       }
     },
     "RGB" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "RGB"
+          }
+        }
+      },
       "shouldTranslate" : false
     },
     "RGBA" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "RGBA"
+          }
+        }
+      },
       "shouldTranslate" : false
     },
     "Roll a Die" : {
+      "comment" : "Dice widget: description of the roll action in Shortcuts",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1614,6 +2736,7 @@
       }
     },
     "Roll Dice" : {
+      "comment" : "Dice widget: name of the roll action in Shortcuts",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1624,6 +2747,7 @@
       }
     },
     "Roman" : {
+      "comment" : "Roman Numbers tool: label of the field for Roman numerals",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1644,10 +2768,6 @@
         }
       }
     },
-    "Scanning finished" : {
-      "comment" : "The text that appears in a sheet when the LAN scanner finishes scanning.",
-      "isCommentAutoGenerated" : true
-    },
     "Scrolling Text" : {
       "comment" : "Menu item\nWhatsNewKit item",
       "localizations" : {
@@ -1659,17 +2779,8 @@
         }
       }
     },
-    "Select a Tool" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wähle ein Tool aus"
-          }
-        }
-      }
-    },
     "Select Font File" : {
+      "comment" : "Font Installer: button that opens the file picker",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1680,6 +2791,7 @@
       }
     },
     "Settings" : {
+      "comment" : "Live Clock setting",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1690,6 +2802,7 @@
       }
     },
     "Shake or Tap to Get Started" : {
+      "comment" : "Dice and Random Letter: hint before the first roll",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1700,6 +2813,7 @@
       }
     },
     "Share" : {
+      "comment" : "Info screen: row that shares a link to Toolbox",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1709,7 +2823,19 @@
         }
       }
     },
+    "Show" : {
+      "comment" : "Date difference",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anzeigen"
+          }
+        }
+      }
+    },
     "Show Again" : {
+      "comment" : "Hidden Tools: context menu action that moves a tool back to the main screen",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1719,7 +2845,30 @@
         }
       }
     },
+    "Show Installation Instructions" : {
+      "comment" : "A button that shows instructions on how to install a font.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Show Installation Instructions"
+          }
+        }
+      }
+    },
+    "Show UTC" : {
+      "comment" : "Live Clock setting",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UTC anzeigen"
+          }
+        }
+      }
+    },
     "Sides" : {
+      "comment" : "Dice settings: picker for the number of sides of each die",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1740,20 +2889,41 @@
         }
       }
     },
-    "SSID" : {
-      "shouldTranslate" : false
-    },
-    "Start" : {
+    "Speed tracking requires precise location. Please enable precise location in Settings." : {
+      "comment" : "A message displayed when precise location is not enabled. Asks the user to enable it in settings.",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "new",
+            "value" : "Speed tracking requires precise location. Please enable precise location in Settings."
+          }
+        }
+      }
+    },
+    "SSID" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "SSID"
+          }
+        }
+      },
+      "shouldTranslate" : false
+    },
+    "Start" : {
+      "comment" : "Metronome: button that starts the metronome; Distance tool: map marker of the start point",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
             "value" : "Start"
           }
         }
       }
     },
     "Start Date" : {
+      "comment" : "Date Difference: date picker label",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1763,18 +2933,8 @@
         }
       }
     },
-    "Start Scanner" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Starte Scanner"
-          }
-        }
-      }
-    },
     "Start Scrolling" : {
+      "comment" : "Scrolling Text: button that shows the text full screen",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1784,7 +2944,41 @@
         }
       }
     },
+    "Step 1: Install the Profile" : {
+      "comment" : "A heading for the first step in installing a font profile.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Step 1: Install the Profile"
+          }
+        }
+      }
+    },
+    "Step 2: Enable the Profile in Settings" : {
+      "comment" : "A step description for enabling a configuration profile in the Settings app.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Step 2: Enable the Profile in Settings"
+          }
+        }
+      }
+    },
+    "Step 3: Verify Installation" : {
+      "comment" : "A heading for a step in the font installation.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Step 3: Verify Installation"
+          }
+        }
+      }
+    },
     "Stop" : {
+      "comment" : "Metronome: button that stops the metronome",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1794,18 +2988,19 @@
         }
       }
     },
-    "Stop Scanner" : {
-      "extractionState" : "stale",
+    "Strong GPS signal" : {
+      "comment" : "GPS signal status",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Scanner stoppen"
+            "value" : "Starkes GPS-Signal"
           }
         }
       }
     },
     "Subject" : {
+      "comment" : "QR-Code Generator: label of the email subject field",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1816,6 +3011,7 @@
       }
     },
     "Support the Development" : {
+      "comment" : "Info screen: row that opens the donation page",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1825,7 +3021,30 @@
         }
       }
     },
+    "Supported Font Formats" : {
+      "comment" : "A section header that lists the font formats supported by the app.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Supported Font Formats"
+          }
+        }
+      }
+    },
+    "Tap anywhere to minimize" : {
+      "comment" : "Metronome and Scrolling Text: hint in full screen",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tippe irgendwo, um zu verkleinern"
+          }
+        }
+      }
+    },
     "Tap to Set BPM" : {
+      "comment" : "Metronome: tap tempo button, tapping it repeatedly sets the beats per minute",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1836,16 +3055,18 @@
       }
     },
     "Text" : {
+      "comment" : "QR-Code Generator: content type for plain text",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "new",
             "value" : "Text"
           }
         }
       }
     },
     "The app will close after deleting the data. You can instantly reopen it." : {
+      "comment" : "Info screen: message of the delete data alert",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1855,8 +3076,58 @@
         }
       }
     },
+    "The broadcast address \"%@\" is invalid. Edit the device to fix it." : {
+      "comment" : "Wake On Lan error",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Broadcast-Adresse „%@“ ist ungültig. Bearbeite das Gerät, um sie zu korrigieren."
+          }
+        }
+      }
+    },
+    "The MAC address \"%@\" is invalid. Edit the device to fix it." : {
+      "comment" : "Wake On Lan error",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die MAC-Adresse „%@“ ist ungültig. Bearbeite das Gerät, um sie zu korrigieren."
+          }
+        }
+      }
+    },
+    "The magic packet could not be sent: %@" : {
+      "comment" : "Wake On Lan error",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das Magic Packet konnte nicht gesendet werden: %@"
+          }
+        }
+      }
+    },
+    "The port %lld is invalid. Edit the device to fix it." : {
+      "comment" : "Wake On Lan error",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Port %lld ist ungültig. Bearbeite das Gerät, um ihn zu korrigieren."
+          }
+        }
+      }
+    },
     "There are %lld options matching ‘%@’." : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "There are %1$lld options matching ‘%2$@’."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -1867,6 +3138,7 @@
       "shouldTranslate" : false
     },
     "Time" : {
+      "comment" : "Ping tool: label of the last response time",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1877,6 +3149,7 @@
       }
     },
     "To" : {
+      "comment" : "Random Number tool: upper bound of the range",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1887,36 +3160,40 @@
       }
     },
     "Toolbox" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Toolbox"
+          }
+        }
+      },
       "shouldTranslate" : false
     },
-    "Toolbox does not have network permissions. Please allow local network access in the settings." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toolbox hat keine Netzwerk-Berechtigungen. Bitte erlaube den Zugriff auf das lokale Netzwerk in den Einstellungen"
-          }
-        }
-      }
-    },
-    "Toolbox uses your location to calculate your speed and your coordinates when using the corresponding tools.\n\n Toolbox needs access to your local network when using the LAN Scanner.\n\nToolbox needs access to your camera when scanning barcodes.\n\nToolbox needs acces to your microphone to measure audio levels." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toolbox nutzt deinen Standort zum berechnen deiner Geschwindigkeit und deiner Koordinaten, wenn du die entsprechenden Tools benutzt.\n\nToolbox braucht Zugriff auf dein lokales Netzwerk wenn du den LAN Scanner benutzt.\n\nToolbox braucht Zugriff auf deine Kamera wenn du Barcodes scannst.\n\nToolbox braucht Zugriff auf dein Mikrofon wenn du Dezibel misst."
-          }
-        }
-      }
-    },
     "toolbox.sivery.de" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "toolbox.sivery.de"
+          }
+        }
+      },
       "shouldTranslate" : false
     },
     "toolbox@sivery.de" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "toolbox@sivery.de"
+          }
+        }
+      },
       "shouldTranslate" : false
     },
     "Tools you previously hid on the app's main screen can be used here.\nIf you want to move them back to the main screen, tap and hold them.\nThe same goes for hiding them again." : {
+      "comment" : "Hidden Tools: help alert",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1938,6 +3215,7 @@
       }
     },
     "Type" : {
+      "comment" : "QR-Code Generator: picker for the content type (URL, text, Wi-Fi, mail)",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1948,6 +3226,7 @@
       }
     },
     "Underweight" : {
+      "comment" : "BMI tool: result category",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1958,6 +3237,7 @@
       }
     },
     "Unknown" : {
+      "comment" : "Permission state",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1968,10 +3248,11 @@
       }
     },
     "URL" : {
+      "comment" : "QR-Code Generator: content type for a web address, and label of its field",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "new",
             "value" : "URL"
           }
         }
@@ -1989,16 +3270,18 @@
       }
     },
     "Version" : {
+      "comment" : "Info screen: row that opens the version screen, and the version label there",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "new",
             "value" : "Version"
           }
         }
       }
     },
     "Wake" : {
+      "comment" : "Wake On Lan: swipe action that sends the wake signal",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2013,23 +3296,25 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "new",
             "value" : "Wake On Lan"
           }
         }
       }
     },
     "Website" : {
+      "comment" : "Info screen: row that opens toolbox.sivery.de",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "new",
             "value" : "Website"
           }
         }
       }
     },
     "Weight" : {
+      "comment" : "BMI tool: label of the body weight input",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2040,16 +3325,18 @@
       }
     },
     "WEP" : {
+      "comment" : "QR-Code Generator: Wi-Fi security type, keep as is",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "new",
             "value" : "WEP"
           }
         }
       }
     },
     "What?" : {
+      "comment" : "Hidden Tools: title of the help alert",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2071,6 +3358,7 @@
       }
     },
     "While Using" : {
+      "comment" : "Location permission state: only while the app is in use",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2080,17 +3368,8 @@
         }
       }
     },
-    "Why?" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Warum?"
-          }
-        }
-      }
-    },
     "Wi-Fi" : {
+      "comment" : "QR-Code Generator: content type for Wi-Fi login data",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2101,6 +3380,7 @@
       }
     },
     "WPA (most common)" : {
+      "comment" : "QR-Code Generator: Wi-Fi security type",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2122,6 +3402,7 @@
       }
     },
     "Yes" : {
+      "comment" : "Wake On Lan: confirms sending the wake signal",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2132,6 +3413,7 @@
       }
     },
     "You can't convert numbers bigger than 3999." : {
+      "comment" : "Roman Numbers tool: alert message",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2142,6 +3424,7 @@
       }
     },
     "You can't leave the Broadcast empty" : {
+      "comment" : "Wake On Lan form: validation error",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2152,6 +3435,7 @@
       }
     },
     "You can't leave the MAC empty" : {
+      "comment" : "Wake On Lan form: validation error",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2162,6 +3446,7 @@
       }
     },
     "You can't leave the name empty" : {
+      "comment" : "Wake On Lan form: validation error",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2172,6 +3457,7 @@
       }
     },
     "You can't leave the port empty" : {
+      "comment" : "Wake On Lan form: validation error",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2182,6 +3468,7 @@
       }
     },
     "You can't use the same name twice" : {
+      "comment" : "Wake On Lan form: validation error",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2192,6 +3479,7 @@
       }
     },
     "You first have to allow Toolbox to access your location to see your coordinates." : {
+      "comment" : "Coordinates tool: shown without location access",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2202,6 +3490,7 @@
       }
     },
     "You first have to allow Toolbox to access your location to see your speed." : {
+      "comment" : "Speed tool: shown without location access",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2212,6 +3501,7 @@
       }
     },
     "You first have to allow Toolbox to access your microphone to measure audio levels." : {
+      "comment" : "Decibel Meter: shown without microphone access",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2221,17 +3511,8 @@
         }
       }
     },
-    "You have no tools hidden" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Du hast keine Tools versteckt."
-          }
-        }
-      }
-    },
     "You just hid your first tool! You can still find it in the settings under \"Hidden Tools\"." : {
+      "comment" : "Main screen: alert after hiding a tool for the first time",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2242,6 +3523,7 @@
       }
     },
     "You need to rotate your device to enable the scrolling text." : {
+      "comment" : "Scrolling Text: alert message",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2252,11 +3534,100 @@
       }
     },
     "Your current IP" : {
+      "comment" : "IP-Checker: label above the public IP address",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Deine aktuelle IP"
+          }
+        }
+      }
+    },
+    "Start Scrolling on Back Display" : {
+      "comment" : "Scrolling Text: button for iPhone models with a display on the back",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Laufschrift auf Rückseite starten"
+          }
+        }
+      }
+    },
+    "Stop Scrolling on Back Display" : {
+      "comment" : "Scrolling Text: button for iPhone models with a display on the back",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Laufschrift auf Rückseite beenden"
+          }
+        }
+      }
+    },
+    "Start Scrolling on External Display" : {
+      "comment" : "Scrolling Text: button when a screen is connected",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Laufschrift auf externem Display starten"
+          }
+        }
+      }
+    },
+    "Stop Scrolling on External Display" : {
+      "comment" : "Scrolling Text: button when a screen is connected",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Laufschrift auf externem Display beenden"
+          }
+        }
+      }
+    },
+    "The back display is only available while the camera is active, so the camera turns on while the text is shown there." : {
+      "comment" : "Scrolling Text: note below the back display button",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Rückseite ist nur verfügbar, während die Kamera aktiv ist. Deshalb schaltet sich die Kamera ein, solange der Text dort angezeigt wird."
+          }
+        }
+      }
+    },
+    "Camera Access Needed" : {
+      "comment" : "Scrolling Text: alert title",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kamerazugriff benötigt"
+          }
+        }
+      }
+    },
+    "The back display is only available while the camera is active. Allow camera access to show the scrolling text there." : {
+      "comment" : "Scrolling Text: alert message",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Rückseite ist nur verfügbar, während die Kamera aktiv ist. Erlaube den Kamerazugriff, um die Laufschrift dort anzuzeigen."
+          }
+        }
+      }
+    },
+    "The back display isn't available right now." : {
+      "comment" : "Scrolling Text: alert message",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Rückseite ist gerade nicht verfügbar."
           }
         }
       }
