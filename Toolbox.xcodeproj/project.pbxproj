@@ -732,6 +732,12 @@
 				en,
 				de,
 				Base,
+				es,
+				fr,
+				nl,
+				pl,
+				"pt-BR",
+				sv,
 			);
 			mainGroup = 5EC7B21227D7978100699FD3;
 			packageReferences = (
