@@ -31,7 +31,11 @@ struct Barcode: View {
                 }
                     
             } else {
-                Text("Click on the \(Image(systemName: "viewfinder")) to scan your first barcode")
+                ContentUnavailableView {
+                    Label("No Barcodes", systemImage: "barcode")
+                } description: {
+                    Text("Tap \(Image(systemName: "viewfinder")) to scan your first barcode.")
+                }
             }
         }
         

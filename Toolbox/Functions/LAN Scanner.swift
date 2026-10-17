@@ -27,6 +27,15 @@ struct LAN_Scanner: View {
                 }
                 
             }
+            .overlay {
+                if !viewModel.running && viewModel.connectedDevices.isEmpty {
+                    ContentUnavailableView {
+                        Label("No Devices Found", systemImage: "network.slash")
+                    } description: {
+                        Text("Tap \(Image(systemName: "arrow.clockwise")) to scan again. If nothing shows up, check that Toolbox can access your local network in Settings.")
+                    }
+                }
+            }
             
             if viewModel.running {
                 VStack{

@@ -77,6 +77,15 @@ struct Wake_On_Lan: View {
             }
             .onDelete(perform: delete)
         }
+        .overlay {
+            if devices.isEmpty {
+                ContentUnavailableView {
+                    Label("No Devices", systemImage: "power")
+                } description: {
+                    Text("Tap + to add a device you want to wake up.")
+                }
+            }
+        }
         .sheet(isPresented: $sheetDisplayed, onDismiss: resetSheetData, content: {
             WOLDeviceForm(
                 name: $sheet_name,
@@ -276,6 +285,14 @@ struct WOLDeviceForm: View {
     let onSave: () -> Void
 
     @FocusState private var focusedField: Field?
+    @Environment(\.dismiss) private var dismiss
+    /// The values the sheet opened with, to tell whether there is anything to lose on cancel.
+    @State private var initialValues: [String]?
+    @State private var confirmingDiscard = false
+
+    private var hasChanges: Bool {
+        initialValues.map { $0 != [name, mac, broadcast, port] } ?? false
+    }
 
     var body: some View {
         NavigationStack {
@@ -361,7 +378,25 @@ struct WOLDeviceForm: View {
                 }
             .navigationTitle("Add new Device")
             .navigationBarTitleDisplayMode(.inline)
+            .onAppear {
+                if initialValues == nil { initialValues = [name, mac, broadcast, port] }
+            }
+            // swiping away would lose the input, so that only works without changes
+            .interactiveDismissDisabled(hasChanges)
             .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button(role: .cancel) {
+                        if hasChanges {
+                            confirmingDiscard = true
+                        } else {
+                            dismiss()
+                        }
+                    }
+                    .confirmationDialog("Discard Changes", isPresented: $confirmingDiscard) {
+                        Button("Discard Changes", role: .destructive) { dismiss() }
+                        Button("Keep Editing", role: .cancel) { }
+                    }
+                }
                 ToolbarItem(placement: .confirmationAction) {
                     Button(role: .confirm) {
                         onSave()

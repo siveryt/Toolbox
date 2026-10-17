@@ -56,6 +56,17 @@
         }
       }
     },
+    "Discard Changes" : {
+      "comment" : "Wake On Lan form",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Änderungen verwerfen"
+          }
+        }
+      }
+    },
     "Green" : {
       "comment" : "App icon name",
       "localizations" : {
@@ -78,6 +89,17 @@
         }
       }
     },
+    "Keep Editing" : {
+      "comment" : "Wake On Lan form",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weiter bearbeiten"
+          }
+        }
+      }
+    },
     "Lime" : {
       "comment" : "App icon name",
       "localizations" : {
@@ -85,6 +107,50 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Limette"
+          }
+        }
+      }
+    },
+    "No Barcodes" : {
+      "comment" : "Barcode Scanner empty state",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Barcodes"
+          }
+        }
+      }
+    },
+    "No Devices" : {
+      "comment" : "Wake On Lan empty state",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Geräte"
+          }
+        }
+      }
+    },
+    "No Devices Found" : {
+      "comment" : "LAN Scanner empty state",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Geräte gefunden"
+          }
+        }
+      }
+    },
+    "No Hidden Tools" : {
+      "comment" : "Hidden Tools empty state",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine versteckten Tools"
           }
         }
       }
@@ -144,6 +210,39 @@
         }
       }
     },
+    "Tap %@ to scan again. If nothing shows up, check that Toolbox can access your local network in Settings." : {
+      "comment" : "LAN Scanner empty state, %@ is the reload symbol",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tippe auf %@, um erneut zu suchen. Wenn nichts erscheint, prüfe in den Einstellungen, ob Toolbox auf dein lokales Netzwerk zugreifen darf."
+          }
+        }
+      }
+    },
+    "Tap %@ to scan your first barcode." : {
+      "comment" : "Barcode Scanner empty state, %@ is the scan symbol",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tippe auf %@, um deinen ersten Barcode zu scannen."
+          }
+        }
+      }
+    },
+    "Tap + to add a device you want to wake up." : {
+      "comment" : "Wake On Lan empty state",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tippe auf +, um ein Gerät hinzuzufügen, das du aufwecken möchtest."
+          }
+        }
+      }
+    },
     "Tilt your iPhone to see the light play on the glass." : {
       "comment" : "App icon picker hint",
       "localizations" : {
@@ -195,6 +294,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Um deine Koordinaten und Geschwindigkeit anzuzeigen und Entfernungen zu messen."
+          }
+        }
+      }
+    },
+    "Touch and hold a tool on the main screen to hide it." : {
+      "comment" : "Hidden Tools empty state",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Halte ein Tool auf dem Hauptbildschirm gedrückt, um es zu verstecken."
           }
         }
       }
@@ -639,16 +749,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wähle Farbe"
-          }
-        }
-      }
-    },
-    "Click on the %@ to scan your first barcode" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Drücke auf %@ um deinen ersten Barcode zu scannen."
           }
         }
       }
@@ -2822,16 +2922,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Du musst Toolbox erlauben deinen Mikrofon zu nutzen um Dezibel messen zu lassen."
-          }
-        }
-      }
-    },
-    "You have no tools hidden" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Du hast keine Tools versteckt."
           }
         }
       }

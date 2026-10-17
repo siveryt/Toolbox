@@ -245,7 +245,11 @@ struct infoHidden: View {
                     }
                 }
             } else {
-                Text("You have no tools hidden")
+                ContentUnavailableView {
+                    Label("No Hidden Tools", systemImage: "eye.slash")
+                } description: {
+                    Text("Touch and hold a tool on the main screen to hide it.")
+                }
             }
         }
         .navigationTitle("Hidden Tools")
