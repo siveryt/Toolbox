@@ -209,46 +209,6 @@ struct infoVersion: View {
     }
 }
 
-struct appIcon: View {
-    @EnvironmentObject var iconSettings:IconNames
-    
-    var body: some View {
-        Form {
-            
-            LazyVGrid(columns: [GridItem(), GridItem()]) {
-                
-                ForEach(0 ..< iconSettings.iconNames.count, id: \.self){i in
-                    
-                    Image(self.iconSettings.previewName(i))
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                        .aspectRatio(CGSize(width: 100, height: 100), contentMode: .fit)
-                        .onTapGesture(){
-                            
-                            if iconSettings.currentIndex != i {
-                                print(self.iconSettings.iconNames)
-                                
-                                UIApplication.shared.setAlternateIconName(self.iconSettings.iconNames[i], completionHandler: {
-                                    error in
-                                    if let error = error {
-                                        print(error.localizedDescription)
-                                    } else {
-                                        print("Success!")
-                                        iconSettings.currentIndex = i
-                                    }
-                                })
-                            }
-                        }
-                }
-            }
-            
-        }
-        .navigationTitle("App Icon")
-        .navigationBarTitleDisplayMode(.inline)
-    }
-}
-
 struct permissions: View {
     
     @StateObject private var locationManager = LocationPermsChecker()

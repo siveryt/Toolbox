@@ -15,6 +15,7 @@
 		5E020C5027EA29D7009871F9 /* DateDifference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E020C4D27EA29D7009871F9 /* DateDifference.swift */; };
 		5E020C5327EA2A59009871F9 /* RomanNumeralKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5E020C5227EA2A59009871F9 /* RomanNumeralKit */; };
 		5E0AA80A2837BFB7006CD0EA /* IconNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0AA8092837BFB7006CD0EA /* IconNames.swift */; };
+		AAB5DCA930838E87001D2F63 /* AppIconPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB5DCA830838E87001D2F63 /* AppIconPicker.swift */; };
 		5E135E442BE27159000FD246 /* FontInstall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E135E432BE27159000FD246 /* FontInstall.swift */; };
 		5E135E472BE27E01000FD246 /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = 5E135E462BE27E01000FD246 /* Swifter */; };
 		5E1644F22C03754800EEDFFD /* tick.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5E1644F12C03754800EEDFFD /* tick.wav */; };
@@ -90,6 +91,10 @@
 		AAB5DC8D30838E87001D2F63 /* Toolbox Pink.icon in Resources */ = {isa = PBXBuildFile; fileRef = AAB5DC8B30838E87001D2F63 /* Toolbox Pink.icon */; };
 		AAB5DC8E30838E87001D2F63 /* Toolbox Lime.icon in Resources */ = {isa = PBXBuildFile; fileRef = AAB5DC8A30838E87001D2F63 /* Toolbox Lime.icon */; };
 		AAB5DC8F30838E87001D2F63 /* Toolbox Purple.icon in Resources */ = {isa = PBXBuildFile; fileRef = AAB5DC8C30838E87001D2F63 /* Toolbox Purple.icon */; };
+		AAB5DCA130838E87001D2F63 /* Toolbox Pride.icon in Resources */ = {isa = PBXBuildFile; fileRef = AAB5DCA030838E87001D2F63 /* Toolbox Pride.icon */; };
+		AAB5DCA330838E87001D2F63 /* Toolbox Black.icon in Resources */ = {isa = PBXBuildFile; fileRef = AAB5DCA230838E87001D2F63 /* Toolbox Black.icon */; };
+		AAB5DCA730838E87001D2F63 /* Toolbox White.icon in Resources */ = {isa = PBXBuildFile; fileRef = AAB5DCA630838E87001D2F63 /* Toolbox White.icon */; };
+		AAB5DCA530838E87001D2F63 /* Toolbox Orange.icon in Resources */ = {isa = PBXBuildFile; fileRef = AAB5DCA430838E87001D2F63 /* Toolbox Orange.icon */; };
 		AAB5DC9030838E87001D2F63 /* Toolbox Blue.icon in Resources */ = {isa = PBXBuildFile; fileRef = AAB5DC8830838E87001D2F63 /* Toolbox Blue.icon */; };
 		AAB5DC9130838E87001D2F63 /* Toolbox Green.icon in Resources */ = {isa = PBXBuildFile; fileRef = AAB5DC8930838E87001D2F63 /* Toolbox Green.icon */; };
 		AAC839962F151FDD00DA8C4B /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC839952F151FDD00DA8C4B /* Distance.swift */; };
@@ -157,6 +162,7 @@
 		5E020C4C27EA29D7009871F9 /* RomanConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RomanConverter.swift; sourceTree = "<group>"; };
 		5E020C4D27EA29D7009871F9 /* DateDifference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateDifference.swift; sourceTree = "<group>"; };
 		5E0AA8092837BFB7006CD0EA /* IconNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconNames.swift; sourceTree = "<group>"; };
+		AAB5DCA830838E87001D2F63 /* AppIconPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconPicker.swift; sourceTree = "<group>"; };
 		5E135E422BE26D8F000FD246 /* Toolbox.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Toolbox.entitlements; sourceTree = "<group>"; };
 		5E135E432BE27159000FD246 /* FontInstall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontInstall.swift; sourceTree = "<group>"; };
 		5E1383E22915975000CF4FAB /* Assets WatchOS.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets WatchOS.xcassets"; sourceTree = "<group>"; };
@@ -231,6 +237,10 @@
 		AAB5DC8A30838E87001D2F63 /* Toolbox Lime.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = "Toolbox Lime.icon"; sourceTree = "<group>"; };
 		AAB5DC8B30838E87001D2F63 /* Toolbox Pink.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = "Toolbox Pink.icon"; sourceTree = "<group>"; };
 		AAB5DC8C30838E87001D2F63 /* Toolbox Purple.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = "Toolbox Purple.icon"; sourceTree = "<group>"; };
+		AAB5DCA030838E87001D2F63 /* Toolbox Pride.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = "Toolbox Pride.icon"; sourceTree = "<group>"; };
+		AAB5DCA230838E87001D2F63 /* Toolbox Black.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = "Toolbox Black.icon"; sourceTree = "<group>"; };
+		AAB5DCA630838E87001D2F63 /* Toolbox White.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = "Toolbox White.icon"; sourceTree = "<group>"; };
+		AAB5DCA430838E87001D2F63 /* Toolbox Orange.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = "Toolbox Orange.icon"; sourceTree = "<group>"; };
 		AAC839952F151FDD00DA8C4B /* Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
 		B06FC4129E5EF7B6BCD3958E /* ToolboxWatchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToolboxWatchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8224FC5099A1DFBEDF0B95A /* WatchScreenshotTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WatchScreenshotTests.swift; sourceTree = "<group>"; };
@@ -320,11 +330,16 @@
 			isa = PBXGroup;
 			children = (
 				5E0AA8092837BFB7006CD0EA /* IconNames.swift */,
+				AAB5DCA830838E87001D2F63 /* AppIconPicker.swift */,
 				AAB5DC8530838D13001D2F63 /* Toolbox.icon */,
 				AAB5DC8830838E87001D2F63 /* Toolbox Blue.icon */,
 				AAB5DC8930838E87001D2F63 /* Toolbox Green.icon */,
 				AAB5DC8A30838E87001D2F63 /* Toolbox Lime.icon */,
 				AAB5DC8B30838E87001D2F63 /* Toolbox Pink.icon */,
+				AAB5DCA030838E87001D2F63 /* Toolbox Pride.icon */,
+				AAB5DCA230838E87001D2F63 /* Toolbox Black.icon */,
+				AAB5DCA630838E87001D2F63 /* Toolbox White.icon */,
+				AAB5DCA430838E87001D2F63 /* Toolbox Orange.icon */,
 				AAB5DC8C30838E87001D2F63 /* Toolbox Purple.icon */,
 			);
 			path = Icons;
@@ -768,6 +783,10 @@
 				AAB5DC8D30838E87001D2F63 /* Toolbox Pink.icon in Resources */,
 				AAB5DC8E30838E87001D2F63 /* Toolbox Lime.icon in Resources */,
 				AAB5DC8F30838E87001D2F63 /* Toolbox Purple.icon in Resources */,
+				AAB5DCA130838E87001D2F63 /* Toolbox Pride.icon in Resources */,
+				AAB5DCA330838E87001D2F63 /* Toolbox Black.icon in Resources */,
+				AAB5DCA730838E87001D2F63 /* Toolbox White.icon in Resources */,
+				AAB5DCA530838E87001D2F63 /* Toolbox Orange.icon in Resources */,
 				AAB5DC9030838E87001D2F63 /* Toolbox Blue.icon in Resources */,
 				AAB5DC9130838E87001D2F63 /* Toolbox Green.icon in Resources */,
 				5E1644F22C03754800EEDFFD /* tick.wav in Resources */,
@@ -885,6 +904,7 @@
 				5E47B19B27F1F3F4008FD3C0 /* Counter.swift in Sources */,
 				5E878B6B2916B6B60038A5E3 /* Speed.swift in Sources */,
 				5E0AA80A2837BFB7006CD0EA /* IconNames.swift in Sources */,
+				AAB5DCA930838E87001D2F63 /* AppIconPicker.swift in Sources */,
 				5EF8C35D2A8859AC0089BCA3 /* Random Letter.swift in Sources */,
 				5EC7B22127D7978100699FD3 /* ContentView.swift in Sources */,
 				5E020C5027EA29D7009871F9 /* DateDifference.swift in Sources */,
@@ -1207,7 +1227,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_Debug;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "\"Toolbox Blue\" \"Toolbox Green\" \"Toolbox Lime\" \"Toolbox Pink\" \"Toolbox Purple\"";
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "\"Toolbox Black\" \"Toolbox Blue\" \"Toolbox Green\" \"Toolbox Lime\" \"Toolbox Orange\" \"Toolbox Pink\" \"Toolbox Pride\" \"Toolbox Purple\" \"Toolbox White\"";
 				CODE_SIGN_ENTITLEMENTS = Toolbox/Toolbox.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1251,7 +1271,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = Toolbox;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "\"Toolbox Blue\" \"Toolbox Green\" \"Toolbox Lime\" \"Toolbox Pink\" \"Toolbox Purple\"";
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "\"Toolbox Black\" \"Toolbox Blue\" \"Toolbox Green\" \"Toolbox Lime\" \"Toolbox Orange\" \"Toolbox Pink\" \"Toolbox Pride\" \"Toolbox Purple\" \"Toolbox White\"";
 				CODE_SIGN_ENTITLEMENTS = Toolbox/Toolbox.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
