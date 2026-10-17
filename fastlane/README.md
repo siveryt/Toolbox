@@ -93,7 +93,7 @@ Upload the App Store texts in fastlane/metadata to App Store Connect (needs ASC_
 [bundle exec] fastlane ios upload_asset_library
 ```
 
-Upload the product page header and search results images through the App Asset Library API, which deliver doesn't support (needs ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_PATH; dry_run:true only prints the plan)
+Upload the product page header and search results images through the App Asset Library API, which deliver doesn't support (needs ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_PATH; dry_run:true only prints the plan; languages:'en-GB,de-DE' limits it)
 
 ### ios upload_screenshots
 
@@ -101,7 +101,7 @@ Upload the product page header and search results images through the App Asset L
 [bundle exec] fastlane ios upload_screenshots
 ```
 
-Upload the framed iPhone, iPad and iPhone Duo and the Watch screenshots to App Store Connect (needs ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_PATH)
+Upload the framed iPhone, iPad and iPhone Duo and the Watch screenshots to App Store Connect, replacing the existing ones (needs ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_PATH; languages:'en-GB,de-DE' limits it)
 
 ----
 
