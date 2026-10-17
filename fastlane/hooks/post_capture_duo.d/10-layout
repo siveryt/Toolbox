@@ -15,10 +15,15 @@ if ! command -v magick >/dev/null; then
     exit 1
 fi
 
-FRAMEIT="$PROJECT_ROOT/fastlane/screenshots"
-BACKGROUND="$FRAMEIT/background.jpg"
-KEYWORD_COLOR="#FFFFFF"
-TITLE_COLOR="#D6E4FF"
+# Background and colors come from the Framefile, so everything matches the framed
+# screenshots. FRAMEFILE points to another one (e.g. a test variant); strings and
+# fonts are read from its folder.
+FRAMEFILE="${FRAMEFILE:-$PROJECT_ROOT/fastlane/screenshots/Framefile.json}"
+FRAMEIT="$(cd "$(dirname "$FRAMEFILE")" && pwd)"
+framefile() { ruby -rjson -e 'puts JSON.parse(File.read(ARGV[0])).dig(*ARGV[1..])' "$FRAMEFILE" "$@"; }
+BACKGROUND="$FRAMEIT/$(framefile default background)"
+KEYWORD_COLOR="$(framefile default keyword color)"
+TITLE_COLOR="$(framefile default title color)"
 
 # "key" = "value"; from a .strings file
 string_for() {

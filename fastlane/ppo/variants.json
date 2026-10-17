@@ -1,0 +1,15 @@
+{
+  "experiment": "Screenshot background",
+  "variants": {
+    "blue": {
+      "name": "Blue background",
+      "keyword_color": "#FFFFFF",
+      "title_color": "#D6E4FF"
+    },
+    "white": {
+      "name": "White background",
+      "keyword_color": "#1C1C1E",
+      "title_color": "#4A4F5A"
+    }
+  }
+}

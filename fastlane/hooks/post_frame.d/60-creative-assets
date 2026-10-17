@@ -17,9 +17,16 @@ if ! command -v magick >/dev/null; then
     exit 1
 fi
 
-FRAMEIT="$PROJECT_ROOT/fastlane/screenshots"
-OUT="$PROJECT_ROOT/fastlane/creative-assets"
-BACKGROUND="$FRAMEIT/background.jpg"
+# Background and colors come from the Framefile, so everything matches the framed
+# screenshots. FRAMEFILE points to another one (e.g. a test variant); strings and
+# fonts are read from its folder.
+FRAMEFILE="${FRAMEFILE:-$PROJECT_ROOT/fastlane/screenshots/Framefile.json}"
+FRAMEIT="$(cd "$(dirname "$FRAMEFILE")" && pwd)"
+framefile() { ruby -rjson -e 'puts JSON.parse(File.read(ARGV[0])).dig(*ARGV[1..])' "$FRAMEFILE" "$@"; }
+BACKGROUND="$FRAMEIT/$(framefile default background)"
+KEYWORD_COLOR="$(framefile default keyword color)"
+TITLE_COLOR="$(framefile default title color)"
+OUT="${CREATIVE_ASSETS_DIR:-$PROJECT_ROOT/fastlane/creative-assets}"
 ICTOOL="$(xcode-select -p)/../Applications/Icon Composer.app/Contents/Executables/ictool"
 
 string_for() {
@@ -70,8 +77,8 @@ for dir in "$FRAMEIT"/*/; do
 
     # Header: icon, headline and title in the middle, a screenshot on each side
     width=3840; height=1646
-    text "$keyword" "#FFFFFF" 150 1700 "$font" "$WORK/keyword.png"
-    text "$title" "#D6E4FF" 84 1700 "$font" "$WORK/title.png"
+    text "$keyword" "$KEYWORD_COLOR" 150 1700 "$font" "$WORK/keyword.png"
+    text "$title" "$TITLE_COLOR" 84 1700 "$font" "$WORK/title.png"
     card "${shots[1]}" 1500 "$WORK/left.png"
     card "${shots[2]}" 1500 "$WORK/right.png"
     magick "$WORK/icon.png" -resize 420x "$WORK/icon-header.png"
@@ -87,8 +94,8 @@ for dir in "$FRAMEIT"/*/; do
 
     # Search results: icon, headline and title on top, three screenshots below
     width=3840; height=2560
-    text "$keyword" "#FFFFFF" 160 3200 "$font" "$WORK/keyword.png"
-    text "$title" "#D6E4FF" 90 3200 "$font" "$WORK/title.png"
+    text "$keyword" "$KEYWORD_COLOR" 160 3200 "$font" "$WORK/keyword.png"
+    text "$title" "$TITLE_COLOR" 90 3200 "$font" "$WORK/title.png"
     magick "$WORK/icon.png" -resize 360x "$WORK/icon-search.png"
     keyword_height=$(magick identify -format "%h" "$WORK/keyword.png")
     title_height=$(magick identify -format "%h" "$WORK/title.png")

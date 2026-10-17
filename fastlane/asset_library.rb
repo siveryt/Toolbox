@@ -1,10 +1,11 @@
 # Uploads images through the App Store Connect "App Asset Library" API, which fastlane's
-# deliver doesn't support yet: iPhone Duo screenshots and the product page header and
-# search results images (iOS 27). Used by the upload_asset_library lane in the Fastfile.
+# deliver doesn't support: the product page header and search results images (iOS 27)
+# and the screenshots of product page optimization treatments. Used by the
+# upload_asset_library and ppo_create_test lanes in the Fastfile.
 #
 # Flow per image: reserve it (POST appAssetLibraryImages), PUT the bytes to the upload
 # operations, commit (PATCH uploaded: true), wait until processed, then place it on an
-# App Store version localization (POST appAssetLibraryPlacements). Placements can't be
+# App Store version or treatment localization (POST appAssetLibraryPlacements). Placements can't be
 # edited, so existing ones in the same group are deleted first.
 #
 # Placement group IDs are not hard-coded: they are read from the reference data
@@ -29,8 +30,11 @@ class AssetLibrary
     @log = log
   end
 
+  def app_id
+    @app_id ||= first(get("/v1/apps", "filter[bundleId]" => @bundle_id))&.dig("id") or raise "App #{@bundle_id} not found"
+  end
+
   def upload(jobs)
-    app_id = first(get("/v1/apps", "filter[bundleId]" => @bundle_id))&.dig("id") or raise "App #{@bundle_id} not found"
     version = first(get("/v1/apps/#{app_id}/appStoreVersions",
                         "filter[appStoreState]" => "PREPARE_FOR_SUBMISSION", "filter[platform]" => "IOS"))
     raise "No iOS App Store version is in Prepare for Submission. Create the version in App Store Connect first." unless version
@@ -38,62 +42,111 @@ class AssetLibrary
 
     localizations = get_all("/v1/appStoreVersions/#{version['id']}/appStoreVersionLocalizations")
                     .to_h { |l| [l.dig("attributes", "locale"), l["id"]] }
-    library_id = get("/v1/apps/#{app_id}/assetLibrary").dig("data", "id")
-    ref_response = get("/v1/appAssetLibraryRefData")
-    # Kept for debugging: the field names of the reference data are only partly documented
-    File.write(REF_DATA_DUMP, JSON.pretty_generate(ref_response))
-    ref = first(ref_response)["attributes"]
-
     jobs.each do |job|
       localization_id = localizations[job[:locale]]
       unless localization_id
         @log.call("Skipping #{job[:locale]}: the version has no such localization (run upload_metadata first)")
         next
       end
-      next if job[:files].empty?
-
-      size = image_size(job[:files].first)
-      extension = File.extname(job[:files].first).downcase
-      group = placement_group(ref, job[:placement_type], job[:display_class], size, extension)
-      @log.call("#{job[:locale]} #{job[:placement_type]} #{job[:display_class]} #{size.join('x')}: " \
-                "group #{group[:id]}, #{job[:files].count} file(s)")
-      next if @dry_run
-
-      existing = get_all("/v1/appStoreVersionLocalizations/#{localization_id}/placements",
-                         "filter[placementType]" => job[:placement_type], "filter[placementGroup]" => group[:id])
-      existing.each { |placement| request(:delete, "/v1/appAssetLibraryPlacements/#{placement['id']}") }
-
-      placements = job[:files].map do |file|
-        image_id = upload_image(library_id, file, group[:category])
-        placement_body = {
-          data: {
-            type: "appAssetLibraryPlacements",
-            attributes: { placementType: job[:placement_type], placementGroup: group[:id] },
-            relationships: {
-              image: { data: { type: "appAssetLibraryImages", id: image_id } },
-              appStoreVersionLocalization: { data: { type: "appStoreVersionLocalizations", id: localization_id } }
-            }
-          }
-        }
-        request(:post, "/v1/appAssetLibraryPlacements", body: placement_body).dig("data", "id")
-      end
-
-      next if placements.count < 2
-      ordering_body = {
-        data: {
-          type: "appAssetLibraryPlacementOrderingRequests",
-          attributes: { placementGroup: group[:id] },
-          relationships: {
-            orderedPlacements: { data: placements.map { |id| { type: "appAssetLibraryPlacements", id: id } } },
-            appStoreVersionLocalization: { data: { type: "appStoreVersionLocalizations", id: localization_id } }
-          }
-        }
-      }
-      request(:post, "/v1/appAssetLibraryPlacementOrderingRequests", body: ordering_body)
+      target = { relationship: "appStoreVersionLocalization", type: "appStoreVersionLocalizations",
+                 id: localization_id, label: job[:locale] }
+      place(target, job[:placement_type], job[:display_class], job[:files])
     end
   end
 
+  # Uploads files and places them, in this order, on a target such as an App Store version
+  # localization or a product page optimization treatment localization:
+  # { relationship: "appStoreVersionLocalization", type: "appStoreVersionLocalizations", id:, label: }
+  def place(target, placement_type, display_class, files)
+    return if files.empty?
+    size = image_size(files.first)
+    extension = File.extname(files.first).downcase
+    group = placement_group(reference_data, placement_type, display_class, size, extension)
+    @log.call("#{target[:label]} #{placement_type} #{display_class} #{size.join('x')}: " \
+              "group #{group[:id]}, #{files.count} file(s)")
+    return if @dry_run
+
+    existing = get_all("/v1/#{target[:type]}/#{target[:id]}/placements",
+                       "filter[placementType]" => placement_type, "filter[placementGroup]" => group[:id])
+    existing.each { |placement| request(:delete, "/v1/appAssetLibraryPlacements/#{placement['id']}") }
+
+    placements = files.map do |file|
+      image_id = upload_image(library_id, file, group[:category])
+      placement_body = {
+        data: {
+          type: "appAssetLibraryPlacements",
+          attributes: { placementType: placement_type, placementGroup: group[:id] },
+          relationships: {
+            image: { data: { type: "appAssetLibraryImages", id: image_id } },
+            target[:relationship] => { data: { type: target[:type], id: target[:id] } }
+          }
+        }
+      }
+      request(:post, "/v1/appAssetLibraryPlacements", body: placement_body).dig("data", "id")
+    end
+    return if placements.count < 2
+
+    ordering_body = {
+      data: {
+        type: "appAssetLibraryPlacementOrderingRequests",
+        attributes: { placementGroup: group[:id] },
+        relationships: {
+          orderedPlacements: { data: placements.map { |id| { type: "appAssetLibraryPlacements", id: id } } },
+          target[:relationship] => { data: { type: target[:type], id: target[:id] } }
+        }
+      }
+    }
+    request(:post, "/v1/appAssetLibraryPlacementOrderingRequests", body: ordering_body)
+  end
+
+  def first(response)
+    Array(response["data"]).first
+  end
+
+  def get(path, params = {})
+    request(:get, path, params: params)
+  end
+
+  def get_all(path, params = {})
+    results = []
+    response = get(path, params.merge("limit" => 200))
+    loop do
+      results.concat(Array(response["data"]))
+      next_url = response.dig("links", "next") or break
+      response = request(:get, next_url.delete_prefix(API))
+    end
+    results
+  end
+
+  def request(method, path, params: {}, body: nil)
+    uri = URI(path.start_with?("http") ? path : API + path)
+    uri.query = URI.encode_www_form(params) unless params.empty?
+    http_request = Net::HTTPGenericRequest.new(method.to_s.upcase, !body.nil?, true, uri)
+    @token.refresh! if @token.expired?
+    http_request["Authorization"] = "Bearer #{@token.text}"
+    if body
+      http_request["Content-Type"] = "application/json"
+      http_request.body = JSON.generate(body)
+    end
+    response = Net::HTTP.start(uri.host, uri.port, use_ssl: true) { |http| http.request(http_request) }
+    raise "#{method.upcase} #{uri.path} failed: #{response.code} #{response.body}" unless response.is_a?(Net::HTTPSuccess)
+    response.body.to_s.empty? ? {} : JSON.parse(response.body)
+  end
+
   private
+
+  def library_id
+    @library_id ||= get("/v1/apps/#{app_id}/assetLibrary").dig("data", "id")
+  end
+
+  def reference_data
+    @reference_data ||= begin
+      response = get("/v1/appAssetLibraryRefData")
+      # Kept for debugging: the field names of the reference data are only partly documented
+      File.write(REF_DATA_DUMP, JSON.pretty_generate(response))
+      first(response)["attributes"]
+    end
+  end
 
   # The placement group for this placement type (and display class, for screenshots) whose
   # specifications accept an image of exactly this size. Apple documents what the reference
@@ -170,37 +223,4 @@ class AssetLibrary
     `magick identify -format "%w %h" #{file.shellescape}`.split.map(&:to_i)
   end
 
-  def first(response)
-    Array(response["data"]).first
-  end
-
-  def get(path, params = {})
-    request(:get, path, params: params)
-  end
-
-  def get_all(path, params = {})
-    results = []
-    response = get(path, params.merge("limit" => 200))
-    loop do
-      results.concat(Array(response["data"]))
-      next_url = response.dig("links", "next") or break
-      response = request(:get, next_url.delete_prefix(API))
-    end
-    results
-  end
-
-  def request(method, path, params: {}, body: nil)
-    uri = URI(path.start_with?("http") ? path : API + path)
-    uri.query = URI.encode_www_form(params) unless params.empty?
-    http_request = Net::HTTPGenericRequest.new(method.to_s.upcase, !body.nil?, true, uri)
-    @token.refresh! if @token.expired?
-    http_request["Authorization"] = "Bearer #{@token.text}"
-    if body
-      http_request["Content-Type"] = "application/json"
-      http_request.body = JSON.generate(body)
-    end
-    response = Net::HTTP.start(uri.host, uri.port, use_ssl: true) { |http| http.request(http_request) }
-    raise "#{method.upcase} #{uri.path} failed: #{response.code} #{response.body}" unless response.is_a?(Net::HTTPSuccess)
-    response.body.to_s.empty? ? {} : JSON.parse(response.body)
-  end
 end

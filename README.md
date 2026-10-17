@@ -58,10 +58,23 @@ The steps are separate lanes as well (prefix each with `LANG=en_US.UTF-8 bundle 
 | `capture_duo` | iPhone Duo screenshots (outer display), laid out like the framed ones | `fastlane/screenshots-duo/` |
 | `frame` | Bezels, titles and backgrounds (layout: `fastlane/screenshots/Framefile.json`); also builds the product page header and search results images | `*_framed.png`, `fastlane/creative-assets/` |
 | `upload_metadata` | Name, subtitle, keywords, description and What's New from `fastlane/metadata/` | |
-| `upload_screenshots` | iPhone, iPad and Watch screenshots (replaces the existing ones) | |
-| `upload_asset_library` | iPhone Duo screenshots, header and search results images via the App Asset Library API; add `dry_run:true` to only print the plan | |
+| `upload_screenshots` | iPhone, iPad, iPhone Duo and Watch screenshots (replaces the existing ones) | |
+| `upload_asset_library` | Header and search results images via the App Asset Library API; add `dry_run:true` to only print the plan | |
 
 Selecting the build and submitting the version for review stays manual in App Store Connect.
+
+The look (background, headline and title colors) of every screenshot and image comes from `fastlane/screenshots/Framefile.json` and `background.jpg` next to it.
+
+### Product page optimization test
+`fastlane/ppo/variants.json` describes a test of other screenshot backgrounds against the current one; each variant folder holds its `background.jpg`. The test runs against the live product page, so set it up after the release:
+
+```bash
+LANG=en_US.UTF-8 bundle exec fastlane ppo_screenshots
+LANG=en_US.UTF-8 bundle exec fastlane ppo_create_test dry_run:true
+LANG=en_US.UTF-8 bundle exec fastlane ppo_create_test
+```
+
+`ppo_screenshots` frames the existing raw screenshots again in every variant's look (run `screenshots` first). `ppo_create_test` creates the test with one treatment per variant and places the screenshots on them; submit and start it in App Store Connect.
 
 Custom scripts that run between the steps go into [fastlane/hooks/](fastlane/hooks/README.md). The `frame` lane also puts the English iPhone main screen on the website (`web/assets/mainscreen.webp`); commit the updated image to publish it.
 

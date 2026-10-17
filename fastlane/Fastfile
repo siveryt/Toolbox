@@ -8,6 +8,7 @@ SCREENSHOTS = File.join(ROOT, "fastlane", "screenshots")             # iPhone + 
 WATCH_SCREENSHOTS = File.join(ROOT, "fastlane", "screenshots-watch") # raw only, frameit has no watch frames
 DUO_SCREENSHOTS = File.join(ROOT, "fastlane", "screenshots-duo")     # outer display, laid out by a hook (no frameit bezel)
 CREATIVE_ASSETS = File.join(ROOT, "fastlane", "creative-assets")     # header and search results images, built by a hook
+PPO = File.join(ROOT, "fastlane", "ppo")                             # product page optimization test variants (variants.json)
 HOOKS = File.join(ROOT, "fastlane", "hooks")
 WATCH_DEVICES = ["Apple Watch Series 12 (46mm)"]
 # The simulator can't unfold the iPhone Duo, so only its outer display can be captured.
@@ -36,11 +37,11 @@ def install_fonts
 end
 
 # Runs every executable in fastlane/hooks/<stage>.d in name order.
-def run_hooks(stage, screenshots_dir)
+def run_hooks(stage, screenshots_dir, extra_env = {})
   Dir.glob(File.join(HOOKS, "#{stage}.d", "*")).sort.each do |hook|
     next unless File.file?(hook) && File.executable?(hook)
     UI.message("Hook #{stage}: #{File.basename(hook)}")
-    env = { "SCREENSHOTS_DIR" => screenshots_dir, "PROJECT_ROOT" => ROOT, "HOOK_STAGE" => stage }
+    env = { "SCREENSHOTS_DIR" => screenshots_dir, "PROJECT_ROOT" => ROOT, "HOOK_STAGE" => stage }.merge(extra_env)
     UI.user_error!("Hook #{hook} failed") unless system(env, hook, chdir: ROOT)
   end
 end
@@ -93,6 +94,57 @@ platform :ios do
     run_hooks("post_frame", SCREENSHOTS)
   end
 
+  desc "Frame the screenshots again with the background and colors of every product page optimization variant in fastlane/ppo (run `screenshots` first)"
+  lane :ppo_screenshots do
+    install_fonts
+    config = JSON.parse(File.read(File.join(PPO, "variants.json")))
+    config["variants"].each do |variant, settings|
+      UI.header("Variant #{variant}")
+      out = File.join(PPO, variant, "screenshots")
+      duo_out = File.join(PPO, variant, "screenshots-duo")
+      FileUtils.rm_rf([out, duo_out])
+
+      # The raw iPhone and iPad screenshots, captions and fonts, framed with this variant's look
+      Dir.glob(File.join(SCREENSHOTS, "*")).select { |dir| File.directory?(dir) }.each do |dir|
+        target = File.join(out, File.basename(dir))
+        FileUtils.mkdir_p(target)
+        Dir.glob(File.join(dir, "*")).reject { |file| file.end_with?("_framed.png") }.each { |file| FileUtils.cp(file, target) }
+      end
+      FileUtils.cp(File.join(PPO, variant, "background.jpg"), File.join(out, "background.jpg"))
+      framefile = JSON.parse(File.read(File.join(SCREENSHOTS, "Framefile.json")))
+      framefile["default"]["keyword"]["color"] = settings["keyword_color"]
+      framefile["default"]["title"]["color"] = settings["title_color"]
+      File.write(File.join(out, "Framefile.json"), JSON.pretty_generate(framefile))
+      frameit(path: out)
+
+      # The iPhone Duo screenshots, laid out with the same Framefile
+      Dir.glob(File.join(DUO_SCREENSHOTS, "*")).select { |dir| File.directory?(dir) }.each do |dir|
+        target = File.join(duo_out, File.basename(dir))
+        FileUtils.mkdir_p(target)
+        Dir.glob(File.join(dir, "*.png")).reject { |file| file.end_with?("_framed.png") }.each { |file| FileUtils.cp(file, target) }
+      end
+      run_hooks("post_capture_duo", duo_out, "FRAMEFILE" => File.join(out, "Framefile.json"))
+    end
+  end
+
+  desc "Set up the product page optimization test from fastlane/ppo/variants.json with the ppo_screenshots images; doesn't submit or start it (needs ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_PATH; dry_run:true only prints the plan)"
+  lane :ppo_create_test do |options|
+    require_relative "ppo_experiment"
+    token = Spaceship::ConnectAPI::Token.create(
+      key_id: ENV.fetch("ASC_KEY_ID"),
+      issuer_id: ENV.fetch("ASC_ISSUER_ID"),
+      filepath: ENV.fetch("ASC_KEY_PATH")
+    )
+    log = ->(message) { UI.message(message) }
+    library = AssetLibrary.new(token: token, bundle_id: "de.sivery.toolbox", dry_run: options[:dry_run], log: log)
+    PPOExperiment.new(
+      library: library,
+      config: JSON.parse(File.read(File.join(PPO, "variants.json"))),
+      variants_dir: PPO,
+      log: log
+    ).create(dry_run: options[:dry_run])
+  end
+
   desc "Upload the App Store texts in fastlane/metadata to App Store Connect (needs ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_PATH)"
   lane :upload_metadata do
     api_key = app_store_connect_api_key(
@@ -115,7 +167,7 @@ platform :ios do
     )
   end
 
-  desc "Upload the iPhone Duo screenshots and the header and search results images through the App Asset Library API, which deliver doesn't support yet (needs ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_PATH; dry_run:true only prints the plan)"
+  desc "Upload the product page header and search results images through the App Asset Library API, which deliver doesn't support (needs ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_PATH; dry_run:true only prints the plan)"
   lane :upload_asset_library do |options|
     require_relative "asset_library"
     token = Spaceship::ConnectAPI::Token.create(
@@ -124,10 +176,6 @@ platform :ios do
       filepath: ENV.fetch("ASC_KEY_PATH")
     )
     jobs = []
-    Dir.glob(File.join(DUO_SCREENSHOTS, "*")).select { |dir| File.directory?(dir) }.sort.each do |dir|
-      jobs << { locale: File.basename(dir), placement_type: "APP_SCREENSHOT", display_class: "IPHONE_DUO",
-                files: Dir.glob(File.join(dir, "*_framed.png")).sort }
-    end
     Dir.glob(File.join(CREATIVE_ASSETS, "*")).select { |dir| File.directory?(dir) }.sort.each do |dir|
       locale = File.basename(dir)
       jobs << { locale: locale, placement_type: "PRODUCT_PAGE_HEADER_ASSET", display_class: nil, files: [File.join(dir, "header.png")] }
@@ -138,10 +186,11 @@ platform :ios do
                      log: ->(message) { UI.message(message) }).upload(jobs)
   end
 
-  desc "Upload the framed iPhone/iPad and the Watch screenshots to App Store Connect (needs ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_PATH)"
+  desc "Upload the framed iPhone, iPad and iPhone Duo and the Watch screenshots to App Store Connect (needs ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_PATH)"
   lane :upload_screenshots do
     FileUtils.rm_rf(UPLOAD)
-    [[SCREENSHOTS, "*_framed.png"], [WATCH_SCREENSHOTS, "*.png"]].each do |dir, pattern|
+    # deliver sorts them into display types by pixel size (the iPhone Duo since fastlane 2.241)
+    [[SCREENSHOTS, "*_framed.png"], [WATCH_SCREENSHOTS, "*.png"], [DUO_SCREENSHOTS, "*_framed.png"]].each do |dir, pattern|
       Dir.glob(File.join(dir, "*", pattern)).each do |file|
         language = File.join(UPLOAD, File.basename(File.dirname(file)))
         FileUtils.mkdir_p(language)

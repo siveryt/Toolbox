@@ -72,3 +72,5 @@ fastlane/upload/
 fastlane/.env
 *.p8
 fastlane/asset-library-refdata.json
+fastlane/ppo/*/screenshots/
+fastlane/ppo/*/screenshots-duo/

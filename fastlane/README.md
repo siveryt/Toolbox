@@ -63,6 +63,22 @@ Capture iPhone Duo screenshots (outer display) and lay them out like the framed 
 
 Add bezels, titles and backgrounds to the iPhone and iPad screenshots (layout: screenshots/Framefile.json)
 
+### ios ppo_screenshots
+
+```sh
+[bundle exec] fastlane ios ppo_screenshots
+```
+
+Frame the screenshots again with the background and colors of every product page optimization variant in fastlane/ppo (run `screenshots` first)
+
+### ios ppo_create_test
+
+```sh
+[bundle exec] fastlane ios ppo_create_test
+```
+
+Set up the product page optimization test from fastlane/ppo/variants.json with the ppo_screenshots images; doesn't submit or start it (needs ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_PATH; dry_run:true only prints the plan)
+
 ### ios upload_metadata
 
 ```sh
@@ -77,7 +93,7 @@ Upload the App Store texts in fastlane/metadata to App Store Connect (needs ASC_
 [bundle exec] fastlane ios upload_asset_library
 ```
 
-Upload the iPhone Duo screenshots and the header and search results images through the App Asset Library API, which deliver doesn't support yet (needs ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_PATH; dry_run:true only prints the plan)
+Upload the product page header and search results images through the App Asset Library API, which deliver doesn't support (needs ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_PATH; dry_run:true only prints the plan)
 
 ### ios upload_screenshots
 
@@ -85,7 +101,7 @@ Upload the iPhone Duo screenshots and the header and search results images throu
 [bundle exec] fastlane ios upload_screenshots
 ```
 
-Upload the framed iPhone/iPad and the Watch screenshots to App Store Connect (needs ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_PATH)
+Upload the framed iPhone, iPad and iPhone Duo and the Watch screenshots to App Store Connect (needs ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_PATH)
 
 ----
 

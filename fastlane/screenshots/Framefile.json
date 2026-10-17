@@ -27,7 +27,7 @@
           "font": "./fonts/headline.ttf"
         }
       ],
-      "color": "#D6E4FF"
+      "color": "#FFE0DB"
     },
     "background": "./background.jpg",
     "padding": 60,
