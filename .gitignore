@@ -67,3 +67,7 @@ fastlane/screenshots-watch/
 fastlane/screenshots-duo/
 fastlane/creative-assets/
 fastlane/upload/
+
+# Local App Store Connect API key settings for fastlane (see CLAUDE.md)
+fastlane/.env
+*.p8
