@@ -45,7 +45,8 @@ extension App: SwiftUI.App {
                      )
                 )
                 .environmentObject(SelectedItemIndex())
-                
+                .task { IconNames.migrateRemovedIcon() }
+
                 .modelContainer(for: [
                                     WOLDevice.self,
                                 ],

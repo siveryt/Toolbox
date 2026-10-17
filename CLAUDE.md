@@ -56,6 +56,10 @@ Most simple tools persist their own transient state directly with `@AppStorage` 
 
 The watchOS app ([Toolbox WatchOS Watch App/](Toolbox WatchOS Watch App/)) and the widget ([diceWidget/](diceWidget/)) are separate targets with their own `ContentView`/entry points. Some tools (Dice, Counter, Random Number) exist as parallel, simpler reimplementations there rather than shared code — changing the iOS version does not automatically update the watch version.
 
+### App icons
+
+The icons are Icon Composer files in [Toolbox/Icons/](Toolbox/Icons/). `Toolbox.icon` is the primary icon (iOS Release and watchOS; iOS Debug keeps `AppIcon_Debug`), the colored variants are alternate icons listed in `ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES` and in `IconNames.iconNames`. The picker in Settings shows PNG previews from `Assets.xcassets/Icon Previews`; after adding or editing an icon, run `Toolbox/Icons/export-previews.sh` to regenerate them.
+
 ## Localization
 
 All user-facing strings must be wrapped in `NSLocalizedString(_, comment:)`. Translations live in the String Catalog [Localizable.xcstrings](Localizable.xcstrings) (source language English; currently English + German). Menu titles use `comment: "Menu item"`; WhatsNewKit strings use `comment: "WhatsNewKit item"`. Adding a new string means adding it to the catalog for existing languages.

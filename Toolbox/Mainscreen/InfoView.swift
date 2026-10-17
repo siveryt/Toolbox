@@ -219,13 +219,11 @@ struct appIcon: View {
                 
                 ForEach(0 ..< iconSettings.iconNames.count, id: \.self){i in
                     
-                    Image(uiImage: i == 0 ? UIImage(named: "ToolboxRAW")! : UIImage(named: self.iconSettings.iconNames[i] ?? "ToolboxRAW") ?? UIImage())
+                    Image(self.iconSettings.previewName(i))
                         .resizable()
                         .scaledToFit()
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                         .aspectRatio(CGSize(width: 100, height: 100), contentMode: .fit)
-                        .cornerRadius(20)
-                        .clipped()
                         .onTapGesture(){
                             
                             if iconSettings.currentIndex != i {

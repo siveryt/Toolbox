@@ -9,37 +9,36 @@ import Foundation
 import UIKit
 
 class IconNames: ObservableObject {
-    var iconNames: [String?] = [nil]
+    /// nil is the primary icon (Toolbox.icon), the others are the alternate .icon files
+    /// listed in ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES.
+    let iconNames: [String?] = [nil, "Toolbox Blue", "Toolbox Green", "Toolbox Lime", "Toolbox Pink", "Toolbox Purple"]
     //exact index we're at inside our icon names
     @Published var currentIndex = 0
-    
+
+    /// Alternate icons of the old PNG icon set and the new icon that replaces them.
+    private static let replacedIcons: [String: String?] = [
+        "blue": "Toolbox Blue",
+        "green": "Toolbox Green",
+        "pink": "Toolbox Pink",
+        "purple": "Toolbox Purple",
+    ]
+
     init() {
-        getAlternateIconNames()
-        print(iconNames)
-        iconNames = [nil, Optional("whitegradient_red"), Optional("whiteOnly"), Optional("Blueish_red"), Optional("Blueish_white"), Optional("black"), Optional("blue"), Optional("pink"), Optional("green"), Optional("purple") ]
         if let currentIcon = UIApplication.shared.alternateIconName{
             self.currentIndex = iconNames.firstIndex(of: currentIcon) ?? 0
         }
     }
-    
-    func getAlternateIconNames(){
-        //looking into our info.plist file to locate the specific Bundle with our icons
-        if let icons = Bundle.main.object(forInfoDictionaryKey: "CFBundleIcons") as? [String: Any],
-           let alternateIcons = icons["CFBundleAlternateIcons"] as? [String: Any]
-            
-        {
-            for (_, value) in alternateIcons{
-                print(value)
-                //Accessing the name of icon list inside the dictionary
-                guard let iconList = value as? Dictionary<String,Any> else{return}
-                //Accessing the name of icon files
-                guard let iconFiles = iconList["CFBundleIconFiles"] as? [String]
-                else{return}
-                //Accessing the name of the icon
-                guard let icon = iconFiles.first else{return}
-                iconNames.append(icon)
-                
-            }
-        }
+
+    /// Image shown in the icon picker, rendered from the .icon file by export-previews.sh.
+    func previewName(_ index: Int) -> String {
+        "Preview " + (iconNames[index] ?? "Toolbox")
+    }
+
+    /// Moves users who picked one of the removed PNG icons to its new counterpart, or to the primary icon.
+    @MainActor
+    static func migrateRemovedIcon() {
+        guard let currentIcon = UIApplication.shared.alternateIconName,
+              !IconNames().iconNames.contains(currentIcon) else { return }
+        UIApplication.shared.setAlternateIconName(replacedIcons[currentIcon] ?? nil)
     }
 }

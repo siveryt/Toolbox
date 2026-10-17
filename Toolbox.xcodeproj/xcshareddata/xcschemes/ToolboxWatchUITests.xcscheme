@@ -65,7 +65,6 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5EE65DEE2A8575FE0061120B"
             BuildableName = "Toolbox WatchOS Watch App.app"
-            BlueprintName = "Toolbox WatchOS Watch App"
             ReferencedContainer = "container:Toolbox.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -82,7 +81,6 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5EE65DEE2A8575FE0061120B"
             BuildableName = "Toolbox WatchOS Watch App.app"
-            BlueprintName = "Toolbox WatchOS Watch App"
             ReferencedContainer = "container:Toolbox.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
