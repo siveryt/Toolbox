@@ -42,7 +42,8 @@ struct FontInstall: View {
                     }
                 }
 
-                Text("Font selected: " + (fontName ?? "None"))
+                Text(String(format: NSLocalizedString("Font selected: %@", comment: "Font Installer: name of the chosen font file"),
+                            fontName ?? NSLocalizedString("None", comment: "Font Installer: shown when no font is chosen yet")))
 
                 if !fontValidationMessage.isEmpty {
                     Text(fontValidationMessage)

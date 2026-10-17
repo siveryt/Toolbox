@@ -81,8 +81,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "Toolbox needs access to your local network to use the LAN Scanner"
+            "state" : "translated",
+            "value" : "Toolbox benötigt Zugriff auf dein lokales Netzwerk, um den LAN Scanner zu nutzen"
           }
         },
         "en" : {

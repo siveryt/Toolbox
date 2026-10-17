@@ -28,7 +28,7 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "%1$@: UTC%2$@"
           }
         },
@@ -45,7 +45,7 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "%lld"
           }
         }
@@ -102,6 +102,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Änderungen verwerfen"
+          }
+        }
+      }
+    },
+    "Font selected: %@" : {
+      "comment" : "Font Installer: name of the chosen font file",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ausgewählter Font: %@"
           }
         }
       }
@@ -452,8 +463,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "• Enter your device passcode if requested"
+            "state" : "translated",
+            "value" : "• Gib deinen Gerätecode ein, wenn du danach gefragt wirst"
           }
         }
       }
@@ -463,8 +474,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "• Font collections (.ttc/.otc) are not supported by iOS"
+            "state" : "translated",
+            "value" : "• Font-Sammlungen (.ttc/.otc) werden von iOS nicht unterstützt"
           }
         }
       }
@@ -474,8 +485,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "• Not all apps support custom fonts"
+            "state" : "translated",
+            "value" : "• Nicht alle Apps unterstützen eigene Fonts"
           }
         }
       }
@@ -485,8 +496,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "• Some apps may require a restart to recognize new fonts"
+            "state" : "translated",
+            "value" : "• Manche Apps erkennen neue Fonts erst nach einem Neustart"
           }
         }
       }
@@ -496,8 +507,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "• Tap 'Install' again to confirm"
+            "state" : "translated",
+            "value" : "• Tippe zur Bestätigung erneut auf „Installieren“"
           }
         }
       }
@@ -507,8 +518,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "• Tap 'Install' when prompted"
+            "state" : "translated",
+            "value" : "• Tippe auf „Installieren“, wenn du dazu aufgefordert wirst"
           }
         }
       }
@@ -518,8 +529,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "• The configuration profile should automatically open in Safari"
+            "state" : "translated",
+            "value" : "• Das Konfigurationsprofil sollte sich automatisch in Safari öffnen"
           }
         }
       }
@@ -529,8 +540,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "• To remove a font, go to Settings → General → Fonts and swipe left on the font name"
+            "state" : "translated",
+            "value" : "• Um einen Font zu entfernen, öffne Einstellungen → Allgemein → Schriften und wische auf seinem Namen nach links"
           }
         }
       }
@@ -551,8 +562,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "✓ OpenType (.otf) - Recommended"
+            "state" : "translated",
+            "value" : "✓ OpenType (.otf) – empfohlen"
           }
         }
       }
@@ -562,8 +573,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "✓ TrueType (.ttf) - Recommended"
+            "state" : "translated",
+            "value" : "✓ TrueType (.ttf) – empfohlen"
           }
         }
       }
@@ -573,8 +584,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "✗ OpenType Collection (.otc) - Not supported"
+            "state" : "translated",
+            "value" : "✗ OpenType Collection (.otc) – nicht unterstützt"
           }
         }
       }
@@ -584,8 +595,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "✗ TrueType Collection (.ttc) - Not supported"
+            "state" : "translated",
+            "value" : "✗ TrueType Collection (.ttc) – nicht unterstützt"
           }
         }
       }
@@ -617,8 +628,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "1. Go to Settings → General → Fonts"
+            "state" : "translated",
+            "value" : "1. Öffne Einstellungen → Allgemein → Schriften"
           }
         }
       }
@@ -628,8 +639,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "1. Open the Settings app"
+            "state" : "translated",
+            "value" : "1. Öffne die Einstellungen-App"
           }
         }
       }
@@ -639,8 +650,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "2. Navigate to: General → VPN & Device Management"
+            "state" : "translated",
+            "value" : "2. Gehe zu: Allgemein → VPN und Geräteverwaltung"
           }
         }
       }
@@ -650,8 +661,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "2. Your installed font should appear in the list"
+            "state" : "translated",
+            "value" : "2. Dein installierter Font sollte in der Liste erscheinen"
           }
         }
       }
@@ -661,8 +672,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "3. The font is now available in compatible apps"
+            "state" : "translated",
+            "value" : "3. Der Font kann jetzt in unterstützten Apps verwendet werden"
           }
         }
       }
@@ -672,8 +683,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "3. Under 'Downloaded Profile', find your font profile"
+            "state" : "translated",
+            "value" : "3. Suche unter „Geladenes Profil“ dein Font-Profil"
           }
         }
       }
@@ -694,8 +705,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "4. Tap on the profile and then tap 'Install'"
+            "state" : "translated",
+            "value" : "4. Tippe auf das Profil und dann auf „Installieren“"
           }
         }
       }
@@ -705,8 +716,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "5. Enter your passcode when prompted"
+            "state" : "translated",
+            "value" : "5. Gib deinen Code ein, wenn du danach gefragt wirst"
           }
         }
       }
@@ -727,8 +738,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "6. Tap 'Install' to confirm"
+            "state" : "translated",
+            "value" : "6. Tippe zur Bestätigung auf „Installieren“"
           }
         }
       }
@@ -826,7 +837,7 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "A"
           }
         }
@@ -870,8 +881,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "After downloading the configuration profile, follow these steps to complete the font installation:"
+            "state" : "translated",
+            "value" : "Nachdem du das Konfigurationsprofil geladen hast, schließe die Installation mit diesen Schritten ab:"
           }
         }
       }
@@ -1101,8 +1112,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "Center on my location"
+            "state" : "translated",
+            "value" : "Auf meinen Standort zentrieren"
           }
         }
       }
@@ -1244,8 +1255,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "Copy"
+            "state" : "translated",
+            "value" : "Kopieren"
           }
         }
       }
@@ -1673,8 +1684,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "Font Collection Not Supported"
+            "state" : "translated",
+            "value" : "Font-Sammlung nicht unterstützt"
           }
         }
       }
@@ -1695,8 +1706,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "Font Selection"
+            "state" : "translated",
+            "value" : "Font-Auswahl"
           }
         }
       }
@@ -1827,8 +1838,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "How to Install Fonts on iOS"
+            "state" : "translated",
+            "value" : "So installierst du Fonts auf iOS"
           }
         }
       }
@@ -1838,8 +1849,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "Important Notes"
+            "state" : "translated",
+            "value" : "Wichtige Hinweise"
           }
         }
       }
@@ -1882,7 +1893,7 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Installation"
           }
         }
@@ -1893,8 +1904,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "Installation Guide"
+            "state" : "translated",
+            "value" : "Installationsanleitung"
           }
         }
       }
@@ -1904,8 +1915,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "iOS does not support font collections (.ttc/.otc files). Please use individual font files (.ttf/.otf) instead. Font collections contain multiple fonts in one file, but iOS can only install single fonts through configuration profiles."
+            "state" : "translated",
+            "value" : "iOS unterstützt keine Font-Sammlungen (.ttc/.otc). Verwende stattdessen einzelne Font-Dateien (.ttf/.otf). Eine Font-Sammlung enthält mehrere Fonts in einer Datei, iOS kann über Konfigurationsprofile aber nur einzelne Fonts installieren."
           }
         }
       }
@@ -2058,8 +2069,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "Location Access Required"
+            "state" : "translated",
+            "value" : "Standortzugriff erforderlich"
           }
         }
       }
@@ -2102,7 +2113,7 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Maidenhead"
           }
         }
@@ -2212,8 +2223,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "Move the map and tap to set the start point"
+            "state" : "translated",
+            "value" : "Bewege die Karte und tippe, um den Startpunkt zu setzen"
           }
         }
       }
@@ -2274,7 +2285,7 @@
       }
     },
     "None" : {
-      "comment" : "Ping tool: shown instead of a time when there is no result",
+      "comment" : "Ping tool: shown instead of a time when there is no result\nFont Installer: shown when no font is chosen yet",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2333,8 +2344,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "Note: Font collections contain multiple fonts in one file, but iOS can only install individual fonts through configuration profiles."
+            "state" : "translated",
+            "value" : "Hinweis: Eine Font-Sammlung enthält mehrere Fonts in einer Datei, iOS kann über Konfigurationsprofile aber nur einzelne Fonts installieren."
           }
         }
       }
@@ -2366,7 +2377,7 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "OK"
           }
         }
@@ -2487,8 +2498,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "Precise Location Required"
+            "state" : "translated",
+            "value" : "Genauer Standort erforderlich"
           }
         }
       }
@@ -2619,8 +2630,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "Request Precise Location"
+            "state" : "translated",
+            "value" : "Genauen Standort anfordern"
           }
         }
       }
@@ -2785,7 +2796,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wähle eine Font aus"
+            "value" : "Font-Datei auswählen"
           }
         }
       }
@@ -2850,8 +2861,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "Show Installation Instructions"
+            "state" : "translated",
+            "value" : "Installationsanleitung anzeigen"
           }
         }
       }
@@ -2894,8 +2905,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "Speed tracking requires precise location. Please enable precise location in Settings."
+            "state" : "translated",
+            "value" : "Für die Geschwindigkeitsmessung wird der genaue Standort benötigt. Aktiviere „Genauer Standort“ in den Einstellungen."
           }
         }
       }
@@ -2949,8 +2960,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "Step 1: Install the Profile"
+            "state" : "translated",
+            "value" : "Schritt 1: Profil installieren"
           }
         }
       }
@@ -2960,8 +2971,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "Step 2: Enable the Profile in Settings"
+            "state" : "translated",
+            "value" : "Schritt 2: Profil in den Einstellungen aktivieren"
           }
         }
       }
@@ -2971,8 +2982,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "Step 3: Verify Installation"
+            "state" : "translated",
+            "value" : "Schritt 3: Installation prüfen"
           }
         }
       }
@@ -3026,8 +3037,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "Supported Font Formats"
+            "state" : "translated",
+            "value" : "Unterstützte Font-Formate"
           }
         }
       }
