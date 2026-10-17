@@ -1,0 +1,27 @@
+Toolbox bundelt de kleine tools die je af en toe nodig hebt in één overzichtelijke app – zodat je niet voor elk klusje een aparte app nodig hebt.
+
+TOOLS
+• Dobbelstenen en Willekeurige letter – schud om te gooien, houd een dobbelsteen ingedrukt om hem vast te zetten
+• Willekeurig getal, Teller en Live klok
+• Datumverschil – tel de dagen tussen twee datums
+• Romeinse cijfers – omrekenen in beide richtingen
+• QR-codegenerator – voor links, tekst, wifi en e-mail
+• Streepjescodescanner – met een overzicht van je gescande codes
+• Kleurkiezer – met HEX- en RGB-codes
+• BMI-calculator
+• Netwerktools: IP-checker, Domeinresolver, Ping, LAN-scanner en Wake On Lan
+• Locatie: Coördinaten (decimaal, DMS en Maidenhead), Snelheid en Afstand
+• Geluid: Metronoom en Decibelmeter
+• Pulserende zaklamp, Lichtkrant en Lettertype-installatie
+
+HELEMAAL VAN JOU
+Verberg de tools die je niet gebruikt, zet je favorieten bovenaan en kies een van tien app-symbolen, waaronder een Pride-symbool.
+
+OOK OP APPLE WATCH
+Dobbelstenen, Teller en Willekeurig getal heb je om je pols, en met een widget gooi je de dobbelstenen direct op je beginscherm.
+
+PRIVACY VOOROP
+Geen account, geen advertenties, geen tracking. Toolbox bewaart je gegevens op je apparaat.
+
+OPEN SOURCE
+Toolbox is open source. Help met vertalen of voeg je eigen tool toe: toolbox.sivery.de/contribution.html

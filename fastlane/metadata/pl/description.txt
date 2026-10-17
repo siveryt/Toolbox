@@ -1,0 +1,27 @@
+Toolbox zbiera małe narzędzia, których potrzebujesz od czasu do czasu, w jednej uporządkowanej aplikacji – nie musisz instalować osobnej aplikacji do każdej drobnostki.
+
+NARZĘDZIA
+• Kości i Losowa litera – potrząśnij, aby rzucić, przytrzymaj kość, aby ją zatrzymać
+• Losowa liczba, Licznik i Zegar na żywo
+• Różnica dat – policz dni między dwiema datami
+• Liczby rzymskie – przeliczanie w obie strony
+• Generator kodów QR – dla linków, tekstu, Wi-Fi i e-maili
+• Skaner kodów kreskowych – z historią zeskanowanych kodów
+• Próbnik kolorów – z kodami HEX i RGB
+• Kalkulator BMI
+• Narzędzia sieciowe: IP-Checker, Resolver domen, Ping, LAN Scanner i Wake On Lan
+• Lokalizacja: Współrzędne (dziesiętne, DMS i Maidenhead), Prędkość i Odległość
+• Dźwięk: Metronom i Miernik decybeli
+• Pulsująca latarka, Przewijany tekst i Instalator czcionek
+
+DOPASUJ JĄ DO SIEBIE
+Ukryj narzędzia, z których nie korzystasz, przenieś ulubione na górę i wybierz jedną z dziesięciu ikon aplikacji, w tym ikonę Pride.
+
+RÓWNIEŻ NA APPLE WATCH
+Kości, Licznik i Losowa liczba są zawsze na Twoim nadgarstku, a widżet rzuca kośćmi prosto na ekranie początkowym.
+
+PRYWATNOŚĆ W STANDARDZIE
+Bez konta, bez reklam, bez śledzenia. Toolbox przechowuje Twoje dane na Twoim urządzeniu.
+
+OPEN SOURCE
+Toolbox to projekt open source. Pomóż w tłumaczeniu lub dodaj własne narzędzie: toolbox.sivery.de/contribution.html

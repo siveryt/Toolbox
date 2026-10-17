@@ -1,0 +1,27 @@
+Toolbox reúne en una sola app ordenada esas pequeñas herramientas que necesitas de vez en cuando, para que no tengas que instalar una app distinta para cada tarea.
+
+HERRAMIENTAS
+• Dados y Letra aleatoria: agita para tirar y mantén pulsado un dado para bloquearlo
+• Número aleatorio, Contador y Reloj en directo
+• Diferencia de fechas: cuenta los días entre dos fechas
+• Números romanos: convierte en ambos sentidos
+• Generador de códigos QR: para enlaces, texto, Wi-Fi y correo
+• Escáner de códigos de barras: con historial de los códigos escaneados
+• Selector de color: con códigos HEX y RGB
+• Calculadora de IMC
+• Herramientas de red: Comprobador de IP, Resolver dominio, Ping, Escáner de LAN y Wake On Lan
+• Ubicación: Coordenadas (decimales, GMS y Maidenhead), Velocidad y Distancia
+• Sonido: Metrónomo y Decibelímetro
+• Linterna estroboscópica, Texto en movimiento e Instalador de tipos de letra
+
+A TU MANERA
+Oculta las herramientas que no usas, coloca tus favoritas arriba y elige uno de los diez iconos de app, entre ellos un icono Pride.
+
+TAMBIÉN EN EL APPLE WATCH
+Lleva Dados, Contador y Número aleatorio en la muñeca, y tira los dados directamente en tu pantalla de inicio con un widget.
+
+PRIVACIDAD DE SERIE
+Sin cuenta, sin anuncios, sin rastreo. Toolbox guarda tus datos en tu dispositivo.
+
+CÓDIGO ABIERTO
+Toolbox es de código abierto. Ayuda a traducirla o añade tu propia herramienta: toolbox.sivery.de/contribution.html

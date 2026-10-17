@@ -17,7 +17,8 @@ This is a pure Xcode project (`Toolbox.xcodeproj`), no CocoaPods/Fastlane. Depen
   xcodebuild -project Toolbox.xcodeproj -scheme Toolbox -destination 'generic/platform=iOS' build
   ```
 - There is no functional test suite. `ToolboxUITests/` and `ToolboxWatchUITests/` only drive the apps for App Store screenshots — verify changes by running the app.
-- Screenshots: `bundle exec fastlane screenshots` (lanes `capture`, `capture_watch`, `frame` in [fastlane/Fastfile](fastlane/Fastfile)). snapshot captures, frameit adds bezels/titles/background per [Framefile.json](fastlane/screenshots/Framefile.json); custom scripts go in [fastlane/hooks/](fastlane/hooks/README.md). The UI tests find menu rows by the accessibility identifier `tool.<icon>`.
+- Screenshots: `bundle exec fastlane screenshots` (lanes `capture`, `capture_watch`, `frame` in [fastlane/Fastfile](fastlane/Fastfile)). snapshot captures, frameit adds bezels/titles/background per [Framefile.json](fastlane/screenshots/Framefile.json); custom scripts go in [fastlane/hooks/](fastlane/hooks/README.md). The UI tests find menu rows by the accessibility identifier `tool.<icon>`. Languages are in the Snapfile; every language folder needs `title.strings` and `keyword.strings`, and Polish uses its own font (see `FONTS` in the Fastfile) because Arial Rounded lacks its letters. Run fastlane with `LANG=en_US.UTF-8`.
+- App Store texts: [fastlane/metadata/](fastlane/metadata/) holds name, subtitle, keywords, description and release notes per App Store locale; `bundle exec fastlane upload_metadata` sends them to App Store Connect (en-US and de-DE have no `name.txt`, so their store name stays as it is).
 - `Buildnumber.xcconfig` (holds `BUILD_NUMBER` / `LAST_UPDATE`) and the `AppStore/` directory are git-ignored; `CURRENT_PROJECT_VERSION` reads `$(BUILD_NUMBER)` from that file, so a clean checkout may need it present to build the Release config.
 
 ## Architecture

@@ -1,0 +1,6 @@
+Toolbox 1.4 is een grote update:
+• Een nieuwe look voor iOS 26 met Liquid Glass en een fris app-symbool
+• Tien app-symbolen om uit te kiezen, waaronder een Pride-symbool
+• Nieuwe tools: Afstand, Metronoom, Decibelmeter, Pulserende zaklamp, Lettertype-installatie, Lichtkrant en Wake On Lan
+• Verberg de tools die je niet gebruikt en zet je favorieten bovenaan
+• Nu in het Engels, Duits, Spaans, Frans, Nederlands, Pools, Portugees en Zweeds

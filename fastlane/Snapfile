@@ -9,9 +9,16 @@ devices([
   "iPad Air 13-inch (M4)"  # 2048x2732, App Store 13" slot (framed as iPad Pro 12.9")
 ])
 
+# Folder names double as App Store Connect locales for upload_screenshots.
 languages([
   "en-US",
-  "de-DE"
+  "de-DE",
+  "es-ES",
+  "fr-FR",
+  "nl-NL",
+  "pl",
+  "pt-BR",
+  "sv"
 ])
 
 project("./Toolbox.xcodeproj")

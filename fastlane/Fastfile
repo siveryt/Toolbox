@@ -11,8 +11,12 @@ WATCH_DEVICES = ["Apple Watch Series 12 (46mm)"]
 
 # Font referenced by Framefile.json. frameit only accepts paths relative to the
 # Framefile, so the system font is copied in unless you put your own file there.
+# Arial Rounded has no Polish letters (ą, ł, ś, …), so Polish uses SF Pro Rounded
+# (Framefile.json picks it for the "pl" folder). Get it from
+# https://developer.apple.com/fonts/ if /Library/Fonts doesn't have it.
 FONTS = {
-  "headline.ttf" => "/System/Library/Fonts/Supplemental/Arial Rounded Bold.ttf"
+  "headline.ttf" => "/System/Library/Fonts/Supplemental/Arial Rounded Bold.ttf",
+  "headline-extended.otf" => "/Library/Fonts/SF-Pro-Rounded-Bold.otf"
 }
 UPLOAD = File.join(ROOT, "fastlane", "upload") # staging folder for upload_screenshots
 
@@ -56,11 +60,34 @@ platform :ios do
     FONTS.each do |name, source|
       target = File.join(SCREENSHOTS, "fonts", name)
       next if File.exist?(target)
+      UI.user_error!("Font #{source} is missing, see FONTS in the Fastfile") unless File.exist?(source)
       FileUtils.mkdir_p(File.dirname(target))
       FileUtils.cp(source, target)
     end
     frameit(path: SCREENSHOTS)
     run_hooks("post_frame", SCREENSHOTS)
+  end
+
+  desc "Upload the App Store texts in fastlane/metadata to App Store Connect (needs ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_PATH)"
+  lane :upload_metadata do
+    api_key = app_store_connect_api_key(
+      key_id: ENV.fetch("ASC_KEY_ID"),
+      issuer_id: ENV.fetch("ASC_ISSUER_ID"),
+      key_filepath: ENV.fetch("ASC_KEY_PATH")
+    )
+    # Updates the editable app version: name, subtitle, description, keywords and
+    # What's New of every language folder, adding languages that don't exist yet.
+    # A missing file (e.g. name.txt for en-US) leaves that field as it is.
+    upload_to_app_store(
+      api_key: api_key,
+      app_identifier: "de.sivery.toolbox",
+      metadata_path: File.join(ROOT, "fastlane", "metadata"),
+      skip_binary_upload: true,
+      skip_screenshots: true,
+      skip_app_version_update: true,
+      run_precheck_before_submit: false,
+      force: true
+    )
   end
 
   desc "Upload the framed iPhone/iPad and the Watch screenshots to App Store Connect (needs ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_PATH)"

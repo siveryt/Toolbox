@@ -47,6 +47,14 @@ Capture Apple Watch screenshots (raw, no bezel)
 
 Add bezels, titles and backgrounds to the iPhone and iPad screenshots (layout: screenshots/Framefile.json)
 
+### ios upload_metadata
+
+```sh
+[bundle exec] fastlane ios upload_metadata
+```
+
+Upload the App Store texts in fastlane/metadata to App Store Connect (needs ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_PATH)
+
 ### ios upload_screenshots
 
 ```sh

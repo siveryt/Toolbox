@@ -1,0 +1,27 @@
+Toolbox bündelt die kleinen Werkzeuge, die du ab und zu brauchst, in einer aufgeräumten App – so brauchst du nicht für jede Kleinigkeit eine eigene App.
+
+TOOLS
+• Würfel und Zufälliger Buchstabe – schütteln zum Würfeln, einen Würfel gedrückt halten, um ihn festzuhalten
+• Zufällige Zahl, Zähler und Live Uhr
+• Datumsunterschied – zählt die Tage zwischen zwei Daten
+• Römische Zahlen – in beide Richtungen umrechnen
+• QR-Code Generator – für Links, Text, WLAN und E-Mail
+• Barcode Scanner – mit Verlauf deiner gescannten Codes
+• Farbwähler – mit HEX- und RGB-Codes
+• BMI-Rechner
+• Netzwerk-Tools: IP-Adresse, Domain auflösen, Ping, LAN Scanner und Wake On Lan
+• Standort: Koordinaten (dezimal, DMS und Maidenhead), Geschwindigkeit und Entfernung
+• Ton: Metronom und Dezibelmesser
+• Stroboskop, Lauftext und Fonts Installieren
+
+MACH SIE ZU DEINER
+Verstecke Tools, die du nicht brauchst, schieb deine Favoriten nach oben und wähle eines von zehn App-Icons, darunter ein Pride-Icon.
+
+AUCH AUF DER APPLE WATCH
+Würfel, Zähler und Zufällige Zahl hast du am Handgelenk, und ein Widget würfelt direkt auf deinem Home-Bildschirm.
+
+PRIVATSPHÄRE INKLUSIVE
+Kein Konto, keine Werbung, kein Tracking. Toolbox behält deine Daten auf deinem Gerät.
+
+OPEN SOURCE
+Toolbox ist Open Source. Hilf beim Übersetzen oder füge dein eigenes Tool hinzu: toolbox.sivery.de/contribution.html

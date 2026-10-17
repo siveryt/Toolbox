@@ -1,0 +1,1 @@
+dados,código qr,conversor,ping,escáner lan,metrónomo,decibelios,imc,contador,números romanos,wol

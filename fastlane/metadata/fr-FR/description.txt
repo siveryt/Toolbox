@@ -1,0 +1,27 @@
+Toolbox réunit dans une seule app bien rangée les petits outils dont vous avez besoin de temps en temps – plus besoin d’une app différente pour chaque petite tâche.
+
+OUTILS
+• Dés et Lettre aléatoire – secouez pour lancer, maintenez un dé pour le garder
+• Nombre aléatoire, Compteur et Horloge en direct
+• Écart entre dates – comptez les jours entre deux dates
+• Chiffres romains – conversion dans les deux sens
+• Générateur de QR code – pour les liens, le texte, le Wi-Fi et les e-mails
+• Scanner de codes-barres – avec l’historique de vos codes scannés
+• Sélecteur de couleur – avec codes HEX et RVB
+• Calculateur d’IMC
+• Outils réseau : Adresse IP, Résolution de domaine, Ping, Scanner LAN et Wake On Lan
+• Position : Coordonnées (décimales, DMS et Maidenhead), Vitesse et Distance
+• Son : Métronome et Sonomètre
+• Lampe stroboscopique, Texte défilant et Installateur de polices
+
+À VOTRE IMAGE
+Masquez les outils que vous n’utilisez pas, placez vos favoris en haut et choisissez parmi dix icônes d’app, dont une icône Pride.
+
+AUSSI SUR APPLE WATCH
+Dés, Compteur et Nombre aléatoire sont à votre poignet, et un widget lance les dés directement sur votre écran d’accueil.
+
+CONFIDENTIALITÉ INTÉGRÉE
+Pas de compte, pas de publicité, pas de suivi. Toolbox conserve vos données sur votre appareil.
+
+OPEN SOURCE
+Toolbox est open source. Aidez à le traduire ou ajoutez votre propre outil : toolbox.sivery.de/contribution.html
