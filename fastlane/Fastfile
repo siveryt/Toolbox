@@ -130,8 +130,8 @@ platform :ios do
     end
     Dir.glob(File.join(CREATIVE_ASSETS, "*")).select { |dir| File.directory?(dir) }.sort.each do |dir|
       locale = File.basename(dir)
-      jobs << { locale: locale, placement_type: "PRODUCT_PAGE_HEADER_ASSET", display_class: nil, files: [File.join(dir, "header.jpg")] }
-      jobs << { locale: locale, placement_type: "APP_STORE_SEARCH_RESULTS_ASSET", display_class: nil, files: [File.join(dir, "search.jpg")] }
+      jobs << { locale: locale, placement_type: "PRODUCT_PAGE_HEADER_ASSET", display_class: nil, files: [File.join(dir, "header.png")] }
+      jobs << { locale: locale, placement_type: "APP_STORE_SEARCH_RESULTS_ASSET", display_class: nil, files: [File.join(dir, "search.png")] }
     end
     UI.user_error!("Nothing to upload, run `fastlane screenshots` first") if jobs.empty?
     AssetLibrary.new(token: token, bundle_id: "de.sivery.toolbox", dry_run: options[:dry_run],

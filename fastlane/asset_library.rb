@@ -53,7 +53,8 @@ class AssetLibrary
       next if job[:files].empty?
 
       size = image_size(job[:files].first)
-      group = placement_group(ref, job[:placement_type], job[:display_class], size)
+      extension = File.extname(job[:files].first).downcase
+      group = placement_group(ref, job[:placement_type], job[:display_class], size, extension)
       @log.call("#{job[:locale]} #{job[:placement_type]} #{job[:display_class]} #{size.join('x')}: " \
                 "group #{group[:id]}, #{job[:files].count} file(s)")
       next if @dry_run
@@ -97,11 +98,11 @@ class AssetLibrary
   # The placement group for this placement type (and display class, for screenshots) whose
   # specifications accept an image of exactly this size. Apple documents what the reference
   # data holds but not every field name, so entries are matched by their values.
-  def placement_group(ref, placement_type, display_class, size)
+  def placement_group(ref, placement_type, display_class, size, extension)
     type = Array(ref["placementTypes"]).find { |t| strings(t).include?(placement_type) }
     raise "The reference data has no placement type #{placement_type} (see #{REF_DATA_DUMP})" unless type
     specs = Array(ref["imageSpecs"]).to_h { |s| [s["specId"] || s["id"], s] }
-    groups = Array(ref["placementProfileGroups"]).to_h { |g| [g["groupId"] || g["placementGroup"] || g["id"], g] }
+    groups = Array(ref["placementProfileGroups"]).to_h { |g| [g["placementProfileGroupId"] || g["groupId"] || g["id"], g] }
     mappings = type.values.find { |v| v.is_a?(Array) && v.first.is_a?(Hash) } || []
     category = type.values.find { |v| v.is_a?(Array) && (v & %w[APP_SCREENSHOTS_AND_PREVIEWS CREATIVE_ASSETS]).any? }&.first
 
@@ -111,11 +112,11 @@ class AssetLibrary
       group_values = strings(groups[group_id])
       next if display_class && !group_values.include?(display_class)
       spec_ids = mapping.values.find { |v| v.is_a?(Array) && v.all? { |id| id.is_a?(String) } } || []
-      { id: group_id, category: category } if spec_ids.any? { |spec_id| fits?(specs[spec_id], size) }
+      { id: group_id, category: category } if spec_ids.any? { |spec_id| fits?(specs[spec_id], size, extension) }
     end.compact
 
     if candidates.empty?
-      raise "No placement group for #{placement_type} #{display_class} accepts #{size.join('x')} (see #{REF_DATA_DUMP})"
+      raise "No placement group for #{placement_type} #{display_class} accepts a #{size.join('x')} #{extension} (see #{REF_DATA_DUMP})"
     end
     candidates.first
   end
@@ -125,10 +126,11 @@ class AssetLibrary
     hash.values.flat_map { |v| v.is_a?(Array) ? v : [v] }.select { |v| v.is_a?(String) }
   end
 
-  def fits?(spec, (width, height))
+  def fits?(spec, (width, height), extension)
     return false unless spec
     d = spec["dimensions"]
-    width.between?(d["minWidth"], d["maxWidth"]) && height.between?(d["minHeight"], d["maxHeight"])
+    width.between?(d["minWidth"], d["maxWidth"]) && height.between?(d["minHeight"], d["maxHeight"]) &&
+      Array(spec["fileExtensions"]).include?(extension)
   end
 
   def upload_image(library_id, file, category)

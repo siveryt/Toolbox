@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 #
 # Builds the App Store "creative assets" (iOS 27) for every screenshot language:
-#   fastlane/creative-assets/<language>/header.jpg  product page header, 3840x1646 (21:9)
-#   fastlane/creative-assets/<language>/search.jpg  search results image, 3840x2560 (3:2)
+#   fastlane/creative-assets/<language>/header.png  product page header, 3840x1646 (21:9)
+#   fastlane/creative-assets/<language>/search.png  search results image, 3840x2560 (3:2)
 #
 # They use the same background, font and texts as the App Store screenshots
 # (headline and title of "01Menu"), the app icon rendered from Toolbox.icon and
-# the raw iPhone screenshots. Apple crops these images on smaller screens, so the
+# the raw iPhone screenshots. PNG, because Apple takes the header at this size only
+# as PNG. Apple crops these images on smaller screens, so the
 # text and icon stay in the middle. No alpha channel, as Apple requires.
 
 set -euo pipefail
@@ -82,7 +83,7 @@ for dir in "$FRAMEIT"/*/; do
         "$WORK/icon-header.png" -gravity north -geometry "+0+$top" -composite \
         "$WORK/keyword.png" -gravity north -geometry "+0+$((top + 480))" -composite \
         "$WORK/title.png" -gravity north -geometry "+0+$((top + 510 + $(magick identify -format "%h" "$WORK/keyword.png")))" -composite \
-        -alpha off -quality 92 "$OUT/$language/header.jpg"
+        -alpha off "$OUT/$language/header.png"
 
     # Search results: icon, headline and title on top, three screenshots below
     width=3840; height=2560
@@ -103,7 +104,7 @@ for dir in "$FRAMEIT"/*/; do
         "$WORK/search-0.png" -gravity northwest -geometry "+$left+$cards_top" -composite \
         "$WORK/search-1.png" -gravity northwest -geometry "+$((left + card_width + gap))+$cards_top" -composite \
         "$WORK/search-2.png" -gravity northwest -geometry "+$((left + 2 * (card_width + gap)))+$cards_top" -composite \
-        -alpha off -quality 92 "$OUT/$language/search.jpg"
+        -alpha off "$OUT/$language/search.png"
 
     echo "Creative assets for $language"
 done
