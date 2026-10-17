@@ -5,6 +5,12 @@
       "comment" : "Bundle display name",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Toolbox"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -18,6 +24,12 @@
       "comment" : "Bundle name",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Toolbox"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -67,6 +79,12 @@
       "comment" : "Privacy - Local Network Usage Description",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Toolbox needs access to your local network to use the LAN Scanner"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
