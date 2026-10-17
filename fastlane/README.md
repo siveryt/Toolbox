@@ -15,13 +15,21 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ## iOS
 
+### ios app_store
+
+```sh
+[bundle exec] fastlane ios app_store
+```
+
+Everything for a release: all screenshots and images, then upload texts, screenshots, iPhone Duo screenshots and the header and search results images (needs ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_PATH)
+
 ### ios screenshots
 
 ```sh
 [bundle exec] fastlane ios screenshots
 ```
 
-Everything: capture iPhone, iPad and Watch, then frame
+Everything: capture iPhone, iPad, Watch and iPhone Duo, then frame (also builds the header and search results images)
 
 ### ios capture
 
@@ -39,6 +47,14 @@ Capture iPhone and iPad screenshots (devices and languages: Snapfile)
 
 Capture Apple Watch screenshots (raw, no bezel)
 
+### ios capture_duo
+
+```sh
+[bundle exec] fastlane ios capture_duo
+```
+
+Capture iPhone Duo screenshots (outer display) and lay them out like the framed ones
+
 ### ios frame
 
 ```sh
@@ -54,6 +70,14 @@ Add bezels, titles and backgrounds to the iPhone and iPad screenshots (layout: s
 ```
 
 Upload the App Store texts in fastlane/metadata to App Store Connect (needs ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_PATH)
+
+### ios upload_asset_library
+
+```sh
+[bundle exec] fastlane ios upload_asset_library
+```
+
+Upload the iPhone Duo screenshots and the header and search results images through the App Asset Library API, which deliver doesn't support yet (needs ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_PATH; dry_run:true only prints the plan)
 
 ### ios upload_screenshots
 

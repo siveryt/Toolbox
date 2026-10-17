@@ -64,4 +64,6 @@ fastlane/screenshots/**/*.png
 fastlane/screenshots/screenshots.html
 fastlane/screenshots/fonts/
 fastlane/screenshots-watch/
+fastlane/screenshots-duo/
+fastlane/creative-assets/
 fastlane/upload/

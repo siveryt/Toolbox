@@ -1,0 +1,85 @@
+#!/usr/bin/env bash
+#
+# Lays out the iPhone Duo screenshots like frameit does for iPhone and iPad:
+# background, headline (keyword.strings) and title (title.strings) from
+# fastlane/screenshots/<language>/, and the screenshot below them.
+#
+# frameit has no iPhone Duo bezel, so the screenshot gets rounded corners and a
+# shadow instead. The result keeps the size App Store Connect expects for the
+# Duo's outer display (the size of the raw screenshot) and has no alpha channel.
+
+set -euo pipefail
+
+if ! command -v magick >/dev/null; then
+    echo "ImageMagick is missing, install it with: brew install imagemagick" >&2
+    exit 1
+fi
+
+FRAMEIT="$PROJECT_ROOT/fastlane/screenshots"
+BACKGROUND="$FRAMEIT/background.jpg"
+KEYWORD_COLOR="#FFFFFF"
+TITLE_COLOR="#D6E4FF"
+
+# "key" = "value"; from a .strings file
+string_for() {
+    local file="$1" key="$2"
+    [[ -f "$file" ]] || return 0
+    sed -n "s/^\"$key\" *= *\"\(.*\)\";.*/\1/p" "$file" | head -1 | sed 's/\\"/"/g'
+}
+
+WORK="$(mktemp -d)"
+trap 'rm -rf "$WORK"' EXIT
+
+for dir in "$SCREENSHOTS_DIR"/*/; do
+    language="$(basename "$dir")"
+    # Same fonts as Framefile.json: Polish needs the font with its letters
+    if [[ "$language" == "pl" ]]; then
+        font="$FRAMEIT/fonts/headline-extended.otf"
+    else
+        font="$FRAMEIT/fonts/headline.ttf"
+    fi
+    [[ -f "$font" ]] || { echo "Font $font is missing, run the frame lane first" >&2; exit 1; }
+
+    for shot in "$dir"*.png; do
+        [[ -f "$shot" && "$shot" != *_framed.png ]] || continue
+        name="$(basename "$shot" .png)"
+        screen="${name##*-}"   # "iPhone Duo-02Dice" -> "02Dice"
+        read -r width height < <(magick identify -format "%w %h\n" "$shot")
+
+        keyword="$(string_for "$FRAMEIT/$language/keyword.strings" "$screen")"
+        title="$(string_for "$FRAMEIT/$language/title.strings" "$screen")"
+
+        margin=$((width * 6 / 100))
+        text_width=$((width - 2 * margin))
+        shot_width=$((width * 78 / 100))
+        radius=$((shot_width * 6 / 100))
+
+        # Headline and title, wrapped to the text width
+        magick -background none -fill "$KEYWORD_COLOR" -font "$font" -pointsize $((width * 58 / 1000)) \
+            -size "${text_width}x" -gravity center caption:"$keyword" "$WORK/keyword.png"
+        magick -background none -fill "$TITLE_COLOR" -font "$font" -pointsize $((width * 34 / 1000)) \
+            -size "${text_width}x" -gravity center caption:"$title" "$WORK/title.png"
+        keyword_height=$(magick identify -format "%h" "$WORK/keyword.png")
+        title_height=$(magick identify -format "%h" "$WORK/title.png")
+
+        # Screenshot with rounded corners and a soft shadow
+        magick "$shot" -resize "${shot_width}x" "$WORK/shot.png"
+        shot_height=$(magick identify -format "%h" "$WORK/shot.png")
+        magick -size "${shot_width}x${shot_height}" xc:none -fill white \
+            -draw "roundrectangle 0,0,$((shot_width - 1)),$((shot_height - 1)),$radius,$radius" "$WORK/mask.png"
+        magick "$WORK/shot.png" "$WORK/mask.png" -alpha off -compose CopyOpacity -composite -compose Over \
+            \( +clone -background black -shadow 35x$((width / 40))+0+$((width / 70)) \) +swap \
+            -background none -layers merge +repage "$WORK/card.png"
+
+        top=$((height * 5 / 100))
+        title_top=$((top + keyword_height + height / 100))
+        card_top=$((title_top + title_height + height * 4 / 100))
+
+        magick "$BACKGROUND" -resize "${width}x${height}^" -gravity center -extent "${width}x${height}" \
+            "$WORK/keyword.png" -gravity north -geometry "+0+$top" -composite \
+            "$WORK/title.png" -gravity north -geometry "+0+$title_top" -composite \
+            "$WORK/card.png" -gravity north -geometry "+0+$card_top" -composite \
+            -alpha off "$dir${name}_framed.png"
+        echo "Laid out $language/${name}_framed.png"
+    done
+done

@@ -39,11 +39,25 @@ final class ScreenshotTests: XCTestCase {
             } else if let tool = screen.tool {
                 open(tool: tool, in: app)
                 snapshot(screen.name, timeWaitingForIdle: 0)
-                app.navigationBars.buttons.element(boundBy: 0).tap()
+                goBack(in: app)
             } else {
                 snapshot(screen.name, timeWaitingForIdle: 0)
             }
         }
+    }
+
+    /// Returns to the menu. The iPhone Duo's outer display shows the navigation controls in a bar
+    /// at the side instead of a navigation bar, so the back button is also looked up by its identifier.
+    @MainActor
+    private func goBack(in app: XCUIApplication) {
+        let navigationBarButton = app.navigationBars.buttons.element(boundBy: 0)
+        if navigationBarButton.waitForExistence(timeout: 2) {
+            navigationBarButton.tap()
+            return
+        }
+        let backButton = app.buttons.matching(identifier: "BackButton").firstMatch
+        XCTAssertTrue(backButton.waitForExistence(timeout: 2), "Back button not found")
+        backButton.tap()
     }
 
     /// Taps a menu row, scrolling the lazy list down and then back up until the row exists.

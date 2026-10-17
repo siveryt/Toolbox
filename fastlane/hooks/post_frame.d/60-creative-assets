@@ -1,0 +1,109 @@
+#!/usr/bin/env bash
+#
+# Builds the App Store "creative assets" (iOS 27) for every screenshot language:
+#   fastlane/creative-assets/<language>/header.jpg  product page header, 3840x1646 (21:9)
+#   fastlane/creative-assets/<language>/search.jpg  search results image, 3840x2560 (3:2)
+#
+# They use the same background, font and texts as the App Store screenshots
+# (headline and title of "01Menu"), the app icon rendered from Toolbox.icon and
+# the raw iPhone screenshots. Apple crops these images on smaller screens, so the
+# text and icon stay in the middle. No alpha channel, as Apple requires.
+
+set -euo pipefail
+
+if ! command -v magick >/dev/null; then
+    echo "ImageMagick is missing, install it with: brew install imagemagick" >&2
+    exit 1
+fi
+
+FRAMEIT="$PROJECT_ROOT/fastlane/screenshots"
+OUT="$PROJECT_ROOT/fastlane/creative-assets"
+BACKGROUND="$FRAMEIT/background.jpg"
+ICTOOL="$(xcode-select -p)/../Applications/Icon Composer.app/Contents/Executables/ictool"
+
+string_for() {
+    local file="$1" key="$2"
+    [[ -f "$file" ]] || return 0
+    sed -n "s/^\"$key\" *= *\"\(.*\)\";.*/\1/p" "$file" | head -1 | sed 's/\\"/"/g'
+}
+
+WORK="$(mktemp -d)"
+trap 'rm -rf "$WORK"' EXIT
+
+"$ICTOOL" "$PROJECT_ROOT/Toolbox/Icons/Toolbox.icon" --export-image --output-file "$WORK/icon.png" \
+    --platform iOS --rendition Default --width 512 --height 512 --scale 2 > /dev/null
+
+# card <screenshot> <height> <output>: screenshot scaled to a height, rounded corners, shadow
+card() {
+    local height="$2" width radius
+    magick "$1" -resize "x$height" "$WORK/card-src.png"
+    width=$(magick identify -format "%w" "$WORK/card-src.png")
+    radius=$((width * 11 / 100))
+    magick -size "${width}x${height}" xc:none -fill white \
+        -draw "roundrectangle 0,0,$((width - 1)),$((height - 1)),$radius,$radius" "$WORK/card-mask.png"
+    magick "$WORK/card-src.png" "$WORK/card-mask.png" -alpha off -compose CopyOpacity -composite -compose Over \
+        \( +clone -background black -shadow 45x40+0+30 \) +swap -background none -layers merge +repage "$3"
+}
+
+# text <text> <color> <pointsize> <width> <font> <output>
+text() {
+    magick -background none -fill "$2" -font "$5" -pointsize "$3" -size "${4}x" -gravity center caption:"$1" "$6"
+}
+
+for dir in "$FRAMEIT"/*/; do
+    language="$(basename "$dir")"
+    [[ -f "$dir/keyword.strings" ]] || continue
+    shots=()
+    for screen in 01Menu 02Dice 03QRCode; do
+        shot=$(ls "$dir"iPhone*"-$screen.png" 2>/dev/null | head -1)
+        [[ -n "$shot" ]] && shots+=("$shot")
+    done
+    if [[ ${#shots[@]} -lt 3 ]]; then
+        echo "Skipping $language: iPhone screenshots are missing" >&2
+        continue
+    fi
+    if [[ "$language" == "pl" ]]; then font="$FRAMEIT/fonts/headline-extended.otf"; else font="$FRAMEIT/fonts/headline.ttf"; fi
+    keyword="$(string_for "$dir/keyword.strings" 01Menu)"
+    title="$(string_for "$dir/title.strings" 01Menu)"
+    mkdir -p "$OUT/$language"
+
+    # Header: icon, headline and title in the middle, a screenshot on each side
+    width=3840; height=1646
+    text "$keyword" "#FFFFFF" 150 1700 "$font" "$WORK/keyword.png"
+    text "$title" "#D6E4FF" 84 1700 "$font" "$WORK/title.png"
+    card "${shots[1]}" 1500 "$WORK/left.png"
+    card "${shots[2]}" 1500 "$WORK/right.png"
+    magick "$WORK/icon.png" -resize 420x "$WORK/icon-header.png"
+    block_height=$((420 + 60 + $(magick identify -format "%h" "$WORK/keyword.png") + 30 + $(magick identify -format "%h" "$WORK/title.png")))
+    top=$(((height - block_height) / 2))
+    magick "$BACKGROUND" -resize "${width}x${height}^" -gravity center -extent "${width}x${height}" \
+        "$WORK/left.png" -gravity northwest -geometry "+240+260" -composite \
+        "$WORK/right.png" -gravity northeast -geometry "+240+260" -composite \
+        "$WORK/icon-header.png" -gravity north -geometry "+0+$top" -composite \
+        "$WORK/keyword.png" -gravity north -geometry "+0+$((top + 480))" -composite \
+        "$WORK/title.png" -gravity north -geometry "+0+$((top + 510 + $(magick identify -format "%h" "$WORK/keyword.png")))" -composite \
+        -alpha off -quality 92 "$OUT/$language/header.jpg"
+
+    # Search results: icon, headline and title on top, three screenshots below
+    width=3840; height=2560
+    text "$keyword" "#FFFFFF" 160 3200 "$font" "$WORK/keyword.png"
+    text "$title" "#D6E4FF" 90 3200 "$font" "$WORK/title.png"
+    magick "$WORK/icon.png" -resize 360x "$WORK/icon-search.png"
+    keyword_height=$(magick identify -format "%h" "$WORK/keyword.png")
+    title_height=$(magick identify -format "%h" "$WORK/title.png")
+    cards_top=$((140 + 360 + 50 + keyword_height + 20 + title_height + 110))
+    for i in 0 1 2; do card "${shots[$i]}" 2000 "$WORK/search-$i.png"; done
+    card_width=$(magick identify -format "%w" "$WORK/search-0.png")
+    gap=110
+    left=$(((width - 3 * card_width - 2 * gap) / 2))
+    magick "$BACKGROUND" -resize "${width}x${height}^" -gravity center -extent "${width}x${height}" \
+        "$WORK/icon-search.png" -gravity north -geometry "+0+140" -composite \
+        "$WORK/keyword.png" -gravity north -geometry "+0+550" -composite \
+        "$WORK/title.png" -gravity north -geometry "+0+$((570 + keyword_height))" -composite \
+        "$WORK/search-0.png" -gravity northwest -geometry "+$left+$cards_top" -composite \
+        "$WORK/search-1.png" -gravity northwest -geometry "+$((left + card_width + gap))+$cards_top" -composite \
+        "$WORK/search-2.png" -gravity northwest -geometry "+$((left + 2 * (card_width + gap)))+$cards_top" -composite \
+        -alpha off -quality 92 "$OUT/$language/search.jpg"
+
+    echo "Creative assets for $language"
+done

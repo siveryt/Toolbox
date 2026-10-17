@@ -6,8 +6,12 @@ default_platform(:ios)
 ROOT = File.expand_path("..", __dir__)
 SCREENSHOTS = File.join(ROOT, "fastlane", "screenshots")             # iPhone + iPad, framed by frameit
 WATCH_SCREENSHOTS = File.join(ROOT, "fastlane", "screenshots-watch") # raw only, frameit has no watch frames
+DUO_SCREENSHOTS = File.join(ROOT, "fastlane", "screenshots-duo")     # outer display, laid out by a hook (no frameit bezel)
+CREATIVE_ASSETS = File.join(ROOT, "fastlane", "creative-assets")     # header and search results images, built by a hook
 HOOKS = File.join(ROOT, "fastlane", "hooks")
 WATCH_DEVICES = ["Apple Watch Series 12 (46mm)"]
+# The simulator can't unfold the iPhone Duo, so only its outer display can be captured.
+DUO_DEVICES = ["iPhone Duo"]
 
 # Font referenced by Framefile.json. frameit only accepts paths relative to the
 # Framefile, so the system font is copied in unless you put your own file there.
@@ -20,6 +24,17 @@ FONTS = {
 }
 UPLOAD = File.join(ROOT, "fastlane", "upload") # staging folder for upload_screenshots
 
+# Copies the Framefile fonts next to it (frameit and the layout hooks use them).
+def install_fonts
+  FONTS.each do |name, source|
+    target = File.join(SCREENSHOTS, "fonts", name)
+    next if File.exist?(target)
+    UI.user_error!("Font #{source} is missing, see FONTS in the Fastfile") unless File.exist?(source)
+    FileUtils.mkdir_p(File.dirname(target))
+    FileUtils.cp(source, target)
+  end
+end
+
 # Runs every executable in fastlane/hooks/<stage>.d in name order.
 def run_hooks(stage, screenshots_dir)
   Dir.glob(File.join(HOOKS, "#{stage}.d", "*")).sort.each do |hook|
@@ -31,10 +46,19 @@ def run_hooks(stage, screenshots_dir)
 end
 
 platform :ios do
-  desc "Everything: capture iPhone, iPad and Watch, then frame"
+  desc "Everything for a release: all screenshots and images, then upload texts, screenshots, iPhone Duo screenshots and the header and search results images (needs ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_PATH)"
+  lane :app_store do
+    screenshots
+    upload_metadata
+    upload_screenshots
+    upload_asset_library
+  end
+
+  desc "Everything: capture iPhone, iPad, Watch and iPhone Duo, then frame (also builds the header and search results images)"
   lane :screenshots do
     capture
     capture_watch
+    capture_duo
     frame
   end
 
@@ -55,15 +79,16 @@ platform :ios do
     run_hooks("post_capture_watch", WATCH_SCREENSHOTS)
   end
 
+  desc "Capture iPhone Duo screenshots (outer display) and lay them out like the framed ones"
+  lane :capture_duo do
+    snapshot(devices: DUO_DEVICES, output_directory: DUO_SCREENSHOTS)
+    install_fonts
+    run_hooks("post_capture_duo", DUO_SCREENSHOTS)
+  end
+
   desc "Add bezels, titles and backgrounds to the iPhone and iPad screenshots (layout: screenshots/Framefile.json)"
   lane :frame do
-    FONTS.each do |name, source|
-      target = File.join(SCREENSHOTS, "fonts", name)
-      next if File.exist?(target)
-      UI.user_error!("Font #{source} is missing, see FONTS in the Fastfile") unless File.exist?(source)
-      FileUtils.mkdir_p(File.dirname(target))
-      FileUtils.cp(source, target)
-    end
+    install_fonts
     frameit(path: SCREENSHOTS)
     run_hooks("post_frame", SCREENSHOTS)
   end
@@ -88,6 +113,29 @@ platform :ios do
       run_precheck_before_submit: false,
       force: true
     )
+  end
+
+  desc "Upload the iPhone Duo screenshots and the header and search results images through the App Asset Library API, which deliver doesn't support yet (needs ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_PATH; dry_run:true only prints the plan)"
+  lane :upload_asset_library do |options|
+    require_relative "asset_library"
+    token = Spaceship::ConnectAPI::Token.create(
+      key_id: ENV.fetch("ASC_KEY_ID"),
+      issuer_id: ENV.fetch("ASC_ISSUER_ID"),
+      filepath: ENV.fetch("ASC_KEY_PATH")
+    )
+    jobs = []
+    Dir.glob(File.join(DUO_SCREENSHOTS, "*")).select { |dir| File.directory?(dir) }.sort.each do |dir|
+      jobs << { locale: File.basename(dir), placement_type: "APP_SCREENSHOT", display_class: "IPHONE_DUO",
+                files: Dir.glob(File.join(dir, "*_framed.png")).sort }
+    end
+    Dir.glob(File.join(CREATIVE_ASSETS, "*")).select { |dir| File.directory?(dir) }.sort.each do |dir|
+      locale = File.basename(dir)
+      jobs << { locale: locale, placement_type: "PRODUCT_PAGE_HEADER_ASSET", display_class: nil, files: [File.join(dir, "header.jpg")] }
+      jobs << { locale: locale, placement_type: "APP_STORE_SEARCH_RESULTS_ASSET", display_class: nil, files: [File.join(dir, "search.jpg")] }
+    end
+    UI.user_error!("Nothing to upload, run `fastlane screenshots` first") if jobs.empty?
+    AssetLibrary.new(token: token, bundle_id: "de.sivery.toolbox", dry_run: options[:dry_run],
+                     log: ->(message) { UI.message(message) }).upload(jobs)
   end
 
   desc "Upload the framed iPhone/iPad and the Watch screenshots to App Store Connect (needs ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_PATH)"
