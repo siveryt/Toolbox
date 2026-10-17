@@ -93,4 +93,4 @@ The sheet's "Learn more" button opens `https://toolbox.sivery.de/#version<major.
 
 ## Key third-party dependencies (SPM)
 
-`RomanNumeralKit`, `CodeScanner` (barcode/QR), `LanScanner` (fork under `siveryt`), `SwiftyPing` (ping), `swift-async-dns-resolver`, `Swifter` (HTTP server), `MarqueeText` (fork under `siveryt`, scrolling text), `WhatsNewKit`, `Haptica`, `ToastSwiftUI`, `SwiftUI-Apple-Watch-Decimal-Pad`.
+`RomanNumeralKit`, `CodeScanner` (barcode/QR), `LanScanner` (fork under `siveryt`), `SwiftyPing` (ping), `swift-async-dns-resolver`, `Swifter` (HTTP server), `MarqueeText` (fork under `siveryt`, scrolling text), `WhatsNewKit`, `Haptica`, `ToastSwiftUI`.

@@ -15,6 +15,7 @@ final class WatchScreenshotTests: XCTestCase {
         ("02Dice", "dice"),
         ("03Counter", "plusminus"),
         ("04RandomNumber", "number"),
+        ("05Roman", "hexagon"),
     ]
 
     @MainActor
