@@ -16,6 +16,42 @@
             "state" : "new",
             "value" : "Toolbox"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Toolbox"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Toolbox"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Toolbox"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Toolbox"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Toolbox"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Toolbox"
+          }
         }
       },
       "shouldTranslate" : false
@@ -31,6 +67,42 @@
           }
         },
         "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Toolbox"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Toolbox"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Toolbox"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Toolbox"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Toolbox"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Toolbox"
+          }
+        },
+        "sv" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "Toolbox"

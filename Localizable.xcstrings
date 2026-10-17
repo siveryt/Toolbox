@@ -8,6 +8,42 @@
             "state" : "new",
             "value" : ""
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : ""
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : ""
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : ""
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : ""
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : ""
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : ""
+          }
         }
       },
       "shouldTranslate" : false
@@ -15,6 +51,42 @@
     "-" : {
       "localizations" : {
         "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "-"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "-"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "-"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "-"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "-"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "-"
+          }
+        },
+        "sv" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "-"
@@ -2245,6 +2317,42 @@
             "state" : "new",
             "value" : "+"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "+"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "+"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "+"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "+"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "+"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "+"
+          }
         }
       },
       "shouldTranslate" : false
@@ -2444,6 +2552,42 @@
             "state" : "new",
             "value" : "00:1A:2B:3C:4D:5E"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "00:1A:2B:3C:4D:5E"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "00:1A:2B:3C:4D:5E"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "00:1A:2B:3C:4D:5E"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "00:1A:2B:3C:4D:5E"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "00:1A:2B:3C:4D:5E"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "00:1A:2B:3C:4D:5E"
+          }
         }
       },
       "shouldTranslate" : false
@@ -2451,6 +2595,42 @@
     "1" : {
       "localizations" : {
         "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "1"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "1"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "1"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "1"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "1"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "1"
+          }
+        },
+        "sv" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "1"
@@ -2748,6 +2928,42 @@
             "state" : "new",
             "value" : "4"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "4"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "4"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "4"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "4"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "4"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "4"
+          }
         }
       },
       "shouldTranslate" : false
@@ -2853,6 +3069,42 @@
             "state" : "new",
             "value" : "6"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "6"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "6"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "6"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "6"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "6"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "6"
+          }
         }
       },
       "shouldTranslate" : false
@@ -2911,6 +3163,42 @@
             "state" : "new",
             "value" : "8"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "8"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "8"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "8"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "8"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "8"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "8"
+          }
         }
       },
       "shouldTranslate" : false
@@ -2918,6 +3206,42 @@
     "9" : {
       "localizations" : {
         "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "9"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "9"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "9"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "9"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "9"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "9"
+          }
+        },
+        "sv" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "9"
@@ -2933,6 +3257,42 @@
             "state" : "new",
             "value" : "10"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "10"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "10"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "10"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "10"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "10"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "10"
+          }
         }
       },
       "shouldTranslate" : false
@@ -2940,6 +3300,42 @@
     "12" : {
       "localizations" : {
         "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "12"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "12"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "12"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "12"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "12"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "12"
+          }
+        },
+        "sv" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "12"
@@ -2955,6 +3351,42 @@
             "state" : "new",
             "value" : "20"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "20"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "20"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "20"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "20"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "20"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "20"
+          }
         }
       },
       "shouldTranslate" : false
@@ -2962,6 +3394,42 @@
     "255.255.255.255" : {
       "localizations" : {
         "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "255.255.255.255"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "255.255.255.255"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "255.255.255.255"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "255.255.255.255"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "255.255.255.255"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "255.255.255.255"
+          }
+        },
+        "sv" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "255.255.255.255"
@@ -2977,6 +3445,42 @@
             "state" : "new",
             "value" : "2022"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "2022"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "2022"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "2022"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "2022"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "2022"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "2022"
+          }
         }
       },
       "shouldTranslate" : false
@@ -2984,6 +3488,42 @@
     "12345678" : {
       "localizations" : {
         "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "12345678"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "12345678"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "12345678"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "12345678"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "12345678"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "12345678"
+          }
+        },
+        "sv" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "12345678"
@@ -8357,6 +8897,42 @@
             "state" : "new",
             "value" : "MAC"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "MAC"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "MAC"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "MAC"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "MAC"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "MAC"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "MAC"
+          }
         }
       },
       "shouldTranslate" : false
@@ -8364,6 +8940,42 @@
     "Made with ❤️ by Sivery" : {
       "localizations" : {
         "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Made with ❤️ by Sivery"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Made with ❤️ by Sivery"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Made with ❤️ by Sivery"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Made with ❤️ by Sivery"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Made with ❤️ by Sivery"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Made with ❤️ by Sivery"
+          }
+        },
+        "sv" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "Made with ❤️ by Sivery"
@@ -8704,6 +9316,42 @@
     "MMXXII" : {
       "localizations" : {
         "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "MMXXII"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "MMXXII"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "MMXXII"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "MMXXII"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "MMXXII"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "MMXXII"
+          }
+        },
+        "sv" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "MMXXII"
@@ -10928,6 +11576,42 @@
             "state" : "new",
             "value" : "RGB"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "RGB"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "RGB"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "RGB"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "RGB"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "RGB"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "RGB"
+          }
         }
       },
       "shouldTranslate" : false
@@ -10935,6 +11619,42 @@
     "RGBA" : {
       "localizations" : {
         "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "RGBA"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "RGBA"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "RGBA"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "RGBA"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "RGBA"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "RGBA"
+          }
+        },
+        "sv" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "RGBA"
@@ -11698,6 +12418,42 @@
     "SSID" : {
       "localizations" : {
         "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "SSID"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "SSID"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "SSID"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "SSID"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "SSID"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "SSID"
+          }
+        },
+        "sv" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "SSID"
@@ -12612,6 +13368,42 @@
             "state" : "new",
             "value" : "There are %1$lld options matching ‘%2$@’."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "There are %1$lld options matching ‘%2$@’."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "There are %1$lld options matching ‘%2$@’."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "There are %1$lld options matching ‘%2$@’."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "There are %1$lld options matching ‘%2$@’."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "There are %1$lld options matching ‘%2$@’."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "There are %1$lld options matching ‘%2$@’."
+          }
         }
       },
       "shouldTranslate" : false
@@ -12717,6 +13509,42 @@
             "state" : "new",
             "value" : "Toolbox"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Toolbox"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Toolbox"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Toolbox"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Toolbox"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Toolbox"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Toolbox"
+          }
         }
       },
       "shouldTranslate" : false
@@ -12728,6 +13556,42 @@
             "state" : "new",
             "value" : "toolbox.sivery.de"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "toolbox.sivery.de"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "toolbox.sivery.de"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "toolbox.sivery.de"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "toolbox.sivery.de"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "toolbox.sivery.de"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "toolbox.sivery.de"
+          }
         }
       },
       "shouldTranslate" : false
@@ -12735,6 +13599,42 @@
     "toolbox@sivery.de" : {
       "localizations" : {
         "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "toolbox@sivery.de"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "toolbox@sivery.de"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "toolbox@sivery.de"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "toolbox@sivery.de"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "toolbox@sivery.de"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "toolbox@sivery.de"
+          }
+        },
+        "sv" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "toolbox@sivery.de"
