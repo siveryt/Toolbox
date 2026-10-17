@@ -8,9 +8,7 @@
 import Foundation
 import SwiftUI
 import CoreData
-import AVFoundation
 import TipKit
-import CoreLocation
 
 struct infoView: View {
     
@@ -209,111 +207,6 @@ struct infoVersion: View {
     }
 }
 
-struct permissions: View {
-    
-    @StateObject private var locationManager = LocationPermsChecker()
-    @State var cameraAccess:Bool? = nil
-    @State var micAccess:Bool? = nil
-    
-    @State var showingInfoAlert = false
-    
-    
-    var body: some View {
-        List {
-            HStack {
-                Label("Location", systemImage: "location.fill")
-                Spacer()
-                switch locationManager.authorizationStatus {
-                case .authorizedAlways:
-                    Text("Always")
-                case .authorizedWhenInUse:
-                    Text("While Using")
-                case .denied:
-                    Text("Denied")
-                case .restricted:
-                    Text("Restricted")
-                case .notDetermined:
-                    Text("Not Requested Yet")
-                @unknown default:
-                    Text("Unknown")
-                }
-            }
-            
-            HStack {
-                Label("Camera", systemImage: "camera")
-                Spacer()
-                switch AVCaptureDevice.authorizationStatus(for: .video) {
-                case .authorized:
-                    Text("Allowed")
-                case .notDetermined:
-                    Text("Not Requested Yet")
-                case .denied, .restricted:
-                    Text("Denied")
-                @unknown default:
-                    Text("Unknown")
-                }
-            }
-            
-            HStack {
-                Label("Microphone", systemImage: "mic")
-                Spacer()
-                switch AVCaptureDevice.authorizationStatus(for: .audio) {
-                case .authorized:
-                    Text("Allowed")
-                case .notDetermined:
-                    Text("Not Requested Yet")
-                case .denied, .restricted:
-                    Text("Denied")
-                @unknown default:
-                    Text("Unknown")
-                }
-            }
-            
-            Section{
-                Button("Change in Settings") {
-                    if let appSettings = URL(string: UIApplication.openSettingsURLString) {
-                        UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
-                    }
-                }
-            }
-        }
-        .alert("Why?", isPresented: $showingInfoAlert) {
-            Button("Got It!") { }
-        } message: {
-            Text("Toolbox uses your location to calculate your speed and your coordinates when using the corresponding tools.\n\nToolbox needs access to your local network when using the LAN Scanner.\n\nToolbox needs access to your camera when scanning barcodes.\n\nToolbox needs acces to your microphone to measure audio levels.")
-        }
-        .toolbar(){
-            ToolbarItem(placement: .primaryAction) {
-                Button(action: {
-                    showingInfoAlert = true
-                }, label: {
-                    Image(systemName: "questionmark.circle")
-                })
-            }
-        }
-        
-        .navigationTitle("Permissions")
-        .navigationBarTitleDisplayMode(.inline)
-    }
-    
-}
-
-class LocationPermsChecker: NSObject, ObservableObject, CLLocationManagerDelegate {
-    private let manager = CLLocationManager()
-    @Published var authorizationStatus: CLAuthorizationStatus
-
-    override init() {
-        self.authorizationStatus = manager.authorizationStatus
-        super.init()
-        self.manager.delegate = self
-        // No need to request authorization here
-    }
-
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        self.authorizationStatus = manager.authorizationStatus
-    }
-}
-
 struct infoHidden: View {
     @AppStorage("cvHidden") var hidden: [Int] = []
     @State var tools = ContentView().toollist
@@ -364,11 +257,5 @@ struct infoHidden: View {
         withAnimation {
             hidden.removeAll { $0 == index }
         }
-    }
-}
-
-struct permissions_Previews: PreviewProvider {
-    static var previews: some View {
-        permissions()
     }
 }
