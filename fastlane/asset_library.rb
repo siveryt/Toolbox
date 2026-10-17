@@ -18,6 +18,7 @@ require "uri"
 
 class AssetLibrary
   API = "https://api.appstoreconnect.apple.com"
+  REF_DATA_DUMP = File.expand_path("asset-library-refdata.json", __dir__)
 
   # token: a Spaceship::ConnectAPI::Token, refreshed when it expires during a long upload
   # jobs: [{ locale:, placement_type:, display_class: (or nil), files: [paths in order] }]
@@ -38,7 +39,10 @@ class AssetLibrary
     localizations = get_all("/v1/appStoreVersions/#{version['id']}/appStoreVersionLocalizations")
                     .to_h { |l| [l.dig("attributes", "locale"), l["id"]] }
     library_id = get("/v1/apps/#{app_id}/assetLibrary").dig("data", "id")
-    ref = first(get("/v1/appAssetLibraryRefData"))["attributes"]
+    ref_response = get("/v1/appAssetLibraryRefData")
+    # Kept for debugging: the field names of the reference data are only partly documented
+    File.write(REF_DATA_DUMP, JSON.pretty_generate(ref_response))
+    ref = first(ref_response)["attributes"]
 
     jobs.each do |job|
       localization_id = localizations[job[:locale]]
@@ -91,27 +95,34 @@ class AssetLibrary
   private
 
   # The placement group for this placement type (and display class, for screenshots) whose
-  # specifications accept an image of exactly this size.
+  # specifications accept an image of exactly this size. Apple documents what the reference
+  # data holds but not every field name, so entries are matched by their values.
   def placement_group(ref, placement_type, display_class, size)
-    type = ref["placementTypes"].find { |t| t["placementType"] == placement_type || t["id"] == placement_type }
-    raise "The reference data has no placement type #{placement_type}" unless type
-    specs = ref["imageSpecs"].to_h { |s| [s["specId"] || s["id"], s] }
-    groups = ref["placementProfileGroups"].to_h { |g| [g["groupId"] || g["id"], g] }
+    type = Array(ref["placementTypes"]).find { |t| strings(t).include?(placement_type) }
+    raise "The reference data has no placement type #{placement_type} (see #{REF_DATA_DUMP})" unless type
+    specs = Array(ref["imageSpecs"]).to_h { |s| [s["specId"] || s["id"], s] }
+    groups = Array(ref["placementProfileGroups"]).to_h { |g| [g["groupId"] || g["placementGroup"] || g["id"], g] }
+    mappings = type.values.find { |v| v.is_a?(Array) && v.first.is_a?(Hash) } || []
+    category = type.values.find { |v| v.is_a?(Array) && (v & %w[APP_SCREENSHOTS_AND_PREVIEWS CREATIVE_ASSETS]).any? }&.first
 
-    candidates = type["specMappings"].map do |mapping|
-      group_id = mapping["groupId"] || mapping["placementGroup"] || mapping["placementProfileGroup"]
-      group = groups[group_id] || {}
-      next if display_class && ![group["displayClass"], group["displayClassId"]].include?(display_class)
-      next if display_class.nil? && !["IPHONE_APP_STORE", "ANY", nil].include?(group["platform"] || group["platformId"])
-      fits = Array(mapping["specs"]).any? { |spec_id| fits?(specs[spec_id], size) }
-      { id: group_id, category: Array(type["acceptsAssetCategories"]).first } if fits
+    candidates = mappings.map do |mapping|
+      group_id = mapping.values.find { |v| v.is_a?(String) && groups.key?(v) }
+      next unless group_id
+      group_values = strings(groups[group_id])
+      next if display_class && !group_values.include?(display_class)
+      spec_ids = mapping.values.find { |v| v.is_a?(Array) && v.all? { |id| id.is_a?(String) } } || []
+      { id: group_id, category: category } if spec_ids.any? { |spec_id| fits?(specs[spec_id], size) }
     end.compact
 
     if candidates.empty?
-      raise "No placement group for #{placement_type} #{display_class} accepts #{size.join('x')}. " \
-            "Groups for this type: #{type['specMappings'].map { |m| m['groupId'] || m['placementGroup'] }.join(', ')}"
+      raise "No placement group for #{placement_type} #{display_class} accepts #{size.join('x')} (see #{REF_DATA_DUMP})"
     end
     candidates.first
+  end
+
+  # Every string value in a hash (one level deep, including strings in arrays)
+  def strings(hash)
+    hash.values.flat_map { |v| v.is_a?(Array) ? v : [v] }.select { |v| v.is_a?(String) }
   end
 
   def fits?(spec, (width, height))

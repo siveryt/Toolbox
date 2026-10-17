@@ -71,3 +71,4 @@ fastlane/upload/
 # Local App Store Connect API key settings for fastlane (see CLAUDE.md)
 fastlane/.env
 *.p8
+fastlane/asset-library-refdata.json
