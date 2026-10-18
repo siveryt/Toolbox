@@ -30,6 +30,7 @@ struct ContentView: View {
     @AppStorage("cvHidden") var hidden: [Int] = []
     @AppStorage("cvHasHiddenAnythingYet") var hasHiddenAnythingYet = false
     @State var hiddenAlert = false
+    @State private var searchText = ""
     
     @State var toollist:[Tool] = [
         Tool(view: AnyView(DiceView()), title: NSLocalizedString("Dice", comment: "Menu item"), icon: "dice"),
@@ -71,7 +72,7 @@ struct ContentView: View {
             NavigationStack {
                 List() {
                     ForEach(Array(zip(tools.indices, tools)), id: \.0) { toolIndex, tool in
-                        if (!hidden.contains(toolIndex)) {
+                        if (!hidden.contains(toolIndex) && matchesSearch(tool)) {
                             if (toolIndex == 0){
                                 NavigationLink(destination: tools[toolIndex].view) {
                                     Label(tools[toolIndex].title, systemImage: tools[toolIndex].icon).foregroundColor(.primary)
@@ -102,7 +103,13 @@ struct ContentView: View {
                         
                         
                     }
-                    .onMove(perform: onMove)
+                    .onMove(perform: searchText.isEmpty ? onMove : nil)
+                }
+                .searchable(text: $searchText)
+                .overlay {
+                    if (!searchText.isEmpty && !tools.indices.contains(where: { !hidden.contains($0) && matchesSearch(tools[$0]) })) {
+                        ContentUnavailableView.search(text: searchText)
+                    }
                 }
                 
                 .sheet(isPresented: $infoPresented){
@@ -167,6 +174,11 @@ struct ContentView: View {
                 Text("You just hid your first tool! You can still find it in the settings under \"Hidden Tools\".")
             }
         .whatsNewSheet()
+    }
+    
+    private func matchesSearch(_ tool: Tool) -> Bool {
+        let query = searchText.trimmingCharacters(in: .whitespaces)
+        return query.isEmpty || tool.title.localizedStandardContains(query)
     }
     
     private func hide(index: Int) {
