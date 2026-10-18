@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #
-# Puts the English iPhone main screen on the website (web/assets/mainscreen.webp).
+# Puts English iPhone screenshots on the website (web/assets/screenshots/<name>.webp).
+# The start page shows them one after the other when the phone is tapped.
 #
 # The App Store images from frameit have a background and a title baked in.
 # The website wants the iPhone frame only, so this runs frameit a second time
@@ -12,9 +13,10 @@ set -euo pipefail
 
 LANGUAGE="en-US"
 DEVICE="iPhone"
-SCREEN="01Menu"
+# Screenshot name in the UI tests and file name on the website, in the order the page shows them
+SCREENS=(01Menu:menu 02Dice:dice 03QRCode:qrcode 04Roman:roman 05DateDifference:date-difference)
 WIDTH=600
-OUT="$PROJECT_ROOT/web/assets/mainscreen.webp"
+OUT="$PROJECT_ROOT/web/assets/screenshots"
 
 if ! command -v magick >/dev/null; then
     echo "ImageMagick is missing, install it with: brew install imagemagick" >&2
@@ -24,19 +26,22 @@ fi
 WORK="$(mktemp -d)"
 trap 'rm -rf "$WORK"' EXIT
 
-# The raw screenshot, not the App Store version next to it
-for file in "$SCREENSHOTS_DIR/$LANGUAGE/$DEVICE"*"-$SCREEN.png"; do
-    [[ -f "$file" ]] && cp "$file" "$WORK/"
+# The raw screenshots, not the App Store versions next to them.
+# With several iPhones in the Snapfile, the first one wins.
+for screen in "${SCREENS[@]}"; do
+    file="$(ls "$SCREENSHOTS_DIR/$LANGUAGE/$DEVICE"*"-${screen%%:*}.png" 2>/dev/null | head -n 1 || true)"
+    if [[ -z "$file" ]]; then
+        echo "No $DEVICE ${screen%%:*} screenshot for $LANGUAGE in $SCREENSHOTS_DIR, nothing to put on the website" >&2
+        exit 1
+    fi
+    cp "$file" "$WORK/${screen#*:}.png"
 done
-
-if [[ -z "$(ls -A "$WORK")" ]]; then
-    echo "No $DEVICE $SCREEN screenshot for $LANGUAGE in $SCREENSHOTS_DIR, nothing to put on the website" >&2
-    exit 1
-fi
 
 bundle exec --gemfile "$PROJECT_ROOT/Gemfile" fastlane run frameit path:"$WORK"
 
-# With several iPhones in the Snapfile, the first one wins
-framed="$(ls "$WORK"/*_framed.png | head -n 1)"
-magick "$framed" -resize "${WIDTH}x" -strip -quality 82 -define webp:method=6 "$OUT"
+mkdir -p "$OUT"
+for screen in "${SCREENS[@]}"; do
+    name="${screen#*:}"
+    magick "$WORK/${name}_framed.png" -resize "${WIDTH}x" -strip -quality 82 -define webp:method=6 "$OUT/$name.webp"
+done
 echo "Website: $OUT"

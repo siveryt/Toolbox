@@ -133,14 +133,3 @@ cat > "$glyph/Contents.json" <<EOF
   }
 }
 EOF
-
-# every icon with its glyph for the color picker on the website (web/index.html),
-# as web/assets/icons/<color>.webp, the primary icon as red.webp
-WEB="../../web/assets/icons"
-mkdir -p "$WEB"
-for icon in *.icon; do
-	color="$(echo "${icon%.icon}" | sed -e 's/^Toolbox$/Toolbox Red/' -e 's/^Toolbox //' | tr '[:upper:]' '[:lower:]')"
-	"$ICTOOL" "$icon" --export-image --output-file "$TMP/web.png" \
-		--platform iOS --rendition Default --width 64 --height 64 --scale 2 > /dev/null
-	magick "$TMP/web.png" -strip -quality 90 -define webp:method=6 "$WEB/$color.webp"
-done

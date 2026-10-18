@@ -9,8 +9,8 @@
  *   2. Base text
  *   3. Header and footer
  *   4. Start page (hero, release notes)
- *   5. Tools, colors and confetti (start page)
- *   6. Text pages (contribution, legal, 404)
+ *   5. Tool list (start page)
+ *   6. Text pages (contribution, legal, 404 with its die)
  *   7. Small screens
  */
 
@@ -250,11 +250,73 @@ img {
 	width: 10rem;
 }
 
+/*
+ * The phone shows one screenshot at a time; tapping it shows the next one.
+ * All screenshots lie on top of each other in one grid cell, the one whose
+ * radio button (a dot below the phone) is checked is visible. A label for the
+ * next radio button covers the phone, so a tap checks the next one.
+ */
 .phone {
 	justify-self: center;
 	width: min(100%, 18rem);
+}
+
+.phone-screens {
+	position: relative;
+	display: grid;
+	cursor: pointer;
 	filter: drop-shadow(0 1.5rem 2.5rem rgb(0 0 0 / 0.18));
 	animation: float 6s ease-in-out infinite;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.phone-screens img {
+	grid-area: 1 / 1;
+	opacity: 0;
+	transition: opacity 0.35s ease;
+}
+
+.phone-screens label {
+	display: none;
+	position: absolute;
+	inset: 0;
+	cursor: pointer;
+}
+
+.phone:has(#screen-1:checked) :is(img:nth-of-type(1), label[for="screen-2"]),
+.phone:has(#screen-2:checked) :is(img:nth-of-type(2), label[for="screen-3"]),
+.phone:has(#screen-3:checked) :is(img:nth-of-type(3), label[for="screen-4"]),
+.phone:has(#screen-4:checked) :is(img:nth-of-type(4), label[for="screen-5"]),
+.phone:has(#screen-5:checked) :is(img:nth-of-type(5), label[for="screen-1"]) {
+	opacity: 1;
+	display: block;
+}
+
+/* The radio buttons, drawn as small dots */
+.phone-dots {
+	display: flex;
+	justify-content: center;
+	gap: 0.5rem;
+	margin-top: 1.25rem;
+}
+
+.phone-dots input {
+	appearance: none;
+	margin: 0;
+	width: 0.5rem;
+	height: 0.5rem;
+	border-radius: 50%;
+	background-color: var(--border);
+	cursor: pointer;
+	transition:
+		background-color 0.2s ease,
+		width 0.2s ease;
+}
+
+.phone-dots input:checked {
+	width: 1.25rem;
+	border-radius: 0.25rem;
+	background-color: var(--text-muted);
 }
 
 @keyframes float {
@@ -265,35 +327,13 @@ img {
 
 /* Respect the "Reduce motion" setting */
 @media (prefers-reduced-motion: reduce) {
-	.phone {
+	.phone-screens {
 		animation: none;
 	}
-}
 
-/*
- * While the hero scrolls out of view, the phone tips backwards. Browsers
- * without scroll-driven animations keep the floating only.
- */
-@supports (animation-timeline: view()) {
-	@media (prefers-reduced-motion: no-preference) {
-		.hero {
-			perspective: 1200px;
-		}
-
-		.phone {
-			animation:
-				float 6s ease-in-out infinite,
-				tilt linear both;
-			animation-timeline: auto, view();
-			animation-range: normal, exit;
-		}
-	}
-}
-
-@keyframes tilt {
-	to {
-		rotate: 1 -0.4 0 35deg;
-		opacity: 0.4;
+	.phone-screens img,
+	.phone-dots input {
+		transition: none;
 	}
 }
 
@@ -385,9 +425,9 @@ details.release summary + * {
 	font-size: 0.85rem;
 }
 
-/* 5. Tools, colors and confetti ------------------------------------------ */
+/* 5. Tool list ----------------------------------------------------------- */
 
-/* "What's inside" is wider than the text column, for the tool grid */
+/* "What's inside" is wider than the text column, for three columns of tools */
 .section.wide {
 	max-width: calc(var(--page-width) + 3rem);
 }
@@ -395,61 +435,50 @@ details.release summary + * {
 .tools {
 	list-style: none;
 	padding: 0;
-	margin: 1.5rem 0 2rem;
+	margin: 2rem 0 0;
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-	gap: 1rem;
+	grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+	column-gap: 2.5rem;
 }
 
-.tool {
+.tools li {
 	margin: 0;
-	padding: 1.25rem;
-	border: 1px solid var(--border);
-	border-radius: 1.25rem;
-	background-color: var(--background);
-	transition:
-		translate 0.2s ease,
-		border-color 0.2s ease;
+	padding: 1rem 0;
+	border-top: 1px solid var(--border);
 }
 
-.tool:hover {
-	translate: 0 -0.2rem;
-	border-color: var(--accent);
+.tools h3 {
+	margin: 0 0 0.15rem;
+	font-size: 1rem;
+	font-weight: 600;
 }
 
-.tool h3 {
-	margin: 0.75rem 0 0.25rem;
-	font-size: 1.05rem;
-}
-
-.tool p {
+.tools p {
 	margin: 0;
 	color: var(--text-muted);
 	font-size: 0.95rem;
 }
 
-.tool-emoji {
+/* 6. Text pages ---------------------------------------------------------- */
+
+.page {
+	max-width: calc(var(--content-width) + 3rem);
+	margin: 0 auto;
+	padding: 2rem 1.5rem 0;
+}
+
+.page .lead {
+	font-size: 1.2rem;
+	color: var(--text-muted);
+}
+
+.back-link {
 	display: inline-block;
-	font-size: 2rem;
-	line-height: 3rem;
-}
-
-/* The emoji wiggles when the card is hovered */
-.tool:hover .tool-emoji {
-	animation: wiggle 0.5s ease;
-}
-
-@keyframes wiggle {
-	25% {
-		rotate: -12deg;
-	}
-	75% {
-		rotate: 12deg;
-	}
+	margin-top: 2rem;
 }
 
 /*
- * The die. Its six faces sit in a column ("die-faces") and an animation
+ * The die on the 404 page. Its six faces sit in a column ("die-faces") and an animation
  * moves the column up in six steps, one face at a time. The animation only
  * runs while the die is pressed, so it stops on whatever face is showing
  * when the finger lets go: a real random roll without any JavaScript.
@@ -558,305 +587,19 @@ details.release summary + * {
 		100% 100%;
 }
 
-/*
- * "Make it yours": a row of app icons as radio buttons. The checked one
- * changes the accent color of the whole page (the rules below the picker),
- * the big icon and the logo in the header.
- */
-.icon-picker {
-	border: 0;
-	padding: 0;
-	margin: 1.5rem 0 0;
-	/* Two rows of five, narrower on small screens */
-	display: grid;
-	grid-template-columns: repeat(5, minmax(0, 4.5rem));
-	gap: 0.75rem 0.5rem;
-}
-
-/* Screen readers still read the legend */
-.icon-picker legend {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	overflow: hidden;
-	clip-path: inset(50%);
-}
-
-.icon-picker label {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 0.25rem;
-	font-size: 0.85rem;
-	color: var(--text-muted);
-	cursor: pointer;
-}
-
-.icon-picker img {
-	width: min(3.5rem, 100%);
-	border-radius: 0.9rem;
-	outline: 3px solid transparent;
-	outline-offset: 2px;
-	transition:
-		outline-color 0.2s ease,
-		scale 0.2s ease;
-}
-
-.icon-picker label:hover img {
-	scale: 1.08;
-}
-
-/* The radio button itself is hidden, the icon shows the selection */
-.icon-picker input {
-	position: absolute;
-	opacity: 0;
-}
-
-.icon-picker input:checked + img {
-	outline-color: var(--accent);
-}
-
-.icon-picker input:checked ~ * {
-	color: var(--text);
-}
-
-.icon-picker input:focus-visible + img {
-	outline-color: var(--accent);
-	outline-style: dashed;
-}
-
-/* The big icon, which is also the confetti button */
-.icon-preview {
-	position: relative;
-	width: 8rem;
-	margin: 1.5rem 0 0;
-}
-
-.icon-preview img {
-	display: block;
-	width: 8rem;
-	filter: drop-shadow(0 0.75rem 1.5rem rgb(0 0 0 / 0.15));
-	transition: scale 0.1s ease;
-}
-
-.icon-preview:has(label:active, button:active) img {
-	scale: 0.92;
-}
-
-/* Five stacked checkboxes count the taps; only the next one's label is shown */
-.taps input {
-	display: none;
-}
-
-.taps label,
-.taps button {
-	display: none;
-	position: absolute;
-	inset: 0;
-	padding: 0;
-	border: 0;
-	background: none;
-	cursor: pointer;
-	-webkit-tap-highlight-color: transparent;
-	touch-action: manipulation;
-}
-
-#tap1:not(:checked) ~ label[for="tap1"],
-#tap1:checked ~ #tap2:not(:checked) ~ label[for="tap2"],
-#tap2:checked ~ #tap3:not(:checked) ~ label[for="tap3"],
-#tap3:checked ~ #tap4:not(:checked) ~ label[for="tap4"],
-#tap4:checked ~ #tap5:not(:checked) ~ label[for="tap5"],
-#tap5:checked ~ button {
-	display: block;
-}
-
-/* The page colors for each app icon. light-dark() picks the value for light or dark mode. */
-:root:has(#icon-orange:checked) {
-	--accent: #f7a23e;
-	--accent-text: light-dark(#a3530b, #ffb35c);
-}
-
-:root:has(#icon-lime:checked) {
-	--accent: #b6e534;
-	--accent-text: light-dark(#4a7400, #d4f96b);
-}
-
-:root:has(#icon-green:checked) {
-	--accent: #7fcf3a;
-	--accent-text: light-dark(#357010, #a6e35a);
-}
-
-:root:has(#icon-blue:checked) {
-	--accent: #5eaef5;
-	--accent-text: light-dark(#1663b5, #7fbfff);
-}
-
-:root:has(#icon-purple:checked) {
-	--accent: #c75af7;
-	--accent-text: light-dark(#8424b0, #d98bff);
-}
-
-:root:has(#icon-pink:checked) {
-	--accent: #f27a92;
-	--accent-text: light-dark(#bb2a4e, #ff8fa5);
-}
-
-:root:has(#icon-white:checked) {
-	--accent: #a1a1aa;
-	--accent-text: var(--text);
-}
-
-:root:has(#icon-black:checked) {
-	--accent: var(--text);
-	--accent-text: var(--text);
-}
-
-:root:has(#icon-pride:checked) {
-	--accent: #8a3ffc;
-	--accent-text: light-dark(#7a1fa8, #d98bff);
-}
-
-/* Pride paints the big heading in rainbow colors */
-:root:has(#icon-pride:checked) h1 {
-	background-image: linear-gradient(
-		90deg,
-		#e40303,
-		#ff8c00,
-		#ffd500,
-		#008026,
-		#004dff,
-		#750787
-	);
-	background-clip: text;
-	-webkit-background-clip: text;
-	color: transparent;
-}
-
-/* Header logo and big icon follow the picked icon */
-:root:has(#icon-orange:checked) :is(.brand img, .icon-preview img) {
-	content: url("assets/icons/orange.webp");
-}
-:root:has(#icon-lime:checked) :is(.brand img, .icon-preview img) {
-	content: url("assets/icons/lime.webp");
-}
-:root:has(#icon-green:checked) :is(.brand img, .icon-preview img) {
-	content: url("assets/icons/green.webp");
-}
-:root:has(#icon-blue:checked) :is(.brand img, .icon-preview img) {
-	content: url("assets/icons/blue.webp");
-}
-:root:has(#icon-purple:checked) :is(.brand img, .icon-preview img) {
-	content: url("assets/icons/purple.webp");
-}
-:root:has(#icon-pink:checked) :is(.brand img, .icon-preview img) {
-	content: url("assets/icons/pink.webp");
-}
-:root:has(#icon-white:checked) :is(.brand img, .icon-preview img) {
-	content: url("assets/icons/white.webp");
-}
-:root:has(#icon-black:checked) :is(.brand img, .icon-preview img) {
-	content: url("assets/icons/black.webp");
-}
-:root:has(#icon-pride:checked) :is(.brand img, .icon-preview img) {
-	content: url("assets/icons/pride.webp");
-}
-
-/*
- * Confetti: 36 pieces above the top of the window. Each one has its own
- * position (--x), start (--delay) and fall time (--duration) in index.html,
- * the colors of the app icons repeat. They fall once after the fifth tap.
- * With reduced motion they stay at the top of the window instead.
- */
-.confetti {
-	position: fixed;
-	inset: 0;
-	overflow: hidden;
-	pointer-events: none;
-	z-index: 10;
-}
-
-.confetti i {
-	position: absolute;
-	top: -2rem;
-	left: var(--x);
-	width: 0.6rem;
-	height: 1rem;
-	border-radius: 2px;
-	background-color: #ff463c;
-	visibility: hidden;
-	/* Sideways drift while falling, every other piece the other way */
-	--drift: 5rem;
-}
-
-.confetti i:nth-child(2n) {
-	--drift: -4rem;
-}
-
-.confetti i:nth-child(6n + 2) {
-	background-color: #f7a23e;
-}
-.confetti i:nth-child(6n + 3) {
-	background-color: #b6e534;
-	height: 0.6rem;
-	border-radius: 50%;
-}
-.confetti i:nth-child(6n + 4) {
-	background-color: #5eaef5;
-}
-.confetti i:nth-child(6n + 5) {
-	background-color: #c75af7;
-	height: 0.6rem;
-	border-radius: 50%;
-}
-.confetti i:nth-child(6n + 6) {
-	background-color: #f27a92;
-}
-
-:root:has(#tap5:checked) .confetti i {
-	visibility: visible;
-	animation: fall var(--duration) var(--delay) ease-in forwards;
-}
-
-@keyframes fall {
-	to {
-		translate: var(--drift) calc(100vh + 4rem);
-		rotate: 3 1 0 900deg;
+@keyframes wiggle {
+	25% {
+		rotate: -12deg;
+	}
+	75% {
+		rotate: 12deg;
 	}
 }
 
-/* Without motion, no rolling and wiggling; the confetti just shows up */
 @media (prefers-reduced-motion: reduce) {
-	.tool:hover .tool-emoji,
 	.die:active {
 		animation: none;
 	}
-
-	:root:has(#tap5:checked) .confetti i {
-		animation: none;
-		top: 1rem;
-	}
-
-	:root:has(#tap5:checked) .confetti i:nth-child(3n) {
-		top: 3rem;
-	}
-}
-
-/* 6. Text pages ---------------------------------------------------------- */
-
-.page {
-	max-width: calc(var(--content-width) + 3rem);
-	margin: 0 auto;
-	padding: 2rem 1.5rem 0;
-}
-
-.page .lead {
-	font-size: 1.2rem;
-	color: var(--text-muted);
-}
-
-.back-link {
-	display: inline-block;
-	margin-top: 2rem;
 }
 
 /* 7. Small screens ------------------------------------------------------- */

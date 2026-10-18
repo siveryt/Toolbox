@@ -78,7 +78,7 @@ LANG=en_US.UTF-8 bundle exec fastlane ppo_create_test
 
 `ppo_screenshots` frames the existing raw screenshots again in every variant's look (run `screenshots` first). `ppo_create_test` creates the test with one treatment per variant and places the screenshots on them; submit and start it in App Store Connect.
 
-Custom scripts that run between the steps go into [fastlane/hooks/](fastlane/hooks/README.md). The `frame` lane also puts the English iPhone main screen on the website (`web/assets/mainscreen.webp`); commit the updated image to publish it.
+Custom scripts that run between the steps go into [fastlane/hooks/](fastlane/hooks/README.md). The `frame` lane also puts English iPhone screenshots on the website (`web/assets/screenshots/`); commit the updated images to publish them.
 
 ### Translations
 Translations happen on [Crowdin](https://crowdin.com/project/toolbox), which syncs with this repository and opens "New Crowdin updates" pull requests from the `crowdin` branch. Review and merge them; Crowdin creates the branch again for the next update.

@@ -53,7 +53,7 @@
 						"url": "https://toolbox.sivery.de/",
 						"downloadUrl": "https://apps.apple.com/us/app/toolbox-all-you-need/id1638758005",
 						"image": "https://toolbox.sivery.de/apple-touch-icon.png",
-						"screenshot": "https://toolbox.sivery.de/assets/mainscreen.webp",
+						"screenshot": "https://toolbox.sivery.de/assets/screenshots/menu.webp",
 						"isAccessibleForFree": true,
 						"offers": {
 							"@type": "Offer",
@@ -119,216 +119,173 @@
 					</a>
 				</div>
 
-				<!-- Comes from `fastlane screenshots`, see fastlane/hooks/post_frame.d/50-website -->
-				<img
-					class="phone"
-					src="assets/mainscreen.webp"
-					alt="The Toolbox main screen with a list of tools"
-					width="600"
-					height="1227"
-				/>
+				<!--
+					Screenshots from `fastlane screenshots`, see fastlane/hooks/post_frame.d/50-website.
+					Tapping the phone shows the next one, without JavaScript: the radio buttons
+					(the dots below) hold which screenshot is visible, and the label of the next
+					radio button lies over the phone.
+				-->
+				<div class="phone">
+					<div class="phone-screens">
+						<img
+							src="assets/screenshots/menu.webp"
+							alt="The Toolbox main screen with a list of tools"
+							width="600"
+							height="1227"
+						/>
+						<img
+							src="assets/screenshots/dice.webp"
+							alt="The Dice tool"
+							width="600"
+							height="1227"
+							loading="lazy"
+						/>
+						<img
+							src="assets/screenshots/qrcode.webp"
+							alt="The QR-Code Generator"
+							width="600"
+							height="1227"
+							loading="lazy"
+						/>
+						<img
+							src="assets/screenshots/roman.webp"
+							alt="The Roman Numbers converter"
+							width="600"
+							height="1227"
+							loading="lazy"
+						/>
+						<img
+							src="assets/screenshots/date-difference.webp"
+							alt="The Date Difference tool"
+							width="600"
+							height="1227"
+							loading="lazy"
+						/>
+						<label for="screen-2"></label>
+						<label for="screen-3"></label>
+						<label for="screen-4"></label>
+						<label for="screen-5"></label>
+						<label for="screen-1"></label>
+					</div>
+					<div class="phone-dots">
+						<input
+							type="radio"
+							name="screen"
+							id="screen-1"
+							aria-label="The Toolbox main screen with a list of tools"
+							checked
+						/>
+						<input
+							type="radio"
+							name="screen"
+							id="screen-2"
+							aria-label="The Dice tool"
+						/>
+						<input
+							type="radio"
+							name="screen"
+							id="screen-3"
+							aria-label="The QR-Code Generator"
+						/>
+						<input
+							type="radio"
+							name="screen"
+							id="screen-4"
+							aria-label="The Roman Numbers converter"
+						/>
+						<input
+							type="radio"
+							name="screen"
+							id="screen-5"
+							aria-label="The Date Difference tool"
+						/>
+					</div>
+				</div>
 			</section>
 
 			<section class="section wide" id="tools">
 				<h2>What's inside</h2>
 				<p>
 					Every tool does one thing and does it well. Hide the ones you don't
-					need and put your favorites at the top.
+					need and put your favorites at the top. Dice, Counter and Random
+					Number are on the Apple Watch too.
 				</p>
 
 				<ul class="tools">
-					<li class="tool">
-						<!-- The die cycles through its faces only while it is pressed, so letting go stops it on a random face -->
-						<button
-							class="die"
-							type="button"
-							aria-label="Press and hold to roll the die"
-						>
-							<span class="die-faces"
-								><i></i><i></i><i></i><i></i><i></i><i></i
-							></span>
-						</button>
+					<li>
 						<h3>Dice</h3>
 						<p>
 							Roll dice with 6, 10 or 20 sides and lock the ones you want to
-							keep. Try it: press and hold the die.
+							keep.
 						</p>
 					</li>
-					<li class="tool">
-						<span class="tool-emoji" aria-hidden="true">🌐</span>
+					<li>
 						<h3>Domain Resolver</h3>
 						<p>Look up the IP addresses behind a domain name.</p>
 					</li>
-					<li class="tool">
-						<span class="tool-emoji" aria-hidden="true">🔢</span>
+					<li>
 						<h3>Random Number</h3>
 						<p>Draw a random number from any range you like.</p>
 					</li>
-					<li class="tool">
-						<span class="tool-emoji" aria-hidden="true">🔤</span>
+					<li>
 						<h3>Random Letter</h3>
 						<p>Pick a random letter, for word games and decisions.</p>
 					</li>
-					<li class="tool">
-						<span class="tool-emoji" aria-hidden="true">🕰️</span>
+					<li>
 						<h3>Live Clock</h3>
 						<p>A big, exact clock with seconds, always running.</p>
 					</li>
-					<li class="tool">
-						<span class="tool-emoji" aria-hidden="true">📅</span>
+					<li>
 						<h3>Date Difference</h3>
 						<p>Count the days, months or years between two dates.</p>
 					</li>
-					<li class="tool">
-						<span class="tool-emoji" aria-hidden="true">🏛️</span>
+					<li>
 						<h3>Roman Numbers</h3>
 						<p>
 							Convert between Roman numerals and regular numbers, both ways.
 						</p>
 					</li>
-					<li class="tool">
-						<span class="tool-emoji" aria-hidden="true">➕</span>
+					<li>
 						<h3>Counter</h3>
 						<p>Tap to count people, laps or anything else.</p>
 					</li>
-					<li class="tool">
-						<span class="tool-emoji" aria-hidden="true">🔳</span>
+					<li>
 						<h3>QR-Code Generator</h3>
 						<p>Turn links and text into a QR code and share it.</p>
 					</li>
-					<li class="tool">
-						<span class="tool-emoji" aria-hidden="true">🎨</span>
+					<li>
 						<h3>Color Picker</h3>
 						<p>Pick a color and copy its values for your next project.</p>
 					</li>
-					<li class="tool">
-						<span class="tool-emoji" aria-hidden="true">⚖️</span>
+					<li>
 						<h3>BMI</h3>
 						<p>Work out your body mass index from height and weight.</p>
 					</li>
-					<li class="tool">
-						<span class="tool-emoji" aria-hidden="true">🛰️</span>
+					<li>
 						<h3>IP-Checker</h3>
 						<p>See your public IP address at a glance.</p>
 					</li>
-					<li class="tool">
-						<span class="tool-emoji" aria-hidden="true">📡</span>
+					<li>
 						<h3>LAN Scanner</h3>
 						<p>Find the devices in your Wi-Fi network.</p>
 					</li>
-					<li class="tool">
-						<span class="tool-emoji" aria-hidden="true">🏓</span>
+					<li>
 						<h3>Ping</h3>
 						<p>Check whether a server answers, and how fast.</p>
 					</li>
-					<li class="tool">
-						<span class="tool-emoji" aria-hidden="true">🧭</span>
+					<li>
 						<h3>Coordinates</h3>
 						<p>Your GPS position in decimal degrees or DMS, ready to copy.</p>
 					</li>
-					<li class="tool">
-						<span class="tool-emoji" aria-hidden="true">🏎️</span>
+					<li>
 						<h3>Speed</h3>
 						<p>How fast you are moving right now, measured by GPS.</p>
 					</li>
-					<li class="tool">
-						<span class="tool-emoji" aria-hidden="true">🏷️</span>
+					<li>
 						<h3>Barcode Scanner</h3>
 						<p>Scan barcodes and QR codes and keep a history of them.</p>
 					</li>
 				</ul>
-
-				<p>Dice, Counter and Random Number are on the Apple Watch too.</p>
-			</section>
-
-			<section class="section" id="colors">
-				<h2>Make it yours</h2>
-				<p>
-					Toolbox comes in different colors: pick an app icon in the settings.
-					Or pick one here and watch this page change with it.
-				</p>
-
-				<div class="icon-preview">
-					<img
-						src="assets/icons/red.webp"
-						alt="The selected app icon"
-						width="128"
-						height="128"
-					/>
-
-					<!--
-						Easter egg, like in the app: tap the icon five times for confetti.
-						Every tap checks the next box, only the label of the next box is clickable.
-						After the fifth tap a reset button lies on top, which starts over.
-					-->
-					<form class="taps" aria-hidden="true">
-						<input type="checkbox" id="tap1" tabindex="-1" />
-						<input type="checkbox" id="tap2" tabindex="-1" />
-						<input type="checkbox" id="tap3" tabindex="-1" />
-						<input type="checkbox" id="tap4" tabindex="-1" />
-						<input type="checkbox" id="tap5" tabindex="-1" />
-						<label for="tap1"></label>
-						<label for="tap2"></label>
-						<label for="tap3"></label>
-						<label for="tap4"></label>
-						<label for="tap5"></label>
-						<button type="reset" tabindex="-1"></button>
-					</form>
-				</div>
-
-				<fieldset class="icon-picker">
-					<legend>App icon</legend>
-					<label>
-						<input type="radio" name="icon" id="icon-red" checked />
-						<img src="assets/icons/red.webp" alt="" width="64" height="64" />
-						Red
-					</label>
-					<label>
-						<input type="radio" name="icon" id="icon-orange" />
-						<img src="assets/icons/orange.webp" alt="" width="64" height="64" />
-						Orange
-					</label>
-					<label>
-						<input type="radio" name="icon" id="icon-lime" />
-						<img src="assets/icons/lime.webp" alt="" width="64" height="64" />
-						Lime
-					</label>
-					<label>
-						<input type="radio" name="icon" id="icon-green" />
-						<img src="assets/icons/green.webp" alt="" width="64" height="64" />
-						Green
-					</label>
-					<label>
-						<input type="radio" name="icon" id="icon-blue" />
-						<img src="assets/icons/blue.webp" alt="" width="64" height="64" />
-						Blue
-					</label>
-					<label>
-						<input type="radio" name="icon" id="icon-purple" />
-						<img src="assets/icons/purple.webp" alt="" width="64" height="64" />
-						Purple
-					</label>
-					<label>
-						<input type="radio" name="icon" id="icon-pink" />
-						<img src="assets/icons/pink.webp" alt="" width="64" height="64" />
-						Pink
-					</label>
-					<label>
-						<input type="radio" name="icon" id="icon-white" />
-						<img src="assets/icons/white.webp" alt="" width="64" height="64" />
-						White
-					</label>
-					<label>
-						<input type="radio" name="icon" id="icon-black" />
-						<img src="assets/icons/black.webp" alt="" width="64" height="64" />
-						Black
-					</label>
-					<label>
-						<input type="radio" name="icon" id="icon-pride" />
-						<img src="assets/icons/pride.webp" alt="" width="64" height="64" />
-						Pride
-					</label>
-				</fieldset>
 			</section>
 
 			<section class="section">
@@ -444,44 +401,5 @@
 				<a href="terms.html">Terms</a>
 			</nav>
 		</footer>
-		<!-- Falls after the fifth tap on the icon in "Make it yours" -->
-		<div class="confetti" aria-hidden="true">
-			<i style="--x: -0.5%; --delay: 0.12s; --duration: 3.1s"></i>
-			<i style="--x: 1.5%; --delay: 0.43s; --duration: 2.7s"></i>
-			<i style="--x: 4.2%; --delay: 0.41s; --duration: 2.3s"></i>
-			<i style="--x: 8.1%; --delay: 0.06s; --duration: 2.3s"></i>
-			<i style="--x: 10.9%; --delay: 0.66s; --duration: 2.4s"></i>
-			<i style="--x: 13.1%; --delay: 0.5s; --duration: 3.5s"></i>
-			<i style="--x: 16.9%; --delay: 0.32s; --duration: 3.6s"></i>
-			<i style="--x: 18.1%; --delay: 0.69s; --duration: 2.6s"></i>
-			<i style="--x: 21.2%; --delay: 0.09s; --duration: 2.6s"></i>
-			<i style="--x: 25.9%; --delay: 0.14s; --duration: 3s"></i>
-			<i style="--x: 28.2%; --delay: 0.3s; --duration: 3s"></i>
-			<i style="--x: 29.2%; --delay: 0.05s; --duration: 2.5s"></i>
-			<i style="--x: 33.9%; --delay: 0.34s; --duration: 2.6s"></i>
-			<i style="--x: 36.4%; --delay: 0.36s; --duration: 2.6s"></i>
-			<i style="--x: 39.8%; --delay: 0.56s; --duration: 2.5s"></i>
-			<i style="--x: 41.9%; --delay: 0.42s; --duration: 3.4s"></i>
-			<i style="--x: 45.1%; --delay: 0.23s; --duration: 3.6s"></i>
-			<i style="--x: 46.1%; --delay: 0.33s; --duration: 3.3s"></i>
-			<i style="--x: 49%; --delay: 0.39s; --duration: 2.3s"></i>
-			<i style="--x: 53.3%; --delay: 0.61s; --duration: 3s"></i>
-			<i style="--x: 56.7%; --delay: 0.25s; --duration: 3.2s"></i>
-			<i style="--x: 58.6%; --delay: 0.46s; --duration: 2.8s"></i>
-			<i style="--x: 62.1%; --delay: 0.76s; --duration: 2.9s"></i>
-			<i style="--x: 64.4%; --delay: 0.05s; --duration: 3.2s"></i>
-			<i style="--x: 67.1%; --delay: 0.79s; --duration: 3.4s"></i>
-			<i style="--x: 68.8%; --delay: 0.31s; --duration: 3.1s"></i>
-			<i style="--x: 70.8%; --delay: 0.37s; --duration: 2.4s"></i>
-			<i style="--x: 73.9%; --delay: 0.05s; --duration: 3.3s"></i>
-			<i style="--x: 76.7%; --delay: 0.2s; --duration: 2.7s"></i>
-			<i style="--x: 81.7%; --delay: 0.06s; --duration: 2.8s"></i>
-			<i style="--x: 83.5%; --delay: 0.71s; --duration: 3.3s"></i>
-			<i style="--x: 87.2%; --delay: 0.22s; --duration: 2.8s"></i>
-			<i style="--x: 88.5%; --delay: 0.71s; --duration: 3.5s"></i>
-			<i style="--x: 90.6%; --delay: 0.14s; --duration: 2.5s"></i>
-			<i style="--x: 93.6%; --delay: 0.39s; --duration: 3s"></i>
-			<i style="--x: 96.5%; --delay: 0s; --duration: 2.8s"></i>
-		</div>
 	</body>
 </html>
