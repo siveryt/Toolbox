@@ -427,11 +427,6 @@ details.release summary + * {
 
 /* 5. Tool list ----------------------------------------------------------- */
 
-/* "What's inside" is wider than the text column, for three columns of tools */
-.section.wide {
-	max-width: calc(var(--page-width) + 3rem);
-}
-
 .tools {
 	list-style: none;
 	padding: 0;
