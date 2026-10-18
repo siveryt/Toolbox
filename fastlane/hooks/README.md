@@ -17,3 +17,4 @@ Files are laid out as `<SCREENSHOTS_DIR>/<language>/<device>-<name>.png`; framei
 frameit has no Apple Watch frames, so `post_capture_watch.d/` is where a watch bezel script belongs.
 
 frameit has no iPhone Duo bezel either: `post_capture_duo.d/10-layout` lays the Duo screenshots out like the framed ones (background, headline, title) at the size of the outer display. `post_frame.d/60-creative-assets` builds the product page header and search results images into `fastlane/creative-assets/<language>/`.
+`post_frame.d/70-social-image` cuts the English header down to the preview image for shared links on the website (`web/assets/social.jpg`).

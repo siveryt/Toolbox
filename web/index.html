@@ -3,11 +3,76 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Toolbox – One App, All You Need</title>
+		<title>
+			Toolbox – Free All-in-One Tool App for iPhone &amp; Apple Watch
+		</title>
 		<meta
 			name="description"
-			content="Toolbox is a free, open-source iOS app that bundles lots of small everyday tools into one app."
+			content="Free, open-source app for iPhone, iPad and Apple Watch with lots of small tools: dice, QR codes, barcode scanner, LAN scanner, ping, Roman numerals and more."
 		/>
+		<link rel="canonical" href="https://toolbox.sivery.de/" />
+
+		<!-- Preview for shared links, see fastlane/hooks/post_frame.d/70-social-image -->
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Toolbox" />
+		<meta property="og:title" content="Toolbox – One App, All You Need" />
+		<meta
+			property="og:description"
+			content="Lots of small everyday tools in one free, open-source app for iPhone, iPad and Apple Watch."
+		/>
+		<meta property="og:url" content="https://toolbox.sivery.de/" />
+		<meta
+			property="og:image"
+			content="https://toolbox.sivery.de/assets/social.jpg"
+		/>
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta
+			property="og:image:alt"
+			content="The Toolbox app icon between two iPhones: One App. 20+ Tools."
+		/>
+		<meta name="twitter:card" content="summary_large_image" />
+
+		<!-- What search engines show about the app (schema.org) -->
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@graph": [
+					{
+						"@type": "WebSite",
+						"name": "Toolbox",
+						"url": "https://toolbox.sivery.de/"
+					},
+					{
+						"@type": "MobileApplication",
+						"name": "Toolbox – All You Need",
+						"alternateName": "Toolbox",
+						"description": "Lots of small everyday tools in one free, open-source app: dice, random numbers, QR code generator, barcode scanner, LAN scanner, ping, IP checker, Roman numerals, BMI and more.",
+						"operatingSystem": "iOS, iPadOS, watchOS",
+						"applicationCategory": "UtilitiesApplication",
+						"url": "https://toolbox.sivery.de/",
+						"downloadUrl": "https://apps.apple.com/us/app/toolbox-all-you-need/id1638758005",
+						"image": "https://toolbox.sivery.de/apple-touch-icon.png",
+						"screenshot": "https://toolbox.sivery.de/assets/mainscreen.webp",
+						"isAccessibleForFree": true,
+						"offers": {
+							"@type": "Offer",
+							"price": "0",
+							"priceCurrency": "EUR"
+						},
+						"author": {
+							"@type": "Person",
+							"name": "Sivery",
+							"url": "https://github.com/siveryt"
+						},
+						"sameAs": [
+							"https://apps.apple.com/us/app/toolbox-all-you-need/id1638758005",
+							"https://github.com/siveryt/toolbox"
+						]
+					}
+				]
+			}
+		</script>
 		<meta name="apple-itunes-app" content="app-id=1638758005" />
 		<meta
 			name="theme-color"
@@ -42,7 +107,8 @@
 					<p>
 						Toolbox helps with the little tasks you want to do with your phone
 						but don't have an app for. It combines lots of tools, so you only
-						need <strong>one</strong> app. Toolbox is free and open source.
+						need <strong>one</strong> app. Toolbox is free and open source and
+						runs on iPhone, iPad and Apple Watch.
 					</p>
 
 					<a
@@ -63,6 +129,208 @@
 				/>
 			</section>
 
+			<section class="section wide" id="tools">
+				<h2>What's inside</h2>
+				<p>
+					Every tool does one thing and does it well. Hide the ones you don't
+					need and put your favorites at the top.
+				</p>
+
+				<ul class="tools">
+					<li class="tool">
+						<!-- The die cycles through its faces only while it is pressed, so letting go stops it on a random face -->
+						<button
+							class="die"
+							type="button"
+							aria-label="Press and hold to roll the die"
+						>
+							<span class="die-faces"
+								><i></i><i></i><i></i><i></i><i></i><i></i
+							></span>
+						</button>
+						<h3>Dice</h3>
+						<p>
+							Roll dice with 6, 10 or 20 sides and lock the ones you want to
+							keep. Try it: press and hold the die.
+						</p>
+					</li>
+					<li class="tool">
+						<span class="tool-emoji" aria-hidden="true">🌐</span>
+						<h3>Domain Resolver</h3>
+						<p>Look up the IP addresses behind a domain name.</p>
+					</li>
+					<li class="tool">
+						<span class="tool-emoji" aria-hidden="true">🔢</span>
+						<h3>Random Number</h3>
+						<p>Draw a random number from any range you like.</p>
+					</li>
+					<li class="tool">
+						<span class="tool-emoji" aria-hidden="true">🔤</span>
+						<h3>Random Letter</h3>
+						<p>Pick a random letter, for word games and decisions.</p>
+					</li>
+					<li class="tool">
+						<span class="tool-emoji" aria-hidden="true">🕰️</span>
+						<h3>Live Clock</h3>
+						<p>A big, exact clock with seconds, always running.</p>
+					</li>
+					<li class="tool">
+						<span class="tool-emoji" aria-hidden="true">📅</span>
+						<h3>Date Difference</h3>
+						<p>Count the days, months or years between two dates.</p>
+					</li>
+					<li class="tool">
+						<span class="tool-emoji" aria-hidden="true">🏛️</span>
+						<h3>Roman Numbers</h3>
+						<p>
+							Convert between Roman numerals and regular numbers, both ways.
+						</p>
+					</li>
+					<li class="tool">
+						<span class="tool-emoji" aria-hidden="true">➕</span>
+						<h3>Counter</h3>
+						<p>Tap to count people, laps or anything else.</p>
+					</li>
+					<li class="tool">
+						<span class="tool-emoji" aria-hidden="true">🔳</span>
+						<h3>QR-Code Generator</h3>
+						<p>Turn links and text into a QR code and share it.</p>
+					</li>
+					<li class="tool">
+						<span class="tool-emoji" aria-hidden="true">🎨</span>
+						<h3>Color Picker</h3>
+						<p>Pick a color and copy its values for your next project.</p>
+					</li>
+					<li class="tool">
+						<span class="tool-emoji" aria-hidden="true">⚖️</span>
+						<h3>BMI</h3>
+						<p>Work out your body mass index from height and weight.</p>
+					</li>
+					<li class="tool">
+						<span class="tool-emoji" aria-hidden="true">🛰️</span>
+						<h3>IP-Checker</h3>
+						<p>See your public IP address at a glance.</p>
+					</li>
+					<li class="tool">
+						<span class="tool-emoji" aria-hidden="true">📡</span>
+						<h3>LAN Scanner</h3>
+						<p>Find the devices in your Wi-Fi network.</p>
+					</li>
+					<li class="tool">
+						<span class="tool-emoji" aria-hidden="true">🏓</span>
+						<h3>Ping</h3>
+						<p>Check whether a server answers, and how fast.</p>
+					</li>
+					<li class="tool">
+						<span class="tool-emoji" aria-hidden="true">🧭</span>
+						<h3>Coordinates</h3>
+						<p>Your GPS position in decimal degrees or DMS, ready to copy.</p>
+					</li>
+					<li class="tool">
+						<span class="tool-emoji" aria-hidden="true">🏎️</span>
+						<h3>Speed</h3>
+						<p>How fast you are moving right now, measured by GPS.</p>
+					</li>
+					<li class="tool">
+						<span class="tool-emoji" aria-hidden="true">🏷️</span>
+						<h3>Barcode Scanner</h3>
+						<p>Scan barcodes and QR codes and keep a history of them.</p>
+					</li>
+				</ul>
+
+				<p>Dice, Counter and Random Number are on the Apple Watch too.</p>
+			</section>
+
+			<section class="section" id="colors">
+				<h2>Make it yours</h2>
+				<p>
+					Toolbox comes in different colors: pick an app icon in the settings.
+					Or pick one here and watch this page change with it.
+				</p>
+
+				<div class="icon-preview">
+					<img
+						src="assets/icons/red.webp"
+						alt="The selected app icon"
+						width="128"
+						height="128"
+					/>
+
+					<!--
+						Easter egg, like in the app: tap the icon five times for confetti.
+						Every tap checks the next box, only the label of the next box is clickable.
+						After the fifth tap a reset button lies on top, which starts over.
+					-->
+					<form class="taps" aria-hidden="true">
+						<input type="checkbox" id="tap1" tabindex="-1" />
+						<input type="checkbox" id="tap2" tabindex="-1" />
+						<input type="checkbox" id="tap3" tabindex="-1" />
+						<input type="checkbox" id="tap4" tabindex="-1" />
+						<input type="checkbox" id="tap5" tabindex="-1" />
+						<label for="tap1"></label>
+						<label for="tap2"></label>
+						<label for="tap3"></label>
+						<label for="tap4"></label>
+						<label for="tap5"></label>
+						<button type="reset" tabindex="-1"></button>
+					</form>
+				</div>
+
+				<fieldset class="icon-picker">
+					<legend>App icon</legend>
+					<label>
+						<input type="radio" name="icon" id="icon-red" checked />
+						<img src="assets/icons/red.webp" alt="" width="64" height="64" />
+						Red
+					</label>
+					<label>
+						<input type="radio" name="icon" id="icon-orange" />
+						<img src="assets/icons/orange.webp" alt="" width="64" height="64" />
+						Orange
+					</label>
+					<label>
+						<input type="radio" name="icon" id="icon-lime" />
+						<img src="assets/icons/lime.webp" alt="" width="64" height="64" />
+						Lime
+					</label>
+					<label>
+						<input type="radio" name="icon" id="icon-green" />
+						<img src="assets/icons/green.webp" alt="" width="64" height="64" />
+						Green
+					</label>
+					<label>
+						<input type="radio" name="icon" id="icon-blue" />
+						<img src="assets/icons/blue.webp" alt="" width="64" height="64" />
+						Blue
+					</label>
+					<label>
+						<input type="radio" name="icon" id="icon-purple" />
+						<img src="assets/icons/purple.webp" alt="" width="64" height="64" />
+						Purple
+					</label>
+					<label>
+						<input type="radio" name="icon" id="icon-pink" />
+						<img src="assets/icons/pink.webp" alt="" width="64" height="64" />
+						Pink
+					</label>
+					<label>
+						<input type="radio" name="icon" id="icon-white" />
+						<img src="assets/icons/white.webp" alt="" width="64" height="64" />
+						White
+					</label>
+					<label>
+						<input type="radio" name="icon" id="icon-black" />
+						<img src="assets/icons/black.webp" alt="" width="64" height="64" />
+						Black
+					</label>
+					<label>
+						<input type="radio" name="icon" id="icon-pride" />
+						<img src="assets/icons/pride.webp" alt="" width="64" height="64" />
+						Pride
+					</label>
+				</fieldset>
+			</section>
+
 			<section class="section">
 				<h2>Got an idea?</h2>
 				<p>
@@ -71,7 +339,7 @@
 						href="mailto:toolbox@sivery.de?subject=Feature%20Request%3A&body=Please%20describe%2C%20what%20feature%20you%20imagine%20and%20how%20it%20should%20behave"
 						>toolbox@sivery.de</a
 					>. Want to be notified about new versions? Subscribe to the
-					<a href="http://mailing.sivery.de/subscription/form">newsletter</a>.
+					<a href="https://mailing.sivery.de/subscription/form">newsletter</a>.
 				</p>
 				<p>
 					You can also help build Toolbox yourself – with translations, icons or
@@ -176,5 +444,44 @@
 				<a href="terms.html">Terms</a>
 			</nav>
 		</footer>
+		<!-- Falls after the fifth tap on the icon in "Make it yours" -->
+		<div class="confetti" aria-hidden="true">
+			<i style="--x: -0.5%; --delay: 0.12s; --duration: 3.1s"></i>
+			<i style="--x: 1.5%; --delay: 0.43s; --duration: 2.7s"></i>
+			<i style="--x: 4.2%; --delay: 0.41s; --duration: 2.3s"></i>
+			<i style="--x: 8.1%; --delay: 0.06s; --duration: 2.3s"></i>
+			<i style="--x: 10.9%; --delay: 0.66s; --duration: 2.4s"></i>
+			<i style="--x: 13.1%; --delay: 0.5s; --duration: 3.5s"></i>
+			<i style="--x: 16.9%; --delay: 0.32s; --duration: 3.6s"></i>
+			<i style="--x: 18.1%; --delay: 0.69s; --duration: 2.6s"></i>
+			<i style="--x: 21.2%; --delay: 0.09s; --duration: 2.6s"></i>
+			<i style="--x: 25.9%; --delay: 0.14s; --duration: 3s"></i>
+			<i style="--x: 28.2%; --delay: 0.3s; --duration: 3s"></i>
+			<i style="--x: 29.2%; --delay: 0.05s; --duration: 2.5s"></i>
+			<i style="--x: 33.9%; --delay: 0.34s; --duration: 2.6s"></i>
+			<i style="--x: 36.4%; --delay: 0.36s; --duration: 2.6s"></i>
+			<i style="--x: 39.8%; --delay: 0.56s; --duration: 2.5s"></i>
+			<i style="--x: 41.9%; --delay: 0.42s; --duration: 3.4s"></i>
+			<i style="--x: 45.1%; --delay: 0.23s; --duration: 3.6s"></i>
+			<i style="--x: 46.1%; --delay: 0.33s; --duration: 3.3s"></i>
+			<i style="--x: 49%; --delay: 0.39s; --duration: 2.3s"></i>
+			<i style="--x: 53.3%; --delay: 0.61s; --duration: 3s"></i>
+			<i style="--x: 56.7%; --delay: 0.25s; --duration: 3.2s"></i>
+			<i style="--x: 58.6%; --delay: 0.46s; --duration: 2.8s"></i>
+			<i style="--x: 62.1%; --delay: 0.76s; --duration: 2.9s"></i>
+			<i style="--x: 64.4%; --delay: 0.05s; --duration: 3.2s"></i>
+			<i style="--x: 67.1%; --delay: 0.79s; --duration: 3.4s"></i>
+			<i style="--x: 68.8%; --delay: 0.31s; --duration: 3.1s"></i>
+			<i style="--x: 70.8%; --delay: 0.37s; --duration: 2.4s"></i>
+			<i style="--x: 73.9%; --delay: 0.05s; --duration: 3.3s"></i>
+			<i style="--x: 76.7%; --delay: 0.2s; --duration: 2.7s"></i>
+			<i style="--x: 81.7%; --delay: 0.06s; --duration: 2.8s"></i>
+			<i style="--x: 83.5%; --delay: 0.71s; --duration: 3.3s"></i>
+			<i style="--x: 87.2%; --delay: 0.22s; --duration: 2.8s"></i>
+			<i style="--x: 88.5%; --delay: 0.71s; --duration: 3.5s"></i>
+			<i style="--x: 90.6%; --delay: 0.14s; --duration: 2.5s"></i>
+			<i style="--x: 93.6%; --delay: 0.39s; --duration: 3s"></i>
+			<i style="--x: 96.5%; --delay: 0s; --duration: 2.8s"></i>
+		</div>
 	</body>
 </html>

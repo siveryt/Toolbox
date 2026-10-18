@@ -1,0 +1,5 @@
+# Everyone is welcome to read the whole site
+User-agent: *
+Allow: /
+
+Sitemap: https://toolbox.sivery.de/sitemap.xml

@@ -9,8 +9,9 @@
  *   2. Base text
  *   3. Header and footer
  *   4. Start page (hero, release notes)
- *   5. Text pages (contribution, legal)
- *   6. Small screens
+ *   5. Tools, colors and confetti (start page)
+ *   6. Text pages (contribution, legal, 404)
+ *   7. Small screens
  */
 
 /* 1. Colors and sizes ---------------------------------------------------- */
@@ -269,6 +270,33 @@ img {
 	}
 }
 
+/*
+ * While the hero scrolls out of view, the phone tips backwards. Browsers
+ * without scroll-driven animations keep the floating only.
+ */
+@supports (animation-timeline: view()) {
+	@media (prefers-reduced-motion: no-preference) {
+		.hero {
+			perspective: 1200px;
+		}
+
+		.phone {
+			animation:
+				float 6s ease-in-out infinite,
+				tilt linear both;
+			animation-timeline: auto, view();
+			animation-range: normal, exit;
+		}
+	}
+}
+
+@keyframes tilt {
+	to {
+		rotate: 1 -0.4 0 35deg;
+		opacity: 0.4;
+	}
+}
+
 /* Sections below the hero: one centered text column */
 .section {
 	max-width: calc(var(--content-width) + 3rem);
@@ -357,7 +385,463 @@ details.release summary + * {
 	font-size: 0.85rem;
 }
 
-/* 5. Text pages ---------------------------------------------------------- */
+/* 5. Tools, colors and confetti ------------------------------------------ */
+
+/* "What's inside" is wider than the text column, for the tool grid */
+.section.wide {
+	max-width: calc(var(--page-width) + 3rem);
+}
+
+.tools {
+	list-style: none;
+	padding: 0;
+	margin: 1.5rem 0 2rem;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+	gap: 1rem;
+}
+
+.tool {
+	margin: 0;
+	padding: 1.25rem;
+	border: 1px solid var(--border);
+	border-radius: 1.25rem;
+	background-color: var(--background);
+	transition:
+		translate 0.2s ease,
+		border-color 0.2s ease;
+}
+
+.tool:hover {
+	translate: 0 -0.2rem;
+	border-color: var(--accent);
+}
+
+.tool h3 {
+	margin: 0.75rem 0 0.25rem;
+	font-size: 1.05rem;
+}
+
+.tool p {
+	margin: 0;
+	color: var(--text-muted);
+	font-size: 0.95rem;
+}
+
+.tool-emoji {
+	display: inline-block;
+	font-size: 2rem;
+	line-height: 3rem;
+}
+
+/* The emoji wiggles when the card is hovered */
+.tool:hover .tool-emoji {
+	animation: wiggle 0.5s ease;
+}
+
+@keyframes wiggle {
+	25% {
+		rotate: -12deg;
+	}
+	75% {
+		rotate: 12deg;
+	}
+}
+
+/*
+ * The die. Its six faces sit in a column ("die-faces") and an animation
+ * moves the column up in six steps, one face at a time. The animation only
+ * runs while the die is pressed, so it stops on whatever face is showing
+ * when the finger lets go: a real random roll without any JavaScript.
+ */
+.die {
+	--size: 3rem;
+	display: block;
+	width: var(--size);
+	height: var(--size);
+	padding: 0;
+	border: 2px solid currentColor;
+	border-radius: 0.8rem;
+	overflow: hidden;
+	color: var(--text);
+	background-color: var(--background);
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+	touch-action: manipulation;
+	user-select: none;
+	-webkit-user-select: none;
+	-webkit-touch-callout: none;
+}
+
+.die:active {
+	animation: wiggle 0.25s linear infinite;
+}
+
+.die-faces {
+	display: block;
+	animation: roll 0.9s steps(6) infinite paused;
+}
+
+.die:active .die-faces {
+	animation-play-state: running;
+}
+
+@keyframes roll {
+	to {
+		translate: 0 -100%;
+	}
+}
+
+/* One face, with its pips drawn as round gradients at 0%, 50% or 100% of the inner box */
+.die-faces i {
+	--pip: radial-gradient(
+		circle closest-side,
+		currentColor 80%,
+		transparent 95%
+	);
+	display: block;
+	height: calc(var(--size) - 4px);
+	padding: 0.45rem;
+	background-origin: content-box;
+	background-size: 0.6rem 0.6rem;
+	background-repeat: no-repeat;
+}
+
+.die-faces i:nth-child(1) {
+	background-image: var(--pip);
+	background-position: 50% 50%;
+}
+
+.die-faces i:nth-child(2) {
+	background-image: var(--pip), var(--pip);
+	background-position:
+		0 0,
+		100% 100%;
+}
+
+.die-faces i:nth-child(3) {
+	background-image: var(--pip), var(--pip), var(--pip);
+	background-position:
+		0 0,
+		50% 50%,
+		100% 100%;
+}
+
+.die-faces i:nth-child(4) {
+	background-image: var(--pip), var(--pip), var(--pip), var(--pip);
+	background-position:
+		0 0,
+		100% 0,
+		0 100%,
+		100% 100%;
+}
+
+.die-faces i:nth-child(5) {
+	background-image: var(--pip), var(--pip), var(--pip), var(--pip), var(--pip);
+	background-position:
+		0 0,
+		100% 0,
+		50% 50%,
+		0 100%,
+		100% 100%;
+}
+
+.die-faces i:nth-child(6) {
+	background-image:
+		var(--pip), var(--pip), var(--pip), var(--pip), var(--pip), var(--pip);
+	background-position:
+		0 0,
+		100% 0,
+		0 50%,
+		100% 50%,
+		0 100%,
+		100% 100%;
+}
+
+/*
+ * "Make it yours": a row of app icons as radio buttons. The checked one
+ * changes the accent color of the whole page (the rules below the picker),
+ * the big icon and the logo in the header.
+ */
+.icon-picker {
+	border: 0;
+	padding: 0;
+	margin: 1.5rem 0 0;
+	/* Two rows of five, narrower on small screens */
+	display: grid;
+	grid-template-columns: repeat(5, minmax(0, 4.5rem));
+	gap: 0.75rem 0.5rem;
+}
+
+/* Screen readers still read the legend */
+.icon-picker legend {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+}
+
+.icon-picker label {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.25rem;
+	font-size: 0.85rem;
+	color: var(--text-muted);
+	cursor: pointer;
+}
+
+.icon-picker img {
+	width: min(3.5rem, 100%);
+	border-radius: 0.9rem;
+	outline: 3px solid transparent;
+	outline-offset: 2px;
+	transition:
+		outline-color 0.2s ease,
+		scale 0.2s ease;
+}
+
+.icon-picker label:hover img {
+	scale: 1.08;
+}
+
+/* The radio button itself is hidden, the icon shows the selection */
+.icon-picker input {
+	position: absolute;
+	opacity: 0;
+}
+
+.icon-picker input:checked + img {
+	outline-color: var(--accent);
+}
+
+.icon-picker input:checked ~ * {
+	color: var(--text);
+}
+
+.icon-picker input:focus-visible + img {
+	outline-color: var(--accent);
+	outline-style: dashed;
+}
+
+/* The big icon, which is also the confetti button */
+.icon-preview {
+	position: relative;
+	width: 8rem;
+	margin: 1.5rem 0 0;
+}
+
+.icon-preview img {
+	display: block;
+	width: 8rem;
+	filter: drop-shadow(0 0.75rem 1.5rem rgb(0 0 0 / 0.15));
+	transition: scale 0.1s ease;
+}
+
+.icon-preview:has(label:active, button:active) img {
+	scale: 0.92;
+}
+
+/* Five stacked checkboxes count the taps; only the next one's label is shown */
+.taps input {
+	display: none;
+}
+
+.taps label,
+.taps button {
+	display: none;
+	position: absolute;
+	inset: 0;
+	padding: 0;
+	border: 0;
+	background: none;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+	touch-action: manipulation;
+}
+
+#tap1:not(:checked) ~ label[for="tap1"],
+#tap1:checked ~ #tap2:not(:checked) ~ label[for="tap2"],
+#tap2:checked ~ #tap3:not(:checked) ~ label[for="tap3"],
+#tap3:checked ~ #tap4:not(:checked) ~ label[for="tap4"],
+#tap4:checked ~ #tap5:not(:checked) ~ label[for="tap5"],
+#tap5:checked ~ button {
+	display: block;
+}
+
+/* The page colors for each app icon. light-dark() picks the value for light or dark mode. */
+:root:has(#icon-orange:checked) {
+	--accent: #f7a23e;
+	--accent-text: light-dark(#a3530b, #ffb35c);
+}
+
+:root:has(#icon-lime:checked) {
+	--accent: #b6e534;
+	--accent-text: light-dark(#4a7400, #d4f96b);
+}
+
+:root:has(#icon-green:checked) {
+	--accent: #7fcf3a;
+	--accent-text: light-dark(#357010, #a6e35a);
+}
+
+:root:has(#icon-blue:checked) {
+	--accent: #5eaef5;
+	--accent-text: light-dark(#1663b5, #7fbfff);
+}
+
+:root:has(#icon-purple:checked) {
+	--accent: #c75af7;
+	--accent-text: light-dark(#8424b0, #d98bff);
+}
+
+:root:has(#icon-pink:checked) {
+	--accent: #f27a92;
+	--accent-text: light-dark(#bb2a4e, #ff8fa5);
+}
+
+:root:has(#icon-white:checked) {
+	--accent: #a1a1aa;
+	--accent-text: var(--text);
+}
+
+:root:has(#icon-black:checked) {
+	--accent: var(--text);
+	--accent-text: var(--text);
+}
+
+:root:has(#icon-pride:checked) {
+	--accent: #8a3ffc;
+	--accent-text: light-dark(#7a1fa8, #d98bff);
+}
+
+/* Pride paints the big heading in rainbow colors */
+:root:has(#icon-pride:checked) h1 {
+	background-image: linear-gradient(
+		90deg,
+		#e40303,
+		#ff8c00,
+		#ffd500,
+		#008026,
+		#004dff,
+		#750787
+	);
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
+}
+
+/* Header logo and big icon follow the picked icon */
+:root:has(#icon-orange:checked) :is(.brand img, .icon-preview img) {
+	content: url("assets/icons/orange.webp");
+}
+:root:has(#icon-lime:checked) :is(.brand img, .icon-preview img) {
+	content: url("assets/icons/lime.webp");
+}
+:root:has(#icon-green:checked) :is(.brand img, .icon-preview img) {
+	content: url("assets/icons/green.webp");
+}
+:root:has(#icon-blue:checked) :is(.brand img, .icon-preview img) {
+	content: url("assets/icons/blue.webp");
+}
+:root:has(#icon-purple:checked) :is(.brand img, .icon-preview img) {
+	content: url("assets/icons/purple.webp");
+}
+:root:has(#icon-pink:checked) :is(.brand img, .icon-preview img) {
+	content: url("assets/icons/pink.webp");
+}
+:root:has(#icon-white:checked) :is(.brand img, .icon-preview img) {
+	content: url("assets/icons/white.webp");
+}
+:root:has(#icon-black:checked) :is(.brand img, .icon-preview img) {
+	content: url("assets/icons/black.webp");
+}
+:root:has(#icon-pride:checked) :is(.brand img, .icon-preview img) {
+	content: url("assets/icons/pride.webp");
+}
+
+/*
+ * Confetti: 36 pieces above the top of the window. Each one has its own
+ * position (--x), start (--delay) and fall time (--duration) in index.html,
+ * the colors of the app icons repeat. They fall once after the fifth tap.
+ * With reduced motion they stay at the top of the window instead.
+ */
+.confetti {
+	position: fixed;
+	inset: 0;
+	overflow: hidden;
+	pointer-events: none;
+	z-index: 10;
+}
+
+.confetti i {
+	position: absolute;
+	top: -2rem;
+	left: var(--x);
+	width: 0.6rem;
+	height: 1rem;
+	border-radius: 2px;
+	background-color: #ff463c;
+	visibility: hidden;
+	/* Sideways drift while falling, every other piece the other way */
+	--drift: 5rem;
+}
+
+.confetti i:nth-child(2n) {
+	--drift: -4rem;
+}
+
+.confetti i:nth-child(6n + 2) {
+	background-color: #f7a23e;
+}
+.confetti i:nth-child(6n + 3) {
+	background-color: #b6e534;
+	height: 0.6rem;
+	border-radius: 50%;
+}
+.confetti i:nth-child(6n + 4) {
+	background-color: #5eaef5;
+}
+.confetti i:nth-child(6n + 5) {
+	background-color: #c75af7;
+	height: 0.6rem;
+	border-radius: 50%;
+}
+.confetti i:nth-child(6n + 6) {
+	background-color: #f27a92;
+}
+
+:root:has(#tap5:checked) .confetti i {
+	visibility: visible;
+	animation: fall var(--duration) var(--delay) ease-in forwards;
+}
+
+@keyframes fall {
+	to {
+		translate: var(--drift) calc(100vh + 4rem);
+		rotate: 3 1 0 900deg;
+	}
+}
+
+/* Without motion, no rolling and wiggling; the confetti just shows up */
+@media (prefers-reduced-motion: reduce) {
+	.tool:hover .tool-emoji,
+	.die:active {
+		animation: none;
+	}
+
+	:root:has(#tap5:checked) .confetti i {
+		animation: none;
+		top: 1rem;
+	}
+
+	:root:has(#tap5:checked) .confetti i:nth-child(3n) {
+		top: 3rem;
+	}
+}
+
+/* 6. Text pages ---------------------------------------------------------- */
 
 .page {
 	max-width: calc(var(--content-width) + 3rem);
@@ -375,7 +859,7 @@ details.release summary + * {
 	margin-top: 2rem;
 }
 
-/* 6. Small screens ------------------------------------------------------- */
+/* 7. Small screens ------------------------------------------------------- */
 
 @media (max-width: 760px) {
 	.hero {

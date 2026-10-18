@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+#
+# Puts the preview image for shared links on the website (web/assets/social.jpg).
+#
+# Messages, WhatsApp, Mastodon and search engines show it next to a link to
+# toolbox.sivery.de (og:image in the page heads). It is the English product
+# page header from 60-creative-assets, cut to 1200x630 around the middle,
+# where the icon and the headline are.
+
+set -euo pipefail
+
+HEADER="${CREATIVE_ASSETS_DIR:-$PROJECT_ROOT/fastlane/creative-assets}/en-US/header.png"
+OUT="$PROJECT_ROOT/web/assets/social.jpg"
+
+if [[ ! -f "$HEADER" ]]; then
+    echo "No $HEADER, run 60-creative-assets first" >&2
+    exit 1
+fi
+
+magick "$HEADER" -resize "1200x630^" -gravity center -crop 1200x630+0+0 +repage \
+    -strip -quality 85 -sampling-factor 4:2:0 "$OUT"
+echo "Website: $OUT"
