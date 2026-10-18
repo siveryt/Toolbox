@@ -427,13 +427,29 @@ details.release summary + * {
 
 /* 5. Tool list ----------------------------------------------------------- */
 
+/* "What's inside" is as wide as the hero, for three columns of tools */
+.section.wide {
+	max-width: var(--page-width);
+}
+
+/* Its intro text keeps the normal line length */
+.section.wide > p {
+	max-width: var(--content-width);
+}
+
 .tools {
 	list-style: none;
 	padding: 0;
 	margin: 2rem 0 0;
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+	grid-template-columns: repeat(3, 1fr);
 	column-gap: 2.5rem;
+}
+
+@media (max-width: 1000px) {
+	.tools {
+		grid-template-columns: repeat(2, 1fr);
+	}
 }
 
 .tools li {
@@ -608,6 +624,10 @@ details.release summary + * {
 	.phone {
 		width: min(70%, 15rem);
 		grid-row: 2;
+	}
+
+	.tools {
+		grid-template-columns: 1fr;
 	}
 
 	.site-footer {
