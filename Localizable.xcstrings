@@ -48,6 +48,536 @@
       },
       "shouldTranslate" : false
     },
+    "%lld days" : {
+      "comment" : "Date Difference tool: number of days in the copied result, e.g. “1 year, 2 months, 3 days”",
+      "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Tag"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Tage"
+                }
+              }
+            }
+          }
+        },
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld day"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld days"
+                }
+              }
+            }
+          }
+        },
+        "es" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld día"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld días"
+                }
+              }
+            }
+          }
+        },
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld jour"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld jours"
+                }
+              }
+            }
+          }
+        },
+        "nl" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld dag"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld dagen"
+                }
+              }
+            }
+          }
+        },
+        "pl" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld dni"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld dni"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld dzień"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld dnia"
+                }
+              }
+            }
+          }
+        },
+        "pt-BR" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld dia"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld dias"
+                }
+              }
+            }
+          }
+        },
+        "sv" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld dag"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld dagar"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%lld months" : {
+      "comment" : "Date Difference tool: number of months in the copied result, e.g. “1 year, 2 months, 3 days”",
+      "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Monat"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Monate"
+                }
+              }
+            }
+          }
+        },
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld month"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld months"
+                }
+              }
+            }
+          }
+        },
+        "es" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld mes"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld meses"
+                }
+              }
+            }
+          }
+        },
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld mois"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld mois"
+                }
+              }
+            }
+          }
+        },
+        "nl" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld maand"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld maanden"
+                }
+              }
+            }
+          }
+        },
+        "pl" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld miesiące"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld miesięcy"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld miesiąc"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld miesiąca"
+                }
+              }
+            }
+          }
+        },
+        "pt-BR" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld mês"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld meses"
+                }
+              }
+            }
+          }
+        },
+        "sv" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld månad"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld månader"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%lld years" : {
+      "comment" : "Date Difference tool: number of years in the copied result, e.g. “1 year, 2 months, 3 days”",
+      "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Jahr"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Jahre"
+                }
+              }
+            }
+          }
+        },
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld year"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld years"
+                }
+              }
+            }
+          }
+        },
+        "es" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld año"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld años"
+                }
+              }
+            }
+          }
+        },
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld an"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld ans"
+                }
+              }
+            }
+          }
+        },
+        "nl" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld jaar"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld jaar"
+                }
+              }
+            }
+          }
+        },
+        "pl" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld lata"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld lat"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld rok"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld roku"
+                }
+              }
+            }
+          }
+        },
+        "pt-BR" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld ano"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld anos"
+                }
+              }
+            }
+          }
+        },
+        "sv" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld år"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld år"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%lld-sided die" : {
+      "comment" : "Dice widget: suggested widget configuration, e.g. \"6-sided die\"",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld-seitiger Würfel"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dado de %lld caras"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dé à %lld faces"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dobbelsteen met %lld zijden"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kość o %lld ściankach"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dado de %lld faces"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tärning med %lld sidor"
+          }
+        }
+      }
+    },
     "-" : {
       "localizations" : {
         "de" : {
@@ -191,6 +721,100 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld"
+          }
+        }
+      }
+    },
+    "A QR code can't hold this much. Shorten the content to create one." : {
+      "comment" : "QR-Code Generator: explanation shown instead of the QR code when the content doesn't fit into one",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "So viel passt nicht in einen QR-Code. Kürze den Inhalt, um einen zu erstellen."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un código QR no puede contener tanto. Acorta el contenido para crear uno."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un QR code ne peut pas contenir autant. Raccourcissez le contenu pour en créer un."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zoveel past niet in een QR-code. Maak de inhoud korter om er een te maken."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kod QR nie pomieści tylu danych. Skróć treść, aby go utworzyć."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Um QR code não comporta tanto conteúdo. Encurte o conteúdo para criar um."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Så mycket får inte plats i en QR-kod. Korta ner innehållet för att skapa en."
+          }
+        }
+      }
+    },
+    "All Tools Hidden" : {
+      "comment" : "Main screen: title shown when the user has hidden every tool",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Tools ausgeblendet"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todas las herramientas ocultas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tous les outils sont masqués"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle tools verborgen"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wszystkie narzędzia ukryte"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todas as ferramentas ocultas"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alla verktyg dolda"
           }
         }
       }
@@ -430,6 +1054,288 @@
         }
       }
     },
+    "Camera Unavailable" : {
+      "comment" : "Barcode Scanner: title when the camera can't be used, e.g. on a device without a camera",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kamera nicht verfügbar"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cámara no disponible"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appareil photo indisponible"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Camera niet beschikbaar"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aparat niedostępny"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Câmera indisponível"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kameran är inte tillgänglig"
+          }
+        }
+      }
+    },
+    "Check that Toolbox can access your local network in Settings." : {
+      "comment" : "Wake On Lan: hint below the error when sending the wake signal failed (Local Network permission)",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prüfe in den Einstellungen, ob Toolbox auf dein lokales Netzwerk zugreifen darf."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comprueba en Ajustes que Toolbox pueda acceder a tu red local."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vérifiez dans Réglages que Toolbox peut accéder à votre réseau local."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Controleer in Instellingen of Toolbox toegang heeft tot je lokale netwerk."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sprawdź w Ustawieniach, czy Toolbox ma dostęp do sieci lokalnej."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verifique nos Ajustes se o Toolbox pode acessar sua rede local."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kontrollera att Toolbox har åtkomst till ditt lokala nätverk i Inställningar."
+          }
+        }
+      }
+    },
+    "Choose which die the widget rolls." : {
+      "comment" : "Dice widget: description of the widget's configuration",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle, welchen Würfel das Widget wirft."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elige qué dado tira el widget."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choisissez le dé que lance le widget."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kies welke dobbelsteen de widget gooit."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wybierz, którą kością rzuca widżet."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escolha qual dado o widget rola."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Välj vilken tärning widgeten kastar."
+          }
+        }
+      }
+    },
+    "Connect to a Wi-Fi network to scan it for devices." : {
+      "comment" : "LAN Scanner: empty state explanation when the device isn't connected to a Wi-Fi network",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verbinde dich mit einem WLAN, um es nach Geräten zu durchsuchen."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conéctate a una red Wi-Fi para buscar dispositivos en ella."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Connectez-vous à un réseau Wi-Fi pour y rechercher des appareils."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maak verbinding met een wifinetwerk om het op apparaten te scannen."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Połącz się z siecią Wi-Fi, aby wyszukać w niej urządzenia."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conecte-se a uma rede Wi-Fi para buscar dispositivos nela."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anslut till ett Wi-Fi-nätverk för att söka efter enheter i det."
+          }
+        }
+      }
+    },
+    "Couldn't find this host. Check the address and your internet connection." : {
+      "comment" : "Ping tool: error shown when the host name couldn't be resolved",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieser Host wurde nicht gefunden. Prüfe die Adresse und deine Internetverbindung."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se ha encontrado este host. Comprueba la dirección y tu conexión a internet."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible de trouver cet hôte. Vérifiez l’adresse et votre connexion Internet."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deze host is niet gevonden. Controleer het adres en je internetverbinding."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie znaleziono tego hosta. Sprawdź adres i połączenie z internetem."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não foi possível encontrar este host. Verifique o endereço e sua conexão com a internet."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Värden hittades inte. Kontrollera adressen och din internetanslutning."
+          }
+        }
+      }
+    },
+    "Couldn't ping this host." : {
+      "comment" : "Ping tool: error shown when pinging failed for another reason than an unknown host",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieser Host konnte nicht gepingt werden."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se ha podido hacer ping a este host."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible de pinguer cet hôte."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kan deze host niet pingen."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie udało się wysłać pinga do tego hosta."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não foi possível pingar este host."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Det gick inte att pinga värden."
+          }
+        }
+      }
+    },
     "Current Icon" : {
       "comment" : "App icon picker",
       "localizations" : {
@@ -567,6 +1473,194 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Domäner kan bara slås upp när du är ansluten till internet."
+          }
+        }
+      }
+    },
+    "Edit Device" : {
+      "comment" : "Wake On Lan: title of the sheet to edit an existing device",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gerät bearbeiten"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editar dispositivo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifier l’appareil"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apparaat bewerken"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edytuj urządzenie"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editar dispositivo"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Redigera enhet"
+          }
+        }
+      }
+    },
+    "Failed" : {
+      "comment" : "Ping tool: shown instead of a time when the ping couldn't be sent",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fehlgeschlagen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Échec"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mislukt"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niepowodzenie"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Falhou"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Misslyckades"
+          }
+        }
+      }
+    },
+    "Fill in the fields above to create a QR code." : {
+      "comment" : "QR-Code Generator: explanation shown instead of the QR code while the required fields are empty",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fülle die Felder oben aus, um einen QR-Code zu erstellen."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rellena los campos de arriba para crear un código QR."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remplissez les champs ci-dessus pour créer un QR code."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vul de velden hierboven in om een QR-code te maken."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wypełnij pola powyżej, aby utworzyć kod QR."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preencha os campos acima para criar um QR code."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fyll i fälten ovan för att skapa en QR-kod."
+          }
+        }
+      }
+    },
+    "Font collections (.ttc/.otc) are not supported by iOS." : {
+      "comment" : "Font Installer: error when a font collection file was chosen",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Font-Sammlungen (.ttc/.otc) werden von iOS nicht unterstützt."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iOS no admite colecciones de tipos de letra (.ttc/.otc)."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les collections de polices (.ttc/.otc) ne sont pas prises en charge par iOS."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lettertypecollecties (.ttc/.otc) worden niet ondersteund door iOS."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kolekcje czcionek (.ttc/.otc) nie są obsługiwane przez iOS."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O iOS não oferece suporte a coleções de fontes (.ttc/.otc)."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Typsnittssamlingar (.ttc/.otc) stöds inte av iOS."
           }
         }
       }
@@ -712,6 +1806,53 @@
         }
       }
     },
+    "Hint: You can hold a die to lock it" : {
+      "comment" : "Dice settings: hint below the settings that a long press on a die locks it",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hinweis: Halte einen Würfel gedrückt, um ihn zu sperren."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consejo: mantén pulsado un dado para bloquearlo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Astuce : maintenez le doigt sur un dé pour le bloquer"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tip: houd een dobbelsteen ingedrukt om hem vast te zetten"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wskazówka: przytrzymaj kość, aby ją zablokować"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dica: mantenha um dado pressionado para travá-lo"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tips: Håll ned en tärning för att låsa den"
+          }
+        }
+      }
+    },
     "Home Screen preview" : {
       "comment" : "App icon picker",
       "localizations" : {
@@ -755,6 +1896,100 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Förhandsvisning av hemskärmen"
+          }
+        }
+      }
+    },
+    "Installs the font \"%@\"." : {
+      "comment" : "Font Installer: description of the configuration profile, shown in Settings when installing it, %@ is the font name",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installiert den Font „%@“."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instala el tipo de letra “%@”."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installe la police « %@ »."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installeert het lettertype ‘%@’."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instaluje czcionkę „%@”."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instala a fonte “%@”."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installerar typsnittet ”%@”."
+          }
+        }
+      }
+    },
+    "Invalid font file. The file doesn't appear to be a valid font." : {
+      "comment" : "Font Installer: error when the chosen file is not a font",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ungültige Font-Datei. Die Datei scheint kein gültiger Font zu sein."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archivo de tipo de letra no válido. El archivo no parece ser un tipo de letra válido."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fichier de police non valide. Le fichier ne semble pas être une police valide."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ongeldig lettertypebestand. Het bestand lijkt geen geldig lettertype te zijn."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nieprawidłowy plik czcionki. Plik nie wygląda na prawidłową czcionkę."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arquivo de fonte inválido. O arquivo não parece ser uma fonte válida."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ogiltig typsnittsfil. Filen verkar inte vara ett giltigt typsnitt."
           }
         }
       }
@@ -849,6 +2084,100 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lime"
+          }
+        }
+      }
+    },
+    "Local time: UTC%@" : {
+      "comment" : "Live Clock: line below the UTC time showing the local time zone's offset from UTC; %@ is the offset, e.g. \"+02:00\"",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ortszeit: UTC%@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hora local: UTC%@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heure locale : UTC%@"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lokale tijd: UTC%@"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Czas lokalny: UTC%@"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hora local: UTC%@"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lokal tid: UTC%@"
+          }
+        }
+      }
+    },
+    "Lookup Failed" : {
+      "comment" : "Domain Resolver: result shown when the DNS lookup failed for another reason than the domain not existing (offline, timeout)",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abfrage fehlgeschlagen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error en la consulta"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Échec de la résolution"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opzoeken mislukt"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyszukiwanie nie powiodło się"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Falha na consulta"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uppslagningen misslyckades"
           }
         }
       }
@@ -1041,6 +2370,53 @@
         }
       }
     },
+    "No Content" : {
+      "comment" : "Barcode Scanner details: shown when a scanned code has no content",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kein Inhalt"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin contenido"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun contenu"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geen inhoud"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak treści"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sem conteúdo"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inget innehåll"
+          }
+        }
+      }
+    },
     "No Devices" : {
       "comment" : "Wake On Lan empty state",
       "localizations" : {
@@ -1225,6 +2601,100 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ingen internetanslutning"
+          }
+        }
+      }
+    },
+    "No QR Code Yet" : {
+      "comment" : "QR-Code Generator: title shown instead of the QR code while the required fields are empty",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Noch kein QR-Code"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aún no hay código QR"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas encore de QR code"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nog geen QR-code"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak kodu QR"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nenhum QR code ainda"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingen QR-kod än"
+          }
+        }
+      }
+    },
+    "No Wi-Fi Connection" : {
+      "comment" : "LAN Scanner: empty state title when the device isn't connected to a Wi-Fi network",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine WLAN-Verbindung"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin conexión Wi-Fi"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas de connexion Wi-Fi"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geen wifiverbinding"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak połączenia Wi-Fi"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sem conexão Wi-Fi"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingen Wi-Fi-anslutning"
           }
         }
       }
@@ -1605,6 +3075,53 @@
         }
       }
     },
+    "Roll a die right on your Home Screen. Tap it to roll again." : {
+      "comment" : "Dice widget: description in the widget gallery",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Würfle direkt auf deinem Home-Bildschirm. Tippe auf den Würfel, um erneut zu würfeln."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tira un dado directamente en tu pantalla de inicio. Tócalo para volver a tirar."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lancez un dé directement depuis votre écran d’accueil. Touchez-le pour le relancer."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gooi een dobbelsteen direct op je beginscherm. Tik erop om opnieuw te gooien."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rzucaj kością prosto na ekranie początkowym. Stuknij ją, aby rzucić ponownie."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Role um dado direto na sua Tela de Início. Toque nele para rolar de novo."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kasta en tärning direkt på hemskärmen. Tryck på den för att kasta igen."
+          }
+        }
+      }
+    },
     "Tap %@ to scan again. If nothing shows up, check that Toolbox can access your local network in Settings." : {
       "comment" : "LAN Scanner empty state, %@ is the reload symbol",
       "localizations" : {
@@ -1746,6 +3263,335 @@
         }
       }
     },
+    "The DNS server couldn't be reached. Check your internet connection and try again." : {
+      "comment" : "Domain Resolver: explanation below the result when the DNS lookup failed",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der DNS-Server war nicht erreichbar. Prüfe deine Internetverbindung und versuche es erneut."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se ha podido contactar con el servidor DNS. Comprueba tu conexión a internet y vuelve a intentarlo."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible de joindre le serveur DNS. Vérifiez votre connexion Internet et réessayez."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De DNS-server is niet bereikbaar. Controleer je internetverbinding en probeer het opnieuw."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie udało się połączyć z serwerem DNS. Sprawdź połączenie z internetem i spróbuj ponownie."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não foi possível acessar o servidor DNS. Verifique sua conexão com a internet e tente novamente."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Det gick inte att nå DNS-servern. Kontrollera din internetanslutning och försök igen."
+          }
+        }
+      }
+    },
+    "The camera can't be used to scan barcodes on this device right now." : {
+      "comment" : "Barcode Scanner: shown when the camera could not be started for a reason other than a denied permission",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Kamera kann auf diesem Gerät gerade nicht zum Scannen von Barcodes verwendet werden."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ahora mismo no se puede usar la cámara de este dispositivo para escanear códigos de barras."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’appareil photo ne peut pas être utilisé pour scanner des codes-barres sur cet appareil pour le moment."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De camera kan op dit apparaat nu niet worden gebruikt om streepjescodes te scannen."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aparat nie może teraz zostać użyty do skanowania kodów kreskowych na tym urządzeniu."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No momento, a câmera não pode ser usada para ler códigos de barras neste dispositivo."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kameran kan inte användas för att läsa streckkoder på den här enheten just nu."
+          }
+        }
+      }
+    },
+    "The camera couldn't be started, so the text can't be shown on the back display right now." : {
+      "comment" : "Scrolling Text: alert message when the camera, which the back display needs, fails to start although access is allowed",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Kamera konnte nicht gestartet werden, daher kann der Text gerade nicht auf der Rückseite angezeigt werden."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudo iniciar la cámara, así que ahora mismo el texto no se puede mostrar en la pantalla trasera."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible de démarrer l’appareil photo, le texte ne peut donc pas être affiché sur l’écran arrière pour le moment."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De camera kon niet worden gestart, dus de tekst kan nu niet op het achterscherm worden getoond."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie udało się uruchomić aparatu, więc tekstu nie można teraz wyświetlić na tylnym ekranie."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não foi possível iniciar a câmera, então o texto não pode ser mostrado na tela traseira agora."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kameran kunde inte startas, så texten kan inte visas på den bakre skärmen just nu."
+          }
+        }
+      }
+    },
+    "The file could not be selected: %@" : {
+      "comment" : "Font Installer: error when the file picker failed, %@ is the system's error message",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Datei konnte nicht ausgewählt werden: %@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se ha podido seleccionar el archivo: %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le fichier n’a pas pu être sélectionné : %@"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Het bestand kan niet worden gekozen: %@"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie udało się wybrać pliku: %@"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não foi possível selecionar o arquivo: %@"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filen kunde inte väljas: %@"
+          }
+        }
+      }
+    },
+    "The installation could not be started: %@" : {
+      "comment" : "Font Installer: error when the local server for the profile could not start, %@ is the system's error message",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Installation konnte nicht gestartet werden: %@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se ha podido iniciar la instalación: %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’installation n’a pas pu être lancée : %@"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De installatie kan niet worden gestart: %@"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie udało się rozpocząć instalacji: %@"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não foi possível iniciar a instalação: %@"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installationen kunde inte startas: %@"
+          }
+        }
+      }
+    },
+    "The installation profile for this font could not be created." : {
+      "comment" : "Font Installer: error when the configuration profile could not be built",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das Installationsprofil für diesen Font konnte nicht erstellt werden."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se ha podido crear el perfil de instalación para este tipo de letra."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le profil d’installation de cette police n’a pas pu être créé."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Het installatieprofiel voor dit lettertype kan niet worden aangemaakt."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie udało się utworzyć profilu instalacyjnego dla tej czcionki."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não foi possível criar o perfil de instalação desta fonte."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installationsprofilen för det här typsnittet kunde inte skapas."
+          }
+        }
+      }
+    },
+    "This file appears to be a font collection, which is not supported by iOS." : {
+      "comment" : "Font Installer: error when the chosen file contains a font collection",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Datei scheint eine Font-Sammlung zu sein, die von iOS nicht unterstützt wird."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este archivo parece ser una colección de tipos de letra, que iOS no admite."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ce fichier semble être une collection de polices, qui n’est pas prise en charge par iOS."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dit bestand lijkt een lettertypecollectie te zijn, die niet wordt ondersteund door iOS."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ten plik wygląda na kolekcję czcionek, która nie jest obsługiwana przez iOS."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este arquivo parece ser uma coleção de fontes, que não é compatível com o iOS."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filen verkar vara en typsnittssamling, som inte stöds av iOS."
+          }
+        }
+      }
+    },
     "Tilt your iPhone to see the light play on the glass." : {
       "comment" : "App icon picker hint",
       "localizations" : {
@@ -1789,6 +3635,53 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Luta din iPhone för att se ljuset spela i glaset."
+          }
+        }
+      }
+    },
+    "Timeout" : {
+      "comment" : "Ping tool: shown instead of a time when the host didn't answer in time",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeitüberschreitung"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiempo agotado"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Délai dépassé"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time-out"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przekroczono limit czasu"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tempo esgotado"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timeout"
           }
         }
       }
@@ -1981,6 +3874,53 @@
         }
       }
     },
+    "Too Much Content" : {
+      "comment" : "QR-Code Generator: title shown instead of the QR code when the content doesn't fit into one",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zu viel Inhalt"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Demasiado contenido"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trop de contenu"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Te veel inhoud"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Za dużo treści"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conteúdo demais"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "För mycket innehåll"
+          }
+        }
+      }
+    },
     "Touch and hold a tool on the main screen to hide it." : {
       "comment" : "Hidden Tools empty state",
       "localizations" : {
@@ -2024,6 +3964,194 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Håll ned ett verktyg på huvudskärmen för att gömma det."
+          }
+        }
+      }
+    },
+    "Unable to access the selected file." : {
+      "comment" : "Font Installer: error when the app may not read the chosen file",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auf die ausgewählte Datei kann nicht zugegriffen werden."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se puede acceder al archivo seleccionado."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible d’accéder au fichier sélectionné."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geen toegang tot het gekozen bestand."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak dostępu do wybranego pliku."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não é possível acessar o arquivo selecionado."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Det går inte att komma åt den valda filen."
+          }
+        }
+      }
+    },
+    "Unable to read the font file, or the file is empty." : {
+      "comment" : "Font Installer: error when the chosen font file can't be read",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Font-Datei kann nicht gelesen werden oder ist leer."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se puede leer el archivo de tipo de letra o está vacío."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible de lire le fichier de police, ou le fichier est vide."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Het lettertypebestand kan niet worden gelezen of is leeg."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie można odczytać pliku czcionki lub plik jest pusty."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não é possível ler o arquivo de fonte, ou o arquivo está vazio."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Typsnittsfilen kan inte läsas eller är tom."
+          }
+        }
+      }
+    },
+    "Unknown date" : {
+      "comment" : "Barcode Scanner details: shown instead of the scan date when it is missing",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unbekanntes Datum"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fecha desconocida"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date inconnue"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Onbekende datum"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nieznana data"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data desconhecida"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Okänt datum"
+          }
+        }
+      }
+    },
+    "Unsupported file type. Please select a TrueType (.ttf) or OpenType (.otf) font file." : {
+      "comment" : "Font Installer: error when the chosen file is not a .ttf or .otf file",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicht unterstützter Dateityp. Bitte wähle eine TrueType- (.ttf) oder OpenType-Font-Datei (.otf) aus."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipo de archivo no compatible. Selecciona un archivo de tipo de letra TrueType (.ttf) u OpenType (.otf)."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Type de fichier non pris en charge. Choisissez un fichier de police TrueType (.ttf) ou OpenType (.otf)."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niet-ondersteund bestandstype. Kies een TrueType- (.ttf) of OpenType-lettertypebestand (.otf)."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nieobsługiwany typ pliku. Wybierz plik czcionki TrueType (.ttf) lub OpenType (.otf)."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipo de arquivo incompatível. Selecione um arquivo de fonte TrueType (.ttf) ou OpenType (.otf)."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtypen stöds inte. Välj en typsnittsfil i TrueType (.ttf) eller OpenType (.otf)."
           }
         }
       }
@@ -2122,6 +4250,53 @@
         }
       }
     },
+    "Valid %@ font file" : {
+      "comment" : "Font Installer: shown when the chosen file is a valid font, %@ is the file type, e.g. TTF",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gültige %@-Font-Datei"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archivo de tipo de letra %@ válido"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fichier de police %@ valide"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geldig %@-lettertypebestand"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prawidłowy plik czcionki %@"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arquivo de fonte %@ válido"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giltig %@-typsnittsfil"
+          }
+        }
+      }
+    },
     "White" : {
       "comment" : "App icon name",
       "localizations" : {
@@ -2169,6 +4344,53 @@
         }
       }
     },
+    "You can show them again in the settings under \"Hidden Tools\"." : {
+      "comment" : "Main screen: hint shown when the user has hidden every tool",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du kannst sie in den Einstellungen unter „Versteckte Tools“ wieder einblenden."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puedes volver a mostrarlas en los ajustes, en «Herramientas ocultas»."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous pouvez les réafficher dans les réglages, sous « Outils masqués »."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Je kunt ze weer tonen in de instellingen onder ‘Verborgen tools’."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Możesz je ponownie wyświetlić w ustawieniach w sekcji „Ukryte narzędzia”."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Você pode mostrá-las de novo nos ajustes, em “Ferramentas ocultas”."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du kan visa dem igen i inställningarna under ”Dolda verktyg”."
+          }
+        }
+      }
+    },
     "Your Tools, Your Order" : {
       "comment" : "WhatsNewKit item",
       "localizations" : {
@@ -2212,6 +4434,53 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dina verktyg, din ordning"
+          }
+        }
+      }
+    },
+    "in" : {
+      "comment" : "BMI tool: unit abbreviation for inches, shown after the height and waist inputs",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zoll"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "in"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "po"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "in"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "cal"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "pol"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "tum"
           }
         }
       }
@@ -3956,7 +6225,7 @@
       }
     },
     "Add new Device" : {
-      "comment" : "Wake On Lan: title of the sheet to add or edit a device",
+      "comment" : "Wake On Lan: title of the sheet to add a new device",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -5366,7 +7635,7 @@
       }
     },
     "content" : {
-      "comment" : "Barcode",
+      "comment" : "Barcode Scanner details: label of the scanned code's content",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -5648,7 +7917,7 @@
       }
     },
     "Copy" : {
-      "comment" : "A button label that says \"Copy\".",
+      "comment" : "LAN Scanner: context menu action that copies the IP address of a device",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -5789,7 +8058,7 @@
       }
     },
     "date" : {
-      "comment" : "Barcode",
+      "comment" : "Barcode Scanner details: label of the date the code was scanned",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -5883,7 +8152,7 @@
       }
     },
     "Days" : {
-      "comment" : "Date difference",
+      "comment" : "Date Difference tool: chip that shows or hides the days in the result",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -5977,7 +8246,7 @@
       }
     },
     "Decimal Degrees" : {
-      "comment" : "GPS",
+      "comment" : "Coordinates tool: format picker option, coordinates as decimal degrees (52.520008)",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -6024,7 +8293,7 @@
       }
     },
     "Delete" : {
-      "comment" : "Info screen: destructive button that deletes all app data",
+      "comment" : "Generic delete action: Info screen button that deletes all app data, Wake On Lan context menu that deletes a device, and the backspace key of the Apple Watch Roman Numbers keypad",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -6353,7 +8622,7 @@
       }
     },
     "Difference" : {
-      "comment" : "Date difference",
+      "comment" : "Date Difference tool: header above the result",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -6588,7 +8857,7 @@
       }
     },
     "DMS" : {
-      "comment" : "GPS",
+      "comment" : "Coordinates tool: format picker option, coordinates as degrees, minutes and seconds (52° 31' 12.03\" N)",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -6776,7 +9045,7 @@
       }
     },
     "Done" : {
-      "comment" : "Wake On Lan form: keyboard toolbar button that closes the number pad",
+      "comment" : "Generic Done button: Wake On Lan keyboard toolbar button that closes the number pad, and the confirm key of the Apple Watch Roman Numbers keypad",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -7951,7 +10220,7 @@
       }
     },
     "Hidden Tools" : {
-      "comment" : "Info screen: row and title of the list of tools hidden from the main screen",
+      "comment" : "Info screen: row and title of the list of tools hidden from the main screen; also the header above hidden tools that match a search on the main screen",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -8040,53 +10309,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Göm"
-          }
-        }
-      }
-    },
-    "Hint: You can hold one dice to lock it" : {
-      "comment" : "Dice settings: hint below the settings",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hinweis: Halte einen Würfel gedrückt, um ihn zu sperren."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Consejo: mantén pulsado un dado para bloquearlo"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Astuce : maintenez le doigt sur un dé pour le bloquer"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tip: houd een dobbelsteen ingedrukt om hem vast te zetten"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wskazówka: przytrzymaj kość, aby ją zablokować"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dica: mantenha um dado pressionado para travá-lo"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tips: Du kan hålla ned en tärning för att låsa den"
           }
         }
       }
@@ -8228,53 +10450,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Viktig information"
-          }
-        }
-      }
-    },
-    "inch" : {
-      "comment" : "BMI tool: unit for inches",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zoll"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "in"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "po"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "inch"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "cal"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "pol"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "tum"
           }
         }
       }
@@ -9031,53 +11206,6 @@
         }
       }
     },
-    "Local time" : {
-      "comment" : "Live Clock",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ortszeit"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hora local"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Heure locale"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lokale tijd"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Czas lokalny"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hora local"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lokal tid"
-          }
-        }
-      }
-    },
     "Location" : {
       "comment" : "Permission name",
       "localizations" : {
@@ -9220,6 +11348,7 @@
       }
     },
     "MAC" : {
+      "comment" : "Wake On Lan form: label of the MAC address field of the device to wake",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -9690,7 +11819,7 @@
       "shouldTranslate" : false
     },
     "Months" : {
-      "comment" : "Date difference",
+      "comment" : "Date Difference tool: chip that shows or hides the months in the result",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -10113,7 +12242,7 @@
       }
     },
     "Not found" : {
-      "comment" : "IP-Checker not found",
+      "comment" : "IP-Checker: shown instead of the public IP address when it couldn't be loaded",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -10160,7 +12289,7 @@
       }
     },
     "Not Found" : {
-      "comment" : "Domain Not found",
+      "comment" : "Domain Resolver: result shown when the domain has no IPv4 or IPv6 address",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -11758,6 +13887,7 @@
       }
     },
     "RGB" : {
+      "comment" : "Color Picker tool: label for the color code as red, green, blue values (0–255)",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -11805,6 +13935,7 @@
       "shouldTranslate" : false
     },
     "RGBA" : {
+      "comment" : "Color Picker tool: label for the color code as red, green, blue (0–255) and opacity (0–1) values",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -12134,7 +14265,7 @@
       }
     },
     "Settings" : {
-      "comment" : "Live Clock setting",
+      "comment" : "Title/accessibility label of a tool's settings (Live Clock, Dice, Apple Watch Dice and Random Number)",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -12275,7 +14406,7 @@
       }
     },
     "Show" : {
-      "comment" : "Date difference",
+      "comment" : "Date Difference tool: header above the chips (years, months, days) that choose which units the result is shown in",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -12322,7 +14453,7 @@
       }
     },
     "Show Again" : {
-      "comment" : "Hidden Tools: context menu action that moves a tool back to the main screen",
+      "comment" : "Hidden Tools and main screen search: context menu action that moves a hidden tool back to the main screen",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -12510,7 +14641,7 @@
       }
     },
     "Speed" : {
-      "comment" : "Menu item",
+      "comment" : "Menu item and title of the Speed tool (GPS speed); also the label of the Pulsing Flashlight pulse speed stepper",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -12604,6 +14735,7 @@
       }
     },
     "SSID" : {
+      "comment" : "QR-Code Generator: label of the Wi-Fi network name field (SSID)",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -13356,7 +15488,7 @@
       }
     },
     "The broadcast address \"%@\" is invalid. Edit the device to fix it." : {
-      "comment" : "Wake On Lan error",
+      "comment" : "Wake On Lan: error when waking a saved device, %@ is its broadcast IP address",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -13403,7 +15535,7 @@
       }
     },
     "The MAC address \"%@\" is invalid. Edit the device to fix it." : {
-      "comment" : "Wake On Lan error",
+      "comment" : "Wake On Lan: error when waking a saved device, %@ is its MAC address",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -13450,7 +15582,7 @@
       }
     },
     "The magic packet could not be sent: %@" : {
-      "comment" : "Wake On Lan error",
+      "comment" : "Wake On Lan: error when sending the wake signal failed, %@ is the system's reason (e.g. \"No route to host\")",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -13497,7 +15629,7 @@
       }
     },
     "The port %lld is invalid. Edit the device to fix it." : {
-      "comment" : "Wake On Lan error",
+      "comment" : "Wake On Lan: error when waking a saved device, %lld is its port number",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -13691,6 +15823,7 @@
       }
     },
     "Toolbox" : {
+      "comment" : "App name, title of the main screen",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -13879,7 +16012,7 @@
       }
     },
     "type" : {
-      "comment" : "Barcode",
+      "comment" : "Barcode Scanner details: label of the scanned code's type, e.g. QR Code",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -14725,7 +16858,7 @@
       }
     },
     "Years" : {
-      "comment" : "Date difference",
+      "comment" : "Date Difference tool: chip that shows or hides the years in the result",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -15284,54 +17417,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Du har just gömt ditt första verktyg! Du hittar det fortfarande i inställningarna under ”Gömda verktyg”."
-          }
-        }
-      }
-    },
-    "You need to rotate your device to enable the scrolling text." : {
-      "comment" : "Scrolling Text: alert message",
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Du musst dein Gerät rotieren, um den Lauftext anzuzeigen."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tienes que girar el dispositivo para activar el texto en movimiento."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Faites pivoter votre appareil pour activer le texte défilant."
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Draai je apparaat om de lichtkrant in te schakelen."
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Obróć urządzenie, aby włączyć przewijany tekst."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gire o dispositivo para ativar o texto rolante."
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Du måste vrida enheten för att aktivera den rullande texten."
           }
         }
       }
