@@ -165,60 +165,6 @@
         }
       }
     },
-    "NSDocumentsFolderUsageDescription" : {
-      "comment" : "Privacy - Documents Folder Usage Description",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toolbox braucht Zugriff auf deine Dateien, um eine Font zu installieren"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Toolbox needs to access your files to let you select a font file to install"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toolbox necesita acceder a tus archivos para que puedas seleccionar un archivo de tipo de letra e instalarlo."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toolbox a besoin d’accéder à vos fichiers pour vous permettre de choisir un fichier de police à installer."
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toolbox heeft toegang tot je bestanden nodig zodat je een lettertypebestand kunt kiezen om te installeren"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toolbox potrzebuje dostępu do plików, aby umożliwić wybór pliku czcionki do zainstalowania"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "O Toolbox precisa acessar seus arquivos para que você selecione um arquivo de fonte para instalar"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toolbox behöver åtkomst till dina filer så att du kan välja en typsnittsfil att installera"
-          }
-        }
-      }
-    },
     "NSLocalNetworkUsageDescription" : {
       "comment" : "Privacy - Local Network Usage Description",
       "extractionState" : "extracted_with_value",
@@ -226,49 +172,49 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Toolbox benötigt Zugriff auf dein lokales Netzwerk, um den LAN Scanner zu nutzen"
+            "value" : "Toolbox benötigt Zugriff auf dein lokales Netzwerk für den LAN Scanner, Ping und Wake On Lan"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Toolbox needs access to your local network to use the LAN Scanner"
+            "value" : "Toolbox needs access to your local network for the LAN Scanner, Ping and Wake On Lan"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Toolbox necesita acceder a tu red local para usar el escáner de LAN."
+            "value" : "Toolbox necesita acceder a tu red local para el escáner de LAN, Ping y Wake On Lan."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Toolbox a besoin d’accéder à votre réseau local pour utiliser le scanner LAN."
+            "value" : "Toolbox a besoin d’accéder à votre réseau local pour le scanner LAN, Ping et Wake On Lan."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Toolbox heeft toegang tot je lokale netwerk nodig om de LAN-scanner te gebruiken"
+            "value" : "Toolbox heeft toegang tot je lokale netwerk nodig voor de LAN-scanner, Ping en Wake On Lan"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Toolbox potrzebuje dostępu do sieci lokalnej, aby korzystać z LAN Scannera"
+            "value" : "Toolbox potrzebuje dostępu do sieci lokalnej dla LAN Scannera, Pingu i Wake On Lan"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "O Toolbox precisa acessar sua rede local para usar o Scanner de LAN"
+            "value" : "O Toolbox precisa acessar sua rede local para o Scanner de LAN, o Ping e o Wake On Lan"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Toolbox behöver åtkomst till ditt lokala nätverk för att använda LAN-skannern"
+            "value" : "Toolbox behöver åtkomst till ditt lokala nätverk för LAN-skannern, Ping och Wake On Lan"
           }
         }
       }
@@ -485,6 +431,114 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Toolbox använder din mikrofon för att mäta ljudnivåer"
+          }
+        }
+      }
+    },
+    "NSPhotoLibraryAddUsageDescription" : {
+      "comment" : "Privacy - Photo Library Additions Usage Description: shown when saving a shared image such as a QR code",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toolbox sichert Bilder, die du teilst, zum Beispiel QR-Codes, in deiner Fotomediathek"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Toolbox saves the images you share, such as QR codes, to your photo library"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toolbox guarda en tu fototeca las imágenes que compartes, como los códigos QR."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toolbox enregistre dans votre photothèque les images que vous partagez, comme les codes QR."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toolbox bewaart de afbeeldingen die je deelt, zoals QR-codes, in je fotobibliotheek"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toolbox zapisuje udostępniane obrazy, np. kody QR, w Twojej bibliotece zdjęć"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O Toolbox salva na sua fototeca as imagens que você compartilha, como códigos QR"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toolbox sparar bilder du delar, till exempel QR-koder, i ditt bildbibliotek"
+          }
+        }
+      }
+    },
+    "SpeedTracking" : {
+      "comment" : "Privacy - temporary precise location (NSLocationTemporaryUsageDescriptionDictionary, purpose key SpeedTracking): shown when the Speed tool asks for precise location",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toolbox benötigt deinen genauen Standort, um deine Geschwindigkeit genau zu messen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Toolbox needs your precise location to measure your speed accurately"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toolbox necesita tu ubicación exacta para medir tu velocidad con precisión."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toolbox a besoin de votre position exacte pour mesurer précisément votre vitesse."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toolbox heeft je precieze locatie nodig om je snelheid nauwkeurig te meten"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toolbox potrzebuje Twojej dokładnej lokalizacji, aby precyzyjnie zmierzyć prędkość"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O Toolbox precisa da sua localização precisa para medir sua velocidade com exatidão"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toolbox behöver din exakta plats för att mäta din hastighet noggrant"
           }
         }
       }
