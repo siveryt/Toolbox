@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 import CoreData
 import TipKit
+import Haptica
 
 struct infoView: View {
     
@@ -160,6 +161,14 @@ struct ExternalLinkRow: View {
 
 struct infoVersion: View {
     @StateObject private var icons = IconNames()
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    
+    // Easter egg: tapping the icon five times in a row sets off confetti.
+    @State private var iconTaps = 0
+    @State private var lastIconTap = Date.distantPast
+    @State private var iconScale: CGFloat = 1
+    @State private var celebration = 0
+    @State private var celebrating = false
 
     var body: some View  {
         List{
@@ -167,6 +176,8 @@ struct infoVersion: View {
                 VStack(spacing: 12) {
                     LiveAppIcon(icon: icons.currentIcon, size: 96)
                         .shadow(color: .black.opacity(0.15), radius: 8, y: 4)
+                        .scaleEffect(iconScale)
+                        .onTapGesture { iconTapped() }
                     Text(verbatim: "Toolbox")
                         .font(.title2.bold())
                 }
@@ -202,8 +213,95 @@ struct infoVersion: View {
             //            Text("No update available") TODO: use this with https://github.com/acarolsf/checkVersion-iOS when published
         }
         
+        .overlay {
+            if celebrating {
+                ConfettiView()
+                    .id(celebration)
+                    .ignoresSafeArea()
+                    .allowsHitTesting(false)
+            }
+        }
         .navigationTitle("Version")
         .navigationBarTitleDisplayMode(.inline)
+    }
+    
+    private func iconTapped() {
+        let now = Date()
+        // Only taps in quick succession count.
+        iconTaps = now.timeIntervalSince(lastIconTap) < 1.2 ? iconTaps + 1 : 1
+        lastIconTap = now
+        Haptic.impact(.light).generate()
+        withAnimation(.spring(duration: 0.12)) { iconScale = 0.9 }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.12) {
+            withAnimation(.spring(duration: 0.3, bounce: 0.6)) { iconScale = 1 }
+        }
+        if iconTaps == 5 {
+            iconTaps = 0
+            celebrate()
+        }
+    }
+    
+    private func celebrate() {
+        celebration += 1
+        let run = celebration
+        Haptic.notification(.success).generate()
+        celebrating = !reduceMotion
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+            // A newer celebration keeps its own timer.
+            guard run == celebration else { return }
+            celebrating = false
+        }
+    }
+}
+
+/// Confetti that falls from the top of the screen once, drawn with Canvas so it stays cheap.
+private struct ConfettiView: View {
+    private struct Piece {
+        let x: Double
+        let delay: Double
+        let speed: Double
+        let sway: Double
+        let spin: Double
+        let size: CGSize
+        let color: Color
+        let isCircle: Bool
+    }
+    
+    @State private var pieces: [Piece] = (0..<140).map { _ in
+        Piece(
+            x: .random(in: 0...1),
+            delay: .random(in: 0...0.8),
+            speed: .random(in: 80...220),
+            sway: .random(in: 0.3...1),
+            spin: .random(in: 2...8),
+            size: CGSize(width: .random(in: 6...11), height: .random(in: 9...16)),
+            color: [Color.accentColor, .red, .orange, .yellow, .green, .blue, .purple, .pink].randomElement()!,
+            isCircle: Bool.random() && Bool.random()
+        )
+    }
+    @State private var start = Date()
+    
+    var body: some View {
+        TimelineView(.animation) { timeline in
+            Canvas { context, size in
+                let elapsed = timeline.date.timeIntervalSince(start)
+                for piece in pieces {
+                    let t = elapsed - piece.delay
+                    guard t > 0 else { continue }
+                    let y = -20 + piece.speed * t + 0.5 * 220 * t * t
+                    guard y < size.height + 20 else { continue }
+                    let x = piece.x * size.width + sin(t * 3 + piece.x * 20) * 28 * piece.sway
+                    var pieceContext = context
+                    pieceContext.translateBy(x: x, y: y)
+                    pieceContext.rotate(by: .radians(piece.spin * t))
+                    // Squashing one axis makes the pieces look like they flip over.
+                    pieceContext.scaleBy(x: cos(piece.spin * t * 0.7), y: 1)
+                    let rect = CGRect(x: -piece.size.width / 2, y: -piece.size.height / 2, width: piece.size.width, height: piece.size.height)
+                    pieceContext.fill(piece.isCircle ? Path(ellipseIn: rect) : Path(roundedRect: rect, cornerRadius: 2), with: .color(piece.color))
+                }
+            }
+        }
+        .onAppear { start = Date() }
     }
 }
 
