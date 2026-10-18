@@ -383,6 +383,53 @@
         }
       }
     },
+    "Camera Access Required" : {
+      "comment" : "Missing permission view: title when camera access was denied",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kamerazugriff erforderlich"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se necesita acceso a la cámara"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accès à l’appareil photo requis"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cameratoegang vereist"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wymagany dostęp do aparatu"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acesso à câmera necessário"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kameraåtkomst krävs"
+          }
+        }
+      }
+    },
     "Current Icon" : {
       "comment" : "App icon picker",
       "localizations" : {
@@ -473,6 +520,53 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Släng ändringar"
+          }
+        }
+      }
+    },
+    "Domains can only be resolved while you're connected to the internet." : {
+      "comment" : "Domain Resolver: explanation below the offline notice",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domains können nur aufgelöst werden, wenn du mit dem Internet verbunden bist."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los dominios solo se pueden resolver si estás conectado a internet."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les domaines ne peuvent être résolus que lorsque vous êtes connecté à Internet."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domeinen kunnen alleen worden opgezocht als je verbonden bent met internet."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domeny można rozwiązywać tylko po połączeniu z internetem."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Os domínios só podem ser resolvidos quando você está conectado à internet."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domäner kan bara slås upp när du är ansluten till internet."
           }
         }
       }
@@ -806,6 +900,53 @@
         }
       }
     },
+    "Microphone Access Required" : {
+      "comment" : "Missing permission view: title when microphone access was denied",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mikrofonzugriff erforderlich"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se necesita acceso al micrófono"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accès au micro requis"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Microfoontoegang vereist"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wymagany dostęp do mikrofonu"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acesso ao microfone necessário"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mikrofonåtkomst krävs"
+          }
+        }
+      }
+    },
     "New Look" : {
       "comment" : "WhatsNewKit item",
       "localizations" : {
@@ -1037,6 +1178,53 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Inga gömda verktyg"
+          }
+        }
+      }
+    },
+    "No Internet Connection" : {
+      "comment" : "Domain Resolver: notice shown while the device is offline",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Internetverbindung"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin conexión a internet"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas de connexion Internet"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geen internetverbinding"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak połączenia z internetem"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sem conexão com a internet"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingen internetanslutning"
           }
         }
       }
@@ -4566,6 +4754,53 @@
         }
       }
     },
+    "BMI and waist-to-height ratio are only rough guides: they don't account for muscle mass, build, age or sex, and are no substitute for medical advice." : {
+      "comment" : "BMI tool: note below the results",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BMI und Taille-zu-Größe-Verhältnis sind nur grobe Richtwerte: Sie berücksichtigen weder Muskelmasse noch Körperbau, Alter oder Geschlecht und ersetzen keine ärztliche Beratung."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El IMC y el índice cintura-altura son solo valores orientativos: no tienen en cuenta la masa muscular, la complexión, la edad ni el sexo, y no sustituyen el consejo médico."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'IMC et le rapport tour de taille/taille ne sont que des indications approximatives : ils ne tiennent compte ni de la masse musculaire, ni de la morphologie, ni de l'âge, ni du sexe, et ne remplacent pas un avis médical."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BMI en taille-lengteratio zijn slechts ruwe richtwaarden: ze houden geen rekening met spiermassa, lichaamsbouw, leeftijd of geslacht en vervangen geen medisch advies."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BMI i wskaźnik talia-wzrost to tylko orientacyjne wartości: nie uwzględniają masy mięśniowej, budowy ciała, wieku ani płci i nie zastępują porady lekarskiej."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O IMC e a relação cintura-estatura são apenas referências aproximadas: não levam em conta massa muscular, tipo físico, idade ou sexo e não substituem orientação médica."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BMI och midja-längdkvot är bara ungefärliga riktvärden: de tar inte hänsyn till muskelmassa, kroppsbyggnad, ålder eller kön och ersätter inte medicinsk rådgivning."
+          }
+        }
+      }
+    },
     "BPM" : {
       "comment" : "Metronome: placeholder of the text field, abbreviation of beats per minute",
       "localizations" : {
@@ -7580,7 +7815,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Höhe"
+            "value" : "Größe"
           }
         },
         "es" : {
@@ -9877,53 +10112,6 @@
         }
       }
     },
-    "Normal weight" : {
-      "comment" : "BMI tool: result category",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Normalgewichtig"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Peso normal"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Poids normal"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Normaal gewicht"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Prawidłowa waga"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Peso normal"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Normalvikt"
-          }
-        }
-      }
-    },
     "Not found" : {
       "comment" : "IP-Checker not found",
       "localizations" : {
@@ -10159,53 +10347,6 @@
         }
       }
     },
-    "Obese" : {
-      "comment" : "BMI tool: result category",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fettleibig"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Obesidad"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Obésité"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Obesitas"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Otyłość"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Obesidade"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fetma"
-          }
-        }
-      }
-    },
     "OK" : {
       "comment" : "The OK button in an alert dialog.",
       "localizations" : {
@@ -10437,53 +10578,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Alternativ"
-          }
-        }
-      }
-    },
-    "Overweight" : {
-      "comment" : "BMI tool: result category",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Übergewichtig"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sobrepeso"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Surpoids"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Overgewicht"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nadwaga"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sobrepeso"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Övervikt"
           }
         }
       }
@@ -13878,53 +13972,6 @@
         }
       }
     },
-    "Underweight" : {
-      "comment" : "BMI tool: result category",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Untergewichtig"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bajo peso"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Insuffisance pondérale"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ondergewicht"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Niedowaga"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Abaixo do peso"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Undervikt"
-          }
-        }
-      }
-    },
     "Unknown" : {
       "comment" : "Permission state",
       "localizations" : {
@@ -14250,6 +14297,100 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Webbplats"
+          }
+        }
+      }
+    },
+    "Waist" : {
+      "comment" : "BMI tool: label of the waist circumference input",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taillenumfang"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cintura"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tour de taille"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tailleomtrek"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obwód talii"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cintura"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Midjemått"
+          }
+        }
+      }
+    },
+    "Waist-to-height ratio" : {
+      "comment" : "BMI tool: label of the waist-to-height ratio result",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taille-zu-Größe-Verhältnis"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Índice cintura-altura"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rapport tour de taille/taille"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taille-lengteratio"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wskaźnik talia-wzrost"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Relação cintura-estatura"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Midja-längdkvot"
           }
         }
       }
@@ -15149,6 +15290,7 @@
     },
     "You need to rotate your device to enable the scrolling text." : {
       "comment" : "Scrolling Text: alert message",
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
