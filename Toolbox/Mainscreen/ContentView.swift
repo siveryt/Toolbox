@@ -58,56 +58,64 @@ struct ContentView: View {
         Tool(view: AnyView(Scrolling_Text()), title: NSLocalizedString("Scrolling Text", comment: "Menu item"), icon: "textformat.abc"),
         Tool(view: AnyView(Wake_On_Lan()), title: NSLocalizedString("Wake On Lan", comment: "Menu item"), icon: "power"),
     ]
-    @State private var tools:[Tool] = []
     
+    /// The saved order of indices into `toollist`, or the default order if it doesn't fit the current list.
+    private var orderedIDs: [Int] {
+        order.sorted() == Array(toollist.indices) ? order : Array(toollist.indices)
+    }
     
+    private var visibleIDs: [Int] {
+        orderedIDs.filter { !hidden.contains($0) && matchesSearch(toollist[$0]) }
+    }
+    
+    // The offsets count only the visible rows, so move those and put them back into the slots they held in the full order.
     private func onMove(source: IndexSet, destination: Int) {
-            tools.move(fromOffsets: source, toOffset: destination)
-        order.move(fromOffsets: source, toOffset: destination)
+        var moved = visibleIDs
+        moved.move(fromOffsets: source, toOffset: destination)
+        var remaining = moved.makeIterator()
+        order = orderedIDs.map { visibleIDs.contains($0) ? remaining.next()! : $0 }
         hasAlreadyEdited = true
         MainscreenMoveTip().invalidate(reason: .actionPerformed)
-        }
+    }
     
     var body: some View {
             NavigationStack {
                 List() {
-                    ForEach(Array(zip(tools.indices, tools)), id: \.0) { toolIndex, tool in
-                        if (!hidden.contains(toolIndex) && matchesSearch(tool)) {
-                            if (toolIndex == 0){
-                                NavigationLink(destination: tools[toolIndex].view) {
-                                    Label(tools[toolIndex].title, systemImage: tools[toolIndex].icon).foregroundColor(.primary)
+                    // Rows are identified by their index in `toollist`, not their position, so SwiftUI animates moves correctly.
+                    ForEach(visibleIDs, id: \.self) { toolID in
+                        let tool = toollist[toolID]
+                        if (toolID == visibleIDs.first){
+                            NavigationLink(destination: tool.view) {
+                                Label(tool.title, systemImage: tool.icon).foregroundColor(.primary)
+                            }
+                            .accessibilityIdentifier("tool." + tool.icon)
+                            .popoverTip(MainscreenMoveTip())
+                            .contextMenu {
+                                Button(action:{
+                                    hide(index: toolID)
+                                }){
+                                    Label("Hide", systemImage: "eye.slash")
                                 }
-                                .accessibilityIdentifier("tool." + tools[toolIndex].icon)
-                                .popoverTip(MainscreenMoveTip())
-                                .contextMenu {
-                                    Button(action:{
-                                        hide(index: toolIndex)
-                                    }){
-                                        Label("Hide", systemImage: "eye.slash")
-                                    }
-                                }
-                            } else {
-                                NavigationLink(destination: tools[toolIndex].view) {
-                                    Label(tools[toolIndex].title, systemImage: tools[toolIndex].icon).foregroundColor(.primary)
-                                }
-                                .accessibilityIdentifier("tool." + tools[toolIndex].icon)
-                                .contextMenu {
-                                    Button(action:{
-                                        hide(index: toolIndex)
-                                    }){
-                                        Label("Hide", systemImage: "eye.slash")
-                                    }
+                            }
+                        } else {
+                            NavigationLink(destination: tool.view) {
+                                Label(tool.title, systemImage: tool.icon).foregroundColor(.primary)
+                            }
+                            .accessibilityIdentifier("tool." + tool.icon)
+                            .contextMenu {
+                                Button(action:{
+                                    hide(index: toolID)
+                                }){
+                                    Label("Hide", systemImage: "eye.slash")
                                 }
                             }
                         }
-                        
-                        
                     }
                     .onMove(perform: searchText.isEmpty ? onMove : nil)
                 }
                 .searchable(text: $searchText)
                 .overlay {
-                    if (!searchText.isEmpty && !tools.indices.contains(where: { !hidden.contains($0) && matchesSearch(tools[$0]) })) {
+                    if (!searchText.isEmpty && visibleIDs.isEmpty) {
                         ContentUnavailableView.search(text: searchText)
                     }
                 }
@@ -131,15 +139,8 @@ struct ContentView: View {
             }
             .onAppear() {
             
-            if(order.count != toollist.count) {
-                order = []
-                for i in order.count..<(toollist.count-order.count) {
-                    order.append(i)
-                }
-            }
-            
-            for i in order {
-                tools.append(toollist[i])
+            if(order != orderedIDs) {
+                order = orderedIDs
             }
             
             viewLoaded += 1
