@@ -242,6 +242,53 @@
         }
       }
     },
+    "Apple Watch" : {
+      "comment" : "WhatsNewKit item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Watch"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Watch"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Watch"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Watch"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Watch"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Watch"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Watch"
+          }
+        }
+      }
+    },
     "Black" : {
       "comment" : "App icon name",
       "localizations" : {
@@ -1319,6 +1366,53 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Omgjord för iOS 26 med Liquid Glass och en ny appsymbol"
+          }
+        }
+      }
+    },
+    "Redesigned with Roman Numbers and Digital Crown controls" : {
+      "comment" : "WhatsNewKit item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neu gestaltet, mit Römischen Zahlen und Bedienung über die Digital Crown"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rediseñada, con Números romanos y control con la Digital Crown"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repensée, avec Chiffres romains et contrôle par la Digital Crown"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vernieuwd, met Romeinse cijfers en bediening via de Digital Crown"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odświeżona, z Liczbami rzymskimi i obsługą koronką Digital Crown"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Redesenhado, com Números romanos e controle pela Digital Crown"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Omgjord, med Romerska siffror och styrning med Digital Crown"
           }
         }
       }
