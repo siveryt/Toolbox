@@ -25,7 +25,7 @@ struct RollDiceIntent: AppIntent {
                 print("REFRESH")
             }
         }*/
-        WidgetCenter.shared.reloadTimelines(ofKind: "LocationForecast")
+        WidgetCenter.shared.reloadTimelines(ofKind: "diceWidget")
         
         
         return .result()

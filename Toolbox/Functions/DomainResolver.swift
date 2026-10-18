@@ -17,6 +17,7 @@ struct DomainResolver: View {
     @State var resolving = false
     
     @State var isPresentingToast: Bool = false
+    @State private var network = NetworkMonitor()
     
     func presentToast() {
         withAnimation {
@@ -71,7 +72,15 @@ struct DomainResolver: View {
     
     var body: some View {
         Form{
-//            Section(header: Text(" ")){
+            if !network.isConnected {
+                Section {
+                    Label(NSLocalizedString("No Internet Connection", comment: "Domain Resolver: notice shown while the device is offline"), systemImage: "wifi.slash")
+                        .foregroundStyle(.secondary)
+                } footer: {
+                    Text(NSLocalizedString("Domains can only be resolved while you're connected to the internet.", comment: "Domain Resolver: explanation below the offline notice"))
+                }
+            }
+            Section {
             HStack {
                 Text("Domain")
                 TextField("toolbox.sivery.de", text: $toResolve)
@@ -115,10 +124,13 @@ struct DomainResolver: View {
                 }
                 .tint(.primary)
             }
-            
-            
-//            }
-            
+            }
+        }
+        .animation(.default, value: network.isConnected)
+        .onChange(of: network.isConnected) { _, isConnected in
+            if isConnected {
+                Task { await resolve() }
+            }
         }
         .toast(isPresenting: $isPresentingToast, message: NSLocalizedString("Copied", comment: "Copy toast"), icon: .custom(Image(systemName: "doc.on.clipboard")), autoDismiss: .none)
         .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)

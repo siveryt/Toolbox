@@ -81,14 +81,11 @@ struct BarcodeScanner: View {
         
         ZStack {
             if(scanError) {
-                VStack{
-                    Text("Enable camera access in settings to use the Barcode Scanner.")
-                    Button("Settings") {
-                        if let appSettings = URL(string: UIApplication.openSettingsURLString) {
-                            UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
-                        }
-                    }
-                }
+                PermissionDeniedView(
+                    title: NSLocalizedString("Camera Access Required", comment: "Missing permission view: title when camera access was denied"),
+                    systemImage: "camera",
+                    description: NSLocalizedString("Enable camera access in settings to use the Barcode Scanner.", comment: "Barcode Scanner: shown when camera access was denied")
+                )
             } else{
                 CodeScannerView(codeTypes: [.aztec, .code39, .code93, .code128, .dataMatrix, .ean8, .ean13, .interleaved2of5, .itf14, .pdf417, .qr, .upce, .upce], shouldVibrateOnSuccess: false) { response in
                     

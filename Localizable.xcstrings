@@ -383,6 +383,53 @@
         }
       }
     },
+    "Camera Access Required" : {
+      "comment" : "Missing permission view: title when camera access was denied",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kamerazugriff erforderlich"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se necesita acceso a la cámara"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accès à l’appareil photo requis"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cameratoegang vereist"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wymagany dostęp do aparatu"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acesso à câmera necessário"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kameraåtkomst krävs"
+          }
+        }
+      }
+    },
     "Current Icon" : {
       "comment" : "App icon picker",
       "localizations" : {
@@ -473,6 +520,53 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Släng ändringar"
+          }
+        }
+      }
+    },
+    "Domains can only be resolved while you're connected to the internet." : {
+      "comment" : "Domain Resolver: explanation below the offline notice",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domains können nur aufgelöst werden, wenn du mit dem Internet verbunden bist."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los dominios solo se pueden resolver si estás conectado a internet."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les domaines ne peuvent être résolus que lorsque vous êtes connecté à Internet."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domeinen kunnen alleen worden opgezocht als je verbonden bent met internet."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domeny można rozwiązywać tylko po połączeniu z internetem."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Os domínios só podem ser resolvidos quando você está conectado à internet."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domäner kan bara slås upp när du är ansluten till internet."
           }
         }
       }
@@ -806,6 +900,53 @@
         }
       }
     },
+    "Microphone Access Required" : {
+      "comment" : "Missing permission view: title when microphone access was denied",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mikrofonzugriff erforderlich"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se necesita acceso al micrófono"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accès au micro requis"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Microfoontoegang vereist"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wymagany dostęp do mikrofonu"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acesso ao microfone necessário"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mikrofonåtkomst krävs"
+          }
+        }
+      }
+    },
     "New Look" : {
       "comment" : "WhatsNewKit item",
       "localizations" : {
@@ -1037,6 +1178,53 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Inga gömda verktyg"
+          }
+        }
+      }
+    },
+    "No Internet Connection" : {
+      "comment" : "Domain Resolver: notice shown while the device is offline",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Internetverbindung"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin conexión a internet"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas de connexion Internet"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geen internetverbinding"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak połączenia z internetem"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sem conexão com a internet"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingen internetanslutning"
           }
         }
       }
@@ -15102,6 +15290,7 @@
     },
     "You need to rotate your device to enable the scrolling text." : {
       "comment" : "Scrolling Text: alert message",
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

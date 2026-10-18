@@ -25,8 +25,8 @@ struct MainscreenMoveTip: Tip {
         }
     
     
-    var options: [TipOption] = [MaxDisplayCount(1)]
-    
+    // No MaxDisplayCount: TipKit counts the tip as shown even while the What's New sheet covers it,
+    // so it would be used up unseen. It stays until it's closed or a tool is moved.
     var rules: [Rule] {
         #Rule(Self.appStarted) { $0.donations.count >= 10 }
     }

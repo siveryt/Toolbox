@@ -7,27 +7,12 @@
 
 import SwiftUI
 import MarqueeText
-import TipKit
 import AVFoundation
 
-/// Hint shown in the scrolling-text full-screen mode explaining how to exit it.
-struct ScrollingTextFullscreenTip: Tip {
-    var title: Text {
-        Text("Exit Fullscreen")
-    }
-    var message: Text? {
-        Text("Tap anywhere to minimize")
-    }
-    var image: Image? {
-        Image(systemName: "arrow.down.right.and.arrow.up.left")
-    }
-}
-
 struct Scrolling_Text: View {
-    private let fullscreenTip = ScrollingTextFullscreenTip()
-    @State var enabled = false
+    /// Whether the window is wider than tall; in portrait the full-screen text is turned sideways.
+    @State var isLandscape = false
     @State var scrollerActive = false
-    @State var rotateAlert = false
     /// Text shown on a connected display (AirPlay, monitor).
     @State var externalDisplayActive = false
     @State var externalDisplayAvailable = false
@@ -59,6 +44,10 @@ struct Scrolling_Text: View {
             Slider(value: $scrollingSpeed, in: 0.1...2.0, step: 0.1)
             
             Section {
+                Button("Start Scrolling") {
+                    scrollerActive = true
+                }
+
                 if backDisplayActive {
                     Button("Stop Scrolling on Back Display") {
                         stopBackDisplay()
@@ -67,15 +56,6 @@ struct Scrolling_Text: View {
                     Button("Start Scrolling on Back Display") {
                         Task { await startBackDisplay() }
                     }
-                } else {
-                    Button("Start Scrolling"){
-                        if(enabled) {
-                            scrollerActive = true
-                        } else {
-                            rotateAlert = true
-                        }
-                    }
-                    .tint(enabled ? .accentColor : .secondary)
                 }
 
                 if externalDisplayAvailable {
@@ -98,8 +78,7 @@ struct Scrolling_Text: View {
                 .onGeometryChange(for: Bool.self) { proxy in
                     proxy.size.width > proxy.size.height
                 } action: { isWide in
-                    enabled = isWide
-                    scrollerActive = isWide ? scrollerActive : false
+                    isLandscape = isWide
                 }
         }
         .secondDisplayScroller(
@@ -120,10 +99,6 @@ struct Scrolling_Text: View {
             stopBackDisplay()
             externalDisplayActive = false
         }
-        .alert("Info", isPresented: $rotateAlert) {
-        } message: {
-            Text("You need to rotate your device to enable the scrolling text.")
-        }
         .alert("Camera Access Needed", isPresented: $cameraAccessAlert) {
             Button("Open Settings") {
                 if let url = URL(string: UIApplication.openSettingsURLString) {
@@ -139,17 +114,22 @@ struct Scrolling_Text: View {
             Text("The back display isn't available right now.")
         }
         .fullScreenCover(isPresented: $scrollerActive) {
-                    ScrollingTextMarquee(text: text, scrollingSpeed: scrollingSpeed)
-                    .avoidingActiveDivision()
-                    .contentShape(Rectangle())
-                    .onTapGesture {
-                        scrollerActive = false
-                        fullscreenTip.invalidate(reason: .actionPerformed)
-                    }
-                    .overlay(alignment: .top) {
-                        TipView(fullscreenTip)
-                            .padding()
-                    }
+            // In portrait the text runs sideways, so the phone only has to be turned to read it.
+            GeometryReader { geometry in
+                let portrait = geometry.size.height > geometry.size.width
+                ScrollingTextMarquee(text: text, scrollingSpeed: scrollingSpeed)
+                    .frame(
+                        width: portrait ? geometry.size.height : geometry.size.width,
+                        height: portrait ? geometry.size.width : geometry.size.height
+                    )
+                    .rotationEffect(.degrees(portrait ? 90 : 0))
+                    .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
+            }
+            .avoidingActiveDivision()
+            .contentShape(Rectangle())
+            .onTapGesture {
+                scrollerActive = false
+            }
         }
         
         .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
@@ -158,7 +138,7 @@ struct Scrolling_Text: View {
 
     /// In portrait, an unfolded iPhone Duo faces its back display towards the people in front of you.
     private var canUseBackDisplay: Bool {
-        hasHinge && isUnfolded && !enabled
+        hasHinge && isUnfolded && !isLandscape
     }
 
     private func startBackDisplay() async {
@@ -235,7 +215,7 @@ final class BackDisplayCamera: @unchecked Sendable {
     }
 }
 
-/// The scrolling text itself, filling the available height.
+/// The scrolling text itself, as tall as the available height. Text that fits isn't scrolled but centered.
 struct ScrollingTextMarquee: View {
     let text: String
     let scrollingSpeed: Double
@@ -244,14 +224,21 @@ struct ScrollingTextMarquee: View {
         GeometryReader { geometry in
             MarqueeText(
                 text: text,
-                font: UIFont.systemFont(ofSize: geometry.size.height),
+                font: Self.font(fittingHeight: geometry.size.height),
                 leftFade: 0,
                 rightFade: 0,
                 startDelay: 0,
+                alignment: .center,
                 duration: Double(text.count)/(2.0 * scrollingSpeed)
             )
-            .ignoresSafeArea()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
+    }
+
+    /// The largest system font whose line height fits into `height`.
+    private static func font(fittingHeight height: CGFloat) -> UIFont {
+        let lineHeightPerPoint = UIFont.systemFont(ofSize: 100).lineHeight / 100
+        return UIFont.systemFont(ofSize: max(height / lineHeightPerPoint, 1))
     }
 }
 

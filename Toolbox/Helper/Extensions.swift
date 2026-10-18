@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import AVFoundation
+import Network
 
 enum Coordinator {
     static func topViewController(_ viewController: UIViewController? = nil) -> UIViewController? {
@@ -174,4 +175,46 @@ extension AVMetadataObject.ObjectType {
 
 extension Int: Identifiable {
     public var id: Int { self }
+}
+
+/// Shown in place of a tool when a permission it needs was denied. Looks like the app's empty states.
+struct PermissionDeniedView: View {
+    let title: String
+    let systemImage: String
+    let description: String
+
+    var body: some View {
+        ContentUnavailableView {
+            Label(title, systemImage: systemImage)
+        } description: {
+            Text(description)
+        } actions: {
+            Button(NSLocalizedString("Open Settings", comment: "Button that opens the app's page in the Settings app")) {
+                if let appSettings = URL(string: UIApplication.openSettingsURLString) {
+                    UIApplication.shared.open(appSettings)
+                }
+            }
+            .buttonStyle(.borderedProminent)
+        }
+    }
+}
+
+/// Tells whether the device currently has a network connection.
+@Observable
+final class NetworkMonitor {
+    private(set) var isConnected = true
+    @ObservationIgnored private let monitor = NWPathMonitor()
+
+    init() {
+        monitor.pathUpdateHandler = { [weak self] path in
+            DispatchQueue.main.async {
+                self?.isConnected = path.status == .satisfied
+            }
+        }
+        monitor.start(queue: DispatchQueue(label: "NetworkMonitor"))
+    }
+
+    deinit {
+        monitor.cancel()
+    }
 }

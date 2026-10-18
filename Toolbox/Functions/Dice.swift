@@ -142,9 +142,8 @@ struct DiceGridView: View {
     var sides: Int
     
     private let spacing: CGFloat = 20
-    private let minimumDieSize: CGFloat = 60
     
-    /// Picks the column count that gives the biggest dice while still fitting the available width and height.
+    /// Picks the column count that gives the biggest dice while all of them still fit the available width and height.
     private func layout(for containerSize: CGSize) -> (columns: Int, dieSize: CGFloat) {
         let width = containerSize.width - 2 * spacing
         let height = containerSize.height - 2 * spacing
@@ -159,14 +158,6 @@ struct DiceGridView: View {
                 best = (columns, dieSize)
             }
         }
-        
-        // With lots of dice on a small screen, keep them tappable and let the grid scroll instead.
-        // The bigger dice may no longer fit the chosen column count, so reduce it to what fits the width.
-        if best.dieSize < minimumDieSize {
-            best.dieSize = minimumDieSize
-            let fittingColumns = Int((width + spacing) / (minimumDieSize + spacing))
-            best.columns = max(1, min(best.columns, fittingColumns))
-        }
         return best
     }
     
@@ -174,16 +165,13 @@ struct DiceGridView: View {
         
         GeometryReader { geometry in
             let layout = layout(for: geometry.size)
-            ScrollView(.vertical, showsIndicators: false) {
-                LazyVGrid(columns: Array(repeating: GridItem(.fixed(layout.dieSize), spacing: spacing), count: layout.columns), spacing: spacing) {
-                    ForEach(1...diceCount, id: \.self) { i in
-                        DieView(number: faces[i], sides: sides, index: i)
-                            .frame(width: layout.dieSize, height: layout.dieSize)
-                    }
+            LazyVGrid(columns: Array(repeating: GridItem(.fixed(layout.dieSize), spacing: spacing), count: layout.columns), spacing: spacing) {
+                ForEach(1...diceCount, id: \.self) { i in
+                    DieView(number: faces.indices.contains(i) ? faces[i] : "1", sides: sides, index: i)
+                        .frame(width: layout.dieSize, height: layout.dieSize)
                 }
-                .padding(spacing)
-                .frame(minWidth: geometry.size.width, minHeight: geometry.size.height)
             }
+            .frame(width: geometry.size.width, height: geometry.size.height)
         }
         .avoidingActiveDivision()
     }
@@ -290,9 +278,17 @@ struct DiceView: View {
                     
                     
                     
-                    HStack {
-                        Stepper("Dice Count", value: $diceCount, in: 1...32)
-                        Text(String(diceCount))
+                    Stepper(value: $diceCount, in: 1...32) {
+                        HStack {
+                            Text("Dice Count")
+                            Spacer()
+                            Text(diceCount, format: .number)
+                                .monospacedDigit()
+                                .foregroundStyle(.secondary)
+                                .contentTransition(.numericText(value: Double(diceCount)))
+                                .animation(.snappy, value: diceCount)
+                                .padding(.trailing, 12)
+                        }
                     }
                     Section {
                         Toggle(isOn: $idleTimerDisabled) {

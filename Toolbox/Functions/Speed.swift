@@ -125,57 +125,32 @@ struct Speed: View {
                     .frame(maxWidth: .infinity)
                 }
             } else {
-                VStack(spacing: 20) {
-                    if !hasLocationPermission {
-                        VStack(spacing: 15) {
-                            Image(systemName: "location.slash")
-                                .font(.system(size: 50))
-                                .foregroundColor(.orange)
-
-                            Text("Location Access Required")
-                                .font(.headline)
-
-                            Text("You first have to allow Toolbox to access your location to see your speed.")
-                                .multilineTextAlignment(.center)
-                                .padding(.horizontal)
-
-                            Button("Open Settings") {
-                                if let appSettings = URL(string: UIApplication.openSettingsURLString) {
-                                    UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
-                                }
-                            }
-                            .buttonStyle(.borderedProminent)
+                if locationManager.authorizationStatus == .notDetermined {
+                    // The permission prompt is showing
+                    Color.clear
+                } else if !hasLocationPermission {
+                    PermissionDeniedView(
+                        title: NSLocalizedString("Location Access Required", comment: "A message displayed when the user hasn't granted location access to the app."),
+                        systemImage: "location.slash",
+                        description: NSLocalizedString("You first have to allow Toolbox to access your location to see your speed.", comment: "Speed tool: shown without location access")
+                    )
+                } else if !hasPreciseLocation {
+                    ContentUnavailableView {
+                        Label(NSLocalizedString("Precise Location Required", comment: "A message displayed when precise location is required for speed tracking."), systemImage: "location.north.circle")
+                    } description: {
+                        Text(NSLocalizedString("Speed tracking requires precise location. Please enable precise location in Settings.", comment: "A message displayed when precise location is not enabled. Asks the user to enable it in settings."))
+                    } actions: {
+                        Button(NSLocalizedString("Request Precise Location", comment: "A button that requests precise location access.")) {
+                            locationManager.requestTemporaryFullAccuracy()
                         }
-                    } else if !hasPreciseLocation {
-                        VStack(spacing: 15) {
-                            Image(systemName: "location.north.circle")
-                                .font(.system(size: 50))
-                                .foregroundColor(.blue)
-
-                            Text("Precise Location Required")
-                                .font(.headline)
-
-                            Text("Speed tracking requires precise location. Please enable precise location in Settings.")
-                                .multilineTextAlignment(.center)
-                                .padding(.horizontal)
-
-                            Button("Open Settings") {
-                                if let appSettings = URL(string: UIApplication.openSettingsURLString) {
-                                    UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
-                                }
-                            }
-                            .buttonStyle(.borderedProminent)
-
-                            if #available(iOS 14.0, *) {
-                                Button("Request Precise Location") {
-                                    locationManager.requestTemporaryFullAccuracy()
-                                }
-                                .buttonStyle(.bordered)
+                        .buttonStyle(.borderedProminent)
+                        Button(NSLocalizedString("Open Settings", comment: "Button that opens the app's page in the Settings app")) {
+                            if let appSettings = URL(string: UIApplication.openSettingsURLString) {
+                                UIApplication.shared.open(appSettings)
                             }
                         }
                     }
                 }
-                .padding()
             }
         }
         .navigationBarTitleDisplayMode(.inline)

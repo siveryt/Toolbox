@@ -286,7 +286,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Toolbox uses you location to calculate your GPS coordinates and speed"
+            "value" : "Toolbox uses your location to calculate your GPS coordinates and speed"
           }
         },
         "es" : {
@@ -340,7 +340,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Toolbox uses you location to calculate your GPS coordinates and speed"
+            "value" : "Toolbox uses your location to calculate your GPS coordinates and speed"
           }
         },
         "es" : {
@@ -394,7 +394,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Toolbox uses you location to calculate your GPS coordinates and speed"
+            "value" : "Toolbox uses your location to calculate your GPS coordinates and speed"
           }
         },
         "es" : {

@@ -129,16 +129,11 @@ struct Coordinates: View {
                     .environment(\.copyToast, $isPresentingToast)
                 }
             } else {
-                VStack{
-                    Text("You first have to allow Toolbox to access your location to see your coordinates.")
-                        .multilineTextAlignment(.center)
-                        .padding()
-                    Button("Open Settings") {
-                        if let appSettings = URL(string: UIApplication.openSettingsURLString) {
-                            UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
-                        }
-                    }
-                }
+                PermissionDeniedView(
+                    title: NSLocalizedString("Location Access Required", comment: "A message displayed when the user hasn't granted location access to the app."),
+                    systemImage: "location.slash",
+                    description: NSLocalizedString("You first have to allow Toolbox to access your location to see your coordinates.", comment: "Coordinates tool: shown without location access")
+                )
             }
             }
         
