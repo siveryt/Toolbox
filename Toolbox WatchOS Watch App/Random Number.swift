@@ -53,6 +53,9 @@ struct Random_Number: View {
                     .tint(.accentColor)
             }
         }
+        // The last number may lie outside a newly edited range; don't keep showing it.
+        .onChange(of: range) { keepGeneratedInRange() }
+        .onAppear { keepGeneratedInRange() }
         .sheet(isPresented: $options) {
             NavigationStack {
                 RangeEditor(
@@ -60,6 +63,12 @@ struct Random_Number: View {
                     to: Binding(get: { Int(to) ?? 100 }, set: { to = String($0) })
                 )
             }
+        }
+    }
+
+    private func keepGeneratedInRange() {
+        if !range.contains(generated) {
+            generated = Int.random(in: range)
         }
     }
 

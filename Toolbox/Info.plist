@@ -6,15 +6,11 @@
 	<string>unknown</string>
 	<key>LAST_UPDATE</key>
 	<string>unknown</string>
-	<key>NSBonjourServices</key>
-	<array>
-		<string>_bonjour._tcp</string>
-		<string>_lnp._tcp.</string>
-	</array>
-	<key>NSDocumentDirectoryUsageDescription</key>
-	<string>Fonts</string>
-	<key>NSUserDomainMaskUsageDescription</key>
-	<string>Fonts II</string>
+	<key>NSLocationTemporaryUsageDescriptionDictionary</key>
+	<dict>
+		<key>SpeedTracking</key>
+		<string>Toolbox needs your precise location to measure your speed accurately</string>
+	</dict>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

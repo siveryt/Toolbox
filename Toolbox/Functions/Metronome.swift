@@ -108,7 +108,7 @@ final class MetronomeEngine {
             try session.setActive(true)
             try engine.start()
         } catch {
-            print("Unable to start the metronome: \(error.localizedDescription)")
+            // The audio session or engine isn't available (e.g. during a call); stay stopped.
             return
         }
         outputLatency = session.outputLatency
@@ -172,7 +172,13 @@ final class MetronomeEngine {
             segments = [Segment(beat: 0, time: first.time, bpm: bpm)]
             return
         }
-        segments.append(Segment(beat: beat, time: start, bpm: bpm))
+        let segment = Segment(beat: beat, time: start, bpm: bpm)
+        if let last = segments.last, last.time == start {
+            // Several changes before the next beat (e.g. dragging the slider) start at the same moment; only the latest tempo counts.
+            segments[segments.count - 1] = segment
+        } else {
+            segments.append(segment)
+        }
         if segments.count > 3 { segments.removeFirst(segments.count - 3) }
     }
 
@@ -238,6 +244,8 @@ struct Metronome: View {
 
     @AppStorage("metronome_bpmString") private var bpmString: String = "120"
     @AppStorage("metronome_bpmeasureString") private var bpmeasureString: String = "4"
+    @FocusState private var bpmFieldFocused: Bool
+    @FocusState private var bpmeasureFieldFocused: Bool
 
     var body: some View {
         Form {
@@ -250,6 +258,11 @@ struct Metronome: View {
                         }
                     }
                     .keyboardType(.numberPad)
+                    .focused($bpmFieldFocused)
+                    .onChange(of: bpmFieldFocused) {
+                        // Show the tempo that's actually used once editing ends, not an out-of-range entry
+                        if !bpmFieldFocused { bpmString = String(Int(bpm)) }
+                    }
 
                 Slider(value: $bpm, in: MetronomeEngine.bpmRange, step: 1)
                     .onChange(of: bpm) {
@@ -272,6 +285,10 @@ struct Metronome: View {
                         }
                     }
                     .keyboardType(.numberPad)
+                    .focused($bpmeasureFieldFocused)
+                    .onChange(of: bpmeasureFieldFocused) {
+                        if !bpmeasureFieldFocused { bpmeasureString = String(Int(bpmeasure)) }
+                    }
 
                 Slider(value: $bpmeasure, in: 1...32, step: 1)
                     .onChange(of: bpmeasure) {
@@ -316,9 +333,12 @@ struct Metronome: View {
             })
         }
         .onAppear {
-            bpm = min(max(bpm, MetronomeEngine.bpmRange.lowerBound), MetronomeEngine.bpmRange.upperBound)
+            bpm = min(max(bpm, MetronomeEngine.bpmRange.lowerBound), MetronomeEngine.bpmRange.upperBound).rounded()
+            bpmeasure = min(max(bpmeasure, 1), 32).rounded()
             engine.bpm = bpm
             engine.beatsPerMeasure = Int(bpmeasure)
+            // The fields are persisted as typed, possibly out of range; show the values that are used.
+            syncFieldsToValues()
         }
         .onDisappear {
             // The full-screen cover also makes the form disappear; keep playing there.
@@ -328,6 +348,12 @@ struct Metronome: View {
         }
         .navigationTitle("Metronome")
         .navigationBarTitleDisplayMode(.inline)
+    }
+
+    /// Puts the values that are actually used back into the text fields.
+    private func syncFieldsToValues() {
+        bpmString = String(Int(bpm))
+        bpmeasureString = String(Int(bpmeasure))
     }
 
     private func tapToSetBPM() {

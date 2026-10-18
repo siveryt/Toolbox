@@ -18,6 +18,7 @@ struct DecibelMeter: View {
     /// The last ten seconds of levels for the graph, oldest first.
     @State private var history: [LevelSample] = []
     @State private var sampleCount = 0
+    @Environment(\.scenePhase) private var scenePhase
 
     private struct LevelSample: Identifiable {
         let id: Int
@@ -30,7 +31,7 @@ struct DecibelMeter: View {
             GeometryReader { geometry in
                 VStack {
                     Spacer()
-                    Text(String(format: "%.1f dB", level * 100))
+                    Text(verbatim: "\((level * 100).formatted(.number.precision(.fractionLength(1)))) dB")
                         .font(.system(size: min(geometry.size.width, geometry.size.height) * 0.8, design: .default)).monospacedDigit()
                         .lineLimit(1)
                         .minimumScaleFactor(0.01)
@@ -49,6 +50,30 @@ struct DecibelMeter: View {
             }
             .onDisappear {
                 self.stopMonitoring()
+            }
+            // The microphone can't be used in the background; measure again when the app comes back.
+            .onChange(of: scenePhase) { _, phase in
+                switch phase {
+                case .active: self.startMonitoring()
+                case .background: self.stopMonitoring()
+                default: break
+                }
+            }
+            // A phone call or Siri takes the microphone; continue afterwards if the system allows it.
+            .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.interruptionNotification)) { notification in
+                guard let rawType = notification.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt,
+                      let type = AVAudioSession.InterruptionType(rawValue: rawType) else { return }
+                switch type {
+                case .began:
+                    self.stopMonitoring()
+                case .ended:
+                    let rawOptions = notification.userInfo?[AVAudioSessionInterruptionOptionKey] as? UInt ?? 0
+                    if AVAudioSession.InterruptionOptions(rawValue: rawOptions).contains(.shouldResume) {
+                        self.startMonitoring()
+                    }
+                @unknown default:
+                    break
+                }
             }
         } else {
             Group {
@@ -84,10 +109,13 @@ struct DecibelMeter: View {
     }
 
     private func startMonitoring() {
+        // Never run two recorders or timers at once, e.g. when the app becomes active right after appearing.
+        stopMonitoring()
         history = []
         let audioSession = AVAudioSession.sharedInstance()
         do {
-            try audioSession.setCategory(.playAndRecord, mode: .default, options: .defaultToSpeaker)
+            // The measurement mode turns off automatic gain control and voice processing, which would flatten the levels.
+            try audioSession.setCategory(.record, mode: .measurement)
             try audioSession.setActive(true)
 
             let settings = [
@@ -111,7 +139,8 @@ struct DecibelMeter: View {
                 }
             }
         } catch {
-            print("Failed to set up audio session and recorder: \(error.localizedDescription)")
+            // The microphone isn't available (e.g. in use by a call); the level stays at its last value.
+            stopMonitoring()
         }
     }
 
@@ -146,19 +175,18 @@ struct DecibelMeter: View {
 
     private func stopMonitoring() {
         audioRecorder?.stop()
+        audioRecorder = nil
         timer?.invalidate()
+        timer = nil
         try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
     }
 
+    /// Maps the recorder's average power (dBFS, 0 at full scale) linearly onto 0...1: -80 dBFS and below is 0, 0 dBFS is 1.
+    /// Louder input never gives a lower value. The view shows this times 100 as "dB", which is only an uncalibrated
+    /// approximation: it isn't dB SPL, and the real sound pressure for a given value depends on the device's microphone.
     private func scaledPower(power: Float) -> Float {
         guard power.isFinite else { return 0.0 }
         let minDb: Float = -80
-        if power < minDb {
-            return 0.0
-        } else if power >= 0 {
-            return 1.0
-        } else {
-            return (abs(minDb) - abs(power)) / abs(minDb)
-        }
+        return min(max((power - minDb) / -minDb, 0), 1)
     }
 }

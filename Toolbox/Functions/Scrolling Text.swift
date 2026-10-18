@@ -25,6 +25,7 @@ struct Scrolling_Text: View {
     @State var backDisplayCamera = BackDisplayCamera()
     @State var cameraAccessAlert = false
     @State var backDisplayUnavailableAlert = false
+    @State var cameraFailedAlert = false
     @AppStorage("Scrolling Text-speed") var scrollingSpeed = 1.0
     @AppStorage("Scrolling Text-text") var text = ""
     
@@ -47,6 +48,7 @@ struct Scrolling_Text: View {
                 Button("Start Scrolling") {
                     scrollerActive = true
                 }
+                .disabled(text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
 
                 if backDisplayActive {
                     Button("Stop Scrolling on Back Display") {
@@ -96,8 +98,11 @@ struct Scrolling_Text: View {
             if !canUse { stopBackDisplay() }
         }
         .onDisappear {
-            stopBackDisplay()
-            externalDisplayActive = false
+            // The full-screen scroller also makes the form disappear; keep the other displays running then.
+            if !scrollerActive {
+                stopBackDisplay()
+                externalDisplayActive = false
+            }
         }
         .alert("Camera Access Needed", isPresented: $cameraAccessAlert) {
             Button("Open Settings") {
@@ -112,6 +117,10 @@ struct Scrolling_Text: View {
         .alert("Info", isPresented: $backDisplayUnavailableAlert) {
         } message: {
             Text("The back display isn't available right now.")
+        }
+        .alert("Info", isPresented: $cameraFailedAlert) {
+        } message: {
+            Text(NSLocalizedString("The camera couldn't be started, so the text can't be shown on the back display right now.", comment: "Scrolling Text: alert message when the camera, which the back display needs, fails to start although access is allowed"))
         }
         .fullScreenCover(isPresented: $scrollerActive) {
             // In portrait the text runs sideways, so the phone only has to be turned to read it.
@@ -142,8 +151,14 @@ struct Scrolling_Text: View {
     }
 
     private func startBackDisplay() async {
-        guard await backDisplayCamera.start() else {
+        switch await backDisplayCamera.start() {
+        case .running:
+            break
+        case .accessDenied:
             cameraAccessAlert = true
+            return
+        case .failed:
+            cameraFailedAlert = true
             return
         }
         guard canUseBackDisplay else {
@@ -172,16 +187,24 @@ final class BackDisplayCamera: @unchecked Sendable {
     private let queue = DispatchQueue(label: "Scrolling Text back display camera")
     private var isConfigured = false
 
-    /// Starts the session, asking for camera access if needed. Returns whether the session is running.
-    func start() async -> Bool {
-        guard await AVCaptureDevice.requestAccess(for: .video) else { return false }
+    enum StartResult {
+        case running
+        /// Camera access was denied.
+        case accessDenied
+        /// Access is allowed, but the session didn't start (e.g. the camera is in use or unavailable).
+        case failed
+    }
+
+    /// Starts the session, asking for camera access if needed.
+    func start() async -> StartResult {
+        guard await AVCaptureDevice.requestAccess(for: .video) else { return .accessDenied }
         return await withCheckedContinuation { continuation in
             queue.async {
                 self.configureIfNeeded()
                 if !self.session.isRunning {
                     self.session.startRunning()
                 }
-                continuation.resume(returning: self.session.isRunning)
+                continuation.resume(returning: self.session.isRunning ? .running : .failed)
             }
         }
     }

@@ -16,7 +16,14 @@ import SwiftData
 struct App {
     @StateObject private var sbDataController = SBDataController()
     
+    /// Set by "Delete Data": TipKit's datastore can only be reset before `Tips.configure`.
+    static let resetTipsOnLaunchKey = "resetTipsOnLaunch"
+    
     init() {
+        if UserDefaults.standard.bool(forKey: Self.resetTipsOnLaunchKey) {
+            try? Tips.resetDatastore()
+            UserDefaults.standard.removeObject(forKey: Self.resetTipsOnLaunchKey)
+        }
         // Configure TipKit before any view appears, so events donated on launch are recorded
         try? Tips.configure([
             .displayFrequency(.immediate),

@@ -29,7 +29,6 @@ struct Counter: View {
             Spacer()
             HStack{
                 Button("-"){
-                    print("-")
                     count -= 1
                     defaults.set(count, forKey: "count")
                     Haptic.impact(.light).generate()
@@ -39,7 +38,6 @@ struct Counter: View {
                 .padding()
 
                 Button("Reset"){
-                    print("Reset")
                     showAlert = true
                     Haptic.impact(.rigid).generate()
                 }
@@ -60,7 +58,6 @@ struct Counter: View {
                 .tint(.primary)
                 
                 Button("+"){
-                    print("+")
                     count += 1
                     defaults.set(count, forKey: "count")
                     Haptic.impact(.light).generate()

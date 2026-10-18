@@ -23,15 +23,19 @@ struct BarcodeDetail: View {
         NavigationStack {
             VStack {
                 List {
-                    KeyValueProperty(content: barcode?.content, propertyName: NSLocalizedString("content", comment: "Barcode"))
+                    KeyValueProperty(content: barcode?.content, propertyName: NSLocalizedString("content", comment: "Barcode Scanner details: label of the scanned code's content"))
                         .environment(\.copyToast, $isPresentingToast)
-                    KeyValueProperty(content: barcode?.type, propertyName: NSLocalizedString("type", comment: "Barcode"))
+                    KeyValueProperty(content: barcode?.type, propertyName: NSLocalizedString("type", comment: "Barcode Scanner details: label of the scanned code's type, e.g. QR Code"))
                         .environment(\.copyToast, $isPresentingToast)
-                    KeyValueProperty(content: formatDate(date: barcode?.date), propertyName: NSLocalizedString("date", comment: "Barcode"))
+                    KeyValueProperty(content: formatDate(date: barcode?.date), propertyName: NSLocalizedString("date", comment: "Barcode Scanner details: label of the date the code was scanned"))
                         .environment(\.copyToast, $isPresentingToast)
-                    Image(uiImage: generateQRCode( barcode?.content ?? "error", type: barcode?.type))
-                        .resizable()
-                        .scaledToFit()
+                    // Only types that can be redrawn exactly as scanned get an image; others show their content only.
+                    if let content = barcode?.content, let image = generateBarcode(content, type: barcode?.type) {
+                        Image(uiImage: image)
+                            .resizable()
+                            .interpolation(.none)
+                            .scaledToFit()
+                    }
                 }
                 
                 
@@ -50,64 +54,49 @@ struct BarcodeDetail: View {
     
     func formatDate(date: Date?) -> String {
         
-        if date == nil {
-            return "nil"
+        guard let date else {
+            return NSLocalizedString("Unknown date", comment: "Barcode Scanner details: shown instead of the scan date when it is missing")
         }
-        
-            let formatter = DateFormatter()
-            formatter.dateStyle = .long
-            formatter.timeStyle = .medium
-            return formatter.string(from: date!)
+
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        formatter.timeStyle = .medium
+        return formatter.string(from: date)
     }
     
-    func generateQRCode(_ string: String, type: String?) -> UIImage {
-        let context = CIContext()
-        
-        if(type == "Aztec"){
-        
-            let filter = CIFilter.aztecCodeGenerator()
-            filter.message = Data(string.utf8)
+    /// Redraws the code for the types Core Image can generate faithfully (QR Code, Aztec, PDF417, Code 128).
+    /// Returns nil for every other type (EAN, UPC, Code 39, ITF, Data Matrix, ...), so no misleading image is shown.
+    func generateBarcode(_ string: String, type: String?) -> UIImage? {
+        let outputImage: CIImage?
 
-            if let outputImage = filter.outputImage?.transformed(by: CGAffineTransform(scaleX: 15, y: 15)) {
-                if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
-                    return UIImage(cgImage: cgimg)
-                }
-            }
-        }else if(type == "QR Code"){
-            
+        switch type {
+        case "QR Code":
             let filter = CIFilter.qrCodeGenerator()
             filter.message = Data(string.utf8)
-
-            if let outputImage = filter.outputImage?.transformed(by: CGAffineTransform(scaleX: 15, y: 15)) {
-                if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
-                    return UIImage(cgImage: cgimg)
-                }
-            }
-        }else if(type == "PDF417"){
-            
+            outputImage = filter.outputImage
+        case "Aztec":
+            let filter = CIFilter.aztecCodeGenerator()
+            filter.message = Data(string.utf8)
+            outputImage = filter.outputImage
+        case "PDF417":
             let filter = CIFilter.pdf417BarcodeGenerator()
             filter.message = Data(string.utf8)
-
-            if let outputImage = filter.outputImage?.transformed(by: CGAffineTransform(scaleX: 15, y: 15)) {
-                if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
-                    return UIImage(cgImage: cgimg)
-                }
-            }
-        }else{
-            
+            outputImage = filter.outputImage
+        case "Code 128":
+            // Code 128 only encodes ASCII
+            guard let data = string.data(using: .ascii) else { return nil }
             let filter = CIFilter.code128BarcodeGenerator()
-            filter.message = Data(string.utf8)
-
-            if let outputImage = filter.outputImage?.transformed(by: CGAffineTransform(scaleX: 15, y: 15)) {
-                if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
-                    return UIImage(cgImage: cgimg)
-                }
-            }
+            filter.message = data
+            outputImage = filter.outputImage
+        default:
+            return nil
         }
 
-        
-
-        return UIImage(systemName: "xmark.circle") ?? UIImage()
+        guard let image = outputImage?.transformed(by: CGAffineTransform(scaleX: 15, y: 15)),
+              let cgimg = CIContext().createCGImage(image, from: image.extent) else {
+            return nil
+        }
+        return UIImage(cgImage: cgimg)
     }
 }
 
@@ -144,7 +133,7 @@ struct KeyValueProperty: View {
                         Spacer()
                     }
                     HStack {
-                        Text(content ?? "No Content")
+                        Text(content ?? NSLocalizedString("No Content", comment: "Barcode Scanner details: shown when a scanned code has no content"))
                         Spacer()
                     }
                 }

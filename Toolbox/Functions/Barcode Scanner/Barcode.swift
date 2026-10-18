@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import CoreData
 import AVFoundation //import to access barcode types you want to scan
 import Haptica
 import CodeScanner
 
 import SwiftUI
+import CoreData
 
 struct Barcode: View {
     @State var scanSheet = false
@@ -23,7 +25,7 @@ struct Barcode: View {
             if codes.count > 0 {
                 List {
                     ForEach(Array(codes.enumerated()), id: \.offset) { index, code in
-                        Button(code.content!) {
+                        Button(code.content ?? "") {
                             selectedItemIndex.index = index
                         }
                     }
@@ -65,41 +67,56 @@ struct Barcode: View {
             offsets.map { codes[$0] }
                 .forEach(managedContext.delete)
             
-            SBDataController().save(context: managedContext)
+            SBDataController.shared.save(context: managedContext)
         }
     }
     
 }
 
 struct BarcodeScanner: View {
-    
-    @State private var scanError = false
+
+    private enum ScanFailure {
+        case permissionDenied
+        case cameraUnavailable
+    }
+
+    @State private var scanFailure: ScanFailure? = nil
     @Environment(\.dismiss) var dismiss
     @Environment(\.managedObjectContext) var managedContext
-    
+
     var body: some View {
-        
+
         ZStack {
-            if(scanError) {
+            switch scanFailure {
+            case .permissionDenied:
                 PermissionDeniedView(
                     title: NSLocalizedString("Camera Access Required", comment: "Missing permission view: title when camera access was denied"),
                     systemImage: "camera",
                     description: NSLocalizedString("Enable camera access in settings to use the Barcode Scanner.", comment: "Barcode Scanner: shown when camera access was denied")
                 )
-            } else{
-                CodeScannerView(codeTypes: [.aztec, .code39, .code93, .code128, .dataMatrix, .ean8, .ean13, .interleaved2of5, .itf14, .pdf417, .qr, .upce, .upce], shouldVibrateOnSuccess: false) { response in
-                    
+            case .cameraUnavailable:
+                ContentUnavailableView(
+                    NSLocalizedString("Camera Unavailable", comment: "Barcode Scanner: title when the camera can't be used, e.g. on a device without a camera"),
+                    systemImage: "camera",
+                    description: Text(NSLocalizedString("The camera can't be used to scan barcodes on this device right now.", comment: "Barcode Scanner: shown when the camera could not be started for a reason other than a denied permission"))
+                )
+            case nil:
+                CodeScannerView(codeTypes: [.aztec, .code39, .code93, .code128, .dataMatrix, .ean8, .ean13, .interleaved2of5, .itf14, .pdf417, .qr, .upce], shouldVibrateOnSuccess: false) { response in
+
                     switch response {
                         case .success(let result):
-                            print("Found code: \(result.string)")
                             withAnimation {
-                                SBDataController().addBarcode(content: result.string, type: result.type.friendlyName, context: managedContext)
+                                SBDataController.shared.addBarcode(content: result.string, type: result.type.friendlyName, context: managedContext)
                             }
                             Haptic.impact(.medium).generate()
                             dismiss()
                         case .failure(let error):
-                            scanError = true
-                            print(error.localizedDescription)
+                            switch error {
+                            case .permissionDenied:
+                                scanFailure = .permissionDenied
+                            case .badInput, .badOutput, .initError:
+                                scanFailure = .cameraUnavailable
+                            }
                     }
                 }
                 .ignoresSafeArea()

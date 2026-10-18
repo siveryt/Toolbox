@@ -17,11 +17,9 @@ struct Speed: View {
 
     private var userSpeed: String {
         if locationManager.speed >= 0 {
-            if isMetric {
-                return String(format: "%.0f", locationManager.speed * 3.6) // Convert m/s to km/h
-            } else {
-                return String(format: "%.0f", locationManager.speed * 2.237) // Convert m/s to mph
-            }
+            // Convert m/s to km/h or mph
+            let value = locationManager.speed * (isMetric ? 3.6 : 2.237)
+            return value.formatted(.number.precision(.fractionLength(0)))
         } else {
             return "--"
         }
@@ -33,13 +31,11 @@ struct Speed: View {
 
     private var userSpeedAccuracy: String {
         if locationManager.speedAccuracy >= 0 {
-            if isMetric {
-                return String(format: "%.1f km/h", locationManager.speedAccuracy * 3.6)
-            } else {
-                return String(format: "%.1f mph", locationManager.speedAccuracy * 2.237)
-            }
+            // Locale-aware, so German shows "1,2 km/h"
+            let value = locationManager.speedAccuracy * (isMetric ? 3.6 : 2.237)
+            return value.formatted(.number.precision(.fractionLength(1))) + " " + userSpeedUnit
         } else {
-            return isMetric ? "-- km/h" : "-- mph"
+            return "-- " + userSpeedUnit
         }
     }
 
@@ -206,6 +202,8 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private var previousLocation: CLLocation?
     private var lastValidSpeedDate: Date?
     private var refreshTimer: Timer?
+    // True while the Speed screen is visible, so permission changes don't start the GPS in the background.
+    private var isActive = false
 
     // Keep showing the last valid speed this long when new fixes carry no speed,
     // so a single bad GPS reading doesn't make the display flicker to "--".
@@ -247,6 +245,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private var lastFixDate: Date?
 
     func requestLocationPermission() {
+        isActive = true
         switch authorizationStatus {
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
@@ -266,6 +265,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 
     // Called when leaving the screen: stop the GPS to save battery and reset state.
     func pause() {
+        isActive = false
         stopLocationUpdates()
     }
 
@@ -275,10 +275,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 
         // Only start if we have precise location (iOS 14+) or on older iOS versions
         if #available(iOS 14.0, *) {
-            guard locationManager.accuracyAuthorization == .fullAccuracy else {
-                print("Precise location required for speed tracking")
-                return
-            }
+            guard locationManager.accuracyAuthorization == .fullAccuracy else { return }
         }
 
         locationManager.startUpdatingLocation()
@@ -376,35 +373,22 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Location manager failed with error: \(error.localizedDescription)")
         DispatchQueue.main.async {
             self.signalIsStale = true
         }
     }
 
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    // Called on creation, when the user changes the permission, and when precise location
+    // is granted or taken away (also after requestTemporaryFullAccuracyAuthorization).
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        let status = manager.authorizationStatus
+        let accuracy = manager.accuracyAuthorization
         DispatchQueue.main.async {
             self.authorizationStatus = status
-
-            switch status {
-            case .authorizedWhenInUse, .authorizedAlways:
-                self.startLocationUpdates()
-            case .denied, .restricted:
-                self.stopLocationUpdates()
-            case .notDetermined:
-                break
-            @unknown default:
-                break
-            }
-        }
-    }
-
-    @available(iOS 14.0, *)
-    func locationManager(_ manager: CLLocationManager, didChangeLocationAccuracy accuracy: CLAccuracyAuthorization) {
-        DispatchQueue.main.async {
             self.accuracyAuthorization = accuracy
 
-            if accuracy == .fullAccuracy {
+            guard self.isActive else { return }
+            if (status == .authorizedWhenInUse || status == .authorizedAlways) && accuracy == .fullAccuracy {
                 self.startLocationUpdates()
             } else {
                 self.stopLocationUpdates()

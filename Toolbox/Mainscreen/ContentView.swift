@@ -25,13 +25,14 @@ struct ContentView: View {
     @State var infoPresented = false
     @AppStorage("cvLoaded") var viewLoaded = 0
     @AppStorage("cvOrder") var order = [0]
-    @AppStorage("cvHasAlreadyEdited") var hasAlreadyEdited = false
     
     @AppStorage("cvHidden") var hidden: [Int] = []
     @AppStorage("cvHasHiddenAnythingYet") var hasHiddenAnythingYet = false
     @State var hiddenAlert = false
     @State private var searchText = ""
+    @Environment(\.requestReview) private var requestReview
     
+    // The order and hidden tools are saved as indices into this list, so new tools go at the end: inserting one shifts every saved index after it.
     @State var toollist:[Tool] = [
         Tool(view: AnyView(DiceView()), title: NSLocalizedString("Dice", comment: "Menu item"), icon: "dice"),
         Tool(view: AnyView(DomainResolver()), title: NSLocalizedString("Domain Resolver", comment: "Menu item"), icon: "network"),
@@ -48,7 +49,6 @@ struct ContentView: View {
         Tool(view: AnyView(LAN_Scanner()), title: NSLocalizedString("LAN Scanner", comment: "Menu item"), icon: "magnifyingglass"),
         Tool(view: AnyView(Ping()), title: NSLocalizedString("Ping", comment: "Menu item"), icon: "bolt.horizontal"),
         Tool(view: AnyView(Coordinates()), title: NSLocalizedString("Coordinates", comment: "Menu item"), icon: "location"),
-        Tool(view: AnyView(Distance()), title: NSLocalizedString("Distance", comment: "Menu item"), icon: "ruler"),
         Tool(view: AnyView(Speed()), title: NSLocalizedString("Speed", comment: "Menu item"), icon: "speedometer"),
         Tool(view: AnyView(Barcode()), title: NSLocalizedString("Barcode Scanner", comment: "Menu item"), icon: "barcode"),
         Tool(view: AnyView(Metronome()), title: NSLocalizedString("Metronome", comment: "Menu item"), icon: "metronome"),
@@ -57,15 +57,23 @@ struct ContentView: View {
         Tool(view: AnyView(FontInstall()), title: NSLocalizedString("Font Installer", comment: "Menu item"), icon: "character.magnify"),
         Tool(view: AnyView(Scrolling_Text()), title: NSLocalizedString("Scrolling Text", comment: "Menu item"), icon: "textformat.abc"),
         Tool(view: AnyView(Wake_On_Lan()), title: NSLocalizedString("Wake On Lan", comment: "Menu item"), icon: "power"),
+        Tool(view: AnyView(Distance()), title: NSLocalizedString("Distance", comment: "Menu item"), icon: "ruler"),
     ]
     
-    /// The saved order of indices into `toollist`, or the default order if it doesn't fit the current list.
+    /// The saved order of indices into `toollist`, without duplicates or indices that no longer exist, followed by tools that are new since it was saved.
     private var orderedIDs: [Int] {
-        order.sorted() == Array(toollist.indices) ? order : Array(toollist.indices)
+        var seen = Set<Int>()
+        let kept = order.filter { toollist.indices.contains($0) && seen.insert($0).inserted }
+        return kept + toollist.indices.filter { !seen.contains($0) }
     }
     
     private var visibleIDs: [Int] {
         orderedIDs.filter { !hidden.contains($0) && matchesSearch(toollist[$0]) }
+    }
+    
+    /// Hidden tools that match the search, so searching still finds them.
+    private var hiddenMatchIDs: [Int] {
+        searchText.isEmpty ? [] : orderedIDs.filter { hidden.contains($0) && matchesSearch(toollist[$0]) }
     }
     
     // The offsets count only the visible rows, so move those and put them back into the slots they held in the full order.
@@ -74,7 +82,6 @@ struct ContentView: View {
         moved.move(fromOffsets: source, toOffset: destination)
         var remaining = moved.makeIterator()
         order = orderedIDs.map { visibleIDs.contains($0) ? remaining.next()! : $0 }
-        hasAlreadyEdited = true
         MainscreenMoveTip().invalidate(reason: .actionPerformed)
     }
     
@@ -112,11 +119,37 @@ struct ContentView: View {
                         }
                     }
                     .onMove(perform: searchText.isEmpty ? onMove : nil)
+                    
+                    if !hiddenMatchIDs.isEmpty {
+                        Section("Hidden Tools") {
+                            ForEach(hiddenMatchIDs, id: \.self) { toolID in
+                                let tool = toollist[toolID]
+                                NavigationLink(destination: tool.view) {
+                                    Label(tool.title, systemImage: tool.icon).foregroundColor(.secondary)
+                                }
+                                .contextMenu {
+                                    Button(action: {
+                                        withAnimation {
+                                            hidden.removeAll { $0 == toolID }
+                                        }
+                                    }) {
+                                        Label("Show Again", systemImage: "eye")
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
                 .searchable(text: $searchText)
                 .overlay {
-                    if (!searchText.isEmpty && visibleIDs.isEmpty) {
+                    if (!searchText.isEmpty && visibleIDs.isEmpty && hiddenMatchIDs.isEmpty) {
                         ContentUnavailableView.search(text: searchText)
+                    } else if (searchText.isEmpty && visibleIDs.isEmpty) {
+                        ContentUnavailableView {
+                            Label(NSLocalizedString("All Tools Hidden", comment: "Main screen: title shown when the user has hidden every tool"), systemImage: "eye.slash")
+                        } description: {
+                            Text(NSLocalizedString("You can show them again in the settings under \"Hidden Tools\".", comment: "Main screen: hint shown when the user has hidden every tool"))
+                        }
                     }
                 }
                 
@@ -144,29 +177,11 @@ struct ContentView: View {
             }
             
             viewLoaded += 1
-            print("App Started \(viewLoaded) times")
-            if (viewLoaded == 5 || viewLoaded == 50) {
-                guard let currentScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
-                    print("UNABLE TO GET CURRENT SCENE")
-                    return
-                }
-                SKStoreReviewController.requestReview(in: currentScene)
-            }else if (viewLoaded == 150) {
-                guard let currentScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
-                    print("UNABLE TO GET CURRENT SCENE")
-                    return
-                }
-                SKStoreReviewController.requestReview(in: currentScene)
-            }else if (viewLoaded == 300) {
-                guard let currentScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
-                    print("UNABLE TO GET CURRENT SCENE")
-                    return
-                }
-                SKStoreReviewController.requestReview(in: currentScene)
-                
-            }
-            
             MainscreenMoveTip.appStarted.sendDonation()
+            
+            if [5, 50, 150, 300].contains(viewLoaded) {
+                requestReview()
+            }
                 
         }
             .alert("Hidden Tools", isPresented: $hiddenAlert) {
@@ -183,7 +198,6 @@ struct ContentView: View {
     }
     
     private func hide(index: Int) {
-        print("Hiding \(index)")
         withAnimation{
             hidden.append(index)
         }

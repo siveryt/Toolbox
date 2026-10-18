@@ -13,7 +13,7 @@ struct Faces: AppIntent, WidgetConfigurationIntent, CustomIntentMigratedAppInten
     static let intentClassName = "FacesIntent"
 
     static var title: LocalizedStringResource = "Faces"
-    static var description = IntentDescription("")
+    static var description = IntentDescription(LocalizedStringResource("Choose which die the widget rolls.", comment: "Dice widget: description of the widget's configuration"))
 
     @Parameter(title: "Faces", default: .six)
     var Faces: FaceCountAppEnum?
@@ -29,28 +29,14 @@ struct Faces: AppIntent, WidgetConfigurationIntent, CustomIntentMigratedAppInten
     }
 
     static var predictionConfiguration: some IntentPredictionConfiguration {
-        IntentPrediction(parameters: (\.$Faces, \.$reroll)) { Faces, reroll in
+        IntentPrediction(parameters: (\.$Faces, \.$reroll)) { faces, _ in
             DisplayRepresentation(
-                title: "",
-                subtitle: ""
+                title: LocalizedStringResource("\((faces ?? .six).maxDieSize)-sided die", comment: "Dice widget: suggested widget configuration, e.g. \"6-sided die\"")
             )
         }
-        
     }
 
     func perform() async throws -> some IntentResult {
-        // TODO: Place your refactored intent handler code here.
         return .result()
     }
 }
-
-@available(iOS 16.0, macOS 13.0, watchOS 9.0, tvOS 16.0, *)
-fileprivate extension IntentDialog {
-    static func FacesParameterDisambiguationIntro(count: Int, Faces: FaceCountAppEnum) -> Self {
-        "There are \(count) options matching ‘\(Faces)’."
-    }
-    static func FacesParameterConfirmation(Faces: FaceCountAppEnum) -> Self {
-        "Just to confirm, you wanted ‘\(Faces)’?"
-    }
-}
-

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA70000000000000000000F1 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = AA70000000000000000000F0 /* PrivacyInfo.xcprivacy */; };
+		AA70000000000000000000F2 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = AA70000000000000000000F0 /* PrivacyInfo.xcprivacy */; };
+		AA70000000000000000000F3 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = AA70000000000000000000F0 /* PrivacyInfo.xcprivacy */; };
 		1E6EFAED7A2F6EBCC4E32D79 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B0652AF1409AAF2C643D59 /* SnapshotHelper.swift */; };
 		2708F627159919345FEA9AD0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA1A0F1CE53A09DB36639C1 /* Foundation.framework */; };
 		36032CC96F2D127B3DF332D4 /* WatchScreenshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8224FC5099A1DFBEDF0B95A /* WatchScreenshotTests.swift */; };
@@ -159,6 +162,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AA70000000000000000000F0 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		38B0652AF1409AAF2C643D59 /* SnapshotHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		5E020C4C27EA29D7009871F9 /* RomanConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RomanConverter.swift; sourceTree = "<group>"; };
 		5E020C4D27EA29D7009871F9 /* DateDifference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateDifference.swift; sourceTree = "<group>"; };
@@ -473,6 +477,7 @@
 				5EC7B22227D7978200699FD3 /* Assets.xcassets */,
 				5EC7B22427D7978200699FD3 /* Preview Content */,
 				5EEA47EB2CB1426800E8CB60 /* InfoPlist.xcstrings */,
+				AA70000000000000000000F0 /* PrivacyInfo.xcprivacy */,
 			);
 			path = Toolbox;
 			sourceTree = "<group>";
@@ -777,6 +782,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA70000000000000000000F3 /* PrivacyInfo.xcprivacy in Resources */,
 				5EE7679F2CB12952002B0A74 /* Localizable.xcstrings in Resources */,
 				5E9ABFD82B9CB843005448FB /* Assets.xcassets in Resources */,
 			);
@@ -786,6 +792,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA70000000000000000000F1 /* PrivacyInfo.xcprivacy in Resources */,
 				5EEA47EC2CB1426800E8CB60 /* InfoPlist.xcstrings in Resources */,
 				5EDFF1E927E7AE4D005BBA3C /* LaunchScreen.storyboard in Resources */,
 				AAB5DC8D30838E87001D2F63 /* Toolbox Pink.icon in Resources */,
@@ -811,6 +818,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA70000000000000000000F2 /* PrivacyInfo.xcprivacy in Resources */,
 				5EE65DF92A8576000061120B /* Preview Assets.xcassets in Resources */,
 				5E2A28232A857AC000F7F444 /* Assets WatchOS.xcassets in Resources */,
 				AAB5DC8630838D14001D2F63 /* Toolbox.icon in Resources */,
@@ -1250,12 +1258,12 @@
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Toolbox needs access to the camera to read barcodes and to show scrolling text on the back display.";
-				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "Toolbox needs to access your files to let you select a font file to install";
-				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Toolbox needs access to your local network to use the LAN Scanner";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Toolbox needs access to your local network for the LAN Scanner, Ping and Wake On Lan";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Toolbox uses your location to calculate your GPS coordinates and speed";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Toolbox uses your location to calculate your GPS coordinates and speed";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Toolbox uses your location to calculate your GPS coordinates and speed";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Toolbox uses your microphone to measure audio levels";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Toolbox saves the images you share, such as QR codes, to your photo library";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -1294,12 +1302,12 @@
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Toolbox needs access to the camera to read barcodes and to show scrolling text on the back display.";
-				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "Toolbox needs to access your files to let you select a font file to install";
-				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Toolbox needs access to your local network to use the LAN Scanner";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Toolbox needs access to your local network for the LAN Scanner, Ping and Wake On Lan";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Toolbox uses your location to calculate your GPS coordinates and speed";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Toolbox uses your location to calculate your GPS coordinates and speed";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Toolbox uses your location to calculate your GPS coordinates and speed";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Toolbox uses your microphone to measure audio levels";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Toolbox saves the images you share, such as QR codes, to your photo library";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";

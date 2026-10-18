@@ -24,15 +24,15 @@ extension Date {
 
 struct LiveClock: View {
 
-    @State var now = Date()
-
     @AppStorage("liveClockShowUTC") var showUTC: Bool = false
 
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    /// The start of the second the view appeared in. The timeline ticks on whole seconds from there,
+    /// so the shown second changes together with the real one.
+    @State private var timelineStart = Date(timeIntervalSinceReferenceDate: Date().timeIntervalSinceReferenceDate.rounded(.down))
 
-    /// The current offset of the local time zone from UTC, formatted as e.g. "+02:00".
-    var utcOffsetString: String {
-        let seconds = TimeZone.current.secondsFromGMT(for: now)
+    /// The offset of the local time zone from UTC at `date`, formatted as e.g. "+02:00".
+    func utcOffsetString(at date: Date) -> String {
+        let seconds = TimeZone.current.secondsFromGMT(for: date)
         let sign = seconds >= 0 ? "+" : "-"
         let absSeconds = abs(seconds)
         let hours = absSeconds / 3600
@@ -43,36 +43,30 @@ struct LiveClock: View {
     var body: some View {
         GeometryReader { geometry in
             let base = min(geometry.size.width, geometry.size.height)
-            VStack(spacing: base * 0.06) {
-                Text(now.getFormattedDate(format: "HH:mm:ss"))
-                    .font(.system(size: base * (showUTC ? 0.45 : 0.8), design: .default)).monospacedDigit()
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.01)
+            TimelineView(.periodic(from: timelineStart, by: 1)) { context in
+                let now = context.date
+                VStack(spacing: base * 0.06) {
+                    Text(now.getFormattedDate(format: "HH:mm:ss"))
+                        .font(.system(size: base * (showUTC ? 0.45 : 0.8), design: .default)).monospacedDigit()
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.01)
 
-                if showUTC {
-                    VStack(spacing: base * 0.02) {
-                        Text(now.getFormattedDate(format: "HH:mm:ss", timeZone: TimeZone(identifier: "UTC")!))
-                            .font(.system(size: base * 0.2, design: .default)).monospacedDigit()
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.01)
-                        Text("\(NSLocalizedString("Local time", comment: "Live Clock")): UTC\(utcOffsetString)")
-                            .font(.system(size: base * 0.07, design: .default)).monospacedDigit()
-                            .foregroundColor(.secondary)
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.01)
+                    if showUTC {
+                        VStack(spacing: base * 0.02) {
+                            Text(now.getFormattedDate(format: "HH:mm:ss", timeZone: TimeZone(identifier: "UTC")!))
+                                .font(.system(size: base * 0.2, design: .default)).monospacedDigit()
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.01)
+                            Text(String(format: NSLocalizedString("Local time: UTC%@", comment: "Live Clock: line below the UTC time showing the local time zone's offset from UTC; %@ is the offset, e.g. \"+02:00\""), utcOffsetString(at: now)))
+                                .font(.system(size: base * 0.07, design: .default)).monospacedDigit()
+                                .foregroundColor(.secondary)
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.01)
+                        }
                     }
                 }
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .padding() // Adds default padding
-            .onReceive(timer) { input in
-                now = input
-            }
-            .onDisappear {
-                timer.upstream.connect().cancel()
-            }
-            .onAppear {
-                now = Date()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .padding() // Adds default padding
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

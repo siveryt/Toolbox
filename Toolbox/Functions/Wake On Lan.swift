@@ -69,7 +69,7 @@ struct Wake_On_Lan: View {
                             modelContext.delete(device)
                         }
                     }){
-                        Label("Delete", systemImage: "trash")
+                        Label(NSLocalizedString("Delete", comment: "Generic delete action: Info screen button that deletes all app data, Wake On Lan context menu that deletes a device, and the backspace key of the Apple Watch Roman Numbers keypad"), systemImage: "trash")
                             .foregroundColor(.red)
                     }
                 }
@@ -98,6 +98,7 @@ struct Wake_On_Lan: View {
                 broadcastError: broadcastError,
                 portError: portError,
                 formIsValid: formIsValid,
+                isEditing: editing,
                 onSave: save
             )
         })
@@ -282,6 +283,7 @@ struct WOLDeviceForm: View {
     let broadcastError: LocalizedStringKey?
     let portError: LocalizedStringKey?
     let formIsValid: Bool
+    let isEditing: Bool
     let onSave: () -> Void
 
     @FocusState private var focusedField: Field?
@@ -312,7 +314,7 @@ struct WOLDeviceForm: View {
                     }
                     VStack {
                         HStack {
-                            Text("MAC")
+                            Text(NSLocalizedString("MAC", comment: "Wake On Lan form: label of the MAC address field of the device to wake"))
                             Spacer()
                             TextField("00:1A:2B:3C:4D:5E", text: $mac)
                                 .multilineTextAlignment(.trailing)
@@ -376,7 +378,9 @@ struct WOLDeviceForm: View {
                         )
                     }
                 }
-            .navigationTitle("Add new Device")
+            .navigationTitle(isEditing
+                             ? NSLocalizedString("Edit Device", comment: "Wake On Lan: title of the sheet to edit an existing device")
+                             : NSLocalizedString("Add new Device", comment: "Wake On Lan: title of the sheet to add a new device"))
             .navigationBarTitleDisplayMode(.inline)
             .onAppear {
                 if initialValues == nil { initialValues = [name, mac, broadcast, port] }
@@ -442,13 +446,15 @@ enum WakeOnLan {
         var errorDescription: String? {
             switch self {
             case .invalidMAC(let mac):
-                return String(format: NSLocalizedString("The MAC address \"%@\" is invalid. Edit the device to fix it.", comment: "Wake On Lan error"), mac)
+                return String(format: NSLocalizedString("The MAC address \"%@\" is invalid. Edit the device to fix it.", comment: "Wake On Lan: error when waking a saved device, %@ is its MAC address"), mac)
             case .invalidBroadcast(let broadcast):
-                return String(format: NSLocalizedString("The broadcast address \"%@\" is invalid. Edit the device to fix it.", comment: "Wake On Lan error"), broadcast)
+                return String(format: NSLocalizedString("The broadcast address \"%@\" is invalid. Edit the device to fix it.", comment: "Wake On Lan: error when waking a saved device, %@ is its broadcast IP address"), broadcast)
             case .invalidPort(let port):
-                return String(format: NSLocalizedString("The port %lld is invalid. Edit the device to fix it.", comment: "Wake On Lan error"), port)
+                return String(format: NSLocalizedString("The port %lld is invalid. Edit the device to fix it.", comment: "Wake On Lan: error when waking a saved device, %lld is its port number"), port)
             case .socketFailed(let reason):
-                return String(format: NSLocalizedString("The magic packet could not be sent: %@", comment: "Wake On Lan error"), reason)
+                return String(format: NSLocalizedString("The magic packet could not be sent: %@", comment: "Wake On Lan: error when sending the wake signal failed, %@ is the system's reason (e.g. \"No route to host\")"), reason)
+                    + "\n\n"
+                    + NSLocalizedString("Check that Toolbox can access your local network in Settings.", comment: "Wake On Lan: hint below the error when sending the wake signal failed (Local Network permission)")
             }
         }
     }
@@ -467,7 +473,8 @@ enum WakeOnLan {
         }
         guard groups.allSatisfy({ $0.count == 12 / groups.count }) else { return nil }
         let hex = groups.joined()
-        guard hex.count == 12 else { return nil }
+        // UInt8(_:radix:) alone would also accept a sign, e.g. "+F"
+        guard hex.count == 12, hex.allSatisfy({ "0123456789abcdefABCDEF".contains($0) }) else { return nil }
 
         var bytes: [UInt8] = []
         var index = hex.startIndex

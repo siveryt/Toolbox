@@ -26,7 +26,8 @@ struct QRGenerator: View {
     let filter = CIFilter.qrCodeGenerator()
     
     
-    func generateQRCode(from string: String) -> UIImage {
+    /// Returns nil when the content doesn't fit into a QR code.
+    func generateQRCode(from string: String) -> UIImage? {
         filter.message = Data(string.utf8)
         
         if let outputImage = filter.outputImage?.transformed(by: CGAffineTransform(scaleX: 10.0, y: 10.0)) {
@@ -35,7 +36,55 @@ struct QRGenerator: View {
             }
         }
         
-        return UIImage(systemName: "xmark.circle") ?? UIImage()
+        return nil
+    }
+    
+    /// Escapes the characters that have a meaning in the WIFI: and MATMSG: formats.
+    static func escape(_ string: String) -> String {
+        var escaped = ""
+        for character in string {
+            if "\\;,:\"".contains(character) {
+                escaped.append("\\")
+            }
+            escaped.append(character)
+        }
+        return escaped
+    }
+    
+    /// Adds https:// to addresses typed without a scheme, so scanners open them as a link.
+    static func normalizedURL(_ string: String) -> String {
+        let trimmed = string.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return "" }
+        // "mailto:…" or "https://…" have a scheme, "localhost:8080" is a host with a port
+        if let scheme = trimmed.range(of: "^[a-zA-Z][a-zA-Z0-9+.-]*:", options: .regularExpression),
+           !(trimmed[scheme.upperBound...].first?.isNumber ?? false) {
+            return trimmed
+        }
+        return "https://" + trimmed
+    }
+    
+    /// The text encoded in the QR code, or nil while the required fields are empty.
+    var payload: String? {
+        switch qrType {
+        case .text:
+            return text.isEmpty ? nil : text
+        case .url:
+            let link = QRGenerator.normalizedURL(self.url)
+            return link.isEmpty ? nil : link
+        case .wifi:
+            guard !wifiSSID.isEmpty else { return nil }
+            var payload = "WIFI:T:\(wifiTYPE.rawValue);S:\(QRGenerator.escape(wifiSSID));"
+            if wifiTYPE != .nopassword {
+                payload += "P:\(QRGenerator.escape(wifiPASSWORD));"
+            }
+            if wifiHIDDEN {
+                payload += "H:true;"
+            }
+            return payload + ";"
+        case .mail:
+            guard !mailReceiver.isEmpty else { return nil }
+            return "MATMSG:TO:\(QRGenerator.escape(mailReceiver));SUB:\(QRGenerator.escape(mailSubject));BODY:;;"
+        }
     }
     
     @State private var qrType: qrTypes = .url
@@ -75,7 +124,7 @@ struct QRGenerator: View {
                     }
                 case .wifi:
                     HStack {
-                        Text("SSID")
+                        Text(NSLocalizedString("SSID", comment: "QR-Code Generator: label of the Wi-Fi network name field (SSID)"))
                         TextField("Network Name", text: $wifiSSID)
                             .multilineTextAlignment(.trailing)
                             .disableAutocorrection(true)
@@ -112,65 +161,36 @@ struct QRGenerator: View {
                 }
             }
 
-            switch qrType {
-            case .text:
-                Image(uiImage: generateQRCode(from: text))
-                .interpolation(.none)
+            if let payload, let image = generateQRCode(from: payload) {
+                Image(uiImage: image)
+                    .interpolation(.none)
                     .resizable()
                     .scaledToFit()
                     .onTapGesture {
-                        shareFromView(shareItem: [generateQRCode(from: text)])
-
+                        shareFromView(shareItem: [image])
                     }
-                    
-            case .wifi:
-                Image(uiImage: generateQRCode(from: "WIFI:T:\(wifiTYPE);S:\(wifiSSID);P:\(wifiPASSWORD);H:\(String(wifiHIDDEN));"))
-                .interpolation(.none)
-                    .resizable()
-                    .scaledToFit()
-                    .onTapGesture {
-
-                        shareFromView(shareItem: [generateQRCode(from: "WIFI:T:\(wifiTYPE);S:\(wifiSSID);P:\(wifiPASSWORD);H:\(String(wifiHIDDEN));")])
-
-                    }
-            case .url:
-                Image(uiImage: generateQRCode(from: url))
-                .interpolation(.none)
-                    .resizable()
-                    .scaledToFit()
-                    .onTapGesture {
-                        
-                        shareFromView(shareItem: [generateQRCode(from: url)])
-
-                    }
-            case .mail:
-                Image(uiImage: generateQRCode(from: "MATMSG:TO:\(mailReceiver);SUB:\(mailSubject);BODY:;;"))
-                .interpolation(.none)
-                    .resizable()
-                    .scaledToFit()
-                    .onTapGesture {
-                        shareFromView(shareItem: [generateQRCode(from: "MATMSG:TO:\(mailReceiver);SUB:\(mailSubject);BODY:;;")])
-
-                    }
+            } else if payload == nil {
+                ContentUnavailableView {
+                    Label(NSLocalizedString("No QR Code Yet", comment: "QR-Code Generator: title shown instead of the QR code while the required fields are empty"), systemImage: "qrcode")
+                } description: {
+                    Text(NSLocalizedString("Fill in the fields above to create a QR code.", comment: "QR-Code Generator: explanation shown instead of the QR code while the required fields are empty"))
+                }
+            } else {
+                ContentUnavailableView {
+                    Label(NSLocalizedString("Too Much Content", comment: "QR-Code Generator: title shown instead of the QR code when the content doesn't fit into one"), systemImage: "exclamationmark.triangle")
+                } description: {
+                    Text(NSLocalizedString("A QR code can't hold this much. Shorten the content to create one.", comment: "QR-Code Generator: explanation shown instead of the QR code when the content doesn't fit into one"))
+                }
             }
-            
-
-
         }
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button(action: {
-                    switch qrType {
-                    case .text:
-                        shareFromView(shareItem: [generateQRCode(from: text)])
-                    case .wifi:
-                        shareFromView(shareItem: [generateQRCode(from: "WIFI:T:\(wifiTYPE);S:\(wifiSSID);P:\(wifiPASSWORD);H:\(String(wifiHIDDEN));")])
-                    case .url:
-                        shareFromView(shareItem: [generateQRCode(from: url)])
-                    case .mail:
-                        shareFromView(shareItem: [generateQRCode(from: "MATMSG:TO:\(mailReceiver);SUB:\(mailSubject);BODY:;;")])
+                    if let payload, let image = generateQRCode(from: payload) {
+                        shareFromView(shareItem: [image])
                     }
                 }, label: {Image(systemName: "square.and.arrow.up")})
+                .disabled(payload == nil)
             }
         }
         .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)

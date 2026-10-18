@@ -12,9 +12,12 @@ import AsyncDNSResolver
 
 struct DomainResolver: View {
     @AppStorage("resolverResolve") var toResolve = ""
-    @State var resolved = ""
-    @State var autoResolve = true
+    @State var addresses: [String] = []
     @State var resolving = false
+    /// The lookup failed for another reason than the domain not existing (offline, timeout, …).
+    @State var lookupFailed = false
+    /// Changing it starts a new lookup; `.task(id:)` cancels the one still running.
+    @State var resolveID = 0
     
     @State var isPresentingToast: Bool = false
     @State private var network = NetworkMonitor()
@@ -30,44 +33,51 @@ struct DomainResolver: View {
         }
     }
     
+    /// "No such name" / "no such record" from dnssd – the domain has no address of that type.
+    static func isNotFound(_ error: Error) -> Bool {
+        let code = ((error as? AsyncDNSResolver.Error)?.source as? DNSSDError)?.code
+        return code == -65538 /* kDNSServiceErr_NoSuchName */ || code == -65554 /* kDNSServiceErr_NoSuchRecord */
+    }
     
+    static func lookup(_ query: () async throws -> [String]) async -> Result<[String], Error> {
+        do {
+            return .success(try await query())
+        } catch {
+            return isNotFound(error) ? .success([]) : .failure(error)
+        }
+    }
     
     func resolve() async {
-        resolving = true
-        resolved = ""
-        do {
-            let resolver = try AsyncDNSResolver()
-            let aRecords = try await resolver.queryA(name: toResolve)
-            for record in aRecords {
-                resolved += "\(record.address) \n"
-                print(record.address)
-            }
-            print(resolved)
-            
-            resolved = String(resolved.dropLast(2))
-        } catch {
-            resolved = ""
+        let domain = toResolve.trimmingCharacters(in: .whitespacesAndNewlines)
+        addresses = []
+        lookupFailed = false
+        guard !domain.isEmpty else {
+            resolving = false
+            return
         }
+        resolving = true
+        
+        async let ipv4 = DomainResolver.lookup { try await AsyncDNSResolver().queryA(name: domain).map { $0.address.address } }
+        async let ipv6 = DomainResolver.lookup { try await AsyncDNSResolver().queryAAAA(name: domain).map { $0.address.address } }
+        
+        // IPv4 usually answers first, so show it while IPv6 is still on its way
+        let ipv4Result = await ipv4
+        guard !Task.isCancelled else { return }
+        let ipv4Addresses = (try? ipv4Result.get()) ?? []
+        addresses = ipv4Addresses
+        
+        let ipv6Result = await ipv6
+        guard !Task.isCancelled else { return }
+        let ipv6Addresses = (try? ipv6Result.get()) ?? []
+        let found = ipv4Addresses + ipv6Addresses
+        
+        var failed = false
+        if found.isEmpty, case .failure = ipv4Result { failed = true }
+        if found.isEmpty, case .failure = ipv6Result { failed = true }
+        
+        addresses = found
+        lookupFailed = failed
         resolving = false
-        
-        
-        
-        
-        /*
-        if(toResolve != ""){
-            let host = CFHostCreateWithName(nil,toResolve as CFString).takeRetainedValue()
-            CFHostStartInfoResolution(host, .addresses, nil)
-            var success: DarwinBoolean = false
-            if let addresses = CFHostGetAddressing(host, &success)?.takeUnretainedValue() as NSArray?,
-               let theAddress = addresses.firstObject as? NSData {
-                var hostname = [CChar](repeating: 0, count: Int(NI_MAXHOST))
-                if getnameinfo(theAddress.bytes.assumingMemoryBound(to: sockaddr.self), socklen_t(theAddress.length),
-                               &hostname, socklen_t(hostname.count), nil, 0, NI_NUMERICHOST) == 0 {
-                    let numAddress = String(cString: hostname)
-                    resolved = numAddress
-                }
-            }
-        }*/
     }
     
     var body: some View {
@@ -90,56 +100,62 @@ struct DomainResolver: View {
                 .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                 .multilineTextAlignment(.trailing)
                 .onSubmit(of: /*@START_MENU_TOKEN@*/.text/*@END_MENU_TOKEN@*/) {
-                    Task {
-                        await resolve()
-                    }
+                    resolveID += 1
                 }
                 .disableAutocorrection(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
             .submitLabel(.go)
+                .onReceive(NotificationCenter.default.publisher(for: UITextField.textDidBeginEditingNotification)) { obj in
+                    if let textField = obj.object as? UITextField {
+                        textField.selectedTextRange = textField.textRange(from: textField.beginningOfDocument, to: textField.endOfDocument)
+                    }
+                }
             }
             HStack {
                 Text("Result")
                 Spacer()
                 Button(action: {
-                    if(resolved != ""){
-                        UIPasteboard.general.string = resolved
+                    if !addresses.isEmpty {
+                        UIPasteboard.general.string = addresses.joined(separator: "\n")
                         Haptic.impact(.light).generate()
                         presentToast()
                     }
                 }) {
-                    if(resolving){
-                        ProgressView()
-                            .progressViewStyle(CircularProgressViewStyle())
-                    } else {
-                        Text(resolved == "" ? NSLocalizedString("Not Found", comment: "Domain Not found") : resolved)
-                            .multilineTextAlignment(.trailing)
-                            .onReceive(NotificationCenter.default.publisher(for: UITextField.textDidBeginEditingNotification)) { obj in
-                                if let textField = obj.object as? UITextField {
-                                    textField.selectedTextRange = textField.textRange(from: textField.beginningOfDocument, to: textField.endOfDocument)
-                                }
-                            }
+                    HStack {
+                        if resolving {
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle())
+                        }
+                        if !addresses.isEmpty {
+                            Text(addresses.joined(separator: "\n"))
+                                .multilineTextAlignment(.trailing)
+                        } else if lookupFailed {
+                            Text(NSLocalizedString("Lookup Failed", comment: "Domain Resolver: result shown when the DNS lookup failed for another reason than the domain not existing (offline, timeout)"))
+                        } else if !resolving && !toResolve.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                            Text(NSLocalizedString("Not Found", comment: "Domain Resolver: result shown when the domain has no IPv4 or IPv6 address"))
+                        }
                     }
-                        
-                        
                 }
                 .tint(.primary)
             }
+            } footer: {
+                if lookupFailed {
+                    Text(NSLocalizedString("The DNS server couldn't be reached. Check your internet connection and try again.", comment: "Domain Resolver: explanation below the result when the DNS lookup failed"))
+                }
             }
         }
         .animation(.default, value: network.isConnected)
         .onChange(of: network.isConnected) { _, isConnected in
             if isConnected {
-                Task { await resolve() }
+                resolveID += 1
             }
+        }
+        // Runs on appear and whenever resolveID changes, cancelling the previous lookup
+        .task(id: resolveID) {
+            await resolve()
         }
         .toast(isPresenting: $isPresentingToast, message: NSLocalizedString("Copied", comment: "Copy toast"), icon: .custom(Image(systemName: "doc.on.clipboard")), autoDismiss: .none)
         .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
         .navigationTitle("Domain Resolver")
-        .onAppear() {
-            Task {
-                await resolve()
-            }
-        }
     }
 }
 

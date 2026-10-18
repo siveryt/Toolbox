@@ -36,6 +36,9 @@ struct Dice: View {
                     .accessibilityLabel("Settings")
                 }
             }
+            // A face from the old die may not exist on the new one (15 on a d6), so VoiceOver would read a wrong number.
+            .onChange(of: sides) { keepRolledOnDie() }
+            .onAppear { keepRolledOnDie() }
             .sheet(isPresented: $settings) {
                 NavigationStack {
                     Form {
@@ -46,6 +49,12 @@ struct Dice: View {
                     .navigationTitle("Settings")
                 }
             }
+    }
+
+    private func keepRolledOnDie() {
+        if !(1...sides).contains(rolled) {
+            rolled = Int.random(in: 1...sides)
+        }
     }
 
     private func roll() {

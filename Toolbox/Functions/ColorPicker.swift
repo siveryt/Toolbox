@@ -32,27 +32,22 @@ struct ColorPickerView: View {
     
     var body: some View {
         Form{
-            ColorPicker("Choose Color", selection: $drawSwiftUIColor, supportsOpacity: true)
+            ColorPicker(NSLocalizedString("Choose Color", comment: "Color Picker tool: label of the color well"), selection: $drawSwiftUIColor, supportsOpacity: true)
                 .onChange(of: drawSwiftUIColor) {
                     getColorsFromPicker(pickerColor: drawSwiftUIColor)
-                    guard let data : Data = try? NSKeyedArchiver.archivedData(withRootObject: drawUIColor, requiringSecureCoding: false) as Data else { return }
-                    UserDefaults.standard.set(data, forKey: "UserSelectedColor")
-                    UserDefaults.standard.synchronize()
-                }
-                .onAppear(){
-                    resetColorPickerWithUIColor()
+                    saveColor()
                 }
             
             RoundedRectangle(cornerSize: CGSize(width: 5, height: 5))
                 .fill(drawSwiftUIColor)
-            Section("Colorcodes"){
+            Section(NSLocalizedString("Colorcodes", comment: "Color Picker tool: section header for HEX/RGB codes")){
                 Button(action: {
                     UIPasteboard.general.string = drawHexNumber
                     Haptic.impact(.light).generate()
                     presentToast() 
                 }){
                     HStack {
-                    Text("HEX")
+                    Text(NSLocalizedString("HEX", comment: "Color Picker tool: label for the hexadecimal color code"))
                     Spacer()
                     Text(drawHexNumber)
                         
@@ -66,7 +61,7 @@ struct ColorPickerView: View {
                     presentToast()
                 }){
                     HStack {
-                    Text("RGB")
+                    Text(NSLocalizedString("RGB", comment: "Color Picker tool: label for the color code as red, green, blue values (0–255)"))
                     Spacer()
                     Text(rgbToString(input: drawUIColor))
                     }
@@ -80,7 +75,7 @@ struct ColorPickerView: View {
                     
                 }){
                     HStack {
-                    Text("RGBA")
+                    Text(NSLocalizedString("RGBA", comment: "Color Picker tool: label for the color code as red, green, blue (0–255) and opacity (0–1) values"))
                     Spacer()
                     Text(rgbaToString(input: drawUIColor))
                     }
@@ -95,56 +90,53 @@ struct ColorPickerView: View {
         }
         .toast(isPresenting: $isPresentingToast, message: NSLocalizedString("Copied", comment: "Copy toast"), icon: .custom(Image(systemName: "doc.on.clipboard")), autoDismiss: .none)
         .onAppear(){
-            if let userSelectedColorData = UserDefaults.standard.object(forKey: "UserSelectedColor") as? Data {
-                
-                do {
-                    guard let userSelectedColor = try NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: userSelectedColorData) else {
-                        fatalError("loadWidgetDataArray - Can't get Array")
-                    }
-                    drawUIColor = userSelectedColor
-                } catch {
-                    fatalError("loadWidgetDataArray - Can't encode data: \(error)")
-                }
-                
-    
-            }
+            // Restore first, then apply it to the picker and the codes
+            restoreColor()
+            resetColorPickerWithUIColor()
+            getColorsFromPicker(pickerColor: drawSwiftUIColor)
         }
         .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
-        .navigationTitle("Color Picker")
+        .navigationTitle(NSLocalizedString("Color Picker", comment: "Menu item"))
     }
         
     
+    /// Loads the last picked color (including its opacity); ignores missing or unreadable data.
+    func restoreColor() {
+        guard let userSelectedColorData = UserDefaults.standard.data(forKey: "UserSelectedColor"),
+              let userSelectedColor = try? NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: userSelectedColorData) else { return }
+        drawUIColor = userSelectedColor
+        drawOpacity = Double(userSelectedColor.rgba.alpha)
+    }
+    
+    /// Saves the picked color; UIColor keeps its alpha, so the opacity is saved too.
+    func saveColor() {
+        guard let data = try? NSKeyedArchiver.archivedData(withRootObject: drawUIColor, requiringSecureCoding: true) else { return }
+        UserDefaults.standard.set(data, forKey: "UserSelectedColor")
+    }
     
     func getColorsFromPicker(pickerColor: Color) {
-        let colorString = "\(pickerColor)"
-        let colorArray: [String] = colorString.components(separatedBy: " ")
+        let components = UIColor(pickerColor).rgba
         
-        if colorArray.count > 1 {
-            var r: CGFloat = CGFloat((Float(colorArray[1]) ?? 1))
-            var g: CGFloat = CGFloat((Float(colorArray[2]) ?? 1))
-            var b: CGFloat = CGFloat((Float(colorArray[3]) ?? 1))
-            let alpha: CGFloat = CGFloat((Float(colorArray[4]) ?? 1))
-            
-            if (r < 0.0) {r = 0.0}
-            if (g < 0.0) {g = 0.0}
-            if (b < 0.0) {b = 0.0}
-            
-            if (r > 1.0) {r = 1.0}
-            if (g > 1.0) {g = 1.0}
-            if (b > 1.0) {b = 1.0}
-            
-            // Update UIColor
-            drawUIColor = UIColor(red: r, green: g, blue: b, alpha: alpha)
-            // Update Opacity
-            drawOpacity = Double(alpha)
-            
-            // Update hex
-            let rgb:Int = (Int)(r*255)<<16 | (Int)(g*255)<<8 | (Int)(b*255)<<0
-            drawHexNumber = String(format: "#%06X", rgb)
-        }
+        // Extended-range colors can fall outside 0...1
+        let r = min(max(components.red, 0), 1)
+        let g = min(max(components.green, 0), 1)
+        let b = min(max(components.blue, 0), 1)
+        let alpha = min(max(components.alpha, 0), 1)
         
+        // Update UIColor
+        drawUIColor = UIColor(red: r, green: g, blue: b, alpha: alpha)
+        // Update Opacity
+        drawOpacity = Double(alpha)
+        
+        // Update hex
+        let rgb: Int = to255(r) << 16 | to255(g) << 8 | to255(b) << 0
+        drawHexNumber = String(format: "#%06X", rgb)
     }
     
+    /// 0...1 component to 0...255, rounded instead of truncated.
+    func to255(_ component: CGFloat) -> Int {
+        Int((min(max(component, 0), 1) * 255).rounded())
+    }
     
     func resetColorPickerWithUIColor() {
         let color: UIColor = drawUIColor
@@ -153,27 +145,14 @@ struct ColorPickerView: View {
         let b: Double = Double(color.rgba.blue)
         drawSwiftUIColor = Color(red: r, green: g, blue: b, opacity: drawOpacity)
     }
+    /// "255, 0, 0, 0.5": a color code like CSS rgba(), so the opacity always uses "." (a decimal comma would clash with the separators).
     func rgbaToString(input: UIColor) -> String {
-        var result = ""
-        result += String(Int(Double(input.rgba.red)*255))
-        result += ", "
-        result += String(Int(Double(input.rgba.green)*255))
-        result += ", "
-        result += String(Int(Double(input.rgba.blue)*255))
-        result += ", "
-        result += String(Double(input.rgba.alpha))
-        
-        return result
+        let alpha = Double(min(max(input.rgba.alpha, 0), 1))
+        return rgbToString(input: input) + ", " + alpha.formatted(.number.precision(.fractionLength(0...2)).grouping(.never).locale(Locale(identifier: "en_US_POSIX")))
     }
     func rgbToString(input: UIColor) -> String {
-        var result = ""
-        result += String(Int(Double(input.rgba.red)*255))
-        result += ", "
-        result += String(Int(Double(input.rgba.green)*255))
-        result += ", "
-        result += String(Int(Double(input.rgba.blue)*255))
-        
-        return result
+        let rgba = input.rgba
+        return "\(to255(rgba.red)), \(to255(rgba.green)), \(to255(rgba.blue))"
     }
     
 }

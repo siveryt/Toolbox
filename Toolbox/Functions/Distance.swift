@@ -40,18 +40,24 @@ struct Distance: View {
 
     private func formatted(_ meters: Double) -> String {
         // Follow the user's regional setting: metric shows m/km, imperial shows ft/mi.
+        // Formatted with the current locale, so German shows "1,23 km".
         if Locale.current.measurementSystem == .metric {
             if meters < 1000 {
-                return String(format: "%.0f m", meters)
+                return format(meters, .meters, fractionDigits: 0)
             }
-            return String(format: "%.2f km", meters / 1000)
+            return format(meters / 1000, .kilometers, fractionDigits: 2)
         } else {
             let feet = meters * 3.280839895
             if feet < 1000 {
-                return String(format: "%.0f ft", feet)
+                return format(feet, .feet, fractionDigits: 0)
             }
-            return String(format: "%.2f mi", meters / 1609.344)
+            return format(meters / 1609.344, .miles, fractionDigits: 2)
         }
+    }
+
+    private func format(_ value: Double, _ unit: UnitLength, fractionDigits: Int) -> String {
+        Measurement(value: value, unit: unit)
+            .formatted(.measurement(width: .abbreviated, usage: .asProvided, numberFormatStyle: .number.precision(.fractionLength(fractionDigits))))
     }
 
     // MARK: - Body
@@ -219,6 +225,10 @@ struct Distance: View {
             let name = placemark.name
                 ?? [placemark.thoroughfare, placemark.locality].compactMap { $0 }.joined(separator: ", ")
             DispatchQueue.main.async {
+                // The start point may have moved while the lookup ran; drop stale results.
+                guard let startPoint,
+                      startPoint.latitude == target.latitude,
+                      startPoint.longitude == target.longitude else { return }
                 startPlaceName = name.isEmpty ? nil : name
             }
         }

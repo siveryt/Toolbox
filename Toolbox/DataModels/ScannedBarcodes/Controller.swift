@@ -7,56 +7,72 @@
 
 import Foundation
 import CoreData
+import os
 
 class SBDataController: ObservableObject {
-    // Responsible for preparing a model
-    let container = NSPersistentContainer(name: "ScannedBarcodes")
-    
-    init() {
-        container.loadPersistentStores { description, error in
+    /// The one controller the app uses.
+    static let shared = SBDataController()
+
+    /// One container for the whole app: every NSPersistentContainer loads its own copy of the store,
+    /// so all controllers (including ones created with `SBDataController()`) share this one.
+    private static let sharedContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "ScannedBarcodes")
+        container.loadPersistentStores { _, error in
             if let error = error {
-                print("Failed to load data in DataController \(error.localizedDescription)")
+                SBDataController.logger.error("Failed to load the scanned barcodes store: \(error.localizedDescription, privacy: .public)")
             }
         }
-    }
-    
+        return container
+    }()
+
+    private static let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "Toolbox", category: "ScannedBarcodes")
+
+    // Responsible for preparing a model
+    var container: NSPersistentContainer { Self.sharedContainer }
+
+    init() {}
+
     func save(context: NSManagedObjectContext) {
+        guard context.hasChanges else { return }
         do {
             try context.save()
-            print("Data saved successfully. WUHU!!!")
         } catch {
-            // Handle errors in our database
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            
+            // Don't crash the app: log the error and drop the changes that could not be saved.
+            Self.logger.error("Failed to save scanned barcodes: \(error.localizedDescription, privacy: .public)")
+            context.rollback()
         }
     }
-    
+
     func addBarcode(content: String, type: String, context: NSManagedObjectContext) {
         let barcode = ScannedBarcode(context: context)
         barcode.id = UUID()
         barcode.date = Date()
         barcode.content = content
         barcode.type = type
-        
+
         save(context: context)
     }
-    
-    func resetBarcodes(context: NSManagedObjectContext) {
 
+    func resetBarcodes(context: NSManagedObjectContext) {
         // Create a fetch request for the entity you want to delete
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ScannedBarcode")
 
-        // Create a batch delete request for the fetch request
+        // Create a batch delete request that reports the IDs of the deleted objects
         let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        batchDeleteRequest.resultType = .resultTypeObjectIDs
 
-        // Execute the batch delete request
         do {
-            try context.execute(batchDeleteRequest)
-            try context.save() // save the context to commit the changes
-        } catch let error {
-            print("Error deleting data: \(error)")
+            // The batch delete works directly on the store, bypassing the context,
+            // so tell the contexts which objects are gone; otherwise @FetchRequest keeps showing them.
+            let result = try context.execute(batchDeleteRequest) as? NSBatchDeleteResult
+            let deletedIDs = result?.result as? [NSManagedObjectID] ?? []
+            var contexts = [context]
+            if container.viewContext !== context {
+                contexts.append(container.viewContext)
+            }
+            NSManagedObjectContext.mergeChanges(fromRemoteContextSave: [NSDeletedObjectsKey: deletedIDs], into: contexts)
+        } catch {
+            Self.logger.error("Failed to delete scanned barcodes: \(error.localizedDescription, privacy: .public)")
         }
     }
-    
 }

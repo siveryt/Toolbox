@@ -10,7 +10,7 @@ import Combine
 
 struct BodyMassIndex: View {
 
-    let metric = Locale.current.measurementSystem == "Metric"
+    let metric = Locale.current.measurementSystem == .metric
     let defaults = UserDefaults.standard
 
     @State var height = ""
@@ -27,8 +27,31 @@ struct BodyMassIndex: View {
 
     /// Waist and height are entered in the same unit, so the ratio needs no conversion
     var waistToHeight: Double? {
-        guard let waist = Double(waist), let height = Double(height), waist > 0, height > 0 else { return nil }
+        guard let waist = parse(waist), let height = parse(height), waist > 0, height > 0 else { return nil }
         return waist/height
+    }
+
+    /// The decimal separator of the user's region ("," in German), the one the decimal pad shows
+    let decimalSeparator = Locale.current.decimalSeparator ?? "."
+
+    /// Keeps digits and a single decimal separator; "." and "," both count as the separator, so pasted values work too
+    func sanitize(_ text: String) -> String {
+        var result = ""
+        var hasSeparator = false
+        for character in text {
+            if character.isASCII && character.isNumber {
+                result.append(character)
+            } else if (character == "." || character == "," || String(character) == decimalSeparator) && !hasSeparator {
+                result += decimalSeparator
+                hasSeparator = true
+            }
+        }
+        return result
+    }
+
+    /// Parses a sanitized input such as "72,5" with the current locale's decimal separator
+    func parse(_ text: String) -> Double? {
+        Double(text.replacingOccurrences(of: decimalSeparator, with: "."))
     }
 
     func format(_ value: Double?) -> String {
@@ -40,20 +63,20 @@ struct BodyMassIndex: View {
             HStack{
                 Text("Height")
                 TextField("", text: $height)
-                    .keyboardType(.numberPad)
+                    .keyboardType(.decimalPad)
                     .multilineTextAlignment(.trailing)
                     .onReceive(Just(height)) { newValue in
-                        let filtered = newValue.filter { "0123456789".contains($0) }
+                        let filtered = sanitize(newValue)
                         if filtered != newValue {
                             self.height = filtered
                         }
                         if metric {
-                            h = Double(height) ?? 0
+                            h = parse(filtered) ?? 0
                             h = h/100
                         } else {
-                            h = Double(height) ?? 0
+                            h = parse(filtered) ?? 0
                         }
-                        defaults.set(height, forKey: "bmiHeight")
+                        defaults.set(filtered, forKey: "bmiHeight")
                         defaults.set(h, forKey: "bmiHeightD")
 
                     }
@@ -63,7 +86,7 @@ struct BodyMassIndex: View {
                         }
                     }
 
-                Text(metric ? "cm" : "inch")
+                Text(metric ? NSLocalizedString("cm", comment: "BMI tool: unit for centimeters") : NSLocalizedString("in", comment: "BMI tool: unit abbreviation for inches, shown after the height and waist inputs"))
 
 
             }
@@ -71,15 +94,15 @@ struct BodyMassIndex: View {
             HStack{
                 Text("Weight")
                 TextField("", text: $weight)
-                    .keyboardType(.numberPad)
+                    .keyboardType(.decimalPad)
                     .multilineTextAlignment(.trailing)
                     .onReceive(Just(weight)) { newValue in
-                        let filtered = newValue.filter { "0123456789".contains($0) }
+                        let filtered = sanitize(newValue)
                         if filtered != newValue {
                             self.weight = filtered
                         }
-                        w = Double(weight) ?? 0
-                        defaults.set(weight, forKey: "bmiWeight")
+                        w = parse(filtered) ?? 0
+                        defaults.set(filtered, forKey: "bmiWeight")
                         defaults.set(w, forKey: "bmiWeightD")
                     }
                     .onReceive(NotificationCenter.default.publisher(for: UITextField.textDidBeginEditingNotification)) { obj in
@@ -89,20 +112,20 @@ struct BodyMassIndex: View {
                     }
 
 
-                Text(metric ? "kg" : "lb")
+                Text(metric ? NSLocalizedString("kg", comment: "BMI tool: unit for kilograms") : NSLocalizedString("lb", comment: "BMI tool: unit for pounds"))
             }
 
             HStack{
                 Text(NSLocalizedString("Waist", comment: "BMI tool: label of the waist circumference input"))
                 TextField("", text: $waist)
-                    .keyboardType(.numberPad)
+                    .keyboardType(.decimalPad)
                     .multilineTextAlignment(.trailing)
                     .onReceive(Just(waist)) { newValue in
-                        let filtered = newValue.filter { "0123456789".contains($0) }
+                        let filtered = sanitize(newValue)
                         if filtered != newValue {
                             self.waist = filtered
                         }
-                        defaults.set(waist, forKey: "bmiWaist")
+                        defaults.set(filtered, forKey: "bmiWaist")
                     }
                     .onReceive(NotificationCenter.default.publisher(for: UITextField.textDidBeginEditingNotification)) { obj in
                         if let textField = obj.object as? UITextField {
@@ -110,7 +133,7 @@ struct BodyMassIndex: View {
                         }
                     }
 
-                Text(metric ? "cm" : "inch")
+                Text(metric ? NSLocalizedString("cm", comment: "BMI tool: unit for centimeters") : NSLocalizedString("in", comment: "BMI tool: unit abbreviation for inches, shown after the height and waist inputs"))
             }
 
             Section{

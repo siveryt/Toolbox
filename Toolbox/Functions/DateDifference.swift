@@ -92,28 +92,28 @@ struct DateDifference: View{
                 // Dates
                 card {
                     VStack(spacing: 14) {
-                        DatePicker("Start Date", selection: $dateFrom, displayedComponents: [.date])
+                        DatePicker(NSLocalizedString("Start Date", comment: "Date Difference: date picker label"), selection: $dateFrom, displayedComponents: [.date])
                         Divider()
-                        DatePicker("End Date", selection: $dateTo, displayedComponents: [.date])
+                        DatePicker(NSLocalizedString("End Date", comment: "Date Difference: date picker label"), selection: $dateTo, displayedComponents: [.date])
                     }
                 }
 
                 // Unit selection
-                section(NSLocalizedString("Show", comment: "Date difference")) {
+                section(NSLocalizedString("Show", comment: "Date Difference tool: header above the chips (years, months, days) that choose which units the result is shown in")) {
                     HStack(spacing: 8) {
-                        UnitChip(title: NSLocalizedString("Years", comment: "Date difference"),
+                        UnitChip(title: NSLocalizedString("Years", comment: "Date Difference tool: chip that shows or hides the years in the result"),
                                  isOn: displayYears) { toggleUnit($displayYears) }
-                        UnitChip(title: NSLocalizedString("Months", comment: "Date difference"),
+                        UnitChip(title: NSLocalizedString("Months", comment: "Date Difference tool: chip that shows or hides the months in the result"),
                                  isOn: displayMonths) { toggleUnit($displayMonths) }
-                        UnitChip(title: NSLocalizedString("Days", comment: "Date difference"),
+                        UnitChip(title: NSLocalizedString("Days", comment: "Date Difference tool: chip that shows or hides the days in the result"),
                                  isOn: displayDays) { toggleUnit($displayDays) }
                     }
                 }
 
                 // Result
-                section(NSLocalizedString("Difference", comment: "Date difference")) {
+                section(NSLocalizedString("Difference", comment: "Date Difference tool: header above the result")) {
                     Button {
-                        let text = units.map { "\(value($0, in: diff)) \($0.label)" }.joined(separator: ", ")
+                        let text = units.map { $0.copyText(value($0, in: diff)) }.joined(separator: ", ")
                         UIPasteboard.general.string = text
                         Haptic.impact(.light).generate()
                         presentToast()
@@ -130,7 +130,7 @@ struct DateDifference: View{
                                             .foregroundStyle(.primary)
                                             .contentTransition(.numericText())
                                             .monospacedDigit()
-                                        Text(unit.label.uppercased())
+                                        Text(unit.label(for: value(unit, in: diff)).uppercased())
                                             .font(.caption2.weight(.semibold))
                                             .foregroundStyle(.secondary)
                                     }
@@ -153,7 +153,7 @@ struct DateDifference: View{
         .background(Color(.systemGroupedBackground))
         .toast(isPresenting: $isPresentingToast, message: NSLocalizedString("Copied", comment: "Copy toast"), icon: .custom(Image(systemName: "doc.on.clipboard")), autoDismiss: .none)
         .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle("Date Difference")
+        .navigationTitle(NSLocalizedString("Date Difference", comment: "Menu item"))
     }
 
     /// A white, rounded grouped card — mirrors the look of the app's `Form` rows so the
@@ -186,12 +186,25 @@ private enum DiffUnit: String, CaseIterable, Identifiable {
 
     var id: String { rawValue }
 
-    var label: String {
+    /// The unit name under the number in the result, in singular or plural to match it ("1 YEAR", "2 YEARS").
+    func label(for count: Int) -> String {
+        // Xcode only allows plural variations for strings that contain the number, so take the unit from the
+        // pluralized "%lld years" string and drop the number, which is shown separately above.
+        let unit = copyText(count)
+            .replacingOccurrences(of: String(count), with: "")
+            .trimmingCharacters(in: .whitespaces)
+        return unit.prefix(1).uppercased(with: .current) + unit.dropFirst()
+    }
+
+    /// Number and unit for the copied result, e.g. "1 year" or "3 days".
+    func copyText(_ count: Int) -> String {
+        let format: String
         switch self {
-        case .years: return NSLocalizedString("Years", comment: "Date difference")
-        case .months: return NSLocalizedString("Months", comment: "Date difference")
-        case .days: return NSLocalizedString("Days", comment: "Date difference")
+        case .years: format = NSLocalizedString("%lld years", comment: "Date Difference tool: number of years in the copied result, e.g. “1 year, 2 months, 3 days”")
+        case .months: format = NSLocalizedString("%lld months", comment: "Date Difference tool: number of months in the copied result, e.g. “1 year, 2 months, 3 days”")
+        case .days: format = NSLocalizedString("%lld days", comment: "Date Difference tool: number of days in the copied result, e.g. “1 year, 2 months, 3 days”")
         }
+        return String.localizedStringWithFormat(format, count)
     }
 }
 

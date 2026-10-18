@@ -12,14 +12,19 @@ import SafariServices
 
 struct FontInstall: View {
     @State private var isShowingSafari = false
-    @State private var serverURL = URL(string: "about:blank")
+    @State private var serverURL: URL? = nil
     @State private var isFilePickerPresented = false
     @State private var fontName: String? = nil
     @State private var fontValidationMessage: String = ""
     @State private var isValidFont: Bool = false
     @State private var showingInstructions = false
     @State private var showingCollectionWarning = false
-    private let server = HttpServer()
+    /// The configuration profile for the selected font, built when the font is selected.
+    @State private var profileData: Data? = nil
+    // Kept in @State so the running server survives when SwiftUI recreates this view.
+    @State private var server = HttpServer()
+
+    private static let profilePath = "/font-profile.mobileconfig"
 
     var body: some View {
         List {
@@ -37,8 +42,7 @@ struct FontInstall: View {
                         guard let url = urls.first else { return }
                         validateAndSetFont(url: url)
                     case .failure(let error):
-                        fontValidationMessage = "Error selecting file: \(error.localizedDescription)"
-                        isValidFont = false
+                        fail(String(format: NSLocalizedString("The file could not be selected: %@", comment: "Font Installer: error when the file picker failed, %@ is the system's error message"), error.localizedDescription))
                     }
                 }
 
@@ -54,11 +58,7 @@ struct FontInstall: View {
 
             Section("Installation") {
                 Button("Install Font") {
-                    isShowingSafari = true
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                        self.isShowingSafari = false
-                        self.showingInstructions = true
-                    }
+                    installFont()
                 }
                 .disabled(!isValidFont)
 
@@ -67,10 +67,15 @@ struct FontInstall: View {
                 }
             }
         }
-        .sheet(isPresented: $isShowingSafari) {
-            if let url = serverURL {
-                SafariView(url: url)
-                    .edgesIgnoringSafeArea(.all)
+        .sheet(isPresented: $isShowingSafari, onDismiss: {
+            // The user closed Safari, so the profile was downloaded (or not): show what to do next.
+            showingInstructions = true
+        }) {
+            if let url = serverURL, url.scheme == "http" || url.scheme == "https" {
+                SafariView(url: url) {
+                    isShowingSafari = false
+                }
+                .edgesIgnoringSafeArea(.all)
             }
         }
         .sheet(isPresented: $showingInstructions) {
@@ -97,10 +102,18 @@ struct FontInstall: View {
         }
     }
 
+    /// Shows an error message and forgets the selected font.
+    private func fail(_ message: String) {
+        fontValidationMessage = message
+        isValidFont = false
+        fontName = nil
+        profileData = nil
+        serverURL = nil
+    }
+
     func validateAndSetFont(url: URL) {
         guard url.startAccessingSecurityScopedResource() else {
-            fontValidationMessage = "Unable to access the selected file"
-            isValidFont = false
+            fail(NSLocalizedString("Unable to access the selected file.", comment: "Font Installer: error when the app may not read the chosen file"))
             return
         }
 
@@ -113,50 +126,43 @@ struct FontInstall: View {
 
         // Check if it's a font collection first
         if fileExtension == "ttc" || fileExtension == "otc" {
-            fontValidationMessage = "⚠️ Font collections (.ttc/.otc) are not supported by iOS"
-            isValidFont = false
-            fontName = nil
+            fail(NSLocalizedString("Font collections (.ttc/.otc) are not supported by iOS.", comment: "Font Installer: error when a font collection file was chosen"))
             showingCollectionWarning = true
             return
         }
 
-        // Check file fileextension for supported single font formats
+        // Check file extension for supported single font formats
         let supportedExtensions = ["ttf", "otf"]
         guard supportedExtensions.contains(fileExtension) else {
-            fontValidationMessage = "Unsupported file type. Please select a TrueType (.ttf) or OpenType (.otf) font file."
-            isValidFont = false
-            fontName = nil
+            fail(NSLocalizedString("Unsupported file type. Please select a TrueType (.ttf) or OpenType (.otf) font file.", comment: "Font Installer: error when the chosen file is not a .ttf or .otf file"))
             return
         }
 
         // Validate font data
         guard let fontData = try? Data(contentsOf: url), fontData.count > 0 else {
-            fontValidationMessage = "Unable to read font file or file is empty"
-            isValidFont = false
-            fontName = nil
+            fail(NSLocalizedString("Unable to read the font file, or the file is empty.", comment: "Font Installer: error when the chosen font file can't be read"))
             return
         }
 
         // Basic font file signature validation
-        let validationResult = validateFontSignature(data: fontData, fileextension: fileExtension)
-
-        switch validationResult {
+        switch validateFontSignature(data: fontData) {
         case .valid:
+            guard let profile = fontProfileData(fontData: fontData, fontName: url.deletingPathExtension().lastPathComponent) else {
+                fail(NSLocalizedString("The installation profile for this font could not be created.", comment: "Font Installer: error when the configuration profile could not be built"))
+                return
+            }
+            profileData = profile
+            serverURL = nil
             fontName = fileName
-            fontValidationMessage = "✓ Valid \(fileExtension.uppercased()) font file detected"
+            fontValidationMessage = "✓ " + String(format: NSLocalizedString("Valid %@ font file", comment: "Font Installer: shown when the chosen file is a valid font, %@ is the file type, e.g. TTF"), fileExtension.uppercased())
             isValidFont = true
-            startServerAndPrepareProfile(withFontURL: url)
 
         case .collection:
-            fontValidationMessage = "⚠️ This file appears to be a font collection, which is not supported by iOS"
-            isValidFont = false
-            fontName = nil
+            fail(NSLocalizedString("This file appears to be a font collection, which is not supported by iOS.", comment: "Font Installer: error when the chosen file contains a font collection"))
             showingCollectionWarning = true
 
         case .invalid:
-            fontValidationMessage = "Invalid font file format. The file doesn't appear to be a valid font."
-            isValidFont = false
-            fontName = nil
+            fail(NSLocalizedString("Invalid font file. The file doesn't appear to be a valid font.", comment: "Font Installer: error when the chosen file is not a font"))
         }
     }
 
@@ -166,127 +172,87 @@ struct FontInstall: View {
         case invalid
     }
 
-    func validateFontSignature(data: Data, fileextension: String) -> FontValidationResult {
+    /// Checks the first four bytes of the file. The extension says nothing about the outlines:
+    /// .ttf files can contain CFF outlines and .otf files TrueType outlines, so both are accepted for both.
+    func validateFontSignature(data: Data) -> FontValidationResult {
         guard data.count >= 4 else { return .invalid }
 
-        let signature = data.prefix(4)
+        let signature = Array(data.prefix(4))
 
-        // Check for font collection signatures first
-        if signature.starts(with: "ttcf".data(using: .ascii) ?? Data()) {
+        // Font collections
+        if signature == Array("ttcf".utf8) {
             return .collection
         }
 
-        // Check for valid single font signatures
-        switch fileextension {
-        case "ttf":
-            // TrueType fonts start with 0x00010000 or "true"
-            if signature.starts(with: [0x00, 0x01, 0x00, 0x00]) ||
-               signature.starts(with: "true".data(using: .ascii) ?? Data()) {
-                return .valid
-            }
-
-        case "otf":
-            // OpenType fonts start with "OTTO"
-            if signature.starts(with: "OTTO".data(using: .ascii) ?? Data()) {
-                return .valid
-            }
-
-        default:
-            break
+        // TrueType outlines (0x00010000, or "true" for old Apple fonts) and CFF outlines ("OTTO")
+        if signature == [0x00, 0x01, 0x00, 0x00] ||
+           signature == Array("true".utf8) ||
+           signature == Array("OTTO".utf8) {
+            return .valid
         }
 
         return .invalid
     }
 
-    func startServerAndPrepareProfile(withFontURL fontURL: URL) {
-        // Stop server if already running
-        server.stop()
+    /// Starts the local server (reachable from this device only) and opens the profile in Safari.
+    func installFont() {
+        guard let profileData else { return }
 
-        let fontProfilePath = "/font-profile.mobileconfig"
-
-        server[fontProfilePath] = { request in
-            HttpResponse.raw(200, "OK", ["Content-Type": "application/x-apple-aspen-config"]) { writer in
-                do {
-                    try writer.write(self.fontProfileData(from: fontURL))
-                } catch {
-                    print("Error writing profile data: \(error)")
-                }
+        server[Self.profilePath] = { _ in
+            HttpResponse.raw(200, "OK", [
+                "Content-Type": "application/x-apple-aspen-config",
+                "Cache-Control": "no-store"
+            ]) { writer in
+                try writer.write(profileData)
             }
         }
 
         do {
-            try server.start(8080, forceIPv4: true)
-            if let localURL = URL(string: "http://localhost:8080\(fontProfilePath)") {
-                print(localURL)
-                self.serverURL = localURL
+            if !server.operating {
+                // Listen on the loopback address only, so the profile is not reachable from the network,
+                // on a port the system picks, so a busy port can't break the installation.
+                server.listenAddressIPv4 = "127.0.0.1"
+                try server.start(0, forceIPv4: true)
             }
+            let port = try server.port()
+            // The query makes every installation a new URL, so Safari never shows a cached profile.
+            guard let url = URL(string: "http://127.0.0.1:\(port)\(Self.profilePath)?id=\(UUID().uuidString)") else {
+                throw URLError(.badURL)
+            }
+            serverURL = url
+            isShowingSafari = true
         } catch {
-            print("Server could not start: \(error)")
+            server.stop()
+            serverURL = nil
+            isValidFont = false
+            fontValidationMessage = String(format: NSLocalizedString("The installation could not be started: %@", comment: "Font Installer: error when the local server for the profile could not start, %@ is the system's error message"), error.localizedDescription)
         }
     }
 
-    func fontProfileData(from fontURL: URL) -> Data {
-        guard fontURL.startAccessingSecurityScopedResource() else {
-            print("Unable to access the file")
-            return Data()
-        }
+    /// Builds the configuration profile that installs the font.
+    func fontProfileData(fontData: Data, fontName: String) -> Data? {
+        let fontPayload: [String: Any] = [
+            "Name": fontName,
+            "Font": fontData,
+            "PayloadIdentifier": "de.sivery.Toolbox.font.\(UUID().uuidString)",
+            "PayloadType": "com.apple.font",
+            "PayloadUUID": UUID().uuidString,
+            "PayloadVersion": 1,
+            "PayloadDisplayName": fontName
+        ]
 
-        defer {
-            fontURL.stopAccessingSecurityScopedResource()
-        }
+        let profile: [String: Any] = [
+            "PayloadContent": [fontPayload],
+            "PayloadDisplayName": fontName,
+            "PayloadIdentifier": "de.sivery.Toolbox.fontinstallation.\(UUID().uuidString)",
+            "PayloadRemovalDisallowed": false,
+            "PayloadType": "Configuration",
+            "PayloadUUID": UUID().uuidString,
+            "PayloadVersion": 1,
+            "PayloadDescription": String(format: NSLocalizedString("Installs the font \"%@\".", comment: "Font Installer: description of the configuration profile, shown in Settings when installing it, %@ is the font name"), fontName)
+        ]
 
-        guard let fontData = try? Data(contentsOf: fontURL) else {
-            print("Unable to read font data")
-            return Data()
-        }
-
-        let base64Font = fontData.base64EncodedString()
-        let fontFileName = fontURL.deletingPathExtension().lastPathComponent
-
-        let profileString = """
-        <?xml version="1.0" encoding="UTF-8"?>
-        <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-        <plist version="1.0">
-        <dict>
-            <key>PayloadContent</key>
-            <array>
-                <dict>
-                    <key>Name</key>
-                    <string>\(fontFileName)</string>
-                    <key>Font</key>
-                    <data>
-        \(base64Font)
-                    </data>
-                    <key>PayloadIdentifier</key>
-                    <string>de.sivery.Toolbox.font.\(UUID().uuidString)</string>
-                    <key>PayloadType</key>
-                    <string>com.apple.font</string>
-                    <key>PayloadUUID</key>
-                    <string>\(UUID().uuidString)</string>
-                    <key>PayloadVersion</key>
-                    <integer>1</integer>
-                    <key>PayloadDisplayName</key>
-                    <string>\(fontFileName) Font</string>
-                </dict>
-            </array>
-            <key>PayloadDisplayName</key>
-            <string>\(fontFileName) - Font Installation</string>
-            <key>PayloadIdentifier</key>
-            <string>de.sivery.Toolbox.fontinstallation.\(UUID().uuidString)</string>
-            <key>PayloadRemovalDisallowed</key>
-            <false/>
-            <key>PayloadType</key>
-            <string>Configuration</string>
-            <key>PayloadUUID</key>
-            <string>\(UUID().uuidString)</string>
-            <key>PayloadVersion</key>
-            <integer>1</integer>
-            <key>PayloadDescription</key>
-            <string>Installs the \(fontFileName) font</string>
-        </dict>
-        </plist>
-        """
-        return Data(profileString.utf8)
+        return try? PropertyListSerialization.data(fromPropertyList: profile, format: .xml, options: 0)
     }
 }
 
@@ -367,12 +333,33 @@ struct InstallationInstructionsView: View {
 
 struct SafariView: UIViewControllerRepresentable {
     let url: URL
+    /// Called when the user taps Done.
+    var onFinish: (() -> Void)? = nil
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(onFinish: onFinish)
+    }
 
     func makeUIViewController(context: UIViewControllerRepresentableContext<SafariView>) -> SFSafariViewController {
         let safariViewController = SFSafariViewController(url: url)
         safariViewController.modalPresentationStyle = .fullScreen
+        safariViewController.delegate = context.coordinator
         return safariViewController
     }
 
-    func updateUIViewController(_ uiViewController: SFSafariViewController, context: UIViewControllerRepresentableContext<SafariView>) {}
+    func updateUIViewController(_ uiViewController: SFSafariViewController, context: UIViewControllerRepresentableContext<SafariView>) {
+        context.coordinator.onFinish = onFinish
+    }
+
+    final class Coordinator: NSObject, SFSafariViewControllerDelegate {
+        var onFinish: (() -> Void)?
+
+        init(onFinish: (() -> Void)?) {
+            self.onFinish = onFinish
+        }
+
+        func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+            onFinish?()
+        }
+    }
 }

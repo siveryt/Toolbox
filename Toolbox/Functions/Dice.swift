@@ -76,19 +76,12 @@ struct DieView: View {
     
     func roll(){
         
-        if(kept.count >= diceCount) {return};
+        // Locks on dice beyond the current count don't count, every visible die locked means there's nothing to roll
+        if(kept.filter { $0 <= diceCount }.count >= diceCount) {return};
         
         for dqI in 1...9 {
             DispatchQueue.main.asyncAfter(deadline: .now() + Double("0.\(dqI)")!) {
-                let oldRolled = rolled
-                rolled = []
-                for diceNr in 0...32 {
-                    if (kept.contains(diceNr)) {
-                        rolled.append(oldRolled[diceNr])
-                    } else {
-                        rolled.append(String(Int.random(in: 1...sides)))
-                    }
-                }
+                rolled = DiceView.rerolled(rolled, kept: kept, sides: sides)
                 Haptic.impact(.light).generate()
             }
         }
@@ -190,30 +183,30 @@ struct DiceView: View {
     
     
     
+    /// New faces for all 32 dice (index 0 is unused, the dice are numbered from 1); locked dice keep their face.
+    /// Older or default arrays can be shorter, so locked dice without a stored face are rolled too.
+    static func rerolled(_ old: [String], kept: [Int], sides: Int) -> [String] {
+        (0...32).map { diceNr in
+            if kept.contains(diceNr), old.indices.contains(diceNr) {
+                return old[diceNr]
+            }
+            return String(Int.random(in: 1...sides))
+        }
+    }
+    
     func roll(max: Int, instant: Bool = false){
         
-        if (kept.count >= diceCount) {return};
+        // Locks on dice beyond the current count don't count, every visible die locked means there's nothing to roll
+        if (kept.filter { $0 <= diceCount }.count >= diceCount) {return};
         
         if (instant) {
-            var newRolled: [String] = []
-            for _ in 0...32 {
-                newRolled.append(String(Int.random(in: 1...max)))
-            }
-            rolled = newRolled
+            rolled = (0...32).map { _ in String(Int.random(in: 1...max)) }
             return;
         }
         
         for dqI in 1...9 {
             DispatchQueue.main.asyncAfter(deadline: .now() + Double("0.\(dqI)")!) {
-                let oldRolled = rolled
-                rolled = []
-                for diceNr in 0...32 {
-                    if (kept.contains(diceNr)) {
-                        rolled.append(oldRolled[diceNr])
-                    } else {
-                        rolled.append(String(Int.random(in: 1...max)))
-                    }
-                }
+                rolled = DiceView.rerolled(rolled, kept: kept, sides: max)
                 Haptic.impact(.light).generate()
             }
         }
@@ -298,7 +291,7 @@ struct DiceView: View {
                         }
                     }
 
-                    Section("Hint: You can hold one dice to lock it"){
+                    Section(NSLocalizedString("Hint: You can hold a die to lock it", comment: "Dice settings: hint below the settings that a long press on a die locks it")){
 
                     }
 
@@ -315,8 +308,13 @@ struct DiceView: View {
                 }
             }
         }
+        // Locks on dice that are no longer shown would otherwise block rolling
+        .onChange(of: diceCount) {
+            kept.removeAll { $0 > diceCount }
+        }
         .onAppear()  {
             UIApplication.shared.isIdleTimerDisabled = idleTimerDisabled
+            kept.removeAll { $0 > diceCount }
         }
         .onDisappear() {
             UIApplication.shared.isIdleTimerDisabled = false

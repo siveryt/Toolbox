@@ -22,15 +22,16 @@ struct RandomNumber: View {
     @AppStorage("rannumMax", store: .standard) var max: Int = 100
     @AppStorage("rannumResult", store: .standard) var result: String = ""
     @State var isPresentingToast: Bool = false
+    /// What's typed into the fields; may be empty or incomplete while editing, `min` and `max` keep the last valid values.
+    @State private var minText = ""
+    @State private var maxText = ""
+    @FocusState private var focusedField: Field?
+    
+    private enum Field { case min, max }
     
     func generateNumber() {
-        if(min < max){
-            result = String(Int.random(in: min ..< max+1))
-        }else if (min > max){
-            result = String(Int.random(in: max ..< min+1))
-        }else {
-            result = String(min)
-        }
+        // A closed range, so Int.max works as an upper bound
+        result = String(Int.random(in: Swift.min(min, max)...Swift.max(min, max)))
     }
     
     func presentToast() {
@@ -45,32 +46,12 @@ struct RandomNumber: View {
     }
     
     var body: some View {
-        
-        
-        
-        let minBinding = Binding<String>(get: {
-            String(self.min)
-        }, set: {
-            if ($0.isInt) {
-                self.min = Int($0 == "" ? "0" : $0)!
-            }
-            generateNumber()
-            
-        })
-        let maxBinding = Binding<String>(get: {
-            String(self.max)
-        }, set: {
-            if ($0.isInt) {
-                self.max = Int($0 == "" ? "0" : $0)!
-            }
-            generateNumber()
-        })
-        
         Form {
             HStack {
                 Text("From")
                 Spacer()
-                TextField("1", text: minBinding)
+                TextField("1", text: $minText)
+                    .focused($focusedField, equals: .min)
                     .multilineTextAlignment(.trailing)
                     .keyboardType(.numberPad)
                     .onReceive(NotificationCenter.default.publisher(for: UITextField.textDidBeginEditingNotification)) { obj in
@@ -83,7 +64,8 @@ struct RandomNumber: View {
             HStack {
                 Text("To")
                 Spacer()
-                TextField("1", text: maxBinding)
+                TextField("1", text: $maxText)
+                    .focused($focusedField, equals: .max)
                     .multilineTextAlignment(.trailing)
                     .keyboardType(.numberPad)
                     .onReceive(NotificationCenter.default.publisher(for: UITextField.textDidBeginEditingNotification)) { obj in
@@ -115,6 +97,27 @@ struct RandomNumber: View {
                     
                 }
             }
+        }
+        .onChange(of: minText) {
+            if let value = Int(minText), value != min {
+                min = value
+                generateNumber()
+            }
+        }
+        .onChange(of: maxText) {
+            if let value = Int(maxText), value != max {
+                max = value
+                generateNumber()
+            }
+        }
+        .onChange(of: focusedField) {
+            // An empty or invalid field shows the value that's actually used again once editing ends
+            if focusedField != .min { minText = String(min) }
+            if focusedField != .max { maxText = String(max) }
+        }
+        .onAppear {
+            minText = String(min)
+            maxText = String(max)
         }
         .toast(isPresenting: $isPresentingToast, message: NSLocalizedString("Copied", comment: "Copy toast"), icon: .custom(Image(systemName: "doc.on.clipboard")), autoDismiss: .none)
         .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)

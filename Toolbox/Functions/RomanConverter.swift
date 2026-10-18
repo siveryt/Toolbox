@@ -5,63 +5,70 @@ struct RomanConverter: View {
     @AppStorage("romanArabic") var arabic = ""
     @AppStorage("romanRoman") var roman = ""
     @State var alert:Bool = false
+    @FocusState private var focusedField: Field?
+    
+    private enum Field { case roman, arabic }
+    
     var body: some View {
-        let arabicBinding = Binding<String>(get: {
-            self.arabic
-        }, set: {
-            
-            if(!isNumeric(string: $0)) {return}
-            self.arabic = $0
-            
-            do {
-                if($0 != ""){
-                    if(Int(arabic)! > 3999){
-                        alert = true
-                    }else{
-                        self.roman = try String(RomanNumeral(from: Int(arabic)!).stringValue)
-                    }
-                }else{
-                    self.roman = ""
-                }
-            }catch{
-                self.roman = ""
-                
-            }
-        })
-        let romanBinding = Binding<String>(get: {
-            self.roman
-        }, set: {
-            self.roman = $0.uppercased()
-            do {
-                if($0 != ""){
-                    if(try RomanNumeral(from:$0).intValue > 3999){
-                        alert = true
-                    }else{
-                        self.arabic = try String(RomanNumeral(from: roman).intValue)
-                    }
-
-                }else{
-                    self.arabic = ""
-                }
-            }catch{
-                self.arabic = ""
-            }
-        })
-        
+        // The fields bind straight to the stored strings and get cleaned up in onChange: a binding that just
+        // ignores invalid input leaves that input visible in the field.
         Form{
             HStack {
                 Text("Roman")
-                TextField("MMXXII", text: romanBinding)
+                TextField("MMXXII", text: $roman)
+                    .focused($focusedField, equals: .roman)
                     .disableAutocorrection(true)
-                    .textCase(/*@START_MENU_TOKEN@*/.uppercase/*@END_MENU_TOKEN@*/)
+                    .textInputAutocapitalization(.characters)
                     .multilineTextAlignment(.trailing)
             }
             HStack {
                 Text("Arabic")
-                TextField("2022", text: arabicBinding)
+                TextField("2022", text: $arabic)
+                    .focused($focusedField, equals: .arabic)
                     .keyboardType(.numberPad)
                     .multilineTextAlignment(.trailing)
             }
+        }
+        .onChange(of: roman) { _, newValue in
+            let cleaned = String(newValue.uppercased().filter { "IVXLCDM".contains($0) })
+            guard cleaned == newValue else {
+                roman = cleaned
+                return
+            }
+            // Only the field being edited updates the other one, so converting doesn't rewrite what was typed
+            guard focusedField == .roman else { return }
+            guard !cleaned.isEmpty else {
+                arabic = ""
+                return
+            }
+            do {
+                arabic = String(try RomanNumeral(from: cleaned).intValue)
+            } catch RomanNumeralError.valueGreaterThanMaximum {
+                arabic = ""
+                alert = true
+            } catch {
+                arabic = ""
+            }
+        }
+        .onChange(of: arabic) { _, newValue in
+            // Digits only, and few enough that they always fit into an Int
+            let cleaned = String(newValue.filter { ("0"..."9").contains($0) }.prefix(6))
+            guard cleaned == newValue else {
+                arabic = cleaned
+                return
+            }
+            guard focusedField == .arabic else { return }
+            guard let value = Int(cleaned) else {
+                roman = ""
+                return
+            }
+            if value > 3999 {
+                // Don't leave the old Roman numeral next to a number it doesn't match
+                roman = ""
+                alert = true
+                return
+            }
+            roman = (try? RomanNumeral(from: value)).map { String($0.stringValue) } ?? ""
         }
         .alert("Number too big", isPresented: $alert) {
         } message: {
@@ -70,13 +77,6 @@ struct RomanConverter: View {
         .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
         .navigationTitle("Roman Numbers")
     
-    }
-    func isNumeric(string: String) -> Bool {
-        if let _ = Double(string) {
-            return true
-        } else {
-            return false
-        }
     }
 
 }

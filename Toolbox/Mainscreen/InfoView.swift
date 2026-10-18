@@ -10,11 +10,13 @@ import SwiftUI
 import CoreData
 import TipKit
 import Haptica
+import SwiftData
 
 struct infoView: View {
     
     @Environment(\.showingSheet) var showingSheet
     @Environment(\.managedObjectContext) var managedContext
+    @Environment(\.modelContext) var modelContext
     @State var deleteAlert = false
     
     var body: some View {
@@ -104,12 +106,13 @@ struct infoView: View {
             Button("Delete", role: .destructive) {
                 let domain = Bundle.main.bundleIdentifier!
                 UserDefaults.standard.removePersistentDomain(forName: domain)
+                // Tips can only be reset before TipKit is configured, so the app does it on the next launch.
+                UserDefaults.standard.set(true, forKey: App.resetTipsOnLaunchKey)
                 UserDefaults.standard.synchronize()
 
-                try? Tips.resetDatastore()
-
-                print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
-                SBDataController().resetBarcodes(context: managedContext)
+                try? modelContext.delete(model: WOLDevice.self)
+                try? modelContext.save()
+                SBDataController.shared.resetBarcodes(context: managedContext)
                 UIControl().sendAction(#selector(NSXPCConnection.suspend), to: UIApplication.shared, for: nil)
                 exit(-1)
             }
@@ -210,7 +213,6 @@ struct infoVersion: View {
                     }
                 })
             }
-            //            Text("No update available") TODO: use this with https://github.com/acarolsf/checkVersion-iOS when published
         }
         
         .overlay {
@@ -312,7 +314,7 @@ struct infoHidden: View {
     
     var body: some View {
         VStack {
-            if (hidden.count != 0){
+            if (hidden.contains(where: tools.indices.contains)){
                 List {
                     ForEach(Array(zip(tools.indices, tools)), id: \.0) { toolIndex, tool in
                         if (hidden.contains(toolIndex)) {
