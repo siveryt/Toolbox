@@ -242,6 +242,9 @@
         }
       }
     },
+    "Apple Watch" : {
+      "comment" : "WhatsNewKit item"
+    },
     "Black" : {
       "comment" : "App icon name",
       "localizations" : {
@@ -1322,6 +1325,9 @@
           }
         }
       }
+    },
+    "Redesigned with Roman Numbers and Digital Crown controls" : {
+      "comment" : "WhatsNewKit item"
     },
     "Tap %@ to scan again. If nothing shows up, check that Toolbox can access your local network in Settings." : {
       "comment" : "LAN Scanner empty state, %@ is the reload symbol",

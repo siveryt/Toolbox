@@ -18,7 +18,7 @@ OUTILS
 Masquez les outils que vous n’utilisez pas, placez vos favoris en haut et choisissez parmi dix icônes d’app, dont une icône Pride.
 
 AUSSI SUR APPLE WATCH
-Dés, Compteur et Nombre aléatoire sont à votre poignet, et un widget lance les dés directement sur votre écran d’accueil.
+Dés, Compteur, Nombre aléatoire et Chiffres romains sont à votre poignet, pensés pour la Digital Crown. Un widget lance les dés directement sur votre écran d’accueil.
 
 CONFIDENTIALITÉ INTÉGRÉE
 Pas de compte, pas de publicité, pas de suivi. Toolbox conserve vos données sur votre appareil.

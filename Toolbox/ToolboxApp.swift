@@ -140,6 +140,14 @@ extension App: WhatsNewCollectionProvider {
                 ),
                 .init(
                     image: .init(
+                        systemName: "applewatch",
+                        foregroundColor: .accentColor
+                    ),
+                    title: .init(stringLiteral: NSLocalizedString("Apple Watch", comment: "WhatsNewKit item")),
+                    subtitle: .init(stringLiteral: NSLocalizedString("Redesigned with Roman Numbers and Digital Crown controls", comment: "WhatsNewKit item"))
+                ),
+                .init(
+                    image: .init(
                         systemName: "list.bullet.indent",
                         foregroundColor: .accentColor
                     ),

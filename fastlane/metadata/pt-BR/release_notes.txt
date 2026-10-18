@@ -2,5 +2,6 @@ O Toolbox 1.4 é uma grande atualização:
 • Novo visual para o iOS 26 com Liquid Glass e um novo ícone do app
 • Dez ícones do app para escolher, incluindo um ícone Pride
 • Novas ferramentas: Distância, Metrônomo, Decibelímetro, Lanterna pulsante, Instalador de fontes, Texto rolante e Wake On LAN
+• App do Apple Watch redesenhado, com Números romanos e controle pela Digital Crown
 • Oculte as ferramentas que você não usa e leve suas favoritas para o topo
 • Agora em inglês, alemão, espanhol, francês, holandês, polonês, português e sueco
