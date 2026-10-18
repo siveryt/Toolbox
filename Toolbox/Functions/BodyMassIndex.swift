@@ -9,18 +9,32 @@ import SwiftUI
 import Combine
 
 struct BodyMassIndex: View {
-    
+
     let metric = Locale.current.measurementSystem == "Metric"
     let defaults = UserDefaults.standard
-    
+
     @State var height = ""
     @State var weight = ""
-    
+    @State var waist = ""
+
     @State var h:Double = 0
     @State var w:Double = 0
-    
-    
-    
+
+    var bmi: Double? {
+        guard h > 0, w > 0 else { return nil }
+        return metric ? w/(h*h) : w/(h*h)*703
+    }
+
+    /// Waist and height are entered in the same unit, so the ratio needs no conversion
+    var waistToHeight: Double? {
+        guard let waist = Double(waist), let height = Double(height), waist > 0, height > 0 else { return nil }
+        return waist/height
+    }
+
+    func format(_ value: Double?) -> String {
+        value?.formatted(.number.precision(.fractionLength(2))) ?? "–"
+    }
+
     var body: some View {
         Form{
             HStack{
@@ -41,17 +55,17 @@ struct BodyMassIndex: View {
                         }
                         defaults.set(height, forKey: "bmiHeight")
                         defaults.set(h, forKey: "bmiHeightD")
-                        
+
                     }
                     .onReceive(NotificationCenter.default.publisher(for: UITextField.textDidBeginEditingNotification)) { obj in
                         if let textField = obj.object as? UITextField {
                             textField.selectedTextRange = textField.textRange(from: textField.beginningOfDocument, to: textField.endOfDocument)
                         }
                     }
-                    
+
                 Text(metric ? "cm" : "inch")
 
-                
+
             }
 
             HStack{
@@ -73,60 +87,51 @@ struct BodyMassIndex: View {
                             textField.selectedTextRange = textField.textRange(from: textField.beginningOfDocument, to: textField.endOfDocument)
                         }
                     }
-                
-                
+
+
                 Text(metric ? "kg" : "lb")
             }
+
+            HStack{
+                Text(NSLocalizedString("Waist", comment: "BMI tool: label of the waist circumference input"))
+                TextField("", text: $waist)
+                    .keyboardType(.numberPad)
+                    .multilineTextAlignment(.trailing)
+                    .onReceive(Just(waist)) { newValue in
+                        let filtered = newValue.filter { "0123456789".contains($0) }
+                        if filtered != newValue {
+                            self.waist = filtered
+                        }
+                        defaults.set(waist, forKey: "bmiWaist")
+                    }
+                    .onReceive(NotificationCenter.default.publisher(for: UITextField.textDidBeginEditingNotification)) { obj in
+                        if let textField = obj.object as? UITextField {
+                            textField.selectedTextRange = textField.textRange(from: textField.beginningOfDocument, to: textField.endOfDocument)
+                        }
+                    }
+
+                Text(metric ? "cm" : "inch")
+            }
+
             Section{
                 HStack {
                     Text("BMI")
                     Spacer()
-                    Text(metric ? String(Double(w/(h*h)).rounded(toPlaces: 2)) : String(Double(w/(h*h)*703).rounded(toPlaces: 2)))
+                    Text(format(bmi))
                 }
-                if metric {
-                    if (18.5 >= Double(w/(h*h))) {
-                        Text("Underweight")
-                            .bold()
-                        .foregroundColor(.red)
-                    }else if (24.9 >= Double(w/(h*h))) {
-                        Text("Normal weight")
-                            .bold()
-                            .foregroundColor(.green)
-                    }else if (29.9 >= Double(w/(h*h))) {
-                        Text("Overweight")
-                            .bold()
-                            .foregroundColor(.orange)
-                    }else if (30 <= Double(w/(h*h))){
-                        Text("Obese")
-                            .bold()
-                            .foregroundColor(.red)
-                    }
-                }else {
-                    if (18.5 >= Double(w/(h*h)*703)) {
-                        Text("Underweight")
-                            .bold()
-                            .foregroundColor(.red)
-                    }else if (24.9 >= Double(w/(h*h)*703)) {
-                        Text("Normal weight")
-                            .bold()
-                            .foregroundColor(.green)
-                    }else if (29.9 >= Double(w/(h*h)*703)) {
-                        Text("Overweight")
-                            .bold()
-                            .foregroundColor(.orange)
-                    }else if (30 <= Double(w/(h*h)*703)){
-                        Text("Obese")
-                            .bold()
-                            .foregroundColor(.red)
-                    }
+                HStack {
+                    Text(NSLocalizedString("Waist-to-height ratio", comment: "BMI tool: label of the waist-to-height ratio result"))
+                    Spacer()
+                    Text(format(waistToHeight))
                 }
-                
+            } footer: {
+                Text(NSLocalizedString("BMI and waist-to-height ratio are only rough guides: they don't account for muscle mass, build, age or sex, and are no substitute for medical advice.", comment: "BMI tool: note below the results"))
             }
             Button("More Information") {
                 UIApplication.shared.open(URL(string: "https://wikipedia.org/wiki/Body_mass_index")!, options: [:])
             }
         }
-        
+
         .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
         .navigationTitle("BMI")
         .onAppear(){
@@ -136,6 +141,9 @@ struct BodyMassIndex: View {
             if(defaults.valueExists(forKey: "bmiWeight")){
                 weight = defaults.string(forKey: "bmiWeight")!
             }
+            if(defaults.valueExists(forKey: "bmiWaist")){
+                waist = defaults.string(forKey: "bmiWaist")!
+            }
             if(defaults.valueExists(forKey: "bmiHeightD")){
                 h = defaults.double(forKey: "bmiHeightD")
             }
@@ -143,9 +151,9 @@ struct BodyMassIndex: View {
                 w = defaults.double(forKey: "bmiWeightD")
             }
         }
-    
+
     }
-    
+
 }
 
 struct BodyMassIndex_Previews: PreviewProvider {
