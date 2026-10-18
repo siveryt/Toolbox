@@ -470,6 +470,33 @@ details.release summary + * {
 	font-size: 0.95rem;
 }
 
+/*
+ * "Show all tools" on phones (see 7. Small screens). The checkbox is
+ * invisible but still reachable with the keyboard; the label is the button.
+ */
+.all-tools-toggle {
+	position: absolute;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.all-tools-button {
+	display: none;
+	margin-top: 0.75rem;
+	padding: 0.6rem 1.1rem;
+	border: 1px solid var(--border);
+	border-radius: 999px;
+	font-weight: 600;
+	font-size: 0.95rem;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.all-tools-toggle:focus-visible + .tools + .all-tools-button {
+	outline: 3px solid var(--accent);
+	outline-offset: 3px;
+}
+
 /* 6. Text pages ---------------------------------------------------------- */
 
 .page {
@@ -628,6 +655,23 @@ details.release summary + * {
 
 	.tools {
 		grid-template-columns: 1fr;
+	}
+
+	/* Only the first six tools until "Show all tools" is tapped */
+	.tools li:nth-child(n + 7) {
+		display: none;
+	}
+
+	.all-tools-button {
+		display: inline-block;
+	}
+
+	#tools:has(.all-tools-toggle:checked) .tools li {
+		display: block;
+	}
+
+	#tools:has(.all-tools-toggle:checked) .all-tools-button {
+		display: none;
 	}
 
 	.site-footer {
