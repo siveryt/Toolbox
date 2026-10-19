@@ -12,13 +12,19 @@ import CoreLocation
 import MapKit
 import Combine
 
+/// A point the user placed on the map. The distance runs through all of them in order.
+private struct Waypoint: Identifiable {
+    let id = UUID()
+    let coordinate: CLLocationCoordinate2D
+    var name: String?
+}
+
 struct Distance: View {
 
     @StateObject private var locationManager = Location_helper()
 
     @State private var position: MapCameraPosition = .automatic
-    @State private var startPoint: CLLocationCoordinate2D?
-    @State private var startPlaceName: String?
+    @State private var points: [Waypoint] = []
     @State private var visibleRegion: MKCoordinateRegion?
     @State private var didCenterOnUser = false
 
@@ -31,11 +37,15 @@ struct Distance: View {
         visibleRegion?.center
     }
 
+    /// Length of the path through all points and on to the map center.
     private var distanceMeters: Double? {
-        guard let startPoint, let centerCoordinate else { return nil }
-        let a = CLLocation(latitude: startPoint.latitude, longitude: startPoint.longitude)
-        let b = CLLocation(latitude: centerCoordinate.latitude, longitude: centerCoordinate.longitude)
-        return a.distance(from: b)
+        guard !points.isEmpty, let centerCoordinate else { return nil }
+        let path = points.map(\.coordinate) + [centerCoordinate]
+        return zip(path, path.dropFirst()).reduce(0) { total, segment in
+            let a = CLLocation(latitude: segment.0.latitude, longitude: segment.0.longitude)
+            let b = CLLocation(latitude: segment.1.latitude, longitude: segment.1.longitude)
+            return total + a.distance(from: b)
+        }
     }
 
     private func formatted(_ meters: Double) -> String {
@@ -93,6 +103,16 @@ struct Distance: View {
 
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
+                    resetPoints()
+                } label: {
+                    Image(systemName: "arrow.counterclockwise")
+                }
+                .disabled(points.isEmpty)
+                .accessibilityLabel(Text(NSLocalizedString("Remove all points", comment: "Distance tool: accessibility label of the reset button")))
+            }
+
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
                     recenterOnUser()
                 } label: {
                     Image(systemName: "location.fill")
@@ -112,16 +132,22 @@ struct Distance: View {
                     UserAnnotation()
                 }
 
-                if let startPoint {
-                    Marker(startPlaceName ?? NSLocalizedString("Start", comment: "Distance tool: map marker of the start point when its place name is unknown"), monogram: Text("A"), coordinate: startPoint)
+                if points.count > 1 {
+                    MapPolyline(coordinates: points.map(\.coordinate))
+                        // Map content ignores the app tint, so name the accent color explicitly.
+                        .stroke(Color(.accent), lineWidth: 3)
+                }
+
+                ForEach(Array(points.enumerated()), id: \.element.id) { index, point in
+                    Marker(point.name ?? markerFallbackTitle(index), monogram: Text(String(index + 1)), coordinate: point.coordinate)
                         .tint(.red)
                 }
             }
             .mapStyle(.standard(elevation: .flat))
-            // Tapping sets the start point at the current map center (where the pin is).
+            // Tapping adds a point at the current map center (where the pin is).
             .onTapGesture {
                 if let centerCoordinate {
-                    setStart(centerCoordinate)
+                    addPoint(centerCoordinate)
                 }
             }
             .onMapCameraChange(frequency: .continuous) { context in
@@ -151,10 +177,10 @@ struct Distance: View {
             let fallback = CGPoint(x: geo.size.width / 2, y: geo.size.height / 2)
             let centerPt = visibleRegion.flatMap { proxy.convert($0.center, to: .local) } ?? fallback
             ZStack {
-                if let startPoint,
-                   let startPt = proxy.convert(startPoint, to: .local) {
+                if let lastPoint = points.last,
+                   let lastPt = proxy.convert(lastPoint.coordinate, to: .local) {
                     Path { path in
-                        path.move(to: startPt)
+                        path.move(to: lastPt)
                         path.addLine(to: centerPt)
                     }
                     .stroke(Color.accentColor, style: StrokeStyle(lineWidth: 2, lineCap: .round, dash: [3, 6]))
@@ -172,15 +198,22 @@ struct Distance: View {
     /// tip, so `.position` can land the tip exactly on the measured centre point.
     private let markerTipOffset: CGFloat = 20
 
-    /// The moving second point (marker "B"), pinned to the map centre.
+    /// The moving next point, pinned to the map centre and numbered like the point it would become.
     private var centerPin: some View {
-        NativeMarker(tint: UIColor(Color.accentColor), glyphText: "B")
+        NativeMarker(tint: UIColor(Color.accentColor), glyphText: String(points.count + 1))
             .frame(width: 40, height: 50)
+    }
+
+    private func markerFallbackTitle(_ index: Int) -> String {
+        if index == 0 {
+            return NSLocalizedString("Start", comment: "Distance tool: map marker of the start point when its place name is unknown")
+        }
+        return String(format: NSLocalizedString("Point %lld", comment: "Distance tool: map marker of a later point when its place name is unknown, %lld is its number"), index + 1)
     }
 
     @ViewBuilder
     private var startHint: some View {
-        if startPoint == nil {
+        if points.isEmpty {
             Label(NSLocalizedString("Move the map and tap to set the start point", comment: "Distance tool: hint before a start point is set"), systemImage: "hand.tap.fill")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
@@ -194,12 +227,20 @@ struct Distance: View {
 
     // MARK: - Actions
 
-    private func setStart(_ coordinate: CLLocationCoordinate2D) {
+    private func addPoint(_ coordinate: CLLocationCoordinate2D) {
+        let point = Waypoint(coordinate: coordinate)
         withAnimation {
-            startPoint = coordinate
+            points.append(point)
         }
         Haptic.impact(.medium).generate()
-        reverseGeocode(coordinate)
+        reverseGeocode(point)
+    }
+
+    private func resetPoints() {
+        withAnimation {
+            points.removeAll()
+        }
+        Haptic.impact(.rigid).generate()
     }
 
     private func recenterOnUser() {
@@ -217,19 +258,16 @@ struct Distance: View {
         Haptic.impact(.light).generate()
     }
 
-    private func reverseGeocode(_ target: CLLocationCoordinate2D) {
-        startPlaceName = nil
-        let location = CLLocation(latitude: target.latitude, longitude: target.longitude)
+    private func reverseGeocode(_ point: Waypoint) {
+        let location = CLLocation(latitude: point.coordinate.latitude, longitude: point.coordinate.longitude)
         CLGeocoder().reverseGeocodeLocation(location) { placemarks, _ in
             guard let placemark = placemarks?.first else { return }
             let name = placemark.name
                 ?? [placemark.thoroughfare, placemark.locality].compactMap { $0 }.joined(separator: ", ")
             DispatchQueue.main.async {
-                // The start point may have moved while the lookup ran; drop stale results.
-                guard let startPoint,
-                      startPoint.latitude == target.latitude,
-                      startPoint.longitude == target.longitude else { return }
-                startPlaceName = name.isEmpty ? nil : name
+                // The points may have been reset while the lookup ran; drop stale results.
+                guard let index = points.firstIndex(where: { $0.id == point.id }) else { return }
+                points[index].name = name.isEmpty ? nil : name
             }
         }
     }
