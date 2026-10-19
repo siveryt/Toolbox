@@ -146,9 +146,9 @@ jobs:
           # Done as its own step so a dependency failure (a moved fork, a dead
           # branch ref — several pins track `master`/`develop` rather than a tag)
           # is reported as a dependency problem and not buried in build output.
-          # PITFALL: five of the twelve dependencies track a moving branch
-          # (awake, lan-scanner, marqueetext, swiftyping, toastswiftui — all on
-          # master/develop) rather than a version tag. Without
+          # PITFALL: several dependencies track a moving branch (awake,
+          # marqueetext, swiftyping, toastswiftui — all on master/develop)
+          # rather than a version tag. Without
           # -onlyUsePackageVersionsFromResolvedFile a CI run can silently pull
           # newer commits from those forks than the committed Package.resolved
           # names, so the build would no longer match the lockfile. With it, a

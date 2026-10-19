@@ -96,4 +96,6 @@ The sheet's "Learn more" button opens `https://toolbox.sivery.de/#version<major.
 
 ## Key third-party dependencies (SPM)
 
-`RomanNumeralKit`, `CodeScanner` (barcode/QR), `LanScanner` (fork under `siveryt`), `SwiftyPing` (ping), `swift-async-dns-resolver`, `Swifter` (HTTP server), `MarqueeText` (fork under `siveryt`, scrolling text), `WhatsNewKit`, `Haptica`, `ToastSwiftUI`.
+`RomanNumeralKit`, `CodeScanner` (barcode/QR), `SwiftyPing` (ping), `swift-async-dns-resolver`, `Swifter` (HTTP server), `MarqueeText` (fork under `siveryt`, scrolling text), `WhatsNewKit`, `Haptica`, `ToastSwiftUI`.
+
+`LanScanner` (the LAN Scanner's network scan, Objective-C) is not fetched from anywhere: it lives in [Packages/LanScanner/](Packages/LanScanner/) as a local Swift package, so fix it there directly.

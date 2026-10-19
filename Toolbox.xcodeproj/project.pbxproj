@@ -162,6 +162,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5EEC4BE32D2F1D6D0061B6E2 /* LanScanner */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = LanScanner; path = Packages/LanScanner; sourceTree = "<group>"; };
 		AA70000000000000000000F0 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		38B0652AF1409AAF2C643D59 /* SnapshotHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		5E020C4C27EA29D7009871F9 /* RomanConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RomanConverter.swift; sourceTree = "<group>"; };
@@ -439,6 +440,7 @@
 				5EC7B21D27D7978100699FD3 /* Toolbox */,
 				5EE65DF02A8575FE0061120B /* Toolbox WatchOS Watch App */,
 				5E9ABFD02B9CB840005448FB /* diceWidget */,
+				5EEC4BE32D2F1D6D0061B6E2 /* LanScanner */,
 				5EC7B21C27D7978100699FD3 /* Products */,
 				5E1383EC29159D2600CF4FAB /* Frameworks */,
 				B1C9B3BF987A653F8D56E1D9 /* fastlane */,
@@ -755,7 +757,6 @@
 				5EF0DD192BE2133E00F46B5C /* XCRemoteSwiftPackageReference "swift-async-dns-resolver" */,
 				5E135E452BE27E01000FD246 /* XCRemoteSwiftPackageReference "swifter" */,
 				5E98DE672BFC9AA900B459A8 /* XCRemoteSwiftPackageReference "MarqueeText" */,
-				5EEC4BE02D2F1D6D0061B6E2 /* XCRemoteSwiftPackageReference "lan-scanner" */,
 			);
 			productRefGroup = 5EC7B21C27D7978100699FD3 /* Products */;
 			projectDirPath = "";
@@ -1553,14 +1554,6 @@
 				kind = branch;
 			};
 		};
-		5EEC4BE02D2F1D6D0061B6E2 /* XCRemoteSwiftPackageReference "lan-scanner" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/siveryt/lan-scanner";
-			requirement = {
-				branch = develop;
-				kind = branch;
-			};
-		};
 		5EF0DD192BE2133E00F46B5C /* XCRemoteSwiftPackageReference "swift-async-dns-resolver" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-async-dns-resolver";
@@ -1618,7 +1611,6 @@
 		};
 		5EEC4BE12D2F1D6D0061B6E2 /* LanScanner */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5EEC4BE02D2F1D6D0061B6E2 /* XCRemoteSwiftPackageReference "lan-scanner" */;
 			productName = LanScanner;
 		};
 		5EF0DD1A2BE2133E00F46B5C /* AsyncDNSResolver */ = {

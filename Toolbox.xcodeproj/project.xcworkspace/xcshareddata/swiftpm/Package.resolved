@@ -20,15 +20,6 @@
       }
     },
     {
-      "identity" : "lan-scanner",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/siveryt/lan-scanner",
-      "state" : {
-        "branch" : "develop",
-        "revision" : "d37dfbc9fff6e51188b9d3ee2f91a0fbdfb2ac72"
-      }
-    },
-    {
       "identity" : "marqueetext",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/siveryt/MarqueeText",
