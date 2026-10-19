@@ -3,5 +3,6 @@ Toolbox 1.4 est une grosse mise à jour :
 • Dix icônes d’app au choix, dont une icône Pride
 • Nouveaux outils : Distance, Métronome, Sonomètre, Lampe stroboscopique, Installateur de polices, Texte défilant et Wake On Lan
 • App Apple Watch repensée, avec Chiffres romains et contrôle par la Digital Crown
-• Masquez les outils que vous n’utilisez pas et placez vos favoris en haut
+• Recherchez vos outils, masquez ceux que vous n’utilisez pas et placez vos favoris en haut
+• Widget Dés : lancez un dé directement depuis votre écran d’accueil
 • Désormais disponible en anglais, allemand, espagnol, français, néerlandais, polonais, portugais et suédois

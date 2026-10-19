@@ -97,11 +97,16 @@ struct Scrolling_Text: View {
         .onChange(of: canUseBackDisplay) { _, canUse in
             if !canUse { stopBackDisplay() }
         }
+        // Keep the screen on while the text is shown, so it doesn't dim or lock in front of the audience.
+        .onChange(of: isShowingText, initial: true) { _, showing in
+            UIApplication.shared.isIdleTimerDisabled = showing
+        }
         .onDisappear {
             // The full-screen scroller also makes the form disappear; keep the other displays running then.
             if !scrollerActive {
                 stopBackDisplay()
                 externalDisplayActive = false
+                UIApplication.shared.isIdleTimerDisabled = false
             }
         }
         .alert("Camera Access Needed", isPresented: $cameraAccessAlert) {
@@ -143,6 +148,11 @@ struct Scrolling_Text: View {
         
         .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
         .navigationTitle("Scrolling Text")
+    }
+
+    /// The text is running somewhere: full screen, on the back display or on an external display.
+    private var isShowingText: Bool {
+        scrollerActive || backDisplayActive || externalDisplayActive
     }
 
     /// In portrait, an unfolded iPhone Duo faces its back display towards the people in front of you.

@@ -32,13 +32,23 @@ struct PulsingFlashlight: View {
     /// The running timer; cancelling it stops the timer.
     @State private var timerConnection: Cancellable?
     
+    /// iPads and the simulator have no torch, so there's nothing to pulse.
+    let hasTorch = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back)?.hasTorch ?? false
+
     let speeds = [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1,2,3,4,5,6,7,8,9,10]
     
     var body: some View {
         
         Form {
-            Toggle(isOn: $enabled){
-                Text("Enabled")
+            Section {
+                Toggle(isOn: $enabled){
+                    Text("Enabled")
+                }
+                .disabled(!hasTorch)
+            } footer: {
+                if !hasTorch {
+                    Text(NSLocalizedString("This device has no flashlight.", comment: "Pulsing Flashlight: shown under the Enabled switch on devices without a flashlight, e.g. iPads"))
+                }
             }
             .onChange(of: enabled) {
                 if (!enabled) {
@@ -55,6 +65,7 @@ struct PulsingFlashlight: View {
                         restartTimer()
                     }
             Slider(value: speedProxy, in: 0...Double(speeds.count-1), step: 1)
+                .accessibilityLabel(Text("Speed"))
             
         }
         

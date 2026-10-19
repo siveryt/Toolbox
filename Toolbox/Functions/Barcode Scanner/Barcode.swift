@@ -11,9 +11,6 @@ import AVFoundation //import to access barcode types you want to scan
 import Haptica
 import CodeScanner
 
-import SwiftUI
-import CoreData
-
 struct Barcode: View {
     @State var scanSheet = false
     @StateObject private var selectedItemIndex = SelectedItemIndex()
@@ -50,6 +47,7 @@ struct Barcode: View {
                 }) {
                     Image(systemName: "viewfinder")
                 }
+                .accessibilityLabel(NSLocalizedString("Scan Barcode", comment: "Barcode Scanner: accessibility label of the toolbar button that opens the camera to scan a code"))
             }
         }
         .sheet(isPresented: $scanSheet) {
@@ -80,7 +78,12 @@ struct BarcodeScanner: View {
         case cameraUnavailable
     }
 
-    @State private var scanFailure: ScanFailure? = nil
+    /// CodeScanner reports a denied permission, but stays black when access is restricted (Screen Time, MDM) or there's no camera.
+    @State private var scanFailure: ScanFailure? = {
+        if AVCaptureDevice.authorizationStatus(for: .video) == .restricted { return .permissionDenied }
+        if AVCaptureDevice.default(for: .video) == nil { return .cameraUnavailable }
+        return nil
+    }()
     @Environment(\.dismiss) var dismiss
     @Environment(\.managedObjectContext) var managedContext
 

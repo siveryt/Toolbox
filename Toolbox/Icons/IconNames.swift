@@ -63,7 +63,7 @@ class IconNames: ObservableObject {
                 try await UIApplication.shared.setAlternateIconName(icon.name)
                 current = icon.name
             } catch {
-                print(error.localizedDescription)
+                // The icon stays as it is; the picker keeps showing the current one
             }
         }
     }

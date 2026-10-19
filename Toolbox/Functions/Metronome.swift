@@ -116,6 +116,8 @@ final class MetronomeEngine {
         segments = [Segment(beat: 0, time: CACurrentMediaTime() + 0.1, bpm: bpm)]
         nextBeat = 0
         isPlaying = true
+        // Auto-lock would suspend the app and silence the metronome.
+        UIApplication.shared.isIdleTimerDisabled = true
         scheduleBeats()
         let timer = Timer(timeInterval: 0.05, repeats: true) { [weak self] _ in
             self?.scheduleBeats()
@@ -134,6 +136,7 @@ final class MetronomeEngine {
         try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
         segments = []
         isPlaying = false
+        UIApplication.shared.isIdleTimerDisabled = false
     }
 
     private func time(ofBeat beat: Int) -> CFTimeInterval {

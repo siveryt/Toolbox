@@ -191,7 +191,8 @@ private enum DiffUnit: String, CaseIterable, Identifiable {
         // Xcode only allows plural variations for strings that contain the number, so take the unit from the
         // pluralized "%lld years" string and drop the number, which is shown separately above.
         let unit = copyText(count)
-            .replacingOccurrences(of: String(count), with: "")
+            // Formatted like the number in copyText, which groups digits ("1,234 days")
+            .replacingOccurrences(of: String.localizedStringWithFormat("%lld", count), with: "")
             .trimmingCharacters(in: .whitespaces)
         return unit.prefix(1).uppercased(with: .current) + unit.dropFirst()
     }

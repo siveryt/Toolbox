@@ -18,6 +18,8 @@ struct DomainResolver: View {
     @State var lookupFailed = false
     /// Changing it starts a new lookup; `.task(id:)` cancels the one still running.
     @State var resolveID = 0
+    /// The text the shown result belongs to; once the user edits the domain, the old result no longer applies.
+    @State var resolvedText: String? = nil
     
     @State var isPresentingToast: Bool = false
     @State private var network = NetworkMonitor()
@@ -47,10 +49,23 @@ struct DomainResolver: View {
         }
     }
     
+    /// The shown result belongs to the domain in the field.
+    var isCurrent: Bool { resolvedText == toResolve }
+
+    /// The host of what was typed, so a pasted link like "https://example.com/page" resolves too.
+    static func host(of input: String) -> String {
+        let trimmed = input.trimmingCharacters(in: .whitespacesAndNewlines)
+        if trimmed.contains("://"), let host = URL(string: trimmed)?.host(), !host.isEmpty {
+            return host
+        }
+        return trimmed
+    }
+
     func resolve() async {
-        let domain = toResolve.trimmingCharacters(in: .whitespacesAndNewlines)
+        let domain = DomainResolver.host(of: toResolve)
         addresses = []
         lookupFailed = false
+        resolvedText = toResolve
         guard !domain.isEmpty else {
             resolving = false
             return
@@ -114,7 +129,7 @@ struct DomainResolver: View {
                 Text("Result")
                 Spacer()
                 Button(action: {
-                    if !addresses.isEmpty {
+                    if isCurrent && !addresses.isEmpty {
                         UIPasteboard.general.string = addresses.joined(separator: "\n")
                         Haptic.impact(.light).generate()
                         presentToast()
@@ -125,12 +140,12 @@ struct DomainResolver: View {
                             ProgressView()
                                 .progressViewStyle(CircularProgressViewStyle())
                         }
-                        if !addresses.isEmpty {
+                        if isCurrent && !addresses.isEmpty {
                             Text(addresses.joined(separator: "\n"))
                                 .multilineTextAlignment(.trailing)
-                        } else if lookupFailed {
+                        } else if isCurrent && lookupFailed {
                             Text(NSLocalizedString("Lookup Failed", comment: "Domain Resolver: result shown when the DNS lookup failed for another reason than the domain not existing (offline, timeout)"))
-                        } else if !resolving && !toResolve.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                        } else if !resolving && isCurrent && !toResolve.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                             Text(NSLocalizedString("Not Found", comment: "Domain Resolver: result shown when the domain has no IPv4 or IPv6 address"))
                         }
                     }
@@ -138,7 +153,7 @@ struct DomainResolver: View {
                 .tint(.primary)
             }
             } footer: {
-                if lookupFailed {
+                if isCurrent && lookupFailed {
                     Text(NSLocalizedString("The DNS server couldn't be reached. Check your internet connection and try again.", comment: "Domain Resolver: explanation below the result when the DNS lookup failed"))
                 }
             }

@@ -57,19 +57,19 @@ struct infoView: View {
                 .tint(.primary)
                 
                 Button(action: {
-                    shareFromSheet(shareItem: [URL(string: "http://toolbox.sivery.de/download")!])
+                    shareFromSheet(shareItem: [URL(string: "https://toolbox.sivery.de/download")!])
                 }) {
                     Label("Share", systemImage: "square.and.arrow.up")
                 }
                 .tint(.primary)
                 
-                ExternalLinkRow("Mailing list", systemImage: "mail.stack", url: "http://mailing.sivery.de/subscription/form")
-                ExternalLinkRow("Support the Development", systemImage: "heart", url: "http://toolbox.sivery.de/support")
-                ExternalLinkRow("Contribute", systemImage: "person.3", url: "http://toolbox.sivery.de/contribution.html")
+                ExternalLinkRow("Mailing list", systemImage: "mail.stack", url: "https://mailing.sivery.de/subscription/form")
+                ExternalLinkRow("Support the Development", systemImage: "heart", url: "https://toolbox.sivery.de/support")
+                ExternalLinkRow("Contribute", systemImage: "person.3", url: "https://toolbox.sivery.de/contribution.html")
             }
             
             Section {
-                ExternalLinkRow("Website", systemImage: "globe", url: "http://toolbox.sivery.de")
+                ExternalLinkRow("Website", systemImage: "globe", url: "https://toolbox.sivery.de")
 
                 Button(action: {
                     if let url = URL(string: "mailto:toolbox@sivery.de") {
@@ -89,7 +89,7 @@ struct infoView: View {
                 }
                 .tint(.primary)
 
-                ExternalLinkRow("Privacy Policy", systemImage: "lock", url: "http://toolbox.sivery.de/privacy.html")
+                ExternalLinkRow("Privacy Policy", systemImage: "lock", url: "https://toolbox.sivery.de/privacy.html")
             }
             
             Section {

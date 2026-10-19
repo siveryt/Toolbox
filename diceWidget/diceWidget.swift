@@ -89,6 +89,6 @@ struct diceWidget: Widget {
         .configurationDisplayName(NSLocalizedString("Dice", comment: "Menu item"))
         .description(NSLocalizedString("Roll a die right on your Home Screen. Tap it to roll again.", comment: "Dice widget: description in the widget gallery"))
         // A single centered die; it fits the system sizes, but would be lost on an iPad's extra large widget.
-        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .systemExtraLarge])
+        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
     }
 }

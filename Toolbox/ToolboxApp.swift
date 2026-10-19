@@ -155,11 +155,19 @@ extension App: WhatsNewCollectionProvider {
                 ),
                 .init(
                     image: .init(
+                        systemName: "widget.small",
+                        foregroundColor: .accentColor
+                    ),
+                    title: .init(stringLiteral: NSLocalizedString("Dice Widget", comment: "WhatsNewKit item")),
+                    subtitle: .init(stringLiteral: NSLocalizedString("Roll a die right on your Home Screen", comment: "WhatsNewKit item"))
+                ),
+                .init(
+                    image: .init(
                         systemName: "list.bullet.indent",
                         foregroundColor: .accentColor
                     ),
                     title: .init(stringLiteral: NSLocalizedString("Your Tools, Your Order", comment: "WhatsNewKit item")),
-                    subtitle: .init(stringLiteral: NSLocalizedString("Hide tools you don't use and move your favorites to the top", comment: "WhatsNewKit item"))
+                    subtitle: .init(stringLiteral: NSLocalizedString("Search your tools, hide the ones you don't use and move your favorites to the top", comment: "WhatsNewKit item"))
                 ),
             ],
             primaryAction: .init(

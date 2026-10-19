@@ -1383,6 +1383,53 @@
         }
       }
     },
+    "Dice Widget" : {
+      "comment" : "WhatsNewKit item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Würfel-Widget"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget de dados"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget Dés"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dobbelsteenwidget"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widżet z kością"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget de dados"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tärningswidget"
+          }
+        }
+      }
+    },
     "Discard Changes" : {
       "comment" : "Wake On Lan form",
       "localizations" : {
@@ -1755,53 +1802,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Grön"
-          }
-        }
-      }
-    },
-    "Hide tools you don't use and move your favorites to the top" : {
-      "comment" : "WhatsNewKit item",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Verstecke Tools, die du nicht brauchst, und schieb deine Favoriten nach oben"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Oculta las herramientas que no uses y mueve tus favoritas arriba"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Masquez les outils que vous n’utilisez pas et placez vos favoris en haut"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Verberg tools die je niet gebruikt en zet je favorieten bovenaan"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ukryj nieużywane narzędzia i przenieś ulubione na górę"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Oculte as ferramentas que você não usa e coloque suas favoritas no topo"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Göm verktyg du inte använder och flytta dina favoriter överst"
           }
         }
       }
@@ -3075,6 +3075,53 @@
         }
       }
     },
+    "Roll a die right on your Home Screen" : {
+      "comment" : "WhatsNewKit item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Würfle direkt auf deinem Home-Bildschirm"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tira un dado directamente en tu pantalla de inicio"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lancez un dé directement depuis votre écran d’accueil"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gooi een dobbelsteen direct op je beginscherm"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rzucaj kością prosto na ekranie początkowym"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Role um dado direto na sua Tela de Início"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kasta en tärning direkt på hemskärmen"
+          }
+        }
+      }
+    },
     "Roll a die right on your Home Screen. Tap it to roll again." : {
       "comment" : "Dice widget: description in the widget gallery",
       "localizations" : {
@@ -3118,6 +3165,100 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kasta en tärning direkt på hemskärmen. Tryck på den för att kasta igen."
+          }
+        }
+      }
+    },
+    "Scan Barcode" : {
+      "comment" : "Barcode Scanner: accessibility label of the toolbar button that opens the camera to scan a code",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Barcode scannen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escanear código de barras"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scanner un code-barres"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Streepjescode scannen"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skanuj kod kreskowy"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escanear código de barras"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skanna streckkod"
+          }
+        }
+      }
+    },
+    "Search your tools, hide the ones you don't use and move your favorites to the top" : {
+      "comment" : "WhatsNewKit item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durchsuche deine Tools, verstecke die, die du nicht brauchst, und schieb deine Favoriten nach oben"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Busca tus herramientas, oculta las que no uses y mueve tus favoritas arriba"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recherchez vos outils, masquez ceux que vous n’utilisez pas et placez vos favoris en haut"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Doorzoek je tools, verberg tools die je niet gebruikt en zet je favorieten bovenaan"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyszukuj narzędzia, ukryj nieużywane i przenieś ulubione na górę"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pesquise suas ferramentas, oculte as que você não usa e coloque suas favoritas no topo"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sök bland dina verktyg, göm dem du inte använder och flytta dina favoriter överst"
           }
         }
       }
@@ -3541,6 +3682,53 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Installationsprofilen för det här typsnittet kunde inte skapas."
+          }
+        }
+      }
+    },
+    "This device has no flashlight." : {
+      "comment" : "Pulsing Flashlight: shown under the Enabled switch on devices without a flashlight, e.g. iPads",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieses Gerät hat keine Taschenlampe."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este dispositivo no tiene linterna."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cet appareil n’a pas de lampe torche."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dit apparaat heeft geen zaklamp."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To urządzenie nie ma latarki."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este dispositivo não tem lanterna."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Den här enheten har ingen ficklampa."
           }
         }
       }
@@ -4293,6 +4481,53 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Giltig %@-typsnittsfil"
+          }
+        }
+      }
+    },
+    "Wake-Up Sent" : {
+      "comment" : "Wake On Lan: toast after the wake-up packet was sent to a device",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weckbefehl gesendet"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Señal de encendido enviada"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signal de réveil envoyé"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wekpakket verzonden"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wysłano sygnał wybudzenia"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sinal para ligar enviado"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Väckningssignal skickad"
           }
         }
       }

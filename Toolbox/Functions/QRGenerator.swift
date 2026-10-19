@@ -73,6 +73,8 @@ struct QRGenerator: View {
             return link.isEmpty ? nil : link
         case .wifi:
             guard !wifiSSID.isEmpty else { return nil }
+            // An empty password would make phones try to join with no password and fail
+            guard wifiTYPE == .nopassword || !wifiPASSWORD.isEmpty else { return nil }
             var payload = "WIFI:T:\(wifiTYPE.rawValue);S:\(QRGenerator.escape(wifiSSID));"
             if wifiTYPE != .nopassword {
                 payload += "P:\(QRGenerator.escape(wifiPASSWORD));"
@@ -129,12 +131,14 @@ struct QRGenerator: View {
                             .multilineTextAlignment(.trailing)
                             .disableAutocorrection(true)
                     }
-                    HStack {
-                        Text("Password")
-                        SecureField("12345678", text: $wifiPASSWORD)
-                            .multilineTextAlignment(.trailing)
-                            .submitLabel(.done)
-                            .disableAutocorrection(true)
+                    if wifiTYPE != .nopassword {
+                        HStack {
+                            Text("Password")
+                            SecureField("12345678", text: $wifiPASSWORD)
+                                .multilineTextAlignment(.trailing)
+                                .submitLabel(.done)
+                                .disableAutocorrection(true)
+                        }
                     }
                     Picker("Encryption", selection: $wifiTYPE){
                         Text("WEP").tag(wifiEnc.wep)

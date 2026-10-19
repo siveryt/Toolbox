@@ -3,5 +3,6 @@ Toolbox 1.4 llega a lo grande:
 • Diez iconos de app para elegir, entre ellos un icono Pride
 • Nuevas herramientas: Distancia, Metrónomo, Decibelímetro, Linterna estroboscópica, Instalador de tipos de letra, Texto en movimiento y Wake On Lan
 • App del Apple Watch rediseñada, con Números romanos y control con la Digital Crown
-• Oculta las herramientas que no usas y coloca tus favoritas arriba
+• Busca entre tus herramientas, oculta las que no usas y coloca tus favoritas arriba
+• Widget de dados: tira un dado directamente en tu pantalla de inicio
 • Ahora en inglés, alemán, español, francés, neerlandés, polaco, portugués y sueco

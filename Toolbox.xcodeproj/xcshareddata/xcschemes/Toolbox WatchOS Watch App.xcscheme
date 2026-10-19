@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5E1383DB2915974E00CF4FAB"
-               BuildableName = "Toolbox.app"
-               BlueprintName = "Toolbox Watch Watch App"
+               BlueprintIdentifier = "5EE65DEE2A8575FE0061120B"
+               BuildableName = "Toolbox WatchOS Watch App.app"
+               BlueprintName = "Toolbox WatchOS Watch App"
                ReferencedContainer = "container:Toolbox.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,9 +44,8 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5E1383DB2915974E00CF4FAB"
-            BuildableName = "Toolbox.app"
-            BlueprintName = "Toolbox Watch Watch App"
+            BlueprintIdentifier = "5EE65DEE2A8575FE0061120B"
+            BuildableName = "Toolbox WatchOS Watch App.app"
             ReferencedContainer = "container:Toolbox.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -61,9 +60,8 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5E1383DB2915974E00CF4FAB"
-            BuildableName = "Toolbox.app"
-            BlueprintName = "Toolbox Watch Watch App"
+            BlueprintIdentifier = "5EE65DEE2A8575FE0061120B"
+            BuildableName = "Toolbox WatchOS Watch App.app"
             ReferencedContainer = "container:Toolbox.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

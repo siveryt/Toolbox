@@ -7,6 +7,8 @@
 
 import SwiftUI
 import SwiftData
+import Haptica
+import ToastSwiftUI
 
 struct Wake_On_Lan: View {
     enum Field: CaseIterable {
@@ -20,6 +22,7 @@ struct Wake_On_Lan: View {
     @State var wakeAlertPresented = false
     @State var wakeErrorMessage = ""
     @State var wakeErrorPresented = false
+    @State var wakeSentToastPresented = false
     @State var sheetDisplayed = false
     @State var editing = false
 
@@ -123,6 +126,7 @@ struct Wake_On_Lan: View {
         } message: {
             Text(wakeErrorMessage)
         }
+        .toast(isPresenting: $wakeSentToastPresented, message: NSLocalizedString("Wake-Up Sent", comment: "Wake On Lan: toast after the wake-up packet was sent to a device"), icon: .custom(Image(systemName: "power")), autoDismiss: .auto)
     }
 
     // MARK: - Validation
@@ -216,6 +220,10 @@ struct Wake_On_Lan: View {
             try WakeOnLan.sendMagicPacket(mac: mac, to: address, port: port)
             withAnimation {
                 device.lastUsed = Date()
+            }
+            Haptic.notification(.success).generate()
+            withAnimation {
+                wakeSentToastPresented = true
             }
         } catch {
             wakeErrorMessage = error.localizedDescription

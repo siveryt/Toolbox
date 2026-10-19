@@ -223,13 +223,11 @@ struct DiceView: View {
         let sidesBinding = Binding<Int>(get: {
             self.sides
         }, set: {
-            roll(max: $0, instant: true)
-            
-            self.sides = $0
+            // Unlock first: the old faces don't exist on the new die, so every die has to be rolled again
             self.kept = []
-            
-            
-            
+            roll(max: $0, instant: true)
+
+            self.sides = $0
         })
         
         VStack {
