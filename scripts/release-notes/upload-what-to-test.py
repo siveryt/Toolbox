@@ -5,8 +5,9 @@
 #
 #   upload-what-to-test.py <build number> <notes dir>
 #
-# Reads WhatToTest.<locale>.txt from <notes dir> (written by generate.sh) and
-# the API key from ASC_KEY_ID, ASC_ISSUER_ID and ASC_KEY_P8 (the .p8 content).
+# Reads WhatToTest.<locale>.txt from <notes dir> (written by generate.sh; en-GB
+# gets the en-US text) and the API key from ASC_KEY_ID, ASC_ISSUER_ID and
+# ASC_KEY_P8 (the .p8 content).
 #
 # A freshly uploaded build only shows up in the API once App Store Connect has
 # started processing it, usually a few minutes after the upload. The script
@@ -24,7 +25,10 @@ import urllib.request
 import jwt  # PyJWT
 
 BUNDLE_ID = "de.sivery.toolbox"
-LOCALES = ["de-DE", "en-US"]
+LOCALES = ["de-DE", "en-US", "en-GB"]
+# Languages without notes of their own, and the language whose notes they reuse
+# (like MIRRORED_LANGUAGES in the Fastfile)
+MIRRORED_LOCALES = {"en-GB": "en-US"}
 API = "https://api.appstoreconnect.apple.com/v1"
 
 # How long to wait for the build to appear in App Store Connect
@@ -109,7 +113,8 @@ def main():
 
     failed = []
     for locale in LOCALES:
-        path = os.path.join(notes_dir, f"WhatToTest.{locale}.txt")
+        source = MIRRORED_LOCALES.get(locale, locale)
+        path = os.path.join(notes_dir, f"WhatToTest.{source}.txt")
         if not os.path.isfile(path):
             print(f"::warning::{path} is missing, skipping {locale}")
             continue
