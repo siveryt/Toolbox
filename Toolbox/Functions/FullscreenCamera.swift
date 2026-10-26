@@ -22,7 +22,7 @@ struct FullscreenCamera: View {
 
     enum CameraState {
         case starting, running, accessDenied, failed
-        /// The simulator has no camera, so it shows a drawn desk (also for the App Store screenshots).
+        /// The simulator has no camera, so it shows a photo of a book (also for the App Store screenshots).
         case demo
     }
 
@@ -260,7 +260,7 @@ private struct CameraPicture: View {
 
     var body: some View {
         if isDemo {
-            DemoDesk()
+            DemoPicture()
                 .scaleEffect(feed.zoom)
                 .clipped()
         } else {
@@ -399,7 +399,7 @@ final class CameraFeed: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, 
         }
     }
 
-    /// Lens buttons for the drawn desk in the simulator, which zooms by scaling.
+    /// Lens buttons for the photo in the simulator, which zooms by scaling.
     func useDemoLenses() {
         zoomRange = 0.5...10
         lensZooms = [0.5, 1, 2]
@@ -536,63 +536,15 @@ extension View {
     }
 }
 
-/// A drawn stand-in for the camera picture in the simulator: a worksheet with a chart on a desk, as seen from above.
-private struct DemoDesk: View {
+/// A stand-in for the camera picture in the simulator: a photo of an open book on a table, as a document camera would see it.
+/// "Sea wave book photograph" by Andrew Neel, CC0, https://commons.wikimedia.org/wiki/File:Sea_wave_book_photograph_(Unsplash).jpg
+private struct DemoPicture: View {
     var body: some View {
-        GeometryReader { geometry in
-            let width = min(geometry.size.width * 0.78, geometry.size.height * 0.62)
-            ZStack {
-                LinearGradient(colors: [Color(red: 0.55, green: 0.38, blue: 0.24), Color(red: 0.42, green: 0.27, blue: 0.16)], startPoint: .topLeading, endPoint: .bottomTrailing)
-
-                VStack(alignment: .leading, spacing: width * 0.05) {
-                    Text(verbatim: "Q3")
-                        .font(.system(size: width * 0.11, weight: .bold, design: .rounded))
-                        .foregroundStyle(Color(white: 0.2))
-                    VStack(alignment: .leading, spacing: width * 0.025) {
-                        ForEach([0.9, 0.75, 0.82, 0.5], id: \.self) { length in
-                            Capsule()
-                                .fill(Color(white: 0.8))
-                                .frame(width: width * 0.8 * length, height: width * 0.025)
-                        }
-                    }
-                    HStack(alignment: .bottom, spacing: width * 0.05) {
-                        ForEach(Array([(0.35, Color.blue), (0.55, .teal), (0.45, .orange), (0.8, .pink), (0.65, .purple)].enumerated()), id: \.offset) { _, bar in
-                            RoundedRectangle(cornerRadius: width * 0.015)
-                                .fill(bar.1.gradient)
-                                .frame(height: width * 0.6 * bar.0)
-                        }
-                    }
-                    .frame(height: width * 0.6, alignment: .bottom)
-                    .overlay(alignment: .bottom) {
-                        Rectangle().fill(Color(white: 0.3)).frame(height: 2).offset(y: 4)
-                    }
-                    VStack(alignment: .leading, spacing: width * 0.025) {
-                        ForEach([0.85, 0.6], id: \.self) { length in
-                            Capsule()
-                                .fill(Color(white: 0.8))
-                                .frame(width: width * 0.8 * length, height: width * 0.025)
-                        }
-                    }
-                }
-                .padding(width * 0.09)
-                .frame(width: width, height: width * 1.41, alignment: .top)
-                .background(
-                    RoundedRectangle(cornerRadius: 4)
-                        .fill(Color(white: 0.98))
-                        .shadow(color: .black.opacity(0.35), radius: 18, y: 10)
-                )
-                .rotationEffect(.degrees(-3))
-
-                Capsule()
-                    .fill(LinearGradient(colors: [Color(white: 0.15), Color(white: 0.35)], startPoint: .leading, endPoint: .trailing))
-                    .frame(width: width * 0.05, height: width * 0.75)
-                    .shadow(color: .black.opacity(0.4), radius: 6, x: 4, y: 6)
-                    .rotationEffect(.degrees(28))
-                    .offset(x: width * 0.55, y: width * 0.45)
-            }
-            .frame(width: geometry.size.width, height: geometry.size.height)
-        }
-        .accessibilityHidden(true)
+        Image("Fullscreen Camera Demo")
+            .resizable()
+            .scaledToFit()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .accessibilityHidden(true)
     }
 }
 
