@@ -29,8 +29,10 @@ final class ScreenshotTests: XCTestCase {
         let app = XCUIApplication()
         setupSnapshot(app)
         // Launch arguments win over stored defaults: default order, nothing hidden,
-        // and a launch count that never reaches the tip / review-prompt thresholds.
+        // a launch count that never reaches the tip / review-prompt thresholds,
+        // and a single unlocked six-sided die whatever the simulator was last left at.
         app.launchArguments += ["-cvLoaded", "0", "-cvOrder", "[0]", "-cvHidden", "[]"]
+        app.launchArguments += ["-diceCount", "1", "-diceSides", "6", "-diceKept", "[]"]
         app.launch()
 
         for screen in screens {
