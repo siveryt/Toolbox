@@ -727,6 +727,53 @@
         }
       }
     },
+    "Zoom" : {
+      "comment" : "Fullscreen Camera: accessibility label of the lens buttons (0.5×, 1×, 2×, …)",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zoom"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zoom"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zoom"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zoom"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Powiększenie"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zoom"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zoom"
+          }
+        }
+      }
+    },
     "• Enter your device passcode if requested" : {
       "comment" : "A note within the \"Step 1: Install the Profile\" section, instructing the user to enter their device passcode if prompted.",
       "localizations" : {
@@ -2703,6 +2750,53 @@
         }
       }
     },
+    "Allow camera access to show the camera full screen and on a connected display." : {
+      "comment" : "Fullscreen Camera: message when camera access is denied",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erlaube den Kamerazugriff, um die Kamera im Vollbild und auf einem verbundenen Bildschirm zu zeigen."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permite el acceso a la cámara para mostrarla a pantalla completa y en una pantalla conectada."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autorisez l’accès à l’appareil photo pour afficher la caméra en plein écran et sur un écran connecté."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geef toegang tot de camera om het camerabeeld schermvullend en op een verbonden scherm te tonen."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zezwól na dostęp do aparatu, aby wyświetlać obraz z kamery na pełnym ekranie i na podłączonym ekranie."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permita o acesso à câmera para mostrá-la em tela cheia e em uma tela conectada."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ge åtkomst till kameran för att visa kamerabilden i helskärm och på en ansluten skärm."
+          }
+        }
+      }
+    },
     "Allowed" : {
       "comment" : "Permission state",
       "localizations" : {
@@ -3785,7 +3879,7 @@
       }
     },
     "Camera Access Needed" : {
-      "comment" : "Scrolling Text: alert title",
+      "comment" : "Fullscreen Camera: title when camera access is denied",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -3879,7 +3973,7 @@
       }
     },
     "Camera Unavailable" : {
-      "comment" : "Barcode Scanner: title when the camera can't be used, e.g. on a device without a camera",
+      "comment" : "Barcode Scanner: title when the camera can't be used, e.g. on a device without a camera\nFullscreen Camera: title when the camera can't be started",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -4391,6 +4485,53 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Färgkoder"
+          }
+        }
+      }
+    },
+    "Connect a display with AirPlay or a cable to show the camera on it." : {
+      "comment" : "Fullscreen Camera: hint while no display is connected",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verbinde einen Bildschirm per AirPlay oder Kabel, um die Kamera darauf zu zeigen."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conecta una pantalla con AirPlay o un cable para mostrar la cámara en ella."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Connectez un écran avec AirPlay ou un câble pour y afficher la caméra."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verbind een scherm via AirPlay of een kabel om de camera erop te tonen."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podłącz ekran przez AirPlay lub kabel, aby wyświetlić na nim obraz z kamery."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conecte uma tela com AirPlay ou um cabo para mostrar a câmera nela."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anslut en skärm med AirPlay eller en kabel för att visa kameran på den."
           }
         }
       }
@@ -7356,6 +7497,53 @@
         }
       }
     },
+    "Freeze" : {
+      "comment" : "Fullscreen Camera: button that holds the current picture on the display",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einfrieren"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Congelar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Figer"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bevriezen"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zamroź"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Congelar"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frys"
+          }
+        }
+      }
+    },
     "From" : {
       "comment" : "Random Number tool: lower bound of the range",
       "localizations" : {
@@ -7399,6 +7587,53 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Från"
+          }
+        }
+      }
+    },
+    "Fullscreen Camera" : {
+      "comment" : "Menu item\nWhatsNewKit item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vollbildkamera"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cámara a pantalla completa"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caméra plein écran"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schermvullende camera"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kamera pełnoekranowa"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Câmera em tela cheia"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Helskärmskamera"
           }
         }
       }
@@ -9849,6 +10084,53 @@
         }
       }
     },
+    "Mirror your screen with AirPlay or a cable, then tap the picture to hide the controls." : {
+      "comment" : "Fullscreen Camera: hint on iOS versions that can only mirror the screen to a display",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spiegle deinen Bildschirm per AirPlay oder Kabel und tippe dann auf das Bild, um die Bedienelemente auszublenden."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duplica tu pantalla con AirPlay o un cable y toca la imagen para ocultar los controles."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recopiez votre écran avec AirPlay ou un câble, puis touchez l’image pour masquer les commandes."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spiegel je scherm via AirPlay of een kabel en tik dan op het beeld om de bediening te verbergen."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sklonuj ekran przez AirPlay lub kabel, a następnie stuknij obraz, aby ukryć elementy sterujące."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Espelhe sua tela com AirPlay ou um cabo e toque na imagem para ocultar os controles."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spegla skärmen med AirPlay eller en kabel och tryck sedan på bilden för att dölja reglagen."
+          }
+        }
+      }
+    },
     "MMXXII" : {
       "localizations" : {
         "de" : {
@@ -10080,6 +10362,53 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Flytta runt verktyg"
+          }
+        }
+      }
+    },
+    "Mute" : {
+      "comment" : "Fullscreen Camera: button that turns the display black, like the mute button of a projector",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ausblenden"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ocultar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Masquer"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verbergen"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ukryj"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ocultar"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dölj"
           }
         }
       }
@@ -11072,7 +11401,7 @@
       }
     },
     "Open Settings" : {
-      "comment" : "Button that opens the app's page in the Settings app",
+      "comment" : "Button that opens the app's page in the Settings app\nFullscreen Camera: button that opens the app's settings to allow camera access",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -13706,6 +14035,53 @@
         }
       }
     },
+    "Show the camera full screen on a TV or projector, freeze or mute the picture" : {
+      "comment" : "WhatsNewKit item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeige die Kamera im Vollbild auf einem Fernseher oder Beamer, friere das Bild ein oder blende es aus"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muestra la cámara a pantalla completa en un televisor o proyector, y congela u oculta la imagen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Affichez la caméra en plein écran sur une TV ou un projecteur, figez ou masquez l’image"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toon de camera schermvullend op een tv of beamer, en bevries of verberg het beeld"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyświetlaj obraz z kamery na pełnym ekranie telewizora lub projektora, zamrażaj go lub ukrywaj"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostre a câmera em tela cheia numa TV ou projetor, e congele ou oculte a imagem"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visa kameran i helskärm på en tv eller projektor, och frys eller dölj bilden"
+          }
+        }
+      }
+    },
     "Show UTC" : {
       "comment" : "Live Clock setting",
       "localizations" : {
@@ -13749,6 +14125,53 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Visa UTC"
+          }
+        }
+      }
+    },
+    "Showing the camera on the connected display." : {
+      "comment" : "Fullscreen Camera: status while a connected display shows the camera",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Kamera wird auf dem verbundenen Bildschirm gezeigt."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrando la cámara en la pantalla conectada."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La caméra est affichée sur l’écran connecté."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De camera wordt op het verbonden scherm getoond."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obraz z kamery jest wyświetlany na podłączonym ekranie."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrando a câmera na tela conectada."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kameran visas på den anslutna skärmen."
           }
         }
       }
@@ -14647,6 +15070,53 @@
         }
       }
     },
+    "Switch" : {
+      "comment" : "Fullscreen Camera: button that switches between the back and the front camera",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wechseln"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cambiar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Changer"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wisselen"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przełącz"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alternar"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Byt"
+          }
+        }
+      }
+    },
     "Tap %@ to scan again. If nothing shows up, check that Toolbox can access your local network in Settings." : {
       "comment" : "LAN Scanner empty state, %@ is the reload symbol",
       "localizations" : {
@@ -15301,6 +15771,147 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kameran kunde inte startas, så texten kan inte visas på den bakre skärmen just nu."
+          }
+        }
+      }
+    },
+    "The camera couldn't be started. It may be in use by another app." : {
+      "comment" : "Fullscreen Camera: message when the camera can't be started",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Kamera konnte nicht gestartet werden. Vielleicht wird sie gerade von einer anderen App verwendet."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudo iniciar la cámara. Puede que otra app la esté usando."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible de démarrer la caméra. Elle est peut-être utilisée par une autre app."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De camera kon niet worden gestart. Misschien gebruikt een andere app hem."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie udało się uruchomić kamery. Być może używa jej inna aplikacja."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não foi possível iniciar a câmera. Talvez outro app a esteja usando."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kameran kunde inte startas. Den kanske används av en annan app."
+          }
+        }
+      }
+    },
+    "The display is muted and shows a black screen." : {
+      "comment" : "Fullscreen Camera: status while a connected display is muted",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Bildschirm ist ausgeblendet und zeigt ein schwarzes Bild."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La pantalla está oculta y se muestra en negro."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’écran est masqué et reste noir."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Het scherm is verborgen en blijft zwart."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekran jest ukryty i pokazuje czarny obraz."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A tela está oculta e mostra uma imagem preta."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skärmen är dold och visar en svart bild."
+          }
+        }
+      }
+    },
+    "The display shows the frozen picture." : {
+      "comment" : "Fullscreen Camera: status while the picture on a connected display is frozen",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Bildschirm zeigt das eingefrorene Bild."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La pantalla muestra la imagen congelada."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’écran affiche l’image figée."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Het scherm toont het bevroren beeld."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekran pokazuje zamrożony obraz."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A tela mostra a imagem congelada."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skärmen visar den frysta bilden."
           }
         }
       }
