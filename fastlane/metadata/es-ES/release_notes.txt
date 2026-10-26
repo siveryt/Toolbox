@@ -1,7 +1,7 @@
 Toolbox 1.4 llega a lo grande:
 • Nuevo aspecto para iOS 26 con Liquid Glass y un icono de app renovado
 • Diez iconos de app para elegir, entre ellos un icono Pride
-• Nuevas herramientas: Distancia, Metrónomo, Decibelímetro, Linterna estroboscópica, Instalador de tipos de letra, Texto en movimiento y Wake On Lan
+• Nuevas herramientas: Cámara a pantalla completa, Distancia, Metrónomo, Decibelímetro, Linterna estroboscópica, Instalador de tipos de letra, Texto en movimiento y Wake On Lan
 • App del Apple Watch rediseñada, con Números romanos y control con la Digital Crown
 • Busca entre tus herramientas, oculta las que no usas y coloca tus favoritas arriba
 • Widget de dados: tira un dado directamente en tu pantalla de inicio

@@ -13,6 +13,7 @@ VERKTYG
 • Plats: Koordinater (decimal, DMS och Maidenhead), Hastighet och Avstånd
 • Ljud: Metronom och Decibelmätare
 • Blinkande ficklampa, Rullande text och Typsnittsinstallerare
+• Helskärmskamera – visa kameran på en tv eller projektor, och frys eller dölj bilden
 
 GÖR DEN TILL DIN
 Göm verktygen du inte använder, flytta dina favoriter överst och välj en av tio appsymboler, bland annat en Pride-symbol.

@@ -19,7 +19,8 @@ final class ScreenshotTests: XCTestCase {
         ("04Roman", "hexagon"),
         ("05DateDifference", "calendar"),
         ("06Metronome", "metronome"),
-        ("07More", "menu.end"),
+        ("07Camera", "camera.viewfinder"),
+        ("08More", "menu.end"),
     ]
 
     @MainActor

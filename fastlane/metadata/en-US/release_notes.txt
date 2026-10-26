@@ -1,7 +1,7 @@
 Toolbox 1.4 is a big one:
 • A new look for iOS 26 with Liquid Glass and a fresh app icon
 • Ten app icons to choose from, including a Pride icon
-• New tools: Distance, Metronome, Decibel Meter, Pulsing Flashlight, Font Installer, Scrolling Text and Wake On Lan
+• New tools: Fullscreen Camera, Distance, Metronome, Decibel Meter, Pulsing Flashlight, Font Installer, Scrolling Text and Wake On Lan
 • A redesigned Apple Watch app with Roman Numbers and Digital Crown controls
 • Search your tools, hide the ones you don't use and move your favorites to the top
 • A dice widget: roll a die right on your Home Screen

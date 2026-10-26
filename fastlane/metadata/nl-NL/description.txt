@@ -13,6 +13,7 @@ TOOLS
 • Locatie: Coördinaten (decimaal, DMS en Maidenhead), Snelheid en Afstand
 • Geluid: Metronoom en Decibelmeter
 • Pulserende zaklamp, Lichtkrant en Lettertype-installatie
+• Schermvullende camera – toon je camera op een tv of beamer, en bevries of verberg het beeld
 
 HELEMAAL VAN JOU
 Verberg de tools die je niet gebruikt, zet je favorieten bovenaan en kies een van tien app-symbolen, waaronder een Pride-symbool.

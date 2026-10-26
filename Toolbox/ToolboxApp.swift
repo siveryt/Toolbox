@@ -147,6 +147,14 @@ extension App: WhatsNewCollectionProvider {
                 ),
                 .init(
                     image: .init(
+                        systemName: "camera.viewfinder",
+                        foregroundColor: .accentColor
+                    ),
+                    title: .init(stringLiteral: NSLocalizedString("Fullscreen Camera", comment: "WhatsNewKit item")),
+                    subtitle: .init(stringLiteral: NSLocalizedString("Show the camera full screen on a TV or projector, freeze or mute the picture", comment: "WhatsNewKit item"))
+                ),
+                .init(
+                    image: .init(
                         systemName: "applewatch",
                         foregroundColor: .accentColor
                     ),

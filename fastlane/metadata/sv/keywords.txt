@@ -1,1 +1,1 @@
-tärning,qr-kod,omvandlare,ping,lan-skanner,metronom,decibel,bmi,räknare,romerska siffror,streckkod
+tärning,qr-kod,kamera,ping,lan-skanner,metronom,decibel,bmi,räknare,romerska siffror,streckkod

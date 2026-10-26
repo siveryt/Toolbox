@@ -13,6 +13,7 @@ NARZĘDZIA
 • Lokalizacja: Współrzędne (dziesiętne, DMS i Maidenhead), Prędkość i Odległość
 • Dźwięk: Metronom i Miernik decybeli
 • Pulsująca latarka, Przewijany tekst i Instalator czcionek
+• Kamera pełnoekranowa – wyświetlaj obraz z kamery na telewizorze lub projektorze, zamrażaj go lub ukrywaj
 
 DOPASUJ JĄ DO SIEBIE
 Ukryj narzędzia, z których nie korzystasz, przenieś ulubione na górę i wybierz jedną z dziesięciu ikon aplikacji, w tym ikonę Pride.

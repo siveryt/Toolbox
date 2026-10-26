@@ -1,1 +1,1 @@
-dés,qr code,convertisseur,ping,scanner lan,métronome,imc,compteur,chiffres romains,sonomètre
+dés,qr code,convertisseur,ping,scanner lan,métronome,caméra,compteur,chiffres romains,sonomètre

@@ -13,6 +13,7 @@ TOOLS
 • Standort: Koordinaten (dezimal, DMS und Maidenhead), Geschwindigkeit und Entfernung
 • Ton: Metronom und Dezibelmesser
 • Stroboskop, Lauftext und Fonts Installieren
+• Vollbildkamera – zeig deine Kamera auf einem Fernseher oder Beamer, friere das Bild ein oder blende es aus
 
 MACH SIE ZU DEINER
 Verstecke Tools, die du nicht brauchst, schieb deine Favoriten nach oben und wähle eines von zehn App-Icons, darunter ein Pride-Icon.

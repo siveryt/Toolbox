@@ -58,6 +58,7 @@ struct ContentView: View {
         Tool(view: AnyView(Scrolling_Text()), title: NSLocalizedString("Scrolling Text", comment: "Menu item"), icon: "textformat.abc"),
         Tool(view: AnyView(Wake_On_Lan()), title: NSLocalizedString("Wake On Lan", comment: "Menu item"), icon: "power"),
         Tool(view: AnyView(Distance()), title: NSLocalizedString("Distance", comment: "Menu item"), icon: "ruler"),
+        Tool(view: AnyView(FullscreenCamera()), title: NSLocalizedString("Fullscreen Camera", comment: "Menu item"), icon: "camera.viewfinder"),
     ]
     
     /// The saved order of indices into `toollist`, without duplicates or indices that no longer exist, followed by tools that are new since it was saved.

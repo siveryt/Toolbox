@@ -13,6 +13,7 @@ TOOLS
 • Location: Coordinates (decimal, DMS and Maidenhead), Speed and Distance
 • Sound: Metronome and Decibel Meter
 • Pulsing Flashlight, Scrolling Text and Font Installer
+• Fullscreen Camera – show your camera on a TV or projector, freeze or mute the picture
 
 MAKE IT YOURS
 Hide the tools you don't use, move your favorites to the top and pick one of ten app icons, including a Pride icon.

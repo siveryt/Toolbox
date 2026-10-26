@@ -13,6 +13,7 @@ FERRAMENTAS
 • Localização: Coordenadas (decimal, GMS e Maidenhead), Velocidade e Distância
 • Som: Metrônomo e Decibelímetro
 • Lanterna pulsante, Texto rolante e Instalador de fontes
+• Câmera em tela cheia – mostre sua câmera numa TV ou projetor, e congele ou oculte a imagem
 
 DO SEU JEITO
 Oculte as ferramentas que você não usa, leve suas favoritas para o topo e escolha um entre dez ícones do app, incluindo um ícone Pride.

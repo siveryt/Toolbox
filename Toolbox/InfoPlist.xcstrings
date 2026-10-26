@@ -118,49 +118,49 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Toolbox braucht Zugriff auf deine Kamera, um Barcodes zu lesen und Laufschrift auf der Rückseite anzuzeigen"
+            "value" : "Toolbox braucht Zugriff auf deine Kamera, um Barcodes zu lesen, die Kamera im Vollbild und auf einem verbundenen Bildschirm zu zeigen und Laufschrift auf der Rückseite anzuzeigen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Toolbox needs access to the camera to read barcodes and to show scrolling text on the back display."
+            "value" : "Toolbox needs access to the camera to read barcodes, to show the camera full screen and on a connected display, and to show scrolling text on the back display."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Toolbox necesita acceder a la cámara para leer códigos de barras y mostrar texto en movimiento en la pantalla trasera."
+            "value" : "Toolbox necesita acceder a la cámara para leer códigos de barras, mostrar la cámara a pantalla completa y en una pantalla conectada, y mostrar texto en movimiento en la pantalla trasera."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Toolbox a besoin d’accéder à l’appareil photo pour lire les codes-barres et afficher du texte défilant sur l’écran arrière."
+            "value" : "Toolbox a besoin d’accéder à l’appareil photo pour lire les codes-barres, afficher la caméra en plein écran et sur un écran connecté, et afficher du texte défilant sur l’écran arrière."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Toolbox heeft toegang tot de camera nodig om streepjescodes te lezen en lichtkranttekst op het achterscherm te tonen."
+            "value" : "Toolbox heeft toegang tot de camera nodig om streepjescodes te lezen, het camerabeeld schermvullend en op een verbonden scherm te tonen en lichtkranttekst op het achterscherm te tonen."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Toolbox potrzebuje dostępu do aparatu, aby odczytywać kody kreskowe i wyświetlać przewijany tekst na tylnym ekranie."
+            "value" : "Toolbox potrzebuje dostępu do aparatu, aby odczytywać kody kreskowe, wyświetlać obraz z kamery na pełnym ekranie i na podłączonym ekranie oraz wyświetlać przewijany tekst na tylnym ekranie."
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "O Toolbox precisa acessar a câmera para ler códigos de barras e mostrar texto rolante na tela traseira."
+            "value" : "O Toolbox precisa acessar a câmera para ler códigos de barras, mostrar a câmera em tela cheia e em uma tela conectada, e mostrar texto rolante na tela traseira."
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Toolbox behöver åtkomst till kameran för att läsa streckkoder och visa rullande text på den bakre skärmen."
+            "value" : "Toolbox behöver åtkomst till kameran för att läsa streckkoder, visa kamerabilden i helskärm och på en ansluten skärm och visa rullande text på den bakre skärmen."
           }
         }
       }

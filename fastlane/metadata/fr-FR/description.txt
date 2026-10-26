@@ -13,6 +13,7 @@ OUTILS
 • Position : Coordonnées (décimales, DMS et Maidenhead), Vitesse et Distance
 • Son : Métronome et Sonomètre
 • Lampe stroboscopique, Texte défilant et Installateur de polices
+• Caméra plein écran – affichez votre caméra sur une TV ou un projecteur, figez ou masquez l’image
 
 À VOTRE IMAGE
 Masquez les outils que vous n’utilisez pas, placez vos favoris en haut et choisissez parmi dix icônes d’app, dont une icône Pride.

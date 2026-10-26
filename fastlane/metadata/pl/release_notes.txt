@@ -1,7 +1,7 @@
 Toolbox 1.4 to duża aktualizacja:
 • Nowy wygląd dla iOS 26 z Liquid Glass i świeżą ikoną aplikacji
 • Dziesięć ikon aplikacji do wyboru, w tym ikona Pride
-• Nowe narzędzia: Odległość, Metronom, Miernik decybeli, Pulsująca latarka, Instalator czcionek, Przewijany tekst i Wake On Lan
+• Nowe narzędzia: Kamera pełnoekranowa, Odległość, Metronom, Miernik decybeli, Pulsująca latarka, Instalator czcionek, Przewijany tekst i Wake On Lan
 • Odświeżona aplikacja na Apple Watch z Liczbami rzymskimi i obsługą koronką Digital Crown
 • Wyszukuj narzędzia, ukryj te, z których nie korzystasz, i przenieś ulubione na górę
 • Widżet z kością: rzucaj kością prosto na ekranie początkowym
