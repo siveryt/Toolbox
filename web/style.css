@@ -11,7 +11,8 @@
  *   4. Start page (hero, release notes)
  *   5. Tool list (start page)
  *   6. Text pages (contribution, legal, 404 with its die)
- *   7. Small screens
+ *   7. Tool pages (one page per tool, linked from "What's inside")
+ *   8. Small screens
  */
 
 /* 1. Colors and sizes ---------------------------------------------------- */
@@ -676,7 +677,59 @@ details.release summary + * {
 	}
 }
 
-/* 7. Small screens ------------------------------------------------------- */
+/* 7. Tool pages ---------------------------------------------------------- */
+
+/*
+ * A page per tool, for people searching for that one tool: the hero with a
+ * single screenshot, then sections like on the start page. Without a
+ * screenshot the hero is one text column.
+ */
+.hero:not(:has(.tool-screenshot)) {
+	grid-template-columns: minmax(0, var(--content-width));
+	justify-content: center;
+}
+
+.tool-screenshot {
+	justify-self: center;
+	width: min(100%, 18rem);
+	filter: drop-shadow(0 1.5rem 2.5rem rgb(0 0 0 / 0.18));
+}
+
+.breadcrumb {
+	margin: 0 0 0.5rem;
+	color: var(--text-muted);
+	font-size: 0.95rem;
+}
+
+.breadcrumb a {
+	color: inherit;
+}
+
+.tool-page .section ul,
+.tool-page .section ol {
+	padding-left: 1.25rem;
+}
+
+.tool-page .section li + li {
+	margin-top: 0.4rem;
+}
+
+/* Tool names in "What's inside" and "More tools" link to their page */
+.tools h3 a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.tools h3 a::after {
+	content: " →";
+	color: var(--accent-text);
+}
+
+.tools h3 a:hover {
+	color: var(--accent-text);
+}
+
+/* 8. Small screens ------------------------------------------------------- */
 
 @media (max-width: 760px) {
 	.hero {
@@ -684,7 +737,8 @@ details.release summary + * {
 		padding-top: 1.5rem;
 	}
 
-	.phone {
+	.phone,
+	.tool-screenshot {
 		width: min(70%, 15rem);
 		grid-row: 2;
 	}
