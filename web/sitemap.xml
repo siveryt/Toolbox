@@ -3,7 +3,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>https://toolbox.sivery.de/</loc>
-		<lastmod>2026-10-30</lastmod>
+		<lastmod>2026-10-18</lastmod>
 	</url>
 	<url>
 		<loc>https://toolbox.sivery.de/contribution.html</loc>
@@ -12,21 +12,5 @@
 	<url>
 		<loc>https://toolbox.sivery.de/privacy.html</loc>
 		<lastmod>2026-10-26</lastmod>
-	</url>
-	<url>
-		<loc>https://toolbox.sivery.de/dice.html</loc>
-		<lastmod>2026-10-30</lastmod>
-	</url>
-	<url>
-		<loc>https://toolbox.sivery.de/qr-code-generator.html</loc>
-		<lastmod>2026-10-30</lastmod>
-	</url>
-	<url>
-		<loc>https://toolbox.sivery.de/barcode-scanner.html</loc>
-		<lastmod>2026-10-30</lastmod>
-	</url>
-	<url>
-		<loc>https://toolbox.sivery.de/lan-scanner.html</loc>
-		<lastmod>2026-10-30</lastmod>
 	</url>
 </urlset>
