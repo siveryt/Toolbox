@@ -12623,49 +12623,49 @@
         }
       }
     },
-    "Redesigned for iOS 26 with Liquid Glass and a fresh app icon" : {
+    "Redesigned with Liquid Glass and a fresh app icon" : {
       "comment" : "WhatsNewKit item",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Neu gestaltet für iOS 26 mit Liquid Glass und einem frischen App-Icon"
+            "state" : "new",
+            "value" : "Redesigned with Liquid Glass and a fresh app icon"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rediseñada para iOS 26 con Liquid Glass y un nuevo icono de app"
+            "state" : "new",
+            "value" : "Redesigned with Liquid Glass and a fresh app icon"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Repensée pour iOS 26 avec Liquid Glass et une nouvelle icône d’app"
+            "state" : "new",
+            "value" : "Redesigned with Liquid Glass and a fresh app icon"
           }
         },
         "nl" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vernieuwd voor iOS 26 met Liquid Glass en een fris app-symbool"
+            "state" : "new",
+            "value" : "Redesigned with Liquid Glass and a fresh app icon"
           }
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nowy wygląd dla iOS 26 z Liquid Glass i świeżą ikoną aplikacji"
+            "state" : "new",
+            "value" : "Redesigned with Liquid Glass and a fresh app icon"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Redesenhado para o iOS 26 com Liquid Glass e um novo ícone do app"
+            "state" : "new",
+            "value" : "Redesigned with Liquid Glass and a fresh app icon"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Omgjord för iOS 26 med Liquid Glass och en ny appsymbol"
+            "state" : "new",
+            "value" : "Redesigned with Liquid Glass and a fresh app icon"
           }
         }
       }
