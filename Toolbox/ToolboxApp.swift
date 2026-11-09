@@ -79,7 +79,7 @@ extension App: WhatsNewCollectionProvider {
                         foregroundColor: .accentColor
                     ),
                     title: .init(stringLiteral: NSLocalizedString("New Look", comment: "WhatsNewKit item")),
-                    subtitle: .init(stringLiteral: NSLocalizedString("Redesigned for iOS 26 with Liquid Glass and a fresh app icon", comment: "WhatsNewKit item"))
+                    subtitle: .init(stringLiteral: NSLocalizedString("Redesigned with Liquid Glass and a fresh app icon", comment: "WhatsNewKit item"))
                 ),
                 .init(
                     image: .init(
