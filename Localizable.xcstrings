@@ -5007,7 +5007,7 @@
       }
     },
     "Copy" : {
-      "comment" : "LAN Scanner: context menu action that copies the IP address of a device",
+      "comment" : "LAN Scanner and Random Number: action that copies a value (an IP address, the drawn number)",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -13899,7 +13899,7 @@
       }
     },
     "Shake or Tap to Get Started" : {
-      "comment" : "Dice and Random Letter: hint before the first roll",
+      "comment" : "Dice, Random Letter and Random Number: hint before the first roll",
       "localizations" : {
         "de" : {
           "stringUnit" : {
