@@ -9760,7 +9760,7 @@
       }
     },
     "Max" : {
-      "comment" : "Ping tool: label of the longest response time",
+      "comment" : "Ping tool: label of the longest response time\nDecibel Meter: label of the loudest level since the start",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -19735,53 +19735,6 @@
         }
       }
     },
-    "The spectrum shows how loud each frequency is right now, the spectrogram shows the frequencies of the last ten seconds, with loud ones brighter." : {
-      "comment" : "Decibel Meter settings: footer explaining the spectrum and spectrogram",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Das Spektrum zeigt, wie laut jede Frequenz gerade ist, das Spektrogramm zeigt die Frequenzen der letzten zehn Sekunden, laute heller."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "El espectro muestra lo fuerte que suena cada frecuencia ahora mismo y el espectrograma muestra las frecuencias de los últimos diez segundos, las fuertes más brillantes."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Le spectre montre le volume de chaque fréquence en ce moment, le spectrogramme montre les fréquences des dix dernières secondes, les plus fortes plus claires."
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Het spectrum toont hoe luid elke frequentie nu is, het spectrogram toont de frequenties van de laatste tien seconden, luide helderder."
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Widmo pokazuje, jak głośna jest teraz każda częstotliwość, a spektrogram pokazuje częstotliwości z ostatnich dziesięciu sekund, głośne jaśniej."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "O espectro mostra o volume de cada frequência agora, o espectrograma mostra as frequências dos últimos dez segundos, as mais altas mais claras."
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Spektrumet visar hur stark varje frekvens är just nu, spektrogrammet visar frekvenserna de senaste tio sekunderna, starka ljusare."
-          }
-        }
-      }
-    },
     "Frequency" : {
       "comment" : "Decibel Meter: label of the frequency axis of the spectrum graph (not shown, used by the chart)",
       "localizations" : {
@@ -19966,6 +19919,194 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Snabb följer förändringar inom 125 ms, Långsam tar medelvärdet över en sekund.\n\nNivån är relativ till det starkaste ljud mikrofonen kan spela in, vilket visas som 100 dB. Den är inte kalibrerad och kan därför skilja sig från en riktig ljudnivåmätare."
+          }
+        }
+      }
+    },
+    "Min, Max and Leq" : {
+      "comment" : "Decibel Meter settings: toggle for the statistics below the level (Leq is the technical term for the average level)",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Min, Max und Leq"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mín., máx. y Leq"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Min, max et Leq"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Min, max en Leq"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Min, maks. i Leq"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mín., máx. e Leq"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Min, max och Leq"
+          }
+        }
+      }
+    },
+    "Reset Statistics" : {
+      "comment" : "Decibel Meter: accessibility label of the button that resets Min, Max and Leq",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statistik zurücksetzen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restablecer estadísticas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réinitialiser les statistiques"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statistieken resetten"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resetuj statystyki"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Redefinir estatísticas"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Återställ statistik"
+          }
+        }
+      }
+    },
+    "Min" : {
+      "comment" : "Decibel Meter: label of the quietest level since the start",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Min"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mín."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Min"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Min"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Min"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mín."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Min"
+          }
+        }
+      }
+    },
+    "The spectrum shows how loud each frequency is right now, the spectrogram shows the frequencies of the last ten seconds, with loud ones brighter. Min and Max are the quietest and loudest level, Leq is the average sound energy, all since you opened the meter or reset them." : {
+      "comment" : "Decibel Meter settings: footer explaining the spectrum, the spectrogram and the statistics",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das Spektrum zeigt, wie laut jede Frequenz gerade ist, das Spektrogramm zeigt die Frequenzen der letzten zehn Sekunden, laute heller. Min und Max sind der leiseste und lauteste Pegel, Leq ist die durchschnittliche Schallenergie, jeweils seit dem Öffnen oder Zurücksetzen."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El espectro muestra lo fuerte que suena cada frecuencia ahora mismo y el espectrograma muestra las frecuencias de los últimos diez segundos, las fuertes más brillantes. Mín. y máx. son el nivel más bajo y más alto, y Leq es la energía sonora media, todo desde que abriste el medidor o lo restableciste."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le spectre montre le volume de chaque fréquence en ce moment, le spectrogramme montre les fréquences des dix dernières secondes, les plus fortes plus claires. Min et max sont le niveau le plus faible et le plus fort, Leq est l’énergie sonore moyenne, depuis l’ouverture du sonomètre ou la dernière réinitialisation."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Het spectrum toont hoe luid elke frequentie nu is, het spectrogram toont de frequenties van de laatste tien seconden, luide helderder. Min en max zijn het zachtste en luidste niveau, Leq is de gemiddelde geluidsenergie, sinds je de meter opende of resette."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widmo pokazuje, jak głośna jest teraz każda częstotliwość, a spektrogram pokazuje częstotliwości z ostatnich dziesięciu sekund, głośne jaśniej. Min i maks. to najcichszy i najgłośniejszy poziom, a Leq to średnia energia dźwięku – od otwarcia miernika lub resetu."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O espectro mostra o volume de cada frequência agora, o espectrograma mostra as frequências dos últimos dez segundos, as mais altas mais claras. Mín. e máx. são o nível mais baixo e mais alto, e Leq é a energia sonora média, desde que você abriu o medidor ou redefiniu."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spektrumet visar hur stark varje frekvens är just nu, spektrogrammet visar frekvenserna de senaste tio sekunderna, starka ljusare. Min och max är den lägsta och högsta nivån, Leq är den genomsnittliga ljudenergin, sedan du öppnade mätaren eller återställde den."
           }
         }
       }

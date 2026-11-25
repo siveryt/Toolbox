@@ -95,11 +95,15 @@ enum DecibelTimeWeighting: String, CaseIterable, Identifiable {
 final class DecibelAnalyzer {
     /// Samples per FFT; at 48 kHz this resolves about 12 Hz.
     static let fftSize = 4096
-    static let bandCount = 64
+    /// A new spectrum every `hopSize` samples, about 47 a second at 48 kHz.
+    static let hopSize = 1024
+    static let bandCount = 128
     static let minFrequency = 20.0
-    /// Ten seconds of levels and spectrogram columns at one per `tickInterval`.
-    static let historyLength = 100
+    /// Seconds shown by the level history and the spectrogram.
+    static let historyDuration = 10.0
+    /// The level and its history are updated this often.
     static let tickInterval = 0.1
+    static let historyLength = Int(historyDuration / tickInterval)
     /// What 0 dBFS (the loudest the microphone can record) is shown as.
     static let displayOffset: Float = 100
     /// The spectrum and spectrogram show band levels in this range (dBFS).
@@ -110,34 +114,64 @@ final class DecibelAnalyzer {
         let level: Float
     }
 
-    var weighting: DecibelWeighting = .a
-    var timeWeighting: DecibelTimeWeighting = .fast
+    /// The band levels of one FFT and when its last sample was recorded (`CACurrentMediaTime`).
+    private struct Spectrum {
+        let id: Int
+        let time: Double
+        let bands: [Float]
+        /// Each band's position in `spectrumRange`, 0...255, for the spectrogram's colors.
+        let shades: [UInt8]
+    }
+
+    var weighting: DecibelWeighting = .a {
+        didSet { if weighting != oldValue { resetStatistics() } }
+    }
+    var timeWeighting: DecibelTimeWeighting = .fast {
+        didSet { if timeWeighting != oldValue { resetStatistics() } }
+    }
 
     /// The current level as shown, about 0...100.
     private(set) var level: Float = 0
     /// The last ten seconds of levels, oldest first.
     private(set) var history: [LevelSample] = []
     private(set) var sampleCount = 0
-    /// The current level of each band in dBFS, lowest frequency first.
-    private(set) var spectrum: [Float] = Array(repeating: DecibelAnalyzer.spectrumRange.lowerBound, count: DecibelAnalyzer.bandCount)
+    /// The quietest and loudest level since the start or the last reset, as shown.
+    private(set) var minimum: Float?
+    private(set) var maximum: Float?
+    /// The equivalent continuous level (Leq): the average sound energy since the start or the last reset, as a level.
+    private(set) var equivalentLevel: Float?
     /// The center frequency of each band.
     private(set) var bandFrequencies: [Double] = DecibelAnalyzer.bandCenters(maxFrequency: 20000)
     /// The highest frequency shown, limited by the sample rate.
     private(set) var maxFrequency = 20000.0
-    /// The spectrum over the last ten seconds: time from left to right, frequency from bottom to top.
-    private(set) var spectrogram: CGImage?
+    private(set) var isRunning = false
 
     // Main thread
     @ObservationIgnored private let engine = AVAudioEngine()
     @ObservationIgnored private var timer: Timer?
-    @ObservationIgnored private var isRunning = false
     /// Mean square of the input per weighting and time weighting, exponentially averaged.
     @ObservationIgnored private var smoothed: [DecibelWeighting: [DecibelTimeWeighting: Float]] = [:]
-    @ObservationIgnored private var spectrogramColumns: [[Float]] = []
+    @ObservationIgnored private var lowestLevel = Float.infinity
+    @ObservationIgnored private var highestLevel = -Float.infinity
+    /// Mean square times seconds, and the seconds measured, for the Leq.
+    @ObservationIgnored private var energy = 0.0
+    @ObservationIgnored private var energyDuration = 0.0
+    /// The spectra of the last ten seconds and a bit, oldest first.
+    @ObservationIgnored private var spectra: [Spectrum] = []
+    @ObservationIgnored private var nextSpectrumID = 0
+    @ObservationIgnored private var hopDuration = Double(DecibelAnalyzer.hopSize) / 48000
+    /// The number of spectra in the spectrogram's ten seconds.
+    @ObservationIgnored private var spectrogramColumns = Int(DecibelAnalyzer.historyDuration * 48000) / DecibelAnalyzer.hopSize
+    /// The spectra arrive in bursts with each audio buffer; showing them this much later lets them move evenly.
+    @ObservationIgnored private var displayDelay = 0.15
+    @ObservationIgnored private var spectrogramCache: (id: Int, image: CGImage)?
+    /// The spectrogram's pixels, kept between frames so only new columns have to be drawn.
+    @ObservationIgnored private var spectrogramPixels: [UInt32] = []
     @ObservationIgnored private var observers: [NSObjectProtocol] = []
 
     // Tap thread (set up before the tap is installed)
     @ObservationIgnored private var samples: [Float] = []
+    @ObservationIgnored private var samplesSinceSpectrum = 0
     @ObservationIgnored private var window: [Float] = []
     @ObservationIgnored private var windowed: [Float] = []
     @ObservationIgnored private var power: [Float] = []
@@ -146,6 +180,8 @@ final class DecibelAnalyzer {
     @ObservationIgnored private var fftSetup: FFTSetup?
     /// Squared gain of each FFT bin per weighting.
     @ObservationIgnored private var binGains: [DecibelWeighting: [Float]] = [:]
+    /// How much of the latest spectrum's energy each weighting lets through.
+    @ObservationIgnored private var weightingRatios: [DecibelWeighting: Float] = [:]
     /// The FFT bins that make up each band.
     @ObservationIgnored private var bandBins: [ClosedRange<Int>] = []
 
@@ -169,7 +205,8 @@ final class DecibelAnalyzer {
             // Without a microphone (e.g. in some simulators) the format is empty, and installing a tap would crash.
             guard format.sampleRate > 0, format.channelCount > 0 else { throw CocoaError(.featureUnsupported) }
             prepare(sampleRate: format.sampleRate)
-            input.installTap(onBus: 0, bufferSize: AVAudioFrameCount(Self.fftSize), format: format) { [weak self] buffer, _ in
+            // iOS may deliver larger buffers than asked for; they are analyzed in hops either way.
+            input.installTap(onBus: 0, bufferSize: AVAudioFrameCount(Self.hopSize), format: format) { [weak self] buffer, _ in
                 self?.analyze(buffer)
             }
             try engine.start()
@@ -192,12 +229,22 @@ final class DecibelAnalyzer {
     }
 
     func stop() {
-        isRunning = false
+        if isRunning { isRunning = false }
         timer?.invalidate()
         timer = nil
         engine.inputNode.removeTap(onBus: 0)
         engine.stop()
         try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
+    }
+
+    func resetStatistics() {
+        lowestLevel = .infinity
+        highestLevel = -.infinity
+        energy = 0
+        energyDuration = 0
+        minimum = nil
+        maximum = nil
+        equivalentLevel = nil
     }
 
     /// Clears the measurements and sets up the FFT for `sampleRate`.
@@ -206,11 +253,15 @@ final class DecibelAnalyzer {
         let half = n / 2
         smoothed = [:]
         history = []
-        spectrogramColumns = []
-        spectrogram = nil
-        spectrum = Array(repeating: Self.spectrumRange.lowerBound, count: Self.bandCount)
+        spectra = []
+        spectrogramCache = nil
+        resetStatistics()
+        hopDuration = Double(Self.hopSize) / sampleRate
+        spectrogramColumns = Int(Self.historyDuration / hopDuration)
 
         samples = Array(repeating: 0, count: n)
+        samplesSinceSpectrum = 0
+        weightingRatios = [:]
         window = vDSP.window(ofType: Float.self, usingSequence: .hanningDenormalized, count: n, isHalfWindow: false)
         windowed = Array(repeating: 0, count: n)
         power = Array(repeating: 0, count: half)
@@ -245,26 +296,55 @@ final class DecibelAnalyzer {
         return (0..<bandCount).map { minFrequency * pow(ratio, Double($0) + 0.5) }
     }
 
+    /// Converts a mean square (1 is full scale) into the level shown.
+    private static func displayLevel(meanSquare: Double) -> Float {
+        max(0, Float(10 * log10(max(meanSquare, 1e-20))) + displayOffset)
+    }
+
     /// Runs on the tap's thread.
     private func analyze(_ buffer: AVAudioPCMBuffer) {
-        guard let data = buffer.floatChannelData?[0], let fftSetup else { return }
+        guard let data = buffer.floatChannelData?[0] else { return }
         let count = Int(buffer.frameLength)
         guard count > 0 else { return }
-        let n = Self.fftSize
-        let half = n / 2
 
         var meanSquare: Float = 0
         vDSP_measqv(data, 1, &meanSquare, vDSP_Length(count))
 
-        // Keep the newest `fftSize` samples.
-        let input = UnsafeBufferPointer(start: data, count: count)
-        if count >= n {
-            samples = Array(input.suffix(n))
-        } else {
-            samples.removeFirst(count)
-            samples.append(contentsOf: input)
+        // An FFT over the newest `fftSize` samples after every `hopSize` samples.
+        var newSpectra: [(bands: [Float], shades: [UInt8], samplesAfter: Int)] = []
+        var position = 0
+        while position < count {
+            let chunk = min(count - position, Self.hopSize - samplesSinceSpectrum)
+            samples.removeFirst(chunk)
+            samples.append(contentsOf: UnsafeBufferPointer(start: data + position, count: chunk))
+            position += chunk
+            samplesSinceSpectrum += chunk
+            if samplesSinceSpectrum == Self.hopSize {
+                samplesSinceSpectrum = 0
+                if let (bands, shades) = transform() {
+                    newSpectra.append((bands, shades, count - position))
+                }
+            }
         }
 
+        // The weightings scale the level by how much they let through of the current spectrum.
+        var weightedMeanSquares: [DecibelWeighting: Float] = [:]
+        for weighting in DecibelWeighting.allCases {
+            weightedMeanSquares[weighting] = meanSquare * (weightingRatios[weighting] ?? 1)
+        }
+
+        let duration = Double(count) / buffer.format.sampleRate
+        let sampleRate = buffer.format.sampleRate
+        DispatchQueue.main.async { [weak self] in
+            self?.receive(meanSquares: weightedMeanSquares, spectra: newSpectra, duration: duration, sampleRate: sampleRate)
+        }
+    }
+
+    /// Runs on the tap's thread: the FFT of `samples`, as band levels in dBFS and their spectrogram shades.
+    private func transform() -> ([Float], [UInt8])? {
+        guard let fftSetup else { return nil }
+        let n = Self.fftSize
+        let half = n / 2
         vDSP.multiply(samples, window, result: &windowed)
         realp.withUnsafeMutableBufferPointer { realp in
             imagp.withUnsafeMutableBufferPointer { imagp in
@@ -281,30 +361,27 @@ final class DecibelAnalyzer {
         // Bin 0 holds DC and the Nyquist frequency together.
         power[0] = 0
 
-        // The weightings scale the level by how much they let through of the current spectrum.
         let total = vDSP.sum(power)
-        var weightedMeanSquares: [DecibelWeighting: Float] = [:]
-        for weighting in DecibelWeighting.allCases {
-            guard weighting != .z, total > 0, let gains = binGains[weighting] else {
-                weightedMeanSquares[weighting] = meanSquare
-                continue
+        if total > 0 {
+            for weighting in DecibelWeighting.allCases {
+                guard weighting != .z, let gains = binGains[weighting] else { continue }
+                weightingRatios[weighting] = vDSP.dot(power, gains) / total
             }
-            weightedMeanSquares[weighting] = meanSquare * vDSP.dot(power, gains) / total
         }
 
         // vDSP's FFT is twice the DFT, and the Hann window halves the amplitude: a full-scale sine reaches (n / 2)².
         let fullScale = Float(half * half)
+        let range = Self.spectrumRange
         let bands = bandBins.map { bins in
             10 * log10(max(power[bins].max() ?? 0, 1e-20) / fullScale)
         }
-
-        let duration = Double(count) / buffer.format.sampleRate
-        DispatchQueue.main.async { [weak self] in
-            self?.receive(meanSquares: weightedMeanSquares, bands: bands, duration: duration)
+        let shades = bands.map { level in
+            UInt8(min(max((level - range.lowerBound) / (range.upperBound - range.lowerBound), 0), 1) * 255)
         }
+        return (bands, shades)
     }
 
-    private func receive(meanSquares: [DecibelWeighting: Float], bands: [Float], duration: Double) {
+    private func receive(meanSquares: [DecibelWeighting: Float], spectra newSpectra: [(bands: [Float], shades: [UInt8], samplesAfter: Int)], duration: Double, sampleRate: Double) {
         guard isRunning else { return }
         for (weighting, meanSquare) in meanSquares {
             for timeWeighting in DecibelTimeWeighting.allCases {
@@ -317,56 +394,108 @@ final class DecibelAnalyzer {
                 smoothed[weighting, default: [:]][timeWeighting] = previous + alpha * (meanSquare - previous)
             }
         }
-        spectrum = bands
+
+        if let current = smoothed[weighting]?[timeWeighting] {
+            let shown = Self.displayLevel(meanSquare: Double(current))
+            lowestLevel = min(lowestLevel, shown)
+            highestLevel = max(highestLevel, shown)
+        }
+        energy += Double(meanSquares[weighting] ?? 0) * duration
+        energyDuration += duration
+
+        let now = CACurrentMediaTime()
+        // Show each buffer's spectra while the next buffer is recorded.
+        displayDelay = max(duration, hopDuration) + 0.05
+        for spectrum in newSpectra {
+            spectra.append(Spectrum(id: nextSpectrumID, time: now - Double(spectrum.samplesAfter) / sampleRate, bands: spectrum.bands, shades: spectrum.shades))
+            nextSpectrumID += 1
+        }
+        let capacity = spectrogramColumns + Int(displayDelay / hopDuration) + 4
+        if spectra.count > capacity {
+            spectra.removeFirst(spectra.count - capacity)
+        }
     }
 
-    /// Updates what is shown, ten times a second.
+    /// Updates the level, its history and the statistics, ten times a second.
     private func tick() {
         guard let meanSquare = smoothed[weighting]?[timeWeighting] else { return }
-        level = max(0, 10 * log10(max(meanSquare, 1e-20)) + Self.displayOffset)
+        level = Self.displayLevel(meanSquare: Double(meanSquare))
         history.append(LevelSample(id: sampleCount, level: level))
         sampleCount += 1
         if history.count > Self.historyLength {
             history.removeFirst(history.count - Self.historyLength)
         }
-        spectrogramColumns.append(spectrum)
-        if spectrogramColumns.count > Self.historyLength {
-            spectrogramColumns.removeFirst(spectrogramColumns.count - Self.historyLength)
-        }
-        spectrogram = makeSpectrogram()
+        if lowestLevel.isFinite { minimum = lowestLevel }
+        if highestLevel.isFinite { maximum = highestLevel }
+        if energyDuration > 0 { equivalentLevel = Self.displayLevel(meanSquare: energy / energyDuration) }
     }
 
-    /// One pixel per band and tick; columns that haven't been measured yet stay transparent.
-    private func makeSpectrogram() -> CGImage? {
-        let width = Self.historyLength
+    /// The moment the spectrum and spectrogram show now.
+    var displayTime: Double {
+        CACurrentMediaTime() - displayDelay
+    }
+
+    /// The band levels (dBFS) at `time`, between the two spectra around it.
+    func spectrum(at time: Double) -> [Float]? {
+        guard let index = spectra.lastIndex(where: { $0.time <= time }) else { return nil }
+        let earlier = spectra[index]
+        guard index + 1 < spectra.count else { return earlier.bands }
+        let later = spectra[index + 1]
+        let t = Float((time - earlier.time) / (later.time - earlier.time))
+        return zip(earlier.bands, later.bands).map { $0 + ($1 - $0) * t }
+    }
+
+    /// The spectrogram up to the last spectrum before `time`, one column per spectrum, with the newest on the right;
+    /// `offset` is how far (in columns, 0...1) it has moved on since that spectrum.
+    func spectrogram(at time: Double) -> (image: CGImage, offset: Double)? {
+        guard let index = spectra.lastIndex(where: { $0.time <= time }) else { return nil }
+        let latest = spectra[index]
+        let offset = min(max((time - latest.time) / hopDuration, 0), 1)
+        if let cache = spectrogramCache, cache.id == latest.id {
+            return (cache.image, offset)
+        }
+        let width = spectrogramColumns
         let height = Self.bandCount
-        var pixels = [UInt8](repeating: 0, count: width * height * 4)
-        let offset = width - spectrogramColumns.count
-        let range = Self.spectrumRange
-        for (index, column) in spectrogramColumns.enumerated() {
-            let x = offset + index
-            for (band, level) in column.enumerated() {
-                let value = min(max((level - range.lowerBound) / (range.upperBound - range.lowerBound), 0), 1)
-                let (r, g, b, a) = Self.color(for: value)
-                let pixel = ((height - 1 - band) * width + x) * 4
-                // Premultiplied alpha
-                pixels[pixel] = UInt8(r * a * 255)
-                pixels[pixel + 1] = UInt8(g * a * 255)
-                pixels[pixel + 2] = UInt8(b * a * 255)
-                pixels[pixel + 3] = UInt8(a * 255)
+        if spectrogramPixels.count != width * height {
+            spectrogramPixels = Array(repeating: 0, count: width * height)
+            spectrogramCache = nil
+        }
+        // Move the columns that are already drawn to the left and draw only the new ones.
+        let newColumns = min(latest.id - (spectrogramCache?.id ?? latest.id - width), width)
+        spectrogramPixels.withUnsafeMutableBufferPointer { pixels in
+            guard let base = pixels.baseAddress else { return }
+            for row in 0..<height {
+                let start = base + row * width
+                if newColumns < width {
+                    start.update(from: start + newColumns, count: width - newColumns)
+                }
+                (start + width - newColumns).update(repeating: 0, count: newColumns)
+            }
+            for column in 0..<newColumns {
+                let spectrumIndex = index - (newColumns - 1 - column)
+                guard spectrumIndex >= 0 else { continue }
+                let x = width - newColumns + column
+                for (band, shade) in spectra[spectrumIndex].shades.enumerated() {
+                    base[(height - 1 - band) * width + x] = Self.colorTable[Int(shade)]
+                }
             }
         }
-        guard let provider = CGDataProvider(data: Data(pixels) as CFData) else { return nil }
-        return CGImage(
-            width: width, height: height, bitsPerComponent: 8, bitsPerPixel: 32, bytesPerRow: width * 4,
-            space: CGColorSpaceCreateDeviceRGB(),
-            bitmapInfo: CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue),
-            provider: provider, decode: nil, shouldInterpolate: true, intent: .defaultIntent
-        )
+        let data = spectrogramPixels.withUnsafeBytes { Data($0) }
+        guard let provider = CGDataProvider(data: data as CFData),
+              let image = CGImage(
+                width: width, height: height, bitsPerComponent: 8, bitsPerPixel: 32, bytesPerRow: width * 4,
+                space: CGColorSpaceCreateDeviceRGB(),
+                bitmapInfo: CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue),
+                provider: provider, decode: nil, shouldInterpolate: true, intent: .defaultIntent
+              ) else { return nil }
+        spectrogramCache = (latest.id, image)
+        return (image, offset)
     }
 
-    /// Quiet is transparent, then purple, red, orange and pale yellow for the loudest.
-    private static func color(for value: Float) -> (Float, Float, Float, Float) {
+    /// The premultiplied RGBA color (R in the lowest byte) of each shade: quiet is transparent, then purple, red, orange
+    /// and pale yellow for the loudest.
+    private static let colorTable: [UInt32] = (0...255).map { shade in
+        let value = Float(shade) / 255
         let stops: [(position: Float, r: Float, g: Float, b: Float)] = [
             (0, 0.25, 0.05, 0.55),
             (0.45, 0.85, 0.15, 0.35),
@@ -374,12 +503,13 @@ final class DecibelAnalyzer {
             (1, 1, 0.95, 0.6),
         ]
         let alpha = min(value * 2, 1)
-        guard let upper = stops.firstIndex(where: { $0.position >= value }), upper > 0 else {
-            return (stops[0].r, stops[0].g, stops[0].b, alpha)
-        }
-        let a = stops[upper - 1], b = stops[upper]
-        let t = (value - a.position) / (b.position - a.position)
-        return (a.r + (b.r - a.r) * t, a.g + (b.g - a.g) * t, a.b + (b.b - a.b) * t, alpha)
+        let upper = stops.firstIndex(where: { $0.position >= value }) ?? stops.count - 1
+        let a = stops[max(upper - 1, 0)], b = stops[max(upper, 1)]
+        let t = min(max((value - a.position) / (b.position - a.position), 0), 1)
+        let red = UInt32((a.r + (b.r - a.r) * t) * alpha * 255)
+        let green = UInt32((a.g + (b.g - a.g) * t) * alpha * 255)
+        let blue = UInt32((a.b + (b.b - a.b) * t) * alpha * 255)
+        return red | green << 8 | blue << 16 | UInt32(alpha * 255) << 24
     }
 }
 
@@ -395,6 +525,7 @@ struct DecibelMeter: View {
     @AppStorage("decibelShowLevelGraph") private var showLevelGraph = true
     @AppStorage("decibelShowSpectrum") private var showSpectrum = false
     @AppStorage("decibelShowSpectrogram") private var showSpectrogram = true
+    @AppStorage("decibelShowStatistics") private var showStatistics = true
 
     var body: some View {
         Group {
@@ -439,7 +570,7 @@ struct DecibelMeter: View {
     private var meter: some View {
         GeometryReader { geometry in
             let graphHeight = graphCount == 0 ? 0 : min(160, geometry.size.height * 0.6 / CGFloat(graphCount))
-            let numberHeight = geometry.size.height - (graphHeight + 16) * CGFloat(graphCount)
+            let numberHeight = geometry.size.height - (graphHeight + 16) * CGFloat(graphCount) - (showStatistics ? 70 : 0)
             VStack(spacing: 16) {
                 Spacer(minLength: 0)
                 VStack(spacing: 4) {
@@ -456,6 +587,9 @@ struct DecibelMeter: View {
                     .font(.footnote)
                     .foregroundStyle(.secondary)
                     .onTapGesture { settingsSheet = true }
+                    if showStatistics {
+                        statistics.padding(.top, 12)
+                    }
                 }
                 .padding(.horizontal)
                 Spacer(minLength: 0)
@@ -537,71 +671,114 @@ struct DecibelMeter: View {
         .accessibilityHidden(true)
     }
 
-    /// How loud each frequency is right now.
+    /// How loud each frequency is right now, redrawn every frame.
     private var spectrumGraph: some View {
-        let range = DecibelAnalyzer.spectrumRange
-        return Chart(analyzer.spectrum.indices, id: \.self) { band in
-            let frequency = analyzer.bandFrequencies[band]
-            // Measured from the bottom of the range, since an area is filled down to 0.
-            let height = min(max(analyzer.spectrum[band], range.lowerBound), range.upperBound) - range.lowerBound
-            AreaMark(
-                x: .value(NSLocalizedString("Frequency", comment: "Decibel Meter: label of the frequency axis of the spectrum graph (not shown, used by the chart)"), frequency),
-                y: .value("Level", height)
-            )
-            .foregroundStyle(LinearGradient(colors: [Color.accentColor.opacity(0.6), Color.accentColor.opacity(0.1)], startPoint: .top, endPoint: .bottom))
-            .interpolationMethod(.monotone)
-            LineMark(
-                x: .value(NSLocalizedString("Frequency", comment: "Decibel Meter: label of the frequency axis of the spectrum graph (not shown, used by the chart)"), frequency),
-                y: .value("Level", height)
-            )
-            .foregroundStyle(Color.accentColor)
-            .lineStyle(StrokeStyle(lineWidth: 1.5, lineCap: .round, lineJoin: .round))
-            .interpolationMethod(.monotone)
-        }
-        .chartXScale(domain: DecibelAnalyzer.minFrequency...analyzer.maxFrequency, type: .log)
-        .chartYScale(domain: 0...(range.upperBound - range.lowerBound))
-        .chartXAxis {
-            AxisMarks(values: [100, 1000, 10000]) { value in
-                AxisGridLine()
-                AxisValueLabel {
-                    if let frequency = value.as(Double.self) {
-                        Text(verbatim: Self.frequencyLabel(frequency))
-                    }
+        TimelineView(.animation(paused: !analyzer.isRunning)) { timeline in
+            Canvas { context, size in
+                _ = timeline.date
+                let range = DecibelAnalyzer.spectrumRange
+                let labelHeight: CGFloat = 18
+                let plotHeight = size.height - labelHeight
+                let logMin = log(DecibelAnalyzer.minFrequency)
+                let logRange = log(analyzer.maxFrequency) - logMin
+                func x(_ frequency: Double) -> CGFloat {
+                    size.width * (log(frequency) - logMin) / logRange
                 }
+
+                for frequency in Self.labeledFrequencies {
+                    var line = Path()
+                    line.move(to: CGPoint(x: x(frequency), y: 0))
+                    line.addLine(to: CGPoint(x: x(frequency), y: plotHeight))
+                    context.stroke(line, with: .color(.secondary.opacity(0.4)), style: StrokeStyle(lineWidth: 0.5, dash: [2, 2]))
+                    context.draw(
+                        Text(verbatim: Self.frequencyLabel(frequency)).font(.caption2).foregroundStyle(.secondary),
+                        at: CGPoint(x: min(max(x(frequency), 22), size.width - 22), y: plotHeight + labelHeight / 2)
+                    )
+                }
+
+                guard let bands = analyzer.spectrum(at: analyzer.displayTime) else { return }
+                var line = Path()
+                for (band, level) in bands.enumerated() {
+                    let value = CGFloat((min(max(level, range.lowerBound), range.upperBound) - range.lowerBound) / (range.upperBound - range.lowerBound))
+                    let point = CGPoint(x: x(analyzer.bandFrequencies[band]), y: plotHeight * (1 - value))
+                    band == 0 ? line.move(to: point) : line.addLine(to: point)
+                }
+                var area = line
+                area.addLine(to: CGPoint(x: x(analyzer.bandFrequencies[bands.count - 1]), y: plotHeight))
+                area.addLine(to: CGPoint(x: x(analyzer.bandFrequencies[0]), y: plotHeight))
+                area.closeSubpath()
+                context.fill(area, with: .linearGradient(
+                    Gradient(colors: [Color.accentColor.opacity(0.6), Color.accentColor.opacity(0.1)]),
+                    startPoint: .zero, endPoint: CGPoint(x: 0, y: plotHeight)
+                ))
+                context.stroke(line, with: .color(.accentColor), style: StrokeStyle(lineWidth: 1.5, lineCap: .round, lineJoin: .round))
             }
         }
-        .chartYAxis(.hidden)
-        .animation(.linear(duration: DecibelAnalyzer.tickInterval), value: analyzer.spectrum)
         .accessibilityHidden(true)
     }
 
-    /// The spectrum of the last ten seconds, the newest on the right.
+    /// The spectrum of the last ten seconds, the newest on the right, moving on every frame.
     private var spectrogramGraph: some View {
-        let frequencies: [Double] = [100, 1000, 10000]
-        return GeometryReader { geometry in
-            ZStack(alignment: .topLeading) {
-                RoundedRectangle(cornerRadius: 8)
-                    .fill(.fill.quaternary)
-                if let image = analyzer.spectrogram {
-                    Image(decorative: image, scale: 1)
-                        .resizable()
-                        .interpolation(.medium)
-                        .clipShape(RoundedRectangle(cornerRadius: 8))
-                }
-                ForEach(frequencies, id: \.self) { frequency in
+        TimelineView(.animation(paused: !analyzer.isRunning)) { timeline in
+            Canvas { context, size in
+                _ = timeline.date
+                context.clip(to: Path(roundedRect: CGRect(origin: .zero, size: size), cornerRadius: 8))
+                guard let (image, offset) = analyzer.spectrogram(at: analyzer.displayTime) else { return }
+                let columns = CGFloat(image.width)
+                // One column more than fits, so the left edge stays filled while the image moves left.
+                let columnWidth = size.width / (columns - 1)
+                let rect = CGRect(x: size.width - columns * columnWidth - offset * columnWidth, y: 0, width: columns * columnWidth, height: size.height)
+                context.draw(Image(decorative: image, scale: 1).interpolation(.medium), in: rect)
+            }
+        }
+        .background(.fill.quaternary, in: RoundedRectangle(cornerRadius: 8))
+        .overlay {
+            GeometryReader { geometry in
+                ForEach(Self.labeledFrequencies, id: \.self) { frequency in
                     let position = log(frequency / DecibelAnalyzer.minFrequency) / log(analyzer.maxFrequency / DecibelAnalyzer.minFrequency)
-                    let y = geometry.size.height * (1 - position)
                     Text(verbatim: Self.frequencyLabel(frequency))
                         .font(.caption2)
                         .foregroundStyle(.secondary)
                         .padding(.horizontal, 4)
                         .background(.background.opacity(0.6), in: Capsule())
-                        .position(x: geometry.size.width - 24, y: y)
+                        .position(x: geometry.size.width - 24, y: geometry.size.height * (1 - position))
                 }
             }
         }
         .accessibilityHidden(true)
     }
+
+    /// Min, Leq and Max since the start or the last reset.
+    private var statistics: some View {
+        HStack(spacing: 24) {
+            statistic(NSLocalizedString("Min", comment: "Decibel Meter: label of the quietest level since the start"), analyzer.minimum)
+            statistic("Leq", analyzer.equivalentLevel)
+            statistic(NSLocalizedString("Max", comment: "Decibel Meter: label of the loudest level since the start"), analyzer.maximum)
+            Button {
+                analyzer.resetStatistics()
+            } label: {
+                Image(systemName: "arrow.counterclockwise")
+            }
+            .buttonStyle(.bordered)
+            .buttonBorderShape(.circle)
+            .accessibilityLabel(Text(NSLocalizedString("Reset Statistics", comment: "Decibel Meter: accessibility label of the button that resets Min, Max and Leq")))
+        }
+    }
+
+    private func statistic(_ title: String, _ value: Float?) -> some View {
+        VStack(spacing: 2) {
+            Text(verbatim: title)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+            Text(verbatim: value?.formatted(.number.precision(.fractionLength(1))) ?? "–")
+                .font(.title3)
+                .monospacedDigit()
+        }
+        .frame(minWidth: 56)
+        .accessibilityElement(children: .combine)
+    }
+
+    private static let labeledFrequencies: [Double] = [100, 1000, 10000]
 
     private static func frequencyLabel(_ frequency: Double) -> String {
         frequency >= 1000 ? "\(Int(frequency / 1000)) kHz" : "\(Int(frequency)) Hz"
@@ -636,10 +813,11 @@ struct DecibelMeter: View {
                     Toggle(NSLocalizedString("Level History", comment: "Decibel Meter settings: toggle for the graph of the level over the last ten seconds"), isOn: $showLevelGraph)
                     Toggle(NSLocalizedString("Spectrum", comment: "Decibel Meter settings: toggle for the graph of how loud each frequency is right now"), isOn: $showSpectrum)
                     Toggle(NSLocalizedString("Spectrogram", comment: "Decibel Meter settings: toggle for the graph of the frequencies over the last ten seconds"), isOn: $showSpectrogram)
+                    Toggle(NSLocalizedString("Min, Max and Leq", comment: "Decibel Meter settings: toggle for the statistics below the level (Leq is the technical term for the average level)"), isOn: $showStatistics)
                 } header: {
                     Text(NSLocalizedString("Graphs", comment: "Decibel Meter settings: section header for which graphs are shown"))
                 } footer: {
-                    Text(NSLocalizedString("The spectrum shows how loud each frequency is right now, the spectrogram shows the frequencies of the last ten seconds, with loud ones brighter.", comment: "Decibel Meter settings: footer explaining the spectrum and spectrogram"))
+                    Text(NSLocalizedString("The spectrum shows how loud each frequency is right now, the spectrogram shows the frequencies of the last ten seconds, with loud ones brighter. Min and Max are the quietest and loudest level, Leq is the average sound energy, all since you opened the meter or reset them.", comment: "Decibel Meter settings: footer explaining the spectrum, the spectrogram and the statistics"))
                 }
             }
             .navigationTitle("Settings")
