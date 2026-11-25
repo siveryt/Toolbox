@@ -155,6 +155,14 @@ extension App: WhatsNewCollectionProvider {
                 ),
                 .init(
                     image: .init(
+                        systemName: "network",
+                        foregroundColor: .accentColor
+                    ),
+                    title: .init(stringLiteral: NSLocalizedString("Domain Resolver", comment: "WhatsNewKit item")),
+                    subtitle: .init(stringLiteral: NSLocalizedString("See mail servers, name servers and more DNS records, ask the DNS server of your choice", comment: "WhatsNewKit item"))
+                ),
+                .init(
+                    image: .init(
                         systemName: "applewatch",
                         foregroundColor: .accentColor
                     ),
