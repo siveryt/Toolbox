@@ -20,15 +20,6 @@
       }
     },
     {
-      "identity" : "marqueetext",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/siveryt/MarqueeText",
-      "state" : {
-        "branch" : "master",
-        "revision" : "644f967792b4ea4b037bc034bb2d93391ca4a8af"
-      }
-    },
-    {
       "identity" : "romannumeralkit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/kylehughes/RomanNumeralKit",

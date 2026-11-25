@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import MarqueeText
 import AVFoundation
 
 struct Scrolling_Text: View {
@@ -249,23 +248,49 @@ final class BackDisplayCamera: @unchecked Sendable {
 }
 
 /// The scrolling text itself, as tall as the available height. Text that fits isn't scrolled but centered.
+///
+/// The position is computed from the time since the view appeared on every frame instead of being a SwiftUI animation,
+/// so re-renders, size changes or presentation transitions can't restart the scrolling.
 struct ScrollingTextMarquee: View {
     let text: String
     let scrollingSpeed: Double
 
+    @State private var startDate = Date.now
+
     var body: some View {
         GeometryReader { geometry in
-            MarqueeText(
-                text: text,
-                font: Self.font(fittingHeight: geometry.size.height),
-                leftFade: 0,
-                rightFade: 0,
-                startDelay: 0,
-                alignment: .center,
-                duration: Double(text.count)/(2.0 * scrollingSpeed)
-            )
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            let font = Self.font(fittingHeight: geometry.size.height)
+            let textWidth = (text as NSString).size(withAttributes: [.font: font]).width
+
+            if textWidth <= geometry.size.width {
+                label(font: font)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else {
+                // Two copies with a gap, moved left by one copy plus gap per cycle, so the end of a cycle looks like its start.
+                let gap = font.lineHeight * 2
+                let distance = textWidth + gap
+                let cycleDuration = Double(text.count) / (2.0 * scrollingSpeed)
+
+                TimelineView(.animation) { context in
+                    let elapsed = max(context.date.timeIntervalSince(startDate), 0)
+                    let progress = (elapsed / cycleDuration).truncatingRemainder(dividingBy: 1)
+                    HStack(spacing: gap) {
+                        label(font: font)
+                        label(font: font)
+                    }
+                    .offset(x: -distance * progress)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                }
+                .clipped()
+            }
         }
+    }
+
+    private func label(font: UIFont) -> some View {
+        Text(text)
+            .font(Font(font))
+            .lineLimit(1)
+            .fixedSize()
     }
 
     /// The largest system font whose line height fits into `height`.
