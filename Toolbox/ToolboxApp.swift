@@ -111,7 +111,7 @@ extension App: WhatsNewCollectionProvider {
                         foregroundColor: .accentColor
                     ),
                     title: .init(stringLiteral: NSLocalizedString("Decibel Meter", comment: "WhatsNewKit item")),
-                    subtitle: .init(stringLiteral: NSLocalizedString("Measure sound levels to monitor noise", comment: "WhatsNewKit item"))
+                    subtitle: .init(stringLiteral: NSLocalizedString("Measure sound levels in dB(A) and see their frequencies in a spectrogram", comment: "WhatsNewKit item"))
                 ),
                 .init(
                     image: .init(
