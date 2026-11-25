@@ -9806,53 +9806,6 @@
         }
       }
     },
-    "Measure sound levels to monitor noise" : {
-      "comment" : "WhatsNewKit item",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Messe die Lautstärke um dich herum"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mide el nivel de sonido para controlar el ruido"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mesurez le niveau sonore pour surveiller le bruit"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Meet geluidsniveaus om lawaai in de gaten te houden"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mierz poziom dźwięku, aby kontrolować hałas"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Meça os níveis de som para monitorar o ruído"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mät ljudnivåer för att övervaka buller"
-          }
-        }
-      }
-    },
     "Measure the distance between two places on a map" : {
       "comment" : "WhatsNewKit item",
       "localizations" : {
@@ -18979,6 +18932,1040 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dina verktyg, din ordning"
+          }
+        }
+      }
+    },
+    "A (human hearing)" : {
+      "comment" : "Decibel Meter settings: option for A frequency weighting",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A (menschliches Gehör)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A (oído humano)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A (oreille humaine)"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A (menselijk gehoor)"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A (ludzki słuch)"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A (audição humana)"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A (mänsklig hörsel)"
+          }
+        }
+      }
+    },
+    "C (with bass)" : {
+      "comment" : "Decibel Meter settings: option for C frequency weighting",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "C (mit Bass)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "C (con graves)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "C (avec les basses)"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "C (met bas)"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "C (z basami)"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "C (com graves)"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "C (med bas)"
+          }
+        }
+      }
+    },
+    "Z (unweighted)" : {
+      "comment" : "Decibel Meter settings: option for Z frequency weighting, i.e. no weighting",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Z (ungewichtet)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Z (sin ponderación)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Z (non pondéré)"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Z (ongewogen)"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Z (bez korekcji)"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Z (sem ponderação)"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Z (ovägd)"
+          }
+        }
+      }
+    },
+    "A-weighted" : {
+      "comment" : "Decibel Meter: below the level, the level is A-weighted",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A-bewertet"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ponderación A"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pondéré A"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A-gewogen"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Korekcja A"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ponderação A"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A-vägd"
+          }
+        }
+      }
+    },
+    "C-weighted" : {
+      "comment" : "Decibel Meter: below the level, the level is C-weighted",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "C-bewertet"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ponderación C"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pondéré C"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "C-gewogen"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Korekcja C"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ponderação C"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "C-vägd"
+          }
+        }
+      }
+    },
+    "Unweighted" : {
+      "comment" : "Decibel Meter: below the level, the level is Z-weighted, i.e. not weighted",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ungewichtet"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin ponderación"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non pondéré"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ongewogen"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bez korekcji"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sem ponderação"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ovägd"
+          }
+        }
+      }
+    },
+    "Fast (125 ms)" : {
+      "comment" : "Decibel Meter settings: option for the Fast time weighting",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schnell (125 ms)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rápido (125 ms)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rapide (125 ms)"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snel (125 ms)"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Szybka (125 ms)"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rápido (125 ms)"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snabb (125 ms)"
+          }
+        }
+      }
+    },
+    "Slow (1 s)" : {
+      "comment" : "Decibel Meter settings: option for the Slow time weighting",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Langsam (1 s)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lento (1 s)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lent (1 s)"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Langzaam (1 s)"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wolna (1 s)"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lento (1 s)"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Långsam (1 s)"
+          }
+        }
+      }
+    },
+    "Fast" : {
+      "comment" : "Decibel Meter: below the level, the Fast time weighting (technical term of sound level meters)",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schnell"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rápido"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rapide"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snel"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Szybka"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rápido"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snabb"
+          }
+        }
+      }
+    },
+    "Slow" : {
+      "comment" : "Decibel Meter: below the level, the Slow time weighting (technical term of sound level meters)",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Langsam"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lento"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lent"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Langzaam"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wolna"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lento"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Långsam"
+          }
+        }
+      }
+    },
+    "not calibrated" : {
+      "comment" : "Decibel Meter: below the level, the measurement isn't calibrated against a real sound level meter",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nicht kalibriert"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sin calibrar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "non calibré"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "niet gekalibreerd"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "bez kalibracji"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "não calibrado"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ej kalibrerad"
+          }
+        }
+      }
+    },
+    "Frequency Weighting" : {
+      "comment" : "Decibel Meter settings: picker for the frequency weighting (A, C or Z)",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frequenzbewertung"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ponderación de frecuencia"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pondération fréquentielle"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frequentieweging"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Korekcja częstotliwościowa"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ponderação de frequência"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frekvensvägning"
+          }
+        }
+      }
+    },
+    "Time Weighting" : {
+      "comment" : "Decibel Meter settings: picker for the time weighting (Fast or Slow)",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeitbewertung"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ponderación temporal"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pondération temporelle"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tijdweging"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stała czasowa"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ponderação temporal"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tidsvägning"
+          }
+        }
+      }
+    },
+    "Level History" : {
+      "comment" : "Decibel Meter settings: toggle for the graph of the level over the last ten seconds",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pegelverlauf"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Historial de nivel"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Historique du niveau"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niveaugeschiedenis"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Historia poziomu"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Histórico de nível"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nivåhistorik"
+          }
+        }
+      }
+    },
+    "Spectrum" : {
+      "comment" : "Decibel Meter settings: toggle for the graph of how loud each frequency is right now",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spektrum"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Espectro"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spectre"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spectrum"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widmo"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Espectro"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spektrum"
+          }
+        }
+      }
+    },
+    "Spectrogram" : {
+      "comment" : "Decibel Meter settings: toggle for the graph of the frequencies over the last ten seconds",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spektrogramm"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Espectrograma"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spectrogramme"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spectrogram"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spektrogram"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Espectrograma"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spektrogram"
+          }
+        }
+      }
+    },
+    "Graphs" : {
+      "comment" : "Decibel Meter settings: section header for which graphs are shown",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Graphen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gráficos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Graphiques"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grafieken"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wykresy"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gráficos"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grafer"
+          }
+        }
+      }
+    },
+    "The spectrum shows how loud each frequency is right now, the spectrogram shows the frequencies of the last ten seconds, with loud ones brighter." : {
+      "comment" : "Decibel Meter settings: footer explaining the spectrum and spectrogram",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das Spektrum zeigt, wie laut jede Frequenz gerade ist, das Spektrogramm zeigt die Frequenzen der letzten zehn Sekunden, laute heller."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El espectro muestra lo fuerte que suena cada frecuencia ahora mismo y el espectrograma muestra las frecuencias de los últimos diez segundos, las fuertes más brillantes."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le spectre montre le volume de chaque fréquence en ce moment, le spectrogramme montre les fréquences des dix dernières secondes, les plus fortes plus claires."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Het spectrum toont hoe luid elke frequentie nu is, het spectrogram toont de frequenties van de laatste tien seconden, luide helderder."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widmo pokazuje, jak głośna jest teraz każda częstotliwość, a spektrogram pokazuje częstotliwości z ostatnich dziesięciu sekund, głośne jaśniej."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O espectro mostra o volume de cada frequência agora, o espectrograma mostra as frequências dos últimos dez segundos, as mais altas mais claras."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spektrumet visar hur stark varje frekvens är just nu, spektrogrammet visar frekvenserna de senaste tio sekunderna, starka ljusare."
+          }
+        }
+      }
+    },
+    "Frequency" : {
+      "comment" : "Decibel Meter: label of the frequency axis of the spectrum graph (not shown, used by the chart)",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frequenz"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frecuencia"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fréquence"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frequentie"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Częstotliwość"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frequência"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frekvens"
+          }
+        }
+      }
+    },
+    "Measure sound levels in dB(A) and see their frequencies in a spectrogram" : {
+      "comment" : "WhatsNewKit item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Miss die Lautstärke in dB(A) und sieh ihre Frequenzen im Spektrogramm"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mide el nivel de sonido en dB(A) y ve sus frecuencias en un espectrograma"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mesurez le niveau sonore en dB(A) et voyez ses fréquences dans un spectrogramme"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meet geluidsniveaus in dB(A) en bekijk de frequenties in een spectrogram"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mierz poziom dźwięku w dB(A) i oglądaj jego częstotliwości na spektrogramie"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meça o nível sonoro em dB(A) e veja as frequências em um espectrograma"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mät ljudnivåer i dB(A) och se frekvenserna i ett spektrogram"
+          }
+        }
+      }
+    },
+    "A-weighting matches how loud people perceive sounds and is used for noise limits. C-weighting includes more of the bass, Z-weighting counts all frequencies equally." : {
+      "comment" : "Decibel Meter settings: footer explaining the frequency weightings",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die A-Bewertung entspricht dem, wie laut Menschen Geräusche empfinden, und wird für Lärmgrenzwerte verwendet. Die C-Bewertung berücksichtigt mehr Bass, die Z-Bewertung zählt alle Frequenzen gleich."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La ponderación A corresponde a cómo percibimos el volumen de los sonidos y se usa para los límites de ruido. La ponderación C incluye más graves y la Z cuenta todas las frecuencias por igual."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La pondération A correspond à la façon dont on perçoit le volume des sons et sert pour les limites de bruit. La pondération C inclut davantage de basses, la pondération Z compte toutes les fréquences de la même façon."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A-weging komt overeen met hoe hard mensen geluid ervaren en wordt gebruikt voor geluidsnormen. C-weging telt meer bas mee, Z-weging telt alle frequenties even zwaar."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Korekcja A odpowiada temu, jak ludzie odbierają głośność dźwięków, i jest stosowana przy normach hałasu. Korekcja C uwzględnia więcej basu, a korekcja Z traktuje wszystkie częstotliwości jednakowo."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A ponderação A corresponde a como as pessoas percebem o volume dos sons e é usada para limites de ruído. A ponderação C inclui mais graves, a Z conta todas as frequências igualmente."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A-vägning motsvarar hur starkt människor uppfattar ljud och används för bullergränser. C-vägning tar med mer bas, Z-vägning räknar alla frekvenser lika."
+          }
+        }
+      }
+    },
+    "Fast follows changes within 125 ms, Slow averages over a second.\n\nThe level is relative to the loudest sound the microphone can record, which is shown as 100 dB. It isn't calibrated, so it can differ from a real sound level meter." : {
+      "comment" : "Decibel Meter settings: footer explaining the time weightings and that the level isn't calibrated",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schnell folgt Änderungen innerhalb von 125 ms, Langsam mittelt über eine Sekunde.\n\nDer Pegel ist relativ zum lautesten Geräusch, das das Mikrofon aufnehmen kann, und das wird als 100 dB angezeigt. Er ist nicht kalibriert und kann deshalb von einem echten Schallpegelmesser abweichen."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rápido sigue los cambios en 125 ms, Lento promedia durante un segundo.\n\nEl nivel es relativo al sonido más fuerte que puede grabar el micrófono, que se muestra como 100 dB. No está calibrado, así que puede diferir de un sonómetro real."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rapide suit les variations en 125 ms, Lent fait la moyenne sur une seconde.\n\nLe niveau est relatif au son le plus fort que le micro peut enregistrer, affiché comme 100 dB. Il n’est pas calibré et peut donc différer d’un vrai sonomètre."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snel volgt veranderingen binnen 125 ms, Langzaam middelt over een seconde.\n\nHet niveau is relatief ten opzichte van het luidste geluid dat de microfoon kan opnemen, dat als 100 dB wordt getoond. Het is niet gekalibreerd en kan dus afwijken van een echte geluidsniveaumeter."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Szybka reaguje na zmiany w ciągu 125 ms, Wolna uśrednia przez sekundę.\n\nPoziom jest względny wobec najgłośniejszego dźwięku, jaki może nagrać mikrofon, który jest pokazywany jako 100 dB. Nie jest skalibrowany, więc może się różnić od prawdziwego miernika poziomu dźwięku."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rápido acompanha mudanças em 125 ms, Lento faz a média ao longo de um segundo.\n\nO nível é relativo ao som mais alto que o microfone consegue gravar, mostrado como 100 dB. Ele não é calibrado, então pode diferir de um decibelímetro real."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snabb följer förändringar inom 125 ms, Långsam tar medelvärdet över en sekund.\n\nNivån är relativ till det starkaste ljud mikrofonen kan spela in, vilket visas som 100 dB. Den är inte kalibrerad och kan därför skilja sig från en riktig ljudnivåmätare."
           }
         }
       }
