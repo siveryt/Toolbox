@@ -126,6 +126,10 @@ struct Wake_On_Lan: View {
         } message: {
             Text(wakeErrorMessage)
         }
+        // Siri only recognizes device names in phrases after the shortcut parameters were refreshed
+        .onChange(of: devices.map(\.name)) {
+            ToolboxShortcuts.updateAppShortcutParameters()
+        }
         .toast(isPresenting: $wakeSentToastPresented, message: NSLocalizedString("Wake-Up Sent", comment: "Wake On Lan: toast after the wake-up packet was sent to a device"), icon: .custom(Image(systemName: "power")), autoDismiss: .auto)
     }
 
@@ -207,20 +211,11 @@ struct Wake_On_Lan: View {
 
     func wake(_ device: WOLDevice) {
         do {
-            // Stored data is re-validated here: entries saved by older versions were never checked
-            guard let mac = WakeOnLan.parseMAC(device.mac) else {
-                throw WakeOnLan.WakeError.invalidMAC(device.mac)
+            try withAnimation {
+                try WakeOnLan.wake(device)
             }
-            guard let address = WakeOnLan.parseIPv4(device.broadcast) else {
-                throw WakeOnLan.WakeError.invalidBroadcast(device.broadcast)
-            }
-            guard let port = WakeOnLan.parsePort(String(device.port ?? 9)) else {
-                throw WakeOnLan.WakeError.invalidPort(device.port ?? 9)
-            }
-            try WakeOnLan.sendMagicPacket(mac: mac, to: address, port: port)
-            withAnimation {
-                device.lastUsed = Date()
-            }
+            // Lets Siri suggest waking this device again
+            WakeDeviceIntent(device: WOLDeviceEntity(device)).donate()
             Haptic.notification(.success).generate()
             withAnimation {
                 wakeSentToastPresented = true
@@ -508,6 +503,22 @@ enum WakeOnLan {
     static func parsePort(_ string: String) -> UInt16? {
         guard let port = UInt16(string), port > 0 else { return nil }
         return port
+    }
+
+    /// Sends the magic packet to a saved device and marks it as used.
+    static func wake(_ device: WOLDevice) throws {
+        // Stored data is re-validated here: entries saved by older versions were never checked
+        guard let mac = parseMAC(device.mac) else {
+            throw WakeError.invalidMAC(device.mac)
+        }
+        guard let address = parseIPv4(device.broadcast) else {
+            throw WakeError.invalidBroadcast(device.broadcast)
+        }
+        guard let port = parsePort(String(device.port ?? 9)) else {
+            throw WakeError.invalidPort(device.port ?? 9)
+        }
+        try sendMagicPacket(mac: mac, to: address, port: port)
+        device.lastUsed = Date()
     }
 
     static func sendMagicPacket(mac: [UInt8], to address: in_addr, port: UInt16) throws {

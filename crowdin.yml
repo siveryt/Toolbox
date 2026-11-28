@@ -8,3 +8,6 @@ files:
   - source: /Toolbox/InfoPlist.xcstrings
     translation: /Toolbox/InfoPlist.xcstrings
     multilingual: true
+  - source: /Toolbox/AppShortcuts.xcstrings
+    translation: /Toolbox/AppShortcuts.xcstrings
+    multilingual: true

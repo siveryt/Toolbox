@@ -50,7 +50,7 @@ Critically, **the app persists a user's custom order and hidden tools as integer
 
 The app mixes two Apple persistence stacks; pick the one already used by the feature you touch:
 - **Core Data** for scanned barcodes: [SBDataController](Toolbox/DataModels/ScannedBarcodes/Controller.swift) wraps `NSPersistentContainer(name: "ScannedBarcodes")` and is the standard CRUD path (`addBarcode`, `resetBarcodes`).
-- **SwiftData** for Wake-on-LAN devices: [WOLDevice](Toolbox/Swift Data/WOL.swift) is an `@Model` class.
+- **SwiftData** for Wake-on-LAN devices: [WOLDevice](Toolbox/Swift Data/WOL.swift) is an `@Model` class. The app and the App Intents (Siri/Shortcuts, [Wake On Lan Intents.swift](Toolbox/Functions/Wake On Lan Intents.swift)) share one container, `WOLDevice.container`.
 
 Most simple tools persist their own transient state directly with `@AppStorage` (UserDefaults) rather than a database — see the pattern in tools like [RomanConverter.swift](Toolbox/Functions/RomanConverter.swift).
 
@@ -71,6 +71,8 @@ The icons are Icon Composer files in [Toolbox/Icons/](Toolbox/Icons/). `Toolbox.
 All user-facing strings must be wrapped in `NSLocalizedString(_, comment:)`. Translations live in the String Catalog [Localizable.xcstrings](Localizable.xcstrings) (source language English; English, German, Spanish, French, Dutch, Polish, Brazilian Portuguese and Swedish). Menu titles use `comment: "Menu item"`; WhatsNewKit strings use `comment: "WhatsNewKit item"`.
 
 Translations can be added on Crowdin or directly in the catalogs here: the Crowdin integration picks up translations from the repository, and its "New Crowdin updates" pull requests (from the `crowdin` branch) bring the ones made on Crowdin back. New strings that nobody translates in the repository get translated by the community on Crowdin.
+
+Siri phrases of the App Shortcuts live in their own catalog, [Toolbox/AppShortcuts.xcstrings](Toolbox/AppShortcuts.xcstrings) (every phrase must keep `${applicationName}`); the other App Intents texts are in `Localizable.xcstrings`.
 
 Give every string a comment that says where it appears and what it is (e.g. `comment: "Wake On Lan form: validation error"`): community translators on [Crowdin](https://crowdin.com/project/toolbox) only see the text and its comment. The Crowdin GitHub integration reads both catalogs as configured in [crowdin.yml](crowdin.yml) and opens pull requests with the translations.
 
