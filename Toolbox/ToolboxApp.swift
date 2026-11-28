@@ -15,6 +15,7 @@ import SwiftData
 @main
 struct App {
     @StateObject private var sbDataController = SBDataController()
+    @Environment(\.scenePhase) private var scenePhase
     
     /// Set by "Delete Data": TipKit's datastore can only be reset before `Tips.configure`.
     static let resetTipsOnLaunchKey = "resetTipsOnLaunch"
@@ -54,6 +55,10 @@ extension App: SwiftUI.App {
                 )
                 .environmentObject(SelectedItemIndex())
                 .task { IconNames.migrateRemovedIcon() }
+                // iOS only keeps the soonest 64 reminders, so Birthday Buddy schedules the next ones whenever the app opens.
+                .onChange(of: scenePhase, initial: true) { _, phase in
+                    if phase == .active { Task { await BirthdayReminders.reschedule() } }
+                }
 
                 // Shared with the App Intents, so a device woken by Siri updates the list right away
                 .modelContainer(WOLDevice.container)
@@ -159,6 +164,14 @@ extension App: WhatsNewCollectionProvider {
                     ),
                     title: .init(stringLiteral: NSLocalizedString("Fullscreen Camera", comment: "WhatsNewKit item")),
                     subtitle: .init(stringLiteral: NSLocalizedString("Show the camera full screen on a TV or projector, freeze or mute the picture", comment: "WhatsNewKit item"))
+                ),
+                .init(
+                    image: .init(
+                        systemName: "gift",
+                        foregroundColor: .accentColor
+                    ),
+                    title: .init(stringLiteral: NSLocalizedString("Birthday Buddy", comment: "WhatsNewKit item")),
+                    subtitle: .init(stringLiteral: NSLocalizedString("See your contacts' birthdays, get a reminder days before and add a widget", comment: "WhatsNewKit item"))
                 ),
                 .init(
                     image: .init(

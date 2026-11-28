@@ -12,5 +12,6 @@ import SwiftUI
 struct diceWidgetBundle: WidgetBundle {
     var body: some Widget {
         diceWidget()
+        BirthdayWidget()
     }
 }

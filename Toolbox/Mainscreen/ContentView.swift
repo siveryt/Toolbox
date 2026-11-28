@@ -30,6 +30,8 @@ struct ContentView: View {
     @AppStorage("cvHasHiddenAnythingYet") var hasHiddenAnythingYet = false
     @State var hiddenAlert = false
     @State private var searchText = ""
+    /// A tool opened by a link like `sivery-toolbox://tool/gift` (the tool's icon), e.g. from a widget.
+    @State private var linkedTool: Int?
     @Environment(\.requestReview) private var requestReview
     
     // The order and hidden tools are saved as indices into this list, so new tools go at the end: inserting one shifts every saved index after it.
@@ -59,6 +61,7 @@ struct ContentView: View {
         Tool(view: AnyView(Wake_On_Lan()), title: NSLocalizedString("Wake On Lan", comment: "Menu item"), icon: "power"),
         Tool(view: AnyView(Distance()), title: NSLocalizedString("Distance", comment: "Menu item"), icon: "ruler"),
         Tool(view: AnyView(FullscreenCamera()), title: NSLocalizedString("Fullscreen Camera", comment: "Menu item"), icon: "camera.viewfinder"),
+        Tool(view: AnyView(BirthdayBuddy()), title: NSLocalizedString("Birthday Buddy", comment: "Menu item"), icon: "gift"),
     ]
     
     /// The saved order of indices into `toollist`, without duplicates or indices that no longer exist, followed by tools that are new since it was saved.
@@ -160,6 +163,9 @@ struct ContentView: View {
                             .environment(\.showingSheet, self.$infoPresented)
                     }
                 }
+                .navigationDestination(item: $linkedTool) { toolID in
+                    toollist[toolID].view
+                }
                 .navigationTitle("Toolbox")
                 .toolbar(){
                     ToolbarItem(placement: .primaryAction) {
@@ -170,6 +176,12 @@ struct ContentView: View {
                         })
                     }
                 }
+            }
+            .onOpenURL { url in
+                guard url.scheme == "sivery-toolbox", url.host == "tool",
+                      let toolID = toollist.firstIndex(where: { $0.icon == url.lastPathComponent }) else { return }
+                infoPresented = false
+                linkedTool = toolID
             }
             .onAppear() {
             

@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import UserNotifications
 import CoreData
 import TipKit
 import Haptica
@@ -113,6 +114,7 @@ struct infoView: View {
                 try? modelContext.delete(model: WOLDevice.self)
                 try? modelContext.save()
                 SBDataController.shared.resetBarcodes(context: managedContext)
+                UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
                 UIControl().sendAction(#selector(NSXPCConnection.suspend), to: UIApplication.shared, for: nil)
                 exit(-1)
             }

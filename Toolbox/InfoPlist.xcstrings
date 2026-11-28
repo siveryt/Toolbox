@@ -165,6 +165,60 @@
         }
       }
     },
+    "NSContactsUsageDescription" : {
+      "comment" : "Privacy - Contacts Usage Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Toolbox reads the birthdays in your contacts to show them in Birthday Buddy and remind you of them"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toolbox liest die Geburtstage aus deinen Kontakten, um sie im Geburtstags-Buddy zu zeigen und dich an sie zu erinnern"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toolbox lee los cumpleaños de tus contactos para mostrarlos en Amigo de Cumpleaños y recordártelos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toolbox lit les anniversaires de vos contacts pour les afficher dans Copain d’anniversaire et vous les rappeler"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toolbox leest de verjaardagen uit je contacten om ze in Verjaardagsbuddy te tonen en je eraan te herinneren"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toolbox odczytuje urodziny z kontaktów, aby pokazać je w Kumplu od urodzin i o nich przypominać"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O Toolbox lê os aniversários dos seus contatos para mostrá-los no Amigo de Aniversário e lembrar você deles"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toolbox läser födelsedagarna i dina kontakter för att visa dem i Födelsedagskompis och påminna dig om dem"
+          }
+        }
+      }
+    },
     "NSLocalNetworkUsageDescription" : {
       "comment" : "Privacy - Local Network Usage Description",
       "extractionState" : "extracted_with_value",
