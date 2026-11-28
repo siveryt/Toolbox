@@ -48,6 +48,10 @@
       },
       "shouldTranslate" : false
     },
+    "%@" : {
+      "comment" : "Shortcuts app: name of a saved Wake On Lan device, not translated",
+      "shouldTranslate" : false
+    },
     "-" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -727,6 +731,53 @@
         }
       }
     },
+    "Device" : {
+      "comment" : "Shortcuts app: parameter of the Wake Device action, the device to wake",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gerät"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dispositivo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appareil"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apparaat"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Urządzenie"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dispositivo"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enhet"
+          }
+        }
+      }
+    },
     "Frequency" : {
       "comment" : "Pulsing Flashlight: label of the flash frequency (flashes per second)",
       "localizations" : {
@@ -864,6 +915,382 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hur många gånger per sekund ficklampan blinkar, i hertz (Hz)."
+          }
+        }
+      }
+    },
+    "Remotely power on your devices, also with Siri and Shortcuts" : {
+      "comment" : "WhatsNewKit item",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schalte deine Geräte über das Netzwerk an, auch mit Siri und Kurzbefehlen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enciende tus dispositivos a distancia, también con Siri y Atajos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allumez vos appareils à distance, aussi avec Siri et Raccourcis"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zet je apparaten op afstand aan, ook met Siri en Opdrachten"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zdalnie włączaj swoje urządzenia, także przez Siri i Skróty"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ligue seus dispositivos remotamente, também com a Siri e o app Atalhos"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starta dina enheter på distans, även med Siri och Genvägar"
+          }
+        }
+      }
+    },
+    "Sends a Wake On Lan magic packet to a device saved in Toolbox." : {
+      "comment" : "Shortcuts app: description of the Wake Device action",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sendet ein Wake-On-Lan-Magic-Packet an ein in Toolbox gespeichertes Gerät."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Envía un paquete mágico de Wake On Lan a un dispositivo guardado en Toolbox."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Envoie un paquet magique Wake On Lan à un appareil enregistré dans Toolbox."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stuurt een Wake On Lan-magic packet naar een apparaat dat in Toolbox is opgeslagen."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wysyła magiczny pakiet Wake On Lan do urządzenia zapisanego w Toolbox."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Envia um pacote mágico do Wake On Lan para um dispositivo salvo no Toolbox."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skickar ett Wake On Lan-magiskt paket till en enhet som sparats i Toolbox."
+          }
+        }
+      }
+    },
+    "There is no saved device named %@." : {
+      "comment" : "Siri and Shortcuts: error when the Wake On Lan device to wake was deleted or renamed, the placeholder is its name",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es gibt kein gespeichertes Gerät namens %@."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay ningún dispositivo guardado llamado %@."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun appareil enregistré ne s’appelle %@."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Er is geen opgeslagen apparaat met de naam %@."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie ma zapisanego urządzenia o nazwie %@."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não há nenhum dispositivo salvo com o nome %@."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Det finns ingen sparad enhet som heter %@."
+          }
+        }
+      }
+    },
+    "Wake ${device}" : {
+      "comment" : "Shortcuts app: summary of the Wake Device action, ${device} is the chosen device (keep it as is)",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${device} aufwecken"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activar ${device}"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réveiller ${device}"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${device} wekken"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wybudź ${device}"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ligar ${device}"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Väck ${device}"
+          }
+        }
+      }
+    },
+    "Wake Device" : {
+      "comment" : "Shortcuts app: title of the action that wakes a saved Wake On Lan device",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gerät aufwecken"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activar dispositivo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réveiller l’appareil"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apparaat wekken"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wybudź urządzenie"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ligar dispositivo"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Väck enhet"
+          }
+        }
+      }
+    },
+    "Wake On Lan Device" : {
+      "comment" : "Shortcuts app: type name of a saved Wake On Lan device",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wake-On-Lan-Gerät"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dispositivo de Wake On Lan"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appareil Wake On Lan"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wake On Lan-apparaat"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Urządzenie Wake On Lan"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dispositivo do Wake On Lan"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wake On Lan-enhet"
+          }
+        }
+      }
+    },
+    "Wake-up sent to %@." : {
+      "comment" : "Siri: answer after the wake-up packet was sent, the placeholder is the device name",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weckbefehl an %@ gesendet."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Señal de encendido enviada a %@."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signal de réveil envoyé à %@."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wekpakket naar %@ verzonden."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wysłano sygnał wybudzenia do %@."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sinal para ligar enviado para %@."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Väckningssignal skickad till %@."
+          }
+        }
+      }
+    },
+    "Which device do you want to wake?" : {
+      "comment" : "Siri: question when the user didn't say which Wake On Lan device to wake",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welches Gerät möchtest du aufwecken?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Qué dispositivo quieres activar?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quel appareil veux-tu réveiller ?"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welk apparaat wil je wekken?"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Które urządzenie chcesz wybudzić?"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qual dispositivo você quer ligar?"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vilken enhet vill du väcka?"
           }
         }
       }
@@ -12764,53 +13191,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Omgjord, med Romerska siffror och styrning med Digital Crown"
-          }
-        }
-      }
-    },
-    "Remotely power on your devices" : {
-      "comment" : "WhatsNewKit item",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Schalte deinen Computer über das Netzwerk an"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enciende tus dispositivos a distancia"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Allumez vos appareils à distance"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zet je apparaten op afstand aan"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zdalnie włączaj swoje urządzenia"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ligue seus dispositivos remotamente"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Starta dina enheter på distans"
           }
         }
       }
