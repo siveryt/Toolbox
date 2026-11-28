@@ -30,6 +30,7 @@ struct App {
             .displayFrequency(.immediate),
             .datastoreLocation(.applicationDefault)
         ])
+        ToolboxShortcuts.updateAppShortcutParameters()
     }
     
 }
@@ -59,10 +60,8 @@ extension App: SwiftUI.App {
                     if phase == .active { Task { await BirthdayReminders.reschedule() } }
                 }
 
-                .modelContainer(for: [
-                                    WOLDevice.self,
-                                ],
-                                isAutosaveEnabled: true)
+                // Shared with the App Intents, so a device woken by Siri updates the list right away
+                .modelContainer(WOLDevice.container)
 
         }
     }
@@ -120,6 +119,14 @@ extension App: WhatsNewCollectionProvider {
                 ),
                 .init(
                     image: .init(
+                        systemName: "eyedropper",
+                        foregroundColor: .accentColor
+                    ),
+                    title: .init(stringLiteral: NSLocalizedString("Color Picker", comment: "Menu item")),
+                    subtitle: .init(stringLiteral: NSLocalizedString("Pick colors from photos, type in color codes and check the contrast", comment: "WhatsNewKit item"))
+                ),
+                .init(
+                    image: .init(
                         systemName: "flashlight.off.fill",
                         foregroundColor: .accentColor
                     ),
@@ -148,7 +155,7 @@ extension App: WhatsNewCollectionProvider {
                         foregroundColor: .accentColor
                     ),
                     title: .init(stringLiteral: NSLocalizedString("Wake On Lan", comment: "WhatsNewKit item")),
-                    subtitle: .init(stringLiteral: NSLocalizedString("Remotely power on your devices", comment: "WhatsNewKit item"))
+                    subtitle: .init(stringLiteral: NSLocalizedString("Remotely power on your devices, also with Siri and Shortcuts", comment: "WhatsNewKit item"))
                 ),
                 .init(
                     image: .init(
@@ -173,6 +180,14 @@ extension App: WhatsNewCollectionProvider {
                     ),
                     title: .init(stringLiteral: NSLocalizedString("Domain Resolver", comment: "WhatsNewKit item")),
                     subtitle: .init(stringLiteral: NSLocalizedString("See mail servers, name servers and more DNS records, ask the DNS server of your choice", comment: "WhatsNewKit item"))
+                ),
+                .init(
+                    image: .init(
+                        systemName: "bolt.horizontal",
+                        foregroundColor: .accentColor
+                    ),
+                    title: .init(stringLiteral: NSLocalizedString("Ping & Traceroute", comment: "WhatsNewKit item")),
+                    subtitle: .init(stringLiteral: NSLocalizedString("See response times at a glance and trace the route to any host", comment: "WhatsNewKit item"))
                 ),
                 .init(
                     image: .init(

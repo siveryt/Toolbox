@@ -33,6 +33,7 @@
 		5E4BA9372A8955D00039D341 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4BA9362A8955D00039D341 /* ContentView.swift */; };
 		5E528A9027E2379F00B2AE01 /* Haptica in Frameworks */ = {isa = PBXBuildFile; productRef = 5E528A8F27E2379F00B2AE01 /* Haptica */; };
 		5E5C62082916654F004F44CC /* Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5C62072916654F004F44CC /* Ping.swift */; };
+		5E7A0C012F0A000100A1B2C3 /* Traceroute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A0C022F0A000100A1B2C3 /* Traceroute.swift */; };
 		5E5C620B29166566004F44CC /* SwiftyPing in Frameworks */ = {isa = PBXBuildFile; productRef = 5E5C620A29166566004F44CC /* SwiftyPing */; };
 		5E74426829B10F8B00F43CB4 /* Barcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74426729B10F8B00F43CB4 /* Barcode.swift */; };
 		5E74427229B3787D00F43CB4 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74427129B3787D00F43CB4 /* Controller.swift */; };
@@ -45,6 +46,8 @@
 		5E878B722916CD4F0038A5E3 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E878B712916CD4F0038A5E3 /* InfoView.swift */; };
 		AAB5DCAB30838E87001D2F63 /* PermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB5DCAA30838E87001D2F63 /* PermissionsView.swift */; };
 		5E98DE6B2BFC9BE600B459A8 /* Wake On Lan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E98DE6A2BFC9BE600B459A8 /* Wake On Lan.swift */; };
+		AAC0FFEE000000000000A002 /* Wake On Lan Intents.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC0FFEE000000000000A001 /* Wake On Lan Intents.swift */; };
+		AAC0FFEE000000000000A004 /* AppShortcuts.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = AAC0FFEE000000000000A003 /* AppShortcuts.xcstrings */; };
 		5E98DE6F2BFC9CED00B459A8 /* WOL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E98DE6E2BFC9CED00B459A8 /* WOL.swift */; };
 		5E9ABFCD2B9CB840005448FB /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9ABFCC2B9CB840005448FB /* WidgetKit.framework */; };
 		5E9ABFCF2B9CB840005448FB /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9ABFCE2B9CB840005448FB /* SwiftUI.framework */; };
@@ -187,6 +190,7 @@
 		5E47B19A27F1F3F4008FD3C0 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		5E4BA9362A8955D00039D341 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5E5C62072916654F004F44CC /* Ping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ping.swift; sourceTree = "<group>"; };
+		5E7A0C022F0A000100A1B2C3 /* Traceroute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Traceroute.swift; sourceTree = "<group>"; };
 		5E5C620E291681C1004F44CC /* appstore.svg */ = {isa = PBXFileReference; lastKnownFileType = text; path = appstore.svg; sourceTree = "<group>"; };
 		5E74426729B10F8B00F43CB4 /* Barcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Barcode.swift; sourceTree = "<group>"; };
 		5E74427129B3787D00F43CB4 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
@@ -196,6 +200,8 @@
 		5E878B712916CD4F0038A5E3 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		AAB5DCAA30838E87001D2F63 /* PermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsView.swift; sourceTree = "<group>"; };
 		5E98DE6A2BFC9BE600B459A8 /* Wake On Lan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Wake On Lan.swift"; sourceTree = "<group>"; };
+		AAC0FFEE000000000000A001 /* Wake On Lan Intents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Wake On Lan Intents.swift"; sourceTree = "<group>"; };
+		AAC0FFEE000000000000A003 /* AppShortcuts.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = AppShortcuts.xcstrings; sourceTree = "<group>"; };
 		5E98DE6E2BFC9CED00B459A8 /* WOL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WOL.swift; sourceTree = "<group>"; };
 		5E9ABFCB2B9CB840005448FB /* diceWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = diceWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E9ABFCC2B9CB840005448FB /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -486,6 +492,7 @@
 				5EC7B22227D7978200699FD3 /* Assets.xcassets */,
 				5EC7B22427D7978200699FD3 /* Preview Content */,
 				5EEA47EB2CB1426800E8CB60 /* InfoPlist.xcstrings */,
+				AAC0FFEE000000000000A003 /* AppShortcuts.xcstrings */,
 				AA70000000000000000000F0 /* PrivacyInfo.xcprivacy */,
 			);
 			path = Toolbox;
@@ -530,6 +537,7 @@
 				5E1644F12C03754800EEDFFD /* tick.wav */,
 				5E1DB0F52C022AF800D59AAD /* tock.wav */,
 				5E5C62072916654F004F44CC /* Ping.swift */,
+				5E7A0C022F0A000100A1B2C3 /* Traceroute.swift */,
 				5EF0DD1E2BE2196700F46B5C /* PulsingFlashlight.swift */,
 				5EB7897627F9CCA900F07140 /* QRGenerator.swift */,
 				5EF8C35C2A8859AC0089BCA3 /* Random Letter.swift */,
@@ -538,6 +546,7 @@
 				5E30EA682BFA855200070117 /* Scrolling Text.swift */,
 				5E878B6A2916B6B60038A5E3 /* Speed.swift */,
 				5E98DE6A2BFC9BE600B459A8 /* Wake On Lan.swift */,
+				AAC0FFEE000000000000A001 /* Wake On Lan Intents.swift */,
 			);
 			path = Functions;
 			sourceTree = "<group>";
@@ -801,6 +810,7 @@
 			files = (
 				AA70000000000000000000F1 /* PrivacyInfo.xcprivacy in Resources */,
 				5EEA47EC2CB1426800E8CB60 /* InfoPlist.xcstrings in Resources */,
+				AAC0FFEE000000000000A004 /* AppShortcuts.xcstrings in Resources */,
 				5EDFF1E927E7AE4D005BBA3C /* LaunchScreen.storyboard in Resources */,
 				AAB5DC8D30838E87001D2F63 /* Toolbox Pink.icon in Resources */,
 				AAB5DC8E30838E87001D2F63 /* Toolbox Lime.icon in Resources */,
@@ -954,6 +964,7 @@
 				5EB7897727F9CCA900F07140 /* QRGenerator.swift in Sources */,
 				5E98DE6F2BFC9CED00B459A8 /* WOL.swift in Sources */,
 				5E5C62082916654F004F44CC /* Ping.swift in Sources */,
+				5E7A0C012F0A000100A1B2C3 /* Traceroute.swift in Sources */,
 				5EE65DEA2A8572A80061120B /* BarcodeDetail.swift in Sources */,
 				5E74427229B3787D00F43CB4 /* Controller.swift in Sources */,
 				5E1DB0F22C0225CF00D59AAD /* Decibel Meter.swift in Sources */,
@@ -961,6 +972,7 @@
 				5E020C4F27EA29D7009871F9 /* RomanConverter.swift in Sources */,
 				5ED81C4A27E36ED500FC42E8 /* Dice.swift in Sources */,
 				5E98DE6B2BFC9BE600B459A8 /* Wake On Lan.swift in Sources */,
+				AAC0FFEE000000000000A002 /* Wake On Lan Intents.swift in Sources */,
 				5EDFF1E627E76D34005BBA3C /* LiveClock.swift in Sources */,
 				5E1DB0F42C02275000D59AAD /* Metronome.swift in Sources */,
 				5ED81C4C27E372E700FC42E8 /* DomainResolver.swift in Sources */,
