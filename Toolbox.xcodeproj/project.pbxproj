@@ -33,6 +33,7 @@
 		5E4BA9372A8955D00039D341 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4BA9362A8955D00039D341 /* ContentView.swift */; };
 		5E528A9027E2379F00B2AE01 /* Haptica in Frameworks */ = {isa = PBXBuildFile; productRef = 5E528A8F27E2379F00B2AE01 /* Haptica */; };
 		5E5C62082916654F004F44CC /* Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5C62072916654F004F44CC /* Ping.swift */; };
+		5E7A0C012F0A000100A1B2C3 /* Traceroute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A0C022F0A000100A1B2C3 /* Traceroute.swift */; };
 		5E5C620B29166566004F44CC /* SwiftyPing in Frameworks */ = {isa = PBXBuildFile; productRef = 5E5C620A29166566004F44CC /* SwiftyPing */; };
 		5E74426829B10F8B00F43CB4 /* Barcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74426729B10F8B00F43CB4 /* Barcode.swift */; };
 		5E74427229B3787D00F43CB4 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74427129B3787D00F43CB4 /* Controller.swift */; };
@@ -183,6 +184,7 @@
 		5E47B19A27F1F3F4008FD3C0 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		5E4BA9362A8955D00039D341 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5E5C62072916654F004F44CC /* Ping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ping.swift; sourceTree = "<group>"; };
+		5E7A0C022F0A000100A1B2C3 /* Traceroute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Traceroute.swift; sourceTree = "<group>"; };
 		5E5C620E291681C1004F44CC /* appstore.svg */ = {isa = PBXFileReference; lastKnownFileType = text; path = appstore.svg; sourceTree = "<group>"; };
 		5E74426729B10F8B00F43CB4 /* Barcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Barcode.swift; sourceTree = "<group>"; };
 		5E74427129B3787D00F43CB4 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
@@ -520,6 +522,7 @@
 				5E1644F12C03754800EEDFFD /* tick.wav */,
 				5E1DB0F52C022AF800D59AAD /* tock.wav */,
 				5E5C62072916654F004F44CC /* Ping.swift */,
+				5E7A0C022F0A000100A1B2C3 /* Traceroute.swift */,
 				5EF0DD1E2BE2196700F46B5C /* PulsingFlashlight.swift */,
 				5EB7897627F9CCA900F07140 /* QRGenerator.swift */,
 				5EF8C35C2A8859AC0089BCA3 /* Random Letter.swift */,
@@ -940,6 +943,7 @@
 				5EB7897727F9CCA900F07140 /* QRGenerator.swift in Sources */,
 				5E98DE6F2BFC9CED00B459A8 /* WOL.swift in Sources */,
 				5E5C62082916654F004F44CC /* Ping.swift in Sources */,
+				5E7A0C012F0A000100A1B2C3 /* Traceroute.swift in Sources */,
 				5EE65DEA2A8572A80061120B /* BarcodeDetail.swift in Sources */,
 				5E74427229B3787D00F43CB4 /* Controller.swift in Sources */,
 				5E1DB0F22C0225CF00D59AAD /* Decibel Meter.swift in Sources */,

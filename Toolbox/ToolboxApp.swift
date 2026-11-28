@@ -163,6 +163,14 @@ extension App: WhatsNewCollectionProvider {
                 ),
                 .init(
                     image: .init(
+                        systemName: "bolt.horizontal",
+                        foregroundColor: .accentColor
+                    ),
+                    title: .init(stringLiteral: NSLocalizedString("Ping & Traceroute", comment: "WhatsNewKit item")),
+                    subtitle: .init(stringLiteral: NSLocalizedString("See response times at a glance and trace the route to any host", comment: "WhatsNewKit item"))
+                ),
+                .init(
+                    image: .init(
                         systemName: "applewatch",
                         foregroundColor: .accentColor
                     ),
