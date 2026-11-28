@@ -114,6 +114,14 @@ extension App: WhatsNewCollectionProvider {
                 ),
                 .init(
                     image: .init(
+                        systemName: "eyedropper",
+                        foregroundColor: .accentColor
+                    ),
+                    title: .init(stringLiteral: NSLocalizedString("Color Picker", comment: "Menu item")),
+                    subtitle: .init(stringLiteral: NSLocalizedString("Pick colors from photos, type in color codes and check the contrast", comment: "WhatsNewKit item"))
+                ),
+                .init(
+                    image: .init(
                         systemName: "flashlight.off.fill",
                         foregroundColor: .accentColor
                     ),
