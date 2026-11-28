@@ -2,6 +2,17 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>de.sivery.toolbox</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>sivery-toolbox</string>
+			</array>
+		</dict>
+	</array>
 	<key>GIT_COMMIT</key>
 	<string>unknown</string>
 	<key>LAST_UPDATE</key>
