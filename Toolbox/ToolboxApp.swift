@@ -29,6 +29,7 @@ struct App {
             .displayFrequency(.immediate),
             .datastoreLocation(.applicationDefault)
         ])
+        ToolboxShortcuts.updateAppShortcutParameters()
     }
     
 }
@@ -54,10 +55,8 @@ extension App: SwiftUI.App {
                 .environmentObject(SelectedItemIndex())
                 .task { IconNames.migrateRemovedIcon() }
 
-                .modelContainer(for: [
-                                    WOLDevice.self,
-                                ],
-                                isAutosaveEnabled: true)
+                // Shared with the App Intents, so a device woken by Siri updates the list right away
+                .modelContainer(WOLDevice.container)
 
         }
     }
@@ -151,7 +150,7 @@ extension App: WhatsNewCollectionProvider {
                         foregroundColor: .accentColor
                     ),
                     title: .init(stringLiteral: NSLocalizedString("Wake On Lan", comment: "WhatsNewKit item")),
-                    subtitle: .init(stringLiteral: NSLocalizedString("Remotely power on your devices", comment: "WhatsNewKit item"))
+                    subtitle: .init(stringLiteral: NSLocalizedString("Remotely power on your devices, also with Siri and Shortcuts", comment: "WhatsNewKit item"))
                 ),
                 .init(
                     image: .init(
